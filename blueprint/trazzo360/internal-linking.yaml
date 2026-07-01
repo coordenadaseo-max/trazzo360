@@ -1,0 +1,44 @@
+# Reglas de enlazado interno para Trazzo360
+# Implementadas en las plantillas Astro
+
+reglas:
+  # Desde página servicio → combinadas servicio x barrio (ya implementado)
+  servicio_a_barrios:
+    origen: /servicios/{slug}/
+    destinos: /{slug}/{barrio}/ para cada barrio en ZONES
+    min_links: 8
+    implementado: true
+
+  # Desde página zona → combinadas servicio x barrio (ya implementado)
+  zona_a_servicios:
+    origen: /zonas/{slug}/
+    destinos: /{servicio}/{slug}/ para cada servicio en SERVICES
+    min_links: 6
+    implementado: false  # pendiente: zona page aún enlaza a /servicios/{slug}/
+
+  # Desde combinada → otras ciudades mismo servicio (ya implementado)
+  combinada_a_otras_ciudades:
+    origen: /{servicio}/{barrio}/
+    destinos: /{servicio}/{otro-barrio}/ para todos los barrios
+    min_links: 7
+    implementado: true
+
+  # Desde combinada → otros servicios misma ciudad (ya implementado)
+  combinada_a_otros_servicios:
+    origen: /{servicio}/{barrio}/
+    destinos: /{otro-servicio}/{barrio}/ para todos los servicios
+    min_links: 5
+    implementado: true
+
+  # Home → servicios principales y zonas principales
+  home_a_secciones:
+    origen: /
+    destinos:
+      - /servicios/{slug}/ para cada servicio
+      - /zonas/{slug}/ para cada zona
+    implementado: true
+
+  # Footer → matrix completa (ya implementado)
+  footer_matrix:
+    descripcion: footer enlaza a todos los servicios y todas las zonas
+    implementado: true

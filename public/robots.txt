@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trazzo360.es/sitemap-index.xml

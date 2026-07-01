@@ -1,0 +1,78 @@
+negocio: trazzo360
+dominio: https://trazzo360.es
+sector: reformas-integrales
+zona_principal: Corredor del Henares
+
+# Estructura de URLs generadas
+paginas:
+  home:
+    url: /
+    template: home
+    prioridad: 1.0
+
+  servicios:
+    - slug: reformas-integrales
+      url: /servicios/reformas-integrales/
+      prioridad: 0.9
+    - slug: reforma-banos
+      url: /servicios/reforma-banos/
+      prioridad: 0.9
+    - slug: reforma-cocinas
+      url: /servicios/reforma-cocinas/
+      prioridad: 0.9
+    - slug: reforma-pisos
+      url: /servicios/reforma-pisos/
+      prioridad: 0.9
+    - slug: locales-comerciales
+      url: /servicios/locales-comerciales/
+      prioridad: 0.8
+    - slug: comunidades-vecinos
+      url: /servicios/comunidades-vecinos/
+      prioridad: 0.8
+
+  zonas:
+    - slug: alcala-de-henares
+      url: /zonas/alcala-de-henares/
+      primaria: true
+      prioridad: 0.9
+    - slug: torrejon-de-ardoz
+      url: /zonas/torrejon-de-ardoz/
+      primaria: true
+      prioridad: 0.9
+    - slug: coslada
+      url: /zonas/coslada/
+      primaria: true
+      prioridad: 0.8
+    - slug: san-fernando-de-henares
+      url: /zonas/san-fernando-de-henares/
+      primaria: true
+      prioridad: 0.8
+    - slug: guadalajara
+      url: /zonas/guadalajara/
+      primaria: false
+      prioridad: 0.7
+    - slug: azuqueca-de-henares
+      url: /zonas/azuqueca-de-henares/
+      primaria: false
+      prioridad: 0.7
+    - slug: meco
+      url: /zonas/meco/
+      primaria: false
+      prioridad: 0.6
+    - slug: camarma-de-esteruelas
+      url: /zonas/camarma-de-esteruelas/
+      primaria: false
+      prioridad: 0.6
+
+  # Páginas combinadas servicio x barrio (el corazón del SEO local)
+  # Total: 6 servicios x 8 zonas = 48 páginas
+  servicio_barrio:
+    patron: /{servicio}/{barrio}/
+    total: 48
+    servicios: [reformas-integrales, reforma-banos, reforma-cocinas, reforma-pisos, locales-comerciales, comunidades-vecinos]
+    barrios: [alcala-de-henares, torrejon-de-ardoz, coslada, san-fernando-de-henares, guadalajara, azuqueca-de-henares, meco, camarma-de-esteruelas]
+    prioridad: 0.8
+
+  utilidad:
+    - url: /contacto/
+      prioridad: 0.7

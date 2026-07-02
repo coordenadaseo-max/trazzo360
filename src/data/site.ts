@@ -141,7 +141,7 @@ export const SERVICES = [
 export const ZONES = [
   { slug: 'alcala-de-henares', name: 'Alcalá de Henares', primary: true, desc: 'Nuestra sede central. Más de 10 años reformando pisos, chalets y locales en Alcalá y sus barrios.' },
   { slug: 'torrejon-de-ardoz', name: 'Torrejón de Ardoz', primary: true, desc: 'Segunda ciudad del Corredor. Equipo habitual en toda la zona de Torrejón y alrededores.' },
-  { slug: 'coslada', name: 'Coslada', primary: true, desc: 'Reformas en Coslada con equipo propio. Presupuesto gratis en 24h.' },
+  { slug: 'coslada', name: 'Coslada', primary: true, desc: 'Reformas en Coslada con profesionales de confianza. Presupuesto gratis en 24h.' },
   { slug: 'san-fernando-de-henares', name: 'San Fernando de Henares', primary: true, desc: 'Reformas integrales y parciales en San Fernando de Henares.' },
   { slug: 'guadalajara', name: 'Guadalajara', primary: false, desc: 'También operamos en Guadalajara capital y su entorno.' },
   { slug: 'azuqueca-de-henares', name: 'Azuqueca de Henares', primary: false, desc: 'Reformas en Azuqueca de Henares y alrededores.' },

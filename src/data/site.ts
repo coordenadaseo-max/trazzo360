@@ -11,9 +11,9 @@ export const SITE = {
   mainCity: 'Alcalá de Henares',
   zone: 'Corredor del Henares',
   stats: {
-    projects: '+200',
-    years: '+15',
-    cities: '12',
+    projects: '+80',
+    years: '+10',
+    cities: '8',
   },
 };
 
@@ -133,7 +133,7 @@ export const SERVICES = [
 ];
 
 export const ZONES = [
-  { slug: 'alcala-de-henares', name: 'Alcalá de Henares', primary: true, desc: 'Nuestra sede central. Más de 15 años reformando pisos, chalets y locales en Alcalá y sus barrios.' },
+  { slug: 'alcala-de-henares', name: 'Alcalá de Henares', primary: true, desc: 'Nuestra sede central. Más de 10 años reformando pisos, chalets y locales en Alcalá y sus barrios.' },
   { slug: 'torrejon-de-ardoz', name: 'Torrejón de Ardoz', primary: true, desc: 'Segunda ciudad del Corredor. Equipo habitual en toda la zona de Torrejón y alrededores.' },
   { slug: 'coslada', name: 'Coslada', primary: true, desc: 'Reformas en Coslada con equipo propio. Presupuesto gratis en 24h.' },
   { slug: 'san-fernando-de-henares', name: 'San Fernando de Henares', primary: true, desc: 'Reformas integrales y parciales en San Fernando de Henares.' },

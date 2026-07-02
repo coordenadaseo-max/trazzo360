@@ -3,12 +3,30 @@ import Layout from '../layouts/Layout.astro';
 import { SITE, SERVICES, ZONES } from '../data/site';
 
 const faqs = [
-  { q: '¿Cuánto cuesta una reforma integral en Alcalá de Henares?', a: 'Una reforma integral de un piso de 70–90 m² en el Corredor del Henares oscila entre 24.900€ y 45.000€ con materiales de calidad media-alta. Damos precio cerrado desde el primer día.' },
-  { q: '¿Cuánto tarda una reforma integral?', a: 'Entre 8 y 14 semanas para un piso de 70–90 m². Fijamos la fecha de entrega en el contrato y la cumplimos.' },
-  { q: '¿Necesito licencia de obra para reformar mi piso?', a: 'Depende del tipo de reforma. Obras menores (pintura, suelos, sanitarios) suelen necesitar solo comunicación previa. Si hay derribo de tabiques o redistribución de espacios se requiere licencia de obra mayor. Tramitamos todo en el ayuntamiento.' },
-  { q: '¿Trabajáis en toda la zona del Corredor del Henares?', a: 'Sí. Cubrimos Alcalá de Henares, Torrejón de Ardoz, Coslada, San Fernando de Henares, Guadalajara, Azuqueca de Henares, Meco, Camarma de Esteruelas y municipios adyacentes.' },
-  { q: '¿Cómo funciona el pago?', a: 'Trabajamos con pago por fases: inicio de obra, hitos intermedios verificados y pago final a la entrega. Nunca pedimos el total por adelantado.' },
-  { q: '¿Hacéis reformas de comunidades de vecinos?', a: 'Sí. Zonas comunes, escaleras, portales, fachadas y cubiertas. Emitimos presupuesto detallado para presentar en junta de vecinos.' },
+  {
+    q: '¿Cuánto puede costar reformar un piso de 100 m²?',
+    a: 'Una reforma integral de un piso de 100 m² en el Corredor del Henares oscila entre 30.000€ y 55.000€ con materiales de calidad media-alta. El precio varía según el estado de las instalaciones, los materiales elegidos y si hay redistribución de espacios. En Trazzo360 damos precio cerrado desde el primer presupuesto: lo que firmas es lo que pagas.',
+  },
+  {
+    q: '¿Qué puedo reformar con 20.000€?',
+    a: 'Con 20.000€ puedes hacer una reforma parcial de piso: renovación completa de baño y cocina, suelos nuevos y pintura en una vivienda de 60–70 m². También alcanza para una reforma integral de baño y cocina de calidad media-alta, o para reformar íntegramente un piso pequeño de 40–50 m². Te asesoramos sin compromiso para sacar el máximo partido a tu presupuesto.',
+  },
+  {
+    q: '¿Qué es lo más caro en una reforma?',
+    a: 'Las partidas más costosas son las instalaciones (fontanería y electricidad completas representan el 25–35% del presupuesto total), seguidas de los revestimientos (alicatados, pavimentos y carpintería). En una reforma integral, renovar las instalaciones ocultas es lo que más encarece porque requiere abrir paredes y suelos. Por eso es importante hacerlo bien desde el principio.',
+  },
+  {
+    q: '¿Qué se puede reformar con 40.000€?',
+    a: 'Con 40.000€ puedes afrontar una reforma integral completa de un piso de 80–90 m² con materiales de calidad media-alta: derribo de tabiques, instalaciones nuevas, baño, cocina, suelos, pintura y carpintería. También alcanza para una reforma de lujo en un piso de 50–60 m². En Trazzo360 te presentamos varias opciones dentro de tu presupuesto con precio cerrado garantizado.',
+  },
+  {
+    q: '¿Cuánto tarda una reforma integral en el Corredor del Henares?',
+    a: 'Entre 8 y 14 semanas para un piso de 70–90 m². Fijamos la fecha de entrega en el contrato y la cumplimos. Si hay retrasos por causas propias, compensamos económicamente.',
+  },
+  {
+    q: '¿Trabajáis en toda la zona del Corredor del Henares?',
+    a: 'Sí. Cubrimos Alcalá de Henares, Torrejón de Ardoz, Coslada, San Fernando de Henares, Guadalajara, Azuqueca de Henares, Meco, Camarma de Esteruelas y municipios adyacentes. Equipo propio en toda la zona, sin desplazamientos adicionales.',
+  },
 ];
 
 const faqSchema = {
@@ -23,8 +41,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="Reformas Integrales en Alcalá de Henares y el Corredor del Henares | Trazzo360"
-  description="Empresa de reformas integrales en Alcalá de Henares, Torrejón de Ardoz, Coslada y todo el Corredor del Henares. Precio cerrado, plazo garantizado y presupuesto gratis en 24h."
+  title="Trazzo360 | Empresa de Reformas en el Corredor del Henares — Precio Cerrado"
+  description="Empresa de reformas en el Corredor del Henares. Alcalá de Henares, Torrejón de Ardoz, Coslada, San Fernando y más. Baños, cocinas, pisos y locales. Precio cerrado garantizado. Presupuesto gratis en 24h."
   schema={faqSchema}
 >
 
@@ -35,13 +53,13 @@ const faqSchema = {
       <div class="max-w-3xl">
         <div class="flex items-center gap-3 mb-6">
           <div class="w-8 h-0.5 bg-[#A85535]"></div>
-          <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">Corredor del Henares · Madrid</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">Alcalá · Torrejón · Coslada · San Fernando · Guadalajara</span>
         </div>
         <h1 class="text-5xl lg:text-7xl font-black text-white leading-none mb-6" style="letter-spacing:-0.02em">
-          Reformas<br/>
-          <span class="text-[#A85535]">Integrales</span><br/>
-          en Alcalá de Henares<br/>
-          <span class="text-3xl lg:text-4xl font-bold text-gray-300">y todo el Corredor.</span>
+          Empresa de<br/>
+          <span class="text-[#A85535]">Reformas</span><br/>
+          en el Corredor<br/>
+          <span class="text-3xl lg:text-4xl font-bold text-gray-300">del Henares.</span>
         </h1>
         <p class="text-lg lg:text-xl text-gray-300 leading-relaxed mb-8 max-w-xl">
           Precio cerrado desde el primer día. Plazo garantizado por contrato. Pago por fases. Sin sorpresas.
@@ -99,7 +117,7 @@ const faqSchema = {
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Nuestros servicios</p>
         <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">¿Qué quieres reformar?</h2>
         <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
-        <p class="text-lg text-gray-500 max-w-xl">Reformas integrales y parciales en Alcalá de Henares y toda la zona del Corredor del Henares.</p>
+        <p class="text-lg text-gray-500 max-w-xl">Reformas integrales y parciales en Alcalá de Henares, Torrejón de Ardoz, Coslada y toda la zona del Corredor del Henares.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {SERVICES.map(s => (
@@ -118,8 +136,44 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- PRECIOS ORIENTATIVOS — captura intent de PAA -->
+  <section class="py-20 bg-[#F9F7F4]">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-12">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Precios orientativos</p>
+        <h2 class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+          ¿Cuánto cuesta una reforma<br/>en el Corredor del Henares?
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
+        <p class="text-gray-500 max-w-xl">Precios de referencia para 2025–2026 en Alcalá de Henares, Torrejón de Ardoz y toda la zona. El precio final depende del estado actual, superficie y materiales elegidos. Siempre con <strong class="text-gray-700">precio cerrado en el contrato</strong>.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          { tipo: 'Reforma integral de piso', detalle: '70–90 m²', desde: '24.900', hasta: '45.000' },
+          { tipo: 'Reforma integral de piso', detalle: '100 m²', desde: '30.000', hasta: '55.000' },
+          { tipo: 'Reforma de baño completo', detalle: 'Con cambio de bañera a ducha', desde: '3.200', hasta: '7.500' },
+          { tipo: 'Reforma de cocina', detalle: 'Muebles, encimera y electrodomésticos', desde: '5.500', hasta: '14.000' },
+          { tipo: 'Local comercial', detalle: '50 m²', desde: '8.000', hasta: '20.000' },
+          { tipo: 'Portal / comunidad de vecinos', detalle: 'Escalera y zonas comunes', desde: '4.900', hasta: '18.000' },
+        ].map(p => (
+          <div class="bg-white p-6 border border-gray-100">
+            <p class="text-sm font-bold text-gray-900 mb-1">{p.tipo}</p>
+            <p class="text-xs text-gray-400 mb-3">{p.detalle}</p>
+            <p class="text-2xl font-black text-[#A85535]">
+              {p.desde}€ <span class="text-lg font-normal text-gray-400">– {p.hasta}€</span>
+            </p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-xs text-gray-400">* Precios orientativos IVA incluido. El presupuesto personalizado y gratuito es siempre más preciso.</p>
+      <a href="/contacto/" class="inline-block mt-6 px-8 py-3.5 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+        Pide tu presupuesto cerrado
+      </a>
+    </div>
+  </section>
+
   <!-- POR QUÉ NOSOTROS -->
-  <section id="nosotros" class="py-24 lg:py-32 bg-[#F9F7F4]">
+  <section id="nosotros" class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
@@ -130,9 +184,9 @@ const faqSchema = {
           <div class="w-12 h-1 bg-[#A85535] mb-8"></div>
           <div class="space-y-6">
             {[
-              { title: 'Precio cerrado por contrato', desc: 'El presupuesto que firmas es el que pagas. Sin extras ni sorpresas al final de la obra.' },
+              { title: 'Precio cerrado por contrato', desc: 'El presupuesto que firmas es el que pagas. Sin extras ni sorpresas al final de la obra. Ningún competidor del Corredor del Henares lo garantiza por escrito.' },
               { title: 'Plazo garantizado', desc: 'La fecha de entrega se incluye en el contrato. Si nos retrasamos por causas propias, compensamos.' },
-              { title: 'Equipo propio', desc: 'No subcontratamos. Nuestros operarios son empleados de Trazzo360, lo que garantiza calidad y control.' },
+              { title: 'Equipo propio en toda la zona', desc: 'No subcontratamos. Nuestros operarios son empleados de Trazzo360, con presencia habitual en Alcalá, Torrejón, Coslada y San Fernando.' },
               { title: 'Pago por fases', desc: 'Pagas según avanza la obra, no todo por adelantado. Total transparencia en cada etapa.' },
             ].map(item => (
               <div class="flex gap-4">
@@ -171,7 +225,7 @@ const faqSchema = {
   </section>
 
   <!-- PROCESO -->
-  <section id="proceso" class="py-24 lg:py-32 bg-white">
+  <section id="proceso" class="py-24 lg:py-32 bg-[#F9F7F4]">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-16">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
@@ -180,9 +234,9 @@ const faqSchema = {
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {[
-          { n: '01', title: 'Visita gratuita', desc: 'Visitamos tu vivienda, tomamos medidas y evaluamos el estado de todas las instalaciones.' },
-          { n: '02', title: 'Presupuesto cerrado', desc: 'En 24–48h recibes un presupuesto detallado con precio y plazo fijos. Sin letra pequeña.' },
-          { n: '03', title: 'Ejecución', desc: 'Nuestro equipo propio ejecuta la obra con seguimiento diario y comunicación constante.' },
+          { n: '01', title: 'Visita gratuita', desc: 'Visitamos tu vivienda en Alcalá, Torrejón, Coslada o cualquier municipio del Corredor. Tomamos medidas y evaluamos el estado de todas las instalaciones.' },
+          { n: '02', title: 'Presupuesto cerrado', desc: 'En 24–48h recibes un presupuesto detallado con precio y plazo fijos. Sin letra pequeña. Lo que firmas es el precio final.' },
+          { n: '03', title: 'Ejecución', desc: 'Nuestro equipo propio ejecuta la obra con seguimiento diario y comunicación constante. Sin subcontratas.' },
           { n: '04', title: 'Entrega llave en mano', desc: 'Entregamos la obra limpia y revisada. Garantía de 2 años sobre la ejecución.' },
         ].map(step => (
           <div class="text-center">
@@ -205,9 +259,10 @@ const faqSchema = {
             Reformamos en<br/>todo el Corredor.
           </h2>
           <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
-          <p class="text-lg text-gray-300 leading-relaxed mb-8">
-            Cubrimos {SITE.stats.cities} municipios entre Madrid y Guadalajara con equipo propio y tiempos de respuesta rápidos.
+          <p class="text-lg text-gray-300 leading-relaxed mb-4">
+            Cubrimos {SITE.stats.cities} municipios entre Madrid y Guadalajara con equipo propio: <strong class="text-white">Alcalá de Henares, Torrejón de Ardoz, Coslada, San Fernando de Henares, Guadalajara, Azuqueca de Henares, Meco y Camarma de Esteruelas.</strong>
           </p>
+          <p class="text-sm text-gray-400 mb-8">Sin costes de desplazamiento adicionales. Tiempo de respuesta inferior a 24h en toda la zona.</p>
           <a href="/contacto/" class="inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
             Reformas en mi zona
           </a>
@@ -233,11 +288,11 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="text-center mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Todo lo que necesitas<br/>saber antes de reformar.</h2>
+        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Precios y dudas sobre<br/>reformas en el Corredor.</h2>
         <div class="w-12 h-1 bg-[#A85535] mx-auto"></div>
       </div>
       <div class="divide-y divide-gray-100">
-        {faqs.map((faq, i) => (
+        {faqs.map(faq => (
           <details class="group py-5">
             <summary class="flex justify-between items-start gap-4 cursor-pointer list-none font-semibold text-gray-900">
               {faq.q}

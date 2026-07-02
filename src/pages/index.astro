@@ -61,7 +61,7 @@ const faqSchema = {
           del Henares
         </h1>
         <p class="text-lg lg:text-xl text-gray-300 leading-relaxed mb-8 max-w-xl">
-          Precio cerrado desde el primer día. Plazo garantizado por contrato. Pago por fases. Sin sorpresas.
+          Una reforma mal hecha cuesta el doble. En Trazzo360 trabajamos con equipo propio de albañiles, fontaneros, electricistas y carpinteros — todo bajo un mismo contrato. Precio cerrado, plazo garantizado y 2 años de garantía en la ejecución.
         </p>
 
         <!-- Trust signals -->
@@ -69,7 +69,7 @@ const faqSchema = {
           {[
             { icon: '✓', text: 'Precio cerrado en contrato' },
             { icon: '⚡', text: 'Presupuesto en 24h' },
-            { icon: '🛡', text: 'Seguro RC incluido' },
+            { icon: '🛡', text: '2 años de garantía' },
             { icon: '🔑', text: 'Llave en mano' },
           ].map(item => (
             <div class="flex items-center gap-2">
@@ -88,6 +88,7 @@ const faqSchema = {
             ☎ {SITE.phoneDisplay}
           </a>
         </div>
+        <p class="text-xs text-gray-500 mt-3">Sin visita previa · Respuesta en menos de 24h · Sin compromiso</p>
       </div>
     </div>
 
@@ -130,6 +131,36 @@ const faqSchema = {
               {s.anchorLabel} en el Corredor del Henares →
             </span>
           </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OFICIOS -->
+  <section class="py-20 bg-[#111827]">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-12">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Equipo propio</p>
+        <h2 class="text-3xl lg:text-4xl font-black text-white mb-4" style="letter-spacing:-0.02em">Todos los oficios de la reforma, un solo contrato</h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
+        <p class="text-gray-300 max-w-2xl">No subcontratamos ningún gremio. Albañiles, fontaneros, electricistas, carpinteros, pintores y soladores forman parte del equipo de Trazzo360. Tú hablas con nosotros; nosotros coordinamos todo y respondemos de todo.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {[
+          { icon: '🧱', trade: 'Albañilería y tabiquería', desc: 'Derribos, redistribución de espacios y mampostería' },
+          { icon: '🔧', trade: 'Fontanería y saneamiento', desc: 'Instalaciones nuevas para baños y cocinas' },
+          { icon: '⚡', trade: 'Electricidad e iluminación', desc: 'Cuadros eléctricos, puntos de luz y domótica' },
+          { icon: '🪵', trade: 'Carpintería y cerramientos', desc: 'Puertas, ventanas, armarios y tarimas' },
+          { icon: '🪣', trade: 'Alicatados y pavimentos', desc: 'Cerámica, porcelánico, microcemento y tarima' },
+          { icon: '🎨', trade: 'Pintura y acabados', desc: 'Paredes, techos, lacados y texturas decorativas' },
+          { icon: '📐', trade: 'Diseño y planimetría', desc: 'Planos previos y asesoramiento de materiales' },
+          { icon: '📋', trade: 'Licencias y permisos', desc: 'Tramitación completa en el ayuntamiento' },
+        ].map(t => (
+          <div class="bg-white/5 border border-white/10 p-5 hover:border-[#A85535]/50 transition-colors">
+            <div class="text-2xl mb-3">{t.icon}</div>
+            <p class="text-sm font-bold text-white mb-1">{t.trade}</p>
+            <p class="text-xs text-gray-400 leading-relaxed">{t.desc}</p>
+          </div>
         ))}
       </div>
     </div>
@@ -178,15 +209,17 @@ const faqSchema = {
         <div>
           <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Por qué elegir Trazzo360</p>
           <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
-            Reformas con precio cerrado<br/>y plazo garantizado
+            Reformas del hogar con precio cerrado<br/>y plazo garantizado
           </h2>
-          <div class="w-12 h-1 bg-[#A85535] mb-8"></div>
+          <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
+          <p class="text-gray-500 leading-relaxed mb-8">Trazzo360 nació en el Corredor del Henares con un propósito claro: hacer las reformas como siempre deberían ser — con un precio que no cambia, un equipo que no falla y un resultado que dura. Sin subcontratas, sin excusas, sin sorpresas.</p>
           <div class="space-y-6">
             {[
               { title: 'Precio cerrado por contrato', desc: 'El presupuesto que firmas es el que pagas. Sin extras ni sorpresas al final de la obra. Ningún competidor del Corredor del Henares lo garantiza por escrito.' },
               { title: 'Plazo garantizado', desc: 'La fecha de entrega se incluye en el contrato. Si nos retrasamos por causas propias, compensamos.' },
               { title: 'Equipo propio en toda la zona', desc: 'No subcontratamos. Nuestros operarios son empleados de Trazzo360, con presencia habitual en Alcalá, Torrejón, Coslada y San Fernando.' },
               { title: 'Pago por fases', desc: 'Pagas según avanza la obra, no todo por adelantado. Total transparencia en cada etapa.' },
+              { title: '2 años de garantía en la ejecución', desc: 'Toda la obra ejecutada por Trazzo360 está garantizada por escrito durante 2 años. Si algo falla, lo resolvemos sin coste adicional.' },
             ].map(item => (
               <div class="flex gap-4">
                 <div class="w-6 h-6 rounded-full bg-[#A85535] flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -235,8 +268,8 @@ const faqSchema = {
         {[
           { n: '01', title: 'Visita gratuita', desc: 'Visitamos tu vivienda en Alcalá, Torrejón, Coslada o cualquier municipio del Corredor. Tomamos medidas y evaluamos el estado de todas las instalaciones.' },
           { n: '02', title: 'Presupuesto cerrado', desc: 'En 24–48h recibes un presupuesto detallado con precio y plazo fijos. Sin letra pequeña. Lo que firmas es el precio final.' },
-          { n: '03', title: 'Ejecución', desc: 'Nuestro equipo propio ejecuta la obra con seguimiento diario y comunicación constante. Sin subcontratas.' },
-          { n: '04', title: 'Entrega llave en mano', desc: 'Entregamos la obra limpia y revisada. Garantía de 2 años sobre la ejecución.' },
+          { n: '03', title: 'Ejecución', desc: 'Nuestro equipo de albañiles, fontaneros, electricistas y carpinteros ejecuta la obra con seguimiento diario. Sin subcontratas ni intermediarios.' },
+          { n: '04', title: 'Entrega con garantía', desc: 'Entregamos la obra limpia, revisada y a tiempo. Recibes certificado de garantía de 2 años sobre toda la ejecución.' },
         ].map(step => (
           <div class="text-center">
             <div class="text-6xl font-black text-[#A85535]/20 mb-4">{step.n}</div>

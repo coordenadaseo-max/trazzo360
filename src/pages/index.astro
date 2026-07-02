@@ -127,8 +127,8 @@ const faqSchema = {
             <h3 class="text-xl font-bold text-gray-900 mb-2">{s.title}</h3>
             <p class="text-sm text-gray-500 leading-relaxed mb-4">{s.desc}</p>
             <p class="text-xs font-bold text-gray-400 mb-4">Desde <span class="text-[#A85535] text-base font-black">{s.priceFrom}€</span></p>
-            <span class="text-sm font-bold uppercase tracking-wider text-[#A85535] flex items-center gap-2 group-hover:gap-3 transition-all">
-              Ver más →
+            <span class="text-sm font-bold text-[#A85535] flex items-center gap-1 group-hover:gap-2 transition-all">
+              {s.title} en el Corredor del Henares →
             </span>
           </a>
         ))}
@@ -273,7 +273,7 @@ const faqSchema = {
               <a href={`/zonas/${z.slug}/`}
                 class={`inline-block px-4 py-2.5 text-sm font-medium transition-opacity hover:opacity-80 ${z.primary ? 'text-white' : 'text-gray-300 border border-white/20'}`}
                 style={z.primary ? 'background:#A85535' : 'background:rgba(255,255,255,0.06)'}>
-                {z.name}
+                Reformas en {z.name}
               </a>
             ))}
           </div>

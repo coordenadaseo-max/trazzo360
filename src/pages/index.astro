@@ -61,7 +61,7 @@ const faqSchema = {
           del Henares
         </h1>
         <p class="text-lg lg:text-xl text-gray-300 leading-relaxed mb-8 max-w-xl">
-          Una reforma mal hecha cuesta el doble. En Trazzo360 trabajamos con equipo propio de albañiles, fontaneros, electricistas y carpinteros — todo bajo un mismo contrato. Precio cerrado, plazo garantizado y 2 años de garantía en la ejecución.
+          En Trazzo360 sabes desde el primer día quién trabaja en tu vivienda, cuánto vas a pagar y cuándo termina la obra. Los profesionales que entran en tu casa llevan años trabajando con nosotros y aplican el mismo criterio en todos los proyectos. Precio cerrado, plazo garantizado y 2 años de garantía en todo lo ejecutado.
         </p>
 
         <!-- Trust signals -->
@@ -141,24 +141,24 @@ const faqSchema = {
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-12">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Equipo propio</p>
-        <h2 class="text-3xl lg:text-4xl font-black text-white mb-4" style="letter-spacing:-0.02em">Todos los oficios de la reforma, un solo contrato</h2>
+        <h2 class="text-3xl lg:text-4xl font-black text-white mb-4" style="letter-spacing:-0.02em">Todos los oficios de la reforma, el mismo criterio de trabajo</h2>
         <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
-        <p class="text-gray-300 max-w-2xl">No subcontratamos ningún gremio. Albañiles, fontaneros, electricistas, carpinteros, pintores y soladores forman parte del equipo de Trazzo360. Tú hablas con nosotros; nosotros coordinamos todo y respondemos de todo.</p>
+        <p class="text-gray-300 max-w-2xl">Una reforma integral implica coordinar muchos gremios. En Trazzo360 nos encargamos de esa coordinación de principio a fin: albañiles, fontaneros, electricistas, carpinteros, pintores y soladores que trabajan con nosotros y comparten la misma forma de hacer las cosas. Tú hablas con un interlocutor; nosotros respondemos de todo.</p>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
-          { icon: '🧱', trade: 'Albañilería y tabiquería', desc: 'Derribos, redistribución de espacios y mampostería' },
-          { icon: '🔧', trade: 'Fontanería y saneamiento', desc: 'Instalaciones nuevas para baños y cocinas' },
-          { icon: '⚡', trade: 'Electricidad e iluminación', desc: 'Cuadros eléctricos, puntos de luz y domótica' },
-          { icon: '🪵', trade: 'Carpintería y cerramientos', desc: 'Puertas, ventanas, armarios y tarimas' },
-          { icon: '🪣', trade: 'Alicatados y pavimentos', desc: 'Cerámica, porcelánico, microcemento y tarima' },
-          { icon: '🎨', trade: 'Pintura y acabados', desc: 'Paredes, techos, lacados y texturas decorativas' },
-          { icon: '📐', trade: 'Diseño y planimetría', desc: 'Planos previos y asesoramiento de materiales' },
-          { icon: '📋', trade: 'Licencias y permisos', desc: 'Tramitación completa en el ayuntamiento' },
+          { icon: '🧱', trade: 'Albañilería y tabiquería', desc: 'Derribos, redistribución de espacios y construcción de tabiques. Hacemos la obra sucia con rigor porque lo que no se ve importa tanto como lo que sí: una base mal ejecutada arruina los mejores acabados.' },
+          { icon: '🔧', trade: 'Fontanería y saneamiento', desc: 'Instalaciones nuevas de suministro y saneamiento para baños y cocinas. Trabajamos con materiales que duran y dejamos todo accesible y registrable para facilitar cualquier mantenimiento futuro.' },
+          { icon: '⚡', trade: 'Electricidad e iluminación', desc: 'Cuadro eléctrico nuevo, circuitos diferenciados y puntos de luz donde los necesitas. Cumplimos el reglamento electrotécnico y entregamos el boletín para la legalización ante la distribuidora.' },
+          { icon: '🪵', trade: 'Carpintería y cerramientos', desc: 'Puertas, ventanas, armarios empotrados y tarimas. Instalamos con la precisión necesaria para que todo abra bien, cierre bien y aguante el paso de los años sin deformaciones ni holguras.' },
+          { icon: '🪣', trade: 'Alicatados y pavimentos', desc: 'Cerámica, porcelánico, microcemento y tarima flotante. Preparamos el soporte antes de colocar porque sin una base perfectamente nivelada el mejor material acaba fallando antes de tiempo.' },
+          { icon: '🎨', trade: 'Pintura y acabados finales', desc: 'El último paso de una reforma es el que más se ve y más se nota. Lijamos, masillamos y aplicamos con el cuidado que merece cada estancia. Sin manchas en rodapiés, sin bordes irregulares, sin descuidos.' },
+          { icon: '📐', trade: 'Diseño y planimetría', desc: 'Antes de mover un tabique te mostramos en planos cómo va a quedar la distribución. Asesoramiento de espacios y materiales sin coste adicional: el diseño está incluido en el proyecto.' },
+          { icon: '📋', trade: 'Licencias y permisos', desc: 'Tramitamos la licencia de obra o actividad en el ayuntamiento que corresponda. Sin colas, sin papeleos innecesarios. Tú te centras en el resultado; nosotros gestionamos la burocracia.' },
         ].map(t => (
           <div class="bg-white/5 border border-white/10 p-5 hover:border-[#A85535]/50 transition-colors">
             <div class="text-2xl mb-3">{t.icon}</div>
-            <p class="text-sm font-bold text-white mb-1">{t.trade}</p>
+            <p class="text-sm font-bold text-white mb-2">{t.trade}</p>
             <p class="text-xs text-gray-400 leading-relaxed">{t.desc}</p>
           </div>
         ))}
@@ -212,14 +212,14 @@ const faqSchema = {
             Reformas del hogar con precio cerrado<br/>y plazo garantizado
           </h2>
           <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
-          <p class="text-gray-500 leading-relaxed mb-8">Trazzo360 nació en el Corredor del Henares con un propósito claro: hacer las reformas como siempre deberían ser — con un precio que no cambia, un equipo que no falla y un resultado que dura. Sin subcontratas, sin excusas, sin sorpresas.</p>
+          <p class="text-gray-500 leading-relaxed mb-8">Trazzo360 nació en el Corredor del Henares con una convicción: las reformas pueden hacerse mejor. Con presupuestos que no cambian, plazos que se respetan y profesionales que tratan tu vivienda con el mismo cuidado con el que tratarían la suya. No trabajamos con cualquiera: quienes ejecutan tus proyectos llevan años trabajando con nosotros y aplican el mismo nivel de exigencia en cada obra, sea grande o pequeña.</p>
           <div class="space-y-6">
             {[
-              { title: 'Precio cerrado por contrato', desc: 'El presupuesto que firmas es el que pagas. Sin extras ni sorpresas al final de la obra. Ningún competidor del Corredor del Henares lo garantiza por escrito.' },
-              { title: 'Plazo garantizado', desc: 'La fecha de entrega se incluye en el contrato. Si nos retrasamos por causas propias, compensamos.' },
-              { title: 'Equipo propio en toda la zona', desc: 'No subcontratamos. Nuestros operarios son empleados de Trazzo360, con presencia habitual en Alcalá, Torrejón, Coslada y San Fernando.' },
-              { title: 'Pago por fases', desc: 'Pagas según avanza la obra, no todo por adelantado. Total transparencia en cada etapa.' },
-              { title: '2 años de garantía en la ejecución', desc: 'Toda la obra ejecutada por Trazzo360 está garantizada por escrito durante 2 años. Si algo falla, lo resolvemos sin coste adicional.' },
+              { title: 'Precio cerrado por contrato', desc: 'El presupuesto que firmas es el que pagas. Sin extras de última hora, sin modificados no comunicados. Si durante la obra aparece algo imprevisto, te lo decimos antes de actuar, nunca después.' },
+              { title: 'Plazo garantizado por escrito', desc: 'La fecha de entrega queda recogida en el contrato. Si por alguna causa propia nos retrasamos, compensamos económicamente. Sin excusas, sin semanas de silencio.' },
+              { title: 'Profesionales de confianza', desc: 'No trabajamos con cualquiera. Quienes entran en tu vivienda llevan años trabajando con nosotros y comparten el mismo criterio: hacerlo bien desde la primera vez, como si fuera para ellos.' },
+              { title: 'Pago por fases verificadas', desc: 'Pagas según avanza la obra, no todo por adelantado. En cada fase sabes exactamente qué se ha ejecutado, qué materiales se han colocado y qué queda por hacer.' },
+              { title: '2 años de garantía en la ejecución', desc: 'Toda la obra que ejecutamos está garantizada por escrito durante 2 años. Si algo falla por causas de ejecución, lo resolvemos sin coste adicional y sin discusiones.' },
             ].map(item => (
               <div class="flex gap-4">
                 <div class="w-6 h-6 rounded-full bg-[#A85535] flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -266,10 +266,10 @@ const faqSchema = {
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {[
-          { n: '01', title: 'Visita gratuita', desc: 'Visitamos tu vivienda en Alcalá, Torrejón, Coslada o cualquier municipio del Corredor. Tomamos medidas y evaluamos el estado de todas las instalaciones.' },
-          { n: '02', title: 'Presupuesto cerrado', desc: 'En 24–48h recibes un presupuesto detallado con precio y plazo fijos. Sin letra pequeña. Lo que firmas es el precio final.' },
-          { n: '03', title: 'Ejecución', desc: 'Nuestro equipo de albañiles, fontaneros, electricistas y carpinteros ejecuta la obra con seguimiento diario. Sin subcontratas ni intermediarios.' },
-          { n: '04', title: 'Entrega con garantía', desc: 'Entregamos la obra limpia, revisada y a tiempo. Recibes certificado de garantía de 2 años sobre toda la ejecución.' },
+          { n: '01', title: 'Visita gratuita', desc: 'Visitamos tu vivienda en Alcalá, Torrejón, Coslada o cualquier municipio del Corredor sin ningún coste ni compromiso. Evaluamos el estado real de las instalaciones, tomamos medidas y escuchamos exactamente lo que quieres conseguir.' },
+          { n: '02', title: 'Presupuesto cerrado', desc: 'En 24 a 48 horas recibes un presupuesto detallado con el precio final y el plazo de entrega cerrados. Sin letra pequeña, sin partidas abiertas. Lo que aparece en el documento que firmas es lo que vas a pagar.' },
+          { n: '03', title: 'Ejecución con seguimiento', desc: 'Albañiles, fontaneros, electricistas y carpinteros ejecutan la obra con seguimiento diario y comunicación constante. Sabes en todo momento en qué punto está tu reforma y qué viene a continuación.' },
+          { n: '04', title: 'Entrega con garantía', desc: 'Entregamos la obra limpia, revisada y en el plazo acordado. Recibes un certificado de garantía de 2 años sobre toda la ejecución. Si en ese periodo algo falla por nuestra parte, lo solucionamos.' },
         ].map(step => (
           <div class="text-center">
             <div class="text-6xl font-black text-[#A85535]/20 mb-4">{step.n}</div>

@@ -29,6 +29,22 @@ const faqs = [
   },
 ];
 
+const primaryZoneDescs: Record<string, string> = {
+  'alcala-de-henares': 'Nuestra zona de mayor actividad. Trabajamos en toda la ciudad: El Val, El Ensanche, Nueva Alcalá y el centro histórico. Reformas integrales de pisos de los setenta y ochenta que necesitan instalaciones completamente nuevas, así como chalets y adosados en las urbanizaciones del extrarradio que buscan redistribución y acabados de calidad.',
+  'torrejon-de-ardoz': 'La segunda ciudad donde más obras ejecutamos. El parque de vivienda de Torrejón concentra muchos pisos de los ochenta con instalaciones envejecidas que requieren reforma integral. Reformas de cocinas, baños y rehabilitación completa de viviendas son los trabajos más frecuentes. Cubrimos toda la ciudad y municipios adyacentes sin coste de desplazamiento.',
+  'coslada': 'Reformas de pisos medianos donde cocinas y baños concentran la mayor parte del trabajo. Muchas viviendas de Coslada tienen un potencial de redistribución que aprovechamos sin ampliar el presupuesto. Visita gratuita con respuesta en menos de 24 horas en toda la ciudad.',
+  'san-fernando-de-henares': 'Reformas integrales de vivienda y trabajos en comunidades de vecinos: portales, escaleras y fachadas. San Fernando tiene un parque residencial de los años ochenta y noventa en buen estado estructural pero con instalaciones eléctricas y de fontanería que piden renovación completa.',
+};
+
+const reformaPhases = [
+  { n: '01', title: 'Proyecto y permisos', desc: 'Antes de empezar la obra diseñamos la distribución en planos y tramitamos la licencia en el ayuntamiento si es necesaria. Sabes exactamente qué se va a hacer, dónde y con qué materiales antes de que entre un solo operario en tu casa.' },
+  { n: '02', title: 'Derribo y redistribución', desc: 'La obra comienza con los derribos y la redistribución de tabiques. Es la fase más sucia pero también la más importante: una base mal ejecutada condiciona todo lo que viene después. Gestionamos la retirada de escombros incluida en el presupuesto.' },
+  { n: '03', title: 'Instalaciones nuevas', desc: 'Fontanería, electricidad y calefacción desde cero o adaptadas a la nueva distribución. Cuadro eléctrico nuevo, circuitos diferenciados, tomas de agua y desagüe donde los necesitas. Todo bajo normativa vigente con boletines de legalización para la distribuidora.' },
+  { n: '04', title: 'Revestimientos y pavimentos', desc: 'Alicatados, porcelánico, tarima y microcemento aplicados sobre soporte perfectamente preparado. Verificamos la nivelación y adherencia antes de colocar cualquier revestimiento para que el resultado dure décadas sin fisuras ni desprendimientos.' },
+  { n: '05', title: 'Carpintería y acabados', desc: 'Puertas, armarios empotrados, ventanas, rodapiés y pintura final. Los acabados son lo que más se ve y lo que define el resultado. Aplicamos el mismo nivel de exigencia en la última capa de pintura que en la primera fase de derribo.' },
+  { n: '06', title: 'Entrega con garantía de 2 años', desc: 'Limpieza final de obra, revisión completa y entrega con certificado de garantía de 2 años sobre toda la ejecución. Si algo falla por causas de nuestra ejecución en ese periodo, lo resolvemos sin coste adicional y sin discusiones.' },
+];
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -42,7 +58,7 @@ const faqSchema = {
 
 <Layout
   title="Trazzo360 | Empresa de Reformas en el Corredor del Henares — Precio Cerrado"
-  description="Empresa de reformas en el Corredor del Henares. Alcalá de Henares, Torrejón de Ardoz, Coslada, San Fernando y más. Baños, cocinas, pisos y locales. Precio cerrado garantizado. Presupuesto gratis en 24h."
+  description="Empresa de reformas en el Corredor del Henares: fontanería, electricidad, albañilería y pintura. Alcalá, Torrejón, Coslada, San Fernando. Precio cerrado garantizado. Presupuesto gratis en 24h."
   schema={faqSchema}
 >
 
@@ -202,6 +218,32 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- QUÉ CUBRE UNA REFORMA INTEGRAL -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-14">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">De los planos a las llaves</p>
+        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Qué cubre una reforma integral de vivienda</h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
+        <p class="text-lg text-gray-500 max-w-2xl">Una reforma integral no es solo pintar y cambiar azulejos. Implica coordinar varias fases con distintos gremios y plazos. Esto es lo que ocurre en cada proyecto, desde que firmas el presupuesto hasta que recibes las llaves.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {reformaPhases.map(phase => (
+          <div class="border border-gray-100 p-7 hover:border-[#A85535]/30 transition-colors">
+            <div class="text-4xl font-black text-[#A85535]/20 mb-3">{phase.n}</div>
+            <h3 class="text-base font-bold text-gray-900 mb-3">{phase.title}</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">{phase.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-10 p-6 bg-[#F9F7F4] border-l-4 border-[#A85535]">
+        <p class="text-sm text-gray-600 leading-relaxed">
+          <strong class="text-gray-900">Precio cerrado desde el primer presupuesto:</strong> cada fase queda reflejada con su coste en el contrato que firmas. Si durante la obra aparece algo imprevisto que no estaba en el presupuesto, te lo comunicamos antes de actuar. Nunca después.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- POR QUÉ NOSOTROS -->
   <section id="nosotros" class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-4">
@@ -284,33 +326,49 @@ const faqSchema = {
   <!-- ZONAS -->
   <section id="zonas" class="py-24 lg:py-32 bg-[#111827]">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Zona de actuación</p>
-          <h2 class="text-4xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em">
-            Reformamos en<br/>todo el Corredor
-          </h2>
-          <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
-          <p class="text-lg text-gray-300 leading-relaxed mb-4">
-            Cubrimos {SITE.stats.cities} municipios entre Madrid y Guadalajara con profesionales de confianza en toda la zona: <strong class="text-white">Alcalá de Henares, Torrejón de Ardoz, Coslada, San Fernando de Henares, Guadalajara, Azuqueca de Henares, Meco y Camarma de Esteruelas.</strong>
-          </p>
-          <p class="text-sm text-gray-400 mb-8">Sin costes de desplazamiento adicionales. Tiempo de respuesta inferior a 24h en toda la zona.</p>
-          <a href="/contacto/" class="inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-            Reformas en mi zona
+      <div class="text-center mb-14">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Zona de actuación</p>
+        <h2 class="text-4xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em">
+          Reformamos en<br/>todo el Corredor
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535] mx-auto mb-6"></div>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+          Cubrimos {SITE.stats.cities} municipios entre Madrid y Guadalajara. Profesionales de confianza en toda la zona, sin costes de desplazamiento y con respuesta en menos de 24h.
+        </p>
+      </div>
+
+      <!-- Zonas primarias con H3 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+        {ZONES.filter(z => z.primary).map(z => (
+          <a href={`/zonas/${z.slug}/`}
+            class="block bg-white/5 border border-white/10 p-7 hover:border-[#A85535]/50 transition-all group">
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#A85535] transition-colors">Reformas en {z.name}</h3>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5">{primaryZoneDescs[z.slug]}</p>
+            <span class="text-xs font-bold text-[#A85535] uppercase tracking-widest">Ver reformas en {z.name} →</span>
           </a>
+        ))}
+      </div>
+
+      <!-- Zonas secundarias -->
+      <div class="border-t border-white/10 pt-8 mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">También cubrimos</p>
+        <div class="flex flex-wrap gap-2">
+          {ZONES.filter(z => !z.primary).map(z => (
+            <a href={`/zonas/${z.slug}/`}
+              class="inline-block px-4 py-2.5 text-sm font-medium text-gray-300 border border-white/20 hover:border-[#A85535]/50 hover:text-white transition-colors"
+              style="background:rgba(255,255,255,0.04)">
+              Reformas en {z.name}
+            </a>
+          ))}
         </div>
-        <div>
-          <div class="flex flex-wrap gap-2">
-            {ZONES.map(z => (
-              <a href={`/zonas/${z.slug}/`}
-                class={`inline-block px-4 py-2.5 text-sm font-medium transition-opacity hover:opacity-80 ${z.primary ? 'text-white' : 'text-gray-300 border border-white/20'}`}
-                style={z.primary ? 'background:#A85535' : 'background:rgba(255,255,255,0.06)'}>
-                Reformas en {z.name}
-              </a>
-            ))}
-          </div>
-          <p class="mt-6 text-sm text-gray-500">¿Tu municipio no aparece? Consúltanos — cubrimos zonas adyacentes.</p>
-        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <a href="/contacto/" class="inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+          Pide presupuesto en tu zona
+        </a>
+        <p class="mt-3 text-sm text-gray-500">¿Tu municipio no aparece? Consúltanos, cubrimos zonas adyacentes.</p>
       </div>
     </div>
   </section>

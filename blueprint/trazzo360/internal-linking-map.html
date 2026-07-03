@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa de Enlazado Interno · Trazzo360</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #111827; font-size: 13px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+  .subtitle { font-size: 12px; color: #6b7280; margin-bottom: 20px; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 0; border-bottom: 2px solid #e5e7eb; }
+  .tab { padding: 9px 16px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; background: none; color: #6b7280; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .15s; }
+  .tab:hover { color: #A85535; }
+  .tab.active { color: #A85535; border-bottom-color: #A85535; }
+  .tab-content { display: none; padding-top: 18px; }
+  .tab-content.active { display: block; }
+
+  /* Architecture */
+  .arch { display: flex; flex-direction: column; gap: 10px; }
+  .tier { display: flex; gap: 8px; align-items: flex-start; }
+  .tier-label { font-size: 10px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: .05em; width: 88px; flex-shrink: 0; text-align: right; padding-top: 6px; }
+  .tier-boxes { display: flex; flex-wrap: wrap; gap: 5px; }
+  .box { display: inline-block; padding: 5px 10px; font-size: 11px; font-weight: 600; border-radius: 3px; cursor: default; }
+  .box.home { background: #111827; color: #fff; }
+  .box.service { background: #A85535; color: #fff; }
+  .box.zone { background: #1d4ed8; color: #fff; }
+  .box.combined { background: #f0fdf4; color: #166534; border: 1.5px solid #86efac; }
+  .box.contact { background: #fef9c3; color: #854d0e; border: 1.5px solid #fde047; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #374151; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+  /* Link tables */
+  .url-block { margin-bottom: 16px; border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; }
+  .url-header { background: #f9fafb; padding: 10px 14px; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+  .url-header:hover { background: #f3f4f6; }
+  .url-name { font-family: 'SF Mono', 'Menlo', 'Courier New', monospace; font-size: 12px; font-weight: 700; color: #111827; }
+  .url-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+  .badge-home { background: #111827; color: #fff; }
+  .badge-service { background: #A85535; color: #fff; }
+  .badge-zone { background: #1d4ed8; color: #fff; }
+  .badge-combined { background: #dcfce7; color: #166534; }
+  .badge-conv { background: #fef9c3; color: #854d0e; }
+  .url-body { display: none; }
+  .url-body.open { display: block; }
+  .link-row { display: flex; align-items: flex-start; padding: 7px 14px; border-bottom: 1px solid #f3f4f6; gap: 10px; }
+  .link-row:last-child { border-bottom: none; }
+  .link-dir { font-size: 12px; font-weight: 700; width: 18px; flex-shrink: 0; margin-top: 1px; }
+  .link-dir.out { color: #A85535; }
+  .link-dir.in { color: #1d4ed8; }
+  .link-url { font-family: 'SF Mono', 'Menlo', 'Courier New', monospace; font-size: 11px; color: #374151; flex: 1; min-width: 0; word-break: break-all; }
+  .link-anchor { font-size: 11px; color: #6b7280; font-style: italic; min-width: 200px; max-width: 260px; text-align: right; flex-shrink: 0; }
+  .link-count { font-size: 10px; font-weight: 700; color: #9ca3af; background: #f3f4f6; padding: 1px 5px; border-radius: 8px; white-space: nowrap; }
+  .section-divider { padding: 5px 14px; background: #f9fafb; font-size: 10px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid #e5e7eb; border-top: 1px solid #e5e7eb; }
+  .pattern-note { padding: 8px 14px; font-size: 11px; color: #6b7280; background: #fffbeb; border-bottom: 1px solid #fde68a; }
+  .toggle-hint { font-size: 10px; color: #9ca3af; }
+
+  /* Stats */
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .summary-card { border: 1px solid #e5e7eb; border-radius: 6px; padding: 14px; }
+  .summary-card h3 { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #9ca3af; letter-spacing: .05em; margin-bottom: 6px; }
+  .summary-card .num { font-size: 30px; font-weight: 800; color: #111827; line-height: 1; }
+  .summary-card .desc { font-size: 11px; color: #6b7280; margin-top: 4px; line-height: 1.4; }
+  .alert-box { border-radius: 6px; padding: 14px; margin-bottom: 14px; }
+  .alert-warn { background: #fffbeb; border: 1px solid #fde68a; }
+  .alert-ok { background: #f0fdf4; border: 1px solid #86efac; }
+  .alert-title { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .alert-warn .alert-title { color: #92400e; }
+  .alert-ok .alert-title { color: #166534; }
+  .alert-list { font-size: 11px; line-height: 1.9; padding-left: 16px; }
+  .alert-warn .alert-list { color: #78350f; }
+  .alert-ok .alert-list { color: #14532d; }
+
+  .expand-btn { font-size: 11px; color: #A85535; cursor: pointer; background: none; border: none; text-decoration: underline; margin-bottom: 14px; padding: 0; }
+
+  .arch-note { margin-top: 14px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 14px; }
+  .arch-note p { font-size: 11px; font-weight: 700; color: #374151; margin-bottom: 8px; }
+  .arch-note ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .arch-note li { font-size: 11px; color: #374151; }
+  .arch-note li strong { }
+
+  @media print {
+    .tabs { display: none; }
+    .tab-content { display: block !important; page-break-before: always; }
+    .url-body { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Mapa de Enlazado Interno · Trazzo360</h1>
+  <p class="subtitle">64 URLs · Análisis completo de enlaces salientes y entrantes con anchor text · Generado 2026-07-01</p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('arch', this)">Arquitectura</button>
+    <button class="tab" onclick="showTab('out', this)">Salientes</button>
+    <button class="tab" onclick="showTab('in', this)">Entrantes</button>
+    <button class="tab" onclick="showTab('stats', this)">Resumen</button>
+  </div>
+
+  <!-- ===== ARCHITECTURE ===== -->
+  <div id="tab-arch" class="tab-content active">
+    <p style="font-size:11px;color:#6b7280;margin-bottom:14px;">Estructura de 3 niveles con enlazado bidireccional entre hubs y páginas combinadas.</p>
+    <div class="arch">
+      <div class="tier">
+        <div class="tier-label">Nivel 0</div>
+        <div class="tier-boxes">
+          <span class="box home">/ (home)</span>
+          <span class="box contact">/contacto/</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:4px;padding:4px 0 4px 96px;font-size:10px;color:#9ca3af;">↓ enlaza a todos los hubs de servicio y zona</div>
+      <div class="tier">
+        <div class="tier-label">Nivel 1<br><span style="font-size:9px;">Hubs</span></div>
+        <div class="tier-boxes">
+          <span class="box service">/servicios/reformas-integrales/</span>
+          <span class="box service">/servicios/reforma-banos/</span>
+          <span class="box service">/servicios/reforma-cocinas/</span>
+          <span class="box service">/servicios/reforma-pisos/</span>
+          <span class="box service">/servicios/locales-comerciales/</span>
+          <span class="box service">/servicios/comunidades-vecinos/</span>
+          <br>
+          <span class="box zone">/zonas/alcala-de-henares/</span>
+          <span class="box zone">/zonas/torrejon-de-ardoz/</span>
+          <span class="box zone">/zonas/coslada/</span>
+          <span class="box zone">/zonas/san-fernando-de-henares/</span>
+          <span class="box zone">/zonas/guadalajara/</span>
+          <span class="box zone">/zonas/azuqueca-de-henares/</span>
+          <span class="box zone">/zonas/meco/</span>
+          <span class="box zone">/zonas/camarma-de-esteruelas/</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:4px;padding:4px 0 4px 96px;font-size:10px;color:#9ca3af;">↓ hubs apuntan a las 48 combinadas · combinadas se enlazan entre sí (hermanas)</div>
+      <div class="tier">
+        <div class="tier-label">Nivel 2<br><span style="font-size:9px;">48 páginas</span></div>
+        <div class="tier-boxes">
+          <span class="box combined">/reformas-integrales/alcala-de-henares/</span>
+          <span class="box combined">/reformas-integrales/torrejon-de-ardoz/</span>
+          <span class="box combined" style="opacity:.55">… ×48 (6 servicios × 8 zonas)</span>
+        </div>
+      </div>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#111827"></div> Home / Contacto</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#A85535"></div> Hubs de servicio (×6)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#1d4ed8"></div> Hubs de zona (×8)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#86efac"></div> Páginas combinadas (×48)</div>
+    </div>
+    <div class="arch-note">
+      <p>Tipos de enlace presentes:</p>
+      <ul>
+        <li><strong style="color:#A85535">Home → hubs servicio:</strong> anchor "Ver más →" (genérico, oportunidad de mejora)</li>
+        <li><strong style="color:#A85535">Home → hubs zona:</strong> anchor = nombre de ciudad</li>
+        <li><strong style="color:#A85535">Hub servicio → combinadas:</strong> anchor "[Servicio] en [Ciudad] →" (descriptivo ✓)</li>
+        <li><strong style="color:#1d4ed8">Hub zona → combinadas:</strong> anchor "[Servicio] en [Ciudad]" (descriptivo ✓)</li>
+        <li><strong style="color:#166534">Combinada → hermanas mismo servicio:</strong> anchor "[Servicio corto] en [Ciudad]" (×7)</li>
+        <li><strong style="color:#166534">Combinada → hermanas misma ciudad:</strong> anchor "[Nombre Servicio]" (×5)</li>
+        <li><strong style="color:#166534">Combinada → hub servicio:</strong> breadcrumb + texto (×2 links al mismo hub)</li>
+        <li><strong style="color:#166534">Combinada → hub zona:</strong> anchor "página completa de [Ciudad]"</li>
+        <li><strong style="color:#9ca3af">Todas → /:</strong> breadcrumb "Inicio"</li>
+        <li><strong style="color:#9ca3af">Todas → /contacto/:</strong> múltiples CTAs por página</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OUTGOING ===== -->
+  <div id="tab-out" class="tab-content">
+    <button class="expand-btn" onclick="toggleAll()">Expandir / Colapsar todo</button>
+
+    <!-- HOME -->
+    <div class="url-block">
+      <div class="url-header" onclick="toggleBlock(this)">
+        <span class="url-name">/ &nbsp;<span style="font-size:10px;color:#9ca3af;font-family:sans-serif;font-weight:400;">(home)</span></span>
+        <span style="display:flex;gap:8px;align-items:center;">
+          <span class="url-badge badge-home">Home</span>
+          <span class="toggle-hint">15 destinos únicos ▾</span>
+        </span>
+      </div>
+      <div class="url-body">
+        <div class="section-divider">→ Hubs de servicio</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/servicios/reformas-integrales/</span><span class="link-anchor">"Ver más →" <span style="font-size:10px;color:#d1d5db;">(card Reformas Integrales)</span></span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/servicios/reforma-banos/</span><span class="link-anchor">"Ver más →" <span style="font-size:10px;color:#d1d5db;">(card Baños)</span></span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/servicios/reforma-cocinas/</span><span class="link-anchor">"Ver más →" <span style="font-size:10px;color:#d1d5db;">(card Cocinas)</span></span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/servicios/reforma-pisos/</span><span class="link-anchor">"Ver más →" <span style="font-size:10px;color:#d1d5db;">(card Pisos)</span></span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/servicios/locales-comerciales/</span><span class="link-anchor">"Ver más →" <span style="font-size:10px;color:#d1d5db;">(card Locales)</span></span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/servicios/comunidades-vecinos/</span><span class="link-anchor">"Ver más →" <span style="font-size:10px;color:#d1d5db;">(card Comunidades)</span></span></div>
+        <div class="section-divider">→ Hubs de zona</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/zonas/alcala-de-henares/</span><span class="link-anchor">"Alcalá de Henares"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/zonas/torrejon-de-ardoz/</span><span class="link-anchor">"Torrejón de Ardoz"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/zonas/coslada/</span><span class="link-anchor">"Coslada"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/zonas/san-fernando-de-henares/</span><span class="link-anchor">"San Fernando de Henares"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/zonas/guadalajara/</span><span class="link-anchor">"Guadalajara"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/zonas/azuqueca-de-henares/</span><span class="link-anchor">"Azuqueca de Henares"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/zonas/meco/</span><span class="link-anchor">"Meco"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/zonas/camarma-de-esteruelas/</span><span class="link-anchor">"Camarma de Esteruelas"</span></div>
+        <div class="section-divider">→ Conversión</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/contacto/</span><span class="link-anchor">"Pide Presupuesto Gratis" · "Pide tu presupuesto cerrado" · "Pedir presupuesto gratis" · "Reformas en mi zona" · "Pide Presupuesto Gratis" <span class="link-count">×5</span></span></div>
+        <div class="pattern-note">⚠️ La home NO enlaza directamente a ninguna de las 48 páginas combinadas /[servicio]/[barrio]/.</div>
+      </div>
+    </div>
+
+    <!-- HUB SERVICIO -->
+    <div class="url-block">
+      <div class="url-header" onclick="toggleBlock(this)">
+        <span class="url-name">/servicios/<em>[slug]</em>/ &nbsp;<span style="font-size:10px;color:#9ca3af;font-family:sans-serif;font-weight:400;">×6 páginas</span></span>
+        <span style="display:flex;gap:8px;align-items:center;">
+          <span class="url-badge badge-service">Hub Servicio</span>
+          <span class="toggle-hint">10 destinos únicos ▾</span>
+        </span>
+      </div>
+      <div class="url-body">
+        <div class="pattern-note">Patrón idéntico para: reformas-integrales · reforma-banos · reforma-cocinas · reforma-pisos · locales-comerciales · comunidades-vecinos</div>
+        <div class="section-divider">→ Breadcrumb</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/</span><span class="link-anchor">"Inicio"</span></div>
+        <div class="section-divider">→ Páginas combinadas — las 8 ciudades para este servicio</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/[slug]/alcala-de-henares/</span><span class="link-anchor">"[Servicio] en Alcalá de Henares →"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/[slug]/torrejon-de-ardoz/</span><span class="link-anchor">"[Servicio] en Torrejón de Ardoz →"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/[slug]/coslada/</span><span class="link-anchor">"[Servicio] en Coslada →"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/[slug]/san-fernando-de-henares/</span><span class="link-anchor">"[Servicio] en San Fernando de Henares →"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/[slug]/guadalajara/</span><span class="link-anchor">"[Servicio] en Guadalajara →"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/[slug]/azuqueca-de-henares/</span><span class="link-anchor">"[Servicio] en Azuqueca de Henares →"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/[slug]/meco/</span><span class="link-anchor">"[Servicio] en Meco →"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/[slug]/camarma-de-esteruelas/</span><span class="link-anchor">"[Servicio] en Camarma de Esteruelas →"</span></div>
+        <div class="section-divider">→ Conversión</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/contacto/</span><span class="link-anchor">"Presupuesto Gratis" · "Pedir presupuesto" · "Pide Presupuesto Gratis" <span class="link-count">×3</span></span></div>
+        <div class="pattern-note">⚠️ El hub de servicio NO enlaza a /zonas/[slug]/ ni a otros hubs de servicio.</div>
+      </div>
+    </div>
+
+    <!-- HUB ZONA -->
+    <div class="url-block">
+      <div class="url-header" onclick="toggleBlock(this)">
+        <span class="url-name">/zonas/<em>[slug]</em>/ &nbsp;<span style="font-size:10px;color:#9ca3af;font-family:sans-serif;font-weight:400;">×8 páginas</span></span>
+        <span style="display:flex;gap:8px;align-items:center;">
+          <span class="url-badge badge-zone">Hub Zona</span>
+          <span class="toggle-hint">15 destinos únicos ▾</span>
+        </span>
+      </div>
+      <div class="url-body">
+        <div class="pattern-note">Patrón idéntico para: alcala-de-henares · torrejon-de-ardoz · coslada · san-fernando-de-henares · guadalajara · azuqueca-de-henares · meco · camarma-de-esteruelas</div>
+        <div class="section-divider">→ Breadcrumb</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/</span><span class="link-anchor">"Inicio"</span></div>
+        <div class="section-divider">→ Páginas combinadas — los 6 servicios para esta ciudad</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/reformas-integrales/[slug]/</span><span class="link-anchor">"Reformas Integrales en [Ciudad]"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/reforma-banos/[slug]/</span><span class="link-anchor">"Reforma de Baños en [Ciudad]"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/reforma-cocinas/[slug]/</span><span class="link-anchor">"Reforma de Cocinas en [Ciudad]"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/reforma-pisos/[slug]/</span><span class="link-anchor">"Reforma de Pisos y Chalets en [Ciudad]"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/locales-comerciales/[slug]/</span><span class="link-anchor">"Locales Comerciales en [Ciudad]"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/comunidades-vecinos/[slug]/</span><span class="link-anchor">"Comunidades de Vecinos en [Ciudad]"</span></div>
+        <div class="section-divider">→ Otras zonas — 7 hubs de zona hermanos</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/zonas/[cada-otra-ciudad]/</span><span class="link-anchor">"[Nombre Ciudad]" (sección "También reformamos en") <span class="link-count">×7</span></span></div>
+        <div class="section-divider">→ Conversión</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/contacto/</span><span class="link-anchor">"Presupuesto Gratis en [Ciudad]" · "Pedir presupuesto en [Ciudad]" · "Pide Presupuesto Gratis" <span class="link-count">×3</span></span></div>
+        <div class="pattern-note">⚠️ El hub de zona NO enlaza a /servicios/[slug]/ — enlaza directamente a las combinadas.</div>
+      </div>
+    </div>
+
+    <!-- COMBINADA -->
+    <div class="url-block">
+      <div class="url-header" onclick="toggleBlock(this)">
+        <span class="url-name">/<em>[servicio]</em>/<em>[barrio]</em>/ &nbsp;<span style="font-size:10px;color:#9ca3af;font-family:sans-serif;font-weight:400;">×48 páginas</span></span>
+        <span style="display:flex;gap:8px;align-items:center;">
+          <span class="url-badge badge-combined">Combinada</span>
+          <span class="toggle-hint">18 destinos únicos ▾</span>
+        </span>
+      </div>
+      <div class="url-body">
+        <div class="pattern-note">Patrón idéntico para las 48 combinaciones. Ej.: /reformas-integrales/alcala-de-henares/</div>
+        <div class="section-divider">→ Breadcrumb (2 niveles)</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/</span><span class="link-anchor">"Inicio"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/servicios/[servicio]/</span><span class="link-anchor">"[Nombre Servicio]" (breadcrumb)</span></div>
+        <div class="section-divider">→ Mismo servicio, otras 7 ciudades — sección "Este servicio en otras ciudades"</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/[servicio]/[cada-otra-ciudad]/</span><span class="link-anchor">"[Servicio corto] en [Ciudad]" <span class="link-count">×7</span></span></div>
+        <div class="section-divider">→ Hubs relacionados — párrafo "También puedes ver"</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/zonas/[barrio]/</span><span class="link-anchor">"página completa de [Ciudad]"</span></div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/servicios/[servicio]/</span><span class="link-anchor">"[nombre servicio en minúscula]" (texto inline)</span></div>
+        <div class="section-divider">→ Misma ciudad, otros 5 servicios — sección "Otros servicios en esta ciudad"</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/[cada-otro-servicio]/[barrio]/</span><span class="link-anchor">"[Nombre Servicio]" (card con icono) <span class="link-count">×5</span></span></div>
+        <div class="section-divider">→ Conversión</div>
+        <div class="link-row"><span class="link-dir out">→</span><span class="link-url">/contacto/</span><span class="link-anchor">"Presupuesto Gratis en [Ciudad]" · "Pedir presupuesto" · "Pide Presupuesto Gratis" <span class="link-count">×3</span></span></div>
+        <div class="pattern-note">Total salientes por combinada: 18 destinos únicos → 7 hermanas mismo servicio + 5 hermanas misma ciudad + 2 hubs + / + /contacto/. Total red: 18 × 48 = <strong>864 links</strong> solo en combinadas.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== INCOMING ===== -->
+  <div id="tab-in" class="tab-content">
+    <button class="expand-btn" onclick="toggleAll()">Expandir / Colapsar todo</button>
+
+    <div class="url-block">
+      <div class="url-header" onclick="toggleBlock(this)">
+        <span class="url-name">/</span>
+        <span style="display:flex;gap:8px;align-items:center;">
+          <span class="url-badge badge-home">Home</span>
+          <span class="toggle-hint">62 links entrantes ▾</span>
+        </span>
+      </div>
+      <div class="url-body">
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/servicios/[todos × 6]/</span><span class="link-anchor">"Inicio" (breadcrumb) <span class="link-count">×6</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/zonas/[todas × 8]/</span><span class="link-anchor">"Inicio" (breadcrumb) <span class="link-count">×8</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/[servicio]/[barrio]/ [× 48]</span><span class="link-anchor">"Inicio" (breadcrumb) <span class="link-count">×48</span></span></div>
+      </div>
+    </div>
+
+    <div class="url-block">
+      <div class="url-header" onclick="toggleBlock(this)">
+        <span class="url-name">/contacto/</span>
+        <span style="display:flex;gap:8px;align-items:center;">
+          <span class="url-badge badge-conv">Conversión</span>
+          <span class="toggle-hint">~191 links entrantes ▾</span>
+        </span>
+      </div>
+      <div class="url-body">
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/</span><span class="link-anchor">"Pide Presupuesto Gratis" / "Pide tu presupuesto cerrado" / "Pedir presupuesto gratis" / "Reformas en mi zona" / "Pide Presupuesto Gratis" <span class="link-count">×5</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/servicios/[× 6]/</span><span class="link-anchor">"Presupuesto Gratis" · "Pedir presupuesto" · "Pide Presupuesto Gratis" <span class="link-count">×3 c/u = 18</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/zonas/[× 8]/</span><span class="link-anchor">"Presupuesto Gratis en [Ciudad]" · "Pedir presupuesto en [Ciudad]" · "Pide Presupuesto Gratis" <span class="link-count">×3 c/u = 24</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/[servicio]/[barrio]/ [× 48]</span><span class="link-anchor">"Presupuesto Gratis en [Ciudad]" · "Pedir presupuesto" · "Pide Presupuesto Gratis" <span class="link-count">×3 c/u = 144</span></span></div>
+        <div class="pattern-note">La URL más enlazada del sitio. Importante: no tiene contenido indexable, solo formulario.</div>
+      </div>
+    </div>
+
+    <div class="url-block">
+      <div class="url-header" onclick="toggleBlock(this)">
+        <span class="url-name">/servicios/<em>[slug]</em>/ &nbsp;<span style="font-size:10px;color:#9ca3af;font-family:sans-serif;font-weight:400;">×6 páginas</span></span>
+        <span style="display:flex;gap:8px;align-items:center;">
+          <span class="url-badge badge-service">Hub Servicio</span>
+          <span class="toggle-hint">17 links entrantes c/u ▾</span>
+        </span>
+      </div>
+      <div class="url-body">
+        <div class="pattern-note">Ejemplo para /servicios/reformas-integrales/. Mismo patrón para los otros 5.</div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/</span><span class="link-anchor">"Ver más →" (card Reformas Integrales en sección servicios) <span class="link-count">×1</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/reformas-integrales/[todas las ciudades × 8]/</span><span class="link-anchor">"Reformas Integrales" (breadcrumb) <span class="link-count">×8</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/reformas-integrales/[todas las ciudades × 8]/</span><span class="link-anchor">"reformas integrales" (texto inline "también puedes ver") <span class="link-count">×8</span></span></div>
+        <div class="pattern-note">Total: 17 links entrantes. El anchor del breadcrumb = título exacto del servicio, buen señal para la keyword de categoría.</div>
+      </div>
+    </div>
+
+    <div class="url-block">
+      <div class="url-header" onclick="toggleBlock(this)">
+        <span class="url-name">/zonas/<em>[slug]</em>/ &nbsp;<span style="font-size:10px;color:#9ca3af;font-family:sans-serif;font-weight:400;">×8 páginas</span></span>
+        <span style="display:flex;gap:8px;align-items:center;">
+          <span class="url-badge badge-zone">Hub Zona</span>
+          <span class="toggle-hint">14 links entrantes c/u ▾</span>
+        </span>
+      </div>
+      <div class="url-body">
+        <div class="pattern-note">Ejemplo para /zonas/alcala-de-henares/. Mismo patrón para las otras 7.</div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/</span><span class="link-anchor">"Alcalá de Henares" (sección Zonas, botón ciudad) <span class="link-count">×1</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/zonas/[otras 7 ciudades]/</span><span class="link-anchor">"Alcalá de Henares" (sección "También reformamos en") <span class="link-count">×7</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/[cualquier-servicio]/alcala-de-henares/ [× 6]</span><span class="link-anchor">"página completa de Alcalá de Henares" <span class="link-count">×6</span></span></div>
+        <div class="pattern-note">Total: 14 links entrantes. Oportunidad: el anchor desde combinadas es descriptivo pero no usa keyword directa como "reformas en Alcalá de Henares".</div>
+      </div>
+    </div>
+
+    <div class="url-block">
+      <div class="url-header" onclick="toggleBlock(this)">
+        <span class="url-name">/<em>[servicio]</em>/<em>[barrio]</em>/ &nbsp;<span style="font-size:10px;color:#9ca3af;font-family:sans-serif;font-weight:400;">×48 páginas</span></span>
+        <span style="display:flex;gap:8px;align-items:center;">
+          <span class="url-badge badge-combined">Combinada</span>
+          <span class="toggle-hint">14 links entrantes c/u ▾</span>
+        </span>
+      </div>
+      <div class="url-body">
+        <div class="pattern-note">Ejemplo para /reformas-integrales/alcala-de-henares/. Mismo patrón para las 47 restantes.</div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/servicios/reformas-integrales/</span><span class="link-anchor">"Reformas Integrales en Alcalá de Henares →" (card zona en hub servicio) <span class="link-count">×1</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/zonas/alcala-de-henares/</span><span class="link-anchor">"Reformas Integrales en Alcalá de Henares" (card servicio en hub zona) <span class="link-count">×1</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/reformas-integrales/[otras 7 ciudades]/</span><span class="link-anchor">"Reformas Integrales en Alcalá de Henares" (sección hermanas mismo servicio) <span class="link-count">×7</span></span></div>
+        <div class="link-row"><span class="link-dir in">←</span><span class="link-url">/[otros 5 servicios]/alcala-de-henares/</span><span class="link-anchor">"Reformas Integrales" (card otros servicios misma ciudad) <span class="link-count">×5</span></span></div>
+        <div class="pattern-note">Total: 14 links entrantes por combinada — bien distribuidos entre 4 tipos de origen. Anchors descriptivos con keyword local ✓.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== STATS ===== -->
+  <div id="tab-stats" class="tab-content">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <h3>URLs totales</h3>
+        <div class="num">64</div>
+        <div class="desc">1 home + 6 hubs servicio + 8 hubs zona + 48 combinadas + /contacto/ (destino, no estática)</div>
+      </div>
+      <div class="summary-card">
+        <h3>Total links internos</h3>
+        <div class="num">~1.100</div>
+        <div class="desc">Incluyendo CTAs a /contacto/ (×3 por página)</div>
+      </div>
+      <div class="summary-card">
+        <h3>Entrantes a /</h3>
+        <div class="num">62</div>
+        <div class="desc">Solo breadcrumbs "Inicio" desde todas las páginas</div>
+      </div>
+      <div class="summary-card">
+        <h3>Entrantes a /contacto/</h3>
+        <div class="num">~191</div>
+        <div class="desc">La URL más enlazada del sitio. CTAs en todas las páginas.</div>
+      </div>
+      <div class="summary-card">
+        <h3>Entrantes por hub servicio</h3>
+        <div class="num">17</div>
+        <div class="desc">1 home + 8 breadcrumb + 8 texto "también puedes ver"</div>
+      </div>
+      <div class="summary-card">
+        <h3>Entrantes por hub zona</h3>
+        <div class="num">14</div>
+        <div class="desc">1 home + 7 otras zonas + 6 combinadas de esa ciudad</div>
+      </div>
+      <div class="summary-card">
+        <h3>Entrantes por combinada</h3>
+        <div class="num">14</div>
+        <div class="desc">1 hub servicio + 1 hub zona + 7 hermanas servicio + 5 hermanas ciudad</div>
+      </div>
+      <div class="summary-card">
+        <h3>Salientes por combinada</h3>
+        <div class="num">18</div>
+        <div class="desc">7 hermanas servicio + 5 hermanas ciudad + 2 hubs + / + /contacto/</div>
+      </div>
+    </div>
+
+    <div class="alert-box alert-warn">
+      <div class="alert-title">⚠️ Gaps detectados en el enlazado interno</div>
+      <ul class="alert-list">
+        <li><strong>Home no enlaza a combinadas:</strong> La home solo llega al nivel 2 a través de hubs. Si un hub no está posicionado, las combinadas pierden ese flujo de PageRank.</li>
+        <li><strong>Hub servicio no enlaza a hubs de zona:</strong> /servicios/reformas-integrales/ no apunta a /zonas/alcala-de-henares/. Solo a las combinadas.</li>
+        <li><strong>Hub zona no enlaza a hubs de servicio:</strong> /zonas/alcala-de-henares/ enlaza directamente a combinadas, no pasa por /servicios/[slug]/.</li>
+        <li><strong>Sin enlazado cross-servicio entre hubs:</strong> /servicios/reformas-integrales/ no enlaza a /servicios/reforma-banos/.</li>
+        <li><strong>Anchor débil "Ver más →":</strong> Las 6 cards de servicio en la home usan el mismo anchor genérico. Oportunidad: usar anchor descriptivo con keyword (ej. "Reformas Integrales en el Corredor del Henares").</li>
+        <li><strong>Anchor "página completa de [Ciudad]":</strong> El link de combinadas → hub zona no usa keyword directa. Podría ser "reformas en [Ciudad]".</li>
+      </ul>
+    </div>
+    <div class="alert-box alert-ok">
+      <div class="alert-title">✓ Puntos fuertes del enlazado actual</div>
+      <ul class="alert-list">
+        <li>Cada combinada recibe <strong>14 links entrantes</strong> bien distribuidos entre 4 tipos de fuente (diversidad de origen).</li>
+        <li>El enlazado horizontal entre combinadas del mismo servicio propaga señal SEO entre ciudades.</li>
+        <li>El enlazado "otros servicios en esta ciudad" refuerza la relevancia local de cada URL.</li>
+        <li>Anchors en hubs de servicio son descriptivos y contienen keyword local: "Reformas Integrales en Alcalá de Henares →".</li>
+        <li>Todas las páginas enlazan a / via breadcrumb, concentrando señal en la home.</li>
+        <li>Las páginas combinadas enlazan de vuelta a los 2 hubs relevantes, creando grafo bidireccional.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<script>
+function showTab(name, el) {
+  document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(e => e.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  el.classList.add('active');
+}
+function toggleBlock(header) {
+  header.nextElementSibling.classList.toggle('open');
+}
+function toggleAll() {
+  const bodies = document.querySelectorAll('.url-body');
+  const anyOpen = Array.from(bodies).some(b => b.classList.contains('open'));
+  bodies.forEach(b => anyOpen ? b.classList.remove('open') : b.classList.add('open'));
+}
+</script>
+</body>
+</html>

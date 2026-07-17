@@ -233,7 +233,7 @@ export const ZONES = [
     primary: true,
     province: 'Madrid',
     desc: 'Nuestra sede central. Más de 10 años reformando pisos, chalets y locales en Alcalá y sus barrios.',
-    localAngle: 'es una ciudad con gran parque de edificios de los años 70 y 80 en barrios como Las Rejas, El Val y El Pilar, donde la demanda de actualización de instalaciones eléctricas, fontanería y acabados es muy elevada',
+    localAngle: 'es una ciudad con gran parque de edificios de los años 70 y 80 en barrios como El Val, Barrio del Pilar y Reyes Católicos, donde la demanda de actualización de instalaciones eléctricas, fontanería y acabados es muy elevada',
     neighborhoods: ['Casco Histórico', 'Nueva Alcalá', 'Reyes Católicos', 'El Val', 'Barrio del Pilar', 'Ensanche', 'La Garena', 'Espartales'],
   },
   {
@@ -242,7 +242,7 @@ export const ZONES = [
     primary: true,
     province: 'Madrid',
     desc: 'Segunda ciudad del Corredor. Equipo habitual en toda la zona de Torrejón y alrededores.',
-    localAngle: 'cuenta con una alta concentración de bloques de los años 70 y 90 en barrios como Juan de la Cierva y Los Fresnos, donde los propietarios buscan modernizar distribuciones anticuadas y renovar baños y cocinas',
+    localAngle: 'cuenta con una alta concentración de bloques de los años 70 y 90 en barrios como Soto del Henares, Parque Cataluña y Las Veredillas, donde los propietarios buscan modernizar distribuciones anticuadas y renovar baños y cocinas',
     neighborhoods: ['Centro', 'Casco Antiguo', 'Soto del Henares', 'Parque Cataluña', 'Las Veredillas', 'San José', 'Fronteras', 'Cobos'],
   },
   {
@@ -251,7 +251,7 @@ export const ZONES = [
     primary: true,
     province: 'Madrid',
     desc: 'Reformas en Coslada con profesionales de confianza. Presupuesto gratis en 24h.',
-    localAngle: 'tiene un tejido residencial denso con pisos de los 80 y 90 en zonas como El Puente y La Garena, donde los proyectos más habituales combinan reforma de baño, renovación de fontanería y mejora de la eficiencia energética',
+    localAngle: 'tiene un tejido residencial denso con pisos de los 80 y 90 en zonas como Valleaguado, Ciudad 70 y Ciudad San Pablo, donde los proyectos más habituales combinan reforma de baño, renovación de fontanería y mejora de la eficiencia energética',
     neighborhoods: ['Valleaguado', 'Ciudad 70', 'Ciudad San Pablo', 'Barrio del Puerto', 'Barrio de la Estación', 'El Esparragal', 'La Colina', 'Casco (Pueblo)'],
   },
   {
@@ -260,7 +260,7 @@ export const ZONES = [
     primary: true,
     province: 'Madrid',
     desc: 'Reformas integrales y parciales en San Fernando de Henares.',
-    localAngle: 'combina vivienda histórica en el casco urbano con nuevas promociones en Los Llanos y Nuevo San Fernando, generando una demanda diversa que va desde la renovación completa de pisos antiguos hasta la personalización de acabados en viviendas recientes',
+    localAngle: 'combina vivienda histórica en el casco urbano con nuevas promociones en Parque Roma y Parque Henares, generando una demanda diversa que va desde la renovación completa de pisos antiguos hasta la personalización de acabados en viviendas recientes',
     neighborhoods: ['Centro', 'Parque Roma', 'Montserrat', 'Parque Henares', 'Fuencasa'],
   },
   {

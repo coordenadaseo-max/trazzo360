@@ -33,7 +33,16 @@ import { SITE, SERVICES, ZONES } from '../data/site';
       <!-- Formulario -->
       <div class="lg:col-span-2">
         <h2 class="text-2xl font-black text-gray-900 mb-8">Solicitar presupuesto</h2>
-        <form class="space-y-5" action="#" method="POST">
+        <!--
+          CONFIGURACIÓN DEL FORMULARIO:
+          1. Crea una cuenta gratuita en https://formspree.io
+          2. Crea un nuevo formulario y copia tu ID (ej: xpzgkwqr)
+          3. Reemplaza YOUR_FORM_ID en el action de abajo
+          4. Opcional: crea /src/pages/gracias.astro para la página de confirmación
+        -->
+        <form class="space-y-5" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="hidden" name="_subject" value="Nueva solicitud de presupuesto — Trazzo360" />
+          <input type="hidden" name="_next" value="https://trazzo360.es/gracias/" />
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label class="block text-sm font-semibold text-gray-700 mb-2">Nombre *</label>

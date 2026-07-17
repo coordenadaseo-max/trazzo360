@@ -2,14 +2,18 @@ export const SITE = {
   name: 'Trazzo360',
   tagline: 'Reformas Integrales en el Corredor del Henares',
   url: 'https://trazzo360.es',
-  phone: 'TU_TELEFONO',
-  phoneDisplay: 'TU TELÉFONO',
-  whatsapp: 'TU_TELEFONO',
+  phone: 'TU_TELEFONO',           // ← Reemplazar con número real, ej: '34912345678'
+  phoneDisplay: 'TU TELÉFONO',    // ← Reemplazar con número formateado, ej: '912 345 678'
+  whatsapp: 'TU_TELEFONO',        // ← Mismo número sin espacios ni '+', ej: '34912345678'
   email: 'info@trazzo360.es',
   address: 'Corredor del Henares, Madrid',
   hours: 'Lun–Vie 8:00–20:00 · Sáb 9:00–14:00',
   mainCity: 'Alcalá de Henares',
   zone: 'Corredor del Henares',
+  // Reseñas Google — activar cuando tengas valoraciones reales
+  reviewCount: 0,       // ← Número de reseñas en Google. Aparece en el hero cuando > 0
+  ratingValue: 0,       // ← Media de valoración (ej: 4.9). Aparece cuando > 0
+  googleBusinessUrl: '', // ← URL de tu ficha de Google Business Profile
   stats: {
     projects: '+80',
     years: '+10',
@@ -135,6 +139,90 @@ export const SERVICES = [
         a: 'Sí. Emitimos presupuesto detallado para presentar en junta de vecinos y coordinamos directamente con el administrador.',
       },
     ],
+  },
+];
+
+export const TESTIMONIALS = [
+  {
+    name: 'Laura G.',
+    initials: 'LG',
+    role: 'Propietaria',
+    city: 'Alcalá de Henares',
+    service: 'Reforma integral de piso',
+    text: 'Reformaron nuestro piso de 85 m² de principio a fin. Precio cerrado desde el primer día, sin un solo extra. La entrega fue puntual y los acabados exactamente lo que habíamos acordado. Repetiremos sin dudarlo.',
+  },
+  {
+    name: 'Miguel P.',
+    initials: 'MP',
+    role: 'Propietario',
+    city: 'Torrejón de Ardoz',
+    service: 'Reforma de cocina y baño',
+    text: 'Lo que más me sorprendió fue la coordinación: cada gremio llegó cuando tenía que llegar y no hubo solapamientos. El presupuesto no cambió ni un euro. Muy buena comunicación durante toda la obra.',
+  },
+  {
+    name: 'Carmen V.',
+    initials: 'CV',
+    role: 'Propietaria',
+    city: 'Coslada',
+    service: 'Reforma de baño completo',
+    text: 'Cambio de bañera por ducha, alicatado nuevo y muebles. Todo en menos de dos semanas. El baño quedó tal y como lo diseñamos en la visita previa. Presupuesto cerrado y equipo muy cuidadoso con el piso.',
+  },
+  {
+    name: 'José M.',
+    initials: 'JM',
+    role: 'Empresario',
+    city: 'San Fernando de Henares',
+    service: 'Reforma de local comercial',
+    text: 'Reformaron el local y tramitaron la licencia de actividad. Cuando tienes un negocio que depende de abrir en una fecha concreta, el plazo garantizado no es una frase bonita: es lo que necesitas. Lo cumplieron.',
+  },
+];
+
+// Proyectos antes/después
+// imgBefore e imgAfter apuntan a /public/img/proyectos/ — añade tus fotos reales ahí
+export const PROJECTS = [
+  {
+    slug: 'reforma-integral-alcala',
+    title: 'Reforma integral de piso',
+    location: 'Alcalá de Henares',
+    surface: '85 m²',
+    duration: '10 semanas',
+    service: 'Reforma integral',
+    desc: 'Redistribución completa, instalaciones eléctricas y de fontanería nuevas, baño, cocina, suelos de porcelánico y pintura final.',
+    imgBefore: '/img/proyectos/reforma-integral-alcala-antes.jpg',
+    imgAfter: '/img/proyectos/reforma-integral-alcala-despues.jpg',
+  },
+  {
+    slug: 'cocina-torrejon',
+    title: 'Cocina a medida',
+    location: 'Torrejón de Ardoz',
+    surface: '14 m²',
+    duration: '2 semanas',
+    service: 'Reforma de cocina',
+    desc: 'Cocina nueva con muebles a medida, encimera de silestone, electrodomésticos integrados y alicatado nuevo de gran formato.',
+    imgBefore: '/img/proyectos/cocina-torrejon-antes.jpg',
+    imgAfter: '/img/proyectos/cocina-torrejon-despues.jpg',
+  },
+  {
+    slug: 'bano-coslada',
+    title: 'Baño con ducha de obra',
+    location: 'Coslada',
+    surface: '6 m²',
+    duration: '8 días',
+    service: 'Reforma de baño',
+    desc: 'Cambio de bañera por ducha de obra, sanitarios nuevos, mampara fija, alicatado y microcemento en suelo.',
+    imgBefore: '/img/proyectos/bano-coslada-antes.jpg',
+    imgAfter: '/img/proyectos/bano-coslada-despues.jpg',
+  },
+  {
+    slug: 'local-san-fernando',
+    title: 'Local comercial',
+    location: 'San Fernando de Henares',
+    surface: '60 m²',
+    duration: '3 semanas',
+    service: 'Local comercial',
+    desc: 'Transformación de local vacío en espacio comercial. Instalaciones completas y tramitación de licencia de actividad incluidas.',
+    imgBefore: '/img/proyectos/local-san-fernando-antes.jpg',
+    imgAfter: '/img/proyectos/local-san-fernando-despues.jpg',
   },
 ];
 

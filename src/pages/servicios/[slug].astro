@@ -8,6 +8,25 @@ export const getStaticPaths: GetStaticPaths = () =>
 
 const { service } = Astro.props;
 
+const serviceGerund: Record<string, string> = {
+  'reformas-integrales': 'reformas integrales',
+  'reforma-banos':       'reformas de baños',
+  'reforma-cocinas':     'reformas de cocinas',
+  'reforma-pisos':       'reformas de pisos y chalets',
+  'locales-comerciales': 'reformas de locales comerciales',
+  'comunidades-vecinos': 'obras en comunidades de vecinos',
+};
+const serviceNecesitas: Record<string, string> = {
+  'reformas-integrales': 'reformas integrales',
+  'reforma-banos':       'reforma de baños',
+  'reforma-cocinas':     'reforma de cocinas',
+  'reforma-pisos':       'reforma de pisos y chalets',
+  'locales-comerciales': 'reformar un local comercial',
+  'comunidades-vecinos': 'obras para tu comunidad de vecinos',
+};
+const gerund    = serviceGerund[service.slug]    ?? service.title.toLowerCase();
+const necesitas = serviceNecesitas[service.slug] ?? service.title.toLowerCase();
+
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -40,7 +59,7 @@ const faqSchema = service.faqs.length > 0 ? {
 
 <Layout
   title={`${service.title} en ${SITE.mainCity} y el Corredor del Henares | ${SITE.name}`}
-  description={`${service.headline} Servicio de ${service.title.toLowerCase()} en Alcalá de Henares, Torrejón de Ardoz, Coslada y todo el Corredor del Henares. Presupuesto gratis en 24h.`}
+  description={`${service.headline} Especialistas en ${gerund} en Alcalá de Henares, Torrejón de Ardoz, Coslada y todo el Corredor del Henares. Presupuesto gratis en 24h.`}
   schema={faqSchema ? [serviceSchema, faqSchema] : serviceSchema}
 >
 
@@ -94,7 +113,7 @@ const faqSchema = service.faqs.length > 0 ? {
         </h2>
         <p class="text-gray-600 leading-relaxed mb-6">{service.desc}</p>
         <p class="text-gray-600 leading-relaxed mb-6">
-          En Trazzo360 llevamos {SITE.stats.years} años realizando {service.title.toLowerCase()} en {SITE.mainCity} y todos los municipios del Corredor del Henares.
+          En Trazzo360 llevamos {SITE.stats.years} años realizando {gerund} en {SITE.mainCity} y todos los municipios del Corredor del Henares.
           Trabajamos con equipo propio, precio cerrado en el contrato y plazo de entrega garantizado.
         </p>
         <div class="grid grid-cols-2 gap-4">
@@ -165,7 +184,7 @@ const faqSchema = service.faqs.length > 0 ? {
   <!-- CTA Final -->
   <section class="py-16 bg-[#A85535]">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-black text-white mb-3">¿Necesitas {service.title.toLowerCase()} en {SITE.mainCity}?</h2>
+      <h2 class="text-3xl font-black text-white mb-3">¿Necesitas {necesitas} en {SITE.mainCity}?</h2>
       <p class="text-white/80 mb-7">Presupuesto gratuito en 24h. Precio cerrado. Sin sorpresas.</p>
       <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">
         Pide Presupuesto Gratis

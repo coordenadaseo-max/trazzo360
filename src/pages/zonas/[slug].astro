@@ -15,11 +15,15 @@ const faqs = [
   },
   {
     q: `¿Cuánto cuesta una reforma en ${zone.name}?`,
-    a: `Los precios son similares a los del resto del Corredor del Henares. Una reforma integral de piso 70–90 m² oscila entre 24.900€ y 45.000€. Un baño completo desde 3.200€. Te damos precio cerrado en el presupuesto.`,
+    a: `Los precios dependen del tipo de obra y los materiales elegidos. En ${zone.name}, una reforma integral de piso de 70–90 m² oscila entre 24.900€ y 45.000€. Un baño completo parte desde 3.200€ y una cocina desde 5.500€. Damos precio cerrado en el contrato.`,
+  },
+  {
+    q: `¿Qué tipo de reformas son más habituales en ${zone.name}?`,
+    a: `${zone.name} ${zone.localAngle}. Por eso, los proyectos más frecuentes que llevamos a cabo aquí son renovaciones de baños y cocinas, actualizaciones de instalaciones y, en muchos casos, reformas integrales que aprovechan para redistribuir la planta.`,
   },
   {
     q: `¿Gestionáis los permisos de obra en ${zone.name}?`,
-    a: `Sí. Tramitamos la licencia de obra en el ayuntamiento de ${zone.name} o del municipio correspondiente.`,
+    a: `Sí. Tramitamos la licencia de obra o de actividad en el ayuntamiento de ${zone.name}. Nos encargamos de toda la burocracia para que solo tengas que preocuparte de los acabados finales.`,
   },
 ];
 
@@ -77,9 +81,10 @@ const faqSchema = {
           <span class="text-[#A85535]">Integrales</span><br/>
           en {zone.name}.
         </h1>
-        <p class="text-lg text-gray-300 leading-relaxed mb-8">
-          {zone.desc} Precio cerrado, plazo garantizado y presupuesto gratis en 24h.
+        <p class="text-lg text-gray-300 leading-relaxed mb-4">
+          {zone.name} {zone.localAngle}. Trazzo360 trabaja aquí con equipo propio, precio cerrado en el contrato y plazo de entrega garantizado.
         </p>
+        <p class="text-sm text-gray-400 mb-8">Presupuesto gratuito en menos de 24h · Sin visita previa obligatoria</p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
             Presupuesto Gratis en {zone.name}
@@ -146,6 +151,24 @@ const faqSchema = {
         <a href={`tel:${SITE.phone}`} class="block text-center py-3 text-sm text-gray-300 border border-white/20 hover:border-white transition-colors">
           ☎ {SITE.phoneDisplay}
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barrios donde actuamos -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-xl font-black text-gray-900 mb-2">Barrios y zonas de {zone.name} donde trabajamos</h2>
+      <p class="text-sm text-gray-500 mb-6">Cubrimos todos los barrios y urbanizaciones de {zone.name} sin coste adicional por desplazamiento.</p>
+      <div class="flex flex-wrap gap-2">
+        {zone.neighborhoods.map((n: string) => (
+          <span class="inline-block px-4 py-2 bg-gray-50 border border-gray-200 text-sm text-gray-700 font-medium">
+            {n}
+          </span>
+        ))}
+        <span class="inline-block px-4 py-2 bg-gray-50 border border-dashed border-gray-300 text-sm text-gray-400">
+          ¿Tu barrio no aparece? Consúltanos
+        </span>
       </div>
     </div>
   </section>

@@ -19,12 +19,21 @@ const cityPresence = isPrimary
   : `cubriendo regularmente ${zone.name} y la comarca`;
 
 const serviceIntros: Record<string, string> = {
-  'reformas-integrales': `Una reforma integral en ${zone.name} es la forma más eficiente de actualizar completamente tu vivienda. Incluye diseño, gestión de permisos municipales en ${zone.name} y ejecución llave en mano.`,
-  'reforma-banos': `Renovar el baño en ${zone.name} es una de las reformas con mejor retorno de inversión. Cambiamos fontanería, alicatados, sanitarios y mampara, todo con precio cerrado.`,
-  'reforma-cocinas': `En ${zone.name} diseñamos cocinas a medida que transforman por completo el uso del espacio. Muebles, encimera, electrodomésticos, fontanería y electricidad, todo en un único contrato.`,
-  'reforma-pisos': `Redistribuir o renovar un piso en ${zone.name} requiere conocer la normativa local. Gestionamos la licencia de obra en el ayuntamiento y ejecutamos cualquier reforma de distribución o acabados.`,
-  'locales-comerciales': `Abrir un negocio en ${zone.name} empieza con una obra que cumpla normativa. Tramitamos la licencia de actividad, ejecutamos la reforma y te entregamos el local listo para abrir.`,
-  'comunidades-vecinos': `Los edificios de ${zone.name} necesitan mantenimiento periódico de zonas comunes. Elaboramos el presupuesto para junta y ejecutamos la obra con mínimas molestias a los vecinos.`,
+  'reformas-integrales': `Una reforma integral en ${zone.name} implica rediseñar la distribución, renovar todas las instalaciones y elegir los acabados de principio a fin. ${zone.name} ${zone.localAngle}: conocemos bien el tipo de vivienda que encontrarás aquí y sabemos qué soluciones dan mejor resultado en este mercado.`,
+  'reforma-banos': `Reformar el baño en ${zone.name} es una de las inversiones con mejor retorno en vivienda residencial. ${zone.name} ${zone.localAngle}: trabajamos habitualmente en este tipo de viviendas y podemos darte un presupuesto cerrado muy ajustado al mercado local.`,
+  'reforma-cocinas': `Una cocina nueva en ${zone.name} transforma el uso diario del espacio más importante de la vivienda. ${zone.name} ${zone.localAngle}: diseñamos y ejecutamos cocinas a medida adaptadas a las dimensiones y características reales de los pisos de esta zona.`,
+  'reforma-pisos': `Reformar un piso en ${zone.name} —redistribuir espacios, cambiar suelos, renovar ventanas— requiere conocer la normativa municipal. ${zone.name} ${zone.localAngle}: tramitamos la licencia de obra en el ayuntamiento y ejecutamos cualquier tipo de reforma de distribución o acabados.`,
+  'locales-comerciales': `Abrir un negocio en ${zone.name} empieza con una obra que cumpla la normativa de actividad del municipio. ${zone.name} ${zone.localAngle}: conocemos los requisitos del ayuntamiento y tramitamos la licencia de actividad para que no pierdas ni un día de apertura.`,
+  'comunidades-vecinos': `Las comunidades de propietarios en ${zone.name} necesitan mantenimiento periódico de zonas comunes: escaleras, portales, fachadas y cubiertas. ${zone.name} ${zone.localAngle}: elaboramos presupuesto detallado para junta y ejecutamos la obra con las mínimas molestias a los vecinos.`,
+};
+
+const commonReforms: Record<string, string> = {
+  'reformas-integrales': 'redistribución de tabiques, actualización completa de instalaciones eléctricas y de fontanería, y cambio de suelos y carpinterías',
+  'reforma-banos': 'cambio de bañera por ducha de obra, renovación de alicatados con gran formato y sustitución de sanitarios y muebles de baño',
+  'reforma-cocinas': 'muebles a medida con encimera de silestone o porcelánico, electrodomésticos integrados y apertura de espacio hacia el salón',
+  'reforma-pisos': 'suelos de porcelánico o laminado, ventanas de aluminio con rotura de puente térmico y pintura completa con acabados a medida',
+  'locales-comerciales': 'adecuación de locales para hostelería, comercio minorista y oficinas con tramitación de licencia de actividad incluida',
+  'comunidades-vecinos': 'renovación de portales y escaleras, impermeabilización de cubiertas y rehabilitación de fachadas con aislamiento',
 };
 
 const serviceFeatures: Record<string, string[]> = {
@@ -52,6 +61,10 @@ const faqs = [
   {
     q: `¿Gestionáis los permisos en el ayuntamiento de ${zone.name}?`,
     a: `Sí, tramitamos la licencia de obra o actividad en el ayuntamiento correspondiente. Nos ocupamos de toda la burocracia para que no tengas que preocuparte de nada.`,
+  },
+  {
+    q: `¿Qué tipo de ${service.title.toLowerCase()} es más habitual en ${zone.name}?`,
+    a: `${zone.name} ${zone.localAngle}. Las solicitudes más frecuentes en este tipo de inmuebles son: ${commonReforms[service.slug] ?? 'actualización completa de instalaciones y acabados'}. Consúltanos y te orientamos sobre la solución más adecuada para tu caso concreto.`,
   },
 ];
 
@@ -107,7 +120,7 @@ const intro = serviceIntros[service.slug] ?? service.desc;
 
 <Layout
   title={`${service.title} en ${zone.name} | Precio Cerrado | ${SITE.name}`}
-  description={`${service.title} en ${zone.name} desde ${service.priceFrom}€. ${service.headline} Equipo propio, precio cerrado y presupuesto gratis en 24h. Trazzo360.`}
+  description={`${service.title} en ${zone.name} desde ${service.priceFrom}€. ${zone.name} ${zone.localAngle}. Equipo propio, precio cerrado y presupuesto gratis en 24h.`}
   schema={[pageSchema, faqSchema, breadcrumbSchema]}
 >
 
@@ -199,6 +212,26 @@ const intro = serviceIntros[service.slug] ?? service.desc;
     </div>
   </section>
 
+  <!-- Barrios y zonas donde actuamos -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-lg font-black text-gray-900 mb-2">
+        Zonas de {zone.name} donde trabajamos
+      </h2>
+      <p class="text-sm text-gray-500 mb-5">Cubrimos todos los barrios y urbanizaciones de {zone.name} sin recargo por desplazamiento.</p>
+      <div class="flex flex-wrap gap-2">
+        {zone.neighborhoods.map((n: string) => (
+          <span class="inline-block px-3 py-1.5 bg-white border border-gray-200 text-sm text-gray-700 font-medium">
+            {n}
+          </span>
+        ))}
+        <span class="inline-block px-3 py-1.5 bg-white border border-dashed border-gray-300 text-sm text-gray-400">
+          ¿Tu zona no aparece? Consúltanos igualmente
+        </span>
+      </div>
+    </div>
+  </section>
+
   <!-- Este servicio en otras ciudades (internal linking) -->
   <section class="py-14 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4">
@@ -214,8 +247,7 @@ const intro = serviceIntros[service.slug] ?? service.desc;
         ))}
       </div>
       <p class="text-sm text-gray-400 mt-4">
-        También puedes ver la <a href={`/zonas/${zone.slug}/`} class="underline hover:text-[#A85535] transition-colors">página completa de {zone.name}</a>
-        o todos los <a href={`/servicios/${service.slug}/`} class="underline hover:text-[#A85535] transition-colors">{service.title.toLowerCase()}</a> que realizamos.
+        También puedes ver la <a href={`/zonas/${zone.slug}/`} class="underline hover:text-[#A85535] transition-colors">página completa de {zone.name}</a> o todos los trabajos de <a href={`/servicios/${service.slug}/`} class="underline hover:text-[#A85535] transition-colors">{service.title.toLowerCase()}</a> que realizamos.
       </p>
     </div>
   </section>

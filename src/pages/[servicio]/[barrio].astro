@@ -45,17 +45,27 @@ const serviceFeatures: Record<string, string[]> = {
   'comunidades-vecinos': ['Presupuesto para junta de propietarios', 'Trabajamos sin cortar el paso', 'Fachadas, portales y cubiertas', 'Coordinación con administrador de fincas'],
 };
 
+const faqLabel: Record<string, { costar: string; tardar: string; tipo: string }> = {
+  'reformas-integrales': { costar: 'una reforma integral', tardar: 'una reforma integral', tipo: 'reforma integral' },
+  'reforma-banos':       { costar: 'reformar un baño',          tardar: 'reformar un baño',          tipo: 'reforma de baño' },
+  'reforma-cocinas':     { costar: 'reformar una cocina',       tardar: 'reformar una cocina',       tipo: 'reforma de cocina' },
+  'reforma-pisos':       { costar: 'reformar un piso o chalet', tardar: 'reformar un piso',          tipo: 'reforma de piso' },
+  'locales-comerciales': { costar: 'reformar un local comercial', tardar: 'reformar un local comercial', tipo: 'reforma de local comercial' },
+  'comunidades-vecinos': { costar: 'una reforma de zonas comunes', tardar: 'una obra en zonas comunes', tipo: 'reforma en comunidades de vecinos' },
+};
+const lbl = faqLabel[service.slug] ?? { costar: service.title.toLowerCase(), tardar: service.title.toLowerCase(), tipo: service.title.toLowerCase() };
+
 const faqs = [
   {
-    q: `¿Cuánto cuesta ${service.title.toLowerCase()} en ${zone.name}?`,
-    a: `El precio de ${service.title.toLowerCase()} en ${zone.name} parte desde ${service.priceFrom}€ (${service.priceDesc}). Damos precio cerrado en el contrato: el presupuesto firmado es el precio final, sin sorpresas.`,
+    q: `¿Cuánto cuesta ${lbl.costar} en ${zone.name}?`,
+    a: `El precio de ${lbl.costar} en ${zone.name} parte desde ${service.priceFrom}€ (${service.priceDesc}). Damos precio cerrado en el contrato: el presupuesto firmado es el precio final, sin sorpresas.`,
   },
   {
     q: `¿Tenéis equipo propio en ${zone.name}?`,
     a: `Sí. Trazzo360 opera ${cityPresence}. No subcontratamos obra: todo el equipo es propio, lo que nos permite controlar la calidad y respetar los plazos acordados.`,
   },
   {
-    q: `¿Cuánto tarda ${service.title.toLowerCase()} en ${zone.name}?`,
+    q: `¿Cuánto tarda ${lbl.tardar} en ${zone.name}?`,
     a: `El plazo varía según el alcance. Fijamos la fecha de entrega en el contrato y la garantizamos. Consúltanos y te indicamos un plazo orientativo para tu proyecto en ${zone.name}.`,
   },
   {
@@ -63,7 +73,7 @@ const faqs = [
     a: `Sí, tramitamos la licencia de obra o actividad en el ayuntamiento correspondiente. Nos ocupamos de toda la burocracia para que no tengas que preocuparte de nada.`,
   },
   {
-    q: `¿Qué tipo de ${service.title.toLowerCase()} es más habitual en ${zone.name}?`,
+    q: `¿Qué tipo de ${lbl.tipo} es más habitual en ${zone.name}?`,
     a: `${zone.name} ${zone.localAngle}. Las solicitudes más frecuentes en este tipo de inmuebles son: ${commonReforms[service.slug] ?? 'actualización completa de instalaciones y acabados'}. Consúltanos y te orientamos sobre la solución más adecuada para tu caso concreto.`,
   },
 ];

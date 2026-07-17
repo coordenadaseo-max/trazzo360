@@ -234,7 +234,7 @@ export const ZONES = [
     province: 'Madrid',
     desc: 'Nuestra sede central. Más de 10 años reformando pisos, chalets y locales en Alcalá y sus barrios.',
     localAngle: 'es una ciudad con gran parque de edificios de los años 70 y 80 en barrios como Las Rejas, El Val y El Pilar, donde la demanda de actualización de instalaciones eléctricas, fontanería y acabados es muy elevada',
-    neighborhoods: ['Centro Histórico', 'Las Rejas', 'El Val', 'El Pilar', 'Nueva Alcalá', 'Reyes Católicos', 'Ensanche'],
+    neighborhoods: ['Casco Histórico', 'Nueva Alcalá', 'Reyes Católicos', 'El Val', 'Barrio del Pilar', 'Ensanche', 'La Garena', 'Espartales'],
   },
   {
     slug: 'torrejon-de-ardoz',
@@ -243,7 +243,7 @@ export const ZONES = [
     province: 'Madrid',
     desc: 'Segunda ciudad del Corredor. Equipo habitual en toda la zona de Torrejón y alrededores.',
     localAngle: 'cuenta con una alta concentración de bloques de los años 70 y 90 en barrios como Juan de la Cierva y Los Fresnos, donde los propietarios buscan modernizar distribuciones anticuadas y renovar baños y cocinas',
-    neighborhoods: ['Centro', 'Juan de la Cierva', 'Los Fresnos', 'La Paz', 'El Parque', 'Las Fronteras'],
+    neighborhoods: ['Centro', 'Casco Antiguo', 'Soto del Henares', 'Parque Cataluña', 'Las Veredillas', 'San José', 'Fronteras', 'Cobos'],
   },
   {
     slug: 'coslada',
@@ -252,7 +252,7 @@ export const ZONES = [
     province: 'Madrid',
     desc: 'Reformas en Coslada con profesionales de confianza. Presupuesto gratis en 24h.',
     localAngle: 'tiene un tejido residencial denso con pisos de los 80 y 90 en zonas como El Puente y La Garena, donde los proyectos más habituales combinan reforma de baño, renovación de fontanería y mejora de la eficiencia energética',
-    neighborhoods: ['Centro', 'El Puente', 'La Garena', 'San Fernando', 'Los Molinos'],
+    neighborhoods: ['Valleaguado', 'Ciudad 70', 'Ciudad San Pablo', 'Barrio del Puerto', 'Barrio de la Estación', 'El Esparragal', 'La Colina', 'Casco (Pueblo)'],
   },
   {
     slug: 'san-fernando-de-henares',
@@ -261,7 +261,7 @@ export const ZONES = [
     province: 'Madrid',
     desc: 'Reformas integrales y parciales en San Fernando de Henares.',
     localAngle: 'combina vivienda histórica en el casco urbano con nuevas promociones en Los Llanos y Nuevo San Fernando, generando una demanda diversa que va desde la renovación completa de pisos antiguos hasta la personalización de acabados en viviendas recientes',
-    neighborhoods: ['Centro', 'Los Llanos', 'Nuevo San Fernando', 'El Capricho', 'Vía Complutense'],
+    neighborhoods: ['Centro', 'Parque Roma', 'Montserrat', 'Parque Henares', 'Fuencasa'],
   },
   {
     slug: 'guadalajara',
@@ -270,7 +270,7 @@ export const ZONES = [
     province: 'Guadalajara',
     desc: 'También operamos en Guadalajara capital y su entorno.',
     localAngle: 'es la capital provincial con un importante parque de vivienda de los 70 y 90 en el Balconcillo y Aguas Vivas, donde la sustitución de instalaciones obsoletas y la mejora del aislamiento térmico son las reformas más solicitadas',
-    neighborhoods: ['Centro', 'El Balconcillo', 'Aguas Vivas', 'Salamanca', 'La Rondilla', 'Perifer'],
+    neighborhoods: ['Casco Histórico', 'El Balconcillo', 'Aguas Vivas', 'El Alamín', 'Los Manantiales', 'Estación', 'Los Valles'],
   },
   {
     slug: 'azuqueca-de-henares',
@@ -279,7 +279,7 @@ export const ZONES = [
     province: 'Guadalajara',
     desc: 'Reformas en Azuqueca de Henares y alrededores.',
     localAngle: 'pertenece a la provincia de Guadalajara y tiene un núcleo residencial compacto donde el cambio de baño y cocina es la actuación más frecuente entre propietarios de pisos adquiridos en los años 90',
-    neighborhoods: ['Centro', 'Las Fronteras', 'La Garena', 'Río Henares', 'El Congosto'],
+    neighborhoods: ['Centro', 'El Vallejo', 'La Paloma', 'Bulevar - Plaza Castilla', 'La Estación', 'La Quebradilla', 'Vallehermoso', 'Postas'],
   },
   {
     slug: 'meco',
@@ -288,7 +288,7 @@ export const ZONES = [
     province: 'Madrid',
     desc: 'Cubrimos Meco y municipios próximos.',
     localAngle: 'es un municipio residencial con alta proporción de viviendas unifamiliares y adosados en urbanizaciones, donde el cerramiento de terrazas, la reforma de cocina y la renovación de baños son las actuaciones más demandadas',
-    neighborhoods: ['Casco Urbano', 'Urb. Las Colinas', 'El Cotarro', 'La Olmeda'],
+    neighborhoods: ['Casco Antiguo', 'Escritores', 'Pintores', 'Ciudad de la Luz', 'Belvalle', 'Los Ríos', 'Europa', 'Barrio Alto'],
   },
   {
     slug: 'camarma-de-esteruelas',
@@ -297,6 +297,6 @@ export const ZONES = [
     province: 'Madrid',
     desc: 'Reformas en Camarma de Esteruelas.',
     localAngle: 'es un municipio con predominio de viviendas unifamiliares y adosados, donde los proyectos de reforma integral y ampliación de estancias son los más demandados por familias que llevan más de una década en la zona',
-    neighborhoods: ['Casco Urbano', 'Urb. La Berzosa', 'Las Monjas', 'El Encinar'],
+    neighborhoods: ['Casco Urbano', 'Urb. Nueva Camarma', 'Urb. El Practicante', 'Gran Vía'],
   },
 ];

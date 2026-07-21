@@ -5,7 +5,8 @@
       "name": "trazzo360-astro",
       "runtimeExecutable": "/Users/javiergarciamartin/Documents/Trazzo360/web-astro/.claude/start-dev.sh",
       "runtimeArgs": [],
-      "port": 4321
+      "port": 4321,
+      "autoPort": true
     }
   ]
 }

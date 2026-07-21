@@ -183,7 +183,7 @@ const faqSchema = service.faqs.length > 0 ? {
     <section class="py-20 bg-white">
       <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-2xl font-black text-gray-900 mb-4">
-          ¿Cuánto cuesta {gerund} en el Corredor del Henares?
+          ¿Cuánto cuestan las {gerund} en el Corredor del Henares?
         </h2>
         <p class="text-gray-600 leading-relaxed mb-8">
           Los precios que ves a continuación son orientativos, calculados sobre proyectos reales que hemos ejecutado en la zona. El presupuesto exacto depende del estado previo de tu vivienda o local, los materiales que elijas y el alcance de la obra. Visita gratuita y presupuesto cerrado en 48 horas, sin ningún compromiso.
@@ -236,8 +236,8 @@ const faqSchema = service.faqs.length > 0 ? {
         <div class="divide-y divide-gray-100">
           {service.faqs.map(faq => (
             <details class="group py-5">
-              <summary class="flex justify-between items-start gap-4 cursor-pointer list-none font-semibold text-gray-900">
-                {faq.q}
+              <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
+                <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
                 <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
               </summary>
               <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>

@@ -30,7 +30,7 @@ const necesitas = serviceNecesitas[service.slug] ?? service.title.toLowerCase();
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: `${service.title} en ${SITE.mainCity}`,
+  name: `${service.title} en el Corredor del Henares`,
   description: service.desc,
   provider: {
     '@type': 'LocalBusiness',
@@ -58,7 +58,7 @@ const faqSchema = service.faqs.length > 0 ? {
 ---
 
 <Layout
-  title={`${service.title} en ${SITE.mainCity} y el Corredor del Henares | ${SITE.name}`}
+  title={`${service.title} en el Corredor del Henares | ${SITE.name}`}
   description={`${service.headline} Especialistas en ${gerund} en Alcalá de Henares, Torrejón de Ardoz, Coslada y todo el Corredor del Henares. Presupuesto gratis en 24h.`}
   schema={faqSchema ? [serviceSchema, faqSchema] : serviceSchema}
 >
@@ -84,8 +84,7 @@ const faqSchema = service.faqs.length > 0 ? {
         </div>
         <h1 class="text-4xl lg:text-6xl font-black text-white mb-5" style="letter-spacing:-0.02em">
           {service.title}<br/>
-          <span class="text-[#A85535]">en {SITE.mainCity}</span><br/>
-          <span class="text-gray-300 text-2xl lg:text-3xl font-bold">y todo el Corredor</span>
+          <span class="text-[#A85535]">en el Corredor del Henares</span>
         </h1>
         <p class="text-lg text-gray-300 leading-relaxed mb-4">{service.headline}</p>
         <p class="text-sm text-gray-400 mb-8">
@@ -109,11 +108,17 @@ const faqSchema = service.faqs.length > 0 ? {
     <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-3 gap-12">
       <div class="lg:col-span-2">
         <h2 class="text-2xl font-black text-gray-900 mb-4">
-          {service.title} en {SITE.mainCity} y el {SITE.zone}
+          {service.title} en el Corredor del Henares
         </h2>
-        <p class="text-gray-600 leading-relaxed mb-6">{service.desc}</p>
+        {service.body ? (
+          (service.body as string[]).map((p: string) => (
+            <p class="text-gray-600 leading-relaxed mb-4">{p}</p>
+          ))
+        ) : (
+          <p class="text-gray-600 leading-relaxed mb-6">{service.desc}</p>
+        )}
         <p class="text-gray-600 leading-relaxed mb-6">
-          En Trazzo360 llevamos {SITE.stats.years} años realizando {gerund} en {SITE.mainCity} y todos los municipios del Corredor del Henares.
+          En Trazzo360 llevamos {SITE.stats.years} años realizando {gerund} en todos los municipios del Corredor del Henares.
           Trabajamos con equipo propio, precio cerrado en el contrato y plazo de entrega garantizado.
         </p>
         <div class="grid grid-cols-2 gap-4">
@@ -142,6 +147,53 @@ const faqSchema = service.faqs.length > 0 ? {
       </div>
     </div>
   </section>
+
+  <!-- Proceso paso a paso -->
+  {service.processSteps && (service.processSteps as {title:string;desc:string}[]).length > 0 && (
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-2xl font-black text-gray-900 mb-10">
+          El proceso de {gerund}, paso a paso
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {(service.processSteps as {title:string;desc:string}[]).map((step, i) => (
+            <div class="flex gap-4 p-6 bg-white border border-gray-100">
+              <div class="w-8 h-8 bg-[#A85535] text-white text-sm font-black flex items-center justify-center flex-shrink-0">
+                {i + 1}
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1 text-sm">{step.title}</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Precios orientativos -->
+  {service.priceTable && (service.priceTable as {label:string;price:string;includes?:string}[]).length > 0 && (
+    <section class="py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-2xl font-black text-gray-900 mb-8">
+          Precios orientativos — {service.title} en el Corredor del Henares
+        </h2>
+        <div class="divide-y divide-gray-100 border border-gray-100">
+          {(service.priceTable as {label:string;price:string;includes?:string}[]).map(row => (
+            <div class="flex items-center justify-between p-5 gap-6 hover:bg-gray-50 transition-colors">
+              <div>
+                <p class="font-semibold text-gray-900 text-sm">{row.label}</p>
+                {row.includes && <p class="text-xs text-gray-400 mt-0.5">{row.includes}</p>}
+              </div>
+              <p class="text-[#A85535] font-black text-base flex-shrink-0">{row.price}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-gray-400 mt-4">* Precios orientativos. El precio exacto depende del estado previo, materiales y alcance de la obra. <a href="/contacto/" class="underline hover:text-[#A85535]">Solicita presupuesto gratuito.</a></p>
+      </div>
+    </section>
+  )}
 
   <!-- Zonas donde ofrecemos este servicio -->
   <section class="py-16 bg-gray-50">
@@ -184,7 +236,7 @@ const faqSchema = service.faqs.length > 0 ? {
   <!-- CTA Final -->
   <section class="py-16 bg-[#A85535]">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-black text-white mb-3">¿Necesitas {necesitas} en {SITE.mainCity}?</h2>
+      <h2 class="text-3xl font-black text-white mb-3">¿Necesitas {necesitas} en el Corredor del Henares?</h2>
       <p class="text-white/80 mb-7">Presupuesto gratuito en 24h. Precio cerrado. Sin sorpresas.</p>
       <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">
         Pide Presupuesto Gratis

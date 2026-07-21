@@ -87,6 +87,9 @@ const faqSchema = service.faqs.length > 0 ? {
           <span class="text-[#A85535]">en el Corredor del Henares</span>
         </h1>
         <p class="text-lg text-gray-300 leading-relaxed mb-4">{service.headline}</p>
+        {(service as any).heroCopy && (
+          <p class="text-base text-gray-400 leading-relaxed mb-6">{(service as any).heroCopy}</p>
+        )}
         <p class="text-sm text-gray-400 mb-8">
           Desde <span class="text-white font-black text-2xl">{service.priceFrom}€</span>
           <span class="ml-1">· {service.priceDesc}</span>
@@ -152,9 +155,12 @@ const faqSchema = service.faqs.length > 0 ? {
   {service.processSteps && (service.processSteps as {title:string;desc:string}[]).length > 0 && (
     <section class="py-20 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-2xl font-black text-gray-900 mb-10">
-          El proceso de {gerund}, paso a paso
+        <h2 class="text-2xl font-black text-gray-900 mb-4">
+          Cómo trabajamos: plazos reales, precio cerrado, sin sorpresas
         </h2>
+        <p class="text-gray-600 leading-relaxed mb-10">
+          Sabemos que iniciar una obra implica confiar en quien te la va a ejecutar. Por eso nuestro proceso está diseñado para que tengas certeza en cada fase: sabes cuándo empieza, cuándo termina y cuánto cuesta desde el primer día. Así organizamos cada proyecto de {gerund} en el Corredor del Henares, sin imprevistos ni cambios de precio a mitad de obra.
+        </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {(service.processSteps as {title:string;desc:string}[]).map((step, i) => (
             <div class="flex gap-4 p-6 bg-white border border-gray-100">
@@ -176,9 +182,12 @@ const faqSchema = service.faqs.length > 0 ? {
   {service.priceTable && (service.priceTable as {label:string;price:string;includes?:string}[]).length > 0 && (
     <section class="py-20 bg-white">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-2xl font-black text-gray-900 mb-8">
-          Precios orientativos — {service.title} en el Corredor del Henares
+        <h2 class="text-2xl font-black text-gray-900 mb-4">
+          ¿Cuánto cuesta {gerund} en el Corredor del Henares?
         </h2>
+        <p class="text-gray-600 leading-relaxed mb-8">
+          Los precios que ves a continuación son orientativos, calculados sobre proyectos reales que hemos ejecutado en la zona. El presupuesto exacto depende del estado previo de tu vivienda o local, los materiales que elijas y el alcance de la obra. Visita gratuita y presupuesto cerrado en 48 horas, sin ningún compromiso.
+        </p>
         <div class="divide-y divide-gray-100 border border-gray-100">
           {(service.priceTable as {label:string;price:string;includes?:string}[]).map(row => (
             <div class="flex items-center justify-between p-5 gap-6 hover:bg-gray-50 transition-colors">
@@ -198,9 +207,12 @@ const faqSchema = service.faqs.length > 0 ? {
   <!-- Zonas donde ofrecemos este servicio -->
   <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-2xl font-black text-gray-900 mb-8">
-        {service.title} en el Corredor del Henares
+      <h2 class="text-2xl font-black text-gray-900 mb-4">
+        Zona de actuación: todos los municipios del Corredor
       </h2>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        Trabajamos en todos los municipios del Corredor del Henares sin coste de desplazamiento adicional. Tanto si tu vivienda, local o comunidad está en el núcleo urbano como en una urbanización, cubrimos toda la zona. Haz clic en tu municipio para ver los servicios disponibles y precios específicos.
+      </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         {ZONES.map(z => (
           <a href={`/${service.slug}/${z.slug}/`}
@@ -217,7 +229,10 @@ const faqSchema = service.faqs.length > 0 ? {
   {service.faqs.length > 0 && (
     <section class="py-20 bg-white">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-2xl font-black text-gray-900 mb-8">Preguntas frecuentes sobre {service.title.toLowerCase()}</h2>
+        <h2 class="text-2xl font-black text-gray-900 mb-4">Todo lo que necesitas saber antes de pedir presupuesto</h2>
+        <p class="text-gray-600 leading-relaxed mb-8">
+          Es normal tener dudas sobre plazos, precios, licencias y qué incluye exactamente la obra. A continuación respondemos las preguntas que más nos hacen antes de contratar. Si no encuentras la tuya, llámanos o escríbenos por WhatsApp y te respondemos el mismo día.
+        </p>
         <div class="divide-y divide-gray-100">
           {service.faqs.map(faq => (
             <details class="group py-5">

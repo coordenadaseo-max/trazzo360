@@ -7,10 +7,10 @@ export const SITE = {
   whatsapp: 'TU_TELEFONO',        // ← Mismo número sin espacios ni '+', ej: '34912345678'
   email: 'info@trazzo360.es',
   address: 'Corredor del Henares, Madrid',
-  hours: 'Lun–Vie 8:00–20:00 · Sáb 9:00–14:00',
+  hours: 'Lun-Vie 8:00-20:00 · Sáb 9:00-14:00',
   mainCity: 'Alcalá de Henares',
   zone: 'Corredor del Henares',
-  // Reseñas Google — activar cuando tengas valoraciones reales
+  // Reseñas Google -activar cuando tengas valoraciones reales
   reviewCount: 0,       // ← Número de reseñas en Google. Aparece en el hero cuando > 0
   ratingValue: 0,       // ← Media de valoración (ej: 4.9). Aparece cuando > 0
   googleBusinessUrl: '', // ← URL de tu ficha de Google Business Profile
@@ -29,11 +29,12 @@ export const SERVICES = [
     anchorLabel: 'Reformas integrales',
     icon: '🏠',
     headline: 'Tu vivienda, reformada de arriba a abajo con precio cerrado.',
+    heroCopy: 'Si llevas tiempo pensando en reformar tu piso, chalé o ático pero no sabes por dónde empezar ni cuánto costará de verdad, estás en el sitio adecuado. Hacemos reformas integrales en el Corredor del Henares con presupuesto cerrado desde el primer día: un único precio que incluye todos los gremios, todos los materiales y toda la gestión de permisos. Sin subcontratas, sin facturas sorpresa al final de la obra, sin excusas para retrasar la entrega.',
     desc: 'Reformamos tu piso, ático o chalet completamente. Diseño, gestión de permisos, ejecución y entrega llave en mano. Sin sorpresas en el precio.',
     body: [
-      'Reformamos tu piso, ático, dúplex o chalé de arriba a abajo en el Corredor del Henares. Ejecutamos proyectos completos de renovación e rehabilitación integral: derribo de tabiques, redistribución de espacios, instalación eléctrica nueva, fontanería completa, solados de porcelánico o tarima flotante, falso techo, reforma de baño y cocina, carpintería interior y pintura final. Precio cerrado desde el primer día, sin sorpresas.',
+      'Reformamos tu piso, ático, dúplex o chalé de arriba a abajo en el Corredor del Henares. Ejecutamos proyectos completos de renovación y rehabilitación integral: derribo de tabiques, redistribución de espacios, instalación eléctrica nueva, fontanería completa, solados de porcelánico o tarima flotante, falso techo, reforma de baño y cocina, carpintería interior y pintura final. Precio cerrado desde el primer día, sin sorpresas.',
       'Una reforma integral incluye desde el primer derribo hasta la entrega llave en mano: gestión de licencias, coordinación de todos los gremios (albañiles, electricistas, fontaneros, pintores y carpinteros) y suministro de materiales de calidad contrastada. No subcontratamos: todo lo ejecuta nuestro equipo propio, lo que nos permite controlar cada fase y cumplir el plazo acordado en el contrato.',
-      'El Corredor del Henares concentra una alta proporción de viviendas de los años 70, 80 y 90 con distribuciones anticuadas, instalaciones eléctricas obsoletas y acabados desgastados —paredes con gotelé, ventanas antiguas, suelos deteriorados—. Somos especialistas en este tipo de rehabilitación: modernizamos la distribución, renovamos todas las instalaciones y actualizamos los acabados con un resultado de nueva construcción.',
+      'El Corredor del Henares concentra una alta proporción de viviendas de los años 70, 80 y 90 con distribuciones anticuadas, instalaciones eléctricas obsoletas y acabados desgastados: paredes con gotelé, ventanas antiguas, suelos deteriorados. Somos especialistas en este tipo de rehabilitación: modernizamos la distribución, renovamos todas las instalaciones y actualizamos los acabados con un resultado de nueva construcción.',
     ],
     priceFrom: '24.900',
     priceDesc: 'Reforma integral piso 70–90 m²',
@@ -89,9 +90,10 @@ export const SERVICES = [
     anchorLabel: 'Reforma de baños',
     icon: '🚿',
     headline: 'Baños modernos y sin humedades. Desde 3.200€.',
+    heroCopy: 'Un baño anticuado, con bañera que ya no usas, azulejos de los años 80 o juntas con humedad, es más fácil de resolver de lo que imaginas. Realizamos reformas de baños en el Corredor del Henares con precio cerrado y entrega en 1 a 3 semanas: cambio de bañera por plato de ducha, alicatado nuevo, sanitarios, mampara y fontanería completa. Sin obras que se alargan, sin presupuestos que crecen, sin intermediarios entre tú y el resultado final.',
     desc: 'Reformamos tu baño completo: cambio de bañera por ducha, alicatados, sanitarios, fontanería, mampara y muebles. Todo incluido, precio cerrado.',
     body: [
-      'Reformamos tu baño completo en el Corredor del Henares — desde una renovación parcial hasta una actualización integral — con precio cerrado y entrega en 1–3 semanas. Nos encargamos de todo: cambio de bañera por plato de ducha, alicatado y solado nuevo, sanitarios (inodoro, lavabo), fontanería, mampara, grifería, mueble de baño e iluminación LED. Sin sorpresas en el precio final.',
+      'Reformamos tu baño completo en el Corredor del Henares, desde una renovación parcial hasta una actualización integral, con precio cerrado y entrega en 1 a 3 semanas. Nos encargamos de todo: cambio de bañera por plato de ducha, alicatado y solado nuevo, sanitarios (inodoro, lavabo), fontanería, mampara, grifería, mueble de baño e iluminación LED. Sin sorpresas en el precio final.',
       'El servicio más solicitado es el cambio de bañera por plato de ducha, especialmente en viviendas de los años 70–90 con bañeras de porcelana deterioradas y azulejos desfasados. También ejecutamos reformas completas con cambio de distribución, reformas de aseos, y soluciones de reforma rápida sin obra pesada (cambio de sanitarios y mueble sin tocar azulejos).',
       'Incluimos siempre impermeabilización de suelo y primer metro de pared, suministro y colocación de todos los materiales, gestión de escombros y limpieza final. Si el baño tiene humedades previas o problemas de fontanería, los detectamos y presupuestamos en la visita técnica gratuita antes de comenzar.',
     ],
@@ -144,6 +146,7 @@ export const SERVICES = [
     anchorLabel: 'Reforma de cocinas',
     icon: '🍳',
     headline: 'Cocinas diseñadas para tu vida. Desde 5.500€.',
+    heroCopy: 'Una cocina con muebles desgastados, una distribución que no funciona o una encimera que ya no da más de sí no es solo un problema de estética, es incomodidad cada día. Hacemos reformas de cocinas en el Corredor del Henares con muebles a medida o de catálogo, encimera de silestone, electrodomésticos integrados y electricidad nueva con circuitos dedicados. Precio cerrado, plazo en contrato, un resultado que transforma cómo vives tu casa a diario.',
     desc: 'Muebles a medida, encimeras, electrodomésticos, fontanería y electricidad. Diseñamos y ejecutamos tu cocina nueva de principio a fin.',
     body: [
       'Reformamos tu cocina de principio a fin en el Corredor del Henares: muebles a medida o de catálogo, encimeras de silestone, granito, porcelana o laminado, electrodomésticos integrados, campana extractora, fregadero, grifería, fontanería, electricidad con circuitos dedicados, alicatado de zona de trabajo y pintura. Precio cerrado, un único interlocutor.',
@@ -199,6 +202,7 @@ export const SERVICES = [
     anchorLabel: 'Reforma de pisos y chalets',
     icon: '🏢',
     headline: 'Redistribución, suelos, ventanas, pintura y carpintería.',
+    heroCopy: 'Los pisos del Corredor del Henares construidos en los años 70, 80 y 90 tienen algo en común: distribuciones cerradas que no respiran, instalaciones eléctricas que se quedan cortas y acabados que llevan décadas sin tocarse. Hacemos reformas de pisos y chalets con precio cerrado y plazo garantizado: redistribución de tabiques, suelos nuevos de porcelánico o tarima flotante, ventanas de PVC, instalaciones actualizadas y pintura. Un plan hecho a medida de tu presupuesto y del estado real de tu vivienda.',
     desc: 'Reforma completa de pisos, áticos y chalets. Derribos, redistribución de espacios, instalaciones, acabados y entrega llave en mano.',
     body: [
       'Reformamos pisos, áticos, dúplex, chalés unifamiliares y adosados en el Corredor del Henares. Realizamos desde renovaciones parciales de alto impacto (suelos nuevos de porcelánico o tarima flotante, pintura y carpintería) hasta rehabilitaciones integrales con redistribución completa de tabiques, cuadro eléctrico y fontanería nuevos, ventanas de PVC y acabados a medida.',
@@ -258,6 +262,7 @@ export const SERVICES = [
     anchorLabel: 'Reforma de locales comerciales',
     icon: '🏪',
     headline: 'Tu negocio, listo para abrir. Tramitamos la licencia.',
+    heroCopy: 'Reformar un local comercial no es lo mismo que reformar una vivienda. Tienes una fecha de apertura que no puedes mover, una licencia de actividad que tramitar y una inversión que necesita rentabilizarse cuanto antes. Hacemos reformas de locales comerciales, restaurantes, oficinas y clínicas en el Corredor del Henares con tramitación de licencia incluida y fecha de entrega fijada en el contrato. Porque cuando tu negocio depende de una fecha, no hay margen para improvisación.',
     desc: 'Transformamos locales vacíos en espacios funcionales. Tramitamos la licencia de actividad y ejecutamos la obra completa a precio cerrado.',
     body: [
       'Reformamos y acondicionamos locales comerciales, restaurantes, cafeterías, oficinas, clínicas, peluquerías y farmacias en el Corredor del Henares. Realizamos el acondicionamiento integral: vaciado y desescombro, instalación eléctrica completa (cuadro, circuitos, alumbrado de emergencia, señalética), fontanería, climatización, divisiones de pladur, suelos, techos técnicos, pintura, carpintería y rotulación.',
@@ -313,6 +318,7 @@ export const SERVICES = [
     anchorLabel: 'Reforma de comunidades de vecinos',
     icon: '🏘️',
     headline: 'Zonas comunes, fachadas y portales. Con presupuesto para junta.',
+    heroCopy: 'Las obras en zonas comunes tienen que cumplir tres condiciones que raramente van de la mano: un precio que apruebe la junta, un plazo que respete al administrador y unas molestias mínimas para los vecinos. Realizamos reformas de comunidades de vecinos en el Corredor del Henares con presupuesto desglosado listo para junta, coordinación directa con el administrador de fincas y horarios de obra adaptados para que la convivencia no se vea afectada.',
     desc: 'Mantenimiento y obras en escaleras, portales, fachadas, cubiertas e instalaciones comunitarias. Emitimos presupuesto detallado para presentar en junta.',
     body: [
       'Realizamos reformas y obras de mantenimiento en zonas comunes de comunidades de vecinos en el Corredor del Henares: pintura y renovación de portales y escaleras, rehabilitación de fachadas, impermeabilización de cubiertas y tejados, reparación de humedades, actualización de instalaciones comunitarias (electricidad, fontanería, ascensores) y mejoras de accesibilidad.',
@@ -399,7 +405,7 @@ export const TESTIMONIALS = [
 ];
 
 // Proyectos antes/después
-// imgBefore e imgAfter apuntan a /public/img/proyectos/ — añade tus fotos reales ahí
+// imgBefore e imgAfter apuntan a /public/img/proyectos/ -añade tus fotos reales ahí
 export const PROJECTS = [
   {
     slug: 'reforma-integral-alcala',

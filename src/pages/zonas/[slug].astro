@@ -130,7 +130,7 @@ const faqSchema = {
               <span class="font-normal"> · {s.priceDesc}</span>
             </p>
             <span class="text-xs font-bold text-[#A85535] block group-hover:underline">
-              Ver precios y proceso de {s.shortTitle.toLowerCase()} en {zone.name} →
+              Ver precios de {s.anchorLabel.toLowerCase()} en {zone.name} →
             </span>
           </a>
         ))}
@@ -249,7 +249,7 @@ const faqSchema = {
             href={`/zonas/${z.slug}/`}
             class="inline-block px-4 py-2 text-sm text-gray-600 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all font-medium"
           >
-            Reformas en {z.name}
+            Empresa de obras en {z.name}
           </a>
         ))}
       </div>

@@ -84,7 +84,7 @@ const pageSchema = {
   name: `${service.title} en ${zone.name}`,
   description: `${service.headline} Servicio en ${zone.name}. Precio cerrado, plazo garantizado y presupuesto gratis en 24h.`,
   provider: {
-    '@type': 'LocalBusiness',
+    '@type': 'GeneralContractor',
     '@id': `${SITE.url}/#business`,
     name: SITE.name,
   },
@@ -252,7 +252,7 @@ const intro = serviceIntros[service.slug] ?? service.desc;
         {otherZones.map(z => (
           <a href={`/${service.slug}/${z.slug}/`}
             class="inline-block px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 hover:border-[#A85535] hover:text-[#A85535] transition-all">
-            {service.shortTitle} en {z.name}
+            {service.anchorLabel} en {z.name}
           </a>
         ))}
       </div>
@@ -290,8 +290,8 @@ const intro = serviceIntros[service.slug] ?? service.desc;
       <div class="divide-y divide-gray-200">
         {faqs.map(faq => (
           <details class="group py-5">
-            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none font-semibold text-gray-900">
-              {faq.q}
+            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
+              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
               <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
             </summary>
             <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>

@@ -10,34 +10,44 @@ const { zone } = Astro.props;
 
 const faqs = [
   {
-    q: `¿Hacéis reformas integrales en ${zone.name}?`,
-    a: `Sí. Trazzo360 opera en ${zone.name} con equipo propio. Realizamos reformas integrales de pisos, baños, cocinas, locales y comunidades de vecinos. Presupuesto gratuito en 24h.`,
+    q: `¿Trabaja Trazzo360 con equipo propio en ${zone.name}?`,
+    a: `Sí. Trazzo360 opera en ${zone.name} con equipo propio sin subcontratas: albañiles, electricistas, fontaneros, pintores y carpinteros trabajan bajo nuestra coordinación directa. Eso nos permite controlar la calidad, los plazos y el precio en cada fase de la obra, sin depender de terceros.`,
+  },
+  {
+    q: `¿Qué tipos de obras y reformas realizáis en ${zone.name}?`,
+    a: `Realizamos todos los tipos de reforma en ${zone.name}: reformas integrales de pisos y chalets, reforma completa de baños, reforma de cocinas, reforma de locales comerciales y restaurantes, y obras en zonas comunes de comunidades de vecinos. Cada servicio tiene precio cerrado y plazo garantizado en el contrato.`,
   },
   {
     q: `¿Cuánto cuesta una reforma en ${zone.name}?`,
-    a: `Los precios dependen del tipo de obra y los materiales elegidos. En ${zone.name}, una reforma integral de piso de 70–90 m² oscila entre 24.900€ y 45.000€. Un baño completo parte desde 3.200€ y una cocina desde 5.500€. Damos precio cerrado en el contrato.`,
+    a: `Depende del tipo de obra y el alcance. Como orientación: reforma de baño desde 3.200€, reforma de cocina desde 5.500€, reforma integral de piso de 70-90 m² desde 24.900€. Todos los precios son cerrados en el contrato desde el primer día. Presupuesto gratuito en 24h sin visita previa.`,
   },
   {
-    q: `¿Qué tipo de reformas son más habituales en ${zone.name}?`,
-    a: `${zone.name} ${zone.localAngle}. Por eso, los proyectos más frecuentes que llevamos a cabo aquí son renovaciones de baños y cocinas, actualizaciones de instalaciones y, en muchos casos, reformas integrales que aprovechan para redistribuir la planta.`,
+    q: `¿Gestionáis los permisos y licencias de obra en ${zone.name}?`,
+    a: `Sí. Tramitamos la licencia de obra menor y, cuando la actividad lo requiere, la licencia de actividad en el Ayuntamiento de ${zone.name}. Nos encargamos de todo el proceso: proyecto técnico, presentación en el registro, seguimiento y obtención de los certificados necesarios para iniciar y finalizar la obra.`,
   },
   {
-    q: `¿Gestionáis los permisos de obra en ${zone.name}?`,
-    a: `Sí. Tramitamos la licencia de obra o de actividad en el ayuntamiento de ${zone.name}. Nos encargamos de toda la burocracia para que solo tengas que preocuparte de los acabados finales.`,
+    q: `¿Cuánto tarda en ejecutarse una reforma en ${zone.name}?`,
+    a: `Los plazos dependen del tipo de obra. Un baño completo tarda entre 1 y 3 semanas. Una cocina, entre 2 y 4 semanas. Una reforma integral de piso, entre 8 y 14 semanas. Fijamos la fecha de inicio y de entrega en el contrato y las cumplimos.`,
   },
 ];
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio',  item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Zonas',   item: `${SITE.url}/zonas/` },
+    { '@type': 'ListItem', position: 3, name: zone.name, item: `${SITE.url}/zonas/${zone.slug}/` },
+  ],
+};
+
 const zoneSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: `Reformas Integrales en ${zone.name}`,
-  description: zone.desc,
-  provider: {
-    '@type': 'LocalBusiness',
-    '@id': `${SITE.url}/#business`,
-    name: SITE.name,
-  },
-  areaServed: { '@type': 'City', name: zone.name, containedInPlace: { '@type': 'AdministrativeArea', name: 'Comunidad de Madrid' } },
+  '@type': 'GeneralContractor',
+  name: SITE.name,
+  url: `${SITE.url}/zonas/${zone.slug}/`,
+  description: `Empresa de obras y reformas en ${zone.name}. ${zone.desc}`,
+  areaServed: { '@type': 'City', name: zone.name },
 };
 
 const faqSchema = {
@@ -52,9 +62,9 @@ const faqSchema = {
 ---
 
 <Layout
-  title={`Reformas Integrales en ${zone.name} | Precio Cerrado | ${SITE.name}`}
-  description={`Empresa de reformas integrales en ${zone.name}. Baños, cocinas, pisos y locales. Precio cerrado, plazo garantizado y presupuesto gratis en 24h. Equipo propio en ${zone.name} y el Corredor del Henares.`}
-  schema={[zoneSchema, faqSchema]}
+  title={`Empresa de Reformas en ${zone.name} | Todos los Servicios | ${SITE.name}`}
+  description={`Trazzo360, empresa de obras y reformas en ${zone.name}. Reformas integrales, baños, cocinas, pisos, locales y comunidades de vecinos. Precio cerrado, equipo propio y presupuesto gratis en 24h.`}
+  schema={[zoneSchema, breadcrumbSchema, faqSchema]}
 >
 
   <!-- Breadcrumb -->
@@ -62,7 +72,7 @@ const faqSchema = {
     <div class="max-w-7xl mx-auto px-4 py-3 text-sm text-gray-500 flex items-center gap-2">
       <a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a>
       <span class="text-gray-300">/</span>
-      <span class="hover:text-[#A85535] transition-colors cursor-pointer">Zonas</span>
+      <span class="text-gray-500">Zonas</span>
       <span class="text-gray-300">/</span>
       <span class="text-gray-800 font-medium">{zone.name}</span>
     </div>
@@ -77,14 +87,15 @@ const faqSchema = {
           <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">{SITE.zone}</span>
         </div>
         <h1 class="text-4xl lg:text-6xl font-black text-white mb-5" style="letter-spacing:-0.02em">
-          Reformas<br/>
-          <span class="text-[#A85535]">Integrales</span><br/>
-          en {zone.name}
+          Empresa de reformas<br/>
+          <span class="text-[#A85535]">en {zone.name}</span>
         </h1>
         <p class="text-lg text-gray-300 leading-relaxed mb-4">
-          {zone.name} {zone.localAngle}. Trazzo360 trabaja aquí con equipo propio, precio cerrado en el contrato y plazo de entrega garantizado.
+          Trazzo360 trabaja en {zone.name} con equipo propio: reformas integrales, baños, cocinas, locales comerciales y comunidades de vecinos. Precio cerrado en el contrato, plazo de entrega garantizado por escrito.
         </p>
-        <p class="text-sm text-gray-400 mb-8">Presupuesto gratuito en menos de 24h · Sin visita previa obligatoria</p>
+        <p class="text-base text-gray-400 leading-relaxed mb-8">
+          {zone.name} {zone.localAngle}. Llevamos más de {SITE.stats.years} años en la zona y sabemos de primera mano qué necesita cada vivienda antes de abrir el presupuesto.
+        </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
             Presupuesto Gratis en {zone.name}
@@ -97,12 +108,15 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- Servicios en esta zona -->
+  <!-- Todos los servicios -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
-        Servicios de reforma en {zone.name}
+      <h2 class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        Obras y reformas disponibles en {zone.name}
       </h2>
+      <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
+        Cubrimos todos los tipos de obra en {zone.name} con el mismo equipo propio, el mismo precio cerrado y el mismo compromiso de plazo. Elige el servicio que necesitas para ver precios orientativos, el proceso de trabajo y ejemplos reales.
+      </p>
       <div class="w-12 h-1 bg-[#A85535] mb-10"></div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {SERVICES.map(s => (
@@ -111,30 +125,71 @@ const faqSchema = {
             <div class="text-3xl mb-4">{s.icon}</div>
             <h3 class="text-lg font-bold text-gray-900 mb-2">{s.title} en {zone.name}</h3>
             <p class="text-sm text-gray-500 leading-relaxed mb-3">{s.desc}</p>
-            <p class="text-xs font-bold text-gray-400">Desde <span class="text-[#A85535] text-sm font-black">{s.priceFrom}€</span></p>
-            <span class="text-xs font-bold text-[#A85535] mt-2 block group-hover:underline">Ver {s.shortTitle} en {zone.name} →</span>
+            <p class="text-xs font-bold text-gray-400 mb-3">
+              Desde <span class="text-[#A85535] text-sm font-black">{s.priceFrom}€</span>
+              <span class="font-normal"> · {s.priceDesc}</span>
+            </p>
+            <span class="text-xs font-bold text-[#A85535] block group-hover:underline">
+              Ver precios y proceso de {s.shortTitle.toLowerCase()} en {zone.name} →
+            </span>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Por qué Trazzo360 en esta zona -->
-  <section class="py-16 bg-[#F9F7F4]">
+  <!-- Contexto local -->
+  <section class="py-20 bg-[#F9F7F4]">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-2xl font-black text-gray-900 mb-4">
+        Qué obras son más habituales en {zone.name}
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-10">
+        No todas las zonas del Corredor del Henares tienen las mismas necesidades. El tipo de vivienda predominante, la época de construcción y el estado de las instalaciones determinan qué reformas son más frecuentes y cuánto suelen costar. Esto es lo que vemos habitualmente en {zone.name}.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">El parque de vivienda de {zone.name}</h3>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        {zone.name} {zone.localAngle}. Se traduce en un perfil de obra concreto: instalaciones que ya no dan la talla para el uso actual, acabados que acumulan décadas de deterioro y distribuciones que ya no encajan con la forma de vivir hoy. No es un problema exclusivo de esta ciudad, es el denominador común de gran parte del parque residencial del Corredor.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">
+        Lo que cambia al contratar en {zone.name}
+      </h3>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        El precio no varía según el municipio, pero sí puede cambiar el alcance real del proyecto. En viviendas anteriores a 1990 conviene evaluar el estado de la fontanería y el cuadro eléctrico antes de cerrar el presupuesto: son dos partidas que, si se descubren a mitad de obra, generan extras no previstos. En Trazzo360 lo evaluamos en la visita técnica gratuita y lo incluimos en el presupuesto cerrado cuando el estado lo requiere.
+      </p>
+
+      <div class="bg-white border-l-4 border-[#A85535] p-6">
+        <p class="text-sm font-semibold text-gray-900 mb-2">Antes de pedir presupuesto en {zone.name}</p>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Si la vivienda o el local tiene más de 30 años, asegúrate de que el presupuesto incluya la evaluación del estado de las instalaciones. Un presupuesto que no las contempla puede quedarse obsoleto en cuanto empieza la obra. Todos nuestros presupuestos en {zone.name} cierran el precio completo desde el primer día.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué Trazzo360 -->
+  <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 class="text-2xl font-black text-gray-900 mb-6">¿Por qué elegir Trazzo360 en {zone.name}?</h2>
+        <h2 class="text-2xl font-black text-gray-900 mb-6">
+          Por qué contratar tu obra en {zone.name} con Trazzo360
+        </h2>
         <div class="space-y-4">
           {[
-            `Equipo propio en ${zone.name} y todo el Corredor del Henares`,
-            'Precio cerrado por contrato, sin extras ni sorpresas',
-            'Plazo de entrega garantizado por escrito',
-            'Más de ' + SITE.stats.projects + ' obras completadas en la zona',
-            'Presupuesto gratuito en 24h sin visita previa',
+            `Equipo propio en ${zone.name} y todo el Corredor del Henares. Sin subcontratas.`,
+            'Precio cerrado en el contrato. Lo que firmamos es exactamente lo que pagas.',
+            'Plazo de entrega garantizado por escrito. Si nos retrasamos sin causa de fuerza mayor, penalizamos.',
+            `Más de ${SITE.stats.projects} obras completadas en la zona en ${SITE.stats.years} años.`,
+            'Visita técnica y presupuesto gratuitos. Sin compromiso.',
+            'Gestión completa de licencias y permisos incluida cuando la obra lo requiere.',
           ].map(item => (
-            <div class="flex items-center gap-3">
-              <div class="w-5 h-5 rounded-full bg-[#A85535] flex items-center justify-center flex-shrink-0">
-                <svg class="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-[#A85535] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
               </div>
               <span class="text-sm text-gray-700">{item}</span>
             </div>
@@ -142,11 +197,13 @@ const faqSchema = {
         </div>
       </div>
       <div class="bg-[#111827] p-8 text-white">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Solicita presupuesto</p>
-        <p class="text-xl font-black text-white mb-2">Gratis y sin compromiso</p>
-        <p class="text-sm text-gray-400 mb-6">Respondemos en menos de 24h</p>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratuito</p>
+        <p class="text-xl font-black text-white mb-2">Visita y precio en 24h</p>
+        <p class="text-sm text-gray-400 mb-6">
+          Sin compromiso. Cuéntanos qué quieres reformar en {zone.name} y te decimos cuánto cuesta y cuánto tarda.
+        </p>
         <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity mb-3" style="background:#A85535">
-          Pedir presupuesto en {zone.name}
+          Solicitar presupuesto en {zone.name}
         </a>
         <a href={`tel:${SITE.phone}`} class="block text-center py-3 text-sm text-gray-300 border border-white/20 hover:border-white transition-colors">
           ☎ {SITE.phoneDisplay}
@@ -155,18 +212,22 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- Barrios donde actuamos -->
-  <section class="py-12 bg-white">
+  <!-- Barrios -->
+  <section class="py-14 bg-[#F9F7F4]">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-xl font-black text-gray-900 mb-2">Barrios y zonas de {zone.name} donde trabajamos</h2>
-      <p class="text-sm text-gray-500 mb-6">Cubrimos todos los barrios y urbanizaciones de {zone.name} sin coste adicional por desplazamiento.</p>
+      <h2 class="text-xl font-black text-gray-900 mb-2">
+        Barrios y zonas de {zone.name} donde actuamos
+      </h2>
+      <p class="text-sm text-gray-500 mb-6">
+        Cubrimos todos los barrios y urbanizaciones de {zone.name} sin coste adicional por desplazamiento. Si tu dirección no aparece en la lista, consúltanos igualmente.
+      </p>
       <div class="flex flex-wrap gap-2">
         {zone.neighborhoods.map((n: string) => (
-          <span class="inline-block px-4 py-2 bg-gray-50 border border-gray-200 text-sm text-gray-700 font-medium">
+          <span class="inline-block px-4 py-2 bg-white border border-gray-200 text-sm text-gray-700 font-medium">
             {n}
           </span>
         ))}
-        <span class="inline-block px-4 py-2 bg-gray-50 border border-dashed border-gray-300 text-sm text-gray-400">
+        <span class="inline-block px-4 py-2 bg-white border border-dashed border-gray-300 text-sm text-gray-400">
           ¿Tu barrio no aparece? Consúltanos
         </span>
       </div>
@@ -174,14 +235,21 @@ const faqSchema = {
   </section>
 
   <!-- Otras zonas -->
-  <section class="py-16 bg-white">
+  <section class="py-14 bg-white">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-xl font-black text-gray-900 mb-6">También reformamos en</h2>
+      <h2 class="text-xl font-black text-gray-900 mb-2">
+        También hacemos obras en estos municipios del Corredor
+      </h2>
+      <p class="text-sm text-gray-500 mb-6">
+        Cubrimos todo el Corredor del Henares sin coste de desplazamiento adicional.
+      </p>
       <div class="flex flex-wrap gap-2">
         {ZONES.filter(z => z.slug !== zone.slug).map(z => (
-          <a href={`/zonas/${z.slug}/`}
-            class="inline-block px-4 py-2 text-sm text-gray-600 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all font-medium">
-            {z.name}
+          <a
+            href={`/zonas/${z.slug}/`}
+            class="inline-block px-4 py-2 text-sm text-gray-600 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all font-medium"
+          >
+            Reformas en {z.name}
           </a>
         ))}
       </div>
@@ -191,12 +259,17 @@ const faqSchema = {
   <!-- FAQ -->
   <section class="py-20 bg-[#F9F7F4]">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-2xl font-black text-gray-900 mb-8">Preguntas frecuentes sobre reformas en {zone.name}</h2>
+      <h2 class="text-2xl font-black text-gray-900 mb-4">
+        Preguntas frecuentes sobre obras en {zone.name}
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        Si tienes dudas sobre plazos, precios o qué incluye cada servicio en {zone.name}, aquí respondemos las más habituales. Si no encuentras la tuya, escríbenos por WhatsApp o llámanos y te respondemos el mismo día.
+      </p>
       <div class="divide-y divide-gray-200">
         {faqs.map(faq => (
           <details class="group py-5">
-            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none font-semibold text-gray-900">
-              {faq.q}
+            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
+              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
               <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
             </summary>
             <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
@@ -209,8 +282,10 @@ const faqSchema = {
   <!-- CTA Final -->
   <section class="py-16 bg-[#A85535]">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-black text-white mb-3">¿Reformas en {zone.name}?</h2>
-      <p class="text-white/80 mb-7">Presupuesto gratuito en 24h. Precio cerrado. Equipo propio.</p>
+      <h2 class="text-3xl font-black text-white mb-3">
+        ¿Necesitas presupuesto de obra en {zone.name}?
+      </h2>
+      <p class="text-white/80 mb-7">Visita gratuita. Precio cerrado en 24h. Sin sorpresas ni letra pequeña.</p>
       <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">
         Pide Presupuesto Gratis
       </a>

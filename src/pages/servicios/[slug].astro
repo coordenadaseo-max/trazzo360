@@ -248,7 +248,7 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema
           <a href={`/${service.slug}/${z.slug}/`}
             class="block p-4 bg-white border border-gray-100 hover:border-[#A85535] hover:shadow-md transition-all group">
             <p class="font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors text-sm">{z.name}</p>
-            <p class="text-xs text-gray-400 mt-1 group-hover:text-[#A85535]/70 transition-colors">{service.shortTitle} en {z.name} →</p>
+            <p class="text-xs text-gray-400 mt-1 group-hover:text-[#A85535]/70 transition-colors">{service.anchorLabel} en {z.name} →</p>
           </a>
         ))}
       </div>

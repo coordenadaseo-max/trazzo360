@@ -122,6 +122,18 @@ const breadcrumbSchema = {
   ],
 };
 
+const howToSchema = service.processSteps && (service.processSteps as {title:string;desc:string}[]).length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: `Cómo hacemos ${service.title.toLowerCase()} en ${zone.name}`,
+  step: (service.processSteps as {title:string;desc:string}[]).map((step, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: step.title,
+    text: step.desc,
+  })),
+} : null;
+
 const otherZones = ZONES.filter(z => z.slug !== zone.slug);
 const otherServices = SERVICES.filter(s => s.slug !== service.slug);
 const features = serviceFeatures[service.slug] ?? [];
@@ -131,7 +143,7 @@ const intro = serviceIntros[service.slug] ?? service.desc;
 <Layout
   title={`${service.title} en ${zone.name} | Precio Cerrado | ${SITE.name}`}
   description={`${service.title} en ${zone.name} desde ${service.priceFrom}€. ${zone.name} ${zone.localAngle}. Equipo propio, precio cerrado y presupuesto gratis en 24h.`}
-  schema={[pageSchema, faqSchema, breadcrumbSchema]}
+  schema={[pageSchema, faqSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema] : [])]}
 >
 
   <!-- Breadcrumb -->
@@ -222,6 +234,33 @@ const intro = serviceIntros[service.slug] ?? service.desc;
     </div>
   </section>
 
+  <!-- Proceso paso a paso -->
+  {service.processSteps && (service.processSteps as {title:string;desc:string}[]).length > 0 && (
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-xl font-black text-gray-900 mb-2">
+          Cómo trabajamos: {service.title.toLowerCase()} en {zone.name}
+        </h2>
+        <p class="text-sm text-gray-500 mb-8">
+          Plazos reales, precio cerrado y sin imprevistos. Así organizamos cada proyecto en {zone.name}, desde la visita hasta la entrega con garantía.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {(service.processSteps as {title:string;desc:string}[]).map((step, i) => (
+            <div class="flex gap-4 p-6 bg-white border border-gray-100">
+              <div class="w-7 h-7 bg-[#A85535] text-white text-xs font-black flex items-center justify-center flex-shrink-0">
+                {i + 1}
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1 text-sm">{step.title}</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- Barrios y zonas donde actuamos -->
   <section class="py-12 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4">
@@ -280,6 +319,32 @@ const intro = serviceIntros[service.slug] ?? service.desc;
       </div>
     </div>
   </section>
+
+  <!-- Precios orientativos -->
+  {service.priceTable && (service.priceTable as {label:string;price:string;includes?:string}[]).length > 0 && (
+    <section class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-xl font-black text-gray-900 mb-2">
+          ¿Cuánto cuesta {service.title.toLowerCase()} en {zone.name}?
+        </h2>
+        <p class="text-sm text-gray-500 mb-6">
+          Precios de referencia calculados sobre proyectos reales ejecutados en {zone.name} y el Corredor del Henares. El presupuesto exacto lo recibes gratis en 48h tras la visita.
+        </p>
+        <div class="divide-y divide-gray-100 border border-gray-100">
+          {(service.priceTable as {label:string;price:string;includes?:string}[]).map(row => (
+            <div class="flex items-center justify-between p-5 gap-6 hover:bg-gray-50 transition-colors">
+              <div>
+                <p class="font-semibold text-gray-900 text-sm">{row.label}</p>
+                {row.includes && <p class="text-xs text-gray-400 mt-0.5">{row.includes}</p>}
+              </div>
+              <p class="text-[#A85535] font-black text-base flex-shrink-0">{row.price}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-gray-400 mt-4">* Precios orientativos IVA incluido. El precio exacto depende del estado previo, los materiales y el alcance de la obra. <a href="/contacto/" class="underline hover:text-[#A85535]">Solicita presupuesto gratuito.</a></p>
+      </div>
+    </section>
+  )}
 
   <!-- FAQ -->
   <section class="py-20 bg-[#F9F7F4]">

@@ -33,7 +33,7 @@ const serviceSchema = {
   name: `${service.title} en el Corredor del Henares`,
   description: service.desc,
   provider: {
-    '@type': 'LocalBusiness',
+    '@type': 'GeneralContractor',
     '@id': `${SITE.url}/#business`,
     name: SITE.name,
   },
@@ -56,6 +56,18 @@ const faqSchema = service.faqs.length > 0 ? {
   })),
 } : null;
 
+const howToSchema = service.processSteps && (service.processSteps as {title:string;desc:string}[]).length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: `Cómo hacemos ${gerund} en el Corredor del Henares`,
+  step: (service.processSteps as {title:string;desc:string}[]).map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.title,
+    text: s.desc,
+  })),
+} : null;
+
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -66,7 +78,7 @@ const breadcrumbSchema = {
   ],
 };
 
-const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])];
+const schemas = [serviceSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema] : []), ...(faqSchema ? [faqSchema] : [])];
 ---
 
 <Layout
@@ -126,9 +138,15 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
           {service.title} en el Corredor del Henares
         </h2>
         {service.body ? (
-          (service.body as string[]).map((p: string) => (
-            <p class="text-gray-600 leading-relaxed mb-4">{p}</p>
-          ))
+          (service.body as {type: string; text: string}[]).map((block) =>
+            block.type === 'h3' ? (
+              <h3 class="text-lg font-bold text-gray-900 mt-8 mb-2 first:mt-0">{block.text}</h3>
+            ) : block.type === 'h4' ? (
+              <h4 class="text-base font-semibold text-gray-800 mt-5 mb-1">{block.text}</h4>
+            ) : (
+              <p class="text-gray-600 leading-relaxed mb-4">{block.text}</p>
+            )
+          )
         ) : (
           <p class="text-gray-600 leading-relaxed mb-6">{service.desc}</p>
         )}

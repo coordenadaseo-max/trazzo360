@@ -55,12 +55,24 @@ const faqSchema = service.faqs.length > 0 ? {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 } : null;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio',    item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${SITE.url}/#servicios` },
+    { '@type': 'ListItem', position: 3, name: service.title, item: `${SITE.url}/servicios/${service.slug}/` },
+  ],
+};
+
+const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])];
 ---
 
 <Layout
   title={`${service.title} en el Corredor del Henares | ${SITE.name}`}
   description={`${service.headline} Especialistas en ${gerund} en Alcalá de Henares, Torrejón de Ardoz, Coslada y todo el Corredor del Henares. Presupuesto gratis en 24h.`}
-  schema={faqSchema ? [serviceSchema, faqSchema] : serviceSchema}
+  schema={schemas}
 >
 
   <!-- Breadcrumb -->

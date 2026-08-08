@@ -29,7 +29,7 @@ export const SERVICES = [
     anchorLabel: 'Reformas integrales',
     icon: '🏠',
     headline: 'Un responsable único coordina todos los gremios. Sin subcontratas, sin extras.',
-    heroCopy: 'Una reforma integral no empieza eligiendo materiales ni acabados. Primero hay que decidir qué distribución quieres conservar, qué instalaciones merece la pena renovar y qué debe quedar cerrado antes de abrir la obra. Hacemos reformas integrales en el Corredor del Henares con un único interlocutor que gestiona todos los gremios, un presupuesto que incluye todo desde el primer día y una fecha de entrega garantizada por escrito. Sin subcontratas desconocidas, sin facturas extra, sin excusas para no cumplir el plazo.',
+    heroCopy: 'Una reforma integral no empieza eligiendo materiales ni acabados. Primero hay que decidir qué distribución quieres conservar, qué instalaciones merece la pena renovar y qué debe quedar cerrado antes de abrir la obra. Hacemos reformas integrales en el Corredor del Henares con un único interlocutor que gestiona todos los gremios, un presupuesto que deja claro qué está incluido desde el inicio y una fecha de entrega garantizada por escrito. Sin subcontratas desconocidas, sin facturas extra, sin excusas para no cumplir el plazo.',
     desc: 'Reformamos tu piso, ático o chalet completamente. Diseño, gestión de permisos, ejecución y entrega llave en mano. Sin sorpresas en el precio.',
     body: [
       { type: 'h3', text: 'Qué incluye una reforma integral en el Corredor del Henares' },
@@ -552,7 +552,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'torrejon-de-ardoz': {
-      intro: 'Antes de empezar una reforma integral en Torrejón, la pregunta más importante no es qué muebles elegir: es si tiene más sentido hacer todo a la vez o por fases. Cuando las instalaciones necesitan renovación, dos obras distintas pueden salir un 20–30% más caras en total que hacerlo todo con el piso abierto una sola vez. La visita determina cuál es tu caso.',
+      intro: 'Antes de empezar una reforma integral en Torrejón, la pregunta más importante no es qué muebles elegir: es si tiene más sentido hacer todo a la vez o por fases. Cuando las instalaciones necesitan renovación, hacer dos obras por separado implica abrir el piso dos veces, repetir el desescombro y coordinar gremios por duplicado. La visita determina cuál es tu caso.',
       body: [
         { type: 'h3', text: 'Todo a la vez o por fases: la pregunta más importante antes de empezar' },
         { type: 'p', text: 'En Torrejón, donde buena parte del parque de los 80 tiene instalaciones al límite, hacerlo todo a la vez es casi siempre más barato que ir por fases. Si el cuadro y la fontanería necesitan renovación, dos obras implican abrir el piso dos veces, desescombrar dos veces y coordinar gremios por duplicado. La diferencia puede ser un 20–30% más cara en el total. En la visita evaluamos si las instalaciones aguantan para decidir con datos, no con estimaciones.' },
@@ -570,7 +570,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'san-fernando-de-henares': {
-      intro: 'El alcance de una reforma integral en San Fernando de Henares depende mucho de cuándo se construyó la vivienda. Los pisos del casco antiguo y los de las promociones más recientes pueden diferir en 8.000–12.000€ en presupuesto según el estado de las instalaciones. La visita técnica lo aclara antes de comprometer ningún número.',
+      intro: 'El alcance de una reforma integral en San Fernando de Henares depende mucho de cuándo se construyó la vivienda. Los pisos del casco antiguo y los de las promociones más recientes pueden tener alcances muy distintos según el estado de las instalaciones: desde la renovación completa de cuadro y fontanería hasta la reforma centrada en distribución y acabados. La visita técnica lo aclara antes de comprometer ningún número.',
       body: [
         { type: 'h3', text: 'Vivienda antigua o reciente en San Fernando: el alcance cambia' },
         { type: 'p', text: 'Los pisos del casco antiguo de San Fernando anteriores a los 90 necesitan casi siempre instalaciones nuevas: cuadro eléctrico, fontanería y carpintería exterior. Las promociones de Parque Roma y Parque Henares, más recientes, tienen instalaciones más actualizadas y el alcance puede centrarse en distribución y acabados. El presupuesto entre ambos casos puede diferir en 8.000–12.000€. La visita técnica lo aclara antes de comprometer cualquier número.' },
@@ -579,7 +579,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'guadalajara': {
-      intro: 'Reformar en Guadalajara capital tiene una diferencia práctica respecto al Corredor madrileño: los permisos de obra menor tienden a tramitarse con plazos más cortos. Si el calendario de la reforma es ajustado, esa diferencia puede ser determinante para la fecha real de inicio. El alcance y el precio dependen del estado de las instalaciones, no solo de la superficie.',
+      intro: 'El alcance de una reforma integral en Guadalajara capital depende del estado de las instalaciones, no solo de la superficie. En pisos de los años 70 y 80, el cuadro eléctrico y la fontanería condicionan lo que se puede hacer: si necesitan renovación, lo más eficiente es abrir el piso una sola vez y hacer todo en la misma obra. La visita técnica determina qué alcance corresponde antes de comprometer ningún número.',
       body: [
         { type: 'h3', text: 'La ventaja de reformar en Guadalajara: plazos de licencia más cortos' },
         { type: 'p', text: 'Una diferencia práctica al reformar en Guadalajara capital respecto a los municipios madrileños del Corredor es la tramitación de permisos: el Ayuntamiento de Guadalajara tiene plazos de resolución de licencias de obra menor generalmente más cortos. Si el calendario de la reforma es ajustado, esa diferencia puede ser determinante para la fecha de inicio real de la obra.' },
@@ -653,7 +653,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'guadalajara': {
-      intro: 'Reformar el baño en Guadalajara con fontanería original de hace 30 o 40 años plantea una decisión concreta: renovarla ahora, con el baño ya abierto, o asumir el riesgo de tener que abrir otra vez en pocos años si falla. Hacerlo con el baño en obras tiene un coste marginal comparado con volver a intervenir. En la visita evaluamos el estado real.',
+      intro: 'Reformar el baño en Guadalajara con instalaciones antiguas que no se han tocado en años plantea una decisión concreta: renovarlas ahora, con el baño ya abierto, o asumir el riesgo de tener que abrir otra vez en pocos años si fallan. Hacerlo con el baño en obras tiene un coste marginal comparado con volver a intervenir. En la visita evaluamos el estado real.',
       body: [
         { type: 'h3', text: 'Fontanería en los baños de Guadalajara: cuándo es imprescindible renovarla' },
         { type: 'p', text: 'Los pisos del Balconcillo y Aguas Vivas construidos en los años 70 y 80 tienen en muchos casos fontanería original de hierro galvanizado o cobre con décadas de uso. Al reformar el baño, renovar la fontanería con el espacio ya abierto tiene un coste pequeño comparado con tener que abrir otra vez el baño reformado si las tuberías fallan dos años después. En la visita evaluamos el estado real y te damos una recomendación concreta.' },
@@ -680,7 +680,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'camarma-de-esteruelas': {
-      intro: 'Si el baño de tu vivienda en Camarma lleva más de 15 años sin tocarse, la reforma completa suele ser más eficiente que actuar por partes en diferentes momentos. Con el espacio ya abierto, renovar fontanería, impermeabilización y acabados de una sola vez evita tener que volver a intervenir. Planificamos el alcance completo en la visita gratuita.',
+      intro: 'Si el baño de tu vivienda en Camarma lleva tiempo sin tocarse, la reforma completa suele ser más eficiente que actuar por partes en diferentes momentos. Con el espacio ya abierto, renovar fontanería, impermeabilización y acabados de una sola vez evita tener que volver a intervenir. Planificamos el alcance completo en la visita gratuita.',
       body: [
         { type: 'h3', text: 'Diseñar el baño desde cero en viviendas de Camarma' },
         { type: 'p', text: 'En las viviendas unifamiliares de Camarma, los baños principales tienen a menudo dimensiones que permiten repensar la distribución completa: colocar la ducha donde estaba la bañera, añadir un segundo lavabo si el espacio lo permite, o separar la zona húmeda de la seca. Cuando el baño lleva más de 15 años sin tocarse, la reforma completa suele ser más eficiente que hacer actuaciones parciales en diferentes momentos.' },
@@ -709,7 +709,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'coslada': {
-      intro: 'Reformar la cocina en un piso de Coslada de los 80 significa casi siempre hacer electricidad nueva con circuitos dedicados. La instalación original no estaba pensada para el consumo actual y es la causa más frecuente de problemas eléctricos. La reforma completa resuelve el fondo del problema, no solo la estética.',
+      intro: 'Reformar la cocina en un piso de Coslada de los 80 habitualmente implica revisar la instalación eléctrica: si los circuitos actuales no soportan los electrodomésticos de uso normal, conviene hacer la electricidad nueva en la misma obra. La reforma completa resuelve el fondo del problema, no solo la estética.',
       body: [
         { type: 'h3', text: 'Electricidad en cocinas de Coslada: la primera partida que hay que resolver' },
         { type: 'p', text: 'La instalación eléctrica original de los pisos de Coslada de los 80 no tiene circuitos dedicados para electrodomésticos de alta potencia. Eso provoca sobrecargas cuando se usan simultáneamente el horno, la vitrocerámica y el lavavajillas. En una reforma de cocina, la instalación eléctrica nueva no es un extra: es la base que hace que todos los demás electrodomésticos funcionen correctamente desde el primer día.' },
@@ -745,7 +745,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'meco': {
-      intro: 'En los adosados de Meco, las cocinas suelen tener más espacio que en los pisos de bloque, lo que abre opciones de distribución inaccesibles en cocinas de 7 metros cuadrados: islas, cocinas americanas o zonas de almacenaje independientes. Con espacio disponible, la primera decisión es la distribución, no los materiales.',
+      intro: 'En los adosados de Meco, las cocinas suelen tener más espacio que en los pisos de bloque, lo que abre opciones que no caben en una cocina pequeña: islas, cocinas americanas o zonas de almacenaje independientes. Con espacio disponible, la primera decisión es la distribución, no los materiales.',
       body: [
         { type: 'h3', text: 'Cocinas con más espacio en adosados de Meco: opciones que no caben en los pisos' },
         { type: 'p', text: 'En los adosados de Meco, las cocinas suelen tener entre 10 y 16 metros cuadrados, lo que abre opciones imposibles en cocinas de 7 m²: isla central con función de encimera y barra, zona de despensa independiente, o cocina americana con acceso directo desde el salón. Con ese espacio disponible, la primera decisión no es qué muebles elegir sino cómo se quiere vivir la cocina: el diseño viene después.' },
@@ -792,7 +792,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'san-fernando-de-henares': {
-      intro: 'Si tienes una vivienda en San Fernando de Henares, el alcance de la reforma depende más de cuándo se construyó que de lo que quieres cambiar. Los pisos del casco antiguo suelen necesitar instalaciones nuevas; los de las promociones más recientes pueden limitarse a acabados y distribución. La diferencia en presupuesto puede ser de 8.000–12.000€. La visita técnica lo determina.',
+      intro: 'Si tienes una vivienda en San Fernando de Henares, el alcance de la reforma depende más de cuándo se construyó que de lo que quieres cambiar. Los pisos del casco antiguo suelen necesitar instalaciones nuevas; los de las promociones más recientes pueden limitarse a acabados y distribución. La diferencia en presupuesto entre ambos casos puede ser relevante. La visita técnica lo determina.',
       body: [
         { type: 'h3', text: 'Alcance de la reforma según la zona y la época de construcción' },
         { type: 'p', text: 'Un piso del casco antiguo de San Fernando de los años 70 necesita casi siempre instalaciones nuevas además de los acabados: cuadro eléctrico, fontanería y carpintería exterior. Un piso de Parque Roma o Parque Henares de los años 90 puede tener instalaciones aprovechables y el alcance puede centrarse en acabados y distribución. El presupuesto entre ambos casos puede diferir en 8.000–12.000€. La visita técnica lo aclara antes de comprometer cualquier número.' },
@@ -801,7 +801,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'guadalajara': {
-      intro: 'En Guadalajara, el cambio de carpintería exterior a PVC con doble acristalamiento es una de las inversiones con mejor retorno en reformas de piso: el clima continental hace que el ahorro en calefacción sea muy tangible. Si las ventanas son originales de los años 80, conviene incluirlas en la reforma.',
+      intro: 'En Guadalajara, el clima continental hace que el cambio de carpintería exterior a PVC con doble acristalamiento tenga un impacto real en el confort térmico y acústico. Si las ventanas son originales de los años 80, conviene valorar su renovación como parte de la reforma: hacerlo en la misma obra es más eficiente que abordarlas por separado después.',
       body: [
         { type: 'h3', text: 'Carpintería exterior en Guadalajara: el cambio con mayor retorno de inversión' },
         { type: 'p', text: 'El clima continental de Guadalajara, con diferencias térmicas entre verano e invierno más pronunciadas que en el Corredor madrileño, hace que el cambio de carpintería exterior a PVC con doble acristalamiento tenga un retorno en ahorro energético mucho más tangible. En pisos con ventanas originales de los años 70 u 80, la diferencia en factura de calefacción y aire acondicionado puede ser del 25–35%. Es una partida que conviene incluir si las ventanas son antiguas.' },
@@ -848,7 +848,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'torrejon-de-ardoz': {
-      intro: 'En Torrejón, los plazos de tramitación son comparativamente más ágiles que en Alcalá para muchos tipos de actividad. Si el local está en polígono, el alcance de la obra puede variar mucho según si parte de cero o tiene instalaciones previas aprovechables. La visita técnica lo determina desde el primer día.',
+      intro: 'En Torrejón, si el local está en polígono, el alcance de la obra puede variar mucho según si parte de cero o tiene instalaciones previas aprovechables. Para actividades sin licencia clasificada, la tramitación puede gestionarse en paralelo con la obra desde el primer día. La visita técnica determina el alcance y el plazo real antes de comprometer ningún número.',
       body: [
         { type: 'h3', text: 'Plazos de tramitación en Torrejón: más ágiles para muchos usos' },
         { type: 'p', text: 'Para muchos tipos de actividad, los plazos de tramitación de licencia en el Ayuntamiento de Torrejón de Ardoz son comparativamente más cortos que en Alcalá. Eso permite planificar la apertura con más certeza si el calendario es ajustado. Para hostelería y actividades clasificadas, los plazos son siempre más largos; te informamos del plazo realista para tu uso específico en la visita técnica antes de arrancar la obra.' },
@@ -866,7 +866,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'san-fernando-de-henares': {
-      intro: 'San Fernando de Henares tiene zona industrial activa y comercio urbano concentrado en el centro. Si el local está en zona industrial, el alcance suele ser mayor pero los plazos de tramitación más predecibles. Si es comercio o clínica en el casco, el tipo de uso determina el régimen de licencia.',
+      intro: 'San Fernando de Henares tiene zona industrial activa y comercio urbano concentrado en el centro. Si el local está en zona industrial, el alcance de la obra suele ser mayor: instalación completa desde cero o adaptación de instalaciones existentes. Si es comercio o clínica en el casco, el tipo de uso determina el régimen de licencia.',
       body: [
         { type: 'h3', text: 'Zona industrial vs casco urbano en San Fernando de Henares' },
         { type: 'p', text: 'San Fernando de Henares tiene una zona industrial activa con polígonos donde los locales y naves requieren instalación completa desde el principio. En el casco urbano, los locales en planta baja de edificios residenciales parten de una estructura acondicionada con instalaciones básicas. El tipo de local condiciona tanto el presupuesto como el tipo de licencia que se necesita: te informamos de ambos en la visita técnica inicial.' },
@@ -875,7 +875,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'guadalajara': {
-      intro: 'Guadalajara tiene una ventaja concreta para quien quiere abrir un negocio: la tramitación de licencias de actividad es generalmente más ágil que en los municipios madrileños del Corredor, lo que permite planificar la apertura con mayor certeza. El alcance de la obra depende del uso previsto y del estado previo del local.',
+      intro: 'Para abrir un negocio en Guadalajara, el alcance de la reforma depende del uso previsto y del estado previo del local. La tramitación de la licencia de actividad se coordina desde el primer día en paralelo con la obra: esperar a terminar la reforma para presentar la documentación puede retrasar la apertura de forma innecesaria.',
       body: [
         { type: 'h3', text: 'Ventaja de Guadalajara para nuevos negocios: tramitación más ágil' },
         { type: 'p', text: 'Una diferencia práctica al reformar un local en Guadalajara respecto a los municipios madrileños del Corredor: la tramitación de licencias de actividad es generalmente más ágil. Para negocios con plazos ajustados de apertura, esa diferencia puede permitir arrancar antes o asumir plazos de reforma que en otros municipios serían más arriesgados. Te confirmamos el plazo realista para tu tipo de actividad en la primera reunión.' },
@@ -893,7 +893,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'meco': {
-      intro: 'Reformar un local en Meco tiene plazos de tramitación predecibles para la mayoría de actividades: los ayuntamientos de municipios pequeños gestionan los expedientes con menos carga que en las ciudades grandes. Si el local está en el polígono industrial, el alcance de la obra puede incluir instalación completa desde cero. La visita lo determina antes de presupuestar.',
+      intro: 'Para adecuar un local en Meco, el alcance de la obra depende del uso previsto y del estado previo: un local en el casco puede partir de instalaciones básicas existentes, mientras que una nave en el polígono industrial puede necesitar instalación completa desde cero. La tramitación de permisos se gestiona en paralelo con la obra. La visita lo determina antes de presupuestar.',
       body: [
         { type: 'h3', text: 'Negocios de proximidad en Meco: locales pequeños con tramitación sencilla' },
         { type: 'p', text: 'La demanda de locales comerciales en Meco se concentra en negocios de proximidad: comercios, pequeños servicios, consultorios y oficinas. Para este tipo de actividades, la tramitación suele ser sencilla y los plazos predecibles en un municipio de este tamaño. El alcance de la obra depende del estado previo del local y del uso que se le va a dar. Lo evaluamos en la visita técnica inicial.' },
@@ -902,7 +902,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'camarma-de-esteruelas': {
-      intro: 'Para adecuar un local en Camarma de Esteruelas, los plazos de tramitación de permisos suelen ser predecibles en un municipio de este tamaño. Para actividades sin licencia clasificada, el proceso es ágil si la documentación se presenta correctamente desde el principio. Antes de comprometerte con una fecha de apertura, confirmamos el plazo exacto para tu tipo de actividad.',
+      intro: 'Para adecuar un local en Camarma de Esteruelas, el tipo de actividad determina el régimen de licencia. Para actividades sin licencia clasificada, el proceso puede ser ágil si la documentación se presenta correctamente desde el principio. Antes de comprometerte con una fecha de apertura, confirmamos el plazo exacto para tu tipo de actividad.',
       body: [
         { type: 'h3', text: 'Actividades en Camarma de Esteruelas: plazos predecibles en municipio pequeño' },
         { type: 'p', text: 'En Camarma de Esteruelas, los plazos de tramitación de permisos son generalmente más predecibles que en las ciudades grandes del Corredor. El Ayuntamiento es accesible y el volumen de expedientes es menor. Eso facilita planificar la fecha de apertura con antelación. Para actividades sin licencia clasificada, el proceso puede ser especialmente ágil si la documentación se presenta correctamente desde el principio.' },
@@ -949,7 +949,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'guadalajara': {
-      intro: 'Para comunidades en Guadalajara que lleven tiempo aplazando una obra por incertidumbre en los plazos, los permisos de obra tienden a tramitarse con plazos más cortos que en los municipios madrileños del Corredor. Hacemos la visita técnica, elaboramos el informe de estado previo y preparamos el presupuesto en el formato adecuado para presentar en junta.',
+      intro: 'Para comunidades en Guadalajara que lleven tiempo aplazando una obra, el primer paso es tener el presupuesto con la documentación necesaria: memoria descriptiva, fotografías del estado previo y partidas desglosadas. Hacemos la visita técnica, elaboramos el informe de estado previo y preparamos el presupuesto en el formato adecuado para presentar en junta.',
       body: [
         { type: 'h3', text: 'Comunidades en Guadalajara: permisos más ágiles para obras de mayor alcance' },
         { type: 'p', text: 'Las obras en zonas comunes de comunidades en Guadalajara que necesitan licencia (cambios en fachada, instalación de ascensor) tienen plazos de tramitación generalmente más cortos que en los municipios madrileños del Corredor. Para comunidades que llevan tiempo aplazando una obra por incertidumbre en los plazos, esa previsibilidad facilita la planificación y la aprobación en junta.' },
@@ -976,7 +976,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'camarma-de-esteruelas': {
-      intro: 'En comunidades pequeñas de Camarma es más fácil reunir a todos los propietarios y resolver dudas en persona antes de votar. Una obra bien explicada en comunidades de 4 a 12 propietarios se aprueba con menos fricción que en grandes comunidades urbanas. Elaboramos el presupuesto con toda la documentación necesaria para la junta.',
+      intro: 'En comunidades pequeñas de Camarma es más fácil reunir a todos los propietarios y resolver dudas en persona antes de votar. Una obra bien explicada y bien documentada se aprueba con menos fricción que en grandes comunidades urbanas. Elaboramos el presupuesto con toda la documentación necesaria para la junta.',
       body: [
         { type: 'h3', text: 'Comunidades pequeñas en Camarma: toma de decisiones más rápida' },
         { type: 'p', text: 'Las comunidades de Camarma de Esteruelas son en su mayoría pequeñas, con 4 a 12 propietarios por edificio o urbanización. Esa escala facilita la toma de decisiones en junta: es más fácil reunir a todos los propietarios, resolver dudas en persona y llegar a acuerdos. Las obras se aprueban y ejecutan con menos fricción burocrática que en grandes comunidades urbanas.' },
@@ -1163,7 +1163,7 @@ export const ZONES = [
     primary: true,
     province: 'Madrid',
     desc: 'Reformas en Coslada con profesionales de confianza. Presupuesto gratis en 24h.',
-    heroIntro: 'En Coslada trabajamos habitualmente en bloques del núcleo urbano y en locales en la zona industrial. Antes de cerrar cualquier presupuesto, evaluamos el estado real de las instalaciones: si hay indicios de humedad o la planta baja lo requiere, lo incluimos en la visita técnica gratuita para que el precio cerrado sea realmente cerrado desde el primer día.',
+    heroIntro: 'En Coslada trabajamos habitualmente en bloques del núcleo urbano y en locales en la zona industrial. Antes de cerrar cualquier presupuesto, evaluamos el estado real de las instalaciones: qué puede aprovecharse, qué necesita renovación y qué conviene abordar en la misma obra para no tener que volver a abrir. El precio cerrado es real cuando incluye todo lo que el estado de la vivienda requiere.',
     localAngle: 'tiene un tejido residencial denso con pisos de los 80 y 90 en zonas como Valleaguado, Ciudad 70 y Ciudad San Pablo, donde los proyectos más habituales combinan reforma de baño, renovación de fontanería y mejora de la eficiencia energética',
     neighborhoods: ['Valleaguado', 'Ciudad 70', 'Ciudad San Pablo', 'Barrio del Puerto', 'Barrio de la Estación', 'El Esparragal', 'La Colina', 'Casco (Pueblo)'],
   },
@@ -1183,7 +1183,7 @@ export const ZONES = [
     primary: false,
     province: 'Guadalajara',
     desc: 'También operamos en Guadalajara capital y su entorno.',
-    heroIntro: 'Guadalajara capital tiene una diferencia práctica respecto a los municipios madrileños del Corredor: los permisos de obra menor tienden a tramitarse con plazos más cortos. Si el calendario de la reforma es ajustado, esa diferencia puede ser determinante para la fecha de inicio. Trabajamos con el mismo equipo propio y el mismo precio cerrado que en Alcalá o Torrejón.',
+    heroIntro: 'En Guadalajara capital trabajamos con el mismo equipo propio y el mismo sistema de precio cerrado que en Alcalá o Torrejón. El alcance de la reforma depende del estado real de las instalaciones y de lo que quieras cambiar: la visita técnica gratuita lo determina antes de comprometer ningún número ni plazo.',
     localAngle: 'es la capital provincial con un importante parque de vivienda de los 70 y 90 en el Balconcillo y Aguas Vivas, donde la sustitución de instalaciones obsoletas y la mejora del aislamiento térmico son las reformas más solicitadas',
     neighborhoods: ['Casco Histórico', 'El Balconcillo', 'Aguas Vivas', 'El Alamín', 'Los Manantiales', 'Estación', 'Los Valles'],
   },
@@ -1213,7 +1213,7 @@ export const ZONES = [
     primary: false,
     province: 'Madrid',
     desc: 'Reformas en Camarma de Esteruelas.',
-    heroIntro: 'Camarma de Esteruelas es un municipio pequeño donde los trámites con el Ayuntamiento son más predecibles y la relación durante la obra es más directa. Trabajamos con el mismo equipo y el mismo sistema de precio cerrado que en Alcalá. La visita técnica gratuita está disponible sin esperas adicionales.',
+    heroIntro: 'En Camarma de Esteruelas trabajamos con el mismo equipo y el mismo sistema de precio cerrado que en Alcalá. Si tienes un proyecto de reforma en vivienda unifamiliar o adosado, la visita técnica gratuita evalúa el alcance completo antes de presupuestar: interior, cubierta o cerramientos, según lo que necesite la vivienda.',
     localAngle: 'es un municipio con predominio de viviendas unifamiliares y adosados, donde los proyectos de reforma integral y ampliación de estancias son los más demandados por familias que llevan más de una década en la zona',
     neighborhoods: ['Casco Urbano', 'Urb. Nueva Camarma', 'Urb. El Practicante', 'Gran Vía'],
   },

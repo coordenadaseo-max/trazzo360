@@ -97,7 +97,7 @@ export const SERVICES = [
     desc: 'Reforma de baños, cuartos de baño y aseos: cambio de bañera por ducha, alicatados, sanitarios, fontanería, mampara y muebles. Precio cerrado.',
     body: [
       { type: 'h3', text: 'Qué incluye la reforma completa de un baño: sin medias tintas' },
-      { type: 'p',  text: 'Demolición de alicatados y solado, impermeabilización de suelo y primer metro de pared, alicatado y solado nuevo, plato de ducha o bañera, mampara, sanitarios, mueble, espejo, iluminación y accesorios. Gestionamos los escombros y la limpieza final. Si el baño tiene humedades previas o problemas de fontanería, los detectamos y presupuestamos en la visita técnica gratuita, antes de que firmes nada.' },
+      { type: 'p',  text: 'Demolición de alicatados y solado, impermeabilización de suelo y primer metro de pared, alicatado y solado nuevo, plato de ducha o bañera, mampara, sanitarios, mueble, espejo, iluminación y accesorios. Gestionamos los escombros y la limpieza final. Si durante la visita vemos indicios de humedad o problemas en la instalación, los incorporamos a la valoración. Otros problemas ocultos solo pueden confirmarse una vez desmontados los revestimientos.' },
       { type: 'h3', text: 'Los baños del Corredor del Henares: lo que tienen y cómo se resuelve' },
       { type: 'p',  text: 'Los baños de los bloques de los años 70 y 80 en Alcalá de Henares, Torrejón de Ardoz y Coslada comparten las mismas características: bañera de porcelana de 170 cm que nadie usa, azulejos de 15x15 en tonos beige o marrón, juntas ennegrecidas y ventilación a través de un conducto comunitario. La reforma más solicitada es el cambio de bañera por plato de ducha con nuevo alicatado: transforma el baño por completo en 5 a 10 días hábiles. En chalets y adosados de Meco y Camarma de Esteruelas, donde los baños superan los 6 metros cuadrados, ejecutamos duchas de obra a medida con microcemento o resina de cuarzo.' },
       { type: 'h3', text: '¿Necesitas licencia para reformar el baño? Lo que dice la normativa' },
@@ -579,7 +579,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'guadalajara': {
-      intro: 'El alcance de una reforma integral en Guadalajara capital depende del estado de las instalaciones, no solo de la superficie. En pisos de los años 70 y 80, el cuadro eléctrico y la fontanería condicionan lo que se puede hacer: si necesitan renovación, lo más eficiente es abrir el piso una sola vez y hacer todo en la misma obra. La visita técnica determina qué alcance corresponde antes de comprometer ningún número.',
+      intro: 'El alcance de una reforma integral en Guadalajara capital depende del estado de las instalaciones, no solo de la superficie. Si la vivienda lleva años sin una renovación importante, el cuadro eléctrico y la fontanería pueden condicionar de forma importante lo que conviene hacer: en esos casos, lo más eficiente es abrir el piso una sola vez y hacer todo en la misma obra. La visita técnica determina qué alcance corresponde antes de comprometer ningún número.',
       body: [
         { type: 'h3', text: 'La ventaja de reformar en Guadalajara: plazos de licencia más cortos' },
         { type: 'p', text: 'Una diferencia práctica al reformar en Guadalajara capital respecto a los municipios madrileños del Corredor es la tramitación de permisos: el Ayuntamiento de Guadalajara tiene plazos de resolución de licencias de obra menor generalmente más cortos. Si el calendario de la reforma es ajustado, esa diferencia puede ser determinante para la fecha de inicio real de la obra.' },
@@ -709,7 +709,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'coslada': {
-      intro: 'Reformar la cocina en un piso de Coslada de los 80 habitualmente implica revisar la instalación eléctrica: si los circuitos actuales no soportan los electrodomésticos de uso normal, conviene hacer la electricidad nueva en la misma obra. La reforma completa resuelve el fondo del problema, no solo la estética.',
+      intro: 'Al reformar una cocina en Coslada conviene comprobar si la instalación eléctrica puede asumir la distribución y los electrodomésticos previstos. Si necesita renovación, hacerlo dentro de la misma obra evita intervenir de nuevo después. La reforma completa resuelve el fondo del problema, no solo la estética.',
       body: [
         { type: 'h3', text: 'Electricidad en cocinas de Coslada: la primera partida que hay que resolver' },
         { type: 'p', text: 'La instalación eléctrica original de los pisos de Coslada de los 80 no tiene circuitos dedicados para electrodomésticos de alta potencia. Eso provoca sobrecargas cuando se usan simultáneamente el horno, la vitrocerámica y el lavavajillas. En una reforma de cocina, la instalación eléctrica nueva no es un extra: es la base que hace que todos los demás electrodomésticos funcionen correctamente desde el primer día.' },
@@ -727,7 +727,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'guadalajara': {
-      intro: 'En Guadalajara, las cocinas cerradas de los bloques de los años 70 al 90 son buenos candidatos para abrirse al salón: el tabique suele ser de distribución, la obra es rápida y el impacto visual transforma la percepción de toda la vivienda. El presupuesto incluye la apertura como partida independiente para que puedas valorarla antes de decidir.',
+      intro: 'Si quieres abrir la cocina al salón en Guadalajara, primero hay que comprobar qué función tiene el tabique y cómo afectará el cambio a instalaciones, extracción e iluminación. Solo después tiene sentido valorar distribución y presupuesto. El presupuesto incluye la apertura como partida independiente para que puedas valorarla antes de decidir.',
       body: [
         { type: 'h3', text: 'Abrir la cocina al salón en pisos de Guadalajara: proceso y resultado' },
         { type: 'p', text: 'La apertura de cocina al salón es la reforma más solicitada en los pisos del Balconcillo y Aguas Vivas en Guadalajara. Las cocinas cerradas de esos bloques de los años 70 al 90 aíslan la cocina del resto de la vivienda y reducen la sensación de espacio en pisos de superficie media. Con un tabique de distribución eliminado y una encimera o barra americana, el piso parece sustancialmente más grande.' },
@@ -745,7 +745,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'meco': {
-      intro: 'En los adosados de Meco, las cocinas suelen tener más espacio que en los pisos de bloque, lo que abre opciones que no caben en una cocina pequeña: islas, cocinas americanas o zonas de almacenaje independientes. Con espacio disponible, la primera decisión es la distribución, no los materiales.',
+      intro: 'Si vas a reformar la cocina de un adosado en Meco y dispones de más superficie, merece la pena estudiar la distribución antes de elegir materiales: una isla, una península o una zona adicional de almacenaje necesitan resolverse desde el plano. Con espacio disponible, la primera decisión es la distribución, no los materiales.',
       body: [
         { type: 'h3', text: 'Cocinas con más espacio en adosados de Meco: opciones que no caben en los pisos' },
         { type: 'p', text: 'En los adosados de Meco, las cocinas suelen tener entre 10 y 16 metros cuadrados, lo que abre opciones imposibles en cocinas de 7 m²: isla central con función de encimera y barra, zona de despensa independiente, o cocina americana con acceso directo desde el salón. Con ese espacio disponible, la primera decisión no es qué muebles elegir sino cómo se quiere vivir la cocina: el diseño viene después.' },
@@ -774,7 +774,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'torrejon-de-ardoz': {
-      intro: 'En Torrejón, la duda más frecuente antes de reformar es si hacerlo todo a la vez o por fases. La respuesta depende del estado de las instalaciones: si el cuadro y la fontanería están al límite, reformar de una vez sale significativamente más barato que abrir el piso en dos obras.',
+      intro: 'Antes de reformar un piso en Torrejón de Ardoz conviene decidir si tiene más sentido abordar la vivienda de una vez o trabajar por fases. La respuesta depende del estado de las instalaciones: si el cuadro y la fontanería están al límite, reformar de una vez sale significativamente más barato que abrir el piso en dos obras.',
       body: [
         { type: 'h3', text: 'El coste de reformar por fases frente a hacerlo de una vez' },
         { type: 'p', text: 'Reformar por fases parece más asequible pero suele salir más caro en total. Si en el primer año haces el baño, al año siguiente la cocina y al siguiente los suelos, pagas tres veces el coste de desescombro y coordinas tres obras por separado. En pisos de Torrejón con instalaciones antiguas que van a necesitar renovación sí o sí, hacerlo todo a la vez con el piso abierto una sola vez puede ahorrar entre un 20 y un 30% en el total.' },
@@ -783,7 +783,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'coslada': {
-      intro: 'Reformar un piso en Coslada tiene una variable que conviene evaluar desde el principio: las humedades. Los edificios de los 80 en zonas como Valleaguado y Ciudad 70 concentran problemas de capilaridad en plantas bajas. Conocer el estado real antes de cerrar el presupuesto evita sorpresas a mitad de obra.',
+      intro: 'Reformar un piso en Coslada tiene una variable que conviene evaluar desde el principio: si hay indicios de humedad en la vivienda, conviene identificar su origen antes de cerrar los acabados. Pintar o revestir sin resolver la causa puede hacer que el problema reaparezca después de la reforma. Conocer el estado real antes de cerrar el presupuesto evita sorpresas a mitad de obra.',
       body: [
         { type: 'h3', text: 'Antes de presupuestar: cómo detectar humedades en un piso de Coslada' },
         { type: 'p', text: 'En algunos bloques de Coslada, las humedades en plantas bajas no son visibles hasta que empieza la obra. Conocer el estado real antes de firmar el contrato es lo que hace que el precio cerrado sea realmente cerrado. En la visita técnica revisamos el estado de la solera, los muros y la cubierta cuando aplica, y lo incluimos en el presupuesto cuando el estado lo requiere.' },
@@ -839,7 +839,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
   },
   'locales-comerciales': {
     'alcala-de-henares': {
-      intro: 'Abrir un negocio en Alcalá implica tramitar la licencia de actividad antes de inaugurar, y en hostelería los plazos pueden superar los tres meses. La clave es arrancar la tramitación en paralelo con la obra desde el primer día: esperar a terminar la reforma para presentar la licencia puede retrasar la apertura varios meses.',
+      intro: 'Abrir un negocio en Alcalá implica tramitar la licencia de actividad antes de inaugurar. En un local de hostelería, la tramitación administrativa puede condicionar la fecha de apertura: por eso conviene coordinar documentación y obra desde el principio, en lugar de dejar los trámites para cuando el local ya esté terminado.',
       body: [
         { type: 'h3', text: 'Licencia de actividad en Alcalá: por qué hay que tramitarla desde el primer día' },
         { type: 'p', text: 'En Alcalá de Henares, los plazos de tramitación de licencias de actividad para hostelería pueden superar los tres meses. Si se espera a terminar la obra para presentar la solicitud, la apertura se retrasa tanto como la propia tramitación. La forma de evitarlo es arrancar el expediente en paralelo con la obra: mientras el local se reforma, la licencia avanza. Lo coordinamos sin que tengas que hacer ninguna gestión por tu cuenta.' },
@@ -931,7 +931,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'coslada': {
-      intro: 'La humedad por capilaridad en plantas bajas es una de las obras que más se aprueban en junta en Coslada: el daño es visible para todos los propietarios y el coste de no actuar se percibe como mayor que el de ejecutar la obra. Hacerla bien desde el principio evita recurrencias que terminan siendo más caras. Presupuestamos con memoria descriptiva lista para presentar en junta.',
+      intro: 'Cuando una humedad afecta a zonas comunes, el presupuesto debería explicar no solo cómo reparar el acabado, sino qué origen se ha detectado y qué trabajos se realizarán para evitar que reaparezca. Hacerlo bien desde el principio evita recurrencias que terminan siendo más caras. Presupuestamos con memoria descriptiva lista para presentar en junta.',
       body: [
         { type: 'h3', text: 'Humedades por capilaridad en Coslada: la obra que más se aprueba en junta' },
         { type: 'p', text: 'En muchos bloques de Coslada, especialmente en zonas como Valleaguado y Ciudad 70, la humedad por capilaridad en plantas bajas es un problema visible para todos los vecinos. Es, por eso, una de las obras que con mayor frecuencia consigue la mayoría simple en junta: el daño es evidente y el coste de no actuar se percibe como mayor que el de ejecutar la obra. Hacerla bien desde el principio evita recurrencias.' },
@@ -940,7 +940,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       ],
     },
     'san-fernando-de-henares': {
-      intro: 'El tipo de obra en zonas comunes determina qué mayoría se necesita en junta en San Fernando de Henares. Las obras de conservación y mantenimiento (pintura, humedades, impermeabilización) se aprueban por mayoría simple. Las mejoras no urgentes requieren tres quintos de propietarios y cuotas. Antes de convocar la junta, te indicamos qué aplica en la visita técnica previa al presupuesto.',
+      intro: 'Antes de llevar una obra a junta en San Fernando de Henares conviene que el presupuesto deje claro qué se va a hacer, por qué es necesario, qué zonas afecta y cómo se organizará la ejecución. Esa información facilita que propietarios y administración puedan valorar la propuesta con el mismo alcance delante. Hacemos la visita técnica y elaboramos toda la documentación necesaria.',
       body: [
         { type: 'h3', text: 'Obras en comunidades de San Fernando: distintas necesidades según la época del edificio' },
         { type: 'p', text: 'Las comunidades de San Fernando de los años 80 y 90 acumulan necesidades de mantenimiento que varían por edificio: portales con revestimientos originales que hay que renovar, cubiertas que en algunos casos nunca se han impermeabilizado, y ascensores de primera generación en edificios de más de cuatro plantas. En los edificios más recientes de Parque Roma y Parque Henares, las actuaciones suelen ser de mejora más que de urgencia.' },
@@ -1163,7 +1163,7 @@ export const ZONES = [
     primary: true,
     province: 'Madrid',
     desc: 'Reformas en Coslada con profesionales de confianza. Presupuesto gratis en 24h.',
-    heroIntro: 'En Coslada trabajamos habitualmente en bloques del núcleo urbano y en locales en la zona industrial. Antes de cerrar cualquier presupuesto, evaluamos el estado real de las instalaciones: qué puede aprovecharse, qué necesita renovación y qué conviene abordar en la misma obra para no tener que volver a abrir. El precio cerrado es real cuando incluye todo lo que el estado de la vivienda requiere.',
+    heroIntro: 'En Coslada trabajamos habitualmente en bloques del núcleo urbano y en locales en la zona industrial. Antes de cerrar cualquier presupuesto, evaluamos el estado real de las instalaciones: qué puede aprovecharse, qué necesita renovación y qué conviene abordar en la misma obra para no tener que volver a abrir. El presupuesto puede cerrarse con más precisión cuando el alcance parte de una revisión previa del estado de la vivienda.',
     localAngle: 'tiene un tejido residencial denso con pisos de los 80 y 90 en zonas como Valleaguado, Ciudad 70 y Ciudad San Pablo, donde los proyectos más habituales combinan reforma de baño, renovación de fontanería y mejora de la eficiencia energética',
     neighborhoods: ['Valleaguado', 'Ciudad 70', 'Ciudad San Pablo', 'Barrio del Puerto', 'Barrio de la Estación', 'El Esparragal', 'La Colina', 'Casco (Pueblo)'],
   },
@@ -1203,7 +1203,7 @@ export const ZONES = [
     primary: false,
     province: 'Madrid',
     desc: 'Cubrimos Meco y municipios próximos.',
-    heroIntro: 'Meco tiene un perfil residencial diferente al de los grandes municipios del Corredor: predominan las viviendas unifamiliares y los adosados en urbanización. Las reformas aquí suelen incluir variables que no aparecen en los pisos de bloque: cubierta, terraza, distribución de dos plantas. La visita técnica gratuita identifica el alcance completo antes de presupuestar.',
+    heroIntro: 'Si vas a reformar una vivienda unifamiliar o un adosado en Meco, conviene tener en cuenta variables que no aparecen en los pisos de bloque: cubierta, terraza, distribución de dos plantas. El alcance puede ser muy diferente al de una reforma en un edificio de pisos. La visita técnica gratuita identifica qué es urgente y qué puede esperar antes de presupuestar.',
     localAngle: 'es un municipio residencial con alta proporción de viviendas unifamiliares y adosados en urbanizaciones, donde el cerramiento de terrazas, la reforma de cocina y la renovación de baños son las actuaciones más demandadas',
     neighborhoods: ['Casco Antiguo', 'Escritores', 'Pintores', 'Ciudad de la Luz', 'Belvalle', 'Los Ríos', 'Europa', 'Barrio Alto'],
   },

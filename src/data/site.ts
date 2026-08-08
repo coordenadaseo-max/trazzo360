@@ -649,7 +649,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'h3', text: 'Alcance de la reforma según la antigüedad de la vivienda' },
         { type: 'p', text: 'En un piso del casco antiguo de San Fernando de los años 70 u 80, la fontanería del baño suele necesitar renovación además de los acabados. En una vivienda de Parque Roma o Parque Henares de los 90, las instalaciones pueden estar en mejor estado y la reforma puede limitarse a alicatado, sanitarios y mueble. La diferencia en presupuesto puede ser relevante. La visita técnica lo aclara antes de comprometer nada.' },
         { type: 'h3', text: 'Impermeabilización: por qué es la partida que no puede saltarse' },
-        { type: 'p', text: 'La impermeabilización del suelo y del primer metro de pared es una obligación técnica, no una opción. Cuando un presupuesto no la incluye explícitamente, suele ser porque no se va a hacer correctamente. Es la causa más frecuente de humedades en baños reformados a precio bajo. En Trazzo360 la incluimos en cualquier reforma de baño desde la primera partida del presupuesto.' },
+        { type: 'p', text: 'La impermeabilización del suelo y del primer metro de pared es una obligación técnica, no una opción. Cuando un presupuesto no la incluye explícitamente, suele ser porque no se va a hacer correctamente. Es la causa más frecuente de humedades en baños reformados a precio bajo. Va incluida desde la primera partida del presupuesto, no como extra que aparece después de firmar.' },
       ],
     },
     'guadalajara': {
@@ -945,7 +945,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'h3', text: 'Obras en comunidades de San Fernando: distintas necesidades según la época del edificio' },
         { type: 'p', text: 'Las comunidades de San Fernando de los años 80 y 90 acumulan necesidades de mantenimiento que varían por edificio: portales con revestimientos originales que hay que renovar, cubiertas que en algunos casos nunca se han impermeabilizado, y ascensores de primera generación en edificios de más de cuatro plantas. En los edificios más recientes de Parque Roma y Parque Henares, las actuaciones suelen ser de mejora más que de urgencia.' },
         { type: 'h3', text: 'Qué mayoría se necesita para aprobar la obra en junta' },
-        { type: 'p', text: 'Las obras de conservación y mantenimiento (pintura de portal, reparación de humedades, impermeabilización de cubierta) se aprueban por mayoría simple. Las mejoras no urgentes (reforma completa del portal, nueva iluminación LED, instalación de ascensor) requieren el voto favorable de tres quintos de propietarios y cuotas. Antes de convocar la junta, te asesoramos sobre qué mayoría necesita vuestra obra concreta.' },
+        { type: 'p', text: 'Las obras de conservación y mantenimiento (pintura de portal, reparación de humedades, impermeabilización de cubierta) se aprueban por mayoría simple. Las mejoras no urgentes (reforma completa del portal, nueva iluminación LED, instalación de ascensor) requieren el voto favorable de tres quintos de propietarios y cuotas. Antes de convocar la junta, conviene tenerlo claro: lo indicamos en la visita previa al presupuesto.' },
       ],
     },
     'guadalajara': {

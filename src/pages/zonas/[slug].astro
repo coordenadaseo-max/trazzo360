@@ -83,14 +83,14 @@ const faqSchema = {
           <span class="text-[#A85535]">en {zone.name}</span>
         </h1>
         <p class="text-lg text-gray-300 leading-relaxed mb-4">
-          Trazzo360 trabaja en {zone.name} con equipo propio: reformas integrales, baños, cocinas, locales comerciales y comunidades de vecinos. Precio cerrado en el contrato, plazo de entrega garantizado por escrito.
+          ¿Estás valorando reformar en {zone.name}? Aquí puedes ver qué tipos de obra realizamos, cómo planteamos cada proyecto y qué conviene tener claro antes de pedir presupuesto.
         </p>
         <p class="text-base text-gray-400 leading-relaxed mb-8">
-          {zone.name} {zone.localAngle}. Llevamos {SITE.stats.years} años en la zona y sabemos de primera mano qué necesita cada vivienda antes de abrir el presupuesto.
+          {zone.name} {zone.localAngle}. Trabajamos en toda la zona con equipo propio, precio cerrado en el contrato y plazo garantizado por escrito.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-            Presupuesto Gratis en {zone.name}
+            Solicitar presupuesto en {zone.name}
           </a>
           <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
             ☎ {SITE.phoneDisplay}
@@ -173,7 +173,7 @@ const faqSchema = {
             `Equipo propio en ${zone.name} y todo el Corredor del Henares. Sin subcontratas.`,
             'Precio cerrado en el contrato. Lo que firmamos es exactamente lo que pagas.',
             'Plazo de entrega garantizado por escrito. Si nos retrasamos sin causa de fuerza mayor, penalizamos.',
-            `Más de ${SITE.stats.projects} obras completadas en la zona en ${SITE.stats.years} años.`,
+            `${SITE.stats.projects} obras completadas en la zona en ${SITE.stats.years} años.`,
             'Visita técnica y presupuesto gratuitos. Sin compromiso.',
             'Gestión completa de licencias y permisos incluida cuando la obra lo requiere.',
           ].map(item => (
@@ -190,9 +190,9 @@ const faqSchema = {
       </div>
       <div class="bg-[#111827] p-8 text-white">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratuito</p>
-        <p class="text-xl font-black text-white mb-2">Visita y precio en 24h</p>
+        <p class="text-xl font-black text-white mb-2">Respondemos en 24h. Presupuesto cerrado tras la visita.</p>
         <p class="text-sm text-gray-400 mb-6">
-          Sin compromiso. Cuéntanos qué quieres reformar en {zone.name} y te decimos cuánto cuesta y cuánto tarda.
+          Sin compromiso. Cuéntanos qué quieres reformar en {zone.name}, concertamos visita técnica y entregamos presupuesto cerrado en 48h.
         </p>
         <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity mb-3" style="background:#A85535">
           Solicitar presupuesto en {zone.name}
@@ -277,9 +277,9 @@ const faqSchema = {
       <h2 class="text-3xl font-black text-white mb-3">
         ¿Necesitas presupuesto de obra en {zone.name}?
       </h2>
-      <p class="text-white/80 mb-7">Visita gratuita. Precio cerrado en 24h. Sin sorpresas ni letra pequeña.</p>
+      <p class="text-white/80 mb-7">Visita gratuita. Presupuesto cerrado en 48h. Sin letra pequeña.</p>
       <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">
-        Pide Presupuesto Gratis
+        Solicitar valoración gratuita
       </a>
     </div>
   </section>

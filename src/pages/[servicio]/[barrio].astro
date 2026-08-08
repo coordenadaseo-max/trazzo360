@@ -15,7 +15,7 @@ const { service, zone } = Astro.props;
 
 const isPrimary = zone.primary;
 const cityPresence = isPrimary
-  ? `con equipo permanente en ${zone.name}`
+  ? `con presencia habitual en ${zone.name}`
   : `cubriendo regularmente ${zone.name} y la comarca`;
 
 // Intro único por combinación servicio×localidad
@@ -145,7 +145,7 @@ const intro = szc?.intro ?? service.desc;
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-            Presupuesto Gratis en {zone.name}
+            Solicitar presupuesto en {zone.name}
           </a>
           <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
             ☎ {SITE.phoneDisplay}
@@ -234,7 +234,7 @@ const intro = szc?.intro ?? service.desc;
             'Precio cerrado en el contrato desde el primer presupuesto. Sin extras de última hora.',
             'Plazo de entrega garantizado por escrito. Con penalización si nos retrasamos sin causa de fuerza mayor.',
             'Visita técnica y presupuesto gratuitos. Sin compromiso ni presión.',
-            `Más de ${SITE.stats.projects} obras completadas en el Corredor del Henares en ${SITE.stats.years} años.`,
+            `${SITE.stats.projects} obras completadas en el Corredor del Henares en ${SITE.stats.years} años.`,
             'Gestión de licencias y permisos de obra incluida cuando la normativa lo requiere.',
           ].map(item => (
             <div class="flex items-start gap-3">
@@ -250,9 +250,9 @@ const intro = szc?.intro ?? service.desc;
       </div>
       <div class="bg-[#111827] p-8 text-white">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratuito</p>
-        <p class="text-xl font-black text-white mb-2">Visita y precio en 24h</p>
+        <p class="text-xl font-black text-white mb-2">Respondemos en 24h. Presupuesto cerrado tras la visita.</p>
         <p class="text-sm text-gray-400 mb-6">
-          Sin compromiso. Cuéntanos qué quieres reformar en {zone.name} y te damos precio cerrado en menos de 48 horas.
+          Sin compromiso. Cuéntanos qué quieres reformar en {zone.name}, concertamos visita técnica y entregamos presupuesto cerrado en 48h.
         </p>
         <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity mb-3" style="background:#A85535">
           Solicitar presupuesto en {zone.name}
@@ -317,7 +317,7 @@ const intro = szc?.intro ?? service.desc;
     <section class="py-16 bg-white">
       <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-xl font-black text-gray-900 mb-3">
-          ¿Cuánto cuesta {service.title.toLowerCase()} en {zone.name}?
+          ¿Cuánto cuesta {costar} en {zone.name}?
         </h2>
         <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
           Precios de referencia calculados sobre proyectos reales ejecutados en {zone.name} y el Corredor del Henares. El presupuesto exacto, cerrado y sin sorpresas, lo recibes gratis en 48h tras la visita técnica.
@@ -413,9 +413,9 @@ const intro = szc?.intro ?? service.desc;
       <h2 class="text-3xl font-black text-white mb-3">
         ¿{service.title} en {zone.name}?
       </h2>
-      <p class="text-white/80 mb-7">Presupuesto gratuito en 24h. Precio cerrado. Equipo propio.</p>
+      <p class="text-white/80 mb-7">Visita gratuita. Presupuesto cerrado en 48h. Equipo propio.</p>
       <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">
-        Pide Presupuesto Gratis
+        Solicitar valoración gratuita
       </a>
     </div>
   </section>

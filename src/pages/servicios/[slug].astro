@@ -134,9 +134,10 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-3 gap-12">
       <div class="lg:col-span-2">
-        <h2 class="text-2xl font-black text-gray-900 mb-4">
+        <h2 class="text-2xl font-black text-gray-900 mb-3">
           {service.title} en el Corredor del Henares
         </h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
         {service.body ? (
           (service.body as {type: string; text: string}[]).map((block) =>
             block.type === 'h3' ? (
@@ -150,11 +151,11 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema
         ) : (
           <p class="text-gray-600 leading-relaxed mb-6">{service.desc}</p>
         )}
-        <p class="text-gray-600 leading-relaxed mb-6">
+        <p class="text-gray-600 leading-relaxed mt-6 mb-6">
           En Trazzo360 llevamos {SITE.stats.years} años realizando {gerund} en todos los municipios del Corredor del Henares.
           Trabajamos con equipo propio, precio cerrado en el contrato y plazo de entrega garantizado.
         </p>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 gap-4 mb-8">
           {['Precio cerrado por contrato', 'Equipo propio, sin subcontratas', 'Plazo de entrega garantizado', 'Presupuesto gratuito en 24h'].map(item => (
             <div class="flex items-center gap-3 p-4 bg-gray-50">
               <div class="w-5 h-5 rounded-full bg-[#A85535] flex items-center justify-center flex-shrink-0">
@@ -164,9 +165,15 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema
             </div>
           ))}
         </div>
+        <div class="bg-[#F9F7F4] border-l-4 border-[#A85535] p-6">
+          <p class="text-sm font-semibold text-gray-900 mb-2">Antes de pedir presupuesto de {gerund}</p>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Si el inmueble tiene más de 30 años, asegúrate de que el presupuesto evalúe el estado de las instalaciones antes de cerrar el precio. Un presupuesto que no las contempla puede quedarse obsoleto en cuanto empiece la obra. En Trazzo360 lo incluimos en la visita técnica gratuita, sin coste ni compromiso.
+          </p>
+        </div>
       </div>
       <!-- Sidebar CTA -->
-      <div class="bg-[#111827] p-8 text-white h-fit">
+      <div class="bg-[#111827] p-8 text-white h-fit sticky top-6">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratis</p>
         <p class="text-2xl font-black mb-2">Desde <span class="text-[#A85535]">{service.priceFrom}€</span></p>
         <p class="text-sm text-gray-400 mb-6">{service.priceDesc}</p>
@@ -181,19 +188,64 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema
     </div>
   </section>
 
+  <!-- Por qué Trazzo360 -->
+  <section class="py-16 bg-[#F9F7F4]">
+    <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-2xl font-black text-gray-900 mb-4">
+          Por qué elegir Trazzo360 para {gerund} en el Corredor del Henares
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
+        <div class="space-y-4">
+          {[
+            'Equipo propio en toda la zona. Sin subcontratas externas ni gremios que no conoces.',
+            'Precio cerrado en el contrato desde el primer presupuesto. Sin extras de última hora.',
+            'Plazo de entrega garantizado por escrito. Con penalización si nos retrasamos sin causa de fuerza mayor.',
+            'Visita técnica y presupuesto gratuitos. Sin compromiso ni presión.',
+            `Más de ${SITE.stats.projects} obras completadas en el Corredor del Henares en ${SITE.stats.years} años.`,
+            'Gestión de licencias y permisos de obra incluida cuando la normativa lo requiere.',
+          ].map(item => (
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-[#A85535] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <span class="text-sm text-gray-700">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="bg-[#111827] p-8 text-white">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratuito</p>
+        <p class="text-xl font-black text-white mb-2">Visita y precio en 24h</p>
+        <p class="text-sm text-gray-400 mb-6">
+          Sin compromiso. Cuéntanos qué quieres reformar y te damos un presupuesto cerrado en menos de 48 horas, sin letra pequeña ni sorpresas posteriores.
+        </p>
+        <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity mb-3" style="background:#A85535">
+          Solicitar presupuesto gratis
+        </a>
+        <a href={`tel:${SITE.phone}`} class="block text-center py-3 text-sm text-gray-300 border border-white/20 hover:border-white transition-colors">
+          ☎ {SITE.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Proceso paso a paso -->
   {service.processSteps && (service.processSteps as {title:string;desc:string}[]).length > 0 && (
-    <section class="py-20 bg-gray-50">
+    <section class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-2xl font-black text-gray-900 mb-4">
+        <h2 class="text-2xl font-black text-gray-900 mb-3">
           Cómo trabajamos: plazos reales, precio cerrado, sin sorpresas
         </h2>
-        <p class="text-gray-600 leading-relaxed mb-10">
+        <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
           Sabemos que iniciar una obra implica confiar en quien te la va a ejecutar. Por eso nuestro proceso está diseñado para que tengas certeza en cada fase: sabes cuándo empieza, cuándo termina y cuánto cuesta desde el primer día. Así organizamos cada proyecto de {gerund} en el Corredor del Henares, sin imprevistos ni cambios de precio a mitad de obra.
         </p>
+        <div class="w-12 h-1 bg-[#A85535] mb-8"></div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {(service.processSteps as {title:string;desc:string}[]).map((step, i) => (
-            <div class="flex gap-4 p-6 bg-white border border-gray-100">
+            <div class="flex gap-4 p-6 bg-gray-50 border border-gray-100">
               <div class="w-8 h-8 bg-[#A85535] text-white text-sm font-black flex items-center justify-center flex-shrink-0">
                 {i + 1}
               </div>
@@ -210,17 +262,18 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema
 
   <!-- Precios orientativos -->
   {service.priceTable && (service.priceTable as {label:string;price:string;includes?:string}[]).length > 0 && (
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-gray-50">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-2xl font-black text-gray-900 mb-4">
+        <h2 class="text-2xl font-black text-gray-900 mb-3">
           ¿Cuánto cuestan las {gerund} en el Corredor del Henares?
         </h2>
-        <p class="text-gray-600 leading-relaxed mb-8">
+        <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
           Los precios que ves a continuación son orientativos, calculados sobre proyectos reales que hemos ejecutado en la zona. El presupuesto exacto depende del estado previo de tu vivienda o local, los materiales que elijas y el alcance de la obra. Visita gratuita y presupuesto cerrado en 48 horas, sin ningún compromiso.
         </p>
+        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
         <div class="divide-y divide-gray-100 border border-gray-100">
           {(service.priceTable as {label:string;price:string;includes?:string}[]).map(row => (
-            <div class="flex items-center justify-between p-5 gap-6 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center justify-between p-5 gap-6 hover:bg-white transition-colors">
               <div>
                 <p class="font-semibold text-gray-900 text-sm">{row.label}</p>
                 {row.includes && <p class="text-xs text-gray-400 mt-0.5">{row.includes}</p>}
@@ -229,24 +282,25 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema
             </div>
           ))}
         </div>
-        <p class="text-xs text-gray-400 mt-4">* Precios orientativos. El precio exacto depende del estado previo, materiales y alcance de la obra. <a href="/contacto/" class="underline hover:text-[#A85535]">Solicita presupuesto gratuito.</a></p>
+        <p class="text-xs text-gray-400 mt-4">* Precios orientativos IVA incluido. El precio exacto depende del estado previo, materiales y alcance de la obra. <a href="/contacto/" class="underline hover:text-[#A85535]">Solicita presupuesto gratuito.</a></p>
       </div>
     </section>
   )}
 
   <!-- Zonas donde ofrecemos este servicio -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-2xl font-black text-gray-900 mb-4">
+      <h2 class="text-2xl font-black text-gray-900 mb-3">
         Zona de actuación: todos los municipios del Corredor
       </h2>
-      <p class="text-gray-600 leading-relaxed mb-8">
-        Trabajamos en todos los municipios del Corredor del Henares sin coste de desplazamiento adicional. Tanto si tu vivienda, local o comunidad está en el núcleo urbano como en una urbanización, cubrimos toda la zona. Haz clic en tu municipio para ver los servicios disponibles y precios específicos.
+      <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
+        Trabajamos en todos los municipios del Corredor del Henares sin coste de desplazamiento adicional. Tanto si tu vivienda, local o comunidad está en el núcleo urbano como en una urbanización, cubrimos toda la zona. Haz clic en tu municipio para ver los precios específicos y cómo trabajamos allí.
       </p>
+      <div class="w-12 h-1 bg-[#A85535] mb-8"></div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         {ZONES.map(z => (
           <a href={`/${service.slug}/${z.slug}/`}
-            class="block p-4 bg-white border border-gray-100 hover:border-[#A85535] hover:shadow-md transition-all group">
+            class="block p-4 bg-gray-50 border border-gray-100 hover:border-[#A85535] hover:shadow-md transition-all group">
             <p class="font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors text-sm">{z.name}</p>
             <p class="text-xs text-gray-400 mt-1 group-hover:text-[#A85535]/70 transition-colors">{service.anchorLabel} en {z.name} →</p>
           </a>
@@ -257,12 +311,13 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema
 
   <!-- FAQ -->
   {service.faqs.length > 0 && (
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-[#F9F7F4]">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-2xl font-black text-gray-900 mb-4">Todo lo que necesitas saber antes de pedir presupuesto</h2>
-        <p class="text-gray-600 leading-relaxed mb-8">
+        <h2 class="text-2xl font-black text-gray-900 mb-3">Todo lo que necesitas saber antes de pedir presupuesto</h2>
+        <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
           Es normal tener dudas sobre plazos, precios, licencias y qué incluye exactamente la obra. A continuación respondemos las preguntas que más nos hacen antes de contratar. Si no encuentras la tuya, llámanos o escríbenos por WhatsApp y te respondemos el mismo día.
         </p>
+        <div class="w-12 h-1 bg-[#A85535] mb-8"></div>
         <div class="divide-y divide-gray-100">
           {service.faqs.map(faq => (
             <details class="group py-5">

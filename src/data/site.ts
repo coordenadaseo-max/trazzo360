@@ -94,7 +94,7 @@ export const SERVICES = [
     icon: '🚿',
     headline: 'Baños modernos y sin humedades. Desde 3.200€.',
     heroCopy: 'Un baño anticuado, con bañera que ya no usas, azulejos de los años 80 o juntas con humedad, es más fácil de resolver de lo que imaginas. Realizamos reformas de baños en el Corredor del Henares con precio cerrado y entrega en 1 a 3 semanas: cambio de bañera por plato de ducha, alicatado nuevo, sanitarios, mampara y fontanería completa. Sin obras que se alargan, sin presupuestos que crecen, sin intermediarios entre tú y el resultado final.',
-    desc: 'Reformamos tu baño completo: cambio de bañera por ducha, alicatados, sanitarios, fontanería, mampara y muebles. Todo incluido, precio cerrado.',
+    desc: 'Reforma de baños, cuartos de baño y aseos: cambio de bañera por ducha, alicatados, sanitarios, fontanería, mampara y muebles. Precio cerrado.',
     body: [
       { type: 'h3', text: 'Qué incluye la reforma completa de un baño: sin medias tintas' },
       { type: 'p',  text: 'Demolición de alicatados y solado, impermeabilización de suelo y primer metro de pared, alicatado y solado nuevo, plato de ducha o bañera, mampara, sanitarios, mueble, espejo, iluminación y accesorios. Gestionamos los escombros y la limpieza final. Si el baño tiene humedades previas o problemas de fontanería, los detectamos y presupuestamos en la visita técnica gratuita, antes de que firmes nada.' },
@@ -212,7 +212,7 @@ export const SERVICES = [
     icon: '🏢',
     headline: 'Suelos, ventanas, tabiques, baño y cocina. Precio cerrado.',
     heroCopy: 'Quieres renovar el piso pero no tienes claro si hacer solo el baño y la cocina, cambiar los suelos y las ventanas, o si tiene sentido hacerlo todo de una vez. Y sobre todo, cuánto va a costar cada opción. Hacemos reformas de pisos y chalets en el Corredor del Henares —desde actualizaciones parciales de alto impacto hasta redistribuciones con tabiques y carpintería nueva— con precio cerrado y plazo garantizado desde el primer día. La visita técnica gratuita determina qué tiene sentido para tu vivienda y tu presupuesto.',
-    desc: 'Reforma parcial o completa de pisos, áticos y chalets: suelos, carpintería, redistribución de tabiques, baño, cocina y pintura. Precio cerrado.',
+    desc: 'Reforma de pisos antiguos y modernos, áticos y chalets: suelos, carpintería, redistribución de tabiques, baño, cocina y pintura. Precio cerrado.',
     body: [
       { type: 'h3', text: 'Reforma parcial o integral: cómo saber qué necesita tu vivienda' },
       { type: 'p',  text: 'La clave está en el estado de las instalaciones. Si el cuadro eléctrico y la fontanería funcionan correctamente, suelos nuevos, baño, cocina y pintura pueden transformar el piso completamente por menos de 20.000€ sin necesitar obra pesada. Si las instalaciones son de los años 70 u 80 y hay que renovarlas, la forma más eficiente es hacer todo a la vez con el piso abierto una sola vez: eso ya es territorio de reforma integral, con un presupuesto desde 24.900€. En la visita evaluamos el estado real y te decimos exactamente en qué punto está tu vivienda.' },
@@ -332,13 +332,13 @@ export const SERVICES = [
   },
   {
     slug: 'comunidades-vecinos',
-    title: 'Reformas de Comunidades de Vecinos',
+    title: 'Reformas en Comunidades de Propietarios',
     shortTitle: 'Comunidades',
-    anchorLabel: 'Reforma de comunidades de vecinos',
+    anchorLabel: 'Reforma de comunidades de propietarios',
     icon: '🏘️',
-    headline: 'Zonas comunes, fachadas y portales. Con presupuesto para junta.',
-    heroCopy: 'Las obras en zonas comunes tienen que cumplir tres condiciones que raramente van de la mano: un precio que apruebe la junta, un plazo que respete al administrador y unas molestias mínimas para los vecinos. Realizamos reformas de comunidades de vecinos en el Corredor del Henares con presupuesto desglosado listo para junta, coordinación directa con el administrador de fincas y horarios de obra adaptados para que la convivencia no se vea afectada.',
-    desc: 'Mantenimiento y obras en escaleras, portales, fachadas, cubiertas e instalaciones comunitarias. Emitimos presupuesto detallado para presentar en junta.',
+    headline: 'Zonas comunes, fachadas y portales. Presupuesto listo para junta.',
+    heroCopy: 'Las obras en zonas comunes tienen que cumplir tres condiciones que raramente van de la mano: un precio que apruebe la junta, un plazo que respete al administrador y unas molestias mínimas para los vecinos. Realizamos obras en comunidades de propietarios y comunidades de vecinos en el Corredor del Henares con presupuesto desglosado listo para junta, coordinación directa con el administrador de fincas y horarios de obra adaptados para que la convivencia no se vea afectada.',
+    desc: 'Obras en zonas comunes de comunidades de propietarios: escaleras, portales, fachadas, cubiertas e instalaciones. Presupuesto detallado para junta.',
     body: [
       { type: 'h3', text: 'Qué obras puede acometer tu comunidad: portales, fachadas y cubiertas' },
       { type: 'p',  text: 'Ejecutamos todas las obras de mantenimiento y mejora en zonas comunes del Corredor del Henares: pintura y renovación de portales y escaleras, rehabilitación de fachadas, impermeabilización de cubiertas planas y tejados, reparación de humedades por capilaridad y filtración, actualización de instalaciones comunitarias (electricidad, fontanería, ascensores) y mejoras de accesibilidad. Emitimos presupuesto con memoria descriptiva listo para presentar en junta, y coordinamos directamente con el administrador de fincas durante toda la obra.' },

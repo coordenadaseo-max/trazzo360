@@ -14,7 +14,7 @@ const serviceGerund: Record<string, string> = {
   'reforma-cocinas':     'reformas de cocinas',
   'reforma-pisos':       'reformas de pisos y chalets',
   'locales-comerciales': 'reformas de locales comerciales',
-  'comunidades-vecinos': 'obras en comunidades de vecinos',
+  'comunidades-vecinos': 'obras en comunidades de propietarios y vecinos',
 };
 const serviceNecesitas: Record<string, string> = {
   'reformas-integrales': 'reformas integrales',
@@ -22,7 +22,7 @@ const serviceNecesitas: Record<string, string> = {
   'reforma-cocinas':     'reforma de cocinas',
   'reforma-pisos':       'reforma de pisos y chalets',
   'locales-comerciales': 'reformar un local comercial',
-  'comunidades-vecinos': 'obras para tu comunidad de vecinos',
+  'comunidades-vecinos': 'obras para tu comunidad de propietarios',
 };
 const gerund    = serviceGerund[service.slug]    ?? service.title.toLowerCase();
 const necesitas = serviceNecesitas[service.slug] ?? service.title.toLowerCase();

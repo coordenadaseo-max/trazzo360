@@ -987,6 +987,90 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
   },
 };
 
+// ─── FAQs únicas por hub de localidad (/zonas/) ──────────────────────────────
+export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
+  'alcala-de-henares': [
+    {
+      q: '¿Qué reformas son más habituales en los pisos de El Val y Reyes Católicos?',
+      a: 'Los edificios de El Val, Barrio del Pilar y Reyes Católicos se construyeron mayoritariamente en los años 70 y 80. La reforma más frecuente combina actualización de instalaciones (cuadro eléctrico y fontanería) con redistribución y renovación de baño y cocina. En pisos de más de 50 años, el cuadro de 2,3 kW y las tuberías de hierro galvanizado suelen condicionar el alcance real de la obra.',
+    },
+    {
+      q: '¿Necesito licencia de obra en Alcalá de Henares para reformar mi piso?',
+      a: 'Para pintura, suelos y renovación de baño y cocina sin tocar instalaciones comunes no se necesita licencia en Alcalá. Si la reforma incluye derribo de tabiques, cambio de ventanas en fachada o modificación de instalaciones, se necesita licencia de obra menor. El plazo en el Ayuntamiento de Alcalá es habitualmente de 3 a 5 semanas. Gestionamos el trámite completo.',
+    },
+  ],
+  'torrejon-de-ardoz': [
+    {
+      q: '¿Qué viviendas de Torrejón de Ardoz suelen necesitar reforma integral?',
+      a: 'Los bloques de Soto del Henares, Parque Cataluña y Las Veredillas de los años 70 y 80 son los que más reformas integrales acumulan: instalaciones originales insuficientes, distribuciones con pasillos largos y acabados sin renovar desde la construcción. Una reforma integral en estos pisos incluye normalmente cuadro eléctrico nuevo, fontanería completa, redistribución de tabiques y renovación de baño y cocina.',
+    },
+    {
+      q: '¿Cuánto tarda en tramitarse una licencia de obra en Torrejón de Ardoz?',
+      a: 'La licencia de obra menor en el Ayuntamiento de Torrejón de Ardoz suele tardar entre 3 y 6 semanas. Para obras que no la requieren (pintura, suelos, baño y cocina sin afectar instalaciones comunes) se puede comenzar sin esperas. En reformas que sí necesitan licencia, planificamos el trámite en paralelo con el proyecto para no retrasar el inicio de la obra.',
+    },
+  ],
+  'coslada': [
+    {
+      q: '¿Qué reformas hacéis en las viviendas de los años 80 de Coslada?',
+      a: 'En Ciudad 70, Valleaguado y Ciudad San Pablo, los pisos de los 80 suelen necesitar renovación de fontanería y cuadro eléctrico junto con el cambio de baño y cocina. La cocina es el espacio más reformado: muchas tienen distribuciones cerradas y pequeñas que pueden integrarse con el salón con una obra de tabiquería menor, ganando amplitud sin ampliar el presupuesto significativamente.',
+    },
+    {
+      q: '¿Puedo reformar el baño y la cocina de mi piso en Coslada en un mismo proyecto?',
+      a: 'Sí, y es la opción más eficiente. Los gremios de fontanería y electricidad trabajan en ambos espacios en la misma movilización, lo que reduce el tiempo total de obra y el coste de coordinación. Si las instalaciones están en buen estado, el presupuesto combinado suele ser más económico que dos obras separadas en distintos momentos.',
+    },
+  ],
+  'san-fernando-de-henares': [
+    {
+      q: '¿Qué diferencias hay entre reformar en el casco de San Fernando y en Parque Roma?',
+      a: 'Los pisos del casco urbano de San Fernando de los años 80 y 90 suelen necesitar renovación de instalaciones además de los acabados. En las promociones más recientes de Parque Roma y Parque Henares, las instalaciones pueden estar en mejor estado y la reforma puede limitarse a materiales y distribución. La diferencia en presupuesto puede ser considerable; la visita técnica lo determina antes de comprometer nada.',
+    },
+    {
+      q: '¿Cuánto tarda una reforma de baño en San Fernando de Henares?',
+      a: 'Una reforma completa de baño en San Fernando, con cambio de alicatado, sanitarios, mueble e instalaciones nuevas de fontanería, tarda entre 10 y 18 días hábiles según el alcance. Si solo se renuevan los acabados sin tocar la fontanería, el plazo puede reducirse a una semana. El plazo exacto se confirma en la visita gratuita según el estado actual del baño.',
+    },
+  ],
+  'guadalajara': [
+    {
+      q: '¿Qué reformas son más frecuentes en los pisos del Balconcillo y Aguas Vivas?',
+      a: 'Los pisos del Balconcillo y Aguas Vivas de los años 70 y 90 acumulan necesidades similares: cuadros eléctricos insuficientes, fontanería de hierro galvanizado o cobre con décadas de uso y distribuciones con pasillos largos. La reforma más habitual combina instalaciones nuevas, redistribución de tabiques y renovación completa de baño y cocina.',
+    },
+    {
+      q: '¿Los trámites de licencia de obra son más ágiles en Guadalajara que en los municipios madrileños?',
+      a: 'En general sí. El Ayuntamiento de Guadalajara suele tramitar licencias de obra menor con plazos algo más cortos que los ayuntamientos del Corredor madrileño. Para obras que no requieren licencia (baño, cocina, suelos y pintura sin afectar instalaciones comunes ni fachada) el inicio es inmediato en cualquier municipio.',
+    },
+  ],
+  'azuqueca-de-henares': [
+    {
+      q: '¿Trabajáis en Azuqueca de Henares aunque pertenezca a la provincia de Guadalajara?',
+      a: 'Sí. Azuqueca de Henares forma parte de nuestra zona habitual de trabajo en el Corredor del Henares. El mismo equipo que trabaja en Alcalá, Torrejón y Coslada cubre también Azuqueca y Guadalajara sin coste adicional por desplazamiento. Mismo precio cerrado, mismo compromiso de plazo.',
+    },
+    {
+      q: '¿Qué reformas son más habituales en los pisos de Azuqueca de los años 90?',
+      a: 'En Azuqueca, la reforma de baño y cocina es la actuación más frecuente en pisos de los 90 donde las instalaciones están razonablemente bien pero los acabados han envejecido. En pisos más antiguos, la fontanería y el cuadro eléctrico suelen necesitar renovación. La visita técnica gratuita determina qué alcance corresponde a cada caso antes de cerrar el presupuesto.',
+    },
+  ],
+  'meco': [
+    {
+      q: '¿Hacéis reformas de chalets y adosados en Meco?',
+      a: 'Sí. Meco tiene una proporción elevada de viviendas unifamiliares y adosados en urbanizaciones. Las reformas más habituales incluyen redistribución de plantas, cerramiento de terrazas, reforma integral de baño y cocina y actualización de instalaciones en viviendas con 15 o más años. Mismo proceso y precio cerrado que para pisos.',
+    },
+    {
+      q: '¿Qué obras necesitan licencia en el Ayuntamiento de Meco?',
+      a: 'En Meco, para obras interiores menores (baño, cocina, suelos, tabiquería interior) basta con comunicación previa al Ayuntamiento, no licencia. Para obras que afecten a fachada o elementos estructurales, el trámite es licencia de obra menor con un plazo de 4 a 6 semanas. Gestionamos el proceso completo sin que tengas que hacer cola en el registro.',
+    },
+  ],
+  'camarma-de-esteruelas': [
+    {
+      q: '¿Hacéis reformas integrales de viviendas unifamiliares en Camarma?',
+      a: 'Sí. Camarma de Esteruelas tiene un perfil residencial mayoritariamente de unifamiliares y adosados. Los proyectos más habituales combinan redistribución de plantas, renovación de instalaciones, cambio de ventanas y reforma de cocina y baños. El mismo equipo, el mismo sistema de precio cerrado y el mismo compromiso de plazo que aplicamos en pisos.',
+    },
+    {
+      q: '¿Cuánto tarda una reforma integral en una vivienda de Camarma de Esteruelas?',
+      a: 'Una reforma integral de una vivienda unifamiliar de 130–160 m² en Camarma suele llevar entre 14 y 20 semanas. Si la reforma es parcial (solo una planta o solo instalaciones), el plazo puede reducirse a 8–12 semanas. La fecha de entrega queda fijada en el contrato, con penalización si nos retrasamos por causas propias.',
+    },
+  ],
+};
+
 // ─── Meta descriptions únicas por combinación servicio × localidad ───────────
 // 140–160 chars. Angle único por combinación: no repetir la misma fórmula.
 export const SERVICE_ZONE_META: Record<string, Record<string, string>> = {

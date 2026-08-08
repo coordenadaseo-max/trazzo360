@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES, SERVICE_ICONS } from '../../data/site';
+import { SITE, SERVICES, ZONES, ZONE_FAQS, SERVICE_ICONS } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -8,28 +8,21 @@ export const getStaticPaths: GetStaticPaths = () =>
 
 const { zone } = Astro.props;
 
-const faqs = [
-  {
-    q: `¿Trabaja Trazzo360 con equipo propio en ${zone.name}?`,
-    a: `Sí. Trazzo360 opera en ${zone.name} con equipo propio sin subcontratas: albañiles, electricistas, fontaneros, pintores y carpinteros trabajan bajo nuestra coordinación directa. Eso nos permite controlar la calidad, los plazos y el precio en cada fase de la obra, sin depender de terceros.`,
-  },
-  {
-    q: `¿Qué tipos de obras y reformas realizáis en ${zone.name}?`,
-    a: `Realizamos todos los tipos de reforma en ${zone.name}: reformas integrales de pisos y chalets, reforma completa de baños, reforma de cocinas, reforma de locales comerciales y restaurantes, y obras en zonas comunes de comunidades de vecinos. Cada servicio tiene precio cerrado y plazo garantizado en el contrato.`,
-  },
+const genericFaqs = [
   {
     q: `¿Cuánto cuesta una reforma en ${zone.name}?`,
-    a: `Depende del tipo de obra y el alcance. Como orientación: reforma de baño desde 3.200€, reforma de cocina desde 5.500€, reforma integral de piso de 70-90 m² desde 24.900€. Todos los precios son cerrados en el contrato desde el primer día. Presupuesto gratuito en 24h sin visita previa.`,
+    a: `Depende del tipo de obra y el alcance. Como orientación: reforma de baño desde 3.200€, reforma de cocina desde 5.500€, reforma integral de piso de 70–90 m² desde 24.900€. El precio exacto lo recibes tras la visita técnica gratuita, cerrado en el contrato desde el primer día.`,
   },
   {
-    q: `¿Gestionáis los permisos y licencias de obra en ${zone.name}?`,
-    a: `Sí. Tramitamos la licencia de obra menor y, cuando la actividad lo requiere, la licencia de actividad en el Ayuntamiento de ${zone.name}. Nos encargamos de todo el proceso: proyecto técnico, presentación en el registro, seguimiento y obtención de los certificados necesarios para iniciar y finalizar la obra.`,
+    q: `¿Qué tipos de reforma realizáis en ${zone.name}?`,
+    a: `Reformas integrales de pisos, áticos y chalets; reforma de baños; reforma de cocinas; reforma de locales comerciales y hostelería; y obras en zonas comunes de comunidades de propietarios. Cada servicio tiene precio cerrado y plazo de entrega garantizado por escrito en el contrato.`,
   },
   {
     q: `¿Cuánto tarda en ejecutarse una reforma en ${zone.name}?`,
-    a: `Los plazos dependen del tipo de obra. Un baño completo tarda entre 1 y 3 semanas. Una cocina, entre 2 y 4 semanas. Una reforma integral de piso, entre 8 y 14 semanas. Fijamos la fecha de inicio y de entrega en el contrato y las cumplimos.`,
+    a: `Los plazos dependen del tipo de obra. Un baño completo tarda entre 1 y 3 semanas. Una cocina, entre 2 y 4 semanas. Una reforma integral de piso, entre 8 y 14 semanas. La fecha de inicio y de entrega queda fijada en el contrato antes de comenzar.`,
   },
 ];
+const faqs = [...(ZONE_FAQS[zone.slug] ?? []), ...genericFaqs];
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -156,13 +149,13 @@ const faqSchema = {
         Lo que cambia al contratar en {zone.name}
       </h3>
       <p class="text-gray-600 leading-relaxed mb-8">
-        El precio no varía según el municipio, pero sí puede cambiar el alcance real del proyecto. En viviendas anteriores a 1990 conviene evaluar el estado de la fontanería y el cuadro eléctrico antes de cerrar el presupuesto: son dos partidas que, si se descubren a mitad de obra, generan extras no previstos. En Trazzo360 lo evaluamos en la visita técnica gratuita y lo incluimos en el presupuesto cerrado cuando el estado lo requiere.
+        El precio no varía según el municipio, pero sí puede cambiar el alcance real del proyecto. En viviendas anteriores a 1990 conviene evaluar el estado de la fontanería y el cuadro eléctrico antes de cerrar el presupuesto: son dos partidas que, si se descubren a mitad de obra, generan extras no previstos. La evaluación está incluida en la visita técnica gratuita y, cuando el estado lo requiere, queda reflejada en el presupuesto cerrado.
       </p>
 
       <div class="bg-white border-l-4 border-[#A85535] p-6">
         <p class="text-sm font-semibold text-gray-900 mb-2">Antes de pedir presupuesto en {zone.name}</p>
         <p class="text-sm text-gray-600 leading-relaxed">
-          Si la vivienda o el local tiene más de 30 años, asegúrate de que el presupuesto incluya la evaluación del estado de las instalaciones. Un presupuesto que no las contempla puede quedarse obsoleto en cuanto empieza la obra. Todos nuestros presupuestos en {zone.name} cierran el precio completo desde el primer día.
+          Si la vivienda o el local tiene más de 30 años, asegúrate de que el presupuesto incluya la evaluación del estado de las instalaciones. Un presupuesto que no las contempla puede quedarse obsoleto en cuanto empieza la obra. El presupuesto cierra el precio completo desde el primer día.
         </p>
       </div>
     </div>

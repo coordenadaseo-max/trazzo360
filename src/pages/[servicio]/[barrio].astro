@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES } from '../../data/site';
+import { SITE, SERVICES, ZONES, SERVICE_ZONE_CONTENT, LOCATION_FAQS, SERVICE_ICONS } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -18,23 +18,8 @@ const cityPresence = isPrimary
   ? `con equipo permanente en ${zone.name}`
   : `cubriendo regularmente ${zone.name} y la comarca`;
 
-const serviceIntros: Record<string, string> = {
-  'reformas-integrales': `Una reforma integral en ${zone.name} implica rediseñar la distribución, renovar todas las instalaciones y elegir los acabados de principio a fin. ${zone.name} ${zone.localAngle}: conocemos bien el tipo de vivienda que encontrarás aquí y sabemos qué soluciones dan mejor resultado en este mercado.`,
-  'reforma-banos': `Reformar el baño en ${zone.name} es una de las inversiones con mejor retorno en vivienda residencial. ${zone.name} ${zone.localAngle}: trabajamos habitualmente en este tipo de viviendas y podemos darte un presupuesto cerrado muy ajustado al mercado local.`,
-  'reforma-cocinas': `Una cocina nueva en ${zone.name} transforma el uso diario del espacio más importante de la vivienda. ${zone.name} ${zone.localAngle}: diseñamos y ejecutamos cocinas a medida adaptadas a las dimensiones y características reales de los pisos de esta zona.`,
-  'reforma-pisos': `Reformar un piso en ${zone.name} -redistribuir espacios, cambiar suelos, renovar ventanas- requiere conocer la normativa municipal. ${zone.name} ${zone.localAngle}: tramitamos la licencia de obra en el ayuntamiento y ejecutamos cualquier tipo de reforma de distribución o acabados.`,
-  'locales-comerciales': `Abrir un negocio en ${zone.name} empieza con una obra que cumpla la normativa de actividad del municipio. ${zone.name} ${zone.localAngle}: conocemos los requisitos del ayuntamiento y tramitamos la licencia de actividad para que no pierdas ni un día de apertura.`,
-  'comunidades-vecinos': `Las comunidades de propietarios en ${zone.name} necesitan mantenimiento periódico de zonas comunes: escaleras, portales, fachadas y cubiertas. ${zone.name} ${zone.localAngle}: elaboramos presupuesto detallado para junta y ejecutamos la obra con las mínimas molestias a los vecinos.`,
-};
-
-const commonReforms: Record<string, string> = {
-  'reformas-integrales': 'redistribución de tabiques, actualización completa de instalaciones eléctricas y de fontanería, y cambio de suelos y carpinterías',
-  'reforma-banos': 'cambio de bañera por ducha de obra, renovación de alicatados con gran formato y sustitución de sanitarios y muebles de baño',
-  'reforma-cocinas': 'muebles a medida con encimera de silestone o porcelánico, electrodomésticos integrados y apertura de espacio hacia el salón',
-  'reforma-pisos': 'suelos de porcelánico o laminado, ventanas de aluminio con rotura de puente térmico y pintura completa con acabados a medida',
-  'locales-comerciales': 'adecuación de locales para hostelería, comercio minorista y oficinas con tramitación de licencia de actividad incluida',
-  'comunidades-vecinos': 'renovación de portales y escaleras, impermeabilización de cubiertas y rehabilitación de fachadas con aislamiento',
-};
+// Intro único por combinación servicio×localidad
+const szc = SERVICE_ZONE_CONTENT[service.slug]?.[zone.slug];
 
 const serviceFeatures: Record<string, string[]> = {
   'reformas-integrales': ['Diseño personalizado sin coste extra', 'Gestión de licencias en ' + zone.name, 'Coordinación de todos los gremios', 'Entrega llave en mano'],
@@ -45,38 +30,21 @@ const serviceFeatures: Record<string, string[]> = {
   'comunidades-vecinos': ['Presupuesto para junta de propietarios', 'Trabajamos sin cortar el paso', 'Fachadas, portales y cubiertas', 'Coordinación con administrador de fincas'],
 };
 
-const faqLabel: Record<string, { costar: string; tardar: string; tipo: string }> = {
-  'reformas-integrales': { costar: 'una reforma integral', tardar: 'una reforma integral', tipo: 'reforma integral' },
-  'reforma-banos':       { costar: 'reformar un baño',          tardar: 'reformar un baño',          tipo: 'reforma de baño' },
-  'reforma-cocinas':     { costar: 'reformar una cocina',       tardar: 'reformar una cocina',       tipo: 'reforma de cocina' },
-  'reforma-pisos':       { costar: 'reformar un piso o chalet', tardar: 'reformar un piso',          tipo: 'reforma de piso' },
-  'locales-comerciales': { costar: 'reformar un local comercial', tardar: 'reformar un local comercial', tipo: 'reforma de local comercial' },
-  'comunidades-vecinos': { costar: 'una reforma de zonas comunes', tardar: 'una obra en zonas comunes', tipo: 'reforma en comunidades de vecinos' },
+// FAQ: 1 pregunta de precio con la localidad + preguntas específicas del servicio
+const priceLbl: Record<string, string> = {
+  'reformas-integrales': 'una reforma integral',
+  'reforma-banos':       'reformar un baño',
+  'reforma-cocinas':     'reformar una cocina',
+  'reforma-pisos':       'reformar un piso',
+  'locales-comerciales': 'reformar un local comercial',
+  'comunidades-vecinos': 'una reforma de zonas comunes',
 };
-const lbl = faqLabel[service.slug] ?? { costar: service.title.toLowerCase(), tardar: service.title.toLowerCase(), tipo: service.title.toLowerCase() };
-
-const faqs = [
-  {
-    q: `¿Cuánto cuesta ${lbl.costar} en ${zone.name}?`,
-    a: `El precio de ${lbl.costar} en ${zone.name} parte desde ${service.priceFrom}€ (${service.priceDesc}). Damos precio cerrado en el contrato: el presupuesto firmado es el precio final, sin sorpresas.`,
-  },
-  {
-    q: `¿Tenéis equipo propio en ${zone.name}?`,
-    a: `Sí. Trazzo360 opera ${cityPresence}. No subcontratamos obra: todo el equipo es propio, lo que nos permite controlar la calidad y respetar los plazos acordados.`,
-  },
-  {
-    q: `¿Cuánto tarda ${lbl.tardar} en ${zone.name}?`,
-    a: `El plazo varía según el alcance. Fijamos la fecha de entrega en el contrato y la garantizamos. Consúltanos y te indicamos un plazo orientativo para tu proyecto en ${zone.name}.`,
-  },
-  {
-    q: `¿Gestionáis los permisos en el ayuntamiento de ${zone.name}?`,
-    a: `Sí, tramitamos la licencia de obra o actividad en el ayuntamiento correspondiente. Nos ocupamos de toda la burocracia para que no tengas que preocuparte de nada.`,
-  },
-  {
-    q: `¿Qué tipo de ${lbl.tipo} es más habitual en ${zone.name}?`,
-    a: `${zone.name} ${zone.localAngle}. Las solicitudes más frecuentes en este tipo de inmuebles son: ${commonReforms[service.slug] ?? 'actualización completa de instalaciones y acabados'}. Consúltanos y te orientamos sobre la solución más adecuada para tu caso concreto.`,
-  },
-];
+const costar = priceLbl[service.slug] ?? service.title.toLowerCase();
+const priceFaq = {
+  q: `¿Cuánto cuesta ${costar} en ${zone.name}?`,
+  a: `${costar.charAt(0).toUpperCase() + costar.slice(1)} en ${zone.name} parte desde ${service.priceFrom}€ (${service.priceDesc}). El precio exacto depende del alcance y los materiales; lo recibes cerrado y sin letra pequeña tras la visita técnica gratuita.`,
+};
+const faqs = [priceFaq, ...(LOCATION_FAQS[service.slug] ?? [])];
 
 const pageSchema = {
   '@context': 'https://schema.org',
@@ -91,7 +59,7 @@ const pageSchema = {
   areaServed: {
     '@type': 'PostalAddress',
     addressLocality: zone.name,
-    addressRegion: 'Comunidad de Madrid',
+    addressRegion: zone.province,
     addressCountry: 'ES',
   },
   offers: {
@@ -137,12 +105,12 @@ const howToSchema = service.processSteps && (service.processSteps as {title:stri
 const otherZones = ZONES.filter(z => z.slug !== zone.slug);
 const otherServices = SERVICES.filter(s => s.slug !== service.slug);
 const features = serviceFeatures[service.slug] ?? [];
-const intro = serviceIntros[service.slug] ?? service.desc;
+const intro = szc?.intro ?? service.desc;
 ---
 
 <Layout
-  title={`${service.title} en ${zone.name} | Precio Cerrado | ${SITE.name}`}
-  description={`${service.title} en ${zone.name} desde ${service.priceFrom}€. ${zone.name} ${zone.localAngle}. Equipo propio, precio cerrado y presupuesto gratis en 24h.`}
+  title={`${service.title} en ${zone.name} | ${SITE.name}`}
+  description={`${service.title} en ${zone.name} desde ${service.priceFrom}€. Precio cerrado, equipo propio y presupuesto gratuito en 48h. ${SITE.name}.`}
   schema={[pageSchema, faqSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema] : [])]}
 >
 
@@ -252,7 +220,7 @@ const intro = serviceIntros[service.slug] ?? service.desc;
         <a href={`tel:${SITE.phone}`} class="block text-center py-3.5 text-sm font-semibold text-gray-300 border border-white/20 hover:border-white transition-colors mb-4">
           ☎ {SITE.phoneDisplay}
         </a>
-        <p class="text-xs text-gray-500 text-center">Respuesta en menos de 24h</p>
+        <p class="text-xs text-gray-500 text-center">Presupuesto cerrado en 48h</p>
       </div>
     </div>
   </section>
@@ -412,7 +380,7 @@ const intro = serviceIntros[service.slug] ?? service.desc;
         {otherServices.map(s => (
           <a href={`/${s.slug}/${zone.slug}/`}
             class="group block p-4 bg-gray-50 border-b-2 border-transparent hover:border-[#A85535] hover:shadow-sm transition-all">
-            <span class="text-xl block mb-1">{s.icon}</span>
+            <span class="w-7 h-7 text-[#A85535] block mb-2"><Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} /></span>
             <p class="text-sm font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors">{s.title}</p>
             <p class="text-xs text-gray-400 mt-0.5">Desde {s.priceFrom}€</p>
           </a>

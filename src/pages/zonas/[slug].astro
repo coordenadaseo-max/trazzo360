@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES } from '../../data/site';
+import { SITE, SERVICES, ZONES, SERVICE_ICONS } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -36,8 +36,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Inicio',  item: `${SITE.url}/` },
-    { '@type': 'ListItem', position: 2, name: 'Zonas',   item: `${SITE.url}/zonas/` },
-    { '@type': 'ListItem', position: 3, name: zone.name, item: `${SITE.url}/zonas/${zone.slug}/` },
+    { '@type': 'ListItem', position: 2, name: zone.name, item: `${SITE.url}/zonas/${zone.slug}/` },
   ],
 };
 
@@ -94,7 +93,7 @@ const faqSchema = {
           Trazzo360 trabaja en {zone.name} con equipo propio: reformas integrales, baños, cocinas, locales comerciales y comunidades de vecinos. Precio cerrado en el contrato, plazo de entrega garantizado por escrito.
         </p>
         <p class="text-base text-gray-400 leading-relaxed mb-8">
-          {zone.name} {zone.localAngle}. Llevamos más de {SITE.stats.years} años en la zona y sabemos de primera mano qué necesita cada vivienda antes de abrir el presupuesto.
+          {zone.name} {zone.localAngle}. Llevamos {SITE.stats.years} años en la zona y sabemos de primera mano qué necesita cada vivienda antes de abrir el presupuesto.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
@@ -122,7 +121,7 @@ const faqSchema = {
         {SERVICES.map(s => (
           <a href={`/${s.slug}/${zone.slug}/`}
             class="group block p-7 bg-gray-50 border-b-4 border-transparent hover:border-[#A85535] hover:shadow-lg transition-all duration-200">
-            <div class="text-3xl mb-4">{s.icon}</div>
+            <div class="w-8 h-8 text-[#A85535] mb-4"><Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} /></div>
             <h3 class="text-lg font-bold text-gray-900 mb-2">{s.title} en {zone.name}</h3>
             <p class="text-sm text-gray-500 leading-relaxed mb-3">{s.desc}</p>
             <p class="text-xs font-bold text-gray-400 mb-3">

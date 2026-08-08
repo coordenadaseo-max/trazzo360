@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES, SERVICE_ZONE_CONTENT, LOCATION_FAQS, SERVICE_ICONS } from '../../data/site';
+import { SITE, SERVICES, ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, LOCATION_FAQS, SERVICE_ICONS } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -110,7 +110,7 @@ const intro = szc?.intro ?? service.desc;
 
 <Layout
   title={`${service.title} en ${zone.name} | ${SITE.name}`}
-  description={`${service.title} en ${zone.name} desde ${service.priceFrom}€. Precio cerrado, equipo propio y presupuesto gratuito en 48h. ${SITE.name}.`}
+  description={SERVICE_ZONE_META[service.slug]?.[zone.slug] ?? `${service.title} en ${zone.name} desde ${service.priceFrom}€. Precio cerrado, equipo propio y presupuesto gratuito en 48h. ${SITE.name}.`}
   schema={[pageSchema, faqSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema] : [])]}
 >
 

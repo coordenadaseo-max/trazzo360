@@ -987,6 +987,71 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
   },
 };
 
+// ─── Meta descriptions únicas por combinación servicio × localidad ───────────
+// 140–160 chars. Angle único por combinación: no repetir la misma fórmula.
+export const SERVICE_ZONE_META: Record<string, Record<string, string>> = {
+  'reformas-integrales': {
+    'alcala-de-henares':      'Reforma integral en Alcalá de Henares: revisamos instalaciones antes de cerrar precio. Pisos de los 70 y 80. Presupuesto cerrado en 48h, sin extras.',
+    'torrejon-de-ardoz':      'Reforma integral en Torrejón de Ardoz: instalaciones al límite. Todo a la vez o por fases — te lo decimos en la visita gratuita. Precio cerrado.',
+    'coslada':                'Reforma integral en Coslada: evaluamos humedades y estado de instalaciones en la visita. Presupuesto cerrado que no cambia a mitad de obra. Desde 24.900€.',
+    'san-fernando-de-henares':'Reforma integral en San Fernando de Henares: el alcance cambia mucho entre casco antiguo y Parque Roma. Lo evaluamos en visita gratuita. Precio cerrado.',
+    'guadalajara':            'Reforma integral en Guadalajara: permisos más ágiles que en el Corredor madrileño. Aislamiento con retorno real en clima continental. Precio cerrado.',
+    'azuqueca-de-henares':    'Reforma integral en Azuqueca de Henares: pisos de los 90 con menos sorpresas en instalaciones. Más margen para distribución y acabados. Precio cerrado.',
+    'meco':                   'Reforma integral en Meco: adosados y unifamiliares con cubierta, terrazas y distribución de dos plantas. Evaluamos el alcance completo en visita gratuita.',
+    'camarma-de-esteruelas':  'Reforma integral en Camarma de Esteruelas: viviendas unifamiliares con cubierta, cerramientos y exterior. Definimos qué abordar en la visita gratuita.',
+  },
+  'reforma-banos': {
+    'alcala-de-henares':      'Reforma de baño en Alcalá de Henares: cambio de bañera por ducha o reforma completa. Fontanería evaluada en visita técnica. Desde 3.200€. Precio cerrado.',
+    'torrejon-de-ardoz':      'Reforma de baño en Torrejón de Ardoz: reforma completa en 1 a 3 semanas. Planificamos el plazo para minimizar días sin servicio. Desde 3.200€.',
+    'coslada':                'Reforma de baño en Coslada: revisamos humedades y fontanería oculta antes de presupuestar. Baños renovados con gran formato. Desde 3.200€.',
+    'san-fernando-de-henares':'Reforma de baño en San Fernando de Henares: alcance según la antigüedad del edificio. Impermeabilización siempre incluida. Precio cerrado. Desde 3.200€.',
+    'guadalajara':            'Reforma de baño en Guadalajara: fontanería original de los 70–80 evaluada en visita. Opciones de accesibilidad sin obra adicional mayor. Desde 3.200€.',
+    'azuqueca-de-henares':    'Reforma de baño en Azuqueca de Henares: modernización de acabados sin tocar instalaciones en pisos de los 90. Alicatado, sanitarios y mueble. Desde 3.200€.',
+    'meco':                   'Reforma de baño en Meco: baños de 6 a 9 m² en adosados con más opciones que un piso de bloque. Duchas de obra a medida. Precio cerrado. Desde 3.200€.',
+    'camarma-de-esteruelas':  'Reforma de baño en Camarma de Esteruelas: baños amplios para diseñar desde cero. Varios baños, distintos alcances. Precio cerrado. Desde 3.200€.',
+  },
+  'reforma-cocinas': {
+    'alcala-de-henares':      'Reforma de cocina en Alcalá de Henares: cocina cerrada o abierta al salón. Electricidad con circuitos dedicados incluida. Precio cerrado. Desde 5.500€.',
+    'torrejon-de-ardoz':      'Reforma de cocina en Torrejón de Ardoz: electricidad nueva con circuitos dedicados incluida. Sin cortocircuitos ni esperas de suministros. Desde 5.500€.',
+    'coslada':                'Reforma de cocina en Coslada: instalación eléctrica nueva con circuitos dedicados. Distribución mejorada en cocinas de 6 a 8 m². Precio cerrado. Desde 5.500€.',
+    'san-fernando-de-henares':'Reforma de cocina en San Fernando de Henares: instalaciones según la época del piso. Apertura al salón valorada en visita. Precio cerrado. Desde 5.500€.',
+    'guadalajara':            'Reforma de cocina en Guadalajara: cocinas cerradas de los 70–90 abiertas al salón. Todo definido antes de empezar para cumplir el plazo. Desde 5.500€.',
+    'azuqueca-de-henares':    'Reforma de cocina en Azuqueca de Henares: muebles, encimera y electrodomésticos nuevos sin obra pesada en pisos de los 90. Desde 5.500€.',
+    'meco':                   'Reforma de cocina en Meco: cocinas de 10 a 16 m² con opciones de isla, americana o almacenaje independiente. Precio cerrado. Desde 5.500€.',
+    'camarma-de-esteruelas':  'Reforma de cocina en Camarma de Esteruelas: cocinas amplias en viviendas unifamiliares. Redistribución, isla o apertura al comedor. Desde 5.500€.',
+  },
+  'reforma-pisos': {
+    'alcala-de-henares':      'Reforma de piso en Alcalá de Henares: estado de instalaciones determina el alcance. Baño, cocina y suelos o reforma integral. Precio cerrado. Desde 18.000€.',
+    'torrejon-de-ardoz':      'Reforma de piso en Torrejón de Ardoz: te decimos si sale mejor todo de una vez o por fases según el estado real de las instalaciones. Desde 18.000€.',
+    'coslada':                'Reforma de piso en Coslada: revisamos humedades antes de cerrar el precio. Presupuesto que no cambia a mitad de obra. Pisos de los 80 y 90. Desde 18.000€.',
+    'san-fernando-de-henares':'Reforma de piso en San Fernando de Henares: alcance muy distinto entre casco antiguo y Parque Roma. Lo evaluamos en visita gratuita. Desde 18.000€.',
+    'guadalajara':            'Reforma de piso en Guadalajara: ventanas de PVC con mayor retorno energético en clima continental. Instalaciones y acabados. Precio cerrado. Desde 18.000€.',
+    'azuqueca-de-henares':    'Reforma de piso en Azuqueca de Henares: suelos, baño, cocina y pintura en pisos de los 90 con instalaciones en mejor estado. Precio cerrado. Desde 18.000€.',
+    'meco':                   'Reforma de piso en Meco: adosados de dos plantas, terrazas y jardines. Más económico haciendo las dos plantas a la vez. Precio cerrado. Desde 18.000€.',
+    'camarma-de-esteruelas':  'Reforma de piso en Camarma de Esteruelas: viviendas unifamiliares con cubierta y exterior. Definimos prioridades en visita gratuita. Desde 18.000€.',
+  },
+  'locales-comerciales': {
+    'alcala-de-henares':      'Reforma de local comercial en Alcalá de Henares: tramitamos licencia de actividad en paralelo con la obra. Hostelería, comercio, clínicas. Precio cerrado.',
+    'torrejon-de-ardoz':      'Reforma de local en Torrejón de Ardoz: tramitación de licencia más ágil que en Alcalá para muchos usos. Casco urbano o polígono industrial. Precio cerrado.',
+    'coslada':                'Reforma de local comercial en Coslada: casco urbano o polígono industrial. Instalación desde cero o reforma de local existente. Plazo garantizado en contrato.',
+    'san-fernando-de-henares':'Reforma de local comercial en San Fernando de Henares: zona industrial o casco. Régimen de licencia según el uso. Precio cerrado, plazo garantizado.',
+    'guadalajara':            'Reforma de local comercial en Guadalajara: tramitación de licencia más ágil que en el Corredor madrileño. Proyecto técnico incluido en el precio cerrado.',
+    'azuqueca-de-henares':    'Reforma de local en Azuqueca de Henares: declaración responsable para usos sin licencia clasificada. Plazos reales confirmados en primera reunión.',
+    'meco':                   'Reforma de local comercial en Meco: tramitación ágil en municipio pequeño. Naves en polígono con instalación completa desde cero. Precio cerrado.',
+    'camarma-de-esteruelas':  'Reforma de local comercial en Camarma de Esteruelas: plazos predecibles en municipio pequeño. Comercios, consultorios y oficinas. Precio cerrado.',
+  },
+  'comunidades-vecinos': {
+    'alcala-de-henares':      'Obras en comunidades de vecinos en Alcalá de Henares: cubiertas, portales y ascensores en edificios de los 70–80. Presupuesto con documentación para junta.',
+    'torrejon-de-ardoz':      'Obras en comunidades de vecinos en Torrejón de Ardoz: IEE y acceso a ayudas de rehabilitación de la Comunidad de Madrid. Presupuesto listo para junta.',
+    'coslada':                'Obras en comunidades de vecinos en Coslada: humedades por capilaridad en plantas bajas. Presupuesto con fotografías y desglose para presentar en junta.',
+    'san-fernando-de-henares':'Obras en comunidades de vecinos en San Fernando de Henares: distintas necesidades según la época del edificio. Asesoramos sobre la mayoría necesaria.',
+    'guadalajara':            'Obras en comunidades de vecinos en Guadalajara: permisos más ágiles que en municipios madrileños. Presupuesto con documentación completa para junta.',
+    'azuqueca-de-henares':    'Obras en comunidades de vecinos en Azuqueca de Henares: edificios de los 90 con necesidades de mantenimiento. Documentación completa para junta incluida.',
+    'meco':                   'Obras en comunidades de vecinos en Meco: urbanizaciones con viales, cercas y zonas comunes exteriores. Coordinación con presidente o administrador de fincas.',
+    'camarma-de-esteruelas':  'Obras en comunidades de vecinos en Camarma de Esteruelas: comunidades pequeñas con decisiones más rápidas. Presupuesto con documentación para junta.',
+  },
+};
+
 export const ZONES = [
   {
     slug: 'alcala-de-henares',

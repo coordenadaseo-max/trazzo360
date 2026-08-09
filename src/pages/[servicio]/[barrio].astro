@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, SERVICE_ZONE_FAQS, SERVICE_ICONS } from '../../data/site';
+import { SITE, SERVICES, ZONES, RELATED_ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, SERVICE_ZONE_FAQS, SERVICE_ICONS } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -102,11 +102,19 @@ const howToSchema = service.processSteps && (service.processSteps as {title:stri
   })),
 } : null;
 
-const otherZones = ZONES.filter(z => z.slug !== zone.slug);
+const relatedZoneSlugs: string[] = RELATED_ZONES[zone.slug] ?? [];
+const otherZones = ZONES.filter(z => relatedZoneSlugs.includes(z.slug));
 const relatedServiceSlugs: string[] = (service as any).relatedServices ?? [];
 const relatedServices = SERVICES.filter(s => relatedServiceSlugs.includes(s.slug));
 const features = serviceFeatures[service.slug] ?? [];
 const intro = szc?.intro ?? service.desc;
+
+function renderBody(block: {type: string; text: string; link?: {text: string; serviceSlug: string}}, zSlug: string): string {
+  const lnk = block.link;
+  if (!lnk) return block.text;
+  const href = `/${lnk.serviceSlug}/${zSlug}/`;
+  return block.text.replace(lnk.text, `<a href="${href}" class="text-[#A85535] hover:underline font-medium">${lnk.text}</a>`);
+}
 ---
 
 <Layout
@@ -166,11 +174,13 @@ const intro = szc?.intro ?? service.desc;
         <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
 
         {(szc?.body ?? service.body) ? (
-          (szc?.body ?? service.body as {type: string; text: string}[]).map((block) =>
+          (szc?.body ?? service.body as {type: string; text: string; link?: {text: string; serviceSlug: string}}[]).map((block) =>
             block.type === 'h3' ? (
               <h3 class="text-lg font-bold text-gray-900 mt-8 mb-2">{block.text}</h3>
             ) : block.type === 'h4' ? (
               <h4 class="text-base font-semibold text-gray-800 mt-5 mb-1">{block.text}</h4>
+            ) : block.link ? (
+              <p class="text-gray-600 leading-relaxed mb-4" set:html={renderBody(block, zone.slug)} />
             ) : (
               <p class="text-gray-600 leading-relaxed mb-4">{block.text}</p>
             )

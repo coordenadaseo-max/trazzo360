@@ -36,7 +36,7 @@ export const SERVICES = [
       { type: 'h3', text: 'Qué incluye una reforma integral en el Corredor del Henares' },
       { type: 'p',  text: 'Reformamos pisos, áticos, dúplex y chalés de principio a fin: derribo de tabiques, redistribución de espacios, instalación eléctrica completa con cuadro nuevo, fontanería, solados de porcelánico o tarima flotante, falso techo, reforma de baño y cocina, carpintería interior y pintura. Un único interlocutor coordina todos los gremios con equipo propio. Sin subcontratas que no conoces ni facturas extra que no firmaste.' },
       { type: 'h3', text: 'Cuándo tiene sentido una reforma integral: la pregunta que determina el presupuesto' },
-      { type: 'p',  text: 'Una reforma integral tiene sentido cuando las instalaciones necesitan renovación o cuando la distribución no es funcional y vale la pena resolver todo a la vez. Si el cuadro eléctrico tiene capacidad suficiente, la fontanería está en buen estado y solo hay que renovar acabados, baño, cocina y suelos, estás ante una reforma de pisos, no una integral. La visita técnica gratuita lo determina antes de comprometer ningún número: el alcance correcto ahorra dinero, el incorrecto lo desperdicia.' },
+      { type: 'p',  text: 'Una reforma integral tiene sentido cuando las instalaciones necesitan renovación o cuando la distribución no es funcional y vale la pena resolver todo a la vez. Si el cuadro eléctrico tiene capacidad suficiente, la fontanería está en buen estado y solo hay que renovar acabados, baño, cocina y suelos, estás ante una reforma de pisos, no una integral. La visita técnica gratuita lo determina antes de comprometer ningún número: el alcance correcto ahorra dinero, el incorrecto lo desperdicia.', link: { text: 'reforma de pisos', serviceSlug: 'reforma-pisos' } },
       { type: 'h3', text: 'Qué debe estar definido antes de empezar la obra' },
       { type: 'p',  text: 'Antes de abrir el piso conviene tener cerrados tres elementos: la distribución final (qué tabiques se derriban y cómo quedan los espacios), el diseño de baño y cocina (formato de alicatado, sanitarios, muebles y electrodomésticos) y la selección de suelos. Si algo queda sin decidir cuando ya está la obra en marcha, el plazo se alarga y el presupuesto puede desviarse. Con el proyecto cerrado antes del primer día, la coordinación de gremios funciona sin fricciones.' },
       { type: 'h3', text: 'Licencias y normativa: qué necesitas tramitar en tu ayuntamiento' },
@@ -231,7 +231,7 @@ export const SERVICES = [
     desc: 'Reforma de pisos antiguos y modernos, áticos y chalets: suelos, carpintería, redistribución de tabiques, baño, cocina y pintura. Precio cerrado.',
     body: [
       { type: 'h3', text: 'Reforma parcial o integral: cómo saber qué necesita tu vivienda' },
-      { type: 'p',  text: 'La clave está en el estado de las instalaciones. Si el cuadro eléctrico y la fontanería funcionan correctamente, suelos nuevos, baño, cocina y pintura pueden transformar el piso completamente por menos de 20.000€ sin necesitar obra pesada. Si las instalaciones son de los años 70 u 80 y hay que renovarlas, la forma más eficiente es hacer todo a la vez con el piso abierto una sola vez: eso ya es territorio de reforma integral, con un presupuesto desde 24.900€. En la visita evaluamos el estado real y te decimos exactamente en qué punto está tu vivienda.' },
+      { type: 'p',  text: 'La clave está en el estado de las instalaciones. Si el cuadro eléctrico y la fontanería funcionan correctamente, suelos nuevos, baño, cocina y pintura pueden transformar el piso completamente por menos de 20.000€ sin necesitar obra pesada. Si las instalaciones son de los años 70 u 80 y hay que renovarlas, la forma más eficiente es hacer todo a la vez con el piso abierto una sola vez: eso ya es territorio de reforma integral, con un presupuesto desde 24.900€. En la visita evaluamos el estado real y te decimos exactamente en qué punto está tu vivienda.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       { type: 'h3', text: 'Qué da más por menos: cómo priorizar cuando no puedes hacerlo todo' },
       { type: 'p',  text: 'Con 15.000–20.000€ y las instalaciones en buen estado puedes renovar los tres espacios de mayor impacto: baño completo (3.200–4.500€), cocina con muebles y electrodomésticos (5.500–8.000€), suelos nuevos en toda la vivienda (3.000–4.500€) y pintura (1.500–2.500€). Si el presupuesto es más ajustado, suelos nuevos y pintura en todo el piso son lo que más cambia la percepción visual del conjunto por el menor coste por metro cuadrado. La carpintería interior (puertas y armarios) transforma la percepción del espacio interior con un coste por zona contenido.' },
       { type: 'h3', text: 'Reformar para vender o alquilar: qué conviene priorizar' },
@@ -1605,3 +1605,14 @@ export const ZONES = [
     neighborhoods: ['Casco Urbano', 'Urb. Nueva Camarma', 'Urb. El Practicante', 'Gran Vía'],
   },
 ];
+
+export const RELATED_ZONES: Record<string, string[]> = {
+  'alcala-de-henares':       ['torrejon-de-ardoz', 'meco', 'camarma-de-esteruelas'],
+  'torrejon-de-ardoz':       ['alcala-de-henares', 'san-fernando-de-henares', 'coslada'],
+  'coslada':                 ['san-fernando-de-henares', 'torrejon-de-ardoz'],
+  'san-fernando-de-henares': ['coslada', 'torrejon-de-ardoz', 'alcala-de-henares'],
+  'guadalajara':             ['azuqueca-de-henares', 'meco', 'alcala-de-henares'],
+  'azuqueca-de-henares':     ['guadalajara', 'meco', 'alcala-de-henares'],
+  'meco':                    ['alcala-de-henares', 'azuqueca-de-henares', 'camarma-de-esteruelas'],
+  'camarma-de-esteruelas':   ['alcala-de-henares', 'meco'],
+};

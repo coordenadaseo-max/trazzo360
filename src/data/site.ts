@@ -196,7 +196,7 @@ export const SERVICES = [
       },
       {
         q: '¿Debería abrir la cocina al salón o mantenerla cerrada?',
-        a: 'Abrir la cocina al salón cambia radicalmente la percepción del espacio, pero antes de decidir conviene evaluar varios factores: la función estructural del tabique, cómo se resolverá la extracción, el impacto del humo y el ruido en el salón y si la distribución resultante es funcional. Lo valoramos en la visita con y sin apertura para que puedas comparar con información real. En la visita lo valoramos con y sin apertura para que puedas comparar.',
+        a: 'Abrir la cocina al salón cambia radicalmente la percepción del espacio, pero antes de decidir conviene evaluar varios factores: la función estructural del tabique, cómo se resolverá la extracción, el impacto del humo y el ruido en el salón y si la distribución resultante es funcional. En la visita lo valoramos con y sin apertura para que puedas comparar opciones con información real.',
       },
       {
         q: '¿Qué debería elegir antes de que empiece la obra de cocina?',
@@ -208,7 +208,7 @@ export const SERVICES = [
       },
       {
         q: '¿Vale la pena cambiar fontanería y electricidad aunque no cambie la distribución?',
-        a: 'Si las instalaciones tienen más de 25 años, puede ser un buen momento. Con la cocina ya abierta para instalar los nuevos muebles, el coste adicional de renovar lo que está oculto es menor que tener que volver a abrir en pocos años. Lo valoramos en la visita según el estado real de las instalaciones.',
+        a: 'Cuando su estado genera dudas, no se sabe cuándo se renovaron o la nueva distribución obliga a intervenir sobre ellas. Con la cocina ya abierta para instalar los nuevos muebles, el coste adicional de renovar lo que está oculto es menor que tener que volver a abrir en pocos años. Lo valoramos en la visita según el estado real de cada instalación.',
       },
       {
         q: '¿Qué puede encarecer una reforma de cocina respecto al presupuesto inicial?',
@@ -255,15 +255,15 @@ export const SERVICES = [
       },
       {
         q: '¿Qué conviene revisar primero en un piso antiguo?',
-        a: 'El estado de las instalaciones. Un cuadro eléctrico de los años 70–80 que no ha sido actualizado o tuberías que ya han dado problemas condicionan qué tipo de reforma tiene sentido plantear. Si el cuadro y la fontanería están en buen estado, el alcance puede centrarse en baño, cocina, suelos y acabados.',
+        a: 'El estado de las instalaciones. Un cuadro eléctrico que lleva muchos años sin actualizarse o tuberías que ya han dado problemas condicionan qué tipo de reforma tiene sentido plantear. Si el cuadro y la fontanería están en buen estado, el alcance puede centrarse en baño, cocina, suelos y acabados.',
       },
       {
         q: '¿Puedo reformar cocina y baño sin hacer una reforma integral?',
-        a: 'Sí, siempre que las instalaciones no requieran renovación completa. Baño, cocina, suelos y pintura pueden renovar completamente el piso por 15.000–20.000€ en pisos donde el cuadro y la fontanería funcionan. Si durante la obra aparecen problemas en las instalaciones, lo valoramos antes de ampliar el alcance.',
+        a: 'Sí, cuando las instalaciones no requieren renovación completa. Renovar baño, cocina, suelos y pintura sin hacer una reforma integral puede tener sentido si el cuadro eléctrico y la fontanería están en buen estado. Si durante la obra aparecen problemas en las instalaciones, lo valoramos y decidimos juntos antes de ampliar el alcance.',
       },
       {
-        q: '¿Qué trabajos conviene hacer siempre al mismo tiempo?',
-        a: 'Los que comparten instalaciones o suponen abrir los mismos soportes: baño y fontanería siempre juntos; electricidad del cuadro y puntos de cocina en la misma movilización; suelos nuevos y carpintería interior en la misma fase. Hacerlos por separado puede suponer abrir y cerrar dos veces lo mismo.',
+        q: '¿Qué trabajos suele tener sentido coordinar en la misma fase?',
+        a: 'Los que comparten instalaciones o suponen abrir los mismos soportes. Por ejemplo, cuando se interviene en tuberías del baño, tiene sentido coordinarlo con los trabajos de fontanería de esa zona. Si la reforma de cocina cambia la distribución, la electricidad y la fontanería se adaptan en la misma movilización. Hacerlos por separado puede suponer abrir y cerrar los mismos soportes dos veces.',
       },
       {
         q: '¿Puedo seguir viviendo en el piso mientras dura la obra?',
@@ -275,7 +275,7 @@ export const SERVICES = [
       },
       {
         q: '¿Cuánto tarda la reforma de un piso?',
-        a: 'Una reforma media con baño, cocina, suelos y pintura en un piso de 60–80 m² lleva entre 6 y 10 semanas. Si se añade redistribución de tabiques o renovación de instalaciones, el plazo puede extenderse hasta las 14–16 semanas. La fecha de entrega queda fijada en el contrato antes de empezar.',
+        a: 'Una reforma media con baño, cocina, suelos y pintura en un piso de 60–80 m² lleva entre 6 y 10 semanas. Si se añade redistribución de tabiques o renovación de instalaciones, el plazo puede ser mayor. La fecha de entrega queda fijada en el contrato antes de empezar, con las partidas concretas que determinan el tiempo real.',
       },
     ],
   },
@@ -322,11 +322,11 @@ export const SERVICES = [
       },
       {
         q: '¿Cómo influye el tipo de actividad en lo que hay que incluir en la reforma?',
-        a: 'Directamente. Un restaurante necesita campana de extracción industrial, separador de grasas e instalación de alta potencia. Una clínica necesita circuitos independientes para equipos médicos. Un comercio estándar necesita mucho menos. El uso previsto determina qué instalaciones hay que hacer antes de que empiece la decoración.',
+        a: 'Directamente. Una actividad de hostelería puede necesitar sistemas de extracción, instalaciones de alta potencia y otros requisitos específicos. Una actividad sanitaria o de uso profesional puede tener sus propios requerimientos técnicos. Un comercio sin actividad clasificada suele necesitar mucho menos. El uso previsto es el primer dato que necesitamos para definir el alcance.',
       },
       {
         q: '¿Qué puede retrasar la fecha de apertura de un negocio?',
-        a: 'La tramitación de la licencia de actividad es el factor que más condiciona la apertura en actividades clasificadas. Empezar la tramitación después de terminar la obra puede retrasar la apertura varios meses. Por eso iniciamos la documentación en paralelo con la obra desde el primer día, no cuando termina.',
+        a: 'Los trámites relacionados con la actividad pueden condicionar la fecha de apertura. Cuando son necesarios, empezar la tramitación una vez terminada la obra alarga el proceso. Por eso iniciamos la documentación en paralelo con la obra desde el primer día, no al final.',
       },
       {
         q: '¿Se puede organizar la reforma del local por fases para no cerrar el negocio?',
@@ -536,7 +536,7 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
     'san-fernando-de-henares': [
       { q: '¿Cuándo conviene pasar de reforma parcial a integral?', a: 'Cuando las instalaciones necesitan renovación. Si el cuadro o la fontanería hay que cambiarlos, hacerlo en paralelo con el resto de la obra ahorra el coste de una segunda movilización de gremios. Si las instalaciones están en buen estado, la reforma parcial puede ser suficiente y más económica.' },
       { q: '¿Qué información aporta la visita técnica que no se puede determinar por fotos o descripción?', a: 'El estado real de las instalaciones. La fontanería y el cableado están empotrados y no son visibles sin abrir. La visita técnica evalúa indicios: la fecha del cuadro, el tipo de tuberías observables y síntomas de problemas en techos y paredes. Eso permite cerrar un precio que contemple lo que realmente hay que hacer.' },
-      { q: '¿Cómo se fijan plazos y precio en el contrato de reforma integral?', a: 'El precio queda cerrado por partidas antes de firmar: no hay "precios orientativos" que luego suben. El plazo de entrega se fija con fecha concreta y, si se incumple por causas propias, se aplican las penalizaciones pactadas en el mismo contrato. Los únicos desvíos posibles son los que se comunican y autorizan antes de ejecutarse.' },
+      { q: '¿Cómo queda fijado el precio en el contrato de reforma integral?', a: 'El precio queda cerrado por partidas antes de firmar: no hay "precios orientativos" que luego suben. El contrato especifica exactamente qué está incluido, con qué materiales y con qué acabados. Los únicos desvíos posibles son los que se comunican y autorizan antes de ejecutarse.' },
       { q: '¿Puedo pedir presupuesto con la vivienda todavía habitada y con los muebles dentro?', a: 'Sí. La visita técnica puede realizarse con la vivienda ocupada y con muebles. El estado de los muebles no es relevante para el presupuesto; lo que necesitamos evaluar son las instalaciones y la distribución actual. Algunos elementos solo son visibles una vez vaciado el piso, y eso se indica en el presupuesto cuando aplica.' },
     ],
     'guadalajara': [
@@ -569,14 +569,14 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
     'alcala-de-henares': [
       { q: '¿Qué debería preparar antes de la visita para pedir presupuesto del baño?', a: 'Las medidas del baño si las tienes, una descripción de lo que quieres cambiar (solo la bañera, todo el alicatado, la distribución completa) y si tienes alguna referencia de estilo. Si ya tienes algún material elegido, es útil mencionarlo. Si no tienes nada decidido, la visita puede servir también para orientar la elección.' },
       { q: '¿Puedo pedir presupuesto del baño sin haber elegido el azulejo todavía?', a: 'Sí. Para cerrar el presupuesto necesitamos el alcance de la obra (qué se hace y qué no) y una franja de calidad de materiales. Con eso el precio queda cerrado aunque el modelo concreto de azulejo se elija después, siempre dentro de la franja acordada.' },
-      { q: '¿Cómo se gestiona si el baño está en peor estado del esperado cuando se empieza a desmontar?', a: 'Si al retirar revestimientos aparece algo no previsto, lo comunicamos antes de actuar y lo presupuestamos por separado. No ampliamos el alcance sin confirmación previa. Esto es habitual en baños de los años 80 o 90 donde el soporte puede tener humedades que no eran visibles desde fuera.' },
-      { q: '¿Cuándo puede hacerse la primera visita técnica para la reforma del baño?', a: 'La visita técnica se organiza habitualmente en la misma semana. En la visita evaluamos el estado del baño, tomamos medidas y orientamos el alcance. El presupuesto lo recibes en las 48 horas siguientes, sin compromiso.' },
+      { q: '¿Cómo se gestiona si el baño está en peor estado del esperado cuando se empieza a desmontar?', a: 'Si al retirar revestimientos aparece algo no previsto, lo comunicamos antes de actuar y lo presupuestamos por separado. No ampliamos el alcance sin confirmación previa. Esto puede ocurrir en baños donde el soporte tiene humedades que no eran visibles desde fuera.' },
+      { q: '¿Cuándo puede hacerse la primera visita técnica para la reforma del baño?', a: 'Tras el primer contacto organizamos la visita según disponibilidad. En la visita evaluamos el estado del baño, tomamos medidas y orientamos el alcance. El presupuesto lo recibes en las 48 horas siguientes, sin compromiso.' },
     ],
     'torrejon-de-ardoz': [
-      { q: 'Solo tengo un baño, ¿cómo se organiza la obra para que el tiempo sin servicio sea el mínimo?', a: 'Planificamos la secuencia para que los días de demolición e instalaciones sean los críticos, y a partir de ahí el baño vaya recuperando funcionalidad por fases conforme avanza la obra. Los primeros 3-4 días son los más incómodos; después el inodoro puede quedar operativo antes de que estén todos los acabados terminados.' },
+      { q: 'Solo tengo un baño, ¿cómo se organiza la obra para que el tiempo sin servicio sea el mínimo?', a: 'Planificamos la secuencia para que la fase de demolición e instalaciones sea lo más corta posible. Durante esa primera parte de la obra el baño queda fuera de servicio mientras se realizan desmontaje e instalaciones. A partir de ahí el baño va recuperando funcionalidad conforme avanza la obra.' },
       { q: '¿Qué debería preparar antes de la visita para pedir presupuesto del baño?', a: 'La superficie aproximada, una descripción de lo que quieres cambiar y si ya has pensado en algún material o estilo. Si tienes fotos del baño actual, ayudan a orientar la visita. No necesitas tener nada decidido: la visita puede servir también para clarificar opciones y alcances.' },
       { q: '¿Qué puede hacer cambiar el presupuesto después de desmontar el baño?', a: 'Al retirar los revestimientos pueden aparecer instalaciones deterioradas, humedades en el soporte o soportes que necesitan reparación antes de colocar el nuevo alicatado. La visita técnica detecta indicios, pero algunos problemas solo se confirman al abrir. Si aparece algo nuevo, lo comunicamos antes de actuar y lo valoramos por separado.' },
-      { q: '¿Es mejor cambiar solo la bañera o aprovechar para renovar todo el baño?', a: 'Depende del estado del alicatado. Si el alicatado está en buen estado y tiene menos de 20 años, cambiar la bañera por un plato de ducha sin tocar los revestimientos puede ser suficiente. Si el alicatado está deteriorado o hay síntomas de humedad, hacer la reforma completa aprovechando que ya se abre el baño sale más eficiente que dos obras separadas.' },
+      { q: '¿Es mejor cambiar solo la bañera o aprovechar para renovar todo el baño?', a: 'Depende del estado del alicatado. Si está en buen estado, sin grietas ni humedades, y la distribución es correcta, cambiar la bañera por un plato de ducha sin tocar los revestimientos puede ser suficiente. Si el alicatado está deteriorado o hay síntomas de humedad, hacer la reforma completa aprovechando que ya se abre el baño es más eficiente que dos obras separadas.' },
     ],
     'coslada': [
       { q: '¿Qué debería tener claro antes de pedir presupuesto para la reforma del baño?', a: 'El alcance principal: si quieres cambiar solo la bañera, renovar los revestimientos también, o hacer una reforma completa con nuevo mueble y sanitarios. Con ese punto claro, el presupuesto puede ser preciso. Si todavía estás valorando opciones, la visita puede presentarte presupuesto para cada alcance.' },
@@ -591,7 +591,7 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
       { q: '¿Qué información necesitáis para valorar la reforma del baño antes de la visita?', a: 'La superficie aproximada del baño y una descripción básica del alcance previsto ayudan a orientar la visita. Si tienes dudas entre opciones (solo ducha, reforma completa, cambio de distribución), mencionarlas en el primer contacto nos permite ir a la visita con las dos o tres alternativas valoradas.' },
     ],
     'guadalajara': [
-      { q: '¿Es posible reformar el baño sin quitar todos los azulejos?', a: 'Sí, cuando el alicatado está en buen estado y no hay síntomas de humedad. En ese caso, cambiar la bañera, los sanitarios y el mueble sobre el alicatado existente es una opción válida y más rápida. Si el alicatado tiene más de 20-25 años o hay grietas, conviene evaluar si aguanta bien otro ciclo de vida antes de decidir conservarlo.' },
+      { q: '¿Es posible reformar el baño sin quitar todos los azulejos?', a: 'Sí, cuando el alicatado está en buen estado y no hay síntomas de humedad. En ese caso, cambiar la bañera, los sanitarios y el mueble sobre el alicatado existente es una opción válida y más rápida. Si hay grietas, adherencia deficiente o síntomas de deterioro, conviene evaluar si aguanta bien otro ciclo de vida antes de decidir conservarlo.' },
       { q: '¿Qué debería elegir primero: el alcance de la reforma o los materiales?', a: 'El alcance primero. Los materiales pueden variar dentro de distintas franjas de calidad sin cambiar el precio de la mano de obra. Pero si el alcance cambia una vez elegidos los materiales, puede ser necesario cambiar también los materiales. Cierra el alcance en la visita y elige materiales después con esa base definida.' },
       { q: '¿Cuándo conviene ampliar el alcance de la reforma más allá del baño?', a: 'Cuando hay instalaciones compartidas con otra estancia que también necesitan revisión. La fontanería de un baño puede estar conectada con la de la cocina; si ambas tienen años, puede ser más eficiente revisar las dos en la misma movilización. En la visita evaluamos si hay conexiones que hagan recomendable ampliar el alcance.' },
       { q: '¿Cómo comparo dos presupuestos de reforma de baño?', a: 'Comparando qué incluye cada uno en fontanería, gestión de escombros y calidad de materiales. Un presupuesto que excluye la renovación de fontanería puede parecer más barato pero tener un mayor riesgo de desvío si aparecen tuberías deterioradas al abrir. Pide que cada uno especifique exactamente qué está dentro del precio.' },
@@ -619,7 +619,7 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
   'reforma-cocinas': {
     'alcala-de-henares': [
       { q: '¿Qué debería tener decidido antes de pedir presupuesto de la cocina?', a: 'El alcance principal: si quieres cambiar solo los muebles, si vas a abrir la cocina al salón, si incluye electrodomésticos y en qué gama. Con eso el presupuesto puede ser preciso. Si todavía estás entre opciones, la visita puede presentar alternativas con presupuesto para cada una.' },
-      { q: '¿Cuánto tiempo por adelantado hay que planificar una reforma de cocina?', a: 'Lo mínimo recomendable es tener elegidos los muebles y electrodomésticos principales antes de que empiece la obra civil. Algunos muebles a medida o electrodomésticos de integración tienen plazos de entrega de 4-6 semanas. Si se piden con retraso, pueden generar una pausa entre la obra civil terminada y la instalación de muebles.' },
+      { q: '¿Cuánto tiempo por adelantado hay que planificar una reforma de cocina?', a: 'Lo mínimo recomendable es tener elegidos los muebles y electrodomésticos principales antes de que empiece la obra civil. Muebles a medida o electrodomésticos de integración pueden necesitar fabricación o suministro específico. Si se piden con retraso, pueden generar una pausa entre la obra civil terminada y la instalación de muebles.' },
       { q: '¿Qué factores hacen que dos presupuestos de cocina sean difíciles de comparar?', a: 'Que no incluyan lo mismo. Un presupuesto puede incluir los electrodomésticos y otro no; uno puede incluir la adaptación eléctrica y otro contemplarla como extra. Para comparar bien, pide que cada uno especifique exactamente qué está en el precio: muebles, encimera, electrodomésticos, instalaciones, extracción y gestión de escombros.' },
       { q: '¿Se puede reformar la cocina si hay que despejar el pasillo para mover materiales?', a: 'Sí, es parte de la gestión habitual de la obra. Protegemos el pasillo y las zonas de paso, y coordinamos la entrada de materiales para que el impacto en el resto de la vivienda sea el mínimo posible. Si la zona de acceso es estrecha, lo evaluamos en la visita para definir la logística antes de empezar.' },
     ],
@@ -631,13 +631,13 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
     ],
     'coslada': [
       { q: '¿Qué debería tener claro antes de la visita para presupuestar la cocina?', a: 'Si la distribución va a cambiar o se mantiene, si incluye electrodomésticos o solo muebles e instalaciones, y en qué franja de calidad de muebles te mueves. Con eso la visita puede centrarse en lo que realmente necesitas y el presupuesto puede ser más preciso desde el primer momento.' },
-      { q: '¿Cuándo merece la pena abrir la cocina al salón?', a: 'Cuando la cocina es pequeña o cerrada y el salón tiene superficie suficiente para absorber la integración. Derribar el tabique añade solo 1-2 días de obra pero puede transformar completamente la percepción del espacio. Antes de decidir, conviene evaluar dónde va la extracción y cómo afectan el ruido y el olor al salón en la distribución resultante.' },
+      { q: '¿Cuándo merece la pena abrir la cocina al salón?', a: 'Cuando la cocina es pequeña o cerrada y el salón tiene superficie suficiente para absorber la integración. Abrir la cocina puede ampliar el alcance de la obra: hay que comprobar la función del tabique, coordinar instalaciones y resolver la extracción. Antes de decidir, conviene evaluar cómo afectan el ruido y el olor al salón en la distribución resultante.' },
       { q: '¿Qué instalaciones conviene revisar antes de reformar la cocina?', a: 'La instalación eléctrica puede necesitar adaptación si el cuadro no tiene circuitos independientes para los electrodomésticos actuales. La fontanería, si no ha dado problemas, puede estar en buen estado. El estado observable de cada instalación lo revisamos en la visita técnica antes de cerrar el presupuesto.' },
       { q: '¿Puedo elegir los electrodomésticos después de que empiece la obra?', a: 'Solo los que no condicionen la instalación eléctrica. Horno, vitrocerámica, lavavajillas y frigorífico deben estar elegidos antes de cerrar la instalación eléctrica, porque su potencia determina los circuitos necesarios. La campana también condicionan el recorrido del conducto de extracción. El microondas y otros electrodomésticos de encimera pueden decidirse después.' },
     ],
     'san-fernando-de-henares': [
       { q: '¿Qué debería decidir antes de pedir presupuesto de la cocina?', a: 'El alcance principal: si quieres obra completa (instalaciones + muebles) o solo cambio de muebles; si la distribución cambia o se mantiene; y si incluyes electrodomésticos. Con esas tres decisiones claras, el presupuesto puede ser cerrado y comparable.' },
-      { q: '¿Cuándo conviene revisar también la fontanería al reformar la cocina?', a: 'Si las tuberías llevan más de 25 años o han dado algún problema de presión o goteo, conviene evaluarlas. Con la cocina ya abierta para cambiar muebles e instalaciones eléctricas, hacer la fontanería tiene un coste adicional menor que abrir la cocina una segunda vez en pocos años.' },
+      { q: '¿Cuándo conviene revisar también la fontanería al reformar la cocina?', a: 'Cuando han dado algún problema, no se conoce bien su estado, o la nueva distribución obliga a intervenir sobre ellas. Con la cocina ya abierta, hacer la fontanería tiene un coste adicional menor que abrir la cocina una segunda vez en pocos años.' },
       { q: '¿Es posible presupuestar la cocina sin haber elegido los muebles todavía?', a: 'Sí. El presupuesto puede cerrarse con una franja de calidad de muebles (básica, media o alta) y con el layout definido. La elección de puertas, tiradores y encimera puede hacerse después. Lo que sí hay que tener claro antes de empezar la obra son los electrodomésticos que van integrados, porque condicionan las instalaciones.' },
       { q: '¿Se puede presupuestar la reforma de cocina si el piso todavía está alquilado?', a: 'Sí. La visita puede realizarse con el piso ocupado. El vaciado del espacio hay que coordinarlo con el inquilino antes de empezar la obra. Si el contrato de alquiler está próximo a vencer, podemos planificar el proyecto para que la obra empiece en cuanto el piso quede libre.' },
     ],
@@ -656,7 +656,7 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
     'meco': [
       { q: '¿Qué diferencias tiene reformar la cocina en la planta baja de una vivienda unifamiliar frente a un piso?', a: 'Puede haber más flexibilidad para el recorrido de extracción (salida directa a fachada lateral o trasera) y para el paso de instalaciones. En algunos casos, la planta baja de una unifamiliar permite distribuciones que en un piso serían más complejas. También puede haber más espacio disponible para obra y materiales durante la ejecución.' },
       { q: '¿Qué debería tener decidido antes de solicitar visita técnica para la cocina?', a: 'Una idea del alcance: si quieres solo muebles nuevos, si incluye instalaciones o si vas a cambiar la distribución. Si tienes alguna referencia de estilo que te guste, mencionarla en el primer contacto ayuda a orientar la visita. No hace falta tener nada cerrado: la visita puede ayudar también a definir el alcance.' },
-      { q: '¿Se puede reformar la cocina sin cambiar la instalación eléctrica?', a: 'Depende del estado de la instalación y de los electrodomésticos que vayas a instalar. Si el cuadro actual puede asumir los consumos previstos y la distribución de circuitos es correcta, puede no ser necesario cambiarla. En viviendas de más de 25-30 años, conviene revisarla durante la visita para confirmarlo antes de cerrar el presupuesto.' },
+      { q: '¿Se puede reformar la cocina sin cambiar la instalación eléctrica?', a: 'Depende del estado de la instalación y de los electrodomésticos que vayas a instalar. Si el cuadro puede asumir los consumos previstos y la distribución de circuitos es correcta, puede no ser necesario cambiarla. Si no se ha revisado, presenta limitaciones o no cubre las necesidades de los nuevos electrodomésticos, conviene evaluarla durante la visita antes de cerrar el presupuesto.' },
       { q: '¿Merece la pena reformar la cocina si voy a vender la vivienda en los próximos años?', a: 'Depende del estado actual de la cocina. Si los acabados están muy envejecidos o las instalaciones no están en buen estado, una reforma puede mejorar la percepción del comprador. Para orientar qué alcance tiene más sentido según el estado y el objetivo, lo revisamos en la visita técnica.' },
     ],
     'camarma-de-esteruelas': [
@@ -671,13 +671,13 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
     'alcala-de-henares': [
       { q: '¿Qué información necesitáis para orientar el alcance antes de la visita?', a: 'La superficie del piso, el año de construcción aproximado y una descripción de lo que quieres cambiar. Si ya sabes que el cuadro o la fontanería tienen problemas, mencionarlo ayuda a que la visita lo evalúe con más detalle. Con eso podemos orientar si conviene más una reforma parcial o integral antes de que llegues a la visita.' },
       { q: '¿Puedo pedir presupuesto si el piso está alquilado y hay que coordinar con el inquilino?', a: 'Sí. La visita técnica puede realizarse con el inquilino presente o con su consentimiento. Para obras que requieran que el piso esté vacío, hay que coordinar el acceso con el inquilino antes de empezar. Si el arrendamiento está próximo a vencer, podemos planificar el proyecto para empezar en cuanto quede libre.' },
-      { q: '¿Cuándo conviene reformar el piso completo antes de ponerlo en alquiler?', a: 'Cuando el estado actual limita el perfil de inquilino o la renta posible. En pisos de los años 80 o 90 donde las instalaciones y los acabados no se han tocado, una reforma puede mejorar el perfil de inquilino y permitir una renta más alta que amortiza la inversión en pocos años. Lo orientamos en la visita según el estado y el objetivo.' },
+      { q: '¿Cuándo conviene reformar el piso completo antes de ponerlo en alquiler?', a: 'Cuando el estado actual de instalaciones o acabados limita el perfil de inquilino o la renta posible. Si el cuadro, la fontanería o los acabados necesitan renovación, una reforma puede mejorar la posición del piso en el mercado de alquiler. Lo orientamos en la visita según el estado y el objetivo.' },
       { q: '¿Cómo se gestiona la reforma en el caso de una herencia o compra reciente?', a: 'El proceso es el mismo: visita técnica para evaluar el estado, presupuesto cerrado y contrato. Si el piso está vacío al recibirlo o adquirirlo, la obra puede planificarse para empezar en cuanto estés listo. Es habitual que la visita se haga antes del acuerdo definitivo, con la presencia del vendedor o el gestor de la herencia.' },
     ],
     'torrejon-de-ardoz': [
       { q: '¿Puedo pedir presupuesto de reforma del piso antes de comprarlo?', a: 'Sí, y es una buena práctica. Conocer el coste estimado de la reforma antes de cerrar la compra te da información importante para negociar el precio o decidir si el piso encaja en tu presupuesto total. La visita puede realizarse con el vendedor o el agente inmobiliario presente, y el presupuesto orientativo no implica compromiso de obra.' },
       { q: '¿Qué debería preparar antes de la visita para reformar el piso?', a: 'Una descripción de lo que quieres cambiar y en qué estado crees que están las instalaciones. Si ya has detectado algún problema (cuadro antiguo, goteras, grietas), mencionarlo para que la visita lo evalúe específicamente. Si tienes planos del piso o alguna idea de redistribución, llevarlos ayuda a que la visita sea más productiva.' },
-      { q: '¿Qué conviene revisar en el estado del piso antes de plantear qué reformar?', a: 'El cuadro eléctrico y la fontanería son los dos elementos que más condicionan el alcance. Un cuadro de los años 70-80 sin actualizar o tuberías de hierro galvanizado pueden requerir renovación aunque los acabados parezcan aceptables. Si necesitan renovación, hacerlo junto con el resto de la reforma es más eficiente que dejarlo para después.' },
+      { q: '¿Qué conviene revisar en el estado del piso antes de plantear qué reformar?', a: 'El cuadro eléctrico y la fontanería son los dos elementos que más condicionan el alcance. Un cuadro sin actualizar o tuberías en mal estado pueden requerir renovación aunque los acabados parezcan aceptables. Si necesitan renovación, hacerlo junto con el resto de la reforma es más eficiente que dejarlo para después.' },
       { q: '¿Cuándo tiene sentido reformar el piso antes de ponerlo en el mercado?', a: 'Cuando el estado de los acabados o las instalaciones limita el tipo de comprador o inquilino al que puede llegar el piso. Una reforma centrada en baño, cocina y suelos puede cambiar la percepción del inmueble. Para orientar qué alcance tiene más sentido según el estado y el objetivo, lo revisamos en la visita técnica.' },
     ],
     'coslada': [
@@ -689,7 +689,7 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
     'san-fernando-de-henares': [
       { q: '¿Puedo pedir presupuesto de reforma del piso si todavía no sé exactamente qué quiero cambiar?', a: 'Sí. La visita técnica puede también servir de consultoría: evaluamos el estado del piso, te explicamos qué tiene más impacto según tu objetivo (vivir, alquilar o vender) y presentamos el presupuesto para los alcances que tienen más sentido en tu caso. No es necesario tener nada decidido antes de la visita.' },
       { q: '¿Qué debería tener preparado para la visita técnica?', a: 'Acceso al piso y una idea general de qué quieres cambiar o mejorar. Si ya has detectado problemas concretos (cuadro antiguo, baño con humedades, suelos deteriorados), mencionarlos para que la visita los evalúe con detalle. Si tienes planos, llevarlos; si no, los tomamos durante la visita.' },
-      { q: '¿Qué suele descubrirse al abrir un piso de los años 80 que no se veía en la primera visita?', a: 'La fontanería y el cableado están empotrados y no son visibles sin abrir. Al desmontar los baños o abrir rozas para la electricidad puede aparecer tuberías en peor estado del esperado o cableado sin protección. Por eso la visita técnica evalúa indicios y el presupuesto contempla cómo se gestionan estos casos si aparecen.' },
+      { q: '¿Qué puede descubrirse al abrir un piso antiguo que no era visible en la primera visita?', a: 'La fontanería y el cableado están empotrados y no son visibles sin abrir. Al desmontar los baños o abrir rozas para la electricidad puede aparecer tuberías en peor estado del esperado o cableado sin protección. Por eso la visita técnica evalúa indicios y el presupuesto contempla cómo se gestionan estos casos si aparecen.' },
       { q: '¿Cuándo merece la pena reformar el piso antes de mudarse?', a: 'Siempre que el estado del piso lo justifique y sea posible organizarse sin vivir en él durante la obra. Hacer la reforma con el piso vacío permite ejecutar todos los trabajos sin restricciones de horario, sin proteger muebles y con mayor velocidad de ejecución. El resultado es mejor y el plazo suele ser menor que con el piso ocupado.' },
     ],
     'guadalajara': [
@@ -700,7 +700,7 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
     ],
     'azuqueca-de-henares': [
       { q: '¿Qué información sirve para orientar el presupuesto antes de la visita?', a: 'La superficie del piso, el año de construcción y una descripción del alcance previsto. Con eso podemos darte una horquilla orientativa antes de la visita. El presupuesto cerrado siempre requiere la visita técnica para evaluar el estado real de las instalaciones y confirmar el alcance.' },
-      { q: '¿Cómo se organiza la reforma si necesito empezar lo antes posible?', a: 'La visita técnica puede organizarse en los primeros días tras el contacto. El presupuesto lo recibes en 48 horas. Si la obra no necesita licencia y los materiales están disponibles, puede empezar en 2-3 semanas. Para obras que requieren licencia, el trámite puede iniciarse en paralelo con el proyecto para no retrasar el inicio.' },
+      { q: '¿Cómo se organiza la reforma si necesito empezar lo antes posible?', a: 'Tras el primer contacto organizamos la visita técnica. El presupuesto lo recibes en 48 horas. El inicio depende de la disponibilidad del equipo, del alcance de la obra y del suministro de materiales. Para obras que requieren tramitación previa, el trámite puede iniciarse en paralelo con el proyecto para no retrasar el inicio.' },
       { q: '¿Puedo reformar el piso por estancias en distintos momentos?', a: 'Sí, aunque no siempre es la opción más eficiente. Cuando distintas estancias comparten instalaciones o acabados, hacerlas por separado puede obligar a repetir trabajos. Si el presupuesto no alcanza para todo a la vez, orientamos qué parte tiene más impacto y puede hacerse primero sin complicar lo que venga después.' },
       { q: '¿Qué conviene tener decidido antes de que empiece la obra?', a: 'El alcance completo: qué se hace y qué no. Los materiales concretos pueden elegirse mientras se hace la obra civil, pero el alcance no debe cambiar una vez arrancada: cambiar qué se reforma a mitad de obra alarga el plazo y puede añadir coste.' },
     ],
@@ -734,24 +734,24 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
     'coslada': [
       { q: '¿Qué información necesitáis para dar una primera orientación de presupuesto?', a: 'La superficie del local, el uso previsto y una descripción del estado actual (si está reformado, si tiene instalaciones o si está en bruto). Con eso podemos orientar una horquilla antes de la visita. El presupuesto cerrado siempre requiere ver el local para evaluar el estado de las instalaciones existentes y definir el alcance.' },
       { q: '¿Cómo se organiza la obra para no cerrar el negocio más tiempo del necesario?', a: 'Planificando en detalle la secuencia antes de empezar. En locales donde la actividad puede continuar durante la reforma, organizamos las fases para que las que requieren corte de suministros se hagan fuera del horario de mayor actividad o en un bloque concentrado. Para locales en obra total, se planifica el plazo mínimo posible.' },
-      { q: '¿Qué puede hacer que una reforma de local sea más compleja de lo esperado?', a: 'Instalaciones preexistentes en mal estado que hay que sanear antes de instalar las nuevas, requerimientos técnicos del uso que no estaban previstos (separador de grasas, ventilación especial) o cambios en el alcance decididos con la obra empezada. Los dos primeros se controlan con una visita técnica completa antes de cerrar el presupuesto.' },
+      { q: '¿Qué puede hacer que una reforma de local sea más compleja de lo esperado?', a: 'Instalaciones preexistentes en mal estado que hay que sanear antes de instalar las nuevas, requerimientos técnicos del uso que no estaban previstos o cambios en el alcance decididos con la obra empezada. Los dos primeros se controlan con una visita técnica completa antes de cerrar el presupuesto.' },
       { q: '¿Cuándo conviene reformar el local completo antes de comenzar la actividad?', a: 'Cuando las instalaciones existentes no sirven para el uso previsto o cuando el estado general del local hace inviable una reforma por fases. Hacer todo antes de la apertura permite también tramitar la licencia de actividad sin interferir con la operativa del negocio.' },
     ],
     'san-fernando-de-henares': [
       { q: '¿Qué debería preparar antes de la visita técnica para el local?', a: 'El uso previsto y una distribución básica de la actividad: dónde va la zona de trabajo, dónde la atención al público, dónde el almacén. Si ya tienes algún requisito técnico de la actividad (ventilación específica, instalación de agua, separador), mencionarlo para que la visita lo tenga en cuenta desde el inicio.' },
       { q: '¿Puedo reformar el local si la actividad todavía no está completamente definida?', a: 'Puedes empezar el proceso, pero el uso tiene que estar claro antes de cerrar las instalaciones. La posición de los puntos de agua, los circuitos eléctricos y la ventilación dependen directamente del uso previsto. Si el uso cambia después de que estén cerradas las instalaciones, puede implicar reabrir lo que ya está terminado.' },
       { q: '¿Qué instalaciones son las primeras que hay que resolver en un local?', a: 'La acometida eléctrica y la evacuación. Son las que determinan dónde pueden ir los equipos y la distribución interior. Antes de colocar particiones o techo técnico hay que tener definidos los recorridos de las instalaciones principales para que no queden accesos cortados o recorridos imposibles una vez terminada la obra.' },
-      { q: '¿Cómo afecta el tipo de actividad a los requisitos de la reforma?', a: 'Directamente. Un restaurante necesita campana de extracción industrial, separador de grasas e instalación de alta potencia. Una clínica puede necesitar circuitos independientes para equipos médicos y requisitos de ventilación específicos. Un comercio estándar necesita mucho menos. El uso previsto es el primer dato que necesitamos para planificar la reforma.' },
+      { q: '¿Cómo afecta el tipo de actividad a los requisitos de la reforma?', a: 'Determina qué instalaciones son necesarias y qué tramitación corresponde. Una actividad de hostelería puede necesitar sistemas de extracción específicos y mayor potencia. Una actividad sanitaria o de uso profesional puede tener sus propios requerimientos técnicos. El alcance debe definirse según la actividad concreta, y por eso es el primer dato que necesitamos.' },
     ],
     'guadalajara': [
       { q: '¿Qué debería tener claro antes de pedir presupuesto para el local en Guadalajara?', a: 'El uso y la distribución básica prevista. El uso determina qué instalaciones son necesarias y qué tipo de proyecto y tramitación hay que seguir. La distribución básica condiciona dónde van las instalaciones, que es el elemento más difícil de cambiar una vez cerrado.' },
       { q: '¿Cuándo es necesario tramitar licencia de actividad en Guadalajara?', a: 'Para actividades clasificadas: hostelería, talleres, clínicas, establecimientos con consumos altos o impacto acústico. Para actividades sin clasificación especial, los requisitos pueden ser menores, aunque dependen del uso concreto y del Ayuntamiento de Guadalajara. El trámite exacto lo determinamos antes de comenzar la tramitación.' },
       { q: '¿Puede el local abrir mientras se tramita la documentación de actividad?', a: 'Depende del tipo de actividad. Los requisitos para iniciar la actividad dependen del tipo de uso y de la documentación presentada. En actividades clasificadas, suele requerirse tramitación previa antes de la apertura. Lo determinamos según el uso concreto durante la planificación, sin adelantar plazos que dependen del procedimiento aplicable.' },
-      { q: '¿Qué diferencia hay entre la reforma de un local de hostelería y uno de oficinas?', a: 'El alcance de las instalaciones. Hostelería requiere extracción industrial, separador de grasas, instalación de alta potencia para cocina y requisitos de ventilación específicos. Una oficina puede no requerir ninguna de esas instalaciones. El coste y el plazo de obra son significativamente distintos entre los dos tipos de uso.' },
+      { q: '¿Qué diferencia hay entre la reforma de un local de hostelería y uno de oficinas?', a: 'El alcance de las instalaciones. La hostelería puede necesitar sistemas de extracción de alta capacidad, instalación eléctrica de mayor potencia y otros requisitos específicos del uso. Una oficina estándar puede no necesitar ninguna de esas instalaciones. El coste y el plazo de obra son significativamente distintos entre los dos tipos de uso.' },
     ],
     'azuqueca-de-henares': [
       { q: '¿Qué debería decidir antes de solicitar visita para presupuestar el local en Azuqueca?', a: 'El uso previsto y una distribución básica de la actividad. Con eso la visita puede ser más productiva y el presupuesto más ajustado. Si todavía estás entre dos usos posibles, la visita puede presentar una orientación de presupuesto para cada uno y así tener esa información antes de decidir.' },
-      { q: '¿Cómo se puede reducir el tiempo hasta la apertura del negocio?', a: 'Iniciando la tramitación de documentación en paralelo con la obra desde el primer día, no cuando termina. En actividades que requieren licencia de actividad, el tiempo de tramitación es el factor que más condiciona la fecha de apertura. Si la documentación se empieza cuando acaba la obra, la apertura puede retrasarse meses.' },
+      { q: '¿Cómo se puede reducir el tiempo hasta la apertura del negocio?', a: 'Iniciando la tramitación de documentación en paralelo con la obra desde el primer día, no cuando termina. En actividades que requieren tramitación previa, los trámites pueden condicionar la fecha de apertura. Si la documentación se inicia solo al terminar la obra, el proceso se alarga innecesariamente.' },
       { q: '¿Qué instalaciones conviene definir en la primera fase del proyecto?', a: 'La instalación eléctrica (cuadro, circuitos y potencia necesaria), los puntos de agua y desagüe, y la ventilación si el uso la requiere. Estas tres instalaciones condicionan la distribución interior y son las que más difícil resulta modificar una vez colocadas las particiones y el techo técnico.' },
       { q: '¿Puedo pedir presupuesto si el local todavía está en negociación de contrato de alquiler?', a: 'Sí. Tener un presupuesto orientativo antes de cerrar el alquiler puede ayudarte a negociar el precio o las condiciones del arrendamiento. La visita técnica puede realizarse antes de que el contrato esté firmado, con consentimiento del propietario. El presupuesto no implica ningún compromiso de obra.' },
     ],
@@ -764,7 +764,7 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
     'camarma-de-esteruelas': [
       { q: '¿Qué información necesitáis para presupuestar la reforma del local en Camarma?', a: 'La superficie, el uso previsto y el estado actual del local. El uso es lo más importante: un restaurante y una oficina pueden tener presupuestos muy distintos con la misma superficie. Con esos datos podemos orientar el proceso antes de la visita y llegar con las preguntas técnicas ya enfocadas.' },
       { q: '¿Se puede iniciar la reforma sin tener completamente definida la actividad?', a: 'Solo en la parte de obra civil que no dependa del uso: tabiquería básica, solado, pintura. Las instalaciones deben esperar a que el uso esté claro, porque condicionan qué circuitos, qué puntos de agua y qué ventilación hay que instalar. Empezar las instalaciones sin saber el uso puede suponer hacer trabajo que hay que rehacer.' },
-      { q: '¿Qué factores pueden condicionar el plazo de apertura?', a: 'La tramitación de documentación de actividad, cuando es necesaria, es el factor que más condiciona la fecha de apertura. Si la tramitación empieza cuando termina la obra, la apertura puede retrasarse meses. Por eso iniciamos la documentación en paralelo con la obra desde el principio, no al final.' },
+      { q: '¿Qué factores pueden condicionar el plazo de apertura?', a: 'Los trámites relacionados con la actividad, cuando son necesarios, pueden condicionar la fecha de apertura. Si la tramitación empieza cuando termina la obra, el proceso se alarga. Por eso iniciamos la documentación en paralelo con la obra desde el principio, no al final.' },
       { q: '¿Qué tramitación previa hay que gestionar para abrir un negocio en Camarma?', a: 'Depende del tipo de actividad y del alcance de la intervención. Para actividades clasificadas (hostelería, clínicas, talleres) suele requerirse tramitación previa. Para actividades sin clasificación especial, los requisitos pueden ser menores, aunque dependen del uso concreto y del Ayuntamiento de Camarma. Lo determinamos durante la planificación del proyecto.' },
     ],
   },
@@ -777,13 +777,13 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
       { q: '¿Qué ocurre si la comunidad quiere modificar el alcance una vez aprobado en junta?', a: 'Cualquier cambio que afecte al alcance o al precio requiere autorización previa. Si el cambio implica un coste adicional, lo presupuestamos por separado antes de ejecutarlo. No ampliamos el alcance de la obra sin que el interlocutor designado lo haya validado.' },
     ],
     'torrejon-de-ardoz': [
-      { q: '¿Cuánto tiempo de antelación se necesita para planificar una obra de comunidad?', a: 'Para obras que requieren aprobación en junta, lo ideal es tener el presupuesto listo al menos tres semanas antes de la convocatoria. En obras urgentes (averías, problemas de cubierta), priorizamos la visita técnica para poder presupuestar lo antes posible.' },
+      { q: '¿Cuánto tiempo de antelación se necesita para planificar una obra de comunidad?', a: 'Para obras que requieren aprobación en junta, conviene disponer del presupuesto con tiempo suficiente para que administración y propietarios puedan revisarlo antes de la convocatoria. En obras urgentes (averías, problemas de cubierta), priorizamos la visita técnica para poder presupuestar lo antes posible.' },
       { q: '¿Qué documentación aporta el presupuesto para que la junta pueda tomar la decisión?', a: 'Descripción del alcance de la obra, partidas desglosadas por capítulo, fotografías del estado previo, planificación con duración estimada y precio total cerrado. El formato es directamente presentable en junta y permite que los propietarios valoren la propuesta con información suficiente.' },
       { q: '¿Cómo se minimizan las molestias a los vecinos durante la obra?', a: 'Adaptando los horarios de trabajo a los de uso de las zonas comunes, protegiendo accesos y zonas de paso, y comunicando con antelación las fases de mayor ruido o suciedad. Los accesos al edificio se mantienen operativos durante toda la obra salvo en fases muy concretas que se comunican con anticipación.' },
       { q: '¿Qué pasa si durante la obra aparecen problemas que no estaban en el presupuesto?', a: 'Lo comunicamos antes de actuar. Si al ejecutar la obra aparece algo no previsto (instalaciones en peor estado del esperado, soportes que necesitan reparación), lo documentamos, lo presupuestamos por separado y esperamos autorización del interlocutor antes de proceder.' },
     ],
     'coslada': [
-      { q: '¿Cuánto tiempo por adelantado hay que planificar una obra en zonas comunes?', a: 'Para obras que necesitan aprobación en junta, con tres semanas de antelación entre el presupuesto y la convocatoria suele ser suficiente. En obras urgentes, priorizamos la visita técnica. Para obras de mayor alcance que requieren tramitación adicional, el plazo de planificación puede extenderse en función del proceso.' },
+      { q: '¿Cuánto tiempo por adelantado hay que planificar una obra en zonas comunes?', a: 'Para obras que necesitan aprobación en junta, conviene disponer del presupuesto con antelación suficiente para que todos los propietarios puedan valorarlo antes de la convocatoria. En obras urgentes, priorizamos la visita técnica. Para obras de mayor alcance que requieren tramitación adicional, el plazo puede extenderse en función del proceso.' },
       { q: '¿Podéis hacer una visita previa para elaborar el presupuesto sin ningún compromiso?', a: 'Sí. La visita técnica es gratuita y no implica ningún compromiso de contratación. Evaluamos el estado de las zonas comunes, fotografiamos el estado previo y elaboramos el presupuesto con todos los detalles. La comunidad recibe el presupuesto y decide si quiere presentarlo en junta.' },
       { q: '¿Qué tipo de obras en comunidad suelen aprobarse en junta sin dificultad?', a: 'Las de mantenimiento y conservación claramente necesarias: impermeabilización de cubierta con filtraciones, reparación de fachada deteriorada, renovación de iluminación de portal. Las obras de mejora que no responden a una necesidad urgente suelen requerir más debate en junta. Un presupuesto bien documentado con fotografías del estado previo facilita la aprobación.' },
       { q: '¿Cómo se gestionan los residuos de una obra en una comunidad?', a: 'Los residuos de obra se gestionan con contenedor o transporte a vertedero autorizado, incluido en el precio del presupuesto. No se acumulan en zonas comunes del edificio ni en la vía pública sin autorización. La limpieza de las zonas de paso al final de la jornada forma parte del protocolo de obra.' },
@@ -795,7 +795,7 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
       { q: '¿Qué ocurre si la junta aprueba la obra pero luego quiere cambiar el alcance?', a: 'Cualquier cambio de alcance posterior a la aprobación en junta requiere una nueva comunicación y presupuesto adicional. Si el cambio es significativo, puede necesitar una nueva aprobación por parte de la junta. No ejecutamos cambios de alcance sin validación previa del interlocutor designado y, cuando aplica, de la junta.' },
     ],
     'guadalajara': [
-      { q: '¿Cuánto tiempo hay entre la aprobación en junta y el inicio posible de la obra?', a: 'Depende del tipo de obra y de si necesita tramitación adicional. Para obras que no requieren licencia, puede empezarse en 2-3 semanas tras la aprobación. Para obras que necesitan licencia de obra menor o proyecto técnico, el plazo de tramitación se suma. Lo calculamos en el proyecto antes de la junta para que la comunidad tenga una fecha realista de inicio.' },
+      { q: '¿Cuánto tiempo hay entre la aprobación en junta y el inicio posible de la obra?', a: 'Depende del tipo de obra y de si necesita tramitación adicional. El plazo varía según el alcance, la disponibilidad del equipo y, si aplica, el tiempo de tramitación previa. Lo calculamos en el proyecto antes de la junta para que la comunidad tenga una fecha realista de inicio.' },
       { q: '¿Qué documentación necesita la comunidad para comparar varios presupuestos?', a: 'Para que los presupuestos sean comparables, todos deben detallar el mismo alcance de obra, con partidas desglosadas, materiales especificados y gestión de residuos incluida o excluida de forma explícita. Si cada presupuesto contempla un alcance diferente, el precio total no es el único elemento a comparar.' },
       { q: '¿Cómo se gestionan los accesos al edificio durante la obra?', a: 'Mantenemos los accesos operativos durante toda la obra salvo en fases muy concretas. En trabajos de portal o escalera, organizamos el acceso por zonas para que los vecinos puedan entrar y salir sin interrupción. Las fases de mayor restricción de acceso se comunican con antelación.' },
       { q: '¿Qué conviene definir antes de publicar la convocatoria de junta?', a: 'El alcance exacto de la obra y el presupuesto con el que se va a presentar. Publicar una convocatoria con el presupuesto detallado (no solo el importe total) facilita que los propietarios lleguen a la junta con la información necesaria y la votación sea más ágil. Un presupuesto vago genera más preguntas y más debate en junta.' },
@@ -814,9 +814,9 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
     ],
     'camarma-de-esteruelas': [
       { q: '¿Qué información necesita la comunidad para poder comparar varios presupuestos?', a: 'Que todos los presupuestos detallan el mismo alcance. Para comparar bien, pide que cada presupuesto especifique qué materiales se usan, si la gestión de residuos está incluida, qué garantía se da sobre el trabajo y cuál es el plazo de ejecución. El importe total solo es comparable si el alcance es idéntico.' },
-      { q: '¿Con cuánta antelación hay que planificar una obra en la comunidad?', a: 'Para obras que necesitan aprobación en junta, lo ideal es tener el presupuesto tres semanas antes de la convocatoria. En obras urgentes (filtraciones, elementos en riesgo), priorizamos la visita técnica. Para obras de mayor alcance que necesitan tramitación adicional, el plazo puede extenderse a uno o dos meses.' },
-      { q: '¿Podéis asistir a la junta de propietarios antes de que se tome la decisión?', a: 'Sí. En comunidades pequeñas como las de Camarma, la asistencia a la junta puede ser especialmente útil para responder preguntas técnicas directamente y resolver dudas sobre el alcance o el plazo. Lo coordinamos con el administrador o el presidente de la comunidad.' },
-      { q: '¿Cómo se comunica el avance de la obra a los vecinos?', a: 'Con avisos previos al inicio de cada fase relevante y comunicación directa con el interlocutor designado. En comunidades pequeñas donde todos los vecinos se conocen, la comunicación suele ser más directa. El jefe de obra está disponible para cualquier consulta durante toda la ejecución.' },
+      { q: '¿Con cuánta antelación hay que planificar una obra en la comunidad?', a: 'Para obras que necesitan aprobación en junta, conviene disponer del presupuesto con tiempo suficiente para que administración y propietarios puedan revisarlo antes de la convocatoria. En obras urgentes (filtraciones, elementos en riesgo), priorizamos la visita técnica. Para obras de mayor alcance que necesitan tramitación adicional, el calendario depende del proceso aplicable.' },
+      { q: '¿Podéis asistir a la junta de propietarios antes de que se tome la decisión?', a: 'Sí. Cuando la comunidad lo considera útil, podemos presentar el proyecto directamente en la junta para responder preguntas técnicas y resolver dudas sobre el alcance o el plazo. Lo coordinamos con el administrador o el presidente de la comunidad.' },
+      { q: '¿Cómo se comunica el avance de la obra a los vecinos?', a: 'Con avisos previos al inicio de cada fase relevante y comunicación directa con el interlocutor designado por la comunidad. Si la comunidad tiene pocos propietarios, la comunicación puede ser más directa e informal. El jefe de obra está disponible para cualquier consulta durante toda la ejecución.' },
     ],
   },
 };
@@ -1285,7 +1285,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cómo solicito una visita para valorar una reforma en Alcalá de Henares?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y se organiza habitualmente en la misma semana. En la visita evaluamos el estado de la vivienda o local, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto lo recibes en las 48 horas siguientes, sin compromiso.',
+      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. En la visita evaluamos el estado de la vivienda o local, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto lo recibes en las 48 horas siguientes.',
     },
     {
       q: '¿Podéis presupuestar una reforma antes de comprar la vivienda en Alcalá?',
@@ -1303,7 +1303,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cómo solicito una visita para valorar una reforma en Torrejón de Ardoz?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y se organiza habitualmente en la misma semana. En la visita evaluamos el estado de las instalaciones, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto lo recibes en las 48 horas siguientes, sin compromiso de contratación.',
+      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. En la visita evaluamos el estado de las instalaciones, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto lo recibes en las 48 horas siguientes.',
     },
     {
       q: '¿Qué hay que comprobar antes de fijar la fecha de inicio de la obra en Torrejón?',
@@ -1325,7 +1325,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cómo solicito una visita técnica en Coslada?',
-      a: 'A través del formulario de contacto o por teléfono. La visita es gratuita y se organiza habitualmente en la misma semana. En la visita evaluamos el estado de la vivienda o local, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto llega en las 48 horas siguientes.',
+      a: 'A través del formulario de contacto o por teléfono. La visita es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. En la visita evaluamos el estado de la vivienda o local, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto llega en las 48 horas siguientes.',
     },
     {
       q: '¿Conviene reformar baño y cocina en la misma obra?',
@@ -1347,7 +1347,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cómo solicito una visita para valorar una reforma en San Fernando de Henares?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y se organiza habitualmente en la misma semana. Evaluamos el estado de las instalaciones, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto lo recibes en las 48 horas siguientes, sin ningún compromiso.',
+      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. Evaluamos el estado de las instalaciones, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto lo recibes en las 48 horas siguientes.',
     },
     {
       q: '¿Qué información sirve para orientar el presupuesto antes de la visita?',
@@ -1369,11 +1369,11 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cómo solicito una visita para valorar una reforma en Guadalajara?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y se organiza habitualmente en la misma semana. En la visita evaluamos el estado de la vivienda o local y cerramos la información que necesitamos para el presupuesto. Lo recibes en las 48 horas siguientes.',
+      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. En la visita evaluamos el estado de la vivienda o local y cerramos la información que necesitamos para el presupuesto. Lo recibes en las 48 horas siguientes.',
     },
     {
       q: '¿Los trámites de licencia de obra son diferentes en Guadalajara que en los municipios madrileños?',
-      a: 'El proceso es similar pero el trámite se hace en el Ayuntamiento de Guadalajara, con sus propios plazos y documentación. Para obras que no requieren licencia (baño, cocina, suelos y pintura sin afectar fachada ni estructura), el inicio puede ser inmediato. Para las que sí la requieren, gestionamos el trámite completo.',
+      a: 'El proceso es similar pero el trámite se hace en el Ayuntamiento de Guadalajara, con sus propios plazos y documentación. El trámite depende del alcance de la actuación y de los elementos afectados. Antes de fijar una fecha de inicio comprobamos qué procedimiento corresponde y lo gestionamos en su totalidad.',
     },
     {
       q: '¿Cómo se orienta el alcance de la reforma antes de presupuestar en Guadalajara?',
@@ -1391,7 +1391,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cómo solicito una visita para valorar una reforma en Azuqueca de Henares?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y se organiza habitualmente en la misma semana. Evaluamos el estado de la vivienda o local, tomamos medidas y orientamos el alcance antes de cerrar el presupuesto. Lo recibes en las 48 horas siguientes.',
+      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. Evaluamos el estado de la vivienda o local, tomamos medidas y orientamos el alcance antes de cerrar el presupuesto. Lo recibes en las 48 horas siguientes.',
     },
     {
       q: '¿Cómo se decide si conviene reforma parcial o integral en Azuqueca?',
@@ -1413,7 +1413,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cómo solicito una visita para valorar una reforma en Meco?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Se organiza habitualmente en la misma semana y cubre tanto la vivienda como cualquier elemento exterior que quieras incluir en el alcance. El presupuesto llega en las 48 horas siguientes.',
+      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad, cubriendo tanto la vivienda como cualquier elemento exterior que quieras incluir en el alcance. El presupuesto llega en las 48 horas siguientes.',
     },
     {
       q: '¿Hay que tramitar algo antes de empezar una reforma en Meco?',
@@ -1435,7 +1435,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cómo solicito una visita para valorar una reforma en Camarma?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y se organiza habitualmente en la misma semana. Evaluamos el estado de la vivienda, tomamos medidas y escuchamos el alcance previsto. El presupuesto lo recibes en las 48 horas siguientes, sin ningún compromiso.',
+      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. Evaluamos el estado de la vivienda, tomamos medidas y escuchamos el alcance previsto. El presupuesto lo recibes en las 48 horas siguientes.',
     },
     {
       q: '¿Hay que tramitar algo antes de empezar una reforma en Camarma de Esteruelas?',

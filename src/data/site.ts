@@ -1124,10 +1124,9 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'En pisos de Azuqueca donde las instalaciones están en buen estado, la reforma puede concentrarse en lo que más transforma visualmente: suelos nuevos, baño renovado, cocina actualizada y pintura. El resultado es un piso completamente renovado sin necesitar obra pesada. Lo verificamos en la visita técnica antes de cerrar el alcance.',
       body: [
         { type: 'h3', text: 'Estado de instalaciones en Azuqueca: qué determina la reforma de piso' },
-        { type: 'p', text: 'Si las instalaciones de la vivienda están en buen estado, la reforma puede concentrarse en lo que más impacto tiene visualmente: suelos nuevos, baño renovado, cocina actualizada y pintura, sin necesariamente tocar la instalación eléctrica o la fontanería.' },
+        { type: 'p', text: 'Si las instalaciones de la vivienda están en buen estado, la reforma puede concentrarse en lo que más impacto tiene visualmente: suelos nuevos, baño renovado, cocina actualizada y pintura, sin necesariamente tocar la instalación eléctrica o la fontanería.', link: { text: 'baño renovado', serviceSlug: 'reforma-banos' } },
         { type: 'h3', text: 'Suelos en una reforma de piso: qué opciones hay y cuánto cuestan' },
         { type: 'p', text: 'El suelo es la superficie que más transforma visualmente una vivienda por euro invertido. Las opciones más comunes: porcelánico de gran formato, tarima flotante de laminado AC5, o microcemento en salón (requiere preparación de base específica). El presupuesto cerrado incluye materiales, adhesivo, nivelación de base y remates de transición.' },
-        { type: 'p', text: 'Si el estado de las instalaciones o el alcance previsto superan lo que cubre una reforma de piso, puede ser más eficiente plantearlo todo en una sola obra. La visita técnica identifica en cuál de los dos escenarios estás, y si corresponde el de reforma integral, lo clarifica antes de cerrar el precio.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'meco': {

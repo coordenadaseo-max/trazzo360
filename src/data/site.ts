@@ -568,7 +568,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'Una reforma integral en Coslada bien planificada empieza por saber qué hay detrás de los revestimientos antes de firmar el presupuesto. En plantas bajas de algunos bloques, las humedades pueden condicionar el alcance de la obra si no se detectan en la visita técnica. El precio cerrado es real cuando incluye lo que el estado de la vivienda requiere.',
       body: [
         { type: 'h3', text: 'Humedades en Coslada: por qué hay que detectarlas antes de cerrar el precio' },
-        { type: 'p', text: 'En Coslada, especialmente en plantas bajas de zonas como Valleaguado y Ciudad 70, la humedad por capilaridad es un problema frecuente que conviene detectar antes de cerrar el presupuesto. Si aparece a mitad de obra en un contrato que no la contempla, el coste final se desvía. En la visita técnica evaluamos el estado de solera y muros y lo incluimos en el presupuesto cuando el estado lo requiere.' },
+        { type: 'p', text: 'En Coslada, la humedad por capilaridad en plantas bajas es un problema frecuente que conviene detectar antes de cerrar el presupuesto. Si aparece a mitad de obra en un contrato que no la contempla, el coste final se desvía. En la visita técnica evaluamos el estado de solera y muros y lo incluimos en el presupuesto cuando el estado lo requiere.' },
         { type: 'h3', text: 'Instalaciones: qué renovar y qué puede esperar' },
         { type: 'p', text: 'No todas las instalaciones de un piso de Coslada de los 80 están en el mismo estado. El cuadro eléctrico suele ser el primero en necesitar sustitución; la fontanería de cobre puede estar mejor conservada. En la visita determinamos qué necesita renovación real y qué puede quedarse, para que el presupuesto no incluya partidas innecesarias ni deje fuera las que son urgentes.' },
       ],
@@ -577,7 +577,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'El alcance de una reforma integral en San Fernando de Henares depende mucho de cuándo se construyó la vivienda. Los pisos del casco antiguo y los de las promociones más recientes pueden tener alcances muy distintos según el estado de las instalaciones: desde la renovación completa de cuadro y fontanería hasta la reforma centrada en distribución y acabados. La visita técnica lo aclara antes de comprometer ningún número.',
       body: [
         { type: 'h3', text: 'Vivienda antigua o reciente en San Fernando: el alcance cambia' },
-        { type: 'p', text: 'Los pisos del casco antiguo de San Fernando anteriores a los 90 necesitan casi siempre instalaciones nuevas: cuadro eléctrico, fontanería y carpintería exterior. Las promociones de Parque Roma y Parque Henares, más recientes, tienen instalaciones más actualizadas y el alcance puede centrarse en distribución y acabados. El presupuesto entre ambos casos puede diferir en 8.000–12.000€. La visita técnica lo aclara antes de comprometer cualquier número.' },
+        { type: 'p', text: 'Los pisos del casco antiguo de San Fernando anteriores a los 90 necesitan casi siempre instalaciones nuevas: cuadro eléctrico, fontanería y carpintería exterior. Las promociones de Parque Roma y Parque Henares, más recientes, tienen instalaciones más actualizadas y el alcance puede centrarse en distribución y acabados. El presupuesto entre ambos casos puede diferir de manera significativa. La visita técnica lo aclara antes de comprometer cualquier número.' },
         { type: 'h3', text: 'Licencias de obra menor en el Ayuntamiento de San Fernando de Henares' },
         { type: 'p', text: 'Para reformas con derribo de tabiques, cambio de ventanas en fachada o modificación de instalaciones se necesita licencia de obra menor en San Fernando de Henares. Los plazos son similares al resto de municipios madrileños del Corredor. Tramitamos la solicitud, hacemos el seguimiento y coordinamos con el técnico municipal si fuera necesario, sin que tengas que gestionar ningún trámite.' },
       ],
@@ -585,16 +585,16 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
     'guadalajara': {
       intro: 'El alcance de una reforma integral en Guadalajara capital depende del estado de las instalaciones, no solo de la superficie. Si la vivienda lleva años sin una renovación importante, el cuadro eléctrico y la fontanería pueden condicionar de forma importante lo que conviene hacer: en esos casos, lo más eficiente es abrir el piso una sola vez y hacer todo en la misma obra. La visita técnica determina qué alcance corresponde antes de comprometer ningún número.',
       body: [
-        { type: 'h3', text: 'La ventaja de reformar en Guadalajara: plazos de licencia más cortos' },
-        { type: 'p', text: 'Una diferencia práctica al reformar en Guadalajara capital respecto a los municipios madrileños del Corredor es la tramitación de permisos: el Ayuntamiento de Guadalajara tiene plazos de resolución de licencias de obra menor generalmente más cortos. Si el calendario de la reforma es ajustado, esa diferencia puede ser determinante para la fecha de inicio real de la obra.' },
-        { type: 'h3', text: 'Aislamiento y carpintería: la inversión con mayor retorno en Guadalajara' },
-        { type: 'p', text: 'El clima continental de Guadalajara, con veranos más calurosos e inviernos más fríos que en el Corredor madrileño, hace que el cambio de carpintería exterior a PVC con doble acristalamiento tenga un retorno en ahorro energético mucho más tangible. En pisos con ventanas originales de los años 70 u 80, es una partida que conviene incluir en la reforma: el ahorro acumulado justifica la inversión en pocos años.' },
+        { type: 'h3', text: 'Cómo se ordena una reforma integral en Guadalajara: instalaciones primero' },
+        { type: 'p', text: 'En una reforma integral en Guadalajara, el primer paso antes de tomar decisiones de distribución o acabados es evaluar el estado de las instalaciones. Si el cuadro eléctrico o la fontanería necesitan renovación, hacerlo dentro de la misma obra es más eficiente que abrir la vivienda en dos momentos distintos. Con el piso abierto, también es el momento de valorar el cambio de carpintería exterior si las ventanas no tienen doble acristalamiento.' },
+        { type: 'h3', text: 'Carpintería y aislamiento en el marco de una reforma integral' },
+        { type: 'p', text: 'Si la reforma integral incluye intervención en el perímetro de la vivienda, el cambio de carpintería exterior puede añadirse a la misma obra sin coste adicional de desescombro o coordinación. El doble acristalamiento mejora el confort térmico y acústico, y la mejora es especialmente perceptible en viviendas que llevan décadas con ventanas sin renovar. En la visita evaluamos si las ventanas actuales justifican la sustitución dentro del presupuesto general.' },
       ],
     },
     'azuqueca-de-henares': {
       intro: 'Una reforma integral en Azuqueca de Henares con instalaciones en buen estado tiene más margen para invertir en distribución y acabados que en obra pesada. Si el cuadro eléctrico y la fontanería no necesitan renovación completa, el presupuesto puede centrarse en lo que más transforma visualmente la vivienda. Lo verificamos en la visita técnica antes de cerrar el precio.',
       body: [
-        { type: 'h3', text: 'Pisos de los 90 en Azuqueca: instalaciones más modernas, más margen para acabados' },
+        { type: 'h3', text: 'Estado de instalaciones en Azuqueca: qué condiciona el alcance de la reforma' },
         { type: 'p', text: 'En muchos pisos de Azuqueca el cuadro eléctrico y la fontanería pueden aprovecharse total o parcialmente. Eso reduce el alcance de la obra y libera presupuesto para dedicarlo a distribución, calidad de materiales o zonas con mayor impacto visual. Lo verificamos en la visita técnica antes de comprometer ningún número.' },
         { type: 'h3', text: 'Qué incluye una reforma integral cuando las instalaciones están en buen estado' },
         { type: 'p', text: 'Si las instalaciones aguantan, una reforma integral en Azuqueca puede concentrarse en lo que más se nota: redistribución de espacios para ganar amplitud, suelos nuevos de porcelánico o tarima, reforma completa de baño y cocina, carpintería interior y pintura. El presupuesto cerrado incluye todas las partidas acordadas; si durante la obra aparece algo no previsto, lo comunicamos antes de actuar.' },
@@ -605,8 +605,8 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       body: [
         { type: 'h3', text: 'Adosados en Meco: un alcance diferente al de los pisos de bloque' },
         { type: 'p', text: 'Reformar un adosado en Meco no es lo mismo que reformar un piso en un bloque del Corredor. Hay más metros, la distribución es de dos plantas, y habitualmente hay cubierta o terraza que evaluar. Una reforma integral bien planificada empieza por decidir qué planta se interviene, en qué orden y si la cubierta necesita actuación, porque es una partida que puede cambiar el presupuesto si se descubre durante la obra.' },
-        { type: 'h3', text: 'Cerramientos de terraza en Meco: lo que permite la normativa' },
-        { type: 'p', text: 'El cerramiento de terraza es una de las actuaciones más habituales en los adosados de las urbanizaciones de Meco. Transforma un espacio exterior en una zona habitable durante todo el año y necesita licencia de obra menor y, en algunas urbanizaciones, aprobación de la comunidad. Verificamos ambas condiciones antes de comprometer plazos o presupuesto. El trámite queda incluido en el precio cerrado.' },
+        { type: 'h3', text: 'Cerramientos de terraza en Meco: proceso y requisitos' },
+        { type: 'p', text: 'Si el proyecto de reforma incluye cerrar una terraza para ganar metros habitables, el proceso requiere licencia de obra menor en el Ayuntamiento y, en algunas urbanizaciones, también la aprobación de la comunidad de propietarios. Verificamos ambas condiciones antes de comprometer plazos o presupuesto: el trámite queda incluido en el precio cerrado desde el principio.' },
       ],
     },
     'camarma-de-esteruelas': {
@@ -644,7 +644,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'h3', text: 'Humedades antes de empezar: lo que hay que revisar en Coslada' },
         { type: 'p', text: 'En muchos bloques de Coslada, las humedades en baños no son solo superficiales. Antes de decidir el alcance, conviene revisar si hay filtraciones desde el baño superior o capilaridad desde la solera, especialmente en plantas bajas. Si se detectan y no se incluyen en el presupuesto, aparecen después de poner el alicatado nuevo. En la visita técnica evaluamos el estado real antes de cerrar el precio.' },
         { type: 'h3', text: 'Baños pequeños: cómo ganar espacio sin cambiar la distribución' },
-        { type: 'p', text: 'La mayoría de los baños en los bloques de Coslada de los 80 y 90 tienen entre 3 y 5 metros cuadrados. Sin cambiar la distribución, se puede ganar espacio percibido con tres decisiones: plato de ducha en lugar de bañera, mueble de lavabo con almacenaje integrado y revestimiento de gran formato que reduce las juntas. El resultado visual es radicalmente distinto al estado original.' },
+        { type: 'p', text: 'Si el baño es pequeño y el objetivo es ganar espacio percibido sin cambiar la distribución, hay tres decisiones que cambian el resultado visual: plato de ducha en lugar de bañera, mueble de lavabo con almacenaje integrado y revestimiento de gran formato que reduce la cantidad de juntas. El resultado es radicalmente distinto al estado original sin necesidad de obra pesada.' },
       ],
     },
     'san-fernando-de-henares': {
@@ -669,16 +669,16 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'Si en Azuqueca la fontanería del baño está en buen estado, la reforma puede centrarse en lo que más transforma visualmente: alicatado nuevo, sanitarios modernos, mueble con almacenaje y mampara. Es una reforma más rápida y con menor coste que si hay que renovar las instalaciones de fondo. La visita técnica determina qué alcance corresponde antes de cerrar el precio.',
       body: [
         { type: 'h3', text: 'Reforma de modernización: cuando las instalaciones están bien y el problema es estético' },
-        { type: 'p', text: 'En Azuqueca, muchos baños tienen instalaciones en buen estado pero acabados que acusan 25–30 años de uso. En esos casos, la reforma puede concentrarse en cambiar el alicatado, los sanitarios, el mueble y la mampara sin tocar la fontanería de fondo. El resultado visual es el mismo que una reforma completa, con un presupuesto más ajustado.' },
+        { type: 'p', text: 'Si las instalaciones del baño están en buen estado, la reforma puede concentrarse en cambiar el alicatado, los sanitarios, el mueble y la mampara sin tocar la fontanería de fondo. El resultado visual es equivalente al de una reforma completa, con un plazo más corto y un presupuesto más ajustado.' },
         { type: 'h3', text: 'Almacenaje en el baño: soluciones que marcan la diferencia' },
-        { type: 'p', text: 'La falta de almacenaje es el problema más habitual en baños pequeños, independientemente del material con el que estén revestidos. Un mueble con cajones y puertas, un botiquín integrado en el espejo y nichos en el alicatado de la ducha pueden resolver el problema sin ampliar el espacio. En la visita de diseño te mostramos cómo funciona cada solución en baños de dimensiones similares al tuyo.' },
+        { type: 'p', text: 'La falta de almacenaje es frecuente en baños pequeños, independientemente del material con el que estén revestidos. Un mueble con cajones y puertas, un botiquín integrado en el espejo y nichos en el alicatado de la ducha pueden resolver el problema sin ampliar el espacio. En la visita de diseño te mostramos cómo funciona cada solución en baños de dimensiones similares al tuyo.' },
       ],
     },
     'meco': {
       intro: 'En las viviendas de Meco con más de un baño, la primera conversación no es qué materiales elegir: es qué alcance tiene sentido en cada uno. El baño principal puede justificar mayor inversión en diseño y materiales; los secundarios pueden renovarse de manera más ajustada. Lo planificamos en la visita antes de presupuestar.',
       body: [
         { type: 'h3', text: 'Baños más grandes en viviendas de Meco: más opciones de diseño' },
-        { type: 'p', text: 'En los adosados de las urbanizaciones de Meco, los baños principales suelen tener entre 6 y 9 metros cuadrados, lo que abre opciones que no existen en los baños de piso de bloque: ducha de obra a medida con mampara fija de cristal, doble lavabo con encimera corrida, o separación de la zona de ducha y la de aseo. Si hay más de un baño en la vivienda, el alcance de cada uno se decide en la visita.' },
+        { type: 'p', text: 'Si el baño principal de la vivienda tiene más espacio que en un piso de bloque, se abren opciones que no son posibles en superficies reducidas: ducha de obra a medida con mampara fija de cristal, doble lavabo con encimera corrida, o separación de la zona de ducha y la de aseo. Si hay más de un baño en la vivienda, el alcance de cada uno se decide en la visita.' },
         { type: 'h3', text: 'Duchas de obra a medida: cuándo tiene sentido' },
         { type: 'p', text: 'Una ducha de obra sin plato prefabricado permite personalizar la forma, el tamaño y el revestimiento sin las limitaciones de un plato estándar. En un baño de más de 6 metros cuadrados puede diseñarse una ducha de 100×100 cm o más, con microcemento, resina de cuarzo o porcelánico de gran formato. El coste es algo mayor que con plato prefabricado, pero el resultado visual y funcional es completamente diferente.' },
       ],
@@ -698,16 +698,16 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'Antes de elegir muebles para la reforma de cocina en Alcalá, hay una decisión previa: mantener la distribución actual o abrir la cocina al salón. Esa decisión condiciona el presupuesto, el plazo y si hace falta licencia de obra. Te lo presupuestamos con y sin apertura en la misma visita para que puedas comparar.',
       body: [
         { type: 'h3', text: 'Cocina abierta o cerrada: la decisión que lo cambia todo' },
-        { type: 'p', text: 'La primera decisión en una reforma de cocina en un piso de Alcalá de los años 80 no es qué muebles elegir: es si mantener la cocina cerrada o abrirla al salón. Abrir la cocina elimina un tabique, necesita licencia de obra menor y cambia radicalmente la percepción de espacio de toda la vivienda. Si el tabique no es de carga, es una obra de 1–2 días con impacto visual de varios años. Te lo presupuestamos con y sin apertura para que puedas comparar.' },
+        { type: 'p', text: 'La primera decisión en una reforma de cocina no es qué muebles elegir: es si mantener la cocina cerrada o abrirla al salón. Abrir la cocina elimina un tabique, necesita licencia de obra menor y cambia radicalmente la percepción de espacio de toda la vivienda. Si el tabique no es de carga, es una obra de 1–2 días con impacto visual de varios años. Te lo presupuestamos con y sin apertura para que puedas comparar.' },
         { type: 'h3', text: 'Por qué la instalación eléctrica nueva no es opcional en una reforma de cocina' },
-        { type: 'p', text: 'El Reglamento Electrotécnico de Baja Tensión exige líneas independientes del cuadro para horno, vitrocerámica, lavavajillas y frigorífico. En viviendas de Alcalá anteriores a 1990, el cuadro rara vez lo cumple y es la causa más frecuente de cortocircuitos cuando se usan varios electrodomésticos a la vez. La instalación eléctrica nueva es parte de cualquier reforma completa de cocina e incluida en el presupuesto desde el primer día.' },
+        { type: 'p', text: 'El Reglamento Electrotécnico de Baja Tensión exige líneas independientes del cuadro para horno, vitrocerámica, lavavajillas y frigorífico. En viviendas con instalaciones que no se han actualizado, el cuadro puede no cumplirlo: si el diferencial salta al usar varios electrodomésticos a la vez, es la señal de que la instalación necesita renovación. La instalación eléctrica nueva es parte de cualquier reforma completa de cocina e incluida en el presupuesto desde el primer día.' },
       ],
     },
     'torrejon-de-ardoz': {
       intro: 'Si al usar varios electrodomésticos a la vez en Torrejón el diferencial salta o se corta la luz, la instalación eléctrica de la cocina no cumple la normativa actual. En una reforma de cocina, la electricidad nueva con circuitos dedicados no es opcional: es la base que hace que todo lo demás funcione. El presupuesto la incluye desde el primer día.',
       body: [
-        { type: 'h3', text: 'Instalación eléctrica en cocinas de Torrejón: el problema oculto más habitual' },
-        { type: 'p', text: 'Si tienes cortocircuitos o el diferencial salta cuando usas el horno y la vitrocerámica a la vez, la instalación eléctrica de la cocina no cumple la normativa actual. Es el problema más habitual en los pisos de Torrejón de los 80 y la causa más frecuente de que una reforma de cocina que no incluye electricidad sea insuficiente desde el primer día de uso. Una reforma completa resuelve el fondo del problema, no solo la estética.' },
+        { type: 'h3', text: 'Instalación eléctrica en cocinas de Torrejón: qué hay que revisar antes de presupuestar' },
+        { type: 'p', text: 'Si tienes cortocircuitos o el diferencial salta cuando usas el horno y la vitrocerámica a la vez, la instalación eléctrica de la cocina no cumple la normativa actual. Es lo que convierte una reforma de cocina que no incluye electricidad en insuficiente desde el primer día de uso. Una reforma completa resuelve el fondo del problema, no solo la estética.' },
         { type: 'h3', text: 'Cuánto tiempo sin cocina: cómo planificar la obra' },
         { type: 'p', text: 'Una reforma completa de cocina dura entre 2 y 4 semanas. La primera parte (derribo, electricidad, fontanería, alicatado de zona de trabajo) requiere que la cocina esté fuera de servicio. La segunda parte, con la instalación de muebles y electrodomésticos, permite ir recuperando funcionalidad. Si tienes todo definido antes de empezar (distribución, muebles, encimera y electrodomésticos pedidos), no hay pausas por espera de materiales.' },
       ],
@@ -716,16 +716,16 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'Al reformar una cocina en Coslada conviene comprobar si la instalación eléctrica puede asumir la distribución y los electrodomésticos previstos. Si necesita renovación, hacerlo dentro de la misma obra evita intervenir de nuevo después. La reforma completa resuelve el fondo del problema, no solo la estética.',
       body: [
         { type: 'h3', text: 'Electricidad en cocinas de Coslada: la primera partida que hay que resolver' },
-        { type: 'p', text: 'La instalación eléctrica original de los pisos de Coslada de los 80 no tiene circuitos dedicados para electrodomésticos de alta potencia. Eso provoca sobrecargas cuando se usan simultáneamente el horno, la vitrocerámica y el lavavajillas. En una reforma de cocina, la instalación eléctrica nueva no es un extra: es la base que hace que todos los demás electrodomésticos funcionen correctamente desde el primer día.' },
+        { type: 'p', text: 'Si la instalación eléctrica de la cocina no tiene circuitos dedicados para electrodomésticos de alta potencia, se producen sobrecargas cuando se usan simultáneamente el horno, la vitrocerámica y el lavavajillas. En una reforma de cocina, la instalación eléctrica nueva no es un extra: es la base que hace que todos los demás electrodomésticos funcionen correctamente desde el primer día.' },
         { type: 'h3', text: 'Opciones de distribución en cocinas pequeñas' },
-        { type: 'p', text: 'Las cocinas de los pisos de los 80 en Coslada suelen tener entre 6 y 8 metros cuadrados con distribución en línea o en L. Con ese espacio, se puede mejorar el flujo de trabajo reorganizando la posición del fregadero, la vitrocerámica y el área de trabajo. Si el presupuesto no permite abrir la cocina al salón, una redistribución inteligente dentro del mismo espacio puede cambiar significativamente cómo funciona.' },
+        { type: 'p', text: 'En cocinas con distribución en línea o en L, reorganizar la posición del fregadero, la vitrocerámica y el área de trabajo puede mejorar el flujo sin necesidad de cambiar la superficie disponible. Si el presupuesto no permite abrir la cocina al salón, una redistribución inteligente dentro del mismo espacio puede cambiar significativamente cómo funciona.' },
       ],
     },
     'san-fernando-de-henares': {
       intro: 'El presupuesto de una reforma de cocina en San Fernando de Henares depende de si la vivienda necesita instalación eléctrica nueva o si la que tiene es suficiente para el uso actual. En pisos del casco suele haber que renovarla; en viviendas más recientes puede aprovecharse. La visita técnica aclara qué alcance corresponde antes de comprometer ningún número.',
       body: [
         { type: 'h3', text: 'Instalaciones de cocina según la época de construcción en San Fernando' },
-        { type: 'p', text: 'En los pisos del casco antiguo de San Fernando, la electricidad de la cocina es casi siempre insuficiente para el uso actual. En las viviendas de Parque Roma o Parque Henares, construidas en los 90, la instalación puede estar mejor dimensionada y la reforma puede concentrarse en muebles, encimera y acabados. La diferencia en presupuesto entre ambos casos es relevante y la visita técnica la aclara antes de comprometer ningún número.' },
+        { type: 'p', text: 'En viviendas del casco antiguo de San Fernando con instalaciones que no se han actualizado, la electricidad de la cocina puede no ser suficiente para el uso actual. En las viviendas de Parque Roma o Parque Henares, construidas en los 90, la instalación puede estar mejor dimensionada y la reforma puede concentrarse en muebles, encimera y acabados. La diferencia en presupuesto entre ambos casos es relevante y la visita técnica la aclara antes de comprometer ningún número.' },
         { type: 'h3', text: 'Cocina americana o con isla: cuándo tiene sentido' },
         { type: 'p', text: 'Abrir la cocina al salón es especialmente efectivo en pisos de San Fernando donde el tabique de la cocina crea un cuello de botella entre la zona de día. Si el tabique es de distribución (no de carga), es una obra menor que no necesita arquitecto y que transforma la percepción de amplitud de toda la vivienda. Lo presupuestamos como partida independiente para que puedas valorar si merece la pena en tu caso.' },
       ],
@@ -734,7 +734,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'Si quieres abrir la cocina al salón en Guadalajara, primero hay que comprobar qué función tiene el tabique y cómo afectará el cambio a instalaciones, extracción e iluminación. Solo después tiene sentido valorar distribución y presupuesto. El presupuesto incluye la apertura como partida independiente para que puedas valorarla antes de decidir.',
       body: [
         { type: 'h3', text: 'Abrir la cocina al salón en pisos de Guadalajara: proceso y resultado' },
-        { type: 'p', text: 'La apertura de cocina al salón es la reforma más solicitada en los pisos del Balconcillo y Aguas Vivas en Guadalajara. Las cocinas cerradas de esos bloques de los años 70 al 90 aíslan la cocina del resto de la vivienda y reducen la sensación de espacio en pisos de superficie media. Con un tabique de distribución eliminado y una encimera o barra americana, el piso parece sustancialmente más grande.' },
+        { type: 'p', text: 'Abrir la cocina al salón es una reforma de alto impacto en pisos con distribución cerrada: elimina el tabique que aísla la cocina del resto de la vivienda y transforma la percepción de espacio. En pisos de superficie media, la diferencia visual antes y después puede ser considerable. Con un tabique de distribución eliminado y una encimera o barra americana, el resultado es inmediato.' },
         { type: 'h3', text: 'Qué decidir antes de empezar la reforma de cocina' },
         { type: 'p', text: 'Cuanto más definido esté todo antes de arrancar la obra, mejor se respeta el plazo. Lo mínimo necesario antes de empezar: distribución de muebles cerrada, encimera elegida y electrodomésticos seleccionados y pedidos. Si los materiales no están disponibles cuando termina la obra civil, la espera puede alargar el plazo entre 2 y 4 semanas adicionales. Te guiamos en la selección de todo esto durante la visita de diseño previa a la obra.' },
       ],
@@ -743,16 +743,16 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'Si en Azuqueca la instalación eléctrica de la cocina está en buen estado, la reforma puede centrarse en lo que más cambia visualmente: muebles nuevos, encimera, electrodomésticos y alicatado de zona de trabajo. El resultado visual es equivalente a una reforma completa, con un plazo de 2 a 3 semanas y un presupuesto más ajustado.',
       body: [
         { type: 'h3', text: 'Reforma de actualización en cocinas de Azuqueca: qué se puede cambiar sin obra pesada' },
-        { type: 'p', text: 'En los pisos de Azuqueca de los años 90, la instalación eléctrica de la cocina suele estar mejor dimensionada que en las viviendas de los 80. Eso permite hacer una reforma de actualización sin necesariamente tocar los circuitos: cambio completo de muebles, encimera, electrodomésticos y alicatado de zona de trabajo. El resultado visual es el mismo que una reforma integral, con un plazo de 2 a 3 semanas y un presupuesto más ajustado.' },
+        { type: 'p', text: 'Si la instalación eléctrica de la cocina está en buen estado, la reforma puede centrarse en lo que más cambia visualmente: muebles nuevos, encimera, electrodomésticos y alicatado de zona de trabajo, sin tocar los circuitos de fondo. El resultado visual es el mismo que una reforma integral, con un plazo de 2 a 3 semanas y un presupuesto más ajustado.' },
         { type: 'h3', text: 'Encimeras y electrodomésticos: las decisiones con más impacto en el resultado' },
-        { type: 'p', text: 'La encimera y los electrodomésticos son las dos partidas que más condicionan el presupuesto y el aspecto final de una cocina nueva. La encimera de silestone o porcelánico de gran formato es más duradera y más fácil de mantener que el granito oscuro habitual en cocinas de los 90. Los electrodomésticos integrados mejoran la estética y permiten aprovechar mejor el espacio de almacenaje. En la visita de diseño repasamos todas las opciones con sus precios reales.' },
+        { type: 'p', text: 'La encimera y los electrodomésticos son las dos partidas que más condicionan el presupuesto y el aspecto final de una cocina nueva. La encimera de silestone o porcelánico de gran formato es más duradera y más fácil de mantener que el granito oscuro o los acabados de cocinas con décadas de uso. Los electrodomésticos integrados mejoran la estética y permiten aprovechar mejor el espacio de almacenaje. En la visita de diseño repasamos todas las opciones con sus precios reales.' },
       ],
     },
     'meco': {
       intro: 'Si vas a reformar la cocina de un adosado en Meco y dispones de más superficie, merece la pena estudiar la distribución antes de elegir materiales: una isla, una península o una zona adicional de almacenaje necesitan resolverse desde el plano. Con espacio disponible, la primera decisión es la distribución, no los materiales.',
       body: [
         { type: 'h3', text: 'Cocinas con más espacio en adosados de Meco: opciones que no caben en los pisos' },
-        { type: 'p', text: 'En los adosados de Meco, las cocinas suelen tener entre 10 y 16 metros cuadrados, lo que abre opciones imposibles en cocinas de 7 m²: isla central con función de encimera y barra, zona de despensa independiente, o cocina americana con acceso directo desde el salón. Con ese espacio disponible, la primera decisión no es qué muebles elegir sino cómo se quiere vivir la cocina: el diseño viene después.' },
+        { type: 'p', text: 'Si la cocina tiene más superficie de la habitual en los pisos de bloque, se abren opciones que no son posibles en espacios reducidos: isla central con función de encimera y barra, zona de despensa independiente, o cocina americana con acceso directo desde el salón. Con ese espacio disponible, la primera decisión no es qué muebles elegir sino cómo se quiere vivir la cocina: el diseño viene después.' },
         { type: 'h3', text: 'Cocina abierta en adosados: licencia y proceso' },
         { type: 'p', text: 'Abrir la cocina al comedor o al salón en un adosado de Meco puede implicar eliminar un tabique de distribución (obra menor, sin arquitecto) o modificar un hueco existente. En algunos casos la apertura necesita licencia de obra menor en el Ayuntamiento de Meco. Evaluamos la estructura antes de presupuestar y tramitamos la licencia si es necesaria, sin que suponga un trámite adicional para ti.' },
       ],
@@ -761,7 +761,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'Si la cocina de tu vivienda en Camarma lleva más de una década sin renovar, una reforma de cocina permite repensar el espacio con criterio: más almacenaje, mejor flujo de trabajo, y si tiene sentido integrarla mejor con el comedor. Con espacio disponible en viviendas unifamiliares, las opciones son significativamente mayores que en pisos de bloque.',
       body: [
         { type: 'h3', text: 'Cocinas amplias en viviendas de Camarma: cómo aprovechar el espacio' },
-        { type: 'p', text: 'Las viviendas unifamiliares de Camarma de Esteruelas tienen en muchos casos cocinas de 12 metros cuadrados o más. Con ese espacio, una reforma de cocina puede repensar completamente la distribución: separar la zona de trabajo de la de almacenaje, añadir una isla si el espacio lo permite, o integrar mejor la cocina con el comedor. En viviendas donde la cocina lleva más de una década sin tocarse, el potencial de mejora es muy alto.' },
+        { type: 'p', text: 'Si la cocina de la vivienda tiene espacio suficiente para replantear la distribución, una reforma puede ir más allá del cambio de muebles: separar la zona de trabajo de la de almacenaje, añadir una isla, o integrar mejor la cocina con el comedor. Cuando la cocina lleva tiempo sin actualizarse, replantear la distribución desde el principio suele dar mejores resultados que adaptar el diseño a los muebles existentes.' },
         { type: 'h3', text: 'Qué conviene decidir antes de la visita de diseño' },
         { type: 'p', text: 'Antes de la primera visita, es útil tener claro cuántas personas usan la cocina y cómo: si la persona que cocina necesita espacio para trabajar con todo desplegado, si hay interés en cocina abierta al comedor, o si el almacenaje es la prioridad. Con esa información, la visita de diseño se convierte en una sesión productiva donde llegamos a opciones concretas con precio real, en lugar de una visita general.' },
       ],
@@ -799,7 +799,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'Si tienes una vivienda en San Fernando de Henares, el alcance de la reforma depende más de cuándo se construyó que de lo que quieres cambiar. Los pisos del casco antiguo suelen necesitar instalaciones nuevas; los de las promociones más recientes pueden limitarse a acabados y distribución. La diferencia en presupuesto entre ambos casos puede ser relevante. La visita técnica lo determina.',
       body: [
         { type: 'h3', text: 'Alcance de la reforma según la zona y la época de construcción' },
-        { type: 'p', text: 'Un piso del casco antiguo de San Fernando de los años 70 necesita casi siempre instalaciones nuevas además de los acabados: cuadro eléctrico, fontanería y carpintería exterior. Un piso de Parque Roma o Parque Henares de los años 90 puede tener instalaciones aprovechables y el alcance puede centrarse en acabados y distribución. El presupuesto entre ambos casos puede diferir en 8.000–12.000€. La visita técnica lo aclara antes de comprometer cualquier número.' },
+        { type: 'p', text: 'Un piso del casco antiguo de San Fernando de los años 70 necesita casi siempre instalaciones nuevas además de los acabados: cuadro eléctrico, fontanería y carpintería exterior. Un piso de Parque Roma o Parque Henares de los años 90 puede tener instalaciones aprovechables y el alcance puede centrarse en acabados y distribución. El presupuesto entre ambos casos puede diferir de manera significativa. La visita técnica lo aclara antes de comprometer cualquier número.' },
         { type: 'h3', text: '¿Se puede vivir en el piso durante la reforma?' },
         { type: 'p', text: 'En reformas parciales (baño, cocina o suelos por separado), es posible vivir en el piso aunque resulte incómodo durante los días de obra más intensa. En reformas integrales con derribo general, no es recomendable por el polvo, el ruido y los cortes de suministros. Si no tienes alternativa, diseñamos una secuencia de trabajo por zonas para que siempre haya una parte habitable de la vivienda.' },
       ],
@@ -807,19 +807,19 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
     'guadalajara': {
       intro: 'En Guadalajara, el clima continental hace que el cambio de carpintería exterior a PVC con doble acristalamiento tenga un impacto real en el confort térmico y acústico. Si las ventanas son originales de los años 80, conviene valorar su renovación como parte de la reforma: hacerlo en la misma obra es más eficiente que abordarlas por separado después.',
       body: [
-        { type: 'h3', text: 'Carpintería exterior en Guadalajara: el cambio con mayor retorno de inversión' },
-        { type: 'p', text: 'El clima continental de Guadalajara, con diferencias térmicas entre verano e invierno más pronunciadas que en el Corredor madrileño, hace que el cambio de carpintería exterior a PVC con doble acristalamiento tenga un retorno en ahorro energético mucho más tangible. En pisos con ventanas originales de los años 70 u 80, la diferencia en factura de calefacción y aire acondicionado puede ser del 25–35%. Es una partida que conviene incluir si las ventanas son antiguas.' },
-        { type: 'h3', text: 'Instalaciones en los pisos del Balconcillo y Aguas Vivas: qué es imprescindible renovar' },
-        { type: 'p', text: 'Los pisos de las zonas residenciales de Guadalajara de los años 70 al 90 tienen instalaciones con una vida útil que en muchos casos ya ha expirado. El cuadro eléctrico con diferencial obsoleto y las tuberías de hierro galvanizado son las dos partidas que más frecuentemente condicionan el presupuesto final si no se contemplan desde el principio.' },
+        { type: 'h3', text: 'Carpintería exterior en Guadalajara: cuándo tiene sentido incluirla en la reforma' },
+        { type: 'p', text: 'El cambio de carpintería exterior a PVC con doble acristalamiento mejora el confort térmico y acústico de la vivienda. En Guadalajara, con un clima de mayor amplitud térmica que en el Corredor madrileño, la mejora puede ser especialmente perceptible. Si las ventanas llevan décadas sin renovarse, incluir la carpintería en la misma obra evita tener que intervenir por separado después.' },
+        { type: 'h3', text: 'Instalaciones en Guadalajara: qué evaluar antes de presupuestar' },
+        { type: 'p', text: 'Si la vivienda lleva años sin una revisión de instalaciones, el cuadro eléctrico y la fontanería son las dos partidas que con más frecuencia condicionan el presupuesto final. Evaluarlas en la visita previa evita que aparezcan como extras cuando la obra ya está en marcha.' },
       ],
     },
     'azuqueca-de-henares': {
       intro: 'En pisos de Azuqueca donde las instalaciones están en buen estado, la reforma puede concentrarse en lo que más transforma visualmente: suelos nuevos, baño renovado, cocina actualizada y pintura. El resultado es un piso completamente renovado sin necesitar obra pesada. Lo verificamos en la visita técnica antes de cerrar el alcance.',
       body: [
-        { type: 'h3', text: 'Pisos de los 90 en Azuqueca: instalaciones más modernas, reforma más enfocada' },
-        { type: 'p', text: 'En la mayoría de los pisos de Azuqueca de los años 90, las instalaciones están en mejor estado que en las viviendas de los 70 y 80. Eso permite hacer una reforma de piso que se concentre en lo que más impacto tiene visualmente: suelos nuevos, baño renovado, cocina actualizada y pintura, sin necesariamente tocar la instalación eléctrica o la fontanería si el estado no lo requiere.' },
+        { type: 'h3', text: 'Estado de instalaciones en Azuqueca: qué determina la reforma de piso' },
+        { type: 'p', text: 'Si las instalaciones de la vivienda están en buen estado, la reforma puede concentrarse en lo que más impacto tiene visualmente: suelos nuevos, baño renovado, cocina actualizada y pintura, sin necesariamente tocar la instalación eléctrica o la fontanería.' },
         { type: 'h3', text: 'Suelos en una reforma de piso: qué opciones hay y cuánto cuestan' },
-        { type: 'p', text: 'El suelo es la superficie que más transforma visualmente una vivienda por euro invertido. Las opciones más solicitadas en la zona: porcelánico de gran formato (materiales de calidad media instalados), tarima flotante de laminado AC5, o microcemento en salón (requiere preparación de base). El presupuesto cerrado incluye materiales, adhesivo, nivelación de base y remates de transición.' },
+        { type: 'p', text: 'El suelo es la superficie que más transforma visualmente una vivienda por euro invertido. Las opciones más comunes: porcelánico de gran formato, tarima flotante de laminado AC5, o microcemento en salón (requiere preparación de base específica). El presupuesto cerrado incluye materiales, adhesivo, nivelación de base y remates de transición.' },
       ],
     },
     'meco': {
@@ -854,8 +854,8 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
     'torrejon-de-ardoz': {
       intro: 'En Torrejón, si el local está en polígono, el alcance de la obra puede variar mucho según si parte de cero o tiene instalaciones previas aprovechables. Para actividades sin licencia clasificada, la tramitación puede gestionarse en paralelo con la obra desde el primer día. La visita técnica determina el alcance y el plazo real antes de comprometer ningún número.',
       body: [
-        { type: 'h3', text: 'Plazos de tramitación en Torrejón: más ágiles para muchos usos' },
-        { type: 'p', text: 'Para muchos tipos de actividad, los plazos de tramitación de licencia en el Ayuntamiento de Torrejón de Ardoz son comparativamente más cortos que en Alcalá. Eso permite planificar la apertura con más certeza si el calendario es ajustado. Para hostelería y actividades clasificadas, los plazos son siempre más largos; te informamos del plazo realista para tu uso específico en la visita técnica antes de arrancar la obra.' },
+        { type: 'h3', text: 'Tramitación de licencia en Torrejón: qué determina el plazo real' },
+        { type: 'p', text: 'El plazo de tramitación de licencia depende del tipo de actividad, no del municipio. Para actividades sin licencia clasificada, el régimen de declaración responsable permite iniciar la actividad desde la presentación de la documentación. Para hostelería y actividades clasificadas, se requiere resolución previa con plazos que conviene conocer antes de fijar la fecha de apertura. Te informamos del plazo realista para tu uso específico en la visita técnica.' },
         { type: 'h3', text: 'Locales en polígono en Torrejón: instalación desde cero' },
         { type: 'p', text: 'Los polígonos industriales de Torrejón de Ardoz albergan logística, distribución y también comercio y servicios. En naves sin acondicionamiento previo, la obra incluye instalación eléctrica completa con alumbrado de emergencia, fontanería, climatización, particiones y suelos. El coste por metro cuadrado es diferente al de un local en casco urbano y el presupuesto debe contemplar todas las instalaciones desde el principio.' },
       ],
@@ -864,7 +864,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'Si el local en Coslada está en polígono industrial, la obra parte a menudo de cero: instalación eléctrica completa, fontanería si el uso lo requiere, climatización y particiones. Si está en casco urbano, puede aprovechar instalaciones existentes. El alcance lo determina la visita técnica antes de comprometer ningún número. En hostelería, la tramitación de licencia es lo que más condiciona la fecha de apertura.',
       body: [
         { type: 'h3', text: 'Locales en Coslada: casco urbano y zonas industriales con necesidades distintas' },
-        { type: 'p', text: 'Coslada tiene un tejido empresarial mixto: hostelería y comercio en el núcleo urbano, y logística y talleres en zonas como Los Almendros. En ambos casos la obra de adecuación del local tiene características distintas: el local urbano suele partir de un espacio con instalaciones básicas; la nave industrial puede partir de cero. La visita técnica determina el alcance real y el presupuesto incluye todo lo necesario para la apertura.' },
+        { type: 'p', text: 'Coslada combina hostelería y comercio en el núcleo urbano con logística y talleres en zonas industriales. En ambos casos la obra de adecuación del local tiene características distintas: el local urbano suele partir de un espacio con instalaciones básicas; la nave industrial puede partir de cero. La visita técnica determina el alcance real y el presupuesto incluye todo lo necesario para la apertura.' },
         { type: 'h3', text: 'La fecha de apertura como condición de la obra' },
         { type: 'p', text: 'Cuando tienes una fecha de apertura comprometida con tu negocio (contrato firmado, campaña lanzada, personal contratado), el plazo de obra y el de tramitación de licencia son igual de importantes que el presupuesto. Por eso nuestro proceso en locales comerciales comienza fijando la fecha de entrega en el contrato: el precio y el plazo son dos compromisos escritos, no estimaciones.' },
       ],
@@ -881,8 +881,8 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
     'guadalajara': {
       intro: 'Para abrir un negocio en Guadalajara, el alcance de la reforma depende del uso previsto y del estado previo del local. La tramitación de la licencia de actividad se coordina desde el primer día en paralelo con la obra: esperar a terminar la reforma para presentar la documentación puede retrasar la apertura de forma innecesaria.',
       body: [
-        { type: 'h3', text: 'Ventaja de Guadalajara para nuevos negocios: tramitación más ágil' },
-        { type: 'p', text: 'Una diferencia práctica al reformar un local en Guadalajara respecto a los municipios madrileños del Corredor: la tramitación de licencias de actividad es generalmente más ágil. Para negocios con plazos ajustados de apertura, esa diferencia puede permitir arrancar antes o asumir plazos de reforma que en otros municipios serían más arriesgados. Te confirmamos el plazo realista para tu tipo de actividad en la primera reunión.' },
+        { type: 'h3', text: 'Tramitación de licencia en Guadalajara: qué hay que prever según la actividad' },
+        { type: 'p', text: 'El tipo de actividad determina el régimen de licencia y el plazo de tramitación. Para actividades sin licencia clasificada, la documentación correcta desde el principio es lo que más contribuye a que el proceso sea ágil. Para hostelería, clínicas y actividades clasificadas, la tramitación requiere resolución previa y conviene iniciarla en paralelo con la obra. Confirmamos el régimen y el plazo realista para tu actividad en la primera reunión.' },
         { type: 'h3', text: 'Requisitos técnicos del local según la actividad en Guadalajara' },
         { type: 'p', text: 'Restaurantes, bares, clínicas y actividades clasificadas necesitan siempre proyecto técnico firmado por arquitecto o ingeniero, independientemente del municipio. En Guadalajara, el proyecto debe adaptarse a las ordenanzas municipales específicas. Lo redactamos con los colaboradores técnicos habituales e incluimos el coste en el presupuesto cerrado, para que no aparezca como un extra después de haber firmado el contrato de obra.' },
       ],
@@ -899,8 +899,8 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
     'meco': {
       intro: 'Para adecuar un local en Meco, el alcance de la obra depende del uso previsto y del estado previo: un local en el casco puede partir de instalaciones básicas existentes, mientras que una nave en el polígono industrial puede necesitar instalación completa desde cero. La tramitación de permisos se gestiona en paralelo con la obra. La visita lo determina antes de presupuestar.',
       body: [
-        { type: 'h3', text: 'Negocios de proximidad en Meco: locales pequeños con tramitación sencilla' },
-        { type: 'p', text: 'La demanda de locales comerciales en Meco se concentra en negocios de proximidad: comercios, pequeños servicios, consultorios y oficinas. Para este tipo de actividades, la tramitación suele ser sencilla y los plazos predecibles en un municipio de este tamaño. El alcance de la obra depende del estado previo del local y del uso que se le va a dar. Lo evaluamos en la visita técnica inicial.' },
+        { type: 'h3', text: 'Locales en Meco: cómo definir el alcance según el uso' },
+        { type: 'p', text: 'Para comercios, consultorios y oficinas en Meco, el alcance de la obra depende del estado previo del local y del uso previsto: si parte de instalaciones básicas existentes o si necesita instalación completa desde cero. El régimen de licencia también varía según la actividad. Lo evaluamos en la visita técnica inicial antes de comprometer ningún número.' },
         { type: 'h3', text: 'Naves industriales en el polígono de Meco: instalación completa' },
         { type: 'p', text: 'Si el negocio se ubica en el polígono industrial de Meco, la obra de adecuación suele implicar instalación eléctrica completa con cuadro propio, fontanería si el uso lo requiere, climatización, particiones de pladur y suelos. Es una obra de mayor alcance que un local en casco urbano, con un presupuesto que conviene detallar partida por partida para no tener sorpresas durante la ejecución.' },
       ],
@@ -908,10 +908,10 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
     'camarma-de-esteruelas': {
       intro: 'Para adecuar un local en Camarma de Esteruelas, el tipo de actividad determina el régimen de licencia. Para actividades sin licencia clasificada, el proceso puede ser ágil si la documentación se presenta correctamente desde el principio. Antes de comprometerte con una fecha de apertura, confirmamos el plazo exacto para tu tipo de actividad.',
       body: [
-        { type: 'h3', text: 'Actividades en Camarma de Esteruelas: plazos predecibles en municipio pequeño' },
-        { type: 'p', text: 'En Camarma de Esteruelas, los plazos de tramitación de permisos son generalmente más predecibles que en las ciudades grandes del Corredor. El Ayuntamiento es accesible y el volumen de expedientes es menor. Eso facilita planificar la fecha de apertura con antelación. Para actividades sin licencia clasificada, el proceso puede ser especialmente ágil si la documentación se presenta correctamente desde el principio.' },
-        { type: 'h3', text: 'Qué tipo de locales son más habituales en Camarma' },
-        { type: 'p', text: 'La demanda de adecuación de locales en Camarma se concentra en usos de proximidad: pequeños comercios, consultorios médicos, oficinas y locales de servicio para la población local. En todos los casos, la obra de adecuación implica como mínimo instalación eléctrica adecuada al uso, suelos y pinturas, y las instalaciones específicas que exija la actividad. Lo presupuestamos todo en la primera visita con precio cerrado.' },
+        { type: 'h3', text: 'Tramitación en Camarma: qué determina el plazo según la actividad' },
+        { type: 'p', text: 'En Camarma de Esteruelas, el tipo de actividad determina el régimen de licencia y el plazo de tramitación. Para actividades sin licencia clasificada, la documentación correcta desde el principio es lo que más contribuye a que el proceso sea ágil. Para actividades clasificadas, se requiere resolución previa. Confirmamos el régimen exacto en la primera reunión para que la fecha de apertura tenga una base real.' },
+        { type: 'h3', text: 'Qué incluye la obra de adecuación en Camarma' },
+        { type: 'p', text: 'Para cualquier tipo de actividad, la obra de adecuación implica como mínimo instalación eléctrica adecuada al uso, suelos y pinturas, y las instalaciones específicas que exija la actividad. Si el uso requiere fontanería, climatización o distribución con pladur, lo incluimos en el alcance. Lo presupuestamos todo en la primera visita con precio cerrado.' },
       ],
     },
   },
@@ -920,7 +920,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       intro: 'Antes de convocar la junta para aprobar una obra en la comunidad en Alcalá, conviene tener el presupuesto con memoria descriptiva, fotografías y partidas desglosadas. Un presupuesto bien presentado mejora significativamente las probabilidades de aprobación. Elaboramos toda la documentación necesaria y, si se requiere, asistimos a la junta para explicar el alcance técnico.',
       body: [
         { type: 'h3', text: 'Edificios de los 70 y 80 en Alcalá: las obras más frecuentes en comunidades' },
-        { type: 'p', text: 'Los bloques de Alcalá construidos entre 1970 y 1990 concentran tres problemas habituales en comunidades de propietarios: cubiertas planas sin impermeabilización actualizada (origen del 80% de las humedades en últimas plantas), portales con revestimientos originales deteriorados, y ascensores de primera generación que ya no admiten homologación. Cada una de estas obras tiene su propia mayoría requerida en junta y su propio proceso de tramitación.' },
+        { type: 'p', text: 'Los bloques de Alcalá construidos entre 1970 y 1990 concentran tres problemas habituales en comunidades de propietarios: cubiertas planas sin impermeabilización actualizada, que concentran la mayoría de las humedades en últimas plantas; portales con revestimientos originales deteriorados; y ascensores de primera generación que ya no admiten homologación. Cada una de estas obras tiene su propia mayoría requerida en junta y su propio proceso de tramitación.' },
         { type: 'h3', text: 'Informe de Evaluación del Edificio en Alcalá: qué implica para la comunidad' },
         { type: 'p', text: 'Los edificios de más de 50 años en Alcalá de Henares están sujetos al Informe de Evaluación del Edificio (IEE), condición previa para acceder a las ayudas de rehabilitación energética de la Comunidad de Madrid. Si el edificio no tiene el IEE, la comunidad no puede solicitar esas subvenciones. Si tu comunidad está en esa situación, tiene sentido coordinarlo antes de presupuestar grandes obras de fachada o cubierta.' },
       ],
@@ -937,8 +937,8 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
     'coslada': {
       intro: 'Cuando una humedad afecta a zonas comunes, el presupuesto debería explicar no solo cómo reparar el acabado, sino qué origen se ha detectado y qué trabajos se realizarán para evitar que reaparezca. Hacerlo bien desde el principio evita recurrencias que terminan siendo más caras. Presupuestamos con memoria descriptiva lista para presentar en junta.',
       body: [
-        { type: 'h3', text: 'Humedades por capilaridad en Coslada: la obra que más se aprueba en junta' },
-        { type: 'p', text: 'En muchos bloques de Coslada, especialmente en zonas como Valleaguado y Ciudad 70, la humedad por capilaridad en plantas bajas es un problema visible para todos los vecinos. Es, por eso, una de las obras que con mayor frecuencia consigue la mayoría simple en junta: el daño es evidente y el coste de no actuar se percibe como mayor que el de ejecutar la obra. Hacerla bien desde el principio evita recurrencias.' },
+        { type: 'h3', text: 'Humedades en zonas comunes: cómo definir el alcance antes de ir a junta' },
+        { type: 'p', text: 'Cuando aparecen indicios de humedad en plantas bajas o en zonas comunes, el primer paso es identificar el origen: si es capilaridad desde la solera, filtración desde cubierta u otro foco. Sin esa información, el presupuesto no puede cerrarse con precisión y el trabajo ejecutado puede no resolver el problema de raíz. Hacerlo bien desde el principio evita recurrencias y facilita la aprobación en junta.' },
         { type: 'h3', text: 'Presupuesto para junta: cómo prepararlo para facilitar la aprobación' },
         { type: 'p', text: 'Un presupuesto que se presenta en junta necesita estar bien documentado para facilitar el voto favorable de los propietarios. Elaboramos presupuesto con memoria descriptiva, fotografías del estado previo, partidas desglosadas por capítulo y planificación de obra. El formato permite a los propietarios entender qué se va a hacer, en cuánto tiempo y a qué coste sin necesidad de conocimientos técnicos.' },
       ],
@@ -955,9 +955,9 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
     'guadalajara': {
       intro: 'Para comunidades en Guadalajara que lleven tiempo aplazando una obra, el primer paso es tener el presupuesto con la documentación necesaria: memoria descriptiva, fotografías del estado previo y partidas desglosadas. Hacemos la visita técnica, elaboramos el informe de estado previo y preparamos el presupuesto en el formato adecuado para presentar en junta.',
       body: [
-        { type: 'h3', text: 'Comunidades en Guadalajara: permisos más ágiles para obras de mayor alcance' },
-        { type: 'p', text: 'Las obras en zonas comunes de comunidades en Guadalajara que necesitan licencia (cambios en fachada, instalación de ascensor) tienen plazos de tramitación generalmente más cortos que en los municipios madrileños del Corredor. Para comunidades que llevan tiempo aplazando una obra por incertidumbre en los plazos, esa previsibilidad facilita la planificación y la aprobación en junta.' },
-        { type: 'h3', text: 'Edificios del Balconcillo y Aguas Vivas: problemas más frecuentes en comunidades' },
+        { type: 'h3', text: 'Obras con licencia en comunidades de Guadalajara: cómo planificar los trámites' },
+        { type: 'p', text: 'Las obras en zonas comunes que requieren licencia municipal (cambios en fachada, instalación de ascensor) necesitan planificación previa para no retrasar la ejecución. Si la comunidad lleva tiempo aplazando una obra por incertidumbre en los plazos, la primera conversación con la administración municipal aclara el trámite exacto que corresponde. Lo coordinamos antes de presentar el presupuesto en junta.' },
+        { type: 'h3', text: 'Edificios residenciales en Guadalajara: obras habituales en zonas comunes' },
         { type: 'p', text: 'Los bloques de las zonas residenciales de Guadalajara de los años 70 al 90 comparten problemas similares a los del Corredor madrileño: portales con revestimientos originales en mal estado, cubiertas que concentran humedades en últimas plantas, y ascensores que ya no cumplen la normativa actual. Hacemos la visita técnica, elaboramos el informe de estado previo y preparamos el presupuesto con el formato adecuado para junta.' },
       ],
     },
@@ -984,7 +984,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
       body: [
         { type: 'h3', text: 'Comunidades pequeñas en Camarma: toma de decisiones más rápida' },
         { type: 'p', text: 'Las comunidades de Camarma de Esteruelas son en su mayoría pequeñas, con un número reducido de propietarios por edificio o urbanización. Esa escala facilita la toma de decisiones en junta: es más fácil reunir a todos los propietarios, resolver dudas en persona y llegar a acuerdos. Las obras se aprueban y ejecutan con menos fricción burocrática que en grandes comunidades urbanas.' },
-        { type: 'h3', text: 'Tipos de obras más habituales en las comunidades de Camarma' },
+        { type: 'h3', text: 'Tipos de obras en las comunidades de Camarma' },
         { type: 'p', text: 'Las actuaciones en zonas comunes más frecuentes en Camarma son de conservación y mantenimiento: viales y accesos de urbanización deteriorados, elementos de cerramiento o vallado en mal estado, y pequeñas reparaciones de fachada o cubierta. Para obras de mayor alcance, elaboramos el presupuesto con toda la documentación necesaria para presentar en junta y obtener la aprobación necesaria.' },
       ],
     },
@@ -1187,7 +1187,7 @@ export const ZONES = [
     primary: false,
     province: 'Guadalajara',
     desc: 'También operamos en Guadalajara capital y su entorno.',
-    heroIntro: 'En Guadalajara capital reformamos viviendas y locales con el mismo equipo y el mismo sistema de precio cerrado que en los municipios madrileños del Corredor. El clima continental de Guadalajara hace que el cambio de carpintería exterior a doble acristalamiento tenga un retorno energético especialmente tangible. Para reformas integrales, la visita técnica evalúa instalaciones y distribución antes de comprometer ningún número.',
+    heroIntro: 'En Guadalajara capital trabajamos con el mismo equipo propio y el mismo sistema de precio cerrado que en Alcalá o Torrejón. El alcance de la reforma depende del estado real de las instalaciones y de lo que quieras cambiar: la visita técnica gratuita lo determina antes de comprometer ningún número ni plazo.',
     localAngle: 'es la capital provincial con un importante parque de vivienda de los 70 y 90 en el Balconcillo y Aguas Vivas, donde la sustitución de instalaciones obsoletas y la mejora del aislamiento térmico son las reformas más solicitadas',
     neighborhoods: ['Casco Histórico', 'El Balconcillo', 'Aguas Vivas', 'El Alamín', 'Los Manantiales', 'Estación', 'Los Valles'],
   },
@@ -1197,7 +1197,7 @@ export const ZONES = [
     primary: false,
     province: 'Guadalajara',
     desc: 'Reformas en Azuqueca de Henares y alrededores.',
-    heroIntro: 'En Azuqueca de Henares trabajamos con el mismo equipo y el mismo sistema de precio cerrado que en el Corredor madrileño, sin coste adicional por desplazamiento. La reforma de baño y cocina es la actuación más habitual: en pisos de los 90 con instalaciones en mejor estado que los bloques de los 80, el alcance puede centrarse en distribución y acabados. La visita técnica gratuita lo determina antes de presupuestar.',
+    heroIntro: 'Azuqueca de Henares pertenece a la provincia de Guadalajara pero forma parte habitual de nuestra zona de trabajo en el Corredor. El mismo equipo, el mismo precio cerrado y el mismo compromiso de plazo que en Alcalá o Torrejón, sin coste adicional por desplazamiento.',
     localAngle: 'pertenece a la provincia de Guadalajara y tiene un núcleo residencial compacto donde el cambio de baño y cocina es la actuación más frecuente entre propietarios de pisos adquiridos en los años 90',
     neighborhoods: ['Centro', 'El Vallejo', 'La Paloma', 'Bulevar - Plaza Castilla', 'La Estación', 'La Quebradilla', 'Vallehermoso', 'Postas'],
   },
@@ -1217,7 +1217,7 @@ export const ZONES = [
     primary: false,
     province: 'Madrid',
     desc: 'Reformas en Camarma de Esteruelas.',
-    heroIntro: 'En Camarma de Esteruelas reformamos viviendas unifamiliares y adosados con el mismo equipo propio y el mismo precio cerrado que en Alcalá. A diferencia de los pisos de bloque, una reforma en una vivienda de dos plantas puede incluir cubierta, cerramientos, terraza e interior en la misma obra. La visita técnica gratuita identifica qué es urgente, qué puede esperar y qué sale más eficiente hacer a la vez.',
+    heroIntro: 'En Camarma de Esteruelas trabajamos con el mismo equipo y el mismo sistema de precio cerrado que en Alcalá. Si tienes un proyecto de reforma en vivienda unifamiliar o adosado, la visita técnica gratuita evalúa el alcance completo antes de presupuestar: interior, cubierta o cerramientos, según lo que necesite la vivienda.',
     localAngle: 'es un municipio con predominio de viviendas unifamiliares y adosados, donde los proyectos de reforma integral y ampliación de estancias son los más demandados por familias que llevan más de una década en la zona',
     neighborhoods: ['Casco Urbano', 'Urb. Nueva Camarma', 'Urb. El Practicante', 'Gran Vía'],
   },

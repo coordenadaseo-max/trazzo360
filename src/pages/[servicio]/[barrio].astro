@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, LOCATION_FAQS, SERVICE_ICONS } from '../../data/site';
+import { SITE, SERVICES, ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, SERVICE_ZONE_FAQS, SERVICE_ICONS } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -44,7 +44,7 @@ const priceFaq = {
   q: `¿Cuánto cuesta ${costar} en ${zone.name}?`,
   a: `${costar.charAt(0).toUpperCase() + costar.slice(1)} en ${zone.name} parte desde ${service.priceFrom}€ (${service.priceDesc}). El precio exacto depende del alcance y los materiales; lo recibes cerrado y sin letra pequeña tras la visita técnica gratuita.`,
 };
-const faqs = [priceFaq, ...(LOCATION_FAQS[service.slug] ?? [])];
+const faqs = [priceFaq, ...(SERVICE_ZONE_FAQS[service.slug]?.[zone.slug] ?? [])];
 
 const pageSchema = {
   '@context': 'https://schema.org',

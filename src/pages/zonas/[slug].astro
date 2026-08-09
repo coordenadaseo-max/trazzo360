@@ -8,21 +8,7 @@ export const getStaticPaths: GetStaticPaths = () =>
 
 const { zone } = Astro.props;
 
-const genericFaqs = [
-  {
-    q: `¿Cuánto cuesta una reforma en ${zone.name}?`,
-    a: `Depende del tipo de obra y el alcance. Como orientación: reforma de baño desde 3.200€, reforma de cocina desde 5.500€, reforma integral de piso de 70–90 m² desde 24.900€. El precio exacto lo recibes tras la visita técnica gratuita, cerrado en el contrato desde el primer día.`,
-  },
-  {
-    q: `¿Qué tipos de reforma realizáis en ${zone.name}?`,
-    a: `Reformas integrales de pisos, áticos y chalets; reforma de baños; reforma de cocinas; reforma de locales comerciales y hostelería; y obras en zonas comunes de comunidades de propietarios. Cada servicio tiene precio cerrado y plazo de entrega garantizado por escrito en el contrato.`,
-  },
-  {
-    q: `¿Cuánto tarda en ejecutarse una reforma en ${zone.name}?`,
-    a: `Los plazos dependen del tipo de obra. Un baño completo tarda entre 1 y 3 semanas. Una cocina, entre 2 y 4 semanas. Una reforma integral de piso, entre 8 y 14 semanas. La fecha de inicio y de entrega queda fijada en el contrato antes de comenzar.`,
-  },
-];
-const faqs = [...(ZONE_FAQS[zone.slug] ?? []), ...genericFaqs];
+const faqs = ZONE_FAQS[zone.slug] ?? [];
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',

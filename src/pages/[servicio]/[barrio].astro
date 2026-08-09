@@ -103,7 +103,8 @@ const howToSchema = service.processSteps && (service.processSteps as {title:stri
 } : null;
 
 const otherZones = ZONES.filter(z => z.slug !== zone.slug);
-const otherServices = SERVICES.filter(s => s.slug !== service.slug);
+const relatedServiceSlugs: string[] = (service as any).relatedServices ?? [];
+const relatedServices = SERVICES.filter(s => relatedServiceSlugs.includes(s.slug));
 const features = serviceFeatures[service.slug] ?? [];
 const intro = szc?.intro ?? service.desc;
 ---
@@ -363,26 +364,28 @@ const intro = szc?.intro ?? service.desc;
   </section>
 
   <!-- Otros servicios en esta ciudad -->
-  <section class="py-14 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-lg font-black text-gray-900 mb-2">
-        Otros servicios de reforma en {zone.name}
-      </h2>
-      <p class="text-sm text-gray-500 mb-5">
-        En Trazzo360 cubrimos todos los tipos de obra en {zone.name} con el mismo equipo y el mismo compromiso de precio y plazo. Elige el servicio que necesitas.
-      </p>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {otherServices.map(s => (
-          <a href={`/${s.slug}/${zone.slug}/`}
-            class="group block p-4 bg-gray-50 border-b-2 border-transparent hover:border-[#A85535] hover:shadow-sm transition-all">
-            <span class="w-7 h-7 text-[#A85535] block mb-2"><Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} /></span>
-            <p class="text-sm font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors">{s.title}</p>
-            <p class="text-xs text-gray-400 mt-0.5">Desde {s.priceFrom}€</p>
-          </a>
-        ))}
+  {relatedServices.length > 0 && (
+    <section class="py-14 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-lg font-black text-gray-900 mb-2">
+          Otros servicios de reforma en {zone.name}
+        </h2>
+        <p class="text-sm text-gray-500 mb-5">
+          En Trazzo360 cubrimos todos los tipos de obra en {zone.name} con el mismo equipo y el mismo compromiso de precio y plazo. Elige el servicio que necesitas.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {relatedServices.map(s => (
+            <a href={`/${s.slug}/${zone.slug}/`}
+              class="group block p-4 bg-gray-50 border-b-2 border-transparent hover:border-[#A85535] hover:shadow-sm transition-all">
+              <span class="w-7 h-7 text-[#A85535] block mb-2"><Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} /></span>
+              <p class="text-sm font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors">{s.title}</p>
+              <p class="text-xs text-gray-400 mt-0.5">Desde {s.priceFrom}€</p>
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
   <!-- FAQ -->
   <section class="py-20 bg-[#F9F7F4]">

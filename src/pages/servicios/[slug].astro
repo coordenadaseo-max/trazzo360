@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES } from '../../data/site';
+import { SITE, SERVICES, ZONES, SERVICE_ICONS } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -67,6 +67,9 @@ const howToSchema = service.processSteps && (service.processSteps as {title:stri
     text: s.desc,
   })),
 } : null;
+
+const relatedServiceSlugs: string[] = (service as any).relatedServices ?? [];
+const relatedServicesData = SERVICES.filter(s => relatedServiceSlugs.includes(s.slug));
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -304,6 +307,30 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema
       </div>
     </div>
   </section>
+
+  <!-- Servicios relacionados -->
+  {relatedServicesData.length > 0 && (
+    <section class="py-14 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-lg font-black text-gray-900 mb-2">
+          Otros servicios de reforma que también ofrecemos
+        </h2>
+        <p class="text-sm text-gray-500 mb-5">
+          Muchos proyectos combinan más de un tipo de obra. Estos son los servicios con los que se relaciona habitualmente.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+          {relatedServicesData.map(s => (
+            <a href={`/servicios/${s.slug}/`}
+              class="group block p-5 bg-white border-b-2 border-transparent hover:border-[#A85535] hover:shadow-sm transition-all">
+              <span class="w-7 h-7 text-[#A85535] block mb-2"><Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} /></span>
+              <p class="text-sm font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors">{s.title}</p>
+              <p class="text-xs text-gray-400 mt-1">Desde {s.priceFrom}€ · {s.anchorLabel} en el Corredor →</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- FAQ -->
   {service.faqs.length > 0 && (

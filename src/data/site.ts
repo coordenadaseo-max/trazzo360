@@ -831,7 +831,7 @@ export const SERVICE_ZONE_FAQS: Record<string, Record<string, { q: string; a: st
 // ─── Contenido único por combinación servicio × localidad ─────────────────
 // intro: párrafo del hero, específico para cada combinación.
 // Se usa en [barrio].astro para reemplazar la concatenación genérica de localAngle.
-export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string; body: { type: string; text: string }[] }>> = {
+export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string; body: { type: string; text: string; link?: { text: string; serviceSlug: string } }[] }>> = {
   'reformas-integrales': {
     'alcala-de-henares': {
       intro: 'El primer paso de una reforma integral en Alcalá no es elegir materiales: es saber qué estado tienen las instalaciones. Un cuadro eléctrico de antes del 2000 o tuberías que no se han tocado en décadas pueden condicionar el alcance real y el precio final. Lo evaluamos en la visita técnica gratuita antes de comprometer ningún número.',
@@ -840,6 +840,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Los pisos anteriores a los 90 en Alcalá suelen tener dos variables que cambian el presupuesto si no se detectan en la visita: cuadro eléctrico insuficiente para el uso actual y tuberías de hierro galvanizado con décadas de uso. Si no se evalúan antes de firmar, el precio cerrado puede quedar obsoleto a las dos semanas de obra. Por eso incluimos la revisión completa de instalaciones en la visita gratuita antes de comprometer ningún número.' },
         { type: 'h3', text: 'Cómo se ordena una reforma integral: secuencia y coordinación' },
         { type: 'p', text: 'Una reforma integral tiene una secuencia que no puede alterarse sin encarecer la obra: primero derribo y vaciado; después instalaciones (electricidad y fontanería, que van empotradas); luego albañilería; después solados y alicatados; por último carpintería interior y pintura. Alterar ese orden implica volver a abrir lo que ya estaba terminado. Con equipo propio coordinamos cada fase sin depender de que un gremio externo aparezca en el momento correcto.' },
+        { type: 'p', text: 'Si al revisar las instalaciones resultan aprovechables y la necesidad se concentra en acabados y estancias concretas, el alcance puede resolverse con una reforma de piso en lugar de una integral. La visita técnica determina en qué escenario estás antes de comprometer ningún número.', link: { text: 'reforma de piso', serviceSlug: 'reforma-pisos' } },
       ],
     },
     'torrejon-de-ardoz': {
@@ -849,6 +850,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Una reforma integral tiene una secuencia que no puede alterarse: primero derribo y vaciado, después instalaciones empotradas (electricidad y fontanería), luego albañilería, después solados y alicatados, por último carpintería y pintura. Trabajar con equipo propio en Torrejón significa que cada gremio aparece en el momento correcto sin esperas que alargan el plazo. La fecha de entrega se fija en el contrato y se cumple.' },
         { type: 'h3', text: 'Qué debe estar cerrado antes de firmar el presupuesto' },
         { type: 'p', text: 'La distribución final, el diseño de baño y cocina, y la selección de suelos son los tres elementos que deben estar definidos antes de empezar la obra. Si se modifican durante la ejecución, el coste se desvía y el plazo se alarga. En la visita técnica evaluamos el estado de las instalaciones, identificamos qué puede aprovecharse y qué necesita renovación, y cerramos el precio con todos esos datos sobre la mesa.' },
+        { type: 'p', text: 'Si las instalaciones de la vivienda aguantan y la intervención se concentra en acabados y distribución, el alcance puede corresponderse con el de una reforma de piso más que con el de una integral. La visita técnica determina cuál de los dos escenarios aplica antes de cerrar el precio.', link: { text: 'reforma de piso', serviceSlug: 'reforma-pisos' } },
       ],
     },
     'coslada': {
@@ -858,6 +860,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si aparecen indicios de humedad en plantas bajas, conviene identificar el origen antes de cerrar el presupuesto: si no se contempla en el contrato y aparece a mitad de obra, el coste final se desvía. En la visita técnica evaluamos el estado de solera y muros y lo incluimos en el presupuesto cuando el estado lo requiere.' },
         { type: 'h3', text: 'Instalaciones: qué renovar y qué puede esperar' },
         { type: 'p', text: 'No todas las instalaciones de una vivienda están en el mismo estado. El cuadro eléctrico y la fontanería deben evaluarse según su estado real, no darse por renovables de forma automática. En la visita determinamos qué necesita renovación real y qué puede quedarse, para que el presupuesto no incluya partidas innecesarias ni deje fuera las que son urgentes.' },
+        { type: 'p', text: 'Cuando el cuadro eléctrico y la fontanería están en buen estado, el alcance real puede ser el de una reforma de piso en lugar de una integral. La visita determina cuál es tu caso antes de comprometer ningún número.', link: { text: 'reforma de piso', serviceSlug: 'reforma-pisos' } },
       ],
     },
     'san-fernando-de-henares': {
@@ -867,6 +870,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'En viviendas del casco antiguo de San Fernando donde las instalaciones no se han revisado en tiempo, el cuadro eléctrico y la fontanería pueden condicionar de forma importante el alcance real de la reforma. En las promociones más recientes de Parque Roma y Parque Henares, las instalaciones pueden estar en mejor estado y el presupuesto puede centrarse en distribución y acabados. El estado de la instalación es lo que determina el alcance; la visita técnica lo aclara antes de comprometer cualquier número.' },
         { type: 'h3', text: 'Licencias de obra menor en el Ayuntamiento de San Fernando de Henares' },
         { type: 'p', text: 'Para reformas con derribo de tabiques, cambio de ventanas en fachada o modificación de instalaciones se necesita licencia de obra menor en San Fernando de Henares. Los plazos son similares al resto de municipios madrileños del Corredor. Tramitamos la solicitud, hacemos el seguimiento y coordinamos con el técnico municipal si fuera necesario, sin que tengas que gestionar ningún trámite.' },
+        { type: 'p', text: 'Cuando el cuadro eléctrico y la fontanería están en buen estado, el alcance real puede ser el de una reforma de piso en lugar de una integral. La visita determina cuál es tu caso antes de comprometer ningún número.', link: { text: 'reforma de piso', serviceSlug: 'reforma-pisos' } },
       ],
     },
     'guadalajara': {
@@ -876,6 +880,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'En una reforma integral en Guadalajara, el primer paso antes de tomar decisiones de distribución o acabados es evaluar el estado de las instalaciones. Si el cuadro eléctrico o la fontanería necesitan renovación, hacerlo dentro de la misma obra es más eficiente que abrir la vivienda en dos momentos distintos. Con el piso abierto, también es el momento de valorar el cambio de carpintería exterior si las ventanas no tienen doble acristalamiento.' },
         { type: 'h3', text: 'Carpintería y aislamiento en el marco de una reforma integral' },
         { type: 'p', text: 'Si la reforma integral incluye intervención en el perímetro de la vivienda, el cambio de carpintería exterior puede añadirse a la misma obra sin coste adicional de desescombro o coordinación. El doble acristalamiento mejora el confort térmico y acústico, y la mejora es especialmente perceptible en viviendas que llevan décadas con ventanas sin renovar. En la visita evaluamos si las ventanas actuales justifican la sustitución dentro del presupuesto general.' },
+        { type: 'p', text: 'Si al revisar las instalaciones resultan aprovechables y la necesidad se concentra en acabados y estancias concretas, el alcance puede resolverse con una reforma de piso en lugar de una integral. La visita técnica determina en qué escenario estás antes de comprometer ningún número.', link: { text: 'reforma de piso', serviceSlug: 'reforma-pisos' } },
       ],
     },
     'azuqueca-de-henares': {
@@ -885,6 +890,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'En muchos pisos de Azuqueca el cuadro eléctrico y la fontanería pueden aprovecharse total o parcialmente. Eso reduce el alcance de la obra y libera presupuesto para dedicarlo a distribución, calidad de materiales o zonas con mayor impacto visual. Lo verificamos en la visita técnica antes de comprometer ningún número.' },
         { type: 'h3', text: 'Qué incluye una reforma integral cuando las instalaciones están en buen estado' },
         { type: 'p', text: 'Si las instalaciones aguantan, una reforma integral en Azuqueca puede concentrarse en lo que más se nota: redistribución de espacios para ganar amplitud, suelos nuevos de porcelánico o tarima, reforma completa de baño y cocina, carpintería interior y pintura. El presupuesto cerrado incluye todas las partidas acordadas; si durante la obra aparece algo no previsto, lo comunicamos antes de actuar.' },
+        { type: 'p', text: 'Si las instalaciones de la vivienda aguantan y la intervención se concentra en acabados y distribución, el alcance puede corresponderse con el de una reforma de piso más que con el de una integral. La visita técnica determina cuál de los dos escenarios aplica antes de cerrar el precio.', link: { text: 'reforma de piso', serviceSlug: 'reforma-pisos' } },
       ],
     },
     'meco': {
@@ -894,6 +900,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si la reforma afecta a una vivienda de varias plantas, o incluye cubierta, terraza o zonas exteriores, el alcance global conviene plantearse antes de dividir la obra en actuaciones independientes. Una reforma integral bien planificada empieza por decidir qué se interviene, en qué orden y si la cubierta u otras zonas necesitan actuación, porque son partidas que pueden cambiar el presupuesto si se descubren durante la obra.' },
         { type: 'h3', text: 'Cerramientos de terraza en Meco: proceso y requisitos' },
         { type: 'p', text: 'Si el proyecto de reforma incluye cerrar una terraza para ganar metros habitables, el proceso requiere licencia de obra menor en el Ayuntamiento y, en algunas urbanizaciones, también la aprobación de la comunidad de propietarios. Verificamos ambas condiciones antes de comprometer plazos o presupuesto: el trámite queda incluido en el precio cerrado desde el principio.' },
+        { type: 'p', text: 'Si al revisar las instalaciones resultan aprovechables y la necesidad se concentra en acabados y estancias concretas, el alcance puede resolverse con una reforma de piso en lugar de una integral. La visita técnica determina en qué escenario estás antes de comprometer ningún número.', link: { text: 'reforma de piso', serviceSlug: 'reforma-pisos' } },
       ],
     },
     'camarma-de-esteruelas': {
@@ -903,6 +910,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si vas a plantear una reforma integral en una vivienda unifamiliar en Camarma, el alcance puede ir más allá del interior: cubierta, cerramientos, garaje o zonas exteriores si las hay. Definir prioridades antes de presupuestar es la clave para no abrir más frentes de los que el presupuesto puede cubrir en una sola obra. Lo repasamos en la visita técnica gratuita.' },
         { type: 'h3', text: 'Secuencia de obra en vivienda unifamiliar: cómo ordenar los trabajos' },
         { type: 'p', text: 'En una vivienda de dos plantas, el orden de los trabajos condiciona el plazo total. Lo habitual: instalaciones en ambas plantas primero (electricidad y fontanería, que van empotradas), después albañilería y actuación en cubierta si aplica, y finalmente acabados planta a planta. Con esa secuencia, la vivienda recupera habitabilidad lo antes posible sin que una fase bloquee la siguiente.' },
+        { type: 'p', text: 'Si las instalaciones de la vivienda aguantan y la intervención se concentra en acabados y distribución, el alcance puede corresponderse con el de una reforma de piso más que con el de una integral. La visita técnica determina cuál de los dos escenarios aplica antes de cerrar el precio.', link: { text: 'reforma de piso', serviceSlug: 'reforma-pisos' } },
       ],
     },
   },
@@ -914,6 +922,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Cambiar la bañera por un plato de ducha sin tocar el alicatado existente es la intervención más rápida y económica: parte de 1.800€ y se hace en 3–5 días hábiles. Si el alicatado tiene más de 20 años, aprovechar para hacer la reforma completa es más eficiente que volver a abrir el baño en unos años. En la visita te mostramos el coste de ambas opciones para que puedas decidir con datos.' },
         { type: 'h3', text: '¿Cuándo conviene cambiar la fontanería al reformar el baño?' },
         { type: 'p', text: 'Si las tuberías del baño llevan más de 25 años sin tocarse, renovarlas mientras el baño ya está abierto tiene un coste marginal comparado con tener que volver a abrir todo en pocos años. La fontanería oculta es la causa más frecuente de humedades en baños con acabados nuevos sobre instalaciones viejas. En la visita evaluamos el estado real y lo incluimos en el presupuesto si es necesario.' },
+        { type: 'p', text: 'Si además del baño la vivienda va a necesitar intervención en otras estancias o en las instalaciones de fondo, conviene valorar el alcance completo antes de dividir los trabajos. En ese escenario puede tener más sentido plantear una reforma integral que coordinar varias obras por separado.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'torrejon-de-ardoz': {
@@ -923,6 +932,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si la vivienda tiene un único baño, el plazo de obra es tan importante como el resultado. Una reforma completa dura entre 1 y 3 semanas según el alcance. Los primeros días, con el derribo del alicatado, son los más incómodos. A partir de ahí el espacio se va recuperando. Si el plazo es crítico, planificamos la secuencia de trabajo para acortarlo al máximo sin comprometer la impermeabilización.' },
         { type: 'h3', text: 'Alicatado de gran formato: por qué cambia el resultado visual' },
         { type: 'p', text: 'El formato del alicatado es la decisión que más cambia la percepción visual del baño renovado. Las piezas grandes (60×60 cm o más) reducen la cantidad de juntas y dan sensación de amplitud, especialmente en baños pequeños. Permiten también trabajar sin zócalo y con menos cortes en esquinas, lo que mejora el acabado final. En la visita de diseño te mostramos muestras reales con distintos formatos.' },
+        { type: 'p', text: 'Si el baño no es el único espacio que necesita intervención en la vivienda, puede convenir valorar el conjunto antes de cerrar el alcance. Cuando la intervención se extiende a otras estancias o instalaciones, una reforma integral puede resultar más eficiente que varias obras por separado.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'coslada': {
@@ -932,6 +942,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'En muchos bloques de Coslada, las humedades en baños no son solo superficiales. Antes de decidir el alcance, conviene revisar si hay filtraciones desde el baño superior o capilaridad desde la solera, especialmente en plantas bajas. Si se detectan y no se incluyen en el presupuesto, aparecen después de poner el alicatado nuevo. En la visita técnica evaluamos el estado real antes de cerrar el precio.' },
         { type: 'h3', text: 'Baños pequeños: cómo ganar espacio sin cambiar la distribución' },
         { type: 'p', text: 'Si el baño es pequeño y el objetivo es ganar espacio percibido sin cambiar la distribución, hay tres decisiones que cambian el resultado visual: plato de ducha en lugar de bañera, mueble de lavabo con almacenaje integrado y revestimiento de gran formato que reduce la cantidad de juntas. El resultado es radicalmente distinto al estado original sin necesidad de obra pesada.' },
+        { type: 'p', text: 'Si además del baño la vivienda va a necesitar intervención en otras estancias o en las instalaciones de fondo, conviene valorar el alcance completo antes de dividir los trabajos. En ese escenario puede tener más sentido plantear una reforma integral que coordinar varias obras por separado.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'san-fernando-de-henares': {
@@ -941,6 +952,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'En un piso del casco antiguo de San Fernando de los años 70 u 80, la fontanería del baño suele necesitar renovación además de los acabados. En una vivienda de Parque Roma o Parque Henares de los 90, las instalaciones pueden estar en mejor estado y la reforma puede limitarse a alicatado, sanitarios y mueble. La diferencia en presupuesto puede ser relevante. La visita técnica lo aclara antes de comprometer nada.' },
         { type: 'h3', text: 'Impermeabilización: por qué es la partida que no puede saltarse' },
         { type: 'p', text: 'Una impermeabilización correctamente resuelta en las zonas expuestas al agua reduce el riesgo de filtraciones hacia soportes y estancias colindantes. Antes de colocar revestimientos conviene comprobar cómo se va a proteger cada zona según la distribución del baño. Va incluida desde la primera partida del presupuesto, no como extra que aparece después de firmar.' },
+        { type: 'p', text: 'Si el baño no es el único espacio que necesita intervención en la vivienda, puede convenir valorar el conjunto antes de cerrar el alcance. Cuando la intervención se extiende a otras estancias o instalaciones, una reforma integral puede resultar más eficiente que varias obras por separado.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'guadalajara': {
@@ -950,6 +962,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'En viviendas de Guadalajara que llevan años sin una reforma de baño, es frecuente encontrar fontanería que conviene revisar. Al reformar el baño, renovar la fontanería con el espacio ya abierto tiene un coste pequeño comparado con tener que abrir otra vez el baño reformado si las tuberías fallan dos años después. En la visita evaluamos el estado real y te damos una recomendación concreta.' },
         { type: 'h3', text: 'Accesibilidad en la reforma de baño: opciones que merece la pena considerar' },
         { type: 'p', text: 'Si la vivienda va a usarla durante muchos años la misma persona, o si hay mayores en el hogar, adaptar el baño para mejorar la accesibilidad durante la reforma no supone un coste mayor significativo: plato de ducha al nivel del suelo, barra de apoyo, espacio libre lateral al inodoro. Hacerlo después de haber terminado la reforma implica volver a abrir. En la visita podemos mostrarte las opciones que encajan con tu situación.' },
+        { type: 'p', text: 'Cuando el baño es el inicio de una intervención más amplia, tiene sentido valorar el conjunto antes de arrancar. Si hay otras estancias o instalaciones que renovar, comparar con el alcance de una reforma integral puede dar una perspectiva diferente antes de comprometer presupuesto.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'azuqueca-de-henares': {
@@ -959,6 +972,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si las instalaciones del baño están en buen estado, la reforma puede concentrarse en cambiar el alicatado, los sanitarios, el mueble y la mampara sin tocar la fontanería de fondo. El resultado visual es equivalente al de una reforma completa, con un plazo más corto y un presupuesto más ajustado.' },
         { type: 'h3', text: 'Almacenaje en el baño: soluciones que marcan la diferencia' },
         { type: 'p', text: 'La falta de almacenaje es frecuente en baños pequeños, independientemente del material con el que estén revestidos. Un mueble con cajones y puertas, un botiquín integrado en el espejo y nichos en el alicatado de la ducha pueden resolver el problema sin ampliar el espacio. En la visita de diseño te mostramos cómo funciona cada solución en baños de dimensiones similares al tuyo.' },
+        { type: 'p', text: 'Cuando el baño es el inicio de una intervención más amplia, tiene sentido valorar el conjunto antes de arrancar. Si hay otras estancias o instalaciones que renovar, comparar con el alcance de una reforma integral puede dar una perspectiva diferente antes de comprometer presupuesto.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'meco': {
@@ -968,6 +982,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si el baño principal de la vivienda tiene más espacio que en un piso de bloque, se abren opciones que no son posibles en superficies reducidas: ducha de obra a medida con mampara fija de cristal, doble lavabo con encimera corrida, o separación de la zona de ducha y la de aseo. Si hay más de un baño en la vivienda, el alcance de cada uno se decide en la visita.' },
         { type: 'h3', text: 'Duchas de obra a medida: cuándo tiene sentido' },
         { type: 'p', text: 'Una ducha de obra sin plato prefabricado permite personalizar la forma, el tamaño y el revestimiento sin las limitaciones de un plato estándar. En un baño de más de 6 metros cuadrados puede diseñarse una ducha de 100×100 cm o más, con microcemento, resina de cuarzo o porcelánico de gran formato. El coste es algo mayor que con plato prefabricado, pero el resultado visual y funcional es completamente diferente.' },
+        { type: 'p', text: 'Si la vivienda tiene varios espacios que intervenir además del baño, abordar la obra de forma global suele ser más eficiente que planificarla en fases. La visita técnica gratuita permite valorar el escenario de reforma integral antes de decidir cómo organizar los trabajos.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'camarma-de-esteruelas': {
@@ -977,6 +992,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'En las viviendas unifamiliares de Camarma, los baños principales tienen a menudo dimensiones que permiten repensar la distribución completa: colocar la ducha donde estaba la bañera, añadir un segundo lavabo si el espacio lo permite, o separar la zona húmeda de la seca. Cuando el baño lleva más de 15 años sin tocarse, la reforma completa suele ser más eficiente que hacer actuaciones parciales en diferentes momentos.' },
         { type: 'h3', text: 'Varios baños en la misma vivienda: cómo priorizarlos' },
         { type: 'p', text: 'Si la vivienda tiene dos o tres baños, no todos necesitan el mismo alcance. El baño principal suele justificar la mayor inversión en diseño y materiales. Los baños secundarios pueden renovarse con un alcance más ajustado: cambio de sanitarios, mueble y pintura sin necesariamente tocar el alicatado si está en buen estado. Te orientamos sobre qué tiene sentido en cada caso.' },
+        { type: 'p', text: 'Si la vivienda tiene varios espacios que intervenir además del baño, abordar la obra de forma global suele ser más eficiente que planificarla en fases. La visita técnica gratuita permite valorar el escenario de reforma integral antes de decidir cómo organizar los trabajos.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
   },
@@ -988,6 +1004,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'La primera decisión en una reforma de cocina no es qué muebles elegir: es si mantener la cocina cerrada o abrirla al salón. Abrir la cocina elimina un tabique, necesita licencia de obra menor y cambia radicalmente la percepción de espacio de toda la vivienda. Si el tabique no es de carga, es una obra de 1–2 días con impacto visual de varios años. Te lo presupuestamos con y sin apertura para que puedas comparar.' },
         { type: 'h3', text: 'Instalación eléctrica en la reforma de cocina: qué conviene revisar antes de presupuestar' },
         { type: 'p', text: 'El Reglamento Electrotécnico de Baja Tensión exige líneas independientes del cuadro para horno, vitrocerámica, lavavajillas y frigorífico. En viviendas con instalaciones que no se han actualizado, el cuadro puede no cumplirlo: si el diferencial salta al usar varios electrodomésticos a la vez, es la señal de que la instalación necesita renovación. La instalación eléctrica nueva es parte de cualquier reforma completa de cocina e incluida en el presupuesto desde el primer día.' },
+        { type: 'p', text: 'Si la intervención prevista va más allá de la cocina —otras estancias que renovar o instalaciones que intervenir a la vez—, puede convenir comparar el alcance completo antes de dividir los trabajos. En ese caso, una reforma integral puede ser más eficiente que coordinar varias obras por separado.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'torrejon-de-ardoz': {
@@ -997,6 +1014,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si tienes cortocircuitos o el diferencial salta cuando usas el horno y la vitrocerámica a la vez, la instalación eléctrica de la cocina no cumple la normativa actual. Es lo que convierte una reforma de cocina que no incluye electricidad en insuficiente desde el primer día de uso. Una reforma completa resuelve el fondo del problema, no solo la estética.' },
         { type: 'h3', text: 'Cuánto tiempo sin cocina: cómo planificar la obra' },
         { type: 'p', text: 'Una reforma completa de cocina dura entre 2 y 4 semanas. La primera parte (derribo, electricidad, fontanería, alicatado de zona de trabajo) requiere que la cocina esté fuera de servicio. La segunda parte, con la instalación de muebles y electrodomésticos, permite ir recuperando funcionalidad. Si tienes todo definido antes de empezar (distribución, muebles, encimera y electrodomésticos pedidos), no hay pausas por espera de materiales.' },
+        { type: 'p', text: 'Cuando la cocina no es el único espacio que necesita intervención, tiene sentido valorar el conjunto antes de arrancar. Si hay instalaciones o estancias adicionales que reformar, comparar con el alcance de una reforma integral en la misma visita puede dar una perspectiva diferente.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'coslada': {
@@ -1006,6 +1024,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si la instalación eléctrica de la cocina no tiene circuitos dedicados para electrodomésticos de alta potencia, se producen sobrecargas cuando se usan simultáneamente el horno, la vitrocerámica y el lavavajillas. En una reforma de cocina, la instalación eléctrica nueva no es un extra: es la base que hace que todos los demás electrodomésticos funcionen correctamente desde el primer día.' },
         { type: 'h3', text: 'Opciones de distribución en cocinas pequeñas' },
         { type: 'p', text: 'En cocinas con distribución en línea o en L, reorganizar la posición del fregadero, la vitrocerámica y el área de trabajo puede mejorar el flujo sin necesidad de cambiar la superficie disponible. Si el presupuesto no permite abrir la cocina al salón, una redistribución inteligente dentro del mismo espacio puede cambiar significativamente cómo funciona.' },
+        { type: 'p', text: 'Si la intervención prevista va más allá de la cocina —otras estancias que renovar o instalaciones que intervenir a la vez—, puede convenir comparar el alcance completo antes de dividir los trabajos. En ese caso, una reforma integral puede ser más eficiente que coordinar varias obras por separado.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'san-fernando-de-henares': {
@@ -1015,6 +1034,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'En viviendas del casco antiguo de San Fernando con instalaciones que no se han actualizado, la electricidad de la cocina puede no ser suficiente para el uso actual. En las viviendas de Parque Roma o Parque Henares, construidas en los 90, la instalación puede estar mejor dimensionada y la reforma puede concentrarse en muebles, encimera y acabados. La diferencia en presupuesto entre ambos casos es relevante y la visita técnica la aclara antes de comprometer ningún número.' },
         { type: 'h3', text: 'Cocina americana o con isla: cuándo tiene sentido' },
         { type: 'p', text: 'Abrir la cocina al salón es especialmente efectivo en pisos de San Fernando donde el tabique de la cocina crea un cuello de botella entre la zona de día. Si el tabique es de distribución (no de carga), es una obra menor que no necesita arquitecto y que transforma la percepción de amplitud de toda la vivienda. Lo presupuestamos como partida independiente para que puedas valorar si merece la pena en tu caso.' },
+        { type: 'p', text: 'Cuando la cocina no es el único espacio que necesita intervención, tiene sentido valorar el conjunto antes de arrancar. Si hay instalaciones o estancias adicionales que reformar, comparar con el alcance de una reforma integral en la misma visita puede dar una perspectiva diferente.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'guadalajara': {
@@ -1024,6 +1044,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Abrir la cocina al salón puede tener un impacto visual importante en pisos con distribución cerrada. Antes de decidir, conviene comprobar la función del tabique y cómo afectaría el cambio a la electricidad, la extracción y la iluminación. Solo con esa información cerrada tiene sentido valorar distribución y presupuesto.' },
         { type: 'h3', text: 'Qué decidir antes de empezar la reforma de cocina' },
         { type: 'p', text: 'Cuanto más definido esté todo antes de arrancar la obra, mejor se respeta el plazo. Lo mínimo necesario antes de empezar: distribución de muebles cerrada, encimera elegida y electrodomésticos seleccionados y pedidos. Si los materiales no están disponibles cuando termina la obra civil, la espera puede alargar el plazo entre 2 y 4 semanas adicionales. Te guiamos en la selección de todo esto durante la visita de diseño previa a la obra.' },
+        { type: 'p', text: 'Si la cocina es el punto de partida de una intervención más amplia en la vivienda, conviene valorar el alcance completo antes de dividir los trabajos. En ese escenario, una reforma integral puede resultar más eficiente que abordar la obra en fases.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'azuqueca-de-henares': {
@@ -1033,6 +1054,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si la instalación eléctrica de la cocina está en buen estado, la reforma puede centrarse en lo que más cambia visualmente: muebles nuevos, encimera, electrodomésticos y alicatado de zona de trabajo, sin tocar los circuitos de fondo. El resultado visual es el mismo que una reforma integral, con un plazo de 2 a 3 semanas y un presupuesto más ajustado.' },
         { type: 'h3', text: 'Encimeras y electrodomésticos: las decisiones con más impacto en el resultado' },
         { type: 'p', text: 'La encimera y los electrodomésticos son las dos partidas que más condicionan el presupuesto y el aspecto final de una cocina nueva. La encimera de silestone o porcelánico de gran formato es más duradera y más fácil de mantener que el granito oscuro o los acabados de cocinas con décadas de uso. Los electrodomésticos integrados mejoran la estética y permiten aprovechar mejor el espacio de almacenaje. En la visita de diseño repasamos todas las opciones con sus precios reales.' },
+        { type: 'p', text: 'Si la cocina es el punto de partida de una intervención más amplia en la vivienda, conviene valorar el alcance completo antes de dividir los trabajos. En ese escenario, una reforma integral puede resultar más eficiente que abordar la obra en fases.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'meco': {
@@ -1042,6 +1064,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si la cocina tiene más superficie de la habitual en los pisos de bloque, se abren opciones que no son posibles en espacios reducidos: isla central con función de encimera y barra, zona de despensa independiente, o cocina americana con acceso directo desde el salón. Con ese espacio disponible, la primera decisión no es qué muebles elegir sino cómo se quiere vivir la cocina: el diseño viene después.' },
         { type: 'h3', text: 'Cocina abierta en adosados: licencia y proceso' },
         { type: 'p', text: 'Abrir la cocina al comedor o al salón en un adosado de Meco puede implicar eliminar un tabique de distribución (obra menor, sin arquitecto) o modificar un hueco existente. En algunos casos la apertura necesita licencia de obra menor en el Ayuntamiento de Meco. Evaluamos la estructura antes de presupuestar y tramitamos la licencia si es necesaria, sin que suponga un trámite adicional para ti.' },
+        { type: 'p', text: 'Cuando el espacio disponible y el alcance previsto superan lo que cubre una reforma de cocina, puede ser más eficiente plantear una reforma integral en lugar de varias obras por separado. La visita técnica gratuita permite comparar ambos escenarios antes de comprometer presupuesto.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'camarma-de-esteruelas': {
@@ -1051,6 +1074,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si la cocina de la vivienda tiene espacio suficiente para replantear la distribución, una reforma puede ir más allá del cambio de muebles: separar la zona de trabajo de la de almacenaje, añadir una isla, o integrar mejor la cocina con el comedor. Cuando la cocina lleva tiempo sin actualizarse, replantear la distribución desde el principio suele dar mejores resultados que adaptar el diseño a los muebles existentes.' },
         { type: 'h3', text: 'Qué conviene decidir antes de la visita de diseño' },
         { type: 'p', text: 'Antes de la primera visita, es útil tener claro cuántas personas usan la cocina y cómo: si la persona que cocina necesita espacio para trabajar con todo desplegado, si hay interés en cocina abierta al comedor, o si el almacenaje es la prioridad. Con esa información, la visita de diseño se convierte en una sesión productiva donde llegamos a opciones concretas con precio real, en lugar de una visita general.' },
+        { type: 'p', text: 'Si la vivienda requiere intervención en varias estancias además de la cocina, plantear una reforma integral en lugar de varias obras por separado suele ser más eficiente. La visita técnica gratuita permite comparar ambos escenarios y decidir cuál responde mejor a la situación real.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
   },
@@ -1061,7 +1085,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'h3', text: 'Qué priorizar cuando no se puede renovar todo a la vez en Alcalá' },
         { type: 'p', text: 'Con un presupuesto acotado, los suelos nuevos y la pintura son lo que más cambia la percepción visual del conjunto por el menor coste por metro cuadrado. El siguiente nivel es baño o cocina, según cuál esté en peor estado o tenga mayor impacto en el uso diario. Lo importante es no renovar acabados sobre instalaciones que van a necesitar cambiarse en pocos años: abre la misma zona dos veces y sale más caro que haberlo hecho todo a la vez.' },
         { type: 'h3', text: 'El potencial de una reforma parcial bien planificada en Alcalá' },
-        { type: 'p', text: 'Si las instalaciones están en buen estado, baño completo, cocina con muebles y electrodomésticos, suelos nuevos en toda la vivienda y pintura pueden transformar el piso completamente sin necesitar obra pesada. El resultado es visual y funcionalmente equivalente a un piso renovado, con un presupuesto sensiblemente inferior al de una reforma integral. La visita determina si ese escenario es el correcto para tu vivienda.' },
+        { type: 'p', text: 'Si las instalaciones están en buen estado, baño completo, cocina con muebles y electrodomésticos, suelos nuevos en toda la vivienda y pintura pueden transformar el piso completamente sin necesitar obra pesada. El resultado es visual y funcionalmente equivalente a un piso renovado, con un presupuesto sensiblemente inferior al de una reforma integral. La visita determina si ese escenario es el correcto para tu vivienda.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'torrejon-de-ardoz': {
@@ -1071,6 +1095,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Antes de decidir el alcance de la reforma conviene saber el estado de las instalaciones. Si el cuadro eléctrico y la fontanería están en buen estado, baño, cocina, suelos y pintura pueden transformar el piso sin obra pesada. Si necesitan renovación, lo más eficiente es hacer todo a la vez con el piso abierto una sola vez. La visita técnica gratuita determina en cuál de los dos escenarios estás, antes de comprometer ningún número.' },
         { type: 'h3', text: 'Reformar por partes: qué priorizar cuando no se puede hacer todo a la vez' },
         { type: 'p', text: 'Si el presupuesto no permite hacerlo todo de una vez, suelos nuevos y pintura son lo que más cambia la percepción visual del conjunto por el menor coste por metro cuadrado. El siguiente nivel es baño o cocina por separado, según cuál esté en peor estado o tenga mayor impacto en el día a día. Lo que conviene evitar es renovar acabados sobre instalaciones que van a necesitar cambiarse en poco tiempo: eso obliga a abrir el piso otra vez.' },
+        { type: 'p', text: 'Cuando la intervención incluye redistribución de instalaciones y varias estancias, puede dejar de tener sentido plantearla como actuaciones independientes. La visita técnica permite valorar también el escenario de reforma integral antes de comprometer presupuesto.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'coslada': {
@@ -1080,6 +1105,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'En algunos bloques de Coslada, las humedades en plantas bajas no son visibles hasta que empieza la obra. Conocer el estado real antes de firmar el contrato es lo que hace que el precio cerrado sea realmente cerrado. En la visita técnica revisamos el estado de la solera, los muros y la cubierta cuando aplica, y lo incluimos en el presupuesto cuando el estado lo requiere.' },
         { type: 'h3', text: 'Qué instalaciones conviene renovar y qué puede esperar' },
         { type: 'p', text: 'No todas las instalaciones de un piso de los 80 en Coslada están en el mismo estado. La revisión en la visita técnica determina qué necesita sustitución urgente y qué puede mantenerse. Esto evita presupuestos que incluyen todo por defecto (más caros de lo necesario) o presupuestos que no incluyen nada y se desvían a mitad de obra cuando aparecen los problemas.' },
+        { type: 'p', text: 'Si el estado de las instalaciones o el alcance previsto superan lo que cubre una reforma de piso, puede ser más eficiente plantearlo todo en una sola obra. La visita técnica identifica en cuál de los dos escenarios estás, y si corresponde el de reforma integral, lo clarifica antes de cerrar el precio.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'san-fernando-de-henares': {
@@ -1088,7 +1114,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'h3', text: 'Alcance de la reforma según la zona y la época de construcción' },
         { type: 'p', text: 'En viviendas del casco antiguo de San Fernando donde las instalaciones no se han actualizado, el cuadro eléctrico, la fontanería y la carpintería exterior pueden necesitar revisión o sustitución además de los acabados. Un piso de Parque Roma o Parque Henares de los años 90 puede tener instalaciones aprovechables y el alcance puede centrarse en acabados y distribución. El presupuesto entre ambos casos puede diferir de manera significativa. La visita técnica lo aclara antes de comprometer cualquier número.' },
         { type: 'h3', text: '¿Se puede vivir en el piso durante la reforma?' },
-        { type: 'p', text: 'En reformas parciales (baño, cocina o suelos por separado), es posible vivir en el piso aunque resulte incómodo durante los días de obra más intensa. En reformas integrales con derribo general, no es recomendable por el polvo, el ruido y los cortes de suministros. Si no tienes alternativa, diseñamos una secuencia de trabajo por zonas para que siempre haya una parte habitable de la vivienda.' },
+        { type: 'p', text: 'En reformas parciales (baño, cocina o suelos por separado), es posible vivir en el piso aunque resulte incómodo durante los días de obra más intensa. En reformas integrales con derribo general, no es recomendable por el polvo, el ruido y los cortes de suministros. Si no tienes alternativa, diseñamos una secuencia de trabajo por zonas para que siempre haya una parte habitable de la vivienda.', link: { text: 'reformas integrales', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'guadalajara': {
@@ -1098,6 +1124,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'El cambio de carpintería exterior a PVC con doble acristalamiento mejora el confort térmico y acústico de la vivienda. En Guadalajara, con un clima de mayor amplitud térmica que en el Corredor madrileño, la mejora puede ser especialmente perceptible. Si las ventanas llevan décadas sin renovarse, incluir la carpintería en la misma obra evita tener que intervenir por separado después.' },
         { type: 'h3', text: 'Instalaciones en Guadalajara: qué evaluar antes de presupuestar' },
         { type: 'p', text: 'Si la vivienda lleva años sin una revisión de instalaciones, el cuadro eléctrico y la fontanería son las dos partidas que con más frecuencia condicionan el presupuesto final. Evaluarlas en la visita previa evita que aparezcan como extras cuando la obra ya está en marcha.' },
+        { type: 'p', text: 'Cuando la intervención incluye redistribución de instalaciones y varias estancias, puede dejar de tener sentido plantearla como actuaciones independientes. La visita técnica permite valorar también el escenario de reforma integral antes de comprometer presupuesto.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'azuqueca-de-henares': {
@@ -1107,6 +1134,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'Si las instalaciones de la vivienda están en buen estado, la reforma puede concentrarse en lo que más impacto tiene visualmente: suelos nuevos, baño renovado, cocina actualizada y pintura, sin necesariamente tocar la instalación eléctrica o la fontanería.' },
         { type: 'h3', text: 'Suelos en una reforma de piso: qué opciones hay y cuánto cuestan' },
         { type: 'p', text: 'El suelo es la superficie que más transforma visualmente una vivienda por euro invertido. Las opciones más comunes: porcelánico de gran formato, tarima flotante de laminado AC5, o microcemento en salón (requiere preparación de base específica). El presupuesto cerrado incluye materiales, adhesivo, nivelación de base y remates de transición.' },
+        { type: 'p', text: 'Si el estado de las instalaciones o el alcance previsto superan lo que cubre una reforma de piso, puede ser más eficiente plantearlo todo en una sola obra. La visita técnica identifica en cuál de los dos escenarios estás, y si corresponde el de reforma integral, lo clarifica antes de cerrar el precio.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'meco': {
@@ -1116,6 +1144,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'La distribución en dos plantas de los adosados de Meco plantea una pregunta que no existe en los pisos de bloque: ¿se interviene en ambas plantas a la vez o solo en una? Hacer las dos plantas en la misma obra es más económico (el equipo está en la vivienda, el desescombro se hace una sola vez) y más rápido en total. Reformar solo una planta y dejar la otra para después implica volver a abrir con los costes adicionales que conlleva.' },
         { type: 'h3', text: 'Terrazas y jardines en viviendas de Meco: qué puede incluirse en la reforma' },
         { type: 'p', text: 'En los adosados de Meco con terraza o jardín, la reforma del interior puede ampliarse para incluir cerramiento de terraza para ganar metros habitables, solado exterior con porcelánico antideslizante, o remodelación de zona ajardinada. Cada una de estas actuaciones tiene sus propios requisitos de licencia y normativa de urbanización. Las evaluamos en la visita y las presupuestamos de manera independiente para que puedas decidir qué incluir en la primera fase.' },
+        { type: 'p', text: 'En viviendas donde el alcance se extiende a varias plantas o instalaciones, abordar todo en una sola obra suele ser más eficiente que planificarlo en fases. Cuando ese es el caso, la visita técnica lo confirma y el escenario pasa a ser una reforma integral.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
     'camarma-de-esteruelas': {
@@ -1125,6 +1154,7 @@ export const SERVICE_ZONE_CONTENT: Record<string, Record<string, { intro: string
         { type: 'p', text: 'En Camarma, cuando se reforma una vivienda unifamiliar de una o dos plantas, hay más variables que en un apartamento de bloque: hay más metros, puede haber cubierta que revisar, garage o zonas exteriores que intervenir. Definir qué se incluye y qué se deja para una fase posterior es la primera conversación que tenemos en la visita técnica gratuita.' },
         { type: 'h3', text: 'Qué es imprescindible renovar en una vivienda de más de 20 años en Camarma' },
         { type: 'p', text: 'Las instalaciones son el primer criterio: instalación eléctrica si el cuadro es de los años 90 o anterior, fontanería si hay tuberías que ya han dado señales de deterioro, y cubierta si hay humedades en la planta superior. Renovarlas a la vez que se hace el resto de la reforma evita volver a abrir la vivienda en pocos años, con los costes adicionales que eso implica.' },
+        { type: 'p', text: 'En viviendas donde el alcance se extiende a varias plantas o instalaciones, abordar todo en una sola obra suele ser más eficiente que planificarlo en fases. Cuando ese es el caso, la visita técnica lo confirma y el escenario pasa a ser una reforma integral.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       ],
     },
   },

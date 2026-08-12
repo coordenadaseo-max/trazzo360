@@ -9,30 +9,32 @@ import { SITE, SERVICES, ZONES } from '../data/site';
 >
 
   <!-- Breadcrumb -->
-  <nav class="bg-gray-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 py-3 text-sm text-gray-500 flex items-center gap-2">
-      <a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a>
-      <span class="text-gray-300">/</span>
-      <span class="text-gray-800 font-medium">Contacto</span>
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Contacto</li>
+      </ol>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="bg-[#111827] py-16 lg:py-24">
+  <section class="bg-[#111827] py-16 lg:py-24" aria-labelledby="h-hero">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratuito</p>
-      <h1 class="text-4xl lg:text-6xl font-black text-white mb-4" style="letter-spacing:-0.02em">Cuéntanos tu reforma</h1>
-      <p class="text-lg text-gray-300 max-w-xl mx-auto">Respondemos en menos de 24h para conocer tu reforma y concertar la visita.</p>
+      <h1 id="h-hero" class="text-4xl lg:text-6xl font-black text-white mb-4" style="letter-spacing:-0.02em">Cuéntanos tu reforma</h1>
+      <p class="text-lg text-gray-300 max-w-xl mx-auto">Visita técnica gratuita. Respondemos en menos de 24h para concertar la visita y enviarte el presupuesto cerrado.</p>
     </div>
   </section>
 
   <!-- Formulario + Datos -->
-  <section class="py-20 bg-white">
+  <section class="py-20 bg-white" aria-labelledby="h-formulario">
     <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-3 gap-12">
 
       <!-- Formulario -->
       <div class="lg:col-span-2">
-        <h2 class="text-2xl font-black text-gray-900 mb-8">Solicitar presupuesto</h2>
+        <h2 id="h-formulario" class="text-2xl font-black text-gray-900 mb-8">Solicitar presupuesto</h2>
         <!--
           CONFIGURACIÓN DEL FORMULARIO:
           1. Crea una cuenta gratuita en https://formspree.io
@@ -98,7 +100,7 @@ import { SITE, SERVICES, ZONES } from '../data/site';
         </form>
       </div>
 
-      <!-- Datos de contacto -->
+      <!-- Sidebar contacto -->
       <div class="space-y-6">
         <div class="bg-[#F9F7F4] p-7">
           <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Contacto directo</p>
@@ -133,6 +135,67 @@ import { SITE, SERVICES, ZONES } from '../data/site';
           <p class="text-5xl font-black text-white mb-1">24h</p>
           <p class="text-sm text-gray-400">Días laborables</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué pasa tras enviar -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-proceso">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-proceso" class="text-xl font-black text-gray-900 mb-2">Qué pasa después de enviar el formulario</h2>
+      <p class="text-sm text-gray-500 mb-8">El proceso es siempre el mismo, independientemente del tipo de obra o del municipio.</p>
+      <ol class="grid sm:grid-cols-3 gap-6" style="list-style:none;padding:0;margin:0">
+        {[
+          {
+            n: '1',
+            title: 'Te llamamos en menos de 24h',
+            desc: 'Leemos los detalles de tu solicitud y te contactamos para conocer mejor el proyecto y resolver dudas iniciales.',
+          },
+          {
+            n: '2',
+            title: 'Visita técnica gratuita',
+            desc: 'Acordamos una visita en tu vivienda o local. Tomamos medidas, evaluamos el estado de las instalaciones y respondemos todas las preguntas.',
+          },
+          {
+            n: '3',
+            title: 'Presupuesto cerrado en 48h',
+            desc: 'Recibes el presupuesto con el precio total y el plazo de entrega cerrados. Sin partidas abiertas ni sorpresas después de firmar.',
+          },
+        ].map(step => (
+          <li class="flex gap-4">
+            <div class="w-8 h-8 bg-[#A85535] text-white text-sm font-black flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+              {step.n}
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-gray-900 mb-1">{step.title}</h3>
+              <p class="text-xs text-gray-500 leading-relaxed">{step.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <div class="mt-8 bg-white border-l-4 border-[#A85535] p-5">
+        <p class="text-sm text-gray-600">
+          <strong class="text-gray-900">¿Tienes urgencia?</strong> Llámanos directamente al <a href={`tel:${SITE.phone}`} class="text-[#A85535] font-bold hover:underline">{SITE.phoneDisplay}</a> o escríbenos por WhatsApp. Respondemos el mismo día en horario de {SITE.hours}.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zonas del Corredor -->
+  <section class="py-16 bg-white" aria-labelledby="h-zonas">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 id="h-zonas" class="text-xl font-black text-gray-900 mb-2">Cubrimos todo el Corredor del Henares</h2>
+      <p class="text-sm text-gray-500 mb-8 max-w-2xl">
+        Trabajamos en {ZONES.length} municipios sin coste adicional por desplazamiento. Visita técnica y presupuesto gratuitos en toda la zona.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {ZONES.map(z => (
+          <a href={`/zonas/${z.slug}/`}
+            class="block p-4 bg-gray-50 border border-gray-100 hover:border-[#A85535] hover:shadow-sm transition-all group">
+            <p class="font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors text-sm">{z.name}</p>
+            <p class="text-xs text-gray-400 mt-1 group-hover:text-[#A85535]/70 transition-colors">Ver servicios y precios →</p>
+          </a>
+        ))}
       </div>
     </div>
   </section>

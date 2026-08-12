@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Compromisos from '../components/Compromisos.astro';
+import { SITE, AUTHOR } from '../data/site';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Cómo trabajamos', item: `${SITE.url}/como-trabajamos/` },
+  ],
+};
+---
+
+<Layout
+  title="Cómo Trabajamos | Compromisos y Garantías | Trazzo360"
+  description="Precio cerrado por contrato, pago en tres fases, garantía de 2 años en ejecución y 14 días de desistimiento. Los 6 compromisos de Trazzo360 antes de firmar."
+  schema={[breadcrumbSchema]}
+>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Cómo trabajamos</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-8 h-0.5 bg-[#A85535]"></div>
+        <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">Transparencia y compromisos</span>
+      </div>
+      <h1 id="h-hero" class="text-4xl lg:text-6xl font-black text-white mb-6" style="letter-spacing:-0.02em">
+        Cómo trabajamos<br/>
+        <span class="text-[#A85535]">en Trazzo360</span>
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed max-w-2xl">
+        Antes de empezar cualquier obra hay seis cosas que ponemos por escrito y que no cambian. No son promesas de marketing: son obligaciones que asumimos en el contrato y que puedes exigirnos si no las cumplimos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Una reforma es una obra que se realiza dentro de tu casa mientras vives cerca de ella, y que implica comprometer dinero y tiempo antes de ver el resultado. La incertidumbre sobre el precio final, el plazo o quién aparecerá por la puerta cada mañana es la fuente de casi todos los conflictos que surgen en las reformas. En Trazzo360 hemos estructurado el proceso de trabajo para eliminar esa incertidumbre en cada punto donde es posible.
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        Lo que encontrarás en esta página no es una descripción de cómo queremos trabajar: es la descripción de cómo trabajamos, con las obligaciones concretas que asumimos antes de firmar y los mecanismos que el cliente puede activar si no las cumplimos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Los 6 compromisos -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-12">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
+        <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+          Los 6 compromisos de Trazzo360
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-4"></div>
+        <p class="text-gray-600 max-w-2xl">
+          Estos compromisos se reflejan en el contrato que firmamos antes de empezar la obra. No son condiciones generales en letra pequeña: son el núcleo del acuerdo.
+        </p>
+      </div>
+      <Compromisos variant="full" />
+    </div>
+  </section>
+
+  <!-- Quién coordina la obra -->
+  <section class="py-20 bg-white" aria-labelledby="h-quien">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-8">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Quién está detrás</p>
+        <h2 id="h-quien" class="text-2xl lg:text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+          La persona que te hace el presupuesto es la misma que coordina la obra
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            Trazzo360 es un proyecto liderado por alguien con {AUTHOR.yearsInTrade} años de experiencia directa en obra: ha coordinado equipos de todos los gremios que intervienen en una reforma, ha resuelto imprevistos en tiempo real y conoce el estado habitual del parque residencial del Corredor del Henares.
+          </p>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            El interlocutor que te atiende cuando llamas o escribes es el mismo que va a tu vivienda a hacer la visita técnica, el mismo que cierra el presupuesto y el mismo que coordina la ejecución. No hay un comercial que vende y otro equipo que ejecuta. Hay una sola persona responsable de principio a fin.
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            {AUTHOR.name
+              ? `Mi nombre es ${AUTHOR.name}.`
+              : 'El nombre del responsable de obra se facilita antes de firmar el contrato.'
+            } Si quieres hablar directamente antes de decidir nada, puedes escribirnos o llamarnos: no hay filtros ni tiempos de espera.
+          </p>
+        </div>
+        <div class="bg-[#F9F7F4] p-8">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Experiencia del responsable de obra</p>
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-5xl font-black text-[#A85535]">{AUTHOR.yearsInTrade}</span>
+            <span class="text-xl font-bold text-gray-900">años en el sector</span>
+          </div>
+          <p class="text-sm text-gray-500 mb-6">Experiencia directa en coordinación de equipos y ejecución de obras de reforma, no del negocio.</p>
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">Cargo</p>
+          <p class="text-sm text-gray-700 mb-8">{AUTHOR.role}</p>
+          <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+            Habla directamente con nosotros
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="py-16 bg-[#A85535]" aria-labelledby="h-cta-final">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">
+        ¿Listo para pedir presupuesto?
+      </h2>
+      <p class="text-white/80 mb-7">Visita gratuita. Presupuesto cerrado en 48h. Sin letra pequeña.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">
+          Solicitar valoración gratuita
+        </a>
+        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/40 hover:border-white transition-colors">
+          ☎ {SITE.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

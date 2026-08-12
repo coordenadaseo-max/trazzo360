@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES, TESTIMONIALS, PROJECTS, SERVICE_ICONS } from '../data/site';
+import ProjectImage from '../components/ProjectImage.astro';
+import { SITE, SERVICES, ZONES, PROJECTS, SERVICE_ICONS } from '../data/site';
 
 const tradeIcons: Record<string, string> = {
   '🧱': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="4"/><rect x="12" y="4" width="9" height="4"/><rect x="3" y="10" width="11" height="4"/><rect x="16" y="10" width="5" height="4"/><rect x="3" y="16" width="7" height="4"/><rect x="12" y="16" width="9" height="4"/></svg>`,
@@ -87,7 +88,7 @@ const faqSchema = {
 >
 
   <!-- HERO -->
-  <section class="bg-[#111827] relative overflow-hidden">
+  <section class="bg-[#111827] relative overflow-hidden" aria-labelledby="h-hero">
     <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(255,255,255,0.05) 60px, rgba(255,255,255,0.05) 61px)"></div>
     <div class="relative max-w-7xl mx-auto px-4 py-28 lg:py-40">
       <div class="max-w-3xl">
@@ -108,7 +109,7 @@ const faqSchema = {
             </a>
           )}
         </div>
-        <h1 class="text-5xl lg:text-7xl font-black text-white leading-none mb-6" style="letter-spacing:-0.02em">
+        <h1 id="h-hero" class="text-5xl lg:text-7xl font-black text-white leading-none mb-6" style="letter-spacing:-0.02em">
           Empresa de <span class="text-[#A85535]">Reformas</span><br/>
           en el Corredor<br/>
           del Henares
@@ -149,9 +150,9 @@ const faqSchema = {
     <div class="relative border-t border-white/10 bg-white/5">
       <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
         {[
-          { n: SITE.stats.projects, label: 'Obras realizadas' },
-          { n: SITE.stats.years, label: 'Años en el sector' },
-          { n: SITE.stats.cities, label: 'Municipios del Corredor' },
+          { n: '15', label: 'Años de experiencia del responsable de obra' },
+          { n: `${ZONES.length}`, label: 'Municipios del Corredor' },
+          { n: '2 años', label: 'Garantía en ejecución' },
           { n: '100%', label: 'Precio cerrado garantizado' },
         ].map(s => (
           <div>
@@ -164,11 +165,11 @@ const faqSchema = {
   </section>
 
   <!-- SERVICIOS -->
-  <section id="servicios" class="py-24 lg:py-32 bg-white">
+  <section id="servicios" class="py-24 lg:py-32 bg-white" aria-labelledby="h-servicios">
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Nuestros servicios</p>
-        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">¿Qué quieres reformar?</h2>
+        <h2 id="h-servicios" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">¿Qué quieres reformar?</h2>
         <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
         <p class="text-lg text-gray-500 max-w-xl">Reformas integrales y parciales en Alcalá de Henares, Torrejón de Ardoz, Coslada y toda la zona del Corredor del Henares.</p>
       </div>
@@ -190,11 +191,11 @@ const faqSchema = {
   </section>
 
   <!-- OFICIOS -->
-  <section class="py-20 bg-[#111827]">
+  <section class="py-20 bg-[#111827]" aria-labelledby="h-oficios">
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-12">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Profesionales de confianza</p>
-        <h2 class="text-3xl lg:text-4xl font-black text-white mb-4" style="letter-spacing:-0.02em">Todos los oficios de la reforma, el mismo criterio de trabajo</h2>
+        <h2 id="h-oficios" class="text-3xl lg:text-4xl font-black text-white mb-4" style="letter-spacing:-0.02em">Todos los oficios de la reforma, el mismo criterio de trabajo</h2>
         <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
         <p class="text-gray-300 max-w-2xl">Una reforma integral implica coordinar muchos gremios: albañiles, fontaneros, electricistas, carpinteros, pintores y soladores. Todos trabajan bajo el mismo criterio de ejecución y comparten la misma forma de hacer las cosas. Un solo interlocutor para el cliente; responsabilidad completa sobre el resultado.</p>
       </div>
@@ -221,11 +222,11 @@ const faqSchema = {
 
   <!-- PROYECTOS ANTES/DESPUÉS -->
   <!-- Imágenes: añade tus fotos en /public/img/proyectos/{slug}-antes.jpg y -despues.jpg -->
-  <section id="proyectos" class="py-24 lg:py-32 bg-[#F9F7F4]">
+  <section id="proyectos" class="py-24 lg:py-32 bg-[#F9F7F4]" aria-labelledby="h-proyectos">
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Proyectos realizados</p>
-        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Antes y después</h2>
+        <h2 id="h-proyectos" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Antes y después</h2>
         <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
         <p class="text-lg text-gray-500 max-w-xl">Proyectos reales en el Corredor del Henares, cada uno con precio cerrado y entrega en el plazo acordado.</p>
       </div>
@@ -233,34 +234,19 @@ const faqSchema = {
         {PROJECTS.map(p => (
           <div class="bg-white">
             <div class="grid grid-cols-2">
-              <div class="relative aspect-[4/3] bg-gray-800 overflow-hidden group">
-                <span class="absolute top-0 left-0 bg-black/70 text-white text-xs font-bold px-3 py-1.5 uppercase tracking-wider z-10">Antes</span>
-                <img
-                  src={p.imgBefore}
-                  alt={`${p.title} antes - ${p.location}`}
-                  class="w-full h-full object-cover opacity-0 group-[.has-img]:opacity-100 transition-opacity"
-                  loading="lazy"
-                  onload="this.closest('.group').classList.add('has-img')"
-                />
-                <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-gray-500">
-                  <svg class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                  <p class="text-xs">Añadir foto</p>
-                </div>
-              </div>
-              <div class="relative aspect-[4/3] bg-gray-600 overflow-hidden group">
-                <span class="absolute top-0 left-0 text-white text-xs font-bold px-3 py-1.5 uppercase tracking-wider z-10" style="background:#A85535">Después</span>
-                <img
-                  src={p.imgAfter}
-                  alt={`${p.title} después - ${p.location}`}
-                  class="w-full h-full object-cover opacity-0 group-[.has-img]:opacity-100 transition-opacity"
-                  loading="lazy"
-                  onload="this.closest('.group').classList.add('has-img')"
-                />
-                <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-gray-400">
-                  <svg class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                  <p class="text-xs">Añadir foto</p>
-                </div>
-              </div>
+              <ProjectImage
+                src={p.imgBefore}
+                alt={`${p.title} antes — ${p.location}`}
+                label="Antes"
+                service={p.service}
+              />
+              <ProjectImage
+                src={p.imgAfter}
+                alt={`${p.title} después — ${p.location}`}
+                label="Después"
+                labelBg="#A85535"
+                service={p.service}
+              />
             </div>
             <div class="p-6">
               <div class="flex items-start justify-between gap-3 mb-2">
@@ -287,11 +273,11 @@ const faqSchema = {
   </section>
 
   <!-- PRECIOS ORIENTATIVOS - captura intent de PAA -->
-  <section class="py-20 bg-[#F9F7F4]">
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-precios">
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-12">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Precios orientativos</p>
-        <h2 class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        <h2 id="h-precios" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
           ¿Cuánto cuesta una reforma<br/>en el Corredor del Henares?
         </h2>
         <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
@@ -323,23 +309,23 @@ const faqSchema = {
   </section>
 
   <!-- QUÉ CUBRE UNA REFORMA INTEGRAL -->
-  <section class="py-24 bg-white">
+  <section class="py-24 bg-white" aria-labelledby="h-reforma-integral">
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">De los planos a las llaves</p>
-        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Qué cubre una reforma integral de vivienda</h2>
+        <h2 id="h-reforma-integral" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Qué cubre una reforma integral de vivienda</h2>
         <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
         <p class="text-lg text-gray-500 max-w-2xl">Una reforma integral no es solo pintar y cambiar azulejos. Implica coordinar varias fases con distintos gremios y plazos. Esto es lo que ocurre en cada proyecto, desde que firmas el presupuesto hasta que recibes las llaves.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style="list-style:none;padding:0;margin:0">
         {reformaPhases.map(phase => (
-          <div class="border border-gray-100 p-7 hover:border-[#A85535]/30 transition-colors">
-            <div class="text-4xl font-black text-[#A85535]/20 mb-3">{phase.n}</div>
+          <li class="border border-gray-100 p-7 hover:border-[#A85535]/30 transition-colors">
+            <div class="text-4xl font-black text-[#A85535]/20 mb-3" aria-hidden="true">{phase.n}</div>
             <h3 class="text-base font-bold text-gray-900 mb-3">{phase.title}</h3>
             <p class="text-sm text-gray-500 leading-relaxed">{phase.desc}</p>
-          </div>
+          </li>
         ))}
-      </div>
+      </ol>
       <div class="mt-10 p-6 bg-[#F9F7F4] border-l-4 border-[#A85535]">
         <p class="text-sm text-gray-600 leading-relaxed">
           <strong class="text-gray-900">Precio cerrado desde el primer presupuesto:</strong> cada fase queda reflejada con su coste en el contrato que firmas. Si durante la obra aparece algo imprevisto que no estaba en el presupuesto, te lo comunicamos antes de actuar. Nunca después.
@@ -349,12 +335,12 @@ const faqSchema = {
   </section>
 
   <!-- POR QUÉ NOSOTROS -->
-  <section id="nosotros" class="py-24 lg:py-32 bg-white">
+  <section id="nosotros" class="py-24 lg:py-32 bg-white" aria-labelledby="h-nosotros">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Por qué elegir Trazzo360</p>
-          <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+          <h2 id="h-nosotros" class="text-4xl lg:text-5xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
             Reformas del hogar con precio cerrado<br/>y plazo garantizado
           </h2>
           <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
@@ -383,9 +369,9 @@ const faqSchema = {
           <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">Nuestros números</p>
           <div class="grid grid-cols-2 gap-8">
             {[
-              { n: SITE.stats.projects, label: 'Obras completadas' },
-              { n: SITE.stats.years, label: 'Años de experiencia' },
-              { n: SITE.stats.cities, label: 'Municipios cubiertos' },
+              { n: '15', label: 'Años de experiencia del responsable de obra' },
+              { n: `${ZONES.length}`, label: 'Municipios cubiertos' },
+              { n: '2 años', label: 'Garantía en ejecución' },
               { n: '100%', label: 'Precio cerrado siempre' },
             ].map(s => (
               <div>
@@ -402,82 +388,42 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- TESTIMONIOS -->
-  <!-- Reemplaza estos textos con citas reales de tus clientes -->
-  <section class="py-24 lg:py-32 bg-[#F9F7F4]">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-14">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Clientes</p>
-        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
-          Lo que dicen quienes<br/>ya reformaron con nosotros
-        </h2>
-        <div class="w-12 h-1 bg-[#A85535] mx-auto"></div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {TESTIMONIALS.map(t => (
-          <div class="bg-white p-8 border border-gray-100 hover:border-[#A85535]/30 transition-colors">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm text-white" style="background:#A85535">
-                {t.initials}
-              </div>
-              <div class="flex-1 min-w-0">
-                <p class="font-bold text-gray-900 text-sm">{t.name}</p>
-                <p class="text-xs text-gray-400">{t.role} · {t.city}</p>
-              </div>
-              <div class="text-yellow-400 text-base flex-shrink-0">★★★★★</div>
-            </div>
-            <p class="text-xs font-bold text-[#A85535] bg-orange-50 inline-block px-2 py-1 mb-4">{t.service}</p>
-            <p class="text-sm text-gray-600 leading-relaxed">"{t.text}"</p>
-          </div>
-        ))}
-      </div>
-      {SITE.googleBusinessUrl && (
-        <p class="text-center text-sm text-gray-400 mt-8">
-          ¿Ya trabajaste con nosotros?{' '}
-          <a href={SITE.googleBusinessUrl} target="_blank" rel="noopener noreferrer" class="text-[#A85535] hover:underline font-medium">
-            Deja tu reseña en Google →
-          </a>
-        </p>
-      )}
-    </div>
-  </section>
-
   <!-- PROCESO -->
-  <section id="proceso" class="py-24 lg:py-32 bg-[#F9F7F4]">
+  <section id="proceso" class="py-24 lg:py-32 bg-[#F9F7F4]" aria-labelledby="h-proceso">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-16">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
-        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Tu reforma en el Corredor, paso a paso</h2>
+        <h2 id="h-proceso" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Tu reforma en el Corredor, paso a paso</h2>
         <div class="w-12 h-1 bg-[#A85535] mx-auto"></div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" style="list-style:none;padding:0;margin:0">
         {[
           { n: '01', title: 'Visita gratuita', desc: 'Visitamos tu vivienda en Alcalá, Torrejón, Coslada o cualquier municipio del Corredor sin ningún coste ni compromiso. Evaluamos el estado real de las instalaciones, tomamos medidas y escuchamos exactamente lo que quieres conseguir.' },
           { n: '02', title: 'Presupuesto cerrado', desc: 'Tras la visita, en un máximo de 48 horas recibes un presupuesto detallado con el precio final y el plazo de entrega cerrados. Sin letra pequeña, sin partidas abiertas. Lo que aparece en el documento que firmas es lo que vas a pagar.' },
           { n: '03', title: 'Ejecución con seguimiento', desc: 'Albañiles, fontaneros, electricistas y carpinteros ejecutan la obra con seguimiento diario y comunicación constante. Sabes en todo momento en qué punto está tu reforma y qué viene a continuación.' },
           { n: '04', title: 'Entrega con garantía', desc: 'Entregamos la obra limpia, revisada y en el plazo acordado. Recibes un certificado de garantía de 2 años sobre toda la ejecución. Si en ese periodo algo falla por nuestra parte, lo solucionamos.' },
         ].map(step => (
-          <div class="text-center">
-            <div class="text-6xl font-black text-[#A85535]/20 mb-4">{step.n}</div>
+          <li class="text-center">
+            <div class="text-6xl font-black text-[#A85535]/20 mb-4" aria-hidden="true">{step.n}</div>
             <h3 class="text-lg font-bold text-gray-900 mb-3">{step.title}</h3>
             <p class="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
-          </div>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
   <!-- ZONAS -->
-  <section id="zonas" class="py-24 lg:py-32 bg-[#111827]">
+  <section id="zonas" class="py-24 lg:py-32 bg-[#111827]" aria-labelledby="h-zonas">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Zona de actuación</p>
-        <h2 class="text-4xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em">
-          Reformamos en<br/>todo el Corredor
+        <h2 id="h-zonas" class="text-4xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em">
+          Reformamos en todo el Corredor
         </h2>
         <div class="w-12 h-1 bg-[#A85535] mx-auto mb-6"></div>
         <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-          Cubrimos {SITE.stats.cities} municipios entre Madrid y Guadalajara. Profesionales de confianza en toda la zona, sin costes de desplazamiento y con respuesta en menos de 24h.
+          Cubrimos {ZONES.length} municipios entre Madrid y Guadalajara. Profesionales de confianza en toda la zona, sin costes de desplazamiento y con respuesta en menos de 24h.
         </p>
       </div>
 
@@ -518,11 +464,11 @@ const faqSchema = {
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="py-24 lg:py-32 bg-white">
+  <section id="faq" class="py-24 lg:py-32 bg-white" aria-labelledby="h-faq">
     <div class="max-w-4xl mx-auto px-4">
       <div class="text-center mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Precios y dudas sobre<br/>reformas en el Corredor del Henares</h2>
+        <h2 id="h-faq" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Precios y dudas sobre<br/>reformas en el Corredor del Henares</h2>
         <div class="w-12 h-1 bg-[#A85535] mx-auto"></div>
       </div>
       <div class="divide-y divide-gray-100">
@@ -540,9 +486,9 @@ const faqSchema = {
   </section>
 
   <!-- CTA FINAL -->
-  <section class="py-20 bg-[#A85535]">
+  <section class="py-20 bg-[#A85535]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em">¿Listo para reformar?</h2>
+      <h2 id="h-cta-final" class="text-3xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em">¿Listo para reformar?</h2>
       <p class="text-white/80 text-lg mb-8">Visita gratuita y presupuesto cerrado en 48h. Fecha de entrega garantizada.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">

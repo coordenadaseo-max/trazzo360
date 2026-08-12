@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "trazzo360-astro",
+      "name": "trazzo360-dev",
       "runtimeExecutable": "/Users/javiergarciamartin/Documents/Trazzo360/web-astro/.claude/start-dev.sh",
       "runtimeArgs": [],
       "port": 4321,

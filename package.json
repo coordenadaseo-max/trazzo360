@@ -9,7 +9,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "node scripts/check-placeholders.mjs",
+    "audit:content": "node scripts/audit-content.mjs",
+    "audit:schema": "node scripts/audit-schema.mjs",
+    "audit:links": "node scripts/audit-links.mjs",
+    "audit": "npm run audit:content && npm run audit:schema && npm run audit:links",
+    "preflight": "npm run build && npm run check && npm run audit"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

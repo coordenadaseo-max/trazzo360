@@ -56,7 +56,7 @@ import { SITE, SERVICES, ZONES } from '../data/site';
       </div>
 
       <a href="/#proyectos" class="text-gray-800 hover:text-[#A85535] transition-colors">Proyectos</a>
-      <a href="/#proceso" class="text-gray-800 hover:text-[#A85535] transition-colors">Nosotros</a>
+      <a href="/como-trabajamos/" class="text-gray-800 hover:text-[#A85535] transition-colors">Cómo trabajamos</a>
       <a href="/contacto/" class="text-gray-800 hover:text-[#A85535] transition-colors">Contacto</a>
     </nav>
 
@@ -92,7 +92,11 @@ import { SITE, SERVICES, ZONES } from '../data/site';
       {ZONES.map(z => (
         <a href={`/zonas/${z.slug}/`} class="block px-3 py-2 text-gray-700 hover:text-[#A85535] text-sm font-medium">{z.name}</a>
       ))}
-      <div class="pt-4 pb-3">
+      <div class="pt-4 border-t border-gray-100">
+        <a href="/como-trabajamos/" class="block px-3 py-2 text-gray-700 hover:text-[#A85535] text-sm font-medium">Cómo trabajamos</a>
+        <a href="/contacto/" class="block px-3 py-2 text-gray-700 hover:text-[#A85535] text-sm font-medium">Contacto</a>
+      </div>
+      <div class="py-3">
         <a href="/contacto/" class="block text-center py-3 font-bold text-sm tracking-wider uppercase text-white" style="background:#A85535">
           Presupuesto Gratis
         </a>

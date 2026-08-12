@@ -1,0 +1,593 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Compromisos from '../../components/Compromisos.astro';
+import { SITE } from '../../data/site';
+
+const title = 'Reforma de Pisos y Viviendas en el Corredor | Trazzo360';
+const description = 'Reforma de pisos en el Corredor del Henares: suelos, baño, cocina, carpintería y pintura. Presupuesto cerrado tras visita técnica gratuita. Desde 18.000€.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Reforma de Pisos y Viviendas en el Corredor del Henares',
+  description,
+  provider: { '@type': 'GeneralContractor', '@id': `${SITE.url}/#business`, name: SITE.name },
+  areaServed: ['Torrejón de Ardoz','Alcalá de Henares','Coslada','San Fernando de Henares','Guadalajara','Azuqueca de Henares','Meco','Camarma de Esteruelas'],
+  offers: { '@type': 'Offer', price: '18000', priceCurrency: 'EUR', description: 'Reforma de piso 60 m² (baño, cocina, suelos y pintura) desde 18.000€' },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${SITE.url}/servicios/` },
+    { '@type': 'ListItem', position: 3, name: 'Reforma de Pisos', item: `${SITE.url}/servicios/reforma-pisos/` },
+  ],
+};
+
+const faqs = [
+  {
+    q: '¿Cuándo merece la pena hacer una reforma integral en lugar de solo baño y cocina?',
+    a: 'Cuando las instalaciones necesitan renovación. Si el cuadro eléctrico o la fontanería requieren sustitución, hacerlo todo a la vez con el piso ya abierto es más eficiente que plantear obras sucesivas. Si las instalaciones funcionan bien, baño, cocina, suelos y pintura pueden transformar completamente el piso sin necesitar obra pesada.',
+  },
+  {
+    q: '¿Qué conviene revisar primero en un piso antiguo antes de presupuestar?',
+    a: 'El estado de las instalaciones. Un cuadro eléctrico que lleva muchos años sin actualizarse o tuberías que ya han dado problemas condicionan qué tipo de reforma tiene sentido plantear. Si el cuadro y la fontanería están en buen estado, el alcance puede centrarse en baño, cocina, suelos y acabados.',
+  },
+  {
+    q: '¿Puedo reformar cocina y baño sin hacer una reforma integral de la vivienda?',
+    a: 'Sí, cuando las instalaciones no requieren renovación completa. Renovar baño, cocina, suelos y pintura sin hacer una reforma integral puede tener sentido si el cuadro eléctrico y la fontanería están en buen estado. Si durante la obra aparecen problemas en las instalaciones, lo valoramos y decidimos juntos antes de ampliar el alcance.',
+  },
+  {
+    q: '¿Qué trabajos suele tener sentido coordinar en la misma fase?',
+    a: 'Los que comparten instalaciones o suponen abrir los mismos soportes. Por ejemplo, cuando se interviene en tuberías del baño, tiene sentido coordinarlo con los trabajos de fontanería de esa zona. Si la reforma de cocina cambia la distribución, la electricidad y la fontanería se adaptan en la misma movilización.',
+  },
+  {
+    q: '¿Puedo seguir viviendo en el piso mientras dura la obra?',
+    a: 'En reformas parciales de baño o cocina por separado, sí, aunque con incomodidad. En reformas que afectan a suelos, tabiques e instalaciones a la vez, no es recomendable: el polvo y los cortes de suministros dificultan mucho la convivencia. Si no tienes alternativa, diseñamos una secuencia por zonas que te permita tener siempre una parte habitable.',
+  },
+  {
+    q: '¿Cómo priorizo si tengo un presupuesto ajustado para la reforma de vivienda?',
+    a: 'La prioridad debería depender del estado real de cada zona, del uso previsto de la vivienda y del presupuesto disponible. En general, tiene sentido agrupar los trabajos que comparten instalaciones o que implican abrir los mismos soportes. Si el presupuesto no alcanza para todo a la vez, mejor cerrar bien una parte que avanzar todo a medias.',
+  },
+  {
+    q: '¿Cuánto tarda la reforma de un piso?',
+    a: 'Una reforma media con baño, cocina, suelos y pintura en un piso de 60–80 m² lleva entre 6 y 10 semanas. Si se añade redistribución de tabiques o renovación de instalaciones, el plazo puede ser mayor. La fecha de entrega queda fijada en el contrato antes de empezar.',
+  },
+  {
+    q: '¿Cuánto tiempo estaré sin poder vivir en el piso durante la reforma de vivienda?',
+    a: 'En una reforma que incluye baño, cocina, suelos y pintura, lo habitual es entre 6 y 10 semanas fuera del piso. Durante la fase de suelos —cuando se levantan todos a la vez— la vivienda no es habitable. Si la reforma es solo de baño o solo de cocina, puedes quedarte en el piso con incomodidad durante la mayor parte de la obra. Antes de empezar, en la visita técnica te decimos exactamente cuántos días el piso no es habitable según el alcance de tu reforma.',
+  },
+  {
+    q: '¿Qué suelo es más resistente para una vivienda con niños o mascotas?',
+    a: 'El porcelánico rectificado de alta dureza (clase 4 o 5 de resistencia al desgaste) es el suelo más resistente para uso intensivo: no raya, no absorbe líquidos y soporta el tráfico diario sin desgastarse visiblemente. La tarima maciza de madera da más calidez pero es más sensible a la humedad y a los arañazos de mascotas. La tarima de vinilo de alta densidad (LVT/SPC) es una buena opción intermedia: parece madera, es resistente al agua y tiene un buen comportamiento con garras de animales. En la visita te traemos muestras para comparar.',
+  },
+  {
+    q: '¿Vale la pena reformar el piso antes de ponerlo en venta?',
+    a: 'En pisos de los años 70–90 del Corredor del Henares, una reforma de 15.000–20.000€ centrada en baño, cocina y suelos puede mejorar significativamente la posición en el mercado y reducir el tiempo hasta la venta. El comprador de un piso reformado paga más porque evita la obra; el de un piso sin reformar negocia a la baja y tarda más. La decisión depende del estado inicial del piso, del mercado local y del tiempo disponible.',
+  },
+  {
+    q: '¿Qué conviene hacer primero si no puedo reformar la vivienda completa a la vez?',
+    a: 'Lo que más impacto tiene con menor coste por metro cuadrado son los suelos y la pintura: transforman la percepción visual de toda la vivienda. Si el presupuesto permite más, el baño tiene más retorno por euro invertido que la cocina, porque es el espacio que más condiciona la valoración de quien compra o alquila. La cocina tiene mayor impacto en la comodidad diaria, pero su reforma es más cara por metro útil.',
+  },
+  {
+    q: '¿Cómo cambia vivir en un piso reformado respecto al anterior?',
+    a: 'Lo primero que cambia es lo que no se nota: no hay que doblar el tiempo de limpieza de las juntas del baño, no se dispara el diferencial cuando se pone el aire acondicionado, el suelo no cruje por la noche. Después viene lo que sí se nota: más luz con suelos claros, más espacio aparente con carpintería lacada, más calidad en el uso del baño y la cocina cada día. Al mes de vivir en el piso reformado, la referencia del anterior desaparece y solo queda la nueva normalidad.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const zones = [
+  { name: 'Torrejón de Ardoz',       slug: 'torrejon-de-ardoz' },
+  { name: 'Alcalá de Henares',       slug: 'alcala-de-henares' },
+  { name: 'Coslada',                 slug: 'coslada' },
+  { name: 'San Fernando de Henares', slug: 'san-fernando-de-henares' },
+  { name: 'Guadalajara',             slug: 'guadalajara' },
+  { name: 'Azuqueca de Henares',     slug: 'azuqueca-de-henares' },
+  { name: 'Meco',                    slug: 'meco' },
+  { name: 'Camarma de Esteruelas',   slug: 'camarma-de-esteruelas' },
+];
+---
+
+<Layout title={title} description={description} schema={[serviceSchema, breadcrumbSchema, faqSchema]}>
+
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li>Servicios</li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Reforma de Pisos y Viviendas</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-0.5 bg-[#A85535]"></div>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">Reforma de pisos y viviendas · Corredor del Henares</span>
+        </div>
+        <h1 id="h-hero" class="text-4xl lg:text-6xl font-black text-white mb-6" style="letter-spacing:-0.02em">
+          Reforma de pisos<br/>
+          <span class="text-[#A85535]">y viviendas en el Corredor</span>
+        </h1>
+
+        <div role="doc-abstract" class="border-l-4 border-[#A85535] pl-6 mb-6">
+          <p class="text-lg text-gray-300 leading-relaxed">
+            Hacemos reformas de pisos y viviendas en el Corredor del Henares con precio cerrado desde la visita técnica: suelos, baño, cocina, carpintería, pintura y redistribución de tabiques si la reforma de vivienda lo requiere. Un interlocutor único, plazo fijado en el contrato.
+          </p>
+        </div>
+
+        <p class="text-lg text-gray-400 leading-relaxed mb-8">
+          Una reforma de vivienda es la obra que más tiempo pasas viendo desde dentro o desde el piso de un familiar mientras está en marcha. Semanas sin tu rutina normal. Lo que distingue una reforma bien planificada de una que se alarga es si el diseño, los materiales y las instalaciones estaban cerrados antes del primer día de obra.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+            Solicitar presupuesto gratis
+          </a>
+          <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
+            ☎ {SITE.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M2: Diagnóstico local -->
+  <section class="py-20 bg-white" aria-labelledby="h-parque">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque residencial del Corredor</p>
+        <h2 id="h-parque" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Qué viviendas necesitan reforma en el Corredor del Henares
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed mb-8">
+        La reforma de vivienda más habitual que hacemos en el Corredor no empieza por los materiales. Empieza por una pregunta concreta: ¿cuándo se construyó el edificio y qué estado tienen las instalaciones? La respuesta define si estás ante una reforma de acabados o ante una reforma que necesita tocar instalaciones.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Pisos de los años 60–80 en los municipios más densos del Corredor (Coslada, San Fernando, Torrejón)</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        Son los pisos que más reformas necesitan y donde el estado de las instalaciones es el factor determinante. Muchos llevan décadas sin ninguna intervención. El riesgo aquí es hacer una reforma de acabados —baño, cocina, suelos— y dejarse las instalaciones como están, para tener que volver a abrir en cinco o diez años cuando fallen.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1 pl-5 list-disc">
+        <li>Cuadros eléctricos de fusibles o con magnetotérmicos de los años 80 sin capacidad para cargas actuales</li>
+        <li>Tuberías de plomo o acero galvanizado en las viviendas más antiguas: ya fuera de norma</li>
+        <li>Carpintería exterior de madera sin rotura de puente térmico: condensaciones en invierno y calor en verano</li>
+        <li>Distribuciones con pasillos largos, habitaciones pequeñas y cocinas sin acceso visual al salón</li>
+        <li>Solados de terrazo o gres hidráulico en buen estado estructural pero con estética desfasada</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Pisos y viviendas de los años 90–2005 (Alcalá de Henares, Azuqueca, Guadalajara y nuevos barrios de Torrejón)</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        El parque residencial de esta época tiene instalaciones en mejor estado, pero acumula 20–30 años de uso visible en los acabados. La reforma de vivienda aquí es más de estética y funcionalidad que de instalaciones: suelos, baños, cocinas y pintura son los protagonistas, y la redistribución es viable porque los tabiques suelen ser de pladur o ladrillo hueco.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1 pl-5 list-disc">
+        <li>Gres de pequeño formato en baños y cocinas con rejuntas ennegrecidas que ya no se limpian</li>
+        <li>Tarima flotante laminada de los años 90–2000 con hinchazones en zonas húmedas o zonas de paso</li>
+        <li>Muebles de cocina y baño de melamina blanca con bisagras desgastadas y frentes descascarillados</li>
+        <li>Instalación eléctrica funcional pero sin circuitos dedicados para los electrodomésticos actuales</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Chalets y viviendas unifamiliares (Meco, Camarma, San Fernando y Torrejón externo)</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        La reforma de vivienda unifamiliar tiene más variables: varios baños, cocina grande, posiblemente piscina o jardín, y más superficie de fachada. La coordiación de gremios es más compleja y la secuencia de la obra necesita más planificación. El resultado es también más completo: cuando se reforma bien una vivienda unifamiliar, la transformación es total.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-6 space-y-1 pl-5 list-disc">
+        <li>Posibilidad de mejorar el aislamiento térmico al hacer la reforma de fachada o cubierta</li>
+        <li>Calefacción por radiadores que conviene revisar: instalación de suelo radiante durante la reforma de suelos</li>
+        <li>Ventanas de aluminio sin rotura de puente térmico: condensaciones y pérdida energética notable</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- M4: Decisión clave -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-decision">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La pregunta que define el alcance</p>
+        <h2 id="h-decision" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Reforma de vivienda o reforma integral: cómo decidir
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed mb-6">
+        La pregunta de fondo es siempre la misma: ¿están las instalaciones en estado de aguantar 15–20 años más sin problemas? Si la respuesta es sí, la reforma de vivienda centrada en acabados, baño, cocina y suelos tiene todo el sentido. Si la respuesta es dudosa o no, hacerlo todo a la vez es significativamente más eficiente que volver a abrir en cinco años.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-7 border-t-4 border-[#A85535]">
+          <h3 class="text-base font-bold text-gray-900 mb-3">Reforma de vivienda por acabados (sin tocar instalaciones)</h3>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-2">
+            <li>— El cuadro eléctrico tiene capacidad suficiente para los electrodomésticos actuales</li>
+            <li>— La fontanería no ha dado problemas en los últimos años y tiene buen aspecto</li>
+            <li>— El objetivo es mejorar el aspecto y la funcionalidad sin obra pesada</li>
+            <li>— La vivienda es de construcción posterior a 1990</li>
+          </ul>
+          <p class="text-sm font-semibold text-[#A85535] mt-4">Desde 8.000€ (suelos+pintura) / Desde 18.000€ (baño+cocina+suelos+pintura)</p>
+        </div>
+        <div class="bg-white p-7 border-t-4 border-gray-200">
+          <h3 class="text-base font-bold text-gray-900 mb-3">Reforma integral (instalaciones + acabados)</h3>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-2">
+            <li>— La instalación eléctrica es de los años 70–80 sin actualizar</li>
+            <li>— La fontanería tiene muchos años sin intervención o ya ha dado problemas</li>
+            <li>— Quieres cambiar la distribución de tabiques</li>
+            <li>— La vivienda no ha tenido ninguna reforma desde la construcción</li>
+          </ul>
+          <p class="text-sm font-semibold text-gray-500 mt-4">Desde 18.000€ — <a href="/servicios/reformas-integrales/" class="underline hover:text-[#A85535]">ver reformas integrales</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reforma de pisos antiguos -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-pisos-antiguos">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de viviendas del Corredor</p>
+        <h2 id="h-pisos-antiguos" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Reforma de pisos antiguos: lo que cambia en viviendas anteriores a 1985
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+      <p class="text-gray-700 leading-relaxed mb-8">
+        Reformar una vivienda antigua en el Corredor del Henares no es igual que reformar una vivienda moderna. Los bloques construidos entre 1960 y 1985 en Coslada, San Fernando y Torrejón de Ardoz acumulan décadas sin intervención en instalaciones. Lo que aparece al abrir paredes o levantar suelos es sistemáticamente distinto de lo que se ve en la primera visita: por eso el proceso de inspección previa es más exhaustivo y el presupuesto reserva siempre una partida específica para imprevistos en instalaciones.
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-7 border-t-4 border-[#A85535]">
+          <h3 class="text-base font-bold text-gray-900 mb-3">Lo que suele aparecer al abrir</h3>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-2">
+            <li>— Instalación eléctrica de aluminio o sin toma de tierra: renovación completa necesaria</li>
+            <li>— Fontanería de plomo o galvanizado: cambio por salubridad y presión</li>
+            <li>— Solería de terrazo sobre capa de mortero de 5–8 cm: condiciona la cota final del suelo nuevo</li>
+            <li>— Tabiques de ladrillo macizo: más pesados y más laboriosos de derribar que el pladur</li>
+            <li>— Carpintería exterior encastrada en la fábrica, con premarco de madera</li>
+          </ul>
+        </div>
+        <div class="bg-white p-7 border-t-4 border-gray-200">
+          <h3 class="text-base font-bold text-gray-900 mb-3">Cómo lo gestionamos</h3>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-2">
+            <li>— Visita técnica con sondeos en paredes y suelos: documentamos el estado real antes de presupuestar</li>
+            <li>— Partida de imprevistos específica para instalaciones (sistemática en pisos anteriores a 1980)</li>
+            <li>— Plazo ajustado a la complejidad real: no a un estándar genérico</li>
+            <li>— Comunicación antes de actuar si aparece algo no previsto: ninguna decisión sin tu aprobación</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-gray-700 leading-relaxed">
+        El resultado de reformar una vivienda antigua es exactamente el mismo que en una vivienda moderna: el proceso es el que requiere más rigor técnico. Una vivienda de 1972 bien reformada funciona como una de 2010; la diferencia está en lo que se trabaja antes de ver el resultado.
+      </p>
+    </div>
+  </section>
+
+  <!-- Qué incluye -->
+  <section class="py-20 bg-white" aria-labelledby="h-que-incluye">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Alcance por zona</p>
+        <h2 id="h-que-incluye" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Qué incluye la reforma de cada zona de la vivienda
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { title: 'Suelos en toda la vivienda', desc: 'Levantamiento del pavimento existente, preparación de la base y colocación de tarima maciza, laminada o porcelánico en toda la superficie.' },
+          { title: 'Baño completo', desc: 'Demolición, impermeabilización, alicatado, suelo, sanitarios, mueble, ducha o bañera, mampara y accesorios. Con revisión de la fontanería cuando el estado lo requiere.' },
+          { title: 'Cocina completa', desc: 'Diseño de distribución, desescombro, alicatado, electricidad, fontanería, muebles, encimera y electrodomésticos integrados.' },
+          { title: 'Redistribución de tabiques', desc: 'Derribo de tabiques existentes o levantamiento de nuevos, replanteo de distribución y acabado de superficies resultantes. Con proyecto técnico si aplica.' },
+          { title: 'Carpintería interior', desc: 'Puertas interiores nuevas, armarios empotrados y marcos. La carpintería transforma la percepción de los espacios a un coste por zona contenido.' },
+          { title: 'Pintura y acabados finales', desc: 'Pintura de todas las estancias en el color elegido. Remates de escayola, rodapiés y transiciones entre pavimentos. Limpieza final de obra.' },
+        ].map(item => (
+          <div class="bg-[#F9F7F4] p-7">
+            <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
+            <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Vida durante la obra -->
+  <section class="py-20 bg-[#111827]" aria-labelledby="h-vida-obra">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la reforma de vivienda</p>
+        <h2 id="h-vida-obra" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
+          Seis a diez semanas de obra: cómo se vive desde dentro
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+      <p class="text-gray-300 leading-relaxed mb-8">
+        La reforma de una vivienda completa toca todos los espacios a la vez durante semanas. Lo que planificamos antes de empezar no es solo la obra: es dónde vas a estar mientras dura, cuándo puedes volver y qué encuentras cuando entras.
+      </p>
+      <ul class="space-y-6">
+        {[
+          { title: 'La fase de suelos: la semana más crítica', desc: 'Cuando se levanta el pavimento de toda la vivienda a la vez, el polvo llega a todos los rincones aunque estén protegidos. Es la semana con más ruido y más polvo de toda la obra. A partir de ahí, la situación mejora progresivamente conforme los gremios van terminando cada zona.' },
+          { title: 'Secuencia diseñada para minimizar el tiempo fuera', desc: 'La obra se organiza para que el plazo total sea el mínimo posible: los gremios trabajan en paralelo cuando la zona lo permite, y ninguno espera a otro sin tarea asignada. Si tienes una fecha límite para volver, la planificamos alrededor de esa fecha.' },
+          { title: 'Protección de lo que no se reforma', desc: 'Si tienes zonas que no entran en la reforma —una habitación, la terraza, muebles que conservas— se protegen antes de empezar. El polvo de obra no entiende de límites, pero la protección de suelos y superficies sí.' },
+          { title: 'Un interlocutor durante toda la obra', desc: 'No hablas con el fontanero un día y con el pintor otro. Hay una persona responsable de la obra que coordina todos los gremios y que es tu referencia en todo momento. Si tienes una pregunta o un cambio, hay una persona que responde.' },
+          { title: 'El piso al entrar: en condiciones de vivir, no de terminar', desc: 'La limpieza final de la obra es parte del proceso. El día que te entregamos el piso, puedes meter los muebles y empezar a vivir. No en condiciones de "casi terminado". En condiciones de vivir.' },
+        ].map(item => (
+          <li class="flex gap-5">
+            <div class="w-1 flex-shrink-0 bg-[#A85535] rounded-full mt-1" style="min-height:1.25rem"></div>
+            <div>
+              <p class="font-semibold text-white mb-1">{item.title}</p>
+              <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- M5: Comparativa -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-comparativa">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-comparativa" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        Precios orientativos de reforma de pisos y viviendas
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Precios orientativos para el Corredor del Henares. El presupuesto exacto se cierra tras la visita técnica gratuita según el estado real de la vivienda.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-white">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato tras la visita.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th class="text-left py-3 px-5 font-bold text-gray-900">Alcance</th>
+              <th class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo</th>
+              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Nota</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: 'Suelos + pintura + carpintería (sin baño ni cocina)', price: 'Desde 8.000€', note: 'Piso 60–80 m², sin obra pesada' },
+              { label: 'Baño + cocina + suelos + pintura', price: 'Desde 18.000€', note: 'Piso 60–80 m², instalaciones en buen estado' },
+              { label: 'Reforma con redistribución de tabiques', price: 'Desde 28.000€', note: 'Incluye licencia de obra menor' },
+              { label: 'Si las instalaciones necesitan renovación', price: 'Ver Reformas Integrales', note: 'Cuadro, fontanería, gremios coordinados' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-5 text-gray-700">{row.label}</td>
+                <td class={`py-3 px-5 text-right font-semibold ${i === 3 ? 'text-gray-500' : 'text-[#A85535]'}`}>{row.price}</td>
+                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- M3: Licencias -->
+  <section class="py-16 bg-white" aria-labelledby="h-licencias">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-licencias" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        ¿Qué licencia necesita la reforma de tu vivienda?
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        La mayoría de reformas de vivienda que no afectan a muros de carga ni fachadas se tramitan como obra menor o comunicación previa en los ayuntamientos del Corredor del Henares. Si la reforma incluye el derribo de un tabique de carga o una modificación estructural, requiere proyecto firmado por arquitecto técnico y licencia de obra mayor.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        En bloques de pisos con comunidad de propietarios, algunas actuaciones —como la modificación de distribución que afecte a la estructura del edificio— pueden requerir el consentimiento de la comunidad. La normativa varía por municipio. Nos encargamos de informarte y de gestionar el trámite que corresponda en tu caso.
+      </p>
+      <div class="bg-[#F9F7F4] border-l-4 border-amber-400 p-6">
+        <p class="text-sm font-semibold text-gray-900 mb-2">Derribo de tabiques en pisos de los años 60–80</p>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          En edificios de esa época, algunos tabiques que aparentemente son de separación pueden ser elementos resistentes o tener funciones de arriostramiento. Antes de decidir qué se derriba, hacemos una valoración técnica del elemento para confirmar que puede eliminarse sin proyecto de refuerzo. Este paso va incluido en la visita técnica gratuita.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- M6: Cómo comparar presupuestos -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-comparar">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-comparar" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Cómo leer un presupuesto de reforma de vivienda
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        Estas son las partidas que más varían entre presupuestos con el mismo total aparente. Revisarlas antes de decidir evita sorpresas una vez empezada la obra.
+      </p>
+      <dl class="divide-y divide-gray-200 bg-white p-6">
+        {[
+          { term: 'Estado de instalaciones asumido', def: 'Algunos presupuestos asumen que la instalación eléctrica y la fontanería están en buen estado. Si durante la obra aparecen problemas, se cobran como extra. Pide que el presupuesto especifique qué ocurre si al abrir se encuentran instalaciones en mal estado.' },
+          { term: 'Alcance del baño y la cocina', def: 'Un presupuesto puede contemplar solo el cambio de revestimientos y sanitarios en el baño, o puede incluir fontanería nueva y redistribución. Lo mismo con la cocina: algunos precios de cocina no incluyen los electrodomésticos ni la encimera. Pide el desglose de cada zona.' },
+          { term: 'Suelos: superficie real vs. estimada', def: 'El precio por metro cuadrado de solado puede parecer bajo hasta que se incluyen las mermas de corte, el material de la cola, el rodapié y el coste del levantamiento del pavimento anterior. Compara presupuestos que incluyan el precio final por m² instalado, no solo el material.' },
+          { term: 'Gestión de escombros y limpieza', def: 'Una reforma de vivienda de 60–80 m² genera varios metros cúbicos de escombros. El coste del contenedor y de la limpieza final debe estar incluido. Si no aparece como partida, pregunta si está incluido o si se cobra aparte.' },
+          { term: 'Licencia y proyecto técnico', def: 'Si la reforma incluye derribo de tabiques o redistribución, el proyecto técnico y la licencia de obra tienen un coste que en ocasiones no se incluye en el presupuesto base. Pide que se especifique quién lo gestiona y a qué coste.' },
+          { term: 'Garantía de la ejecución', def: 'La garantía de 2 años sobre la ejecución es distinta de la garantía del fabricante sobre los materiales. Pide que el presupuesto indique qué garantía cubre la obra en caso de defectos de instalación o ejecución en los dos años siguientes a la entrega.' },
+        ].map(({ term, def }) => (
+          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
+            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
+            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-8 bg-white border-l-4 border-[#A85535] p-6">
+        <p class="text-sm font-semibold text-gray-900 mb-3">Precio cerrado e imprevistos en la reforma de vivienda</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma de pisos o viviendas, eso incluye el estado observable de las instalaciones, las dimensiones reales de cada zona y los materiales especificados antes de empezar. Si al levantar suelos o abrir paredes aparece algo que no era accesible antes —humedad en el soporte, tuberías en peor estado del visible, una viga que no estaba en los planos— lo comunicamos antes de tocar nada y lo valoramos por separado. En la mayoría de reformas de vivienda del Corredor, el precio cierra sin desviaciones. Cuando aparece algo nuevo, hay una persona que llama, explica y espera tu decisión antes de actuar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- M7: Plazos -->
+  <section class="py-16 bg-white" aria-labelledby="h-plazos">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-plazos" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Plazos reales de reforma de vivienda
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th class="text-left py-3 px-5 font-bold text-gray-900">Tipo de reforma</th>
+              <th class="text-right py-3 px-4 font-bold text-gray-900">Piso 50–70 m²</th>
+              <th class="text-right py-3 px-4 font-bold text-gray-900">Piso 80–100 m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { tipo: 'Suelos + pintura + carpintería', p70: '2–3 sem.', p100: '3–4 sem.' },
+              { tipo: 'Baño + cocina + suelos + pintura', p70: '6–8 sem.', p100: '8–10 sem.' },
+              { tipo: 'Con redistribución de tabiques', p70: '+1–2 sem.', p100: '+2–3 sem.' },
+              { tipo: 'Si hay renovación de instalaciones', p70: 'Ver Reformas Integrales', p100: 'Ver Reformas Integrales' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
+                <td class="py-3 px-5 text-gray-700">{row.tipo}</td>
+                <td class="py-3 px-4 text-right text-gray-600">{row.p70}</td>
+                <td class="py-3 px-4 text-right text-gray-600">{row.p100}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-400 mt-4">Plazos orientativos. La fecha de entrega queda fijada en el contrato antes de empezar la obra.</p>
+    </div>
+  </section>
+
+  <!-- M8: Compromisos -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-12">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
+        <h2 id="h-compromisos" class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+          Lo que comprometemos antes de empezar la reforma
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+      <Compromisos variant="full" />
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section class="py-20 bg-white" aria-labelledby="h-proceso">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
+        <h2 id="h-proceso" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Del primer contacto a la llave en mano
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { n: '01', title: 'Visita técnica gratuita', desc: 'Evaluamos el estado del piso, tomamos medidas y escuchamos qué quieres cambiar. Sin compromiso.' },
+          { n: '02', title: 'Proyecto y presupuesto cerrado', desc: 'Presupuesto en 48h con todas las partidas. Si hay derribo de muros, incluimos proyecto técnico.' },
+          { n: '03', title: 'Licencia (si aplica)', desc: 'Tramitamos la licencia de obra en el ayuntamiento del municipio en paralelo con la preparación.' },
+          { n: '04', title: 'Derribo e instalaciones', desc: 'Demolición de tabiques, adaptación de instalaciones eléctricas y de fontanería si el alcance lo requiere.' },
+          { n: '05', title: 'Acabados coordinados', desc: 'Solados, pintura, carpintería, baño y cocina. Sin esperas entre gremios. Un equipo coordinado.' },
+          { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo, limpieza de obra y entrega con garantía de 2 años sobre la ejecución.' },
+        ].map(step => (
+          <div class="bg-[#F9F7F4] p-7">
+            <div class="text-4xl font-black text-gray-100 mb-4 leading-none">{step.n}</div>
+            <h3 class="text-base font-bold text-gray-900 mb-2">{step.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Resultado cotidiano -->
+  <div class="bg-white py-10">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-base text-gray-700 italic border-l-4 border-[#A85535] pl-5">
+        Al mes de vivir en el piso reformado, la referencia del anterior desaparece. Lo que queda es el suelo que no cruje por la noche, la carpintería que cierra sin doblar la muñeca, el baño que se limpia en la mitad del tiempo, la cocina donde caben dos personas sin cruzarse. La reforma de vivienda no cambia solo el aspecto: cambia cómo se vive cada día sin que lo notes.
+      </p>
+    </div>
+  </div>
+
+  <!-- Dónde hacemos reforma de pisos -->
+  <section class="py-16 bg-white" aria-labelledby="h-zonas">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 id="h-zonas" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        Reforma de pisos y viviendas en el Corredor: todos los municipios
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
+        Hacemos reformas de viviendas en los ocho municipios del Corredor del Henares sin coste adicional de desplazamiento. Selecciona tu municipio para ver información sobre el mercado y los plazos habituales en tu zona.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {zones.map(z => (
+          <a href={`/reforma-pisos/${z.slug}/`} class="group block p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] hover:shadow-md transition-all duration-200">
+            <p class="text-sm font-bold text-gray-900 group-hover:text-[#A85535] transition-colors">Reforma de pisos en {z.name}</p>
+            <p class="text-xs text-gray-400 mt-1">Ver precios y plazos →</p>
+          </a>
+        ))}
+      </div>
+      <div class="mt-10 pt-8 border-t border-gray-100">
+        <p class="text-sm text-gray-500 mb-4">Si tu reforma necesita un alcance diferente:</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/servicios/reformas-integrales/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reformas integrales (instalaciones incluidas)</a>
+          <a href="/servicios/reforma-banos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de baños</a>
+          <a href="/servicios/reforma-cocinas/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de cocinas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
+        <h2 id="h-faq" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Todo lo que necesitas saber sobre reforma de vivienda
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+      <div class="divide-y divide-gray-200">
+        {faqs.map(faq => (
+          <details class="group py-5">
+            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
+              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
+              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-20 bg-[#A85535]" aria-labelledby="h-cta-final">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">
+        ¿Cuánto cuesta reformar tu vivienda?
+      </h2>
+      <p class="text-white/80 mb-3">Visita técnica gratuita. Presupuesto cerrado en 48h. Desde 18.000€.</p>
+      <p class="text-white/60 text-sm mb-8">Sin compromiso. El precio que firmamos es el precio que pagas.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">Solicitar presupuesto</a>
+        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/40 hover:border-white transition-colors">☎ {SITE.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

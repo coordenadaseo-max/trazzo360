@@ -81,13 +81,32 @@ export const ZONES = [
   },
 ];
 
-export const RELATED_ZONES: Record<string, string[]> = {
-  'alcala-de-henares':       ['torrejon-de-ardoz', 'meco', 'camarma-de-esteruelas'],
-  'torrejon-de-ardoz':       ['alcala-de-henares', 'san-fernando-de-henares', 'coslada'],
-  'coslada':                 ['san-fernando-de-henares', 'torrejon-de-ardoz'],
-  'san-fernando-de-henares': ['coslada', 'torrejon-de-ardoz', 'alcala-de-henares'],
-  'guadalajara':             ['azuqueca-de-henares', 'meco', 'alcala-de-henares'],
-  'azuqueca-de-henares':     ['guadalajara', 'meco', 'alcala-de-henares'],
-  'meco':                    ['alcala-de-henares', 'azuqueca-de-henares', 'camarma-de-esteruelas'],
-  'camarma-de-esteruelas':   ['alcala-de-henares', 'meco'],
-};
+// Ring geográfico del Corredor del Henares (A-2, de oeste a este + Guadalajara).
+// Cada zona enlaza a las 2 anteriores y 2 siguientes del anillo (4 vecinos total).
+const ZONE_RING = [
+  'coslada',
+  'san-fernando-de-henares',
+  'torrejon-de-ardoz',
+  'alcala-de-henares',
+  'camarma-de-esteruelas',
+  'meco',
+  'azuqueca-de-henares',
+  'guadalajara',
+] as const;
+
+export function getZoneRingNeighbors(slug: string): string[] {
+  const i = ZONE_RING.indexOf(slug as typeof ZONE_RING[number]);
+  if (i === -1) return [];
+  const n = ZONE_RING.length;
+  return [
+    ZONE_RING[(i - 2 + n) % n],
+    ZONE_RING[(i - 1 + n) % n],
+    ZONE_RING[(i + 1) % n],
+    ZONE_RING[(i + 2) % n],
+  ];
+}
+
+// Computed from ring topology — kept for backward compatibility with existing templates.
+export const RELATED_ZONES: Record<string, string[]> = Object.fromEntries(
+  ZONE_RING.map(slug => [slug, getZoneRingNeighbors(slug)])
+);

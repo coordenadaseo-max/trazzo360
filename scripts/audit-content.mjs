@@ -71,18 +71,22 @@ console.log('─'.repeat(hdr.length));
 for (const r of rows) {
   const notes = [];
 
-  if (!r.title)         { notes.push('SIN TITLE'); criticals++; }
-  else if (r.tLen < 30) { notes.push(`title corto (${r.tLen}c)`); criticals++; }
-  else if (r.tLen > 70) { notes.push(`title largo (${r.tLen}c)`); }
+  if (!r.title)          { notes.push('SIN TITLE'); criticals++; }
+  else if (r.tLen < 30)  { notes.push(`title corto (${r.tLen}c) ❌`); criticals++; }
+  else if (r.tLen < 45)  { notes.push(`title corto (${r.tLen}c) <45`); }
+  else if (r.tLen > 70)  { notes.push(`title largo (${r.tLen}c) >70`); }
+  else if (r.tLen > 65)  { notes.push(`title largo (${r.tLen}c) >65`); }
 
-  if (!r.desc)          { notes.push('SIN META DESC'); criticals++; }
-  else if (r.dLen < 80) { notes.push(`desc corta (${r.dLen}c)`); }
-  else if (r.dLen > 170){ notes.push(`desc larga (${r.dLen}c)`); }
+  if (!r.desc)           { notes.push('SIN META DESC'); criticals++; }
+  else if (r.dLen < 80)  { notes.push(`desc corta (${r.dLen}c) ❌`); criticals++; }
+  else if (r.dLen < 120) { notes.push(`desc corta (${r.dLen}c) <120`); }
+  else if (r.dLen > 175) { notes.push(`desc larga (${r.dLen}c) >175`); }
+  else if (r.dLen > 165) { notes.push(`desc larga (${r.dLen}c) >165`); }
 
   if (r.h1 === 0) { notes.push('SIN H1'); criticals++; }
   if (r.h1 > 1)  { notes.push(`${r.h1}×H1`); criticals++; }
 
-  const isCritical = notes.some(n => n.startsWith('SIN') || /\dxH1/i.test(n) || n.includes('corto'));
+  const isCritical = notes.some(n => n.startsWith('SIN') || /\dxH1/i.test(n) || n.includes('❌'));
   const flag = isCritical ? '❌' : notes.length ? '⚠' : '✅';
 
   console.log([
@@ -96,7 +100,7 @@ for (const r of rows) {
   ].join('  '));
 }
 
-console.log('\nTitle: 50-60c ideal. Desc: 120-160c ideal. H1: exactamente 1 por página.');
+console.log('\nTitle: 50-60c ideal (warn <45 o >65, crítico <30 o >70). Desc: 140-155c ideal (warn <120 o >165, crítico <80 o >175). H1: exactamente 1 por página.');
 
 if (criticals > 0) {
   console.error(`\n❌  ${criticals} problema(s) crítico(s). Corrige antes de publicar.\n`);

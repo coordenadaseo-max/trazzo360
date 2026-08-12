@@ -78,16 +78,131 @@ Cualquier componente que renderice metadatos de obra (ubicación, m², plazo) de
 
 ## 6. Copywriting y línea editorial
 
-La línea es **asesoramiento antes que venta**. El texto ayuda a decidir, no enumera servicios. Mantenla en todo lo que escribas.
+### 6.1 La voz de Trazzo360
+
+La línea es **asesoramiento antes que venta**, y ahora se añade una segunda capa:
+**sabemos reformar + sabemos lo que supone para ti tener una obra dentro de casa**.
+
+No son dos cosas separadas. Van juntas en el mismo párrafo, en el mismo H3, en la misma FAQ.
+Técnica y empatía al mismo nivel, no en secciones distintas.
+
+Tres preguntas de control antes de publicar cualquier bloque:
+1. ¿Explica el *qué* y el *por qué*? (capa técnica)
+2. ¿Habla de lo que vive el cliente durante y después? (capa humana)
+3. ¿Hay una persona detrás, no solo una empresa? (capa de identidad)
+
+Si falta alguna de las tres, el bloque está incompleto.
+
+### 6.2 Quién habla
+
+Hay una persona detrás de Trazzo360: el Fundador y responsable de obra, con más de 15 años
+en obra. Esa persona aparece antes en el texto —no solo en /como-trabajamos/—, especialmente
+en los momentos de decisión importantes para el cliente:
+
+- Cuando se explica la visita técnica: es él quien viene, mide, escucha y da precio.
+- Cuando se habla de coordinación de la obra: es él quien está disponible y a quien se llama.
+- Cuando se habla de imprevistos: es él quien llama antes de actuar.
+
+Nunca "respondemos en 24h" como si fuera un servicio de atención al cliente.
+Siempre "estamos disponibles durante toda la obra" o "te aviso antes de tomar ninguna decisión".
+
+### 6.3 La vida del cliente durante la obra
+
+Este es el bloque que más falta hace y que menos existe en la competencia.
+Polvo, ruido, trabajadores entrando y saliendo, el ascensor ocupado, la cocina sin agua,
+el único baño fuera de servicio durante cuatro días.
+
+Esas molestias se mencionan, se reconocen y se explica cómo se gestionan:
+- Protección de suelos y zonas comunes antes de empezar.
+- Limpieza diaria al terminar la jornada.
+- Comunicación del horario de inicio cada mañana.
+- Qué días son los más incómodos y cuándo vuelve la normalidad.
+- Qué hacer si solo hay un baño (se planifica desde el principio, no como excepción).
+
+No es suficiente mencionar que "planificamos para minimizar las molestias".
+Hay que decir exactamente qué se hace y cuándo.
+
+### 6.4 El resultado, no solo el proceso
+
+Las páginas hablan mucho de impermeabilización, alicatado, fontanería y garantías.
+Poco de tener un baño cómodo, fácil de limpiar, sin riesgo de resbalón para los padres,
+con espacio suficiente para dos personas por la mañana, que dé gusto usar cada día.
+
+Cada página de servicio necesita al menos un párrafo que describa el resultado cotidiano,
+no el resultado técnico. No "entregamos con garantía de 2 años" como cierre,
+sino "el jueves siguiente ya usas el baño nuevo, y en dos semanas ya no recuerdas cómo era el anterior".
+
+### 6.5 La incoherencia de precio cerrado + imprevistos
+
+Es el punto más importante de confianza y hay que resolverlo en cada página que lo toque.
+
+NUNCA escribir estos dos conceptos uno al lado del otro sin el puente que los une:
+- "El precio que firmamos es el precio que pagas."
+- "Si aparecen problemas ocultos al abrir, se valoran aparte."
+
+La versión correcta es esta (o similar, adaptada al contexto):
+
+> El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica.
+> Si al abrir aparece algo que no se podía ver antes —una instalación deteriorada detrás
+> del alicatado, humedades en el soporte— lo comunicamos antes de tocar nada y decidimos
+> contigo si se resuelve en esta obra o en una segunda intervención. En la mayoría de
+> reformas de baño del Corredor, esto no ocurre. Cuando ocurre, hay un responsable
+> que llama, explica y espera tu decisión.
+
+Ese párrafo (o su equivalente contextual) debe aparecer siempre que se mencione
+precio cerrado + imprevistos en la misma página.
+
+### 6.6 Tono: lo que sí y lo que no
+
+**Sí:**
+- Frases cortas. Párrafos de 3–4 líneas máximo.
+- Verbos que acompañan: "te avisamos", "decidimos contigo", "te explicamos", "tendrás".
+- Concreción temporal: "los primeros 4 días", "el jueves ya funciona", "en 10–15 días hábiles".
+- Reconocer lo incómodo antes de explicar cómo se gestiona.
+- Hablar de situaciones reales: el baño único, los padres mayores, la cocina sin agua.
+- Beneficio cotidiano como cierre: cómo es la vida después de la reforma.
+
+**No:**
+- "Respondemos en 24h" — suena a call center.
+- "Nos comprometemos a..." seguido de lista — suena a contrato de condiciones generales.
+- Párrafos de 6+ líneas que explican proceso técnico sin mención al usuario.
+- Superlativos: "el mejor resultado", "la máxima calidad", "sin igual en el Corredor".
+- Acumulación de advertencias (filtraciones, humedades, garantías, imprevistos seguidos)
+  que generen más ansiedad de la que resuelven.
+- "Equipo de profesionales altamente cualificados" — sin contenido, sin persona.
+
+### 6.7 Estructura de la información: HTML semántico con intención
+
+Los bloques técnicos densos (M2 diagnóstico local, M6 cómo leer un presupuesto)
+se rompen con H3 y listas para mejorar lecturabilidad y SEO:
+
+- M2: H3 por tipología de vivienda o por zona geográfica dentro del municipio.
+  Patologías como `<ul>` con descripción concreta. No párrafos de 5 líneas seguidas.
+- M6: `<dl>` con término + descripción. Máximo 6–8 términos, uno por partida crítica.
+- Ventilación y ventanas: son señales importantes de calidad de vida y de obra bien hecha.
+  Merecen mención explícita cuando son relevantes para el servicio (baños, cocinas, pisos).
+  Ventilación forzada en baños sin ventana exterior, rotura de puente térmico en ventanas
+  de aluminio antiguas, condensaciones en invierno. No solo como problema: también como
+  mejora que cambia la experiencia diaria.
+- Procesos: `<ol>` con pasos concretos. Cada paso con su tiempo aproximado.
+- Comparativas: `<table>` con `<caption>`. Nunca divs imitando tablas.
+
+### 6.8 Instrucción para prompts futuros
+
+Antes de escribir cualquier bloque de copy, relee las subsecciones 6.3 (vida del cliente
+durante la obra), 6.4 (resultado cotidiano) y 6.5 (incoherencia precio cerrado +
+imprevistos). Esas tres capas deben estar presentes en cada hub y en cada combinada.
+Si escribes un bloque técnico de más de 4 líneas sin una referencia a la experiencia
+del cliente, añade esa referencia antes de continuar.
+
+### 6.9 Reglas que no cambian
 
 - Beneficio y criterio de decisión antes que característica técnica.
-- Frases cortas. Párrafos de 3–4 líneas máximo.
-- Escribe sobre **decisiones** ("bañera o ducha: qué condiciona el presupuesto", "integral o por fases"), no sobre adjetivos.
-- Prohibidos los superlativos no verificables: "los mejores", "líderes", "referentes", "calidad exquisita", "precios inmejorables".
-- Prohibido el keyword stuffing y la negrita decorativa sobre keywords. Densidad natural: si al leerlo en voz alta suena a máquina, reescríbelo.
-- Concreción local real: barrios con nombre, décadas de construcción, tipologías, trámites del ayuntamiento correspondiente. Nunca "una ciudad en crecimiento con gran demanda de reformas".
-- Todo precio publicado va acompañado de que es orientativo y sujeto a visita técnica.
-- Cero relleno para alcanzar un recuento. Si una sección no aporta información útil, no la escribas.
+- Prohibidos los superlativos no verificables.
+- Prohibido el keyword stuffing.
+- Concreción local real: barrios, décadas, tipologías.
+- Todo precio va acompañado de "orientativo" y "sujeto a visita técnica".
+- Cero relleno para alcanzar recuento de palabras.
 
 ## 7. Proceso de trabajo
 

@@ -1,0 +1,682 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Compromisos from '../../components/Compromisos.astro';
+import { SITE } from '../../data/site';
+
+const title = 'Reforma de Baños en el Corredor del Henares | Trazzo360';
+const description = 'Reforma de baños en el Corredor del Henares: cambio de bañera por ducha, alicatado, fontanería y sanitarios. Precio cerrado, presupuesto gratis en 24h.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Reforma de Baños en el Corredor del Henares',
+  description,
+  provider: {
+    '@type': 'GeneralContractor',
+    '@id': `${SITE.url}/#business`,
+    name: SITE.name,
+  },
+  areaServed: [
+    'Torrejón de Ardoz', 'Alcalá de Henares', 'Coslada',
+    'San Fernando de Henares', 'Guadalajara', 'Azuqueca de Henares',
+    'Meco', 'Camarma de Esteruelas',
+  ],
+  offers: {
+    '@type': 'Offer',
+    price: '3200',
+    priceCurrency: 'EUR',
+    description: 'Reforma completa de baño desde 3.200€',
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${SITE.url}/servicios/` },
+    { '@type': 'ListItem', position: 3, name: 'Reforma de Baños', item: `${SITE.url}/servicios/reforma-banos/` },
+  ],
+};
+
+const faqs = [
+  {
+    q: '¿Qué incluye una reforma completa de baño?',
+    a: 'Demolición de alicatados y solado, impermeabilización, nuevo revestimiento de paredes y suelo, plato de ducha o bañera, mampara, sanitarios, mueble de baño, espejo, iluminación y accesorios. La gestión de escombros y la limpieza final forman parte del precio. Lo que puede depender del alcance es la fontanería: si las tuberías están en buen estado, puede no ser necesario renovarla.',
+  },
+  {
+    q: 'Solo tengo un baño en casa, ¿cuántos días estaré sin poder usarlo?',
+    a: 'En una reforma completa con cambio de alicatado, los primeros 4–6 días de demolición y preparación son los más críticos. A partir de ahí el baño va recuperando funcionalidad por fases conforme avanza la obra. Si el plazo es especialmente crítico, lo planificamos para minimizar los días sin servicio sin comprometer la impermeabilización.',
+  },
+  {
+    q: '¿Merece la pena cambiar las tuberías aprovechando la reforma?',
+    a: 'Si presentan deterioro, han dado algún problema, no se conoce su estado o la nueva distribución obliga a intervenir sobre ellas, conviene valorar su renovación aprovechando que el baño ya está abierto. Hacerlo en la misma obra tiene un coste marginal frente a tener que volver a abrirlo todo en una obra independiente posterior.',
+  },
+  {
+    q: '¿Qué diferencia hay entre cambiar la bañera por ducha y reformar el baño entero?',
+    a: 'Cambiar la bañera por un plato de ducha sin tocar el alicatado parte de 1.800€ y se hace en 3–5 días hábiles. Una reforma completa incluye también cambio de revestimientos, sanitarios y mueble, y puede durar hasta 3 semanas. Si el alicatado está deteriorado o hay síntomas de humedad, puede tener más sentido plantear el baño como un conjunto que hacer dos obras por separado.',
+  },
+  {
+    q: '¿Se puede cambiar la distribución de un baño pequeño?',
+    a: 'Sí, aunque mover un inodoro o una ducha puede afectar al recorrido de los desagües y hacer que un cambio aparentemente sencillo aumente el alcance de la obra. En la visita te mostramos qué opciones de redistribución son viables en tu baño concreto sin complicar innecesariamente el proyecto.',
+  },
+  {
+    q: '¿Qué debería tener elegido antes de empezar la obra del baño?',
+    a: 'Idealmente, el alicatado, el plato de ducha o bañera, y los sanitarios deben estar elegidos antes de empezar. Los muebles y accesorios pueden definirse con la obra en marcha. Si los materiales principales no están pedidos cuando termina el derribo, la espera puede alargar el plazo.',
+  },
+  {
+    q: '¿Qué puede hacer que aumente el presupuesto una vez desmontado el baño?',
+    a: 'Al retirar los revestimientos pueden aparecer tuberías deterioradas, humedades en los soportes o instalaciones que no eran visibles antes. En la visita revisamos el estado observable, pero algunos problemas solo se confirman al abrir. Si aparece algo nuevo, lo comunicamos antes de actuar y lo valoramos por separado.',
+  },
+  {
+    q: '¿Qué ventajas tiene la ducha italiana frente al plato extraplano?',
+    a: 'La ducha sin plato (italiana) permite un diseño continuo con el suelo sin barreras ni juntas entre el plato y el alicatado lateral. Requiere una impermeabilización más cuidadosa de toda la zona y suele tener un coste mayor. El plato extraplano (5 cm de altura) es la solución más habitual: accesible, estanca y de coste controlado. La elección depende del espacio, de la accesibilidad que se busca y del presupuesto.',
+  },
+  {
+    q: '¿Qué revestimiento aguanta mejor en la zona de la ducha?',
+    a: 'El gres porcelánico rectificado de baja absorción (grupo BIa, absorción inferior al 0,5%) es la opción más resistente en zonas húmedas. El tamaño de las piezas también importa: formatos grandes reducen las juntas y dificultan la acumulación de hongos, pero exigen mayor precisión en la colocación. En suelos, el coeficiente antideslizante es un criterio que conviene revisar antes de elegir el material.',
+  },
+  {
+    q: '¿Tenéis garantía sobre la reforma del baño?',
+    a: 'Sí. Garantizamos 2 años sobre la ejecución: humedades, desprendimiento de revestimientos, funcionamiento de sanitarios y cualquier problema que derive de nuestra obra. Los materiales tienen la garantía del fabricante. Si en el plazo de garantía detectas algún problema atribuible a la ejecución, lo resolvemos sin coste adicional.',
+  },
+  {
+    q: '¿Hacéis reformas de baño en toda la zona?',
+    a: 'Sí. Hacemos reformas de baño en Torrejón de Ardoz, Alcalá de Henares, Coslada, San Fernando de Henares, Meco, Camarma de Esteruelas, Azuqueca de Henares y Guadalajara. Sin coste adicional de desplazamiento en ninguno de estos municipios.',
+  },
+  {
+    q: '¿Cómo es el sistema de pago en una reforma de baño?',
+    a: 'El pago se hace en tres fases: una parte antes del inicio de obra (para reservar agenda y pedir materiales), otra a mitad de obra y el resto en la entrega. Los porcentajes exactos quedan recogidos en el contrato que se firma antes de empezar. No pedimos el pago completo por adelantado.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const zones = [
+  { name: 'Torrejón de Ardoz',      slug: 'torrejon-de-ardoz' },
+  { name: 'Alcalá de Henares',      slug: 'alcala-de-henares' },
+  { name: 'Coslada',                slug: 'coslada' },
+  { name: 'San Fernando de Henares',slug: 'san-fernando-de-henares' },
+  { name: 'Guadalajara',            slug: 'guadalajara' },
+  { name: 'Azuqueca de Henares',    slug: 'azuqueca-de-henares' },
+  { name: 'Meco',                   slug: 'meco' },
+  { name: 'Camarma de Esteruelas',  slug: 'camarma-de-esteruelas' },
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  schema={[serviceSchema, breadcrumbSchema, faqSchema]}
+>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li>Servicios</li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Reforma de Baños</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-0.5 bg-[#A85535]"></div>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">Reforma de baños · Corredor del Henares</span>
+        </div>
+        <h1 id="h-hero" class="text-4xl lg:text-6xl font-black text-white mb-6" style="letter-spacing:-0.02em">
+          Reforma de baños<br/>
+          <span class="text-[#A85535]">en el Corredor del Henares</span>
+        </h1>
+
+        <!-- M1: Lead / extracto -->
+        <div role="doc-abstract" class="border-l-4 border-[#A85535] pl-6 mb-6">
+          <p class="text-lg text-gray-300 leading-relaxed">
+            Reformamos baños en el Corredor del Henares con precio cerrado por contrato:
+            cambio de bañera por ducha, alicatado completo, fontanería y sanitarios.
+            El plazo habitual es de 10 a 15 días laborables para un baño de 5 m².
+            El presupuesto, cerrado tras la visita técnica gratuita, no varía una vez firmado.
+          </p>
+        </div>
+
+        <p class="text-lg text-gray-400 leading-relaxed mb-8">
+          Reformar el baño es la obra más cotidiana de todas: no hay posibilidad de ignorarla
+          ni de aplazarla una vez empezada. Durante 10 a 15 días, tu casa no es del todo tuya.
+          Eso lo sabemos, y es lo primero que tenemos en cuenta cuando planificamos la obra contigo.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+            Solicitar presupuesto gratis
+          </a>
+          <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
+            ☎ {SITE.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M2: Diagnóstico del parque residencial -->
+  <section class="py-20 bg-white" aria-labelledby="h-parque">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de vivienda del Corredor</p>
+        <h2 id="h-parque" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Qué baños vemos habitualmente en el Corredor del Henares
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed mb-8">
+        El Corredor del Henares tiene una concentración alta de edificios construidos entre 1960 y 1990, años en que el parque de vivienda se expandió para acoger la industrialización de la zona. El tipo de construcción condiciona directamente el estado de las instalaciones que vamos a encontrar.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Bloques de piso (Coslada, San Fernando, parte de Torrejón y Alcalá)</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        En Coslada, San Fernando de Henares y Torrejón de Ardoz abundan los bloques de los años 70. En Alcalá el crecimiento continuó durante los 80 y 90. El patrón de instalaciones es similar en ambas décadas: baños de 3 a 5 m², bañera empotrada, alicatado completo hasta el techo. La diferencia está en las tuberías: plomo o acero galvanizado en los edificios más antiguos, cobre con juntas de latón en los de los 80, muchas ya con indicios de deterioro.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1 pl-5 list-disc">
+        <li>Bañera empotrada de hierro fundido o acrílico, usualmente 1,50–1,60 m</li>
+        <li>Alicatado hasta media altura o completo, con juntas envejecidas</li>
+        <li>Fontanería de plomo, acero galvanizado o cobre según la década</li>
+        <li>Ventilación por conducto comunitario al patio interior</li>
+        <li>Sanitarios de primera o segunda generación, de difícil repuesto</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Unifamiliares y adosados (Meco, Camarma, parte de Azuqueca)</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        En los municipios más pequeños del Corredor predominan viviendas unifamiliares y adosados, muchos con baño principal y aseo secundario sin reformar desde la construcción. La casuística es distinta: más metros cuadrados, más superficie de alicatado, y frecuentemente una instalación de agua caliente sanitaria que también necesita actualización.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1 pl-5 list-disc">
+        <li>Baño principal de 5–8 m² y aseo de 2–3 m²</li>
+        <li>Materiales de los 90–2000: mayólica o gres de formato pequeño</li>
+        <li>Ventana al exterior en la mayoría de los casos</li>
+        <li>Instalación de PVC en viviendas posteriores a 2000</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Ventilación: el problema que más se infravalora</h3>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        La mayoría de los baños del Corredor construidos antes de los 90 no tienen ventana al exterior: ventilan por conductos de ventilación forzada al patio interior o al conducto comunitario. Con el tiempo, esos conductos se obstruyen parcial o totalmente y el extractor pierde eficacia. El resultado es humedad ambiental crónica, manchas negras en las juntas del alicatado y condensaciones en el espejo.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        En la visita técnica revisamos el estado del conducto y la potencia del extractor. Si la ventilación es deficiente, lo incluimos en el alcance de la reforma: renovar el extractor y limpiar o reparar el conducto cuesta poco y cambia mucho la experiencia diaria del baño. Un baño bien ventilado se limpia menos, huele mejor y aguanta más años sin manchas en las juntas.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed">
+        En la visita técnica gratuita evaluamos el estado real de las instalaciones antes de dar precio: qué puede aprovecharse, qué hay que renovar y qué conviene resolver en la misma obra para no volver a abrir en pocos años. El estado que encontramos condiciona el alcance y, por tanto, el precio final; por eso el presupuesto solo cierra después de la visita, nunca antes.
+      </p>
+    </div>
+  </section>
+
+  <!-- M4: La decisión clave + H2 específico para "cambio bañera por ducha" -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-banera-ducha">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El servicio más solicitado</p>
+        <h2 id="h-banera-ducha" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Cambio de bañera por ducha en el Corredor del Henares
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed mb-6">
+        El cambio de bañera por ducha es la reforma de baño más solicitada en el Corredor del Henares. Las razones son previsibles: la mayoría de los baños de los años 70 y 80 tienen una bañera empotrada que ocupa gran parte del espacio útil, es difícil de limpiar y resulta incómoda de usar a medida que pasan los años. Una ducha aprovecha mejor los metros cuadrados disponibles, mejora la accesibilidad y reduce el consumo de agua.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Pero la decisión no es solo estética. Hay que considerar si en la vivienda hay personas mayores o con movilidad reducida que necesiten bañarse, si el baño va a ponerse a la venta (donde la bañera puede influir en la percepción del comprador), y qué tipo de ducha encaja mejor con el espacio y la presupuesto disponible. Estas son las dos opciones principales:
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-7 border-t-4 border-[#A85535]">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Plato de ducha extraplano</h3>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            Altura de 5 cm sobre el suelo, instalación sencilla y estanca. La opción más habitual en reformas de baños de 4 a 6 m² en bloques de pisos. Se coloca sobre el solado existente si está en buen estado, o sobre el nuevo si se cambia el alicatado completo. Mampara de vidrio templado o cortina según el espacio.
+          </p>
+          <p class="text-sm font-semibold text-[#A85535]">Desde 1.800€ (solo cambio, sin alicatado)</p>
+        </div>
+        <div class="bg-white p-7 border-t-4 border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Ducha a ras de suelo (italiana)</h3>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            Sin plato, con impermeabilización de toda la zona y desagüe lineal integrado en el suelo. Diseño continuo entre el suelo de la ducha y el del baño. Requiere planificar el desagüe con más detalle y una impermeabilización más exhaustiva. La opción preferida en baños grandes de chalets y adosados donde se busca un acabado sin barreras.
+          </p>
+          <p class="text-sm font-semibold text-gray-500">Precio según diseño — consultar en visita</p>
+        </div>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed mb-6">
+        En baños de los años 70 con alicatado original, el cambio de bañera por ducha se suele plantear de dos formas: solo el cambio (retirar la bañera, colocar el plato sobre el solado existente si está en buen estado, instalar mampara y adaptar la fontanería), o una reforma completa aprovechando que el baño ya está en obra. La segunda opción cuesta más pero resuelve de una vez el alicatado deteriorado y el estado de las tuberías.
+      </p>
+
+      <div class="bg-white border-l-4 border-[#A85535] p-6">
+        <p class="text-sm font-semibold text-gray-900 mb-2">La trampa del presupuesto más barato</p>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Un cambio de bañera por ducha sin impermeabilización correcta en los encuentros entre paredes y suelo puede derivar en filtraciones hacia el forjado o las estancias de abajo en pocos años. La impermeabilización es invisible una vez terminada la obra, pero es la partida que determina la durabilidad del resultado. En nuestros presupuestos siempre está incluida; si no aparece en el de otro presupuestador, pregunta por qué.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué incluye la reforma completa -->
+  <section class="py-20 bg-white" aria-labelledby="h-que-incluye">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Reforma completa</p>
+        <h2 id="h-que-incluye" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Qué incluye la reforma completa de un baño
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
+        <p class="text-gray-600 leading-relaxed">
+          Una reforma completa de baño cubre todas las partidas desde la demolición hasta la entrega. Nada se deja a medias: si el presupuesto dice que incluye impermeabilización, está incluida con la aplicación correcta; si dice que incluye mueble de baño, incluye el montaje y la conexión. Lo que está en el presupuesto es exactamente lo que se ejecuta.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { title: 'Demolición y desescombro', desc: 'Retirada de alicatados, solado, bañera o ducha anterior y sanitarios. Gestión de escombros a contenedor. El espacio queda limpio para empezar.' },
+          { title: 'Impermeabilización', desc: 'Aplicación de impermeabilizante en suelo y primer metro de pared en toda la zona húmeda. Es la partida más importante para evitar filtraciones futuras.' },
+          { title: 'Alicatado y solado', desc: 'Colocación de nuevo revestimiento cerámico en paredes y suelo. Rejuntado con material hidrófugo. Sellado de juntas de dilatación en los encuentros.' },
+          { title: 'Plato de ducha o bañera', desc: 'Instalación del plato de ducha (extraplano o a ras de suelo) o nueva bañera según elección. Incluye la adaptación de la fontanería de acometida.' },
+          { title: 'Mampara y sanitarios', desc: 'Montaje de mampara de vidrio templado, inodoro, lavabo y pedestal o mueble. Conexión de todos los puntos de agua y desagüe.' },
+          { title: 'Mueble, espejo e iluminación', desc: 'Instalación de mueble de baño con lavabo integrado, espejo con o sin luz, y apliques de iluminación sobre espejo. Acabado completo.' },
+        ].map(item => (
+          <div class="bg-[#F9F7F4] p-7">
+            <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
+            <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-8 bg-[#111827] p-7 text-white max-w-2xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Si solo tienes un baño</p>
+        <p class="text-sm text-gray-300 leading-relaxed mb-4">
+          Cuando la vivienda tiene un único baño, el plazo tiene la misma importancia que el resultado. Planificamos la obra para minimizar los días sin servicio: los primeros 4–6 días de demolición son los más críticos; a partir de ahí el espacio se va recuperando conforme avanza el trabajo. No comprometemos la impermeabilización por ahorrar un día.
+        </p>
+        <a href="/contacto/" class="inline-block px-6 py-3 font-bold text-sm uppercase tracking-widest text-white border border-[#A85535] hover:bg-[#A85535] transition-colors">
+          Consultar plazo para mi caso
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vida durante la obra -->
+  <section class="py-20 bg-[#111827]" aria-labelledby="h-vida-obra">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la obra</p>
+        <h2 id="h-vida-obra" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
+          Cómo organizamos la obra para que te afecte lo menos posible
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+      <p class="text-gray-300 leading-relaxed mb-8">
+        Una reforma de baño es incómoda. No hay forma de evitarlo del todo, pero sí de gestionarla bien desde el principio. Esto es lo que hacemos en cada obra:
+      </p>
+      <ul class="space-y-6">
+        {[
+          { title: 'Protección antes de empezar', desc: 'Cubrir suelos del pasillo, la entrada y las zonas comunes del edificio antes de retirar el primer azulejo. Los vecinos no tienen que vivir con polvo en el rellano porque tú reformas el baño.' },
+          { title: 'Limpieza diaria al terminar', desc: 'Al final de cada jornada, el baño y el pasillo quedan recogidos. No perfectos —es una obra— pero sin escombros sueltos ni herramientas en medio.' },
+          { title: 'Horario claro y respetado', desc: 'Empezamos a la hora acordada. Si hay un cambio, avisamos antes. No aparecemos a las 7:30 sin previo aviso ni desaparecemos tres días sin explicación.' },
+          { title: 'Un solo interlocutor', desc: 'No hablas con el fontanero un día, con el alicatador otro y con la empresa cuando hay un problema. Hay una persona responsable de la obra que tiene tu número y que es a quien llamas si tienes una pregunta.' },
+          { title: 'Los días más difíciles, anunciados', desc: 'Los primeros 3–4 días de demolición son los de más ruido y polvo. A partir del quinto día, la obra entra en fase de construcción: más silenciosa y con menos interferencia en tu vida diaria. Si solo tienes un baño, lo planificamos para que recuperes el acceso básico lo antes posible dentro del plazo.' },
+        ].map(item => (
+          <li class="flex gap-5">
+            <div class="w-1 flex-shrink-0 bg-[#A85535] rounded-full mt-1" style="min-height:1.25rem"></div>
+            <div>
+              <p class="font-semibold text-white mb-1">{item.title}</p>
+              <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p class="text-gray-500 text-sm mt-10 italic">
+        Todo esto no está en el presupuesto porque no tiene precio. Está en cómo trabajamos.
+      </p>
+    </div>
+  </section>
+
+  <!-- M5: Comparativa de opciones (table) -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-comparativa">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-comparativa" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        Opciones y precios orientativos
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        El precio final depende del estado de las instalaciones, de los materiales elegidos y del alcance concreto. Los siguientes rangos son orientativos para el Corredor del Henares; el presupuesto exacto se cierra tras la visita técnica gratuita.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-white">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Precios orientativos para baños estándar en el Corredor del Henares. IVA no incluido. El precio cerrado se fija en el contrato tras la visita.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th class="text-left py-3 px-5 font-bold text-gray-900">Alcance de la reforma</th>
+              <th class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo</th>
+              <th class="text-right py-3 px-5 font-bold text-gray-900">Plazo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: 'Cambio de bañera por ducha (sin cambio de alicatado)', price: 'Desde 1.800€', days: '3–5 días' },
+              { label: 'Reforma completa baño pequeño hasta 5 m²', price: 'Desde 3.200€', days: '10–15 días' },
+              { label: 'Reforma completa baño grande 6–8 m²', price: 'Desde 4.500€', days: '12–18 días' },
+              { label: 'Reforma con cambio de distribución o fontanería completa', price: 'Desde 5.500€', days: '15–25 días' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-5 text-gray-700">{row.label}</td>
+                <td class="py-3 px-5 text-right font-semibold text-[#A85535]">{row.price}</td>
+                <td class="py-3 px-5 text-right text-gray-500">{row.days}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Precio H2 -->
+  <section class="py-16 bg-white" aria-labelledby="h-precio">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-precio" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        ¿Cuánto cuesta reformar un baño en el Corredor del Henares?
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Una reforma completa de baño en el Corredor del Henares cuesta entre 3.200€ y 7.500€ para un baño estándar de 4 a 6 m², con materiales de calidad media-alta. El factor que más influye en el precio no es el tamaño del baño, sino el estado de las instalaciones existentes: tuberías que hay que renovar, fontanería que necesita reposicionarse o instalación eléctrica que requiere intervención.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        El cambio de bañera por ducha sin cambio de alicatado es la opción más económica, desde 1.800€. Una reforma integral que incluye todo (alicatado nuevo, fontanería revisada, sanitarios, mueble y mampara) parte de 3.200€ para un baño pequeño y puede llegar a 9.000€ en baños de más de 8 m² con redistribución de la fontanería.
+      </p>
+      <!-- TODO: enlace a /guias/cuanto-cuesta-reformar-un-bano/ cuando la guía esté publicada -->
+      <p class="text-gray-700 leading-relaxed">
+        Si necesitas un desglose detallado por partidas y factores que influyen en el precio, lo vemos en la visita técnica gratuita. El presupuesto cierra el precio exacto antes de empezar la obra: sin cláusulas de revisión ni extras no previstos.
+      </p>
+    </div>
+  </section>
+
+  <!-- M3: Licencias y trámites -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-licencias">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-licencias" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        ¿Necesitas licencia para reformar el baño?
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        La mayoría de las reformas de baño (cambio de alicatados, sustitución de sanitarios, cambio de bañera por ducha) son obras interiores que no afectan a elementos estructurales ni a instalaciones comunes del edificio. En los municipios del Corredor del Henares suelen tramitarse como comunicación previa o declaración responsable ante el ayuntamiento, con plazos de respuesta menores que una licencia de obra mayor.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        La licencia de obra mayor es necesaria cuando la reforma afecta a elementos estructurales del edificio (muros de carga, forjados) o cuando se modifica la distribución de una vivienda de manera que requiere proyecto técnico. Un simple traslado del punto de agua del lavabo o del inodoro dentro del mismo cuarto de baño raramente exige licencia mayor, pero mover los desagües a través de un forjado o hacia otra estancia sí puede requerirla.
+      </p>
+
+      <div class="bg-white border-l-4 border-amber-400 p-6 mb-6">
+        <p class="text-sm font-semibold text-gray-900 mb-2">Comunidades de propietarios</p>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Algunas comunidades de propietarios exigen notificación previa para obras que generen ruido o que impliquen corte de suministros. Si tu edificio tiene normativa interna al respecto, te informamos del procedimiento antes de empezar. El horario de obra y la normativa de ruido varía por municipio: <!-- TODO: verificar horarios de obra para cada municipio del Corredor --> habitualmente se permite trabajar de lunes a viernes en horario de mañana y tarde con descanso al mediodía.
+        </p>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed">
+        Nos encargamos de gestionar el trámite que corresponda en cada caso. Si necesitas licencia, la tramitamos nosotros antes de empezar la obra. El tiempo de tramitación queda reflejado en el contrato y no penaliza el plazo de entrega comprometido.
+      </p>
+    </div>
+  </section>
+
+  <!-- M6: Cómo comparar presupuestos (dl) -->
+  <section class="py-20 bg-white" aria-labelledby="h-comparar">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-comparar" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Cómo leer un presupuesto de reforma de baño
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        Dos presupuestos con el mismo importe total pueden cubrir alcances muy distintos. Antes de decidir solo por el precio, comprueba estas partidas en cada propuesta que recibas.
+      </p>
+      <dl class="divide-y divide-gray-100">
+        {[
+          {
+            term: 'Impermeabilización',
+            def: 'Debe aparecer como partida explícita con la especificación del material y la superficie cubierta (suelo + primer metro de pared en zona de ducha o bañera). Un presupuesto que no la menciona no la incluye o la ejecuta de forma insuficiente.',
+          },
+          {
+            term: 'Gestión de escombros',
+            def: 'Incluye el alquiler del contenedor o el transporte a punto limpio. Un presupuesto que la excluye traslada ese coste al cliente al final de la obra, generalmente en un momento en que no hay margen para negociar.',
+          },
+          {
+            term: 'Fontanería: qué se renueva y qué se conserva',
+            def: 'El presupuesto debe especificar si se renuevan las tuberías de acometida o solo se adaptan las conexiones existentes. Si el presupuesto dice "fontanería incluida" sin especificar el alcance, pide que lo aclaren.',
+          },
+          {
+            term: 'Materiales: calidad y formato especificado',
+            def: 'Un alicatado de 20×20 cm en gres de baja absorción no tiene el mismo precio ni la misma durabilidad que un porcelánico rectificado de 60×60 cm. El presupuesto debe especificar el material o incluir una selección de catálogo.',
+          },
+          {
+            term: 'Precio cerrado o precio estimado',
+            def: 'Un precio cerrado no cambia aunque aparezcan imprevistos menores. Un precio estimado puede ampliarse durante la obra. Pregunta siempre cuál es el mecanismo para gestionar los imprevistos antes de firmar.',
+          },
+          {
+            term: 'Garantía de ejecución',
+            def: 'La garantía debe cubrir la ejecución (humedades, desprendimientos, funcionamiento de las instalaciones) durante al menos 2 años. La garantía de los materiales la da el fabricante; la garantía de la obra la da quien ejecuta.',
+          },
+        ].map(({ term, def }) => (
+          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
+            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
+            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-8 bg-[#F9F7F4] border-l-4 border-[#A85535] p-6">
+        <p class="text-sm font-semibold text-gray-900 mb-3">Precio cerrado e imprevistos: cómo se combinan</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica.
+          Si al abrir el baño aparece algo que no era accesible antes —una tubería deteriorada
+          detrás del alicatado, humedad estructural en el soporte— lo comunicamos antes de
+          tocar nada y decidimos contigo si se incorpora a esta obra o se deja para una
+          intervención posterior. Nunca actuamos sin tu autorización. En la mayoría de reformas
+          de baño del Corredor, esto no ocurre. Cuando ocurre, hay una persona que llama,
+          explica con detalle y espera tu decisión.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- M7: Plazos reales (table) -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-plazos">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-plazos" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Plazos reales de una reforma de baño
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        El plazo varía según el alcance, pero la secuencia de fases es siempre la misma: primero se demoleen y retiran todos los revestimientos, luego se ejecuta la impermeabilización (que necesita tiempo de curado), después se alicata y finalmente se instalan sanitarios, mueble y mampara. No hay atajos en el orden de estas fases: saltarse el tiempo de curado de la impermeabilización es la causa más habitual de las humedades que aparecen a los 2 o 3 años de una reforma.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-white">
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th class="text-left py-3 px-5 font-bold text-gray-900">Fase</th>
+              <th class="text-right py-3 px-4 font-bold text-gray-900">Solo cambio bañera/ducha</th>
+              <th class="text-right py-3 px-4 font-bold text-gray-900">Reforma completa</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { fase: 'Demolición y retirada', solo: '1 día', completa: '1–2 días' },
+              { fase: 'Reparación soporte y impermeabilización', solo: '1 día', completa: '2–3 días' },
+              { fase: 'Curado de impermeabilización (mínimo)', solo: '24 h', completa: '24–48 h' },
+              { fase: 'Alicatado y solado', solo: '—', completa: '3–5 días' },
+              { fase: 'Fraguado de rejunte', solo: '—', completa: '24 h' },
+              { fase: 'Instalación de fontanería y sanitarios', solo: '1 día', completa: '1–2 días' },
+              { fase: 'Mueble, mampara y acabados', solo: '1 día', completa: '1–2 días' },
+              { fase: 'Total orientativo', solo: '3–5 días hábiles', completa: '10–15 días hábiles' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i === 7 ? 'bg-[#A85535]/5 font-semibold' : i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-5 text-gray-700">{row.fase}</td>
+                <td class="py-3 px-4 text-right text-gray-600">{row.solo}</td>
+                <td class="py-3 px-4 text-right text-gray-600">{row.completa}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-400 mt-4">
+        Plazos para baño estándar de 4–6 m² en el Corredor del Henares. La fecha de entrega queda fijada en el contrato antes de empezar la obra.
+      </p>
+    </div>
+  </section>
+
+  <!-- M8: Compromisos (Compromisos.astro, variante full) -->
+  <section class="py-20 bg-white" aria-labelledby="h-compromisos">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-12">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
+        <h2 id="h-compromisos" class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+          Nuestros compromisos en la reforma de tu baño
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-4"></div>
+        <p class="text-gray-600 max-w-2xl">
+          Estos compromisos se recogen en el contrato que firmamos antes de empezar. No son cláusulas en letra pequeña: son el núcleo del acuerdo.
+        </p>
+      </div>
+      <Compromisos variant="full" />
+    </div>
+  </section>
+
+  <!-- Proceso paso a paso -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-proceso">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
+        <h2 id="h-proceso" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Proceso de la reforma de baño: de la visita a la entrega
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { n: '01', title: 'Visita técnica gratuita', desc: 'Medimos el baño, evaluamos el estado de instalaciones y escuchamos qué quieres cambiar. Sin compromiso ni coste.' },
+          { n: '02', title: 'Presupuesto cerrado en 48h', desc: 'Presupuesto detallado con todas las partidas. Materiales especificados. Precio que no cambia una vez firmado.' },
+          { n: '03', title: 'Selección de materiales', desc: 'Te acompañamos en la selección de alicatados, plato de ducha, sanitarios y mueble antes de la fecha de inicio de obra.' },
+          { n: '04', title: 'Demolición e impermeabilización', desc: 'Vaciado completo del baño, reparación del soporte y aplicación de impermeabilizante. Es la base que determina la durabilidad del resultado.' },
+          { n: '05', title: 'Alicatado, instalación y acabados', desc: 'Revestimiento de paredes y suelo, instalación de ducha o bañera, sanitarios, mampara, mueble e iluminación. Todo coordinado en un único equipo.' },
+          { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo. Limpieza de obra. Entrega con garantía de 2 años sobre la ejecución y materiales del fabricante.' },
+        ].map(step => (
+          <div class="bg-white p-7">
+            <div class="text-4xl font-black text-gray-100 mb-4 leading-none">{step.n}</div>
+            <h3 class="text-base font-bold text-gray-900 mb-2">{step.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Resultado cotidiano -->
+  <div class="bg-white py-10">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-base text-gray-700 italic border-l-4 border-[#A85535] pl-5">
+        El jueves de la segunda semana ya usas el baño nuevo. En un mes ya no recuerdas
+        exactamente cómo era el anterior, solo que tardabas más en limpiarlo, que el agua
+        se quedaba en la mampara y que el extractor hacía ruido. Eso es lo que cambia
+        una reforma bien hecha: no el alicatado, sino la experiencia de cada mañana.
+      </p>
+    </div>
+  </div>
+
+  <!-- Dónde hacemos reformas de baño -->
+  <section class="py-16 bg-white" aria-labelledby="h-zonas">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 id="h-zonas" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        Reformas de baño en el Corredor del Henares: todos los municipios
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
+        Hacemos reformas de baño en los ocho municipios del Corredor del Henares sin coste adicional de desplazamiento. Elige tu municipio para ver precios orientativos, ejemplos de reformas ejecutadas y los plazos habituales en tu zona.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {zones.map(z => (
+          <a
+            href={`/reforma-banos/${z.slug}/`}
+            class="group block p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] hover:shadow-md transition-all duration-200"
+          >
+            <p class="text-sm font-bold text-gray-900 group-hover:text-[#A85535] transition-colors">
+              Reforma de baños en {z.name}
+            </p>
+            <p class="text-xs text-gray-400 mt-1">Ver precios y ejemplos →</p>
+          </a>
+        ))}
+      </div>
+
+      <!-- Otros servicios relacionados -->
+      <div class="mt-10 pt-8 border-t border-gray-100">
+        <p class="text-sm text-gray-500 mb-4">Si estás valorando reformar más zonas de la vivienda a la vez:</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/servicios/reformas-integrales/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reformas integrales</a>
+          <a href="/servicios/reforma-cocinas/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de cocinas</a>
+          <a href="/servicios/reforma-pisos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de pisos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
+        <h2 id="h-faq" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Todo lo que necesitas saber antes de reformar el baño
+        </h2>
+        <div class="w-12 h-1 bg-[#A85535]"></div>
+      </div>
+      <div class="divide-y divide-gray-200">
+        {faqs.map(faq => (
+          <details class="group py-5">
+            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
+              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
+              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- M9: Obras realizadas (placeholder, oculto) -->
+  <!-- TODO: activar cuando haya fotografías reales de reformas de baño en el Corredor -->
+  <!-- Solo imágenes de obras ejecutadas; nunca stock ni de otras ciudades -->
+
+  <!-- CTA Final -->
+  <section class="py-20 bg-[#A85535]" aria-labelledby="h-cta-final">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">
+        ¿Cuánto cuesta reformar tu baño?
+      </h2>
+      <p class="text-white/80 mb-3">Visita técnica gratuita. Presupuesto cerrado en 48h.</p>
+      <p class="text-white/60 text-sm mb-8">Sin compromiso. El precio que firmamos es el precio que pagas.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">
+          Solicitar presupuesto
+        </a>
+        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/40 hover:border-white transition-colors">
+          ☎ {SITE.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

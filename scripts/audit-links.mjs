@@ -5,6 +5,13 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
 
+// Threshold: SEO pages should receive >= MIN_INBOUND links from <main> content
+const MIN_INBOUND = 8;
+
+// Pages excluded from inbound-link threshold check
+const STANDALONE = new Set(['/', '/gracias/', '/sitemap.xml', '/robots.txt',
+  '/privacidad/', '/aviso-legal/', '/cookies/']);
+
 function distToUrl(p) {
   const rel = p.slice(DIST.length);
   if (rel.endsWith('/index.html')) return rel.slice(0, -'index.html'.length) || '/';
@@ -19,8 +26,17 @@ function linkExists(href) {
     || existsSync(join(DIST, base));
 }
 
+// Extract hrefs only from within <main>…</main> to avoid nav/footer inflation
+function extractMainHrefs(html) {
+  const match = html.match(/<main[\s>][\s\S]*?<\/main>/i);
+  if (!match) return [];
+  const mainHtml = match[0];
+  return [...mainHtml.matchAll(/href="(\/[^"#?]*)/g)].map(m => m[1]);
+}
+
 const pages = new Map();
-const inbound = new Map();
+const inboundAll = new Map();   // all hrefs (for broken-link detection)
+const inboundMain = new Map();  // hrefs from <main> only (for threshold)
 
 function walk(dir) {
   for (const name of readdirSync(dir)) {
@@ -29,7 +45,8 @@ function walk(dir) {
     if (extname(name) !== '.html') continue;
     const url = distToUrl(p);
     pages.set(url, readFileSync(p, 'utf8'));
-    if (!inbound.has(url)) inbound.set(url, new Set());
+    if (!inboundAll.has(url))  inboundAll.set(url, new Set());
+    if (!inboundMain.has(url)) inboundMain.set(url, new Set());
   }
 }
 
@@ -38,31 +55,49 @@ walk(DIST);
 let broken = 0;
 
 for (const [pageUrl, html] of pages) {
-  const hrefs = [...html.matchAll(/href="(\/[^"#?]*)/g)].map(m => m[1]);
-  for (const href of hrefs) {
-    // Track inbound (normalize trailing slash)
-    const canonical = href + (href.endsWith('/') ? '' : '/');
-    if (inbound.has(canonical)) inbound.get(canonical).add(pageUrl);
-    else if (inbound.has(href)) inbound.get(href).add(pageUrl);
+  // All hrefs (for broken-link detection)
+  const allHrefs = [...html.matchAll(/href="(\/[^"#?]*)/g)].map(m => m[1]);
+  for (const href of allHrefs) {
+    const canonical = href.endsWith('/') ? href : href + '/';
+    if (inboundAll.has(canonical)) inboundAll.get(canonical).add(pageUrl);
+    else if (inboundAll.has(href)) inboundAll.get(href).add(pageUrl);
 
-    // Verify link target exists
     if (!linkExists(href)) {
       console.error(`❌  [${pageUrl}]  →  ${href}`);
       broken++;
     }
   }
+
+  // Main-only hrefs (for inbound threshold)
+  for (const href of extractMainHrefs(html)) {
+    const canonical = href.endsWith('/') ? href : href + '/';
+    if (inboundMain.has(canonical)) inboundMain.get(canonical).add(pageUrl);
+    else if (inboundMain.has(href)) inboundMain.get(href).add(pageUrl);
+  }
 }
 
-// Pages with no inbound links (exclude known standalone pages)
-const STANDALONE = new Set(['/', '/gracias/', '/sitemap.xml', '/robots.txt']);
-const orphans = [...inbound.entries()]
+// Orphans: pages with zero inbound links from anywhere
+const orphans = [...inboundAll.entries()]
   .filter(([url, src]) => src.size === 0 && !STANDALONE.has(url))
   .map(([url]) => url)
   .sort();
 
 if (orphans.length > 0) {
-  console.log('\nPáginas sin enlaces entrantes internos:');
+  console.log('\nPáginas sin enlaces entrantes:');
   for (const url of orphans) console.warn(`  ⚠  ${url}`);
+}
+
+// Low-inbound pages: SEO pages with fewer than MIN_INBOUND main-content links
+const lowInbound = [...inboundMain.entries()]
+  .filter(([url, src]) => !STANDALONE.has(url) && src.size < MIN_INBOUND)
+  .map(([url, src]) => ({ url, count: src.size }))
+  .sort((a, b) => a.count - b.count);
+
+if (lowInbound.length > 0) {
+  console.log(`\nPáginas con < ${MIN_INBOUND} enlaces entrantes desde <main>:`);
+  for (const { url, count } of lowInbound) {
+    console.warn(`  ⚠  ${String(count).padStart(3)}  ${url}`);
+  }
 }
 
 console.log(`\nEnlaces verificados en ${pages.size} páginas.`);
@@ -73,7 +108,9 @@ if (broken > 0) {
   console.log('✅  Sin enlaces rotos.');
   if (orphans.length > 0) {
     console.warn(`⚠   ${orphans.length} página(s) sin enlaces entrantes.\n`);
+  } else if (lowInbound.length > 0) {
+    console.warn(`⚠   ${lowInbound.length} página(s) por debajo del umbral de ${MIN_INBOUND} enlaces desde <main>.\n`);
   } else {
-    console.log('✅  Sin páginas huérfanas.\n');
+    console.log('✅  Sin páginas huérfanas ni por debajo del umbral.\n');
   }
 }

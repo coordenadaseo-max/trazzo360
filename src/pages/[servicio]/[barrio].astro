@@ -13,6 +13,12 @@ export const getStaticPaths: GetStaticPaths = () =>
 
 const { service, zone } = Astro.props;
 
+const titlePart = (service as any).titleBarrio ?? service.title;
+const rawTitle = `${titlePart} en ${zone.name} | ${SITE.name}`;
+const pageTitle = rawTitle.length < 45
+  ? `${titlePart} en ${zone.name} · Precio Cerrado | ${SITE.name}`
+  : rawTitle;
+
 const isPrimary = zone.primary;
 const cityPresence = isPrimary
   ? `con presencia habitual en ${zone.name}`
@@ -107,7 +113,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
 ---
 
 <Layout
-  title={`${service.title} en ${zone.name} | ${SITE.name}`}
+  title={pageTitle}
   description={SERVICE_ZONE_META[service.slug]?.[zone.slug] ?? `${service.title} en ${zone.name} desde ${service.priceFrom}€. Precio cerrado y presupuesto gratuito en 48h. ${SITE.name}.`}
   schema={[pageSchema, faqSchema, breadcrumbSchema]}
 >
@@ -218,6 +224,9 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
           ☎ {SITE.phoneDisplay}
         </a>
         <p class="text-xs text-gray-500 text-center">Presupuesto cerrado en 48h</p>
+        <a href={`/calculadora-precio-reforma/?servicio=${service.slug}`} class="block text-center text-xs text-gray-400 hover:text-white mt-3 transition-colors">
+          Estimar precio antes →
+        </a>
       </div>
     </div>
   </section>

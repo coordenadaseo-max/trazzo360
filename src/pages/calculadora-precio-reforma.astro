@@ -1,0 +1,988 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CALC_SERVICES, MODIFIERS } from '../data/calculator';
+import { SITE } from '../data/site';
+
+const pageTitle = 'Calculadora de Presupuesto de Reforma | Trazzo360';
+const pageDesc = 'Calcula el coste orientativo de tu reforma en el Corredor del Henares sin IVA. Integral, baño, cocina, local y comunidad. Sin registro, resultado inmediato.';
+const canonical = `${SITE.url}/calculadora-precio-reforma/`;
+
+// ── Schemas ──────────────────────────────────────────────────────────────────
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Calculadora de presupuesto', item: canonical },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: '¿Los precios de la calculadora incluyen IVA?', acceptedAnswer: { '@type': 'Answer', text: 'No. Todos los precios son sin IVA. En vivienda habitual el IVA de reforma es del 10 %; en locales comerciales, el 21 %. El presupuesto definitivo especificará base imponible e IVA por separado.' } },
+    { '@type': 'Question', name: '¿Qué se puede reformar con 20.000 €?', acceptedAnswer: { '@type': 'Answer', text: 'Con 20.000 € (sin IVA) puedes afrontar una reforma de acabados en un piso de 45–55 m² en calidad esencial: suelos nuevos, pintura completa y carpintería interior. No alcanza para una reforma integral con instalaciones nuevas.' } },
+    { '@type': 'Question', name: '¿Y con 40.000 €?', acceptedAnswer: { '@type': 'Answer', text: 'Con 40.000 € (sin IVA) puedes hacer una reforma de acabados de alta calidad en 65–90 m², o bien una reforma integral esencial en aproximadamente 50–60 m²: cuadro nuevo, fontanería completa, redistribución, baño y cocina.' } },
+    { '@type': 'Question', name: '¿Cuánto cuesta una reforma integral por m²?', acceptedAnswer: { '@type': 'Answer', text: 'En el Corredor del Henares, una reforma integral con instalaciones nuevas parte de 650 €/m² en calidad esencial, sube a 800–1.000 €/m² en calidad media y alcanza 1.000–1.400 €/m² en alta. Valores sin IVA.' } },
+    { '@type': 'Question', name: '¿Qué es lo más caro de una reforma?', acceptedAnswer: { '@type': 'Answer', text: 'Las instalaciones (electricidad y fontanería) suelen representar el 20–25 % del presupuesto en una reforma integral. En cocina, los muebles y la encimera pueden suponer hasta el 40–45 % del total.' } },
+    { '@type': 'Question', name: '¿Cuánto tarda una reforma integral?', acceptedAnswer: { '@type': 'Answer', text: 'Una reforma integral de piso tarda entre 10 y 14 semanas en calidad esencial, 12–16 semanas en media y 14–20 semanas en alta. El plazo se firma en el contrato con penalización en caso de retraso.' } },
+    { '@type': 'Question', name: '¿Qué diferencia hay entre reforma de acabados y reforma integral?', acceptedAnswer: { '@type': 'Answer', text: 'Una reforma de acabados (350–800 €/m²) renueva suelos, pintura y carpintería conservando cuadro eléctrico y fontanería existentes. Una reforma integral (650–1.400 €/m²) incluye instalaciones nuevas: cuadro, tuberías, saneamiento y redistribución si es necesaria.' } },
+    { '@type': 'Question', name: '¿Por qué hay tanta diferencia de precio entre presupuestos?', acceptedAnswer: { '@type': 'Answer', text: 'Los presupuestos pueden diferir porque tienen alcances distintos, calidades de material diferentes o porque uno de ellos excluye partidas que luego se añaden como extra. La clave es comparar el alcance escrito, no el número final.' } },
+    { '@type': 'Question', name: '¿Se puede reformar viviendo en la casa?', acceptedAnswer: { '@type': 'Answer', text: 'Depende del alcance. Una reforma de solo acabados (suelos, pintura) puede hacerse estancia por estancia, pero una reforma integral con instalaciones nuevas requiere vaciar el piso por la afección eléctrica y los olores de obra.' } },
+    { '@type': 'Question', name: '¿Cuándo necesito proyecto técnico o licencia de obras?', acceptedAnswer: { '@type': 'Answer', text: 'En general, si hay cambio de distribución de tabiques o intervención en elementos estructurales, se necesita licencia de obra mayor con proyecto técnico. Las reformas sin cambio de distribución suelen tramitarse como obra menor. En locales comerciales casi siempre se requiere proyecto y licencia de actividad.' } },
+  ],
+};
+
+// ── Función de formato ────────────────────────────────────────────────────────
+function fmt(n: number) { return Math.round(n).toLocaleString('es-ES'); }
+
+// ── Tabla de referencia estática ──────────────────────────────────────────────
+const REF_SURFACES: Record<string, number[]> = {
+  'reformas-integrales': [60, 80, 100],
+  'reforma-pisos':       [60, 80, 100],
+  'locales-comerciales': [40, 80, 150],
+};
+
+function refRange(priceMin: number, priceMax: number, m2: number) {
+  return { low: priceMin * m2, high: priceMax * m2 };
+}
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  canonical={canonical}
+  schema={[breadcrumbSchema, faqSchema]}
+>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Calculadora de presupuesto</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero M1 — Respuesta directa -->
+  <section class="max-w-5xl mx-auto px-4 pt-10 pb-6">
+    <h1 class="text-3xl md:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Calculadora de presupuesto de reforma</h1>
+    <p class="text-lg text-gray-700 leading-relaxed mb-2">
+      Una reforma en el Corredor del Henares parte de <strong>350–650 €/m²</strong> en calidad esencial y supera los <strong>1.400 €/m²</strong> en alta. Un baño completo oscila entre <strong>3.500 y 20.000 €</strong> según tamaño y materiales; una cocina, entre <strong>5.000 y 35.000 €</strong>. Todos los valores sin IVA.
+    </p>
+    <p class="text-sm text-gray-500">Orienta tu presupuesto eligiendo el servicio, el tramo y los modificadores. El precio definitivo se firma en el contrato tras la visita técnica gratuita.</p>
+  </section>
+
+  <!-- Calculadora interactiva -->
+  <section class="max-w-5xl mx-auto px-4 pb-12">
+    <form id="calc-form" novalidate class="space-y-5">
+
+      <!-- Fieldset 1: Servicio -->
+      <fieldset class="border border-gray-200 rounded-xl p-6">
+        <legend class="text-base font-bold text-gray-800 px-1">1. ¿Qué quieres reformar?</legend>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
+          {CALC_SERVICES.map((svc, i) => (
+            <label class="service-card flex flex-col gap-1 cursor-pointer border-2 rounded-lg p-3 transition-colors border-gray-200 hover:border-gray-400" data-slug={svc.slug}>
+              <input type="radio" name="servicio" value={svc.slug} checked={i === 0} class="sr-only" />
+              <span class="font-semibold text-sm text-gray-900 leading-tight">{svc.label}</span>
+              <span class="text-xs text-gray-500 leading-snug">{svc.hint}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <!-- Fieldset 2: Input (JS renders) -->
+      <fieldset id="fs-input" class="border border-gray-200 rounded-xl p-6">
+        <legend class="text-base font-bold text-gray-800 px-1" id="input-legend">2. Superficie o tramo</legend>
+        <div id="input-area" class="mt-4"></div>
+      </fieldset>
+
+      <!-- Fieldset 3: Modificadores (collapsible) -->
+      <details id="fs-mods" class="border border-gray-200 rounded-xl">
+        <summary class="text-base font-bold text-gray-800 px-6 py-4 cursor-pointer list-none flex justify-between items-center">
+          <span>3. Afinar la estimación <span class="text-xs font-normal text-gray-400 ml-2">(instalaciones, planta, distribución...)</span></span>
+          <span class="text-gray-400 text-sm">▼</span>
+        </summary>
+        <div id="mods-area" class="px-6 pb-6 grid md:grid-cols-2 gap-6"></div>
+      </details>
+
+    </form>
+
+    <!-- Resultado: tabla comparativa y detalle -->
+    <div id="calc-result" class="mt-6 hidden">
+      <h2 class="text-lg font-bold text-gray-800 mb-4">Estimación comparativa sin IVA</h2>
+      <div id="comparison-table"></div>
+      <div id="detail-panel" class="mt-4"></div>
+    </div>
+
+    <output id="calc-status" role="status" aria-live="polite" class="block mt-4 text-sm text-gray-500 min-h-[1.5rem]"></output>
+
+    <noscript>
+      <div class="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
+        Activa JavaScript para usar la calculadora interactiva. A continuación encontrarás las tablas de precios de referencia.
+      </div>
+    </noscript>
+  </section>
+
+  <!-- M2 — De qué depende el precio -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-black text-gray-900 mb-2">De qué depende el precio de una reforma</h2>
+      <div class="w-10 h-1 bg-[#A85535] mb-8"></div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white border border-gray-200 rounded-xl p-6">
+          <div class="text-2xl mb-3">⚡</div>
+          <h3 class="font-bold text-gray-900 mb-2">Estado de las instalaciones</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Un cuadro eléctrico anterior al REBT de 2002 o tuberías de plomo o hierro galvanizado obligan a renovarlos aunque el cliente no lo pida. Es el factor que más diferencia un presupuesto de acabados de uno integral. Puede suponer entre el 15 % y el 25 % del total.</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-xl p-6">
+          <div class="text-2xl mb-3">🏗️</div>
+          <h3 class="font-bold text-gray-900 mb-2">Cambio de distribución</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Cada tabique derribado implica permisos, gestión de escombros y reubicación de puntos de luz y fontanería. Una redistribución completa puede incrementar el presupuesto un 20–30 % sobre la misma reforma sin tocar tabiques.</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-xl p-6">
+          <div class="text-2xl mb-3">📅</div>
+          <h3 class="font-bold text-gray-900 mb-2">Antigüedad del edificio</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Los edificios anteriores a 1980 presentan mayor probabilidad de sorpresas al abrir: asbesto en pegamentos, tuberías empotradas en mal estado o cotas irregulares. Por eso se aplica un factor corrector sobre el precio base en viviendas muy antiguas.</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-xl p-6">
+          <div class="text-2xl mb-3">🪜</div>
+          <h3 class="font-bold text-gray-900 mb-2">Planta y acceso a obra</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Subir materiales y bajar escombros a pie por ocho plantas puede encarecer los portes un 8–10 % respecto a una planta baja. Cuando hay ascensor disponible el sobrecoste es menor pero existe, porque el acceso siempre es más lento que con montacargas.</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-xl p-6">
+          <div class="text-2xl mb-3">🧱</div>
+          <h3 class="font-bold text-gray-900 mb-2">Calidad de los materiales</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">La diferencia entre un porcelánico estándar y uno de gama alta puede ser de 20–60 €/m² solo en material. En cocina, la encimera y los muebles representan hasta el 42 % del presupuesto total; elegir mármol natural frente a laminado puede doblar esa partida.</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-xl p-6">
+          <div class="text-2xl mb-3">📋</div>
+          <h3 class="font-bold text-gray-900 mb-2">Licencias y proyecto técnico</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Reformas con cambio de distribución o en locales comerciales requieren proyecto técnico firmado por arquitecto o aparejador y licencia municipal. Los honorarios técnicos oscilan entre 1.500 y 8.000 € según el tipo de obra, y las tasas municipales varían por municipio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabla de referencia estática (noscript fallback + SEO) -->
+  <section class="py-14 max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl font-black text-gray-900 mb-2">Tabla de precios de referencia orientativos</h2>
+    <div class="w-10 h-1 bg-[#A85535] mb-4"></div>
+    <p class="text-sm text-gray-500 mb-8">Todos los precios son sin IVA y sin incluir licencias, honorarios técnicos ni tasas municipales, salvo que se indique. Son orientativos: el precio real se fija tras la visita técnica gratuita.</p>
+
+    <!-- Reforma integral y parcial: por m² -->
+    {CALC_SERVICES.filter(s => s.inputType === 'superficie' && s.slug !== 'locales-comerciales').map(svc => {
+      const surfs = REF_SURFACES[svc.slug] ?? [60, 80, 100];
+      const qs: Array<'esencial'|'media'|'alta'> = ['esencial', 'media', 'alta'];
+      return (
+        <div class="mb-10">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">{svc.label}</h3>
+          <div class="overflow-x-auto rounded-xl border border-gray-200">
+            <table class="w-full text-sm border-collapse">
+              <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">{svc.surfaceLabel} · precios sin IVA · orientativos</caption>
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2.5 font-semibold text-gray-700">Calidad</th>
+                  {surfs.map(m2 => <th class="text-right px-4 py-2.5 font-semibold text-gray-700">{m2} m²</th>)}
+                  <th class="text-right px-4 py-2.5 font-semibold text-gray-700">€/m²</th>
+                </tr>
+              </thead>
+              <tbody>
+                {qs.map((q, qi) => {
+                  const p2 = svc.pricesPerM2![q];
+                  return (
+                    <tr class:list={['border-t border-gray-100', qi % 2 === 0 ? 'bg-white' : 'bg-gray-50/40']}>
+                      <td class="px-4 py-2.5 font-medium text-gray-800">{svc.qualities[q].label}</td>
+                      {surfs.map(m2 => {
+                        const r = refRange(p2.min, p2.max, m2);
+                        return <td class="px-4 py-2.5 text-right text-gray-700 tabular-nums whitespace-nowrap">{fmt(r.low)}–{fmt(r.high)} €</td>;
+                      })}
+                      <td class="px-4 py-2.5 text-right text-gray-500 tabular-nums whitespace-nowrap">{p2.min}–{p2.max}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    })}
+
+    <!-- Baño y cocina: por tramo -->
+    {CALC_SERVICES.filter(s => s.inputType === 'tramo').map(svc => {
+      const qs: Array<'esencial'|'media'|'alta'> = ['esencial', 'media', 'alta'];
+      return (
+        <div class="mb-10">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">{svc.label}</h3>
+          <div class="overflow-x-auto rounded-xl border border-gray-200">
+            <table class="w-full text-sm border-collapse">
+              <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">Precio total por {svc.slug.includes('bano') ? 'baño' : 'cocina'} · sin IVA · orientativo</caption>
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2.5 font-semibold text-gray-700">Tramo</th>
+                  {qs.map(q => <th class="text-right px-4 py-2.5 font-semibold text-gray-700">{svc.qualities[q].label.replace(/\w+ /, '')}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {svc.tranches!.map((tranche, ti) => (
+                  <tr class:list={['border-t border-gray-100', ti % 2 === 0 ? 'bg-white' : 'bg-gray-50/40']}>
+                    <td class="px-4 py-2.5 font-medium text-gray-800">
+                      {tranche.label}
+                      {tranche.sublabel && <span class="text-xs text-gray-400 ml-2 font-normal">{tranche.sublabel}</span>}
+                    </td>
+                    {qs.map(q => (
+                      <td class="px-4 py-2.5 text-right text-gray-700 tabular-nums whitespace-nowrap">
+                        {fmt(tranche.prices[q].min)}–{fmt(tranche.prices[q].max)} €
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    })}
+
+    <!-- Local comercial -->
+    {CALC_SERVICES.filter(s => s.slug === 'locales-comerciales').map(svc => {
+      const surfs = [40, 80, 150];
+      const qs: Array<'esencial'|'media'|'alta'> = ['esencial', 'media', 'alta'];
+      return (
+        <div class="mb-10">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">{svc.label} <span class="text-sm font-normal text-gray-500">· solo obra (sin proyecto ni licencia)</span></h3>
+          <div class="overflow-x-auto rounded-xl border border-gray-200">
+            <table class="w-full text-sm border-collapse">
+              <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">Solo coste de obra · sin proyecto ni licencia · sin IVA</caption>
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2.5 font-semibold text-gray-700">Calidad</th>
+                  {surfs.map(m2 => <th class="text-right px-4 py-2.5 font-semibold text-gray-700">{m2} m²</th>)}
+                  <th class="text-right px-4 py-2.5 font-semibold text-gray-700">€/m²</th>
+                </tr>
+              </thead>
+              <tbody>
+                {qs.map((q, qi) => {
+                  const p2 = svc.pricesPerM2![q];
+                  return (
+                    <tr class:list={['border-t border-gray-100', qi % 2 === 0 ? 'bg-white' : 'bg-gray-50/40']}>
+                      <td class="px-4 py-2.5 font-medium text-gray-800">{svc.qualities[q].label}</td>
+                      {surfs.map(m2 => {
+                        const r = refRange(p2.min, p2.max, m2);
+                        return <td class="px-4 py-2.5 text-right text-gray-700 tabular-nums whitespace-nowrap">{fmt(r.low)}–{fmt(r.high)} €</td>;
+                      })}
+                      <td class="px-4 py-2.5 text-right text-gray-500 tabular-nums">{p2.min}–{p2.max}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    })}
+
+    <!-- Comunidades de vecinos -->
+    {CALC_SERVICES.filter(s => s.slug === 'comunidades-vecinos').map(svc => {
+      const qs: Array<'esencial'|'media'|'alta'> = ['esencial', 'media', 'alta'];
+      return (
+        <div class="mb-10">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">{svc.label} <span class="text-sm font-normal text-gray-500">· edificio ~10 viviendas · sin IVA</span></h3>
+          <div class="overflow-x-auto rounded-xl border border-gray-200">
+            <table class="w-full text-sm border-collapse">
+              <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">Orientativo para edificio de 8–12 viviendas · sin IVA</caption>
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2.5 font-semibold text-gray-700">Elemento</th>
+                  {qs.map(q => <th class="text-right px-4 py-2.5 font-semibold text-gray-700">{svc.qualities[q].label.replace(/\w+ /, '')}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {svc.elements!.map((el, ei) => (
+                  <tr class:list={['border-t border-gray-100', ei % 2 === 0 ? 'bg-white' : 'bg-gray-50/40']}>
+                    <td class="px-4 py-2.5 font-medium text-gray-800">
+                      {el.icon} {el.label}
+                      {el.note && <span class="text-xs text-gray-400 block font-normal">{el.note}</span>}
+                    </td>
+                    {qs.map(q => (
+                      <td class="px-4 py-2.5 text-right text-gray-700 tabular-nums whitespace-nowrap">
+                        {fmt(el.prices[q].min)}–{fmt(el.prices[q].max)} €
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    })}
+  </section>
+
+  <!-- M3 — Por qué dos presupuestos no son comparables -->
+  <section class="bg-[#F9F7F4] py-14">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-black text-gray-900 mb-2">Por qué dos presupuestos con el mismo total no son comparables</h2>
+      <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
+      <p class="text-gray-700 leading-relaxed mb-4">Un presupuesto de 40.000 € puede significar cosas muy distintas. Uno puede incluir cuadro eléctrico nuevo, fontanería completa y redistribución de tabiques; el otro puede omitirlos y añadirlos como "extras de obra" cuando ya empezó la reforma. El número final es el mismo, el alcance real no.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">Los cuatro puntos que hay que revisar antes de comparar: <strong>qué instalaciones están incluidas</strong> (electricidad, fontanería, saneamiento), <strong>si hay proyecto técnico</strong> o solo albaranes, <strong>cómo se gestionan los imprevistos</strong> (precio cerrado o por administración) y <strong>si el plazo lleva penalización</strong> por retraso. Un presupuesto que no responde estas cuatro preguntas en el papel no es un presupuesto: es una estimación.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">Consulta los hubs de cada servicio para ver qué incluye cada nivel de calidad, qué documentación deberías pedir y cómo comparar presupuestos correctamente:</p>
+      <div class="flex flex-wrap gap-3 mt-4">
+        {CALC_SERVICES.filter(s => s.hubSlug).map(svc => (
+          <a href={`/servicios/${svc.hubSlug}/`} class="inline-block text-sm font-medium text-[#A85535] border border-[#A85535] rounded-lg px-4 py-2 hover:bg-[#A85535] hover:text-white transition-colors">
+            {svc.label} →
+          </a>
+        ))}
+      </div>
+      <!-- TODO: enlace a guía "Cómo revisar un presupuesto de reforma" (prompt G) -->
+    </div>
+  </section>
+
+  <!-- M4 — Qué NO suele estar incluido -->
+  <section class="py-14 max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl font-black text-gray-900 mb-2">Qué NO suele estar incluido en un presupuesto de reforma</h2>
+    <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
+    <p class="text-gray-700 leading-relaxed mb-6">Esta sección es la más ignorada y la que más conflictos genera durante la obra. Léela antes de firmar cualquier contrato.</p>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="space-y-4">
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+          <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Electrodomésticos</p>
+            <p class="text-xs text-gray-600 mt-1">La encimera de inducción, el horno, la campana, el frigorífico y el lavavajillas casi nunca están en el presupuesto de cocina, salvo que se especifique. Lo mismo con la lavadora y el secador.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+          <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Mobiliario no fijo</p>
+            <p class="text-xs text-gray-600 mt-1">Mesas, sillas, sofás, camas y armarios con puertas correderas no empotradas. Los armarios a medida empotrados sí suelen incluirse en reformas de alta gama si se especifican.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+          <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Aire acondicionado y climatización</p>
+            <p class="text-xs text-gray-600 mt-1">La preinstalación (tubería de cobre y eléctrico) puede estar incluida, pero las unidades interiores y exteriores raramente lo están. Confirma siempre si el presupuesto contempla solo preinstalación o el equipo completo.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+          <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">IVA</p>
+            <p class="text-xs text-gray-600 mt-1">El IVA en obra de reforma en vivienda habitual es del 10 %. En locales comerciales, del 21 %. La calculadora y la mayoría de presupuestos del sector trabajan en base imponible (sin IVA).</p>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+          <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Desperfectos ocultos</p>
+            <p class="text-xs text-gray-600 mt-1">Cuando se abren las paredes o el suelo pueden aparecer tuberías en peor estado del esperado, humedades ocultas o cotas irregulares. Son imprevistos genuinos: ningún presupuesto puede incluirlos sin haber visto la obra abierta.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+          <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Obras en elementos comunes</p>
+            <p class="text-xs text-gray-600 mt-1">Cualquier intervención en fachada, portal, escalera o cubierta necesita aprobación en junta de propietarios. No puede incluirse en un presupuesto de reforma de piso.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+          <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Licencias y tasas municipales</p>
+            <p class="text-xs text-gray-600 mt-1">Las tasas municipales varían por municipio y tipo de obra. La gestión de la licencia puede estar incluida en el presupuesto si se especifica, pero las tasas en sí las abona el propietario directamente al ayuntamiento.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+          <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Honorarios de proyecto técnico</p>
+            <p class="text-xs text-gray-600 mt-1">Cuando la obra requiere proyecto firmado por arquitecto o aparejador, sus honorarios son una partida independiente. Solo están incluidos si el presupuesto lo dice expresamente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TODO: enlace a guía "Qué debes pedir antes de firmar un presupuesto de reforma" (prompt G) -->
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-black text-gray-900 mb-2">Preguntas frecuentes sobre precios de reforma</h2>
+      <div class="w-10 h-1 bg-[#A85535] mb-8"></div>
+      <div class="space-y-3">
+        {faqSchema.mainEntity.map(item => (
+          <details class="border border-gray-200 rounded-xl bg-white group">
+            <summary class="font-semibold text-gray-800 cursor-pointer px-6 py-4 list-none flex justify-between items-center text-sm">
+              <span>{item.name}</span>
+              <span class="text-gray-400 text-xs ml-4 shrink-0 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">{item.acceptedAnswer.text}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Enlazado a los 6 hubs (Paso 5 saliente) -->
+  <section class="py-14 max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl font-black text-gray-900 mb-2">Hubs de servicio con precios detallados</h2>
+    <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
+    <p class="text-sm text-gray-600 mb-6">Cada hub incluye tabla de precios, qué está incluido en cada nivel, plazos y cómo funciona el proceso. Consulta el del servicio que necesitas para afinar la estimación de la calculadora.</p>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {CALC_SERVICES.map(svc => (
+        <a href={`/servicios/${svc.hubSlug}/`} class="flex flex-col gap-1 border border-gray-200 rounded-xl p-5 hover:border-[#A85535] hover:shadow-sm transition-all group">
+          <span class="font-bold text-sm text-gray-900 group-hover:text-[#A85535] transition-colors">{svc.label}</span>
+          <span class="text-xs text-gray-500">{svc.hint}</span>
+          <span class="text-xs text-[#A85535] font-medium mt-2">Ver precios detallados →</span>
+        </a>
+      ))}
+    </div>
+    <p class="text-sm text-gray-500 mt-6">
+      También puedes consultar <a href="/como-trabajamos/" class="text-[#A85535] hover:underline font-medium">cómo trabajamos</a> y nuestros <a href="/contacto/" class="text-[#A85535] hover:underline font-medium">compromisos de precio cerrado y plazo</a>.
+    </p>
+  </section>
+
+  <!-- CTA strip -->
+  <section class="bg-[#111827] py-14">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-black text-white mb-3">¿Quieres un presupuesto real con precio cerrado?</h2>
+      <p class="text-gray-400 mb-6">La calculadora orienta. El precio cerrado se firma en el contrato tras la visita técnica gratuita, sin compromiso.</p>
+      <a href="/contacto/" class="inline-block bg-[#A85535] text-white font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-opacity text-sm tracking-wide uppercase">
+        Solicitar visita técnica gratuita
+      </a>
+    </div>
+  </section>
+
+  <!-- JS inline ───────────────────────────────────────────────────────────── -->
+  <script is:inline define:vars={{ CALC_SERVICES, MODIFIERS }}>
+  (function () {
+    'use strict';
+
+    // ── Estado ────────────────────────────────────────────────────────────────
+    var state = {
+      slug:     CALC_SERVICES[0].slug,
+      m2:       CALC_SERVICES[0].surfaceDefault || 80,
+      tranche:  CALC_SERVICES[0].defaultTranche || '',
+      elements: [],
+      uso:      '',
+      mods:     {},
+      quality:  'esencial',
+    };
+
+    // Inicializar mods con defaults
+    Object.keys(MODIFIERS).forEach(function (k) { state.mods[k] = MODIFIERS[k].defaultKey; });
+
+    var gaTimer = null;
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+    function getService() { return CALC_SERVICES.find(function (s) { return s.slug === state.slug; }); }
+
+    function fmt(n) { return Math.round(n).toLocaleString('es-ES'); }
+
+    function esc(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // ── Cálculo ───────────────────────────────────────────────────────────────
+    function computeFactor(svc) {
+      var f = 1.0;
+      (svc.modifiers || []).forEach(function (k) {
+        var mod = MODIFIERS[k];
+        if (!mod) return;
+        var sel = state.mods[k] || mod.defaultKey;
+        var opt = mod.options.find(function (o) { return o.key === sel; });
+        if (opt) f *= opt.factor;
+      });
+      return f;
+    }
+
+    function computeResults(svc) {
+      var f = computeFactor(svc);
+      var results = {};
+      ['esencial', 'media', 'alta'].forEach(function (q) {
+        if (svc.inputType === 'superficie') {
+          var p = svc.pricesPerM2[q];
+          var cmin = Math.round(state.m2 * p.min * f);
+          var cmax = Math.round(state.m2 * p.max * f);
+          var lic = null;
+          if (svc.licenseByUso) {
+            var usoOpt = svc.licenseByUso.options.find(function (o) { return o.key === state.uso; });
+            if (usoOpt && usoOpt.prices[q]) lic = usoOpt.prices[q];
+          }
+          results[q] = {
+            construction: { min: cmin, max: cmax },
+            license: lic,
+            total: { min: cmin + (lic ? lic.min : 0), max: cmax + (lic ? lic.max : 0) },
+          };
+        } else if (svc.inputType === 'tramo') {
+          var tr = (svc.tranches || []).find(function (t) { return t.key === state.tranche; });
+          if (!tr) { results[q] = null; return; }
+          var tp = tr.prices[q];
+          var tmin = Math.round(tp.min * f);
+          var tmax = Math.round(tp.max * f);
+          results[q] = { construction: { min: tmin, max: tmax }, license: null, total: { min: tmin, max: tmax } };
+        } else if (svc.inputType === 'elemento') {
+          var tMin = 0, tMax = 0;
+          (state.elements || []).forEach(function (ek) {
+            var el = (svc.elements || []).find(function (e) { return e.key === ek; });
+            if (el) { tMin += el.prices[q].min; tMax += el.prices[q].max; }
+          });
+          var emin = Math.round(tMin * f);
+          var emax = Math.round(tMax * f);
+          results[q] = { construction: { min: emin, max: emax }, license: null, total: { min: emin, max: emax } };
+        }
+      });
+      return results;
+    }
+
+    // ── Render inputs ─────────────────────────────────────────────────────────
+    function renderInput() {
+      var svc = getService();
+      if (!svc) return;
+      var el = document.getElementById('input-area');
+      var lg = document.getElementById('input-legend');
+      if (!el) return;
+
+      if (svc.inputType === 'superficie') {
+        if (lg) lg.textContent = '2. ' + (svc.surfaceLabel || 'Superficie');
+        // Use the current m2 but clamp to service range
+        if (state.m2 < svc.surfaceMin) state.m2 = svc.surfaceMin;
+        if (state.m2 > svc.surfaceMax) state.m2 = svc.surfaceMax;
+        el.innerHTML =
+          '<label for="slider-m2" class="block text-sm text-gray-600 mb-3">' + esc(svc.surfaceLabel || 'Superficie') + '</label>' +
+          '<div class="flex items-center gap-4">' +
+            '<input type="range" id="slider-m2" name="superficie"' +
+              ' min="' + svc.surfaceMin + '" max="' + svc.surfaceMax + '"' +
+              ' step="' + svc.surfaceStep + '" value="' + state.m2 + '"' +
+              ' class="flex-1 accent-gray-900 cursor-pointer">' +
+            '<output id="slider-val" for="slider-m2" class="w-20 text-right font-bold text-gray-900 text-xl tabular-nums">' + state.m2 + ' m²</output>' +
+          '</div>' +
+          '<div class="flex justify-between text-xs text-gray-400 mt-1">' +
+            '<span>' + svc.surfaceMin + ' m²</span><span>' + svc.surfaceMax + ' m²</span>' +
+          '</div>';
+
+        // local comercial: uso previsto
+        if (svc.licenseByUso) {
+          if (!state.uso) state.uso = svc.licenseByUso.defaultKey;
+          el.innerHTML +=
+            '<div class="mt-6">' +
+              '<p class="text-sm font-semibold text-gray-800 mb-3">Uso previsto del local</p>' +
+              '<div class="grid sm:grid-cols-3 gap-3">' +
+                svc.licenseByUso.options.map(function (opt) {
+                  return '<label class="uso-card border-2 rounded-lg p-3 cursor-pointer transition-colors ' +
+                    (state.uso === opt.key ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400') + '" data-uso="' + esc(opt.key) + '">' +
+                    '<input type="radio" name="uso" value="' + esc(opt.key) + '"' + (state.uso === opt.key ? ' checked' : '') + ' class="sr-only">' +
+                    '<span class="text-sm font-medium text-gray-900">' + esc(opt.label) + '</span>' +
+                  '</label>';
+                }).join('') +
+              '</div>' +
+            '</div>';
+        }
+
+        var slider = document.getElementById('slider-m2');
+        var valEl = document.getElementById('slider-val');
+        if (slider && valEl) {
+          slider.addEventListener('input', function () {
+            state.m2 = parseFloat(this.value);
+            valEl.textContent = state.m2 + ' m²';
+            recalc();
+          });
+        }
+        if (svc.licenseByUso) {
+          el.querySelectorAll('input[name="uso"]').forEach(function (inp) {
+            inp.addEventListener('change', function () {
+              state.uso = this.value;
+              el.querySelectorAll('.uso-card').forEach(function (c) {
+                c.classList.toggle('border-gray-900', c.getAttribute('data-uso') === state.uso);
+                c.classList.toggle('bg-gray-50', c.getAttribute('data-uso') === state.uso);
+                c.classList.toggle('border-gray-200', c.getAttribute('data-uso') !== state.uso);
+              });
+              recalc();
+            });
+          });
+        }
+
+      } else if (svc.inputType === 'tramo') {
+        if (lg) lg.textContent = '2. Tamaño';
+        if (!state.tranche || !svc.tranches.find(function (t) { return t.key === state.tranche; })) {
+          state.tranche = svc.defaultTranche || svc.tranches[0].key;
+        }
+        el.innerHTML =
+          '<div class="grid sm:grid-cols-2 gap-3">' +
+            svc.tranches.map(function (tr) {
+              var active = tr.key === state.tranche;
+              return '<label class="tranche-card border-2 rounded-lg p-4 cursor-pointer transition-colors ' +
+                (active ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400') + '" data-key="' + esc(tr.key) + '">' +
+                '<input type="radio" name="tramo" value="' + esc(tr.key) + '"' + (active ? ' checked' : '') + ' class="sr-only">' +
+                '<span class="font-bold text-gray-900 block">' + esc(tr.label) + '</span>' +
+                (tr.sublabel ? '<span class="text-xs text-gray-500 block mt-0.5">' + esc(tr.sublabel) + '</span>' : '') +
+              '</label>';
+            }).join('') +
+          '</div>';
+        el.querySelectorAll('input[name="tramo"]').forEach(function (inp) {
+          inp.addEventListener('change', function () {
+            state.tranche = this.value;
+            el.querySelectorAll('.tranche-card').forEach(function (c) {
+              c.classList.toggle('border-gray-900', c.getAttribute('data-key') === state.tranche);
+              c.classList.toggle('bg-gray-50', c.getAttribute('data-key') === state.tranche);
+              c.classList.toggle('border-gray-200', c.getAttribute('data-key') !== state.tranche);
+            });
+            recalc();
+          });
+        });
+
+      } else if (svc.inputType === 'elemento') {
+        if (lg) lg.textContent = '2. Elementos a reformar (selección múltiple)';
+        if (!Array.isArray(state.elements)) state.elements = [];
+        el.innerHTML =
+          '<p class="text-sm text-gray-500 mb-3">' + esc(svc.elementNote || '') + '</p>' +
+          '<div class="grid sm:grid-cols-2 gap-3">' +
+            svc.elements.map(function (elem) {
+              var active = state.elements.indexOf(elem.key) !== -1;
+              return '<label class="elem-card border-2 rounded-lg p-4 cursor-pointer transition-colors ' +
+                (active ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400') + '" data-key="' + esc(elem.key) + '">' +
+                '<input type="checkbox" name="elemento" value="' + esc(elem.key) + '"' + (active ? ' checked' : '') + ' class="sr-only">' +
+                '<span class="text-lg mr-2">' + esc(elem.icon) + '</span>' +
+                '<span class="font-bold text-gray-900">' + esc(elem.label) + '</span>' +
+                (elem.note ? '<span class="text-xs text-gray-500 block mt-0.5">' + esc(elem.note) + '</span>' : '') +
+              '</label>';
+            }).join('') +
+          '</div>';
+        el.querySelectorAll('input[name="elemento"]').forEach(function (inp) {
+          inp.addEventListener('change', function () {
+            var val = this.value;
+            if (this.checked) {
+              if (state.elements.indexOf(val) === -1) state.elements.push(val);
+            } else {
+              state.elements = state.elements.filter(function (e) { return e !== val; });
+            }
+            el.querySelectorAll('.elem-card').forEach(function (c) {
+              var k = c.getAttribute('data-key');
+              var selected = state.elements.indexOf(k) !== -1;
+              c.classList.toggle('border-gray-900', selected);
+              c.classList.toggle('bg-gray-50', selected);
+              c.classList.toggle('border-gray-200', !selected);
+            });
+            recalc();
+          });
+        });
+      }
+    }
+
+    // ── Render modificadores ──────────────────────────────────────────────────
+    function renderMods() {
+      var svc = getService();
+      var area = document.getElementById('mods-area');
+      var fsm = document.getElementById('fs-mods');
+      if (!area || !svc) return;
+      if (!svc.modifiers || svc.modifiers.length === 0) {
+        if (fsm) fsm.style.display = 'none';
+        return;
+      }
+      if (fsm) fsm.style.display = '';
+      area.innerHTML = svc.modifiers.map(function (k) {
+        var mod = MODIFIERS[k];
+        if (!mod) return '';
+        return '<div>' +
+          '<p class="text-sm font-semibold text-gray-800 mb-2">' + esc(mod.label) + '</p>' +
+          '<div class="flex flex-col gap-1">' +
+            mod.options.map(function (opt) {
+              var checked = (state.mods[k] || mod.defaultKey) === opt.key;
+              return '<label class="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-gray-900">' +
+                '<input type="radio" name="mod-' + esc(k) + '" value="' + esc(opt.key) + '"' + (checked ? ' checked' : '') + ' class="accent-gray-900">' +
+                esc(opt.label) +
+              '</label>';
+            }).join('') +
+          '</div>' +
+        '</div>';
+      }).join('');
+      svc.modifiers.forEach(function (k) {
+        area.querySelectorAll('input[name="mod-' + k + '"]').forEach(function (inp) {
+          inp.addEventListener('change', function () {
+            state.mods[k] = this.value;
+            recalc();
+          });
+        });
+      });
+    }
+
+    // ── Render resultado ──────────────────────────────────────────────────────
+    function renderResult() {
+      var svc = getService();
+      var resultEl = document.getElementById('calc-result');
+      var compEl = document.getElementById('comparison-table');
+      var detailEl = document.getElementById('detail-panel');
+      var statusEl = document.getElementById('calc-status');
+      if (!svc || !resultEl || !compEl || !detailEl) return;
+
+      // Elemento type con sin selección
+      if (svc.inputType === 'elemento' && (!state.elements || state.elements.length === 0)) {
+        resultEl.classList.add('hidden');
+        if (statusEl) statusEl.textContent = 'Selecciona uno o más elementos para ver la estimación.';
+        return;
+      }
+      // Tramo type sin selección
+      if (svc.inputType === 'tramo' && !state.tranche) {
+        resultEl.classList.add('hidden');
+        if (statusEl) statusEl.textContent = 'Selecciona un tramo para ver la estimación.';
+        return;
+      }
+
+      if (statusEl) statusEl.textContent = '';
+      resultEl.classList.remove('hidden');
+
+      var results = computeResults(svc);
+      var qs = ['esencial', 'media', 'alta'];
+      var labels = { esencial: 'Esencial', media: 'Media', alta: 'Alta' };
+
+      // ── Tabla comparativa ──
+      compEl.innerHTML =
+        '<div class="grid grid-cols-3 gap-3">' +
+          qs.map(function (q) {
+            var res = results[q];
+            var qd = svc.qualities[q];
+            var isActive = q === state.quality;
+            var priceHtml = res && res.total
+              ? '<div class="text-lg md:text-xl font-black text-gray-900 leading-tight">' + fmt(res.total.min) + '–' + fmt(res.total.max) + ' €</div>'
+              : '<div class="text-lg font-black text-gray-400">—</div>';
+            var licHtml = (res && res.license)
+              ? '<div class="text-xs text-gray-400 mt-0.5">Obra: ' + fmt(res.construction.min) + '–' + fmt(res.construction.max) + ' €' +
+                ' + Licencia: ' + fmt(res.license.min) + '–' + fmt(res.license.max) + ' €</div>'
+              : '';
+            return '<div class="quality-col cursor-pointer border-2 rounded-xl p-4 transition-colors ' +
+              (isActive ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400') +
+              '" data-q="' + q + '">' +
+              '<div class="text-xs font-bold uppercase tracking-wider mb-1 ' + (isActive ? 'text-gray-900' : 'text-gray-500') + '">' + labels[q] + '</div>' +
+              priceHtml +
+              licHtml +
+              '<div class="text-xs text-gray-400 mb-3">sin IVA · orientativo</div>' +
+              '<ul class="text-xs text-gray-600 space-y-1 mb-3">' +
+                qd.includes.slice(0, 3).map(function (inc) {
+                  return '<li class="flex items-start gap-1"><span class="text-green-600 shrink-0">✓</span> ' + esc(inc) + '</li>';
+                }).join('') +
+              '</ul>' +
+              '<div class="text-xs text-gray-500 mb-3">⏱ ' + qd.timelineWeeks[0] + '–' + qd.timelineWeeks[1] + ' sem.</div>' +
+              '<button type="button" class="w-full py-1.5 text-xs font-semibold rounded-lg transition-colors ' +
+                (isActive ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200') + '">' +
+                (isActive ? '▼ Detalle activo' : 'Ver detalle') +
+              '</button>' +
+            '</div>';
+          }).join('') +
+        '</div>';
+
+      compEl.querySelectorAll('.quality-col').forEach(function (col) {
+        col.addEventListener('click', function () {
+          state.quality = this.getAttribute('data-q');
+          renderResult();
+          updateURL();
+        });
+      });
+
+      // ── Panel de detalle ──
+      var q = state.quality;
+      var res = results[q];
+      var qd = svc.qualities[q];
+      if (!res || !qd) { detailEl.innerHTML = ''; return; }
+
+      var ctaParams = new URLSearchParams();
+      ctaParams.set('servicio', svc.label);
+      ctaParams.set('calidad', q);
+      if (svc.inputType === 'superficie') ctaParams.set('m2', String(state.m2));
+      if (svc.inputType === 'tramo') ctaParams.set('tramo', state.tranche || '');
+      if (res.total) { ctaParams.set('estimacion_min', String(res.total.min)); ctaParams.set('estimacion_max', String(res.total.max)); }
+      var ctaHref = '/contacto/?' + ctaParams.toString();
+
+      detailEl.innerHTML =
+        '<div class="border-2 border-gray-900 rounded-xl p-6 mt-2">' +
+          '<h3 class="font-black text-gray-900 mb-6 text-lg">' + esc(svc.label) + ' · ' + esc(qd.label) + ' · Detalle</h3>' +
+
+          '<div class="grid md:grid-cols-2 gap-8 mb-8">' +
+            // Incluye
+            '<div>' +
+              '<h4 class="font-bold text-green-700 mb-3 text-sm">✓ Qué incluye</h4>' +
+              '<ul class="space-y-2">' +
+                qd.includes.map(function (inc) {
+                  return '<li class="text-sm text-gray-700 flex items-start gap-2"><span class="text-green-600 shrink-0 mt-0.5">✓</span>' + esc(inc) + '</li>';
+                }).join('') +
+              '</ul>' +
+            '</div>' +
+            // No incluye
+            '<div>' +
+              '<h4 class="font-bold text-red-700 mb-3 text-sm">✗ Qué NO incluye</h4>' +
+              '<ul class="space-y-2">' +
+                svc.neverIncludes.map(function (exc) {
+                  return '<li class="text-sm text-gray-700 flex items-start gap-2"><span class="text-red-500 shrink-0 mt-0.5">✗</span>' + esc(exc) + '</li>';
+                }).join('') +
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+
+          // Desglose
+          '<h4 class="font-bold text-gray-800 mb-3 text-sm">Desglose orientativo por partidas</h4>' +
+          '<div class="space-y-2 mb-8">' +
+            svc.breakdown.map(function (b) {
+              return '<div class="flex items-center gap-3">' +
+                '<div class="text-xs text-gray-600 min-w-0 w-48 shrink-0 truncate">' + esc(b.label) + '</div>' +
+                '<div class="flex-1 bg-gray-100 rounded-full h-2"><div class="bg-[#A85535] h-2 rounded-full" style="width:' + b.pct + '%"></div></div>' +
+                '<div class="text-xs text-gray-500 w-8 text-right shrink-0">' + b.pct + '%</div>' +
+              '</div>';
+            }).join('') +
+          '</div>' +
+
+          // Plazo
+          '<h4 class="font-bold text-gray-800 mb-3 text-sm">Plazo estimado: ' + qd.timelineWeeks[0] + '–' + qd.timelineWeeks[1] + ' semanas</h4>' +
+          '<div class="flex gap-0.5 rounded-lg overflow-hidden mb-2">' +
+            qd.phases.map(function (p, i) {
+              var colors = ['bg-gray-800','bg-gray-600','bg-gray-500','bg-gray-400','bg-gray-300','bg-gray-200'];
+              return '<div class="relative text-center overflow-hidden" style="width:' + p.pct + '%;flex-shrink:0" title="' + esc(p.name) + '">' +
+                '<div class="h-6 ' + colors[i % colors.length] + '"></div>' +
+              '</div>';
+            }).join('') +
+          '</div>' +
+          '<ol class="text-xs text-gray-500 space-y-1 mb-8 list-decimal list-inside">' +
+            qd.phases.map(function (p) {
+              var avgWks = Math.round((p.pct / 100) * ((qd.timelineWeeks[0] + qd.timelineWeeks[1]) / 2));
+              return '<li><span class="font-medium text-gray-700">' + esc(p.name) + '</span> · ~' + (avgWks || 1) + ' sem.</li>';
+            }).join('') +
+          '</ol>' +
+
+          // Disclaimer
+          '<div class="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-800 mb-4">' +
+            'Estimación orientativa sin IVA basada en precios de referencia del sector en el Corredor del Henares. No es un presupuesto ni una oferta vinculante. El precio real se fija por escrito tras la visita técnica gratuita.' +
+          '</div>' +
+
+          // CTA
+          '<a href="' + ctaHref + '" class="inline-block bg-gray-900 text-white font-bold px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors text-sm">' +
+            'Solicitar visita técnica gratuita →' +
+          '</a>' +
+
+        '</div>';
+
+      scheduleGA(svc, q, res);
+    }
+
+    // ── GA ────────────────────────────────────────────────────────────────────
+    function scheduleGA(svc, q, res) {
+      if (gaTimer) clearTimeout(gaTimer);
+      gaTimer = setTimeout(function () {
+        var payload = {
+          servicio:    svc.slug,
+          calidad:     q,
+          precio_min:  res && res.total ? res.total.min : 0,
+          precio_max:  res && res.total ? res.total.max : 0,
+        };
+        if (svc.inputType === 'superficie') payload.superficie = state.m2;
+        if (typeof gtag === 'function') {
+          gtag('event', 'calculadora_reforma', payload);
+        } else if (window.dataLayer) {
+          window.dataLayer.push(Object.assign({ event: 'calculadora_reforma' }, payload));
+        }
+      }, 800);
+    }
+
+    // ── URL params ────────────────────────────────────────────────────────────
+    function updateURL() {
+      var svc = getService();
+      if (!svc) return;
+      var p = new URLSearchParams();
+      p.set('servicio', state.slug);
+      p.set('calidad', state.quality);
+      if (svc.inputType === 'superficie') p.set('m2', String(state.m2));
+      if (svc.inputType === 'tramo' && state.tranche) p.set('tramo', state.tranche);
+      if (svc.inputType === 'elemento' && state.elements.length) p.set('elementos', state.elements.join(','));
+      if (state.uso) p.set('uso', state.uso);
+      history.replaceState(null, '', window.location.pathname + '?' + p.toString());
+    }
+
+    function initFromURL() {
+      var p = new URLSearchParams(window.location.search);
+      var sl = p.get('servicio');
+      if (sl && CALC_SERVICES.find(function (s) { return s.slug === sl; })) state.slug = sl;
+      var svc = getService();
+      if (!svc) return;
+      var q = p.get('calidad');
+      if (q && ['esencial','media','alta'].indexOf(q) !== -1) state.quality = q;
+      if (svc.inputType === 'superficie') {
+        var m2 = parseFloat(p.get('m2') || '');
+        if (!isNaN(m2) && m2 >= svc.surfaceMin && m2 <= svc.surfaceMax) state.m2 = m2;
+        else state.m2 = svc.surfaceDefault || 80;
+      }
+      if (svc.inputType === 'tramo') {
+        var tr = p.get('tramo');
+        if (tr && svc.tranches && svc.tranches.find(function (t) { return t.key === tr; })) state.tranche = tr;
+        else state.tranche = svc.defaultTranche || (svc.tranches && svc.tranches[0].key) || '';
+      }
+      if (svc.inputType === 'elemento') {
+        var elems = p.get('elementos');
+        state.elements = elems ? elems.split(',').filter(function (e) { return svc.elements && svc.elements.find(function (el) { return el.key === e; }); }) : [];
+      }
+      if (svc.licenseByUso) {
+        var uso = p.get('uso');
+        state.uso = (uso && svc.licenseByUso.options.find(function (o) { return o.key === uso; })) ? uso : svc.licenseByUso.defaultKey;
+      }
+    }
+
+    // ── Update service styles ─────────────────────────────────────────────────
+    function updateServiceCards() {
+      document.querySelectorAll('.service-card').forEach(function (card) {
+        var active = card.getAttribute('data-slug') === state.slug;
+        card.classList.toggle('border-gray-900', active);
+        card.classList.toggle('bg-gray-50', active);
+        card.classList.toggle('border-gray-200', !active);
+      });
+    }
+
+    // ── Recalc + render ───────────────────────────────────────────────────────
+    function recalc() {
+      renderResult();
+      updateURL();
+    }
+
+    // ── Init ──────────────────────────────────────────────────────────────────
+    function init() {
+      initFromURL();
+
+      document.querySelectorAll('input[name="servicio"]').forEach(function (inp) {
+        inp.checked = inp.value === state.slug;
+        inp.addEventListener('change', function () {
+          state.slug = this.value;
+          var svc = getService();
+          if (svc) {
+            state.m2 = svc.surfaceDefault || 80;
+            state.tranche = svc.defaultTranche || (svc.tranches && svc.tranches[0] && svc.tranches[0].key) || '';
+            state.elements = [];
+            state.uso = svc.licenseByUso ? svc.licenseByUso.defaultKey : '';
+            // reset mods to service defaults
+            (svc.modifiers || []).forEach(function (k) {
+              if (MODIFIERS[k]) state.mods[k] = MODIFIERS[k].defaultKey;
+            });
+          }
+          updateServiceCards();
+          renderInput();
+          renderMods();
+          recalc();
+        });
+      });
+
+      updateServiceCards();
+      renderInput();
+      renderMods();
+      recalc();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+
+</Layout>

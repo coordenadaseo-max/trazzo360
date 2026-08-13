@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectImage from '../components/ProjectImage.astro';
-import { SITE, SERVICES, ZONES, PROJECTS, SERVICE_ICONS } from '../data/site';
+import { SITE, SERVICES, ZONES, PROJECTS, SERVICE_ICONS, AUTHOR, COMPROMISOS } from '../data/site';
 
 const tradeIcons: Record<string, string> = {
   '🧱': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="4"/><rect x="12" y="4" width="9" height="4"/><rect x="3" y="10" width="11" height="4"/><rect x="16" y="10" width="5" height="4"/><rect x="3" y="16" width="7" height="4"/><rect x="12" y="16" width="9" height="4"/></svg>`,
@@ -190,6 +190,62 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- M8 — COMPROMISOS (high position) -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Lo que asumimos antes de empezar</p>
+        <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">Compromisos de Trazzo360</h2>
+        <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
+        <p class="text-gray-500 max-w-2xl">Todo queda por escrito antes de que entre el primer operario. Sin compromisos, sin incertidumbre sobre precio o plazo.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+        {COMPROMISOS.map(c => (
+          <div class="bg-white p-6 border-t-4 border-[#A85535]">
+            <h3 class="font-bold text-gray-900 mb-2 text-sm">{c.title}</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">{c.short}</p>
+          </div>
+        ))}
+      </div>
+      <div class="flex flex-wrap gap-4 items-center">
+        <a href="/como-trabajamos/" class="inline-block px-6 py-3 text-sm font-bold text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+          Ver todos los compromisos en detalle →
+        </a>
+        <a href="/calculadora-precio-reforma/" class="inline-block px-6 py-3 text-sm font-bold text-gray-700 bg-white border border-gray-200 hover:border-[#A85535] hover:text-[#A85535] transition-all">
+          Estimar precio antes de la visita →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFORMAS MÁS SOLICITADAS — links a combinadas prioritarias -->
+  <section class="py-16 bg-white" aria-labelledby="h-combinadas">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 id="h-combinadas" class="text-xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">Reformas más solicitadas en el Corredor</h2>
+      <p class="text-sm text-gray-500 mb-7">Información detallada sobre precios, plazos y proceso para las combinaciones más demandadas.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+        {[
+          { href: '/reformas-integrales/torrejon-de-ardoz/', label: 'Reforma integral en Torrejón de Ardoz' },
+          { href: '/reformas-integrales/alcala-de-henares/', label: 'Reforma integral en Alcalá de Henares' },
+          { href: '/reforma-banos/torrejon-de-ardoz/', label: 'Reforma de baño en Torrejón de Ardoz' },
+          { href: '/reforma-banos/alcala-de-henares/', label: 'Reforma de baño en Alcalá de Henares' },
+          { href: '/reforma-cocinas/torrejon-de-ardoz/', label: 'Reforma de cocina en Torrejón de Ardoz' },
+          { href: '/reforma-cocinas/alcala-de-henares/', label: 'Reforma de cocina en Alcalá de Henares' },
+          { href: '/reformas-integrales/coslada/', label: 'Reforma integral en Coslada' },
+          { href: '/reforma-banos/coslada/', label: 'Reforma de baño en Coslada' },
+          { href: '/reformas-integrales/guadalajara/', label: 'Reforma integral en Guadalajara' },
+          { href: '/reforma-banos/guadalajara/', label: 'Reforma de baño en Guadalajara' },
+          { href: '/reforma-pisos/torrejon-de-ardoz/', label: 'Reforma de piso en Torrejón de Ardoz' },
+          { href: '/reforma-pisos/alcala-de-henares/', label: 'Reforma de piso en Alcalá de Henares' },
+        ].map(link => (
+          <a href={link.href} class="block p-4 bg-gray-50 border border-gray-100 hover:border-[#A85535] hover:text-[#A85535] text-xs font-medium text-gray-700 transition-all leading-snug">
+            {link.label} →
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- OFICIOS -->
   <section class="py-20 bg-[#111827]" aria-labelledby="h-oficios">
     <div class="max-w-7xl mx-auto px-4">
@@ -366,23 +422,25 @@ const faqSchema = {
           </div>
         </div>
         <div class="bg-[#111827] p-10 text-white">
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">Nuestros números</p>
-          <div class="grid grid-cols-2 gap-8">
-            {[
-              { n: '15', label: 'Años de experiencia del responsable de obra' },
-              { n: `${ZONES.length}`, label: 'Municipios cubiertos' },
-              { n: '2 años', label: 'Garantía en ejecución' },
-              { n: '100%', label: 'Precio cerrado siempre' },
-            ].map(s => (
-              <div>
-                <div class="text-5xl font-black text-[#A85535] mb-2">{s.n}</div>
-                <div class="text-sm text-gray-400">{s.label}</div>
-              </div>
-            ))}
+          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">El responsable de obra</p>
+          <div class="mb-6">
+            <p class="text-lg font-black text-white mb-1">
+              {AUTHOR.name ?? 'Responsable de obra'}
+            </p>
+            <p class="text-sm text-gray-400 mb-2">{AUTHOR.role}</p>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              {AUTHOR.yearsInTrade} años en el oficio. Un único responsable coordina tu reforma de principio a fin: supervisa cada gremio, comunica el avance y firma la garantía.
+            </p>
           </div>
-          <a href="/contacto/" class="inline-block mt-10 px-7 py-3.5 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-            Pedir presupuesto gratis
+          <a href="/como-trabajamos/" class="inline-block mb-4 px-7 py-3.5 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity border border-white/30 hover:border-white transition-colors">
+            Cómo trabajamos →
           </a>
+          <div class="border-t border-white/10 pt-6 mt-2">
+            <p class="text-xs text-gray-400 mb-3">¿Quieres saber cuánto puede costar tu reforma antes de la visita?</p>
+            <a href="/calculadora-precio-reforma/" class="inline-block w-full text-center py-3 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+              Calculadora de precios →
+            </a>
+          </div>
         </div>
       </div>
     </div>

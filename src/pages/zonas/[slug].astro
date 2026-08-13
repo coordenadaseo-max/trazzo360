@@ -120,52 +120,68 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- Contexto local -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-contexto">
+  <!-- M2 — Barrio por barrio -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-barrios-contexto">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-contexto" class="text-2xl font-black text-gray-900 mb-4">
-        Qué obras son más habituales en {zone.name}
+      <h2 id="h-barrios-contexto" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        Cómo es el parque de vivienda en {zone.name}
       </h2>
       <p class="text-gray-600 leading-relaxed mb-10">
-        No todas las zonas del Corredor del Henares tienen las mismas necesidades. El tipo de vivienda predominante, la época de construcción y el estado de las instalaciones determinan qué reformas son más frecuentes y cuánto suelen costar. Esto es lo que vemos habitualmente en {zone.name}.
+        {zone.name} {zone.localAngle}. El tipo de vivienda predominante, la época de construcción y el estado de las instalaciones determinan qué reformas son más frecuentes en cada barrio.
       </p>
 
-      <h3 class="text-lg font-bold text-gray-900 mb-3">El parque de vivienda de {zone.name}</h3>
-      <p class="text-gray-600 leading-relaxed mb-8">
-        {zone.name} {zone.localAngle}. Se traduce en un perfil de obra concreto: instalaciones que ya no dan la talla para el uso actual, acabados que acumulan décadas de deterioro y distribuciones que ya no encajan con la forma de vivir hoy. No es un problema exclusivo de esta ciudad, es el denominador común de gran parte del parque residencial del Corredor.
-      </p>
+      <div class="space-y-6 mb-10">
+        {zone.m2BarrioNotes.map((note: { barrio: string; text: string }) => (
+          <div class="bg-white border-l-4 border-[#A85535] p-6">
+            <h3 class="font-bold text-gray-900 mb-2">{note.barrio}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{note.text}</p>
+          </div>
+        ))}
+      </div>
 
-      <h3 class="text-lg font-bold text-gray-900 mb-3">
-        Lo que cambia al contratar en {zone.name}
-      </h3>
-      <p class="text-gray-600 leading-relaxed mb-8">
-        El precio no varía según el municipio, pero sí puede cambiar el alcance real del proyecto. En viviendas anteriores a 1990 conviene evaluar el estado de la fontanería y el cuadro eléctrico antes de cerrar el presupuesto: son dos partidas que, si se descubren a mitad de obra, generan extras no previstos. La evaluación está incluida en la visita técnica gratuita y, cuando el estado lo requiere, queda reflejada en el presupuesto cerrado.
-      </p>
-
-      <div class="bg-white border-l-4 border-[#A85535] p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-2">Antes de pedir presupuesto en {zone.name}</p>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Si la vivienda o el local tiene más de 30 años, asegúrate de que el presupuesto incluya la evaluación del estado de las instalaciones. Un presupuesto que no las contempla puede quedarse obsoleto en cuanto empieza la obra. El presupuesto cierra el precio completo desde el primer día.
-        </p>
+      <!-- M3 — Permisos y logística -->
+      <div class="bg-[#111827] p-6 text-white">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Permisos y tramitación</p>
+        <p class="text-sm text-gray-300 leading-relaxed">{zone.m3Permits}</p>
       </div>
     </div>
   </section>
 
-  <!-- Por qué Trazzo360 -->
-  <section class="py-16 bg-white" aria-labelledby="h-por-que">
+  <!-- Obras más habituales -->
+  <section class="py-20 bg-white" aria-labelledby="h-obras-habituales">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 id="h-obras-habituales" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        Obras más habituales en {zone.name}
+      </h2>
+      <p class="text-gray-500 text-sm mb-10">
+        Estas son las actuaciones que más presupuestamos en {zone.name}. El alcance exacto depende siempre del estado real de la vivienda.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {zone.topWorks.map((w: { title: string; desc: string }) => (
+          <div class="p-6 bg-gray-50 border-t-4 border-[#A85535]">
+            <h3 class="font-bold text-gray-900 mb-2">{w.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{w.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- M8 — Compromisos -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
     <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 id="h-por-que" class="text-2xl font-black text-gray-900 mb-6">
-          Por qué contratar tu obra en {zone.name} con Trazzo360
+        <h2 id="h-compromisos" class="text-2xl font-black text-gray-900 mb-6">
+          Lo que asumimos antes de empezar en {zone.name}
         </h2>
         <div class="space-y-4">
           {[
-            `Un único interlocutor en ${zone.name} de principio a fin. Los mismos equipos en cada obra.`,
             'Precio cerrado en el contrato. Lo que firmamos es exactamente lo que pagas.',
             'Plazo de entrega garantizado por escrito. Si nos retrasamos sin causa de fuerza mayor, penalizamos.',
             'Garantía de 2 años sobre toda la ejecución. Si algo falla por nuestra parte, lo resolvemos.',
+            'Un único interlocutor de principio a fin. Sin cambios de equipo a mitad de obra.',
             'Visita técnica y presupuesto gratuitos. Sin compromiso.',
-            'Gestión completa de licencias y permisos incluida cuando la obra lo requiere.',
+            'Gestión completa de licencias y permisos cuando la obra lo requiere.',
           ].map(item => (
             <div class="flex items-start gap-3">
               <div class="w-5 h-5 rounded-full bg-[#A85535] flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -198,7 +214,7 @@ const faqSchema = {
   </section>
 
   <!-- Barrios -->
-  <section class="py-14 bg-[#F9F7F4]">
+  <section class="py-14 bg-white">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-xl font-black text-gray-900 mb-2">
         Barrios y zonas de {zone.name} donde actuamos
@@ -208,11 +224,11 @@ const faqSchema = {
       </p>
       <ul class="flex flex-wrap gap-2" style="list-style:none;padding:0;margin:0">
         {zone.neighborhoods.map((n: string) => (
-          <li class="inline-block px-4 py-2 bg-white border border-gray-200 text-sm text-gray-700 font-medium">
+          <li class="inline-block px-4 py-2 bg-gray-50 border border-gray-200 text-sm text-gray-700 font-medium">
             {n}
           </li>
         ))}
-        <li class="inline-block px-4 py-2 bg-white border border-dashed border-gray-300 text-sm text-gray-400">
+        <li class="inline-block px-4 py-2 bg-gray-50 border border-dashed border-gray-300 text-sm text-gray-400">
           ¿Tu barrio no aparece? Consúltanos
         </li>
       </ul>
@@ -220,7 +236,7 @@ const faqSchema = {
   </section>
 
   <!-- Otras zonas -->
-  <section class="py-14 bg-white">
+  <section class="py-14 bg-[#F9F7F4]">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-xl font-black text-gray-900 mb-2">
         También hacemos obras en estos municipios del Corredor
@@ -232,7 +248,7 @@ const faqSchema = {
         {relatedZones.map(z => (
           <a
             href={`/zonas/${z.slug}/`}
-            class="inline-block px-4 py-2 text-sm text-gray-600 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all font-medium"
+            class="inline-block px-4 py-2 text-sm text-gray-600 bg-white border border-gray-200 hover:bg-[#A85535] hover:text-white hover:border-[#A85535] transition-all font-medium"
           >
             Empresa de obras en {z.name}
           </a>
@@ -242,13 +258,13 @@ const faqSchema = {
   </section>
 
   <!-- FAQ -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
+  <section class="py-20 bg-white" aria-labelledby="h-faq">
     <div class="max-w-4xl mx-auto px-4">
       <h2 id="h-faq" class="text-2xl font-black text-gray-900 mb-4">
         Preguntas frecuentes sobre obras en {zone.name}
       </h2>
       <p class="text-gray-600 leading-relaxed mb-8">
-        Si tienes dudas sobre plazos, precios o qué incluye cada servicio en {zone.name}, aquí respondemos las más habituales. Si no encuentras la tuya, escríbenos por WhatsApp o llámanos y te respondemos el mismo día.
+        Si tienes dudas sobre plazos, precios o qué incluye cada servicio en {zone.name}, aquí respondemos las más habituales. Si no encuentras la tuya, escríbenos o llámanos y te respondemos el mismo día.
       </p>
       <div class="divide-y divide-gray-200">
         {faqs.map(faq => (

@@ -30,11 +30,11 @@ const metaIcons = {
 const faqs = [
   {
     q: '¿Cuánto puede costar reformar un piso de 100 m²?',
-    a: 'Una reforma integral de un piso de 100 m² en el Corredor del Henares oscila entre 30.000€ y 55.000€ con materiales de calidad media-alta. El precio varía según el estado de las instalaciones, los materiales elegidos y si hay redistribución de espacios. El presupuesto es cerrado: lo que firmas es lo que pagas, sin modificados ni extras después de empezar la obra.',
+    a: 'Depende del alcance. Una reforma de acabados en un piso de 100 m² —suelos, pintura, baño, cocina, conservando las instalaciones existentes— oscila entre 30.000€ y 50.000€ (300–500 €/m²). Si las instalaciones necesitan renovación, el precio de una reforma integral esencial parte de 65.000€ (650 €/m²). Precios sin IVA; el presupuesto cerrado se entrega tras la visita técnica gratuita.',
   },
   {
     q: '¿Qué puedo reformar con 20.000€?',
-    a: 'Con 20.000€ y las instalaciones en buen estado puedes hacer una reforma de alto impacto en un piso de 60–70 m²: baño completo, cocina con muebles, suelos nuevos y pintura general. También alcanza para una reforma integral de un piso pequeño de 40–50 m², o para baño y cocina de calidad media-alta en uno más grande. En la visita gratuita presentamos opciones concretas ajustadas a ese presupuesto.',
+    a: 'Con 20.000€ y las instalaciones en buen estado puedes hacer una reforma de acabados en un piso de 50–60 m²: baño completo, cocina con muebles, suelos nuevos y pintura general. Para una reforma integral con instalaciones nuevas de ese tamaño, el punto de partida está en 32.000–40.000€. En la visita gratuita determinamos el alcance real según el estado actual de la vivienda. Precios sin IVA.',
   },
   {
     q: '¿Qué es lo más caro en una reforma?',
@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     q: '¿Qué se puede reformar con 40.000€?',
-    a: 'Con 40.000€ puedes afrontar una reforma integral completa de un piso de 80–90 m² con materiales de calidad media-alta: derribo de tabiques, instalaciones nuevas, baño, cocina, suelos, pintura y carpintería. También alcanza para una reforma de lujo en un piso de 50–60 m². En la visita gratuita presentamos varias opciones dentro de tu presupuesto con precio cerrado garantizado.',
+    a: 'Con 40.000€ puedes hacer una reforma de acabados de alta calidad en un piso de 70–90 m² con instalaciones en buen estado: suelos, baño, cocina, carpintería y pintura. No alcanza para una reforma integral con instalaciones nuevas de ese tamaño, que parte de 45.500€ para 70 m² en calidad esencial. En la visita gratuita determinamos si las instalaciones permiten afrontar solo los acabados o si conviene contemplar la integral desde el principio. Precios sin IVA.',
   },
   {
     q: '¿Cuánto tarda una reforma integral en el Corredor del Henares?',
@@ -82,8 +82,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="Trazzo360 | Reformas en el Corredor del Henares - Precio Cerrado desde 3.200€"
-  description="Empresa de reformas integrales en el Corredor del Henares con precio cerrado garantizado. Alcalá de Henares, Torrejón, Coslada, San Fernando. Presupuesto gratis en 24h. Desde 3.200€."
+  title="Reformas en el Corredor del Henares | Trazzo360"
+  description="Empresa de reformas en el Corredor del Henares con precio cerrado. Alcalá de Henares, Torrejón, Coslada, San Fernando. Presupuesto gratis en 24h. Desde 3.200€."
   schema={faqSchema}
 >
 
@@ -285,8 +285,8 @@ const faqSchema = {
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {[
-          { tipo: 'Reforma integral de piso', detalle: '70–90 m²', desde: '24.900', hasta: '45.000' },
-          { tipo: 'Reforma integral de piso', detalle: '100 m²', desde: '30.000', hasta: '55.000' },
+          { tipo: 'Reforma de acabados · piso', detalle: '70 m² · sin instalaciones nuevas', desde: '21.000', hasta: '35.000' },
+          { tipo: 'Reforma integral esencial · piso', detalle: '70 m² · con instalaciones nuevas', desde: '45.500', hasta: '56.000' },
           { tipo: 'Reforma de baño completo', detalle: 'Con cambio de bañera a ducha', desde: '3.200', hasta: '7.500' },
           { tipo: 'Reforma de cocina', detalle: 'Muebles, encimera y electrodomésticos', desde: '5.500', hasta: '14.000' },
           { tipo: 'Local comercial', detalle: '50 m²', desde: '8.000', hasta: '20.000' },
@@ -301,7 +301,7 @@ const faqSchema = {
           </div>
         ))}
       </div>
-      <p class="mt-6 text-xs text-gray-400">* Precios orientativos IVA incluido. El presupuesto personalizado y gratuito es siempre más preciso.</p>
+      <p class="mt-6 text-xs text-gray-400">* Precios orientativos sin IVA. El presupuesto personalizado y gratuito es siempre más preciso.</p>
       <a href="/contacto/" class="inline-block mt-6 px-8 py-3.5 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
         Pide tu presupuesto cerrado
       </a>

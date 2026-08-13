@@ -89,6 +89,9 @@ export interface ComunidadElement {
   icon: string;
   prices: Record<Quality, PriceRange>;
   note?: string;
+  breakdown?: { label: string; pct: number }[];
+  qualityIncludes?: Record<Quality, string[]>;
+  qualityExcludes?: string[];
 }
 
 export interface QualityDetail {
@@ -765,6 +768,45 @@ export const CALC_SERVICES: CalcService[] = [
           alta:     { min: 20000, max: 35000 },
         },
         note: 'Incluye suelo, revestimientos, iluminación e intercomunicador',
+        breakdown: [
+          { label: 'Demolición y preparación',    pct: 10 },
+          { label: 'Revestimientos y pavimentos', pct: 35 },
+          { label: 'Iluminación e instalaciones', pct: 20 },
+          { label: 'Intercomunicador y portero',  pct: 15 },
+          { label: 'Carpintería y cerrajería',    pct: 10 },
+          { label: 'Gestión y dirección',         pct: 10 },
+        ],
+        qualityIncludes: {
+          esencial: [
+            'Demolición de revestimientos existentes',
+            'Solado de gres porcelánico estándar',
+            'Pintura o alicatado de paredes',
+            'Iluminación básica (downlights LED)',
+            'Buzones y señalética de planta',
+            'Gestión de residuos incluida',
+          ],
+          media: [
+            'Todo lo de Esencial',
+            'Pavimento de mayor calidad (porcelánico gran formato o piedra natural)',
+            'Falso techo con iluminación empotrada',
+            'Intercomunicador o videoportero renovado',
+            'Revestimiento de pared diferenciado (piedra, madera, microcemento)',
+            'Carpintería de entrada renovada',
+          ],
+          alta: [
+            'Todo lo de Media',
+            'Materiales premium (mármol, madera maciza, latón)',
+            'Iluminación de diseño con regulación',
+            'Domótica de acceso (apertura por app o tarjeta)',
+            'Proyecto de interiorismo incluido',
+            'Señalética corporativa de diseño',
+          ],
+        },
+        qualityExcludes: [
+          'Ascensor (partida independiente)',
+          'Obras en instalaciones eléctricas del edificio fuera del portal',
+          'Buzones (si requieren licencia específica de telecomunicaciones)',
+        ],
       },
       {
         key: 'escalera',
@@ -775,6 +817,45 @@ export const CALC_SERVICES: CalcService[] = [
           media:    { min: 10000, max: 16000 },
           alta:     { min: 16000, max: 28000 },
         },
+        breakdown: [
+          { label: 'Demolición y preparación',    pct: 12 },
+          { label: 'Revestimientos de suelo',     pct: 30 },
+          { label: 'Revestimientos de pared',     pct: 25 },
+          { label: 'Iluminación',                 pct: 18 },
+          { label: 'Pasamanos y cerrajería',      pct: 8  },
+          { label: 'Gestión y dirección',         pct: 7  },
+        ],
+        qualityIncludes: {
+          esencial: [
+            'Demolición de revestimientos existentes',
+            'Solado nuevo (gres antideslizante, clase 3 mínimo)',
+            'Pintura de paredes y techo',
+            'Iluminación de emergencia obligatoria',
+            'Pasamanos reparado o pintado',
+            'Gestión de residuos incluida',
+          ],
+          media: [
+            'Todo lo de Esencial',
+            'Solado de porcelánico de mayor formato con piezas de peldaño',
+            'Revestimiento de pared diferenciado en planta baja',
+            'Iluminación LED con detector de presencia por planta',
+            'Pasamanos renovado (acero inoxidable o madera)',
+            'Pintura con acabado lavable de alta cobertura',
+          ],
+          alta: [
+            'Todo lo de Media',
+            'Pavimento de piedra natural o porcelánico imitación mármol',
+            'Revestimientos de pared en materiales premium',
+            'Iluminación de diseño con control centralizado',
+            'Barandilla de diseño a medida',
+            'Proyecto de interiorismo para coherencia con portal',
+          ],
+        },
+        qualityExcludes: [
+          'Ascensor (partida independiente)',
+          'Obras en instalaciones del edificio más allá de la iluminación',
+          'Sellado de juntas estructurales (requiere informe técnico previo)',
+        ],
       },
       {
         key: 'fachada',
@@ -785,7 +866,46 @@ export const CALC_SERVICES: CalcService[] = [
           media:    { min: 40000, max: 65000 },
           alta:     { min: 65000, max: 120000 },
         },
-        note: 'SATE o revestimiento con proyecto técnico',
+        note: 'SATE o revestimiento. Requiere proyecto técnico y andamio',
+        breakdown: [
+          { label: 'Andamio y medidas de seguridad', pct: 15 },
+          { label: 'Demolición y saneamiento',       pct: 10 },
+          { label: 'Sistema de aislamiento (SATE)',   pct: 35 },
+          { label: 'Revestimiento exterior',          pct: 25 },
+          { label: 'Proyecto técnico y gestión',      pct: 15 },
+        ],
+        qualityIncludes: {
+          esencial: [
+            'Andamio tubular con red de seguridad',
+            'Saneado y reparación de grietas y desprendimientos',
+            'Revestimiento monocapa o pintura de siloxanos',
+            'Sellado de juntas y encuentros con carpintería',
+            'Gestión de residuos incluida',
+            'Proyecto técnico básico si lo requiere el municipio',
+          ],
+          media: [
+            'Todo lo de Esencial',
+            'Sistema de aislamiento térmico exterior (SATE) con EPS de 6 cm',
+            'Revoco de mortero mineral o silicona de textura definida',
+            'Mejora del encuentro con carpintería existente',
+            'Proyecto técnico completo con memoria de materiales',
+            'Certificado de eficiencia energética tras la obra',
+          ],
+          alta: [
+            'Todo lo de Media',
+            'SATE con aislamiento reforzado (EPS 10–12 cm o lana de roca)',
+            'Revestimiento de fachada ventilada o panel composite',
+            'Proyecto de arquitecto con diseño diferenciado',
+            'Tramitación de ayudas PREE o rehabilitación energética',
+            'Certificado energético antes y después para acreditar mejora',
+          ],
+        },
+        qualityExcludes: [
+          'Renovación de carpintería (ventanas y balconeras) — partida independiente',
+          'Obras en cubierta (aunque se accede por el mismo andamio)',
+          'Instalaciones eléctricas exteriores (alumbrado de fachada, etc.)',
+          'IVA y tasas municipales de andamio y vía pública',
+        ],
       },
       {
         key: 'cubierta',
@@ -796,7 +916,48 @@ export const CALC_SERVICES: CalcService[] = [
           media:    { min: 25000, max: 45000 },
           alta:     { min: 45000, max: 80000 },
         },
-        note: 'Impermeabilización e impermeabilización + aislamiento',
+        note: 'Impermeabilización o impermeabilización + aislamiento térmico',
+        breakdown: [
+          { label: 'Medios auxiliares (andamio o plataforma)', pct: 12 },
+          { label: 'Demolición y retirada de cubierta vieja',  pct: 15 },
+          { label: 'Impermeabilización',                       pct: 38 },
+          { label: 'Aislamiento térmico',                      pct: 20 },
+          { label: 'Remates, sumideros y evacuación',          pct: 8  },
+          { label: 'Proyecto técnico y gestión',               pct: 7  },
+        ],
+        qualityIncludes: {
+          esencial: [
+            'Retirada de la impermeabilización existente deteriorada',
+            'Reparación de pendientes y sumideros',
+            'Impermeabilización bituminosa con lámina de betún modificado',
+            'Remates perimetrales y encuentros con paredes',
+            'Gestión de residuos incluida',
+          ],
+          media: [
+            'Todo lo de Esencial',
+            'Aislamiento térmico (XPS 6 cm) sobre la impermeabilización',
+            'Capa de protección de grava o baldosa filtrante',
+            'Revisión y mejora de bajantes de pluviales',
+            'Proyecto técnico si lo exige el municipio',
+            'Prueba de estanquidad al final de la obra',
+          ],
+          alta: [
+            'Todo lo de Media',
+            'Aislamiento reforzado (XPS 10 cm o poliuretano proyectado)',
+            'Cubierta invertida transitable o ajardinada (según uso)',
+            'Renovación completa de bajantes y canalones',
+            'Proyecto técnico de arquitecto con cálculo de cargas',
+            'Tramitación de ayudas para rehabilitación energética',
+            'Certificado de eficiencia energética posterior a la obra',
+          ],
+        },
+        qualityExcludes: [
+          'Obras en fachada ni carpintería exterior',
+          'Terrajas o terrazas privativas de últimas plantas',
+          'Instalaciones sobre cubierta (antenas, equipos de climatización, placas solares)',
+          'IVA y tasas municipales de ocupación de vía pública',
+          'Honorarios de aparejador si no se incluyen expresamente',
+        ],
       },
     ],
     modifiers: ['decada'],

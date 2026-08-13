@@ -43,8 +43,10 @@ const faqSchema = {
 ---
 
 <Layout
-  title={`Empresa de Reformas en ${zone.name} | ${SITE.name}`}
-  description={`Trazzo360, empresa de reformas en ${zone.name}. Reformas integrales, baños, cocinas, pisos, locales y comunidades de vecinos. Precio cerrado y presupuesto gratis en 24h.`}
+  title={`Empresa de Reformas en ${zone.name} | ${SITE.name}`.length < 47
+    ? `Empresa de Reformas en ${zone.name} · Precio Cerrado | ${SITE.name}`
+    : `Empresa de Reformas en ${zone.name} | ${SITE.name}`}
+  description={`Trazzo360, empresa de reformas en ${zone.name}. Reformas integrales, baños, cocinas, pisos y locales. Precio cerrado y presupuesto gratis en 24h.`}
   schema={[zoneSchema, breadcrumbSchema, faqSchema]}
 >
 

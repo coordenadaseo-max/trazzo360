@@ -437,10 +437,12 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
     <p class="text-sm text-gray-600 mb-6">Cada hub incluye tabla de precios, qué está incluido en cada nivel, plazos y cómo funciona el proceso. Consulta el del servicio que necesitas para afinar la estimación de la calculadora.</p>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
       {CALC_SERVICES.map(svc => (
-        <a href={`/servicios/${svc.hubSlug}/`} class="flex flex-col gap-1 border border-gray-200 rounded-xl p-5 hover:border-[#A85535] hover:shadow-sm transition-all group">
-          <span class="font-bold text-sm text-gray-900 group-hover:text-[#A85535] transition-colors">{svc.label}</span>
-          <span class="text-xs text-gray-500">{svc.hint}</span>
-          <span class="text-xs text-[#A85535] font-medium mt-2">Ver precios detallados →</span>
+        <a href={`/servicios/${svc.hubSlug}/`}
+           aria-label={`Ver precios detallados de ${svc.label}`}
+           class="flex flex-col gap-1 border border-gray-200 rounded-xl p-5 hover:border-[#A85535] hover:shadow-sm transition-all group">
+          <span class="font-bold text-sm text-gray-900 group-hover:text-[#A85535] transition-colors" aria-hidden="true">{svc.label}</span>
+          <span class="text-xs text-gray-500" aria-hidden="true">{svc.hint}</span>
+          <span class="text-xs text-[#A85535] font-medium mt-2" aria-hidden="true">Ver precios detallados →</span>
         </a>
       ))}
     </div>
@@ -749,6 +751,14 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
             var res = results[q];
             var qd = svc.qualities[q];
             var isActive = q === state.quality;
+            // Usar includes del elemento cuando solo hay uno seleccionado
+            var cardSingleEl = null;
+            if (svc.inputType === 'elemento' && state.elements && state.elements.length === 1) {
+              cardSingleEl = (svc.elements || []).find(function (e) { return e.key === state.elements[0]; }) || null;
+            }
+            var cardIncludes = (cardSingleEl && cardSingleEl.qualityIncludes && cardSingleEl.qualityIncludes[q])
+              ? cardSingleEl.qualityIncludes[q]
+              : qd.includes;
             var priceHtml = res && res.total
               ? '<div class="text-lg md:text-xl font-black text-gray-900 leading-tight">' + fmt(res.total.min) + '–' + fmt(res.total.max) + ' €</div>'
               : '<div class="text-lg font-black text-gray-400">—</div>';
@@ -764,7 +774,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
               licHtml +
               '<div class="text-xs text-gray-400 mb-3">sin IVA · orientativo</div>' +
               '<ul class="text-xs text-gray-600 space-y-1 mb-3">' +
-                qd.includes.slice(0, 3).map(function (inc) {
+                cardIncludes.slice(0, 3).map(function (inc) {
                   return '<li class="flex items-start gap-1"><span class="text-green-600 shrink-0">✓</span> ' + esc(inc) + '</li>';
                 }).join('') +
               '</ul>' +
@@ -791,6 +801,22 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       var qd = svc.qualities[q];
       if (!res || !qd) { detailEl.innerHTML = ''; return; }
 
+      // ── Datos específicos por elemento (cuando solo hay uno seleccionado) ──
+      var singleEl = null;
+      if (svc.inputType === 'elemento' && state.elements && state.elements.length === 1) {
+        singleEl = (svc.elements || []).find(function (e) { return e.key === state.elements[0]; }) || null;
+      }
+      var qualityIncludes = (singleEl && singleEl.qualityIncludes && singleEl.qualityIncludes[q])
+        ? singleEl.qualityIncludes[q]
+        : qd.includes;
+      var qualityExcludes = (singleEl && singleEl.qualityExcludes)
+        ? svc.neverIncludes.concat(singleEl.qualityExcludes)
+        : svc.neverIncludes;
+      var breakdownData = (singleEl && singleEl.breakdown) ? singleEl.breakdown : svc.breakdown;
+      var multiElementNote = (svc.inputType === 'elemento' && state.elements && state.elements.length > 1)
+        ? '<p class="text-xs text-gray-500 italic mt-1 mb-4">Desglose orientativo para la combinación seleccionada. Cada elemento tiene su propia estructura de costes; en la visita técnica se desglosa por partida.</p>'
+        : '';
+
       var ctaParams = new URLSearchParams();
       ctaParams.set('servicio', svc.label);
       ctaParams.set('calidad', q);
@@ -799,16 +825,20 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       if (res.total) { ctaParams.set('estimacion_min', String(res.total.min)); ctaParams.set('estimacion_max', String(res.total.max)); }
       var ctaHref = '/contacto/?' + ctaParams.toString();
 
+      var detailTitle = singleEl
+        ? esc(singleEl.label) + ' · ' + esc(qd.label) + ' · Detalle'
+        : esc(svc.label) + ' · ' + esc(qd.label) + ' · Detalle';
+
       detailEl.innerHTML =
         '<div class="border-2 border-gray-900 rounded-xl p-6 mt-2">' +
-          '<h3 class="font-black text-gray-900 mb-6 text-lg">' + esc(svc.label) + ' · ' + esc(qd.label) + ' · Detalle</h3>' +
+          '<h3 class="font-black text-gray-900 mb-6 text-lg">' + detailTitle + '</h3>' +
 
           '<div class="grid md:grid-cols-2 gap-8 mb-8">' +
             // Incluye
             '<div>' +
               '<h4 class="font-bold text-green-700 mb-3 text-sm">✓ Qué incluye</h4>' +
               '<ul class="space-y-2">' +
-                qd.includes.map(function (inc) {
+                qualityIncludes.map(function (inc) {
                   return '<li class="text-sm text-gray-700 flex items-start gap-2"><span class="text-green-600 shrink-0 mt-0.5">✓</span>' + esc(inc) + '</li>';
                 }).join('') +
               '</ul>' +
@@ -817,7 +847,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
             '<div>' +
               '<h4 class="font-bold text-red-700 mb-3 text-sm">✗ Qué NO incluye</h4>' +
               '<ul class="space-y-2">' +
-                svc.neverIncludes.map(function (exc) {
+                qualityExcludes.map(function (exc) {
                   return '<li class="text-sm text-gray-700 flex items-start gap-2"><span class="text-red-500 shrink-0 mt-0.5">✗</span>' + esc(exc) + '</li>';
                 }).join('') +
               '</ul>' +
@@ -826,8 +856,9 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
 
           // Desglose
           '<h4 class="font-bold text-gray-800 mb-3 text-sm">Desglose orientativo por partidas</h4>' +
+          multiElementNote +
           '<div class="space-y-2 mb-8">' +
-            svc.breakdown.map(function (b) {
+            breakdownData.map(function (b) {
               return '<div class="flex items-center gap-3">' +
                 '<div class="text-xs text-gray-600 min-w-0 w-48 shrink-0 truncate">' + esc(b.label) + '</div>' +
                 '<div class="flex-1 bg-gray-100 rounded-full h-2"><div class="bg-[#A85535] h-2 rounded-full" style="width:' + b.pct + '%"></div></div>' +

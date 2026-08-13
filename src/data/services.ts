@@ -19,8 +19,8 @@ export const SERVICES = [
       { type: 'h3', text: 'Licencias y normativa: qué necesitas tramitar en tu ayuntamiento' },
       { type: 'p',  text: 'El trámite necesario depende del alcance de la reforma y de la normativa municipal aplicable: actuaciones interiores sencillas no se gestionan igual que obras que modifican distribución, instalaciones o elementos de fachada. El derribo de muros de carga exige proyecto de arquitecto técnico. En la visita informamos del trámite exacto que corresponde a tu caso y nos encargamos de la gestión completa.' },
     ],
-    priceFrom: '24.900',
-    priceDesc: 'Reforma integral piso 70–90 m²',
+    priceFrom: '18.000',
+    priceDesc: 'Reforma de acabados 60 m² · sin IVA',
     processSteps: [
       { title: 'Visita y medición gratuita', desc: 'Visitamos la vivienda sin coste ni compromiso. Tomamos medidas, evaluamos el estado previo y escuchamos tus necesidades.' },
       { title: 'Presupuesto cerrado en 48h', desc: 'Entregamos presupuesto detallado con todas las partidas incluidas. Sin sorpresas posteriores: el precio que firmamos es el que pagas.' },
@@ -30,10 +30,10 @@ export const SERVICES = [
       { title: 'Entrega llave en mano', desc: 'Revisión final contigo, limpieza de obra y entrega con garantía de 2 años en materiales y mano de obra.' },
     ],
     priceTable: [
-      { label: 'Piso 50–60 m² (integral con instalaciones)', price: 'Desde 18.000€', includes: 'Cuadro, fontanería, baño, cocina y acabados' },
-      { label: 'Piso 70–90 m² (integral con redistribución)', price: 'Desde 24.900€', includes: 'Instalaciones nuevas + distribución actualizada' },
-      { label: 'Piso 100–120 m² o redistribución completa', price: 'Desde 38.000€', includes: 'Integral con cambio de distribución' },
-      { label: 'Chalet o dúplex 150–200 m²', price: 'Desde 55.000€', includes: 'Precio orientativo según estado previo' },
+      { label: 'Reforma de acabados (sin renovar instalaciones)', price: '300–500 €/m²', includes: 'Suelos, pintura, carpintería, baño y cocina. Cuadro y fontanería existentes se conservan si están en buen estado.' },
+      { label: 'Reforma integral esencial (instalaciones nuevas)', price: '650–800 €/m²', includes: 'Cuadro eléctrico nuevo, fontanería completa, redistribución, baño, cocina y acabados.' },
+      { label: 'Reforma integral media', price: '800–1.000 €/m²', includes: 'Como la esencial con materiales de calidad media-alta: porcelánicos, muebles a medida, carpintería de aluminio.' },
+      { label: 'Reforma integral alta', price: '1.000–1.400 €/m²', includes: 'Materiales premium, proyecto de diseño de interiores, domótica básica y acabados singulares.' },
     ],
     faqs: [
       {
@@ -264,6 +264,7 @@ export const SERVICES = [
     slug: 'locales-comerciales',
     title: 'Reformas de Locales Comerciales',
     shortTitle: 'Locales',
+    titleBarrio: 'Local Comercial y Oficinas',
     anchorLabel: 'Reforma de locales comerciales',
     relatedServices: ['comunidades-vecinos'],
     icon: '🏪',
@@ -332,6 +333,7 @@ export const SERVICES = [
     slug: 'comunidades-vecinos',
     title: 'Reformas en Comunidades de Propietarios',
     shortTitle: 'Comunidades',
+    titleBarrio: 'Comunidades de Vecinos',
     anchorLabel: 'Reforma de comunidades de propietarios',
     relatedServices: ['locales-comerciales'],
     icon: '🏘️',

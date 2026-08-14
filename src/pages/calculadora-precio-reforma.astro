@@ -437,13 +437,15 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
     <p class="text-sm text-gray-600 mb-6">Cada hub incluye tabla de precios, qué está incluido en cada nivel, plazos y cómo funciona el proceso. Consulta el del servicio que necesitas para afinar la estimación de la calculadora.</p>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
       {CALC_SERVICES.map(svc => (
-        <a href={`/servicios/${svc.hubSlug}/`}
-           aria-label={`Ver precios detallados de ${svc.label}`}
-           class="flex flex-col gap-1 border border-gray-200 rounded-xl p-5 hover:border-[#A85535] hover:shadow-sm transition-all group">
-          <span class="font-bold text-sm text-gray-900 group-hover:text-[#A85535] transition-colors" aria-hidden="true">{svc.label}</span>
-          <span class="text-xs text-gray-500" aria-hidden="true">{svc.hint}</span>
-          <span class="text-xs text-[#A85535] font-medium mt-2" aria-hidden="true">Ver precios detallados →</span>
-        </a>
+        <div class="group flex flex-col border border-gray-200 rounded-xl hover:border-[#A85535] hover:shadow-sm transition-all">
+          <a href={`/servicios/${svc.hubSlug}/`}
+             aria-label={`Ver precios detallados de ${svc.label}`}
+             class="p-5 pb-2 flex-1">
+            <span class="font-bold text-sm text-gray-900 group-hover:text-[#A85535] transition-colors block" aria-hidden="true">{svc.label}</span>
+            <span class="text-xs text-[#A85535] font-medium mt-2 block" aria-hidden="true">Ver precios detallados →</span>
+          </a>
+          <p class="px-5 pb-5 text-xs text-gray-500 leading-snug">{svc.hint}</p>
+        </div>
       ))}
     </div>
     <p class="text-sm text-gray-500 mt-6">

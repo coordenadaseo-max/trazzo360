@@ -43,9 +43,16 @@ const faqSchema = {
 ---
 
 <Layout
-  title={`Empresa de Reformas en ${zone.name} | ${SITE.name}`.length < 47
-    ? `Empresa de Reformas en ${zone.name} · Precio Cerrado | ${SITE.name}`
-    : `Empresa de Reformas en ${zone.name} | ${SITE.name}`}
+  title={(() => {
+    if ((zone as any).seoTitle) return (zone as any).seoTitle;
+    const raw = `Empresa de Reformas en ${zone.name} | ${SITE.name}`;
+    if (raw.length < 50) {
+      const mod: string = (zone as any).seoModifier ?? '· Precio Cerrado';
+      const withMod = `Empresa de Reformas en ${zone.name} ${mod} | ${SITE.name}`;
+      return withMod.length <= 60 ? withMod : raw;
+    }
+    return raw;
+  })()}
   description={`Trazzo360, empresa de reformas en ${zone.name}. Reformas integrales, baños, cocinas, pisos y locales. Precio cerrado y presupuesto gratis en 24h.`}
   schema={[zoneSchema, breadcrumbSchema, faqSchema]}
 >

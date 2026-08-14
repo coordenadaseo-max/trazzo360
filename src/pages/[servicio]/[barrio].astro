@@ -15,8 +15,14 @@ const { service, zone } = Astro.props;
 
 const titlePart = (service as any).titleBarrio ?? service.title;
 const rawTitle = `${titlePart} en ${zone.name} | ${SITE.name}`;
-const pageTitle = rawTitle.length < 45
-  ? `${titlePart} en ${zone.name} · Precio Cerrado | ${SITE.name}`
+const withPrecioCerrado = `${titlePart} en ${zone.name} · Precio Cerrado | ${SITE.name}`;
+const withPresupuesto = `${titlePart} en ${zone.name} · Presupuesto | ${SITE.name}`;
+const pageTitle = rawTitle.length >= 50
+  ? rawTitle
+  : withPrecioCerrado.length <= 60
+  ? withPrecioCerrado
+  : withPresupuesto.length <= 60
+  ? withPresupuesto
   : rawTitle;
 
 const isPrimary = zone.primary;

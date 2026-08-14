@@ -199,6 +199,7 @@ export const SERVICES = [
   {
     slug: 'reforma-pisos',
     title: 'Reforma de Pisos y Chalets',
+    titleBarrio: 'Reforma de Pisos',
     shortTitle: 'Pisos y Chalets',
     anchorLabel: 'Reforma de pisos y chalets',
     relatedServices: ['reformas-integrales', 'reforma-banos', 'reforma-cocinas'],
@@ -264,7 +265,7 @@ export const SERVICES = [
     slug: 'locales-comerciales',
     title: 'Reformas de Locales Comerciales',
     shortTitle: 'Locales',
-    titleBarrio: 'Local Comercial y Oficinas',
+    titleBarrio: 'Local Comercial',
     anchorLabel: 'Reforma de locales comerciales',
     relatedServices: ['comunidades-vecinos'],
     icon: '🏪',

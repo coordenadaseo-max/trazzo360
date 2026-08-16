@@ -543,6 +543,31 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- Guías de precios -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-guias-home">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-2">Información de precios</p>
+      <h2 id="h-guias-home" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">¿Cuánto cuesta una reforma?</h2>
+      <p class="text-gray-600 leading-relaxed mb-6">Antes de pedir presupuesto, estas guías explican los rangos reales de precio, el desglose por partidas y cómo comparar ofertas.</p>
+      <ul class="grid sm:grid-cols-3 gap-4">
+        {[
+          { href: '/guias/cuanto-cuesta-reformar-un-bano/', label: 'Cuánto cuesta reformar un baño', desde: 'Desde 3.200€' },
+          { href: '/guias/cuanto-cuesta-reformar-una-cocina/', label: 'Cuánto cuesta reformar una cocina', desde: 'Desde 5.500€' },
+          { href: '/guias/cuanto-cuesta-reformar-un-piso/', label: 'Cuánto cuesta reformar un piso', desde: 'Desde 8.000€' },
+        ].map(g => (
+          <li>
+            <a href={g.href} class="block border border-gray-200 bg-white p-5 hover:border-[#A85535] transition-colors">
+              <span class="block font-bold text-gray-900 text-sm mb-1">{g.label}</span>
+              <span class="block text-xs text-[#A85535] font-semibold mb-2">{g.desde}</span>
+              <span class="block text-xs text-gray-500">Ver precios y desglose →</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="text-sm text-gray-500 mt-4"><a href="/guias/" class="text-[#A85535] hover:underline font-medium">Ver todas las guías de precios de reforma →</a></p>
+    </div>
+  </section>
+
   <!-- CTA FINAL -->
   <section class="py-20 bg-[#A85535]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">

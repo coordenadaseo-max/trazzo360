@@ -1,0 +1,444 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../data/site';
+
+const title = 'Cuánto cuesta reformar un piso en 2025 | Trazzo360';
+const description = 'Cuánto cuesta reformar un piso en el Corredor del Henares: precios por m² y alcance, desglose por partidas y errores caros que evitar antes de firmar.';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Guías', item: `${SITE.url}/guias/` },
+    { '@type': 'ListItem', position: 3, name: 'Cuánto cuesta reformar un piso', item: `${SITE.url}/guias/cuanto-cuesta-reformar-un-piso/` },
+  ],
+};
+
+const faqs = [
+  {
+    q: '¿Cuánto cuesta reformar un piso de 70 m²?',
+    a: 'Una reforma de acabados de un piso de 70 m² —suelos, baño, cocina, carpintería y pintura, sin renovar instalaciones— parte de 18.000€ con calidad media. Solo suelos y pintura puede hacerse desde 8.000€. Si las instalaciones (cuadro eléctrico, fontanería) necesitan renovación, estamos ante una reforma integral que parte de 45.000€ para ese mismo tamaño. El presupuesto exacto cierra tras la visita técnica gratuita.',
+  },
+  {
+    q: '¿Cuándo merece la pena hacer una reforma integral en lugar de solo baño y cocina?',
+    a: 'Cuando las instalaciones necesitan renovación. Si el cuadro eléctrico o la fontanería requieren sustitución, hacerlo todo a la vez con el piso ya abierto es más eficiente que plantear obras sucesivas. Si las instalaciones están en buen estado, baño, cocina, suelos y pintura pueden transformar completamente el piso sin necesidad de reforma pesada.',
+  },
+  {
+    q: '¿Cuánto tiempo dura la reforma de un piso?',
+    a: 'Una reforma de acabados con baño, cocina, suelos y pintura en un piso de 60–80 m² lleva entre 6 y 10 semanas. Solo suelos y pintura lleva 2–4 semanas. Si se añade redistribución de tabiques o renovación de instalaciones, el plazo puede aumentar. La fecha de entrega queda fijada en el contrato antes de empezar.',
+  },
+  {
+    q: '¿Puedo seguir viviendo en el piso durante la reforma?',
+    a: 'En reformas parciales de un solo espacio (solo baño o solo cocina), sí, aunque con incomodidad. En reformas que afectan a suelos, tabiques e instalaciones a la vez, no es recomendable: el polvo y los cortes de suministros dificultan la convivencia. Si no tienes alternativa de alojamiento, diseñamos una secuencia por zonas para que siempre tengas una parte habitable.',
+  },
+  {
+    q: '¿Qué se puede reformar con 10.000€ en un piso?',
+    a: 'Con 10.000€ en un piso de 60–80 m² es posible hacer suelos completos más pintura, o bien un baño completo más pintura, o una cocina funcional sin alta gama. No alcanza para baño + cocina + suelos + pintura de forma completa. Si el piso tiene instalaciones en buen estado y solo necesita un cambio visual, suelos, carpintería y pintura pueden transformar mucho por ese importe.',
+  },
+  {
+    q: '¿Cuánto influye la calidad del material en el precio de la reforma del piso?',
+    a: 'En una reforma de acabados, el material representa entre el 45 y el 60 % del coste total. La diferencia entre porcelánico estándar y parquet de madera maciza en todo el piso puede ser de 5.000–8.000€. La decisión de calidad en suelos afecta más al precio total que la calidad de otros acabados por el volumen de superficie.',
+  },
+  {
+    q: '¿Vale la pena reformar el piso antes de alquilarlo?',
+    a: 'En pisos de los años 70–90 con baño y cocina sin reformar, una inversión de 12.000–18.000€ puede aumentar la renta mensual y reducir el tiempo de vacancia. El retorno depende del mercado local y del estado inicial del piso. En municipios con alta demanda de alquiler del Corredor (Torrejón, Alcalá, Coslada), el piso reformado tiene un margen de diferenciación claro.',
+  },
+  {
+    q: '¿Qué conviene hacer primero si no puedo reformar el piso completo a la vez?',
+    a: 'Lo que más impacto visual tiene con menor coste por metro cuadrado son los suelos y la pintura: transforman la percepción de toda la vivienda. Si el presupuesto permite más, el baño tiene más retorno por euro invertido que la cocina, porque es el espacio que más condiciona la valoración de quien compra o alquila. La cocina tiene mayor impacto en la comodidad diaria, pero su reforma es más cara por metro útil.',
+  },
+  {
+    q: '¿Qué pasa si al abrir el suelo aparece algo que no estaba previsto?',
+    a: 'En pisos anteriores a 1985 es relativamente frecuente encontrar tuberías en peor estado del visible o una instalación eléctrica que requiere intervención al abrirse. Cuando aparece algo no previsto, comunicamos el hallazgo antes de tocar nada y lo valoramos por separado. Ninguna decisión de ampliar el alcance se toma sin tu aprobación. En la mayoría de reformas de acabados del Corredor, el precio cierra sin desviaciones.',
+  },
+  {
+    q: '¿La reforma de pisos necesita licencia?',
+    a: 'La mayoría de reformas de pisos que no afectan a muros de carga ni fachadas se tramitan como obra menor o comunicación previa. Si la reforma incluye derribo de un tabique portante o modificación estructural, requiere proyecto firmado y licencia de obra mayor. En los ayuntamientos del Corredor del Henares, la obra menor tiene un trámite más ágil. En la visita técnica te decimos qué trámite corresponde a tu caso y lo gestionamos si es necesario.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout title={title} description={description} schema={[breadcrumbSchema, faqSchema]}>
+
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2 flex-wrap" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li><a href="/guias/" class="hover:text-[#A85535] transition-colors">Guías</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Cuánto cuesta reformar un piso</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- M1: Respuesta directa -->
+    <header class="mb-12">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Guía de precios · Reforma de piso</p>
+      <h1 class="text-3xl lg:text-5xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+        Cuánto cuesta reformar un piso en 2025
+      </h1>
+      <div class="border-l-4 border-[#A85535] pl-6 bg-[#F9F7F4] py-5 pr-6 mb-6">
+        <p class="text-lg text-gray-800 leading-relaxed font-medium">
+          Una reforma de piso completa —baño, cocina, suelos y pintura, sin renovar instalaciones— parte de 18.000€ para un piso de 60–80 m² con materiales de calidad media. Solo suelos y pintura puede hacerse desde 8.000€. Si las instalaciones necesitan renovación, es una reforma integral con un coste diferente. Estima tu caso con la <a href="/calculadora-precio-reforma/?servicio=reforma-pisos" class="text-[#A85535] underline hover:opacity-80">calculadora de precios</a>.
+        </p>
+      </div>
+      <p class="text-gray-600 leading-relaxed">
+        Esta guía desglosa los precios por alcance y superficie, explica cómo se distribuye el coste y qué revisar para tomar la decisión correcta antes de firmar.
+      </p>
+    </header>
+
+    <!-- M2: Tabla de precios por alcance -->
+    <section aria-labelledby="h-precios-piso" class="mb-12">
+      <h2 id="h-precios-piso" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+        Precio de reforma de piso según alcance
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Precios orientativos para un piso de 60–80 m² en el Corredor del Henares. El presupuesto exacto cierra después de la visita técnica gratuita. Usa la <a href="/calculadora-precio-reforma/?servicio=reforma-pisos" class="text-[#A85535] underline hover:opacity-80">calculadora de reforma de piso</a> para estimar por superficie y calidad.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Precios orientativos para piso 60–80 m², IVA no incluido. Instalaciones en buen estado.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Alcance</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Precio orientativo</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Plazo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: 'Suelos + pintura + carpintería (sin baño ni cocina)', price: 'Desde 8.000€', plazo: '2–4 semanas' },
+              { label: 'Baño + cocina + suelos + pintura', price: 'Desde 18.000€', plazo: '6–10 semanas' },
+              { label: 'Con redistribución de tabiques', price: 'Desde 28.000€', plazo: '8–12 semanas' },
+              { label: 'Si las instalaciones necesitan renovación', price: 'Ver Reformas Integrales', plazo: 'Desde 10 semanas' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-4 text-gray-700">{row.label}</td>
+                <td class={`py-3 px-4 text-right font-semibold ${i === 3 ? 'text-gray-500' : 'text-[#A85535]'}`}>{row.price}</td>
+                <td class="py-3 px-4 text-right text-gray-500 hidden md:table-cell">{row.plazo}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 overflow-x-auto">
+        <p class="text-sm font-semibold text-gray-900 mb-3">Precio por m² según calidad (solo acabados, sin renovar instalaciones)</p>
+        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Precio por m² de superficie del piso, IVA no incluido.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Calidad</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">€/m²</th>
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Incluye</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { cal: 'Esencial', pm2: '350–450 €/m²', inc: 'Suelos, puertas y pintura' },
+              { cal: 'Media', pm2: '450–600 €/m²', inc: 'Baño + cocina + suelos + pintura' },
+              { cal: 'Alta', pm2: '600–800 €/m²', inc: 'Materiales premium, carpintería a medida' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-4 font-medium text-gray-900">{row.cal}</td>
+                <td class="py-3 px-4 text-right font-semibold text-[#A85535]">{row.pm2}</td>
+                <td class="py-3 px-4 text-gray-500 text-xs hidden md:table-cell">{row.inc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4 bg-blue-50 border-l-4 border-blue-400 p-4">
+        <p class="text-sm text-gray-700 leading-relaxed">
+          <span class="font-semibold">Si las instalaciones necesitan renovación:</span> una reforma integral —con cuadro eléctrico nuevo, fontanería completa y todo lo de acabados— cuesta entre 650€ y 1.400€/m² según calidad. Consulta la <a href="/servicios/reformas-integrales/" class="text-[#A85535] hover:underline font-medium">página de reformas integrales</a> para más detalles.
+        </p>
+      </div>
+    </section>
+
+    <!-- M3: La pregunta clave: acabados o integral -->
+    <section aria-labelledby="h-decision-piso" class="mb-12">
+      <h2 id="h-decision-piso" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        La primera decisión: reforma de acabados o reforma integral
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        El precio de una reforma de piso cambia radicalmente según si las instalaciones se tocan o no. La pregunta de fondo es siempre la misma: ¿están el cuadro eléctrico y la fontanería en estado de aguantar 15–20 años más sin problemas?
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-white p-6 border-t-4 border-[#A85535] border border-gray-100">
+          <h3 class="text-base font-bold text-gray-900 mb-3">Reforma de acabados (sin tocar instalaciones)</h3>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 pl-4 list-disc">
+            <li>El cuadro eléctrico tiene capacidad para los electrodomésticos actuales</li>
+            <li>La fontanería no ha dado problemas en los últimos años</li>
+            <li>El objetivo es mejorar el aspecto y la funcionalidad</li>
+            <li>El edificio es posterior a 1990</li>
+          </ul>
+          <p class="text-sm font-semibold text-[#A85535] mt-4">Desde 8.000€ (suelos) / Desde 18.000€ (baño+cocina+suelos+pintura)</p>
+        </div>
+        <div class="bg-white p-6 border-t-4 border-gray-300 border border-gray-100">
+          <h3 class="text-base font-bold text-gray-900 mb-3">Reforma integral (instalaciones + acabados)</h3>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 pl-4 list-disc">
+            <li>La instalación eléctrica es de los años 70–80 sin actualizar</li>
+            <li>La fontanería ha dado problemas o lleva muchos años sin intervención</li>
+            <li>Quieres cambiar la distribución de tabiques</li>
+            <li>El piso no ha tenido ninguna reforma desde la construcción</li>
+          </ul>
+          <p class="text-sm font-semibold text-gray-500 mt-4">Desde 650 €/m² — <a href="/servicios/reformas-integrales/" class="text-[#A85535] hover:underline">ver reformas integrales</a></p>
+        </div>
+      </div>
+      <p class="text-gray-700 leading-relaxed">
+        En la visita técnica gratuita valoramos el estado real de las instalaciones y te decimos con exactitud qué tipo de reforma necesita tu piso. No asumimos que están bien ni que están mal: inspeccionamos antes de presupuestar.
+      </p>
+    </section>
+
+    <!-- M4: Qué encarece / abarata -->
+    <section aria-labelledby="h-encarece-piso" class="mb-12">
+      <h2 id="h-encarece-piso" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Qué encarece y qué abarata una reforma de piso
+      </h2>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que suben el precio</h3>
+      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
+        <li>Estado de las instalaciones: cuadro eléctrico antiguo o fontanería que requiere renovación</li>
+        <li>Redistribución de tabiques: implica proyecto técnico, licencia y tiempos adicionales</li>
+        <li>Suelo de parquet de madera maciza frente a porcelánico: diferencia de 3.000–6.000€ en un piso de 70 m²</li>
+        <li>Baño de alta gama con ducha de obra y sanitarios de diseño</li>
+        <li>Carpintería de puertas lacadas en lugar de pintadas</li>
+        <li>Sin ascensor o planta alta: encarece la retirada de escombros y el acopio de material</li>
+        <li>Pisos anteriores a 1980 en Coslada, San Fernando o Torrejón: el estado de instalaciones es el principal imprevisible</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que reducen el coste sin comprometer el resultado</h3>
+      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
+        <li>Mantener la distribución actual sin tocar tabiques</li>
+        <li>Porcelánico rectificado de calidad media en lugar de parquet: mismo mantenimiento, más resistente al agua</li>
+        <li>Reformar baño y cocina manteniendo la posición de fontanería</li>
+        <li>Carpintería pintada en blanco en lugar de lacada a medida</li>
+        <li>No cambiar la carpintería exterior si está en buen estado térmico</li>
+      </ul>
+    </section>
+
+    <!-- M5: Qué no incluye -->
+    <section aria-labelledby="h-no-incluye-piso" class="mb-12 bg-[#F9F7F4] p-7">
+      <h2 id="h-no-incluye-piso" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Qué no incluye el precio de reforma de piso
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Estos conceptos quedan fuera del precio de una reforma de piso estándar, sea cual sea la calidad elegida.
+      </p>
+      <ul class="text-gray-700 leading-relaxed space-y-2 pl-5 list-disc">
+        <li>Electrodomésticos (encimera, horno, lavavajillas, frigorífico)</li>
+        <li>Mobiliario no fijo (mesas, sillas, sofás, camas)</li>
+        <li>Aire acondicionado o sistema de climatización</li>
+        <li>Obras en elementos comunes del edificio o fachada</li>
+        <li>Renovación del cuadro eléctrico ni fontanería general (en reforma de acabados)</li>
+        <li>Desperfectos ocultos que afloran al abrir paredes o suelos (se valoran y comunican antes de actuar)</li>
+        <li>IVA: 10 % en vivienda habitual, se añade al precio de la obra</li>
+        <li>Tasas municipales ni honorarios de proyecto, salvo que se incluyan expresamente</li>
+      </ul>
+    </section>
+
+    <!-- M6: Cómo comparar presupuestos -->
+    <section aria-labelledby="h-comparar-piso" class="mb-12">
+      <h2 id="h-comparar-piso" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Cómo leer y comparar presupuestos de reforma de piso
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Estas son las partidas que más varían entre presupuestos con el mismo total aparente.
+      </p>
+      <dl class="divide-y divide-gray-200 bg-white border border-gray-100 px-6">
+        {[
+          {
+            term: 'Estado de instalaciones asumido',
+            def: 'Algunos presupuestos asumen que la instalación eléctrica y la fontanería están en buen estado. Si durante la obra aparecen problemas, se cobran como extra. Pide que el presupuesto especifique qué ocurre si al abrir se encuentran instalaciones deterioradas.',
+          },
+          {
+            term: 'Alcance exacto del baño y la cocina',
+            def: 'Un presupuesto puede contemplar solo el cambio de revestimientos y sanitarios en el baño, o puede incluir fontanería nueva y redistribución. Lo mismo con la cocina: algunos precios no incluyen los electrodomésticos ni la encimera. Pide el desglose de cada zona.',
+          },
+          {
+            term: 'Suelos: superficie real y precio instalado',
+            def: 'El precio por m² de solado puede parecer bajo hasta que se suman las mermas de corte, el material de la cola, el rodapié y el coste del levantamiento del pavimento anterior. Compara el precio por m² instalado, no solo el del material.',
+          },
+          {
+            term: 'Gestión de escombros y limpieza final',
+            def: 'Una reforma de 70 m² genera varios metros cúbicos de escombros. El contenedor y la limpieza final deben estar incluidos. Si no aparecen como partida, pregunta si están dentro o si se cobran aparte.',
+          },
+          {
+            term: 'Licencia y proyecto técnico',
+            def: 'Si la reforma incluye derribo de tabiques o redistribución, el proyecto técnico y la licencia de obra tienen un coste que a veces no está en el presupuesto base. Pide que se especifique quién lo gestiona y a qué coste.',
+          },
+        ].map(({ term, def }) => (
+          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
+            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
+            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-6 bg-amber-50 border-l-4 border-amber-400 p-5">
+        <p class="text-sm font-semibold text-gray-900 mb-2">Sobre precio cerrado e imprevistos</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma de piso, eso incluye el estado observable de las instalaciones, las dimensiones reales de cada zona y los materiales especificados antes de empezar. Si al levantar suelos o abrir paredes aparece algo que no era accesible antes, lo comunicamos antes de tocar nada y lo valoramos por separado. Hay una persona que llama, explica y espera tu decisión antes de actuar.
+        </p>
+      </div>
+    </section>
+
+    <!-- M7: Plazos -->
+    <section aria-labelledby="h-plazos-piso" class="mb-12">
+      <h2 id="h-plazos-piso" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Plazos reales de reforma de piso
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Plazos orientativos. La fecha de entrega se fija en el contrato antes de empezar.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Tipo de reforma</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Piso 50–70 m²</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Piso 80–100 m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { tipo: 'Suelos + pintura + carpintería', p70: '2–3 sem.', p100: '3–4 sem.' },
+              { tipo: 'Baño + cocina + suelos + pintura', p70: '6–8 sem.', p100: '8–10 sem.' },
+              { tipo: 'Con redistribución de tabiques', p70: '+1–2 sem. adicionales', p100: '+2–3 sem. adicionales' },
+              { tipo: 'Si hay renovación de instalaciones', p70: 'Ver Reformas Integrales', p100: 'Ver Reformas Integrales' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
+                <td class="py-3 px-4 text-gray-700">{row.tipo}</td>
+                <td class="py-3 px-4 text-right text-gray-600">{row.p70}</td>
+                <td class="py-3 px-4 text-right text-gray-500 hidden md:table-cell">{row.p100}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-3">
+        La fase de levantamiento de suelos en toda la vivienda a la vez es la semana más crítica en polvo y ruido. A partir de ahí, la situación mejora progresivamente por zonas.
+      </p>
+    </section>
+
+    <!-- M8: Errores caros -->
+    <section aria-labelledby="h-errores-piso" class="mb-12">
+      <h2 id="h-errores-piso" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Errores caros al reformar un piso
+      </h2>
+      <ol class="space-y-5">
+        {[
+          {
+            n: '01',
+            title: 'Reformar acabados sin revisar las instalaciones primero',
+            desc: 'En pisos anteriores a 1990, reformar baño, cocina y suelos sin valorar el cuadro eléctrico y la fontanería puede llevar a tener que volver a abrir en 3–5 años cuando fallen las instalaciones. La visita técnica gratuita incluye esta valoración antes de dar precio.',
+          },
+          {
+            n: '02',
+            title: 'Presupuestar sin determinar exactamente qué entra y qué no',
+            desc: 'Una reforma de piso puede incluir desde solo suelos y pintura hasta baño, cocina, carpintería, redistribución y renovación de instalaciones. Un presupuesto que dice "reforma completa" sin desglosar qué zonas, qué materiales y qué instalaciones puede resultar muy diferente a lo esperado.',
+          },
+          {
+            n: '03',
+            title: 'Empezar obra sin todos los materiales decididos',
+            desc: 'Si se comienza la obra con el suelo o la cocina sin elegir, la obra puede detenerse en espera de pedidos. El plazo real de una reforma incluye el tiempo de fabricación de muebles a medida, que puede ser de 3–5 semanas adicionales previas a la obra.',
+          },
+          {
+            n: '04',
+            title: 'No planificar dónde vivir durante la reforma de vivienda',
+            desc: 'Una reforma de baño + cocina + suelos + pintura requiere 6–10 semanas en las que el piso no es habitable en condiciones normales. No planificarlo con antelación genera presión sobre los plazos y decisiones de material que no se han pensado bien.',
+          },
+          {
+            n: '05',
+            title: 'Elegir presupuesto solo por precio total sin revisar alcance y forma de gestionar imprevistos',
+            desc: 'Dos presupuestos con el mismo importe total pueden cubrir alcances muy distintos. Revisar las partidas incluidas, los materiales especificados y cómo se gestiona lo imprevisto al abrir es más relevante que comparar la cifra final.',
+          },
+        ].map(item => (
+          <li class="flex gap-4">
+            <span class="text-2xl font-black text-[#A85535] opacity-40 flex-shrink-0 w-8">{item.n}</span>
+            <div>
+              <p class="font-semibold text-gray-900 mb-1">{item.title}</p>
+              <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Enlace calculadora + hub -->
+    <section aria-labelledby="h-siguiente-piso" class="mb-12 bg-[#111827] p-8">
+      <h2 id="h-siguiente-piso" class="text-xl font-black text-white mb-4" style="letter-spacing:-0.02em">
+        Siguiente paso: presupuesto cerrado para tu piso
+      </h2>
+      <p class="text-gray-300 leading-relaxed mb-6">
+        Usa la calculadora para estimar por superficie y calidad, consulta el servicio de reforma de pisos para ver el proceso completo y materiales, o conoce cómo trabajamos antes de llamar.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/calculadora-precio-reforma/?servicio=reforma-pisos" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+          Calculadora de reforma de piso
+        </a>
+        <a href="/servicios/reforma-pisos/" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
+          Servicio de reforma de pisos
+        </a>
+        <a href="/como-trabajamos/" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
+          Cómo trabajamos
+        </a>
+      </div>
+    </section>
+
+    <!-- M9: FAQs -->
+    <section aria-labelledby="h-faq-piso" class="mb-12">
+      <h2 id="h-faq-piso" class="text-2xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+        Preguntas frecuentes sobre el coste de una reforma de piso
+      </h2>
+      <div class="space-y-3">
+        {faqs.map(faq => (
+          <details class="border border-gray-200 bg-white">
+            <summary class="flex justify-between items-center py-4 px-5 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50 transition-colors list-none">
+              <span>{faq.q}</span>
+              <span class="text-[#A85535] ml-4 flex-shrink-0" aria-hidden="true">+</span>
+            </summary>
+            <div class="px-5 pb-5 pt-2 text-gray-700 leading-relaxed text-sm border-t border-gray-100">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Otras guías -->
+    <section aria-labelledby="h-otras-guias-piso" class="mb-8">
+      <h2 id="h-otras-guias-piso" class="text-xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Otras guías de precios de reforma
+      </h2>
+      <ul class="space-y-2">
+        <li><a href="/guias/cuanto-cuesta-reformar-un-bano/" class="text-[#A85535] hover:underline font-medium">Cuánto cuesta reformar un baño →</a></li>
+        <li><a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="text-[#A85535] hover:underline font-medium">Cuánto cuesta reformar una cocina →</a></li>
+      </ul>
+      <p class="text-sm text-gray-500 mt-4">
+        ¿Reformas en el Corredor del Henares? Consulta también los <a href="/reforma-pisos/torrejon-de-ardoz/" class="text-[#A85535] hover:underline">precios de reforma de piso en Torrejón de Ardoz</a>, <a href="/reforma-pisos/alcala-de-henares/" class="text-[#A85535] hover:underline">en Alcalá de Henares</a> o <a href="/reforma-pisos/coslada/" class="text-[#A85535] hover:underline">en Coslada</a>.
+      </p>
+    </section>
+
+  </article>
+
+</Layout>

@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../data/site';
+
+const title = 'Guías de precios de obra: baño, cocina y piso | Trazzo360';
+const description = 'Guías de precios para reformas de baño, cocina y piso en el Corredor del Henares: tablas, desglose por partidas y cómo comparar presupuestos.';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Guías', item: `${SITE.url}/guias/` },
+  ],
+};
+
+const guides = [
+  {
+    slug: 'cuanto-cuesta-reformar-un-bano',
+    title: 'Cuánto cuesta reformar un baño',
+    summary: 'Desde 3.200€ para un baño de hasta 5 m². Tabla de precios por tamaño y calidad, desglose por partidas y errores que evitar.',
+    kw: '1.900 búsquedas/mes',
+    cta: 'Ver precios de reforma de baño',
+  },
+  {
+    slug: 'cuanto-cuesta-reformar-una-cocina',
+    title: 'Cuánto cuesta reformar una cocina',
+    summary: 'Desde 8.000€ para una cocina de 8–12 m². El mobiliario y la encimera representan el 42 % del coste: aquí explicamos por qué.',
+    kw: '1.300 búsquedas/mes',
+    cta: 'Ver precios de reforma de cocina',
+  },
+  {
+    slug: 'cuanto-cuesta-reformar-un-piso',
+    title: 'Cuánto cuesta reformar un piso',
+    summary: 'Desde 18.000€ para baño + cocina + suelos + pintura en un piso de 60–80 m². Qué decide si es reforma de acabados o reforma integral.',
+    kw: '260 búsquedas/mes',
+    cta: 'Ver precios de reforma de piso',
+  },
+];
+---
+
+<Layout title={title} description={description} schema={[breadcrumbSchema]}>
+
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Guías</li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="bg-[#111827] py-16 lg:py-20" aria-labelledby="h-guias-hero">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Recursos de información</p>
+      <h1 id="h-guias-hero" class="text-3xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em">
+        Guías de precios de reforma
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed max-w-2xl">
+        Precios reales, desglose por partidas y criterios para comparar presupuestos antes de decidir. Para el Corredor del Henares: Torrejón, Alcalá, Coslada y el resto de municipios.
+      </p>
+    </div>
+  </section>
+
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <section aria-labelledby="h-guias-lista" class="mb-16">
+      <h2 id="h-guias-lista" class="text-2xl font-black text-gray-900 mb-8" style="letter-spacing:-0.02em">
+        Guías disponibles
+      </h2>
+      <div class="space-y-6">
+        {guides.map(guide => (
+          <article class="border border-gray-200 bg-white p-7 hover:border-[#A85535] transition-colors">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">
+              <a href={`/guias/${guide.slug}/`} class="hover:text-[#A85535] transition-colors">{guide.title}</a>
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-4">{guide.summary}</p>
+            <a href={`/guias/${guide.slug}/`} class="inline-flex items-center gap-2 text-sm font-semibold text-[#A85535] hover:underline">
+              {guide.cta} <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="h-calculadora-guias" class="mb-16 bg-[#F9F7F4] p-8">
+      <h2 id="h-calculadora-guias" class="text-xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Estima el coste de tu reforma antes de pedir presupuesto
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Las guías dan el marco de referencia. La calculadora te permite introducir el tamaño, la calidad y los modificadores de tu obra para obtener una estimación personalizada antes de que vengan a visitarte.
+      </p>
+      <a href="/calculadora-precio-reforma/" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+        Calculadora de precios de reforma
+      </a>
+    </section>
+
+    <section aria-labelledby="h-servicios-guias" class="mb-8">
+      <h2 id="h-servicios-guias" class="text-xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Páginas de servicio con precios y proceso completo
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Las guías son informativas. Si ya tienes claro qué necesitas, las páginas de servicio muestran el proceso, los materiales, los plazos y cómo solicitar presupuesto.
+      </p>
+      <ul class="grid md:grid-cols-2 gap-3 text-sm">
+        {[
+          { name: 'Reforma de baños', href: '/servicios/reforma-banos/' },
+          { name: 'Reforma de cocinas', href: '/servicios/reforma-cocinas/' },
+          { name: 'Reforma de pisos y viviendas', href: '/servicios/reforma-pisos/' },
+          { name: 'Reformas integrales', href: '/servicios/reformas-integrales/' },
+          { name: 'Reforma de locales comerciales', href: '/servicios/locales-comerciales/' },
+          { name: 'Comunidades de vecinos', href: '/servicios/comunidades-vecinos/' },
+        ].map(s => (
+          <li>
+            <a href={s.href} class="flex items-center gap-2 text-[#A85535] hover:underline font-medium">
+              <span aria-hidden="true">→</span> {s.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+  </main>
+
+</Layout>

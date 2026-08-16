@@ -1,0 +1,454 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../data/site';
+
+const title = 'Cuánto cuesta reformar una cocina en 2025 | Trazzo360';
+const description = 'Cuánto cuesta reformar una cocina en el Corredor del Henares: tabla de precios por m², desglose por partidas y cómo leer un presupuesto antes de decidir.';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Guías', item: `${SITE.url}/guias/` },
+    { '@type': 'ListItem', position: 3, name: 'Cuánto cuesta reformar una cocina', item: `${SITE.url}/guias/cuanto-cuesta-reformar-una-cocina/` },
+  ],
+};
+
+const faqs = [
+  {
+    q: '¿Cuánto cuesta una reforma de cocina de 10 m²?',
+    a: 'Una cocina de 8 a 12 m² con reforma completa —muebles, encimera, alicatado, electricidad y fontanería— cuesta entre 8.000€ y 14.000€ con calidad media. Con materiales esenciales el rango baja a 6.000–9.000€; con alta gama puede superar los 22.000€. El electrodoméstico no está incluido salvo que se especifique expresamente en el presupuesto.',
+  },
+  {
+    q: '¿Por qué es tan cara una reforma de cocina?',
+    a: 'Porque los muebles y la encimera representan el 42 % del coste total de media. A diferencia del baño, donde la mano de obra de instalación domina, en la cocina el peso del material de acabado es máximo. Una cocina de 10 m² con muebles de alta gama y encimera de piedra natural puede costar el doble que la misma superficie con muebles en kit y encimera laminada.',
+  },
+  {
+    q: '¿Los electrodomésticos están incluidos en el precio de reforma de cocina?',
+    a: 'No. Los electrodomésticos de superficie libre —encimera, horno, campana, frigorífico— quedan fuera del precio de reforma estándar. Algunos presupuestos incluyen la integración (carpintería y conexiones para electrodomésticos integrados de alta gama), pero el aparato en sí siempre es una partida aparte. Antes de comparar precios, confirma si el presupuesto incluye o no los electrodomésticos.',
+  },
+  {
+    q: '¿Cuánto cuesta solo cambiar los muebles de cocina sin hacer obra?',
+    a: 'Cambiar los muebles sin tocar alicatado, electricidad ni fontanería cuesta entre 3.000€ y 7.000€ según el tamaño y la calidad del mueble. Si solo se cambia el frontal de los muebles manteniendo la estructura, el coste puede ser inferior. Esta opción tiene sentido cuando las instalaciones son recientes y el alicatado está en buen estado.',
+  },
+  {
+    q: '¿Cuánto tiempo dura una reforma de cocina y cuántos días estaré sin cocina?',
+    a: 'Una reforma completa de cocina de 8–12 m² dura entre 4 y 7 semanas. Los primeros días de demolición son los más restrictivos. A partir de la segunda semana, con instalaciones hechas y muebles en montaje, es posible usar microondas o placa portátil en otro espacio. La última semana, cuando solo quedan remates, la cocina ya es funcional. Si el plazo sin cocina es un problema, lo planificamos desde el principio.',
+  },
+  {
+    q: '¿Merece la pena reformar la cocina antes de vender el piso?',
+    a: 'Depende del estado actual y del mercado local. Una cocina con muebles desactualizados y alicatado desgastado puede ser un freno visible para el comprador. Una reforma funcional de cocina de 8.000–12.000€ puede mejorar la percepción del piso y reducir el tiempo hasta la venta. La decisión depende del precio de venta esperado y del tiempo disponible antes de poner el piso en el mercado.',
+  },
+  {
+    q: '¿Qué encimera tiene mejor relación calidad-precio?',
+    a: 'El silestone (cuarzo compactado) tiene la mejor relación calidad-precio para uso cotidiano intensivo: resistente a rayones, manchas y golpes, con amplia variedad de colores y acabados. La encimera laminada es la más económica pero menos duradera. La piedra natural (granito, mármol) tiene el mejor aspecto pero requiere más mantenimiento. En la visita te mostramos muestras y te decimos cuál encaja mejor con tu uso real.',
+  },
+  {
+    q: '¿Cuánto cuesta abrir la cocina al salón?',
+    a: 'Si el tabique que separa cocina y salón no es estructural, el derribo cuesta entre 1.500€ y 3.000€ incluyendo refuerzo del hueco, redistribución de extracción y electricidad, y acabados. Si el tabique tiene función estructural, necesita un proyecto técnico de refuerzo, lo que encarece significativamente la intervención. En la visita valoramos el elemento antes de dar precio.',
+  },
+  {
+    q: '¿Por qué hay presupuestos de cocina con una diferencia de 5.000€ para el mismo tamaño?',
+    a: 'Las diferencias más habituales: calidad del mueble especificada o genérica, si el alicatado está incluido o no, si la electricidad (circuitos dedicados) está en el precio o si se cobra aparte, si el diseño del espacio está incluido, y si los electrodomésticos entran o no. Un presupuesto sin desglose puede ocultar estas diferencias hasta que empieza la obra.',
+  },
+  {
+    q: '¿El IVA está incluido en los presupuestos de reforma de cocina?',
+    a: 'En vivienda habitual, el tipo reducido es el 10 % de IVA sobre la mano de obra. Los materiales tributan al 21 % salvo que se incluyan en el precio de la obra de manera conjunta. La mayoría de presupuestos indican "IVA no incluido" y lo desglosan al final. Antes de comparar cifras, verifica si el IVA está dentro o no: en una reforma de 10.000€, la diferencia es de 1.000–2.000€ según la distribución obra/material.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout title={title} description={description} schema={[breadcrumbSchema, faqSchema]}>
+
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2 flex-wrap" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li><a href="/guias/" class="hover:text-[#A85535] transition-colors">Guías</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Cuánto cuesta reformar una cocina</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- M1: Respuesta directa -->
+    <header class="mb-12">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Guía de precios · Reforma de cocina</p>
+      <h1 class="text-3xl lg:text-5xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+        Cuánto cuesta reformar una cocina en 2025
+      </h1>
+      <div class="border-l-4 border-[#A85535] pl-6 bg-[#F9F7F4] py-5 pr-6 mb-6">
+        <p class="text-lg text-gray-800 leading-relaxed font-medium">
+          Una reforma de cocina completa de 8–12 m² —muebles, encimera, alicatado, electricidad y fontanería— cuesta desde 8.000€ con materiales de calidad media. El mobiliario y la encimera representan el 42 % del coste total: la cocina es la reforma donde la elección de materiales tiene más peso en el precio final. Usa la <a href="/calculadora-precio-reforma/?servicio=reforma-cocinas" class="text-[#A85535] underline hover:opacity-80">calculadora de precios</a> para estimar tu caso.
+        </p>
+      </div>
+      <p class="text-gray-600 leading-relaxed">
+        Esta guía desglosa los precios por superficie y calidad, explica cómo se distribuye el coste entre partidas y qué revisar para comparar presupuestos sin sorpresas.
+      </p>
+    </header>
+
+    <!-- M2: Tabla de precios -->
+    <section aria-labelledby="h-precios-cocina" class="mb-12">
+      <h2 id="h-precios-cocina" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+        Precio de reforma de cocina según superficie y alcance
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Precios orientativos para el Corredor del Henares con calidad media. No incluyen electrodomésticos de superficie libre. El presupuesto exacto cierra después de la visita técnica gratuita. Estima por tramo con la <a href="/calculadora-precio-reforma/?servicio=reforma-cocinas" class="text-[#A85535] underline hover:opacity-80">calculadora de precios de reforma de cocina</a>.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Precios orientativos IVA no incluido. Electrodomésticos no incluidos.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Superficie</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Precio orientativo</th>
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Incluye</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: 'Hasta 8 m²', price: 'Desde 5.500€', includes: 'Muebles, encimera, alicatado, electricidad y fontanería' },
+              { label: '8–12 m² (referencia de mercado)', price: 'Desde 8.000€', includes: 'Con alicatado, circuitos eléctricos dedicados y fontanería' },
+              { label: '12–18 m²', price: 'Desde 12.000€', includes: 'Muebles a medida incluidos, encimera de silestone' },
+              { label: 'Cocina americana o con isla', price: 'Desde 14.000€', includes: 'Con apertura al salón y proyecto técnico' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-4 font-medium text-gray-900">{row.label}</td>
+                <td class="py-3 px-4 text-right font-semibold text-[#A85535]">{row.price}</td>
+                <td class="py-3 px-4 text-gray-500 text-xs hidden md:table-cell">{row.includes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 overflow-x-auto">
+        <p class="text-sm font-semibold text-gray-900 mb-3">Rangos completos por tamaño y calidad</p>
+        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Precios totales por cocina, IVA no incluido. Sin electrodomésticos de superficie libre.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Superficie</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Esencial</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Media</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Alta</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { size: 'Hasta 8 m²', e: '5.000–7.500€', m: '7.500–11.000€', a: '11.000–18.000€' },
+              { size: '8–12 m²', e: '6.000–9.000€', m: '9.000–14.000€', a: '14.000–22.000€' },
+              { size: '12–16 m²', e: '7.500–11.500€', m: '11.500–18.000€', a: '18.000–28.000€' },
+              { size: 'Más de 16 m²', e: '9.000–14.000€', m: '14.000–22.000€', a: '22.000–35.000€' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-4 font-medium text-gray-900">{row.size}</td>
+                <td class="py-3 px-4 text-right text-gray-700">{row.e}</td>
+                <td class="py-3 px-4 text-right text-gray-700">{row.m}</td>
+                <td class="py-3 px-4 text-right text-gray-700">{row.a}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- M3: Desglose por partidas -->
+    <section aria-labelledby="h-partidas-cocina" class="mb-12">
+      <h2 id="h-partidas-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Desglose por partidas: cómo se distribuye el coste de una cocina
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        La cocina es la reforma donde el material pesa más en el precio total. El mobiliario y la encimera representan casi la mitad del coste, mientras que en el baño la proporción es más equilibrada entre material e instalación. Esta distribución explica por qué elegir muebles de alta gama puede doblar el precio total de la reforma.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Distribución orientativa del coste total. El peso del mobiliario sube en reformas de alta gama.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Partida</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">% del total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: 'Mobiliario y encimera', pct: '42 %' },
+              { label: 'Fontanería e instalación eléctrica', pct: '15 %' },
+              { label: 'Acabados y pintura', pct: '10 %' },
+              { label: 'Gestión y dirección de obra', pct: '10 %' },
+              { label: 'Alicatado y solado', pct: '10 %' },
+              { label: 'Demolición y escombros', pct: '8 %' },
+              { label: 'Albañilería menor', pct: '5 %' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
+                <td class="py-3 px-4 text-gray-700">{row.label}</td>
+                <td class="py-3 px-4 text-right font-semibold text-gray-900">{row.pct}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-3 italic">
+        En reformas con isla central o apertura al salón, la albañilería y las instalaciones suben su peso relativo por la complejidad del replanteo.
+      </p>
+    </section>
+
+    <!-- M4: Qué encarece / abarata -->
+    <section aria-labelledby="h-encarece-cocina" class="mb-12">
+      <h2 id="h-encarece-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Qué encarece y qué abarata una reforma de cocina
+      </h2>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que suben el precio</h3>
+      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
+        <li>Muebles lacados o de madera maciza a medida: la partida de mayor peso en alta gama</li>
+        <li>Encimera de piedra natural (granito, mármol, quartzite): precio alto y transporte delicado</li>
+        <li>Apertura al salón o cocina con isla: requiere derribo, refuerzo de hueco y replanteo de extracción</li>
+        <li>Renovación de instalaciones eléctricas: circuitos dedicados para horno, lavavajillas e inducción</li>
+        <li>Redistribución de fontanería: mover el fregadero o el lavavajillas implica replantear acometidas</li>
+        <li>Sin ascensor o planta alta: encarece el acopio de material y la retirada de muebles y escombros</li>
+        <li>Integración de electrodomésticos de alta gama: carpintería a medida con tiempos de fabricación mayores</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que reducen el coste sin comprometer el resultado</h3>
+      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
+        <li>Mantener la distribución actual de fontanería y electricidad: elimina el replanteo de instalaciones</li>
+        <li>Muebles en kit de gama media reconocida en lugar de fabricación a medida</li>
+        <li>Encimera de silestone o compacto fenólico en lugar de piedra natural: excelente relación calidad-precio</li>
+        <li>Alicatado de salpicadero en formato estándar en lugar de gran formato o material especial</li>
+        <li>Mantener la posición del fregadero y del lavavajillas</li>
+      </ul>
+    </section>
+
+    <!-- M5: Qué no incluye -->
+    <section aria-labelledby="h-no-incluye-cocina" class="mb-12 bg-[#F9F7F4] p-7">
+      <h2 id="h-no-incluye-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Qué no incluye el precio de reforma de cocina
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Estos conceptos quedan siempre fuera del precio estándar de reforma de cocina. Si alguno es necesario en tu caso, se valora y presupuesta por separado.
+      </p>
+      <ul class="text-gray-700 leading-relaxed space-y-2 pl-5 list-disc">
+        <li>Electrodomésticos de superficie libre: encimera, horno, campana, frigorífico, lavavajillas</li>
+        <li>Mobiliario no fijo (mesa, sillas, taburetes)</li>
+        <li>Renovación del cuadro eléctrico general de la vivienda</li>
+        <li>Cambio de tuberías generales del edificio o colectores</li>
+        <li>IVA: 10 % en vivienda habitual (21 % sobre materiales si se compran fuera de la obra)</li>
+        <li>Honorarios de proyecto técnico si se requiere licencia de obra (apertura de muros portantes)</li>
+      </ul>
+    </section>
+
+    <!-- M6: Cómo comparar presupuestos -->
+    <section aria-labelledby="h-comparar-cocina" class="mb-12">
+      <h2 id="h-comparar-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Cómo leer y comparar presupuestos de reforma de cocina
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Una cocina es la reforma donde la diferencia entre presupuestos es más difícil de comparar sin desglose. Los puntos clave a revisar antes de decidir:
+      </p>
+      <dl class="divide-y divide-gray-200 bg-white border border-gray-100 px-6">
+        {[
+          {
+            term: 'Diseño incluido o no',
+            def: 'Algunos presupuestos no incluyen el diseño del espacio: te dan precio sobre la distribución que tú aportas. Si el diseño no está incluido y hay que contratar un diseñador aparte, el coste total puede superar al de un presupuesto integral más alto.',
+          },
+          {
+            term: 'Electrodomésticos dentro o fuera del precio',
+            def: 'Revisa si los electrodomésticos están incluidos en el precio o si son una partida separada. Una cocina "completa" que incluye encimera de inducción, horno y campana de alta gama es muy diferente a otra que no los incluye.',
+          },
+          {
+            term: 'Calidad del mueble especificada',
+            def: 'Un presupuesto que no especifica el módulo, el frontal ni el sistema de apertura puede resultar más caro cuando se elige el mueble real. Pide referencia de catálogo o rango de precio por metro lineal instalado.',
+          },
+          {
+            term: 'Fontanería: nueva o adaptación',
+            def: 'Si el presupuesto dice "adaptación de fontanería existente", mantiene la tubería actual. Si la tubería tiene 30+ años, merece valorar el estado antes de alicatar encima.',
+          },
+          {
+            term: 'Circuitos eléctricos dedicados',
+            def: 'Una cocina moderna necesita circuitos separados para horno, placa, lavavajillas y frigorífico. Si el presupuesto no incluye la ampliación eléctrica, preguntar qué instalación asume: puede ser una diferencia de 800–1.500€.',
+          },
+          {
+            term: 'Extracción de humos',
+            def: 'El conducto de extracción hacia el exterior o la instalación de un sistema de recirculación debe estar especificado. En cocinas de gas o en plantas altas sin salida directa, puede haber condicionantes que afectan al coste.',
+          },
+        ].map(({ term, def }) => (
+          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
+            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
+            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-6 bg-amber-50 border-l-4 border-amber-400 p-5">
+        <p class="text-sm font-semibold text-gray-900 mb-2">Sobre precio cerrado e imprevistos</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica: los muebles, la encimera, el alicatado y las instalaciones accesibles. Si al desmontar los muebles o al abrir las paredes aparece algo no visible antes, lo comunicamos antes de tocar nada y esperamos tu decisión. En la mayoría de reformas de cocina del Corredor, el precio cierra sin desviaciones. Cuando hay algo nuevo, hay una persona que llama, explica y espera antes de actuar.
+        </p>
+      </div>
+    </section>
+
+    <!-- M7: Plazos -->
+    <section aria-labelledby="h-plazos-cocina" class="mb-12">
+      <h2 id="h-plazos-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Plazos reales de una reforma de cocina
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        El plazo de una reforma de cocina depende principalmente de si los muebles son estándar de almacén o a medida con fabricación previa. Los muebles a medida requieren entre 3 y 5 semanas de fabricación antes de comenzar el montaje, lo que condiciona el inicio de la obra.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Plazos orientativos. La fecha exacta de entrega se fija en el contrato antes de empezar.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Tipo de reforma</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Plazo de obra</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { tipo: 'Cocina hasta 8 m² con muebles estándar', plazo: '3–5 semanas' },
+              { tipo: 'Cocina 8–12 m² con muebles a medida', plazo: '4–7 semanas' },
+              { tipo: 'Cocina 12–18 m² con muebles a medida', plazo: '6–10 semanas' },
+              { tipo: 'Cocina americana o con isla', plazo: '8–12 semanas' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
+                <td class="py-3 px-4 text-gray-700">{row.tipo}</td>
+                <td class="py-3 px-4 text-right text-gray-600">{row.plazo}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-3">
+        El plazo incluye fabricación de mueble a medida cuando aplica. Si los muebles son de almacén con disponibilidad inmediata, los plazos se reducen significativamente.
+      </p>
+    </section>
+
+    <!-- M8: Errores caros -->
+    <section aria-labelledby="h-errores-cocina" class="mb-12">
+      <h2 id="h-errores-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Errores caros al reformar una cocina
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Estos son los errores que más frecuentemente generan sobrecostes o un resultado inferior al esperado en reformas de cocina.
+      </p>
+      <ol class="space-y-5">
+        {[
+          {
+            n: '01',
+            title: 'No definir los electrodomésticos antes de diseñar la distribución',
+            desc: 'Las dimensiones del horno, la campana y el frigorífico condicionan la carpintería. Cambiar un electrodoméstico después del diseño puede obligar a modificar un módulo o toda una sección del mueble. Los electrodomésticos deben estar elegidos antes de hacer el plano de la cocina.',
+          },
+          {
+            n: '02',
+            title: 'Asumir que la instalación eléctrica aguanta los electrodomésticos actuales',
+            desc: 'Una placa de inducción de 7.000 W y un horno con pyrolisis necesitan circuitos propios. Si la instalación no los tiene, hay que intervenir en el cuadro. Esta partida aparece como extra si no se detecta en la visita técnica previa.',
+          },
+          {
+            n: '03',
+            title: 'Elegir encimera sin valorar el uso real',
+            desc: 'La encimera de mármol tiene un aspecto excelente pero absorbe líquidos y se mancha si no se sella periódicamente. El granito es más resistente pero más pesado. El silestone y el compacto fenólico son los más prácticos para uso intensivo. La elección tiene que responder al uso, no solo al aspecto.',
+          },
+          {
+            n: '04',
+            title: 'No comprobar la ventilación antes de decidir la posición de la campana',
+            desc: 'En pisos de más de 30 años, el conducto de extracción comunitario puede estar obsoleto o condicionado por otros vecinos. Si no se puede extraer al exterior, la campana debe ser de recirculación con filtros, lo que tiene un coste de mantenimiento periódico.',
+          },
+          {
+            n: '05',
+            title: 'Elegir presupuesto por precio sin desgloses',
+            desc: 'En una reforma de cocina, la diferencia de 3.000–5.000€ entre dos presupuestos puede deberse a que uno incluye el diseño, los circuitos eléctricos y la extracción y el otro no. Comparar cifras totales sin desglose puede llevar a elegir el más barato que resulte más caro al final.',
+          },
+        ].map(item => (
+          <li class="flex gap-4">
+            <span class="text-2xl font-black text-[#A85535] opacity-40 flex-shrink-0 w-8">{item.n}</span>
+            <div>
+              <p class="font-semibold text-gray-900 mb-1">{item.title}</p>
+              <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Enlace calculadora + hub -->
+    <section aria-labelledby="h-siguiente-cocina" class="mb-12 bg-[#111827] p-8">
+      <h2 id="h-siguiente-cocina" class="text-xl font-black text-white mb-4" style="letter-spacing:-0.02em">
+        Siguiente paso: presupuesto cerrado para tu cocina
+      </h2>
+      <p class="text-gray-300 leading-relaxed mb-6">
+        Usa la calculadora para estimar por superficie y calidad, consulta el servicio de reforma de cocinas para ver materiales, proceso y plazos completos, o conoce cómo trabajamos antes de llamar.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/calculadora-precio-reforma/?servicio=reforma-cocinas" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+          Calculadora de reforma de cocina
+        </a>
+        <a href="/servicios/reforma-cocinas/" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
+          Servicio de reforma de cocinas
+        </a>
+        <a href="/como-trabajamos/" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
+          Cómo trabajamos
+        </a>
+      </div>
+    </section>
+
+    <!-- M9: FAQs -->
+    <section aria-labelledby="h-faq-cocina" class="mb-12">
+      <h2 id="h-faq-cocina" class="text-2xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+        Preguntas frecuentes sobre el coste de una reforma de cocina
+      </h2>
+      <div class="space-y-3">
+        {faqs.map(faq => (
+          <details class="border border-gray-200 bg-white">
+            <summary class="flex justify-between items-center py-4 px-5 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50 transition-colors list-none">
+              <span>{faq.q}</span>
+              <span class="text-[#A85535] ml-4 flex-shrink-0" aria-hidden="true">+</span>
+            </summary>
+            <div class="px-5 pb-5 pt-2 text-gray-700 leading-relaxed text-sm border-t border-gray-100">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Otras guías -->
+    <section aria-labelledby="h-otras-guias-cocina" class="mb-8">
+      <h2 id="h-otras-guias-cocina" class="text-xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Otras guías de precios de reforma
+      </h2>
+      <ul class="space-y-2">
+        <li><a href="/guias/cuanto-cuesta-reformar-un-bano/" class="text-[#A85535] hover:underline font-medium">Cuánto cuesta reformar un baño →</a></li>
+        <li><a href="/guias/cuanto-cuesta-reformar-un-piso/" class="text-[#A85535] hover:underline font-medium">Cuánto cuesta reformar un piso →</a></li>
+      </ul>
+      <p class="text-sm text-gray-500 mt-4">
+        ¿Reformas en el Corredor del Henares? Consulta también los <a href="/reforma-cocinas/torrejon-de-ardoz/" class="text-[#A85535] hover:underline">precios de reforma de cocina en Torrejón de Ardoz</a>, <a href="/reforma-cocinas/alcala-de-henares/" class="text-[#A85535] hover:underline">en Alcalá de Henares</a> o <a href="/reforma-cocinas/coslada/" class="text-[#A85535] hover:underline">en Coslada</a>.
+      </p>
+    </section>
+
+  </article>
+
+</Layout>

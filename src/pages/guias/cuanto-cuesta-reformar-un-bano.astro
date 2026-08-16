@@ -1,0 +1,455 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../data/site';
+
+const title = 'Cuánto cuesta reformar un baño en 2025 | Trazzo360';
+const description = 'Cuánto cuesta reformar un baño en el Corredor del Henares: precios por tamaño y calidad, desglose por partidas y plazos reales. Con calculadora incluida.';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Guías', item: `${SITE.url}/guias/` },
+    { '@type': 'ListItem', position: 3, name: 'Cuánto cuesta reformar un baño', item: `${SITE.url}/guias/cuanto-cuesta-reformar-un-bano/` },
+  ],
+};
+
+const faqs = [
+  {
+    q: '¿Cuánto cuesta reformar un baño estándar de 5 m²?',
+    a: 'Un baño de 4 a 6 m² con materiales de calidad media —alicatado nuevo, plato de ducha, sanitarios, mueble suspendido y mampara— cuesta entre 5.000€ y 7.500€. Si se eligen materiales esenciales funcionales, el rango baja a 3.500–5.000€. Con materiales premium el coste puede superar los 12.000€. El presupuesto exacto cierra después de la visita técnica gratuita.',
+  },
+  {
+    q: '¿Qué se puede hacer con 3.000€ en un baño?',
+    a: 'Con 3.000€ en un baño pequeño de hasta 4 m² es posible hacer un cambio funcional: alicatado nuevo, plato de ducha de acrílico, sanitarios básicos de marca reconocida y mueble de baño estándar. Lo que no suele entrar en ese rango es la redistribución de fontanería o los sanitarios de diseño. Si el baño supera los 4 m², con ese presupuesto solo caben intervenciones parciales: cambio de sanitarios o renovación de revestimientos, no una reforma completa.',
+  },
+  {
+    q: '¿Cuánto supone la mano de obra en el precio total de una reforma de baño?',
+    a: 'En una reforma de baño estándar, la mano de obra representa entre el 40 y el 55 % del coste total, según el alcance. Las partidas de instalación y fontanería son las más intensivas en mano de obra; el alicatado y solado combinan material y colocación en proporciones similares. En los baños de calidad alta, el peso del material sube y el porcentaje de mano de obra baja relativamente, aunque el precio total sea mayor.',
+  },
+  {
+    q: '¿Por qué hay tanta diferencia de precio entre presupuestos de reforma de baño?',
+    a: 'Las diferencias más habituales son: el estado de las instalaciones asumido en el precio (algunos presupuestos no incluyen la revisión de fontanería), la calidad del material especificada o no especificada, si la gestión de escombros está incluida, y si el precio es cerrado o estimado con posibilidad de extras. Un presupuesto sin desglose de materiales y con precio estimado puede resultar más caro que uno más alto pero cerrado.',
+  },
+  {
+    q: '¿Merece la pena cambiar la bañera por ducha?',
+    a: 'Económicamente sí, sobre todo si el alicatado está en buen estado: el cambio sin tocar revestimientos parte de 1.800€ y se hace en 3–5 días. Si el alicatado también necesita renovación, la diferencia de coste entre este cambio parcial y una reforma completa del baño se reduce, y suele tener más sentido plantear el baño entero a la vez para no volver a abrir en pocos años. En la visita técnica valoramos qué tiene más sentido según el estado real de cada baño.',
+  },
+  {
+    q: '¿Cuánto más cuesta un baño con redistribución de fontanería?',
+    a: 'Cambiar la posición del inodoro, el lavabo o la ducha implica mover las acometidas de agua y los desagüés. Eso añade entre 500€ y 1.500€ al coste de la reforma según la complejidad del replanteo. Si además hay que levantar solado para acceder a la instalación horizontal, el coste puede ser mayor. En algunos baños, la fontanería ya tiene holgura de replanteo y el sobrecoste es menor.',
+  },
+  {
+    q: '¿Cuándo sale más caro reformar el baño por partes que todo a la vez?',
+    a: 'Reformar por partes implica movilizar la obra dos o más veces: cada vez hay costes fijos de preparación, protección, escombros y desplazamiento. Si en la primera intervención solo se cambian sanitarios y en la segunda se hace el alicatado, el total de dos obras supera habitualmente el coste de haberlo hecho en una sola. La excepción es cuando el presupuesto no permite el todo de una vez y el estado del baño no es urgente en sus otras partes.',
+  },
+  {
+    q: '¿Cuánto influye la calidad del material en el precio de una reforma de baño?',
+    a: 'El material representa entre el 45 y el 60 % del coste total en una reforma de baño. Pasar de porcelánico estándar a gran formato, o de sanitarios básicos a marca de diseño, puede doblar el coste de esas partidas sin cambiar el precio de instalación. Por eso dos presupuestos con la misma cifra total pueden ser muy diferentes: uno con materiales de primera gama y mano de obra ajustada, otro con materiales básicos y mano de obra más cara.',
+  },
+  {
+    q: '¿El precio por m² sirve para comparar presupuestos de baño?',
+    a: 'No directamente. En un baño, el coste fijo —fontanería, sanitarios, mueble— pesa más que la superficie. Un baño de 3 m² y uno de 5 m² con el mismo acabado pueden tener un precio total similar porque las partidas de instalación son las mismas. El precio por m² en un baño pequeño sale artificialmente alto; en uno grande, sale más bajo. Mejor comparar presupuestos por partidas que por precio/m².',
+  },
+  {
+    q: '¿El IVA está incluido en los presupuestos de reforma de baño?',
+    a: 'Habitualmente no. La obra en vivienda habitual tributa al tipo reducido del 10 % de IVA. Los presupuestos suelen indicarlo como "IVA no incluido" o desglosarlo al final. Antes de comparar cifras, comprueba si el IVA está dentro o no: en una reforma de 5.000€ netos, el IVA añade 500€. En materiales comprados directamente a tienda, el IVA ya está incluido en el precio de catálogo.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout title={title} description={description} schema={[breadcrumbSchema, faqSchema]}>
+
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2 flex-wrap" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li><a href="/guias/" class="hover:text-[#A85535] transition-colors">Guías</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Cuánto cuesta reformar un baño</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- M1: Respuesta directa -->
+    <header class="mb-12">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Guía de precios · Reforma de baño</p>
+      <h1 class="text-3xl lg:text-5xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+        Cuánto cuesta reformar un baño en 2025
+      </h1>
+      <div class="border-l-4 border-[#A85535] pl-6 bg-[#F9F7F4] py-5 pr-6 mb-6">
+        <p class="text-lg text-gray-800 leading-relaxed font-medium">
+          Una reforma completa de baño cuesta entre 3.200€ y 7.500€ para un baño estándar de 4 a 6 m² con materiales de calidad media. El factor que más condiciona el precio no es el tamaño, sino el estado de las instalaciones existentes y los materiales elegidos. Estima tu caso con la <a href="/calculadora-precio-reforma/?servicio=reforma-banos" class="text-[#A85535] underline hover:opacity-80">calculadora de precios</a>.
+        </p>
+      </div>
+      <p class="text-gray-600 leading-relaxed">
+        Esta guía desglosa los precios por tamaño y calidad, explica cómo se distribuye el coste entre las distintas partidas y te da los criterios para comparar presupuestos antes de decidir.
+      </p>
+    </header>
+
+    <!-- M2: Tabla de precios por tamaño -->
+    <section aria-labelledby="h-precios-bano" class="mb-12">
+      <h2 id="h-precios-bano" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+        Precio de reforma de baño según tamaño y alcance
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Precios orientativos para el Corredor del Henares con materiales de calidad media. El presupuesto exacto cierra después de la visita técnica gratuita. Usa la <a href="/calculadora-precio-reforma/?servicio=reforma-banos" class="text-[#A85535] underline hover:opacity-80">calculadora de reforma de baño</a> para estimar por tramo y calidad.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato tras la visita técnica.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Alcance</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Precio orientativo</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Plazo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: 'Cambio de bañera por ducha (sin tocar alicatado)', price: 'Desde 1.800€', days: '3–5 días' },
+              { label: 'Reforma completa baño pequeño hasta 5 m²', price: 'Desde 3.200€', days: '10–15 días' },
+              { label: 'Reforma completa baño 6–8 m²', price: 'Desde 4.500€', days: '12–18 días' },
+              { label: 'Reforma con redistribución de fontanería', price: 'Desde 5.500€', days: '15–25 días' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-4 text-gray-700">{row.label}</td>
+                <td class="py-3 px-4 text-right font-semibold text-[#A85535]">{row.price}</td>
+                <td class="py-3 px-4 text-right text-gray-500 hidden md:table-cell">{row.days}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 overflow-x-auto">
+        <p class="text-sm font-semibold text-gray-900 mb-3">Rangos por tamaño y calidad (calculadora)</p>
+        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Precios totales por baño, IVA no incluido.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Tamaño</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Esencial</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Media</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Alta</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { size: 'Hasta 4 m²', e: '2.800–3.800€', m: '3.800–5.500€', a: '5.500–8.500€' },
+              { size: '4–6 m²', e: '3.500–5.000€', m: '5.000–7.500€', a: '7.500–12.000€' },
+              { size: '6–9 m²', e: '4.500–6.500€', m: '6.500–10.000€', a: '10.000–16.000€' },
+              { size: 'Más de 9 m²', e: '5.500–8.000€', m: '8.000–13.000€', a: '13.000–20.000€' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-4 font-medium text-gray-900">{row.size}</td>
+                <td class="py-3 px-4 text-right text-gray-700">{row.e}</td>
+                <td class="py-3 px-4 text-right text-gray-700">{row.m}</td>
+                <td class="py-3 px-4 text-right text-gray-700">{row.a}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- M3: Desglose por partidas -->
+    <section aria-labelledby="h-partidas-bano" class="mb-12">
+      <h2 id="h-partidas-bano" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Desglose por partidas: cómo se distribuye el coste
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        En una reforma de baño completa, el coste no se distribuye de forma uniforme. Las instalaciones y el material dominan sobre la mano de obra de colocación. Conocer este desglose ayuda a entender por qué el precio varía tanto según las decisiones de material.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Distribución orientativa del coste total. Varía según calidad y alcance.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Partida</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">% del total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: 'Alicatado y solado (material + colocación)', pct: '28 %' },
+              { label: 'Sanitarios, mueble y mampara', pct: '25 %' },
+              { label: 'Fontanería e instalación eléctrica', pct: '25 %' },
+              { label: 'Demolición y escombros', pct: '10 %' },
+              { label: 'Acabados y sellados', pct: '7 %' },
+              { label: 'Gestión y dirección de obra', pct: '5 %' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
+                <td class="py-3 px-4 text-gray-700">{row.label}</td>
+                <td class="py-3 px-4 text-right font-semibold text-gray-900">{row.pct}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-3 italic">
+        El peso de la partida de sanitarios y muebles sube notablemente en calidades alta y premium, llegando al 35–40 % del total.
+      </p>
+    </section>
+
+    <!-- M4: Qué encarece / abarata -->
+    <section aria-labelledby="h-encarece-bano" class="mb-12">
+      <h2 id="h-encarece-bano" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Qué encarece y qué abarata una reforma de baño
+      </h2>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que suben el precio</h3>
+      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
+        <li>Redistribución de fontanería: mover el inodoro o la ducha implica replantear acometidas y desagüe</li>
+        <li>Estado de las instalaciones: tuberías o cuadro eléctrico que hay que renovar al abrir</li>
+        <li>Porcelánico de gran formato (60×60 o superior): más merma de corte y colocación más lenta</li>
+        <li>Sanitarios y griferías de marca de diseño (Duravit, Hansgrohe Axor, Villeroy &amp; Boch)</li>
+        <li>Ducha de obra con pavimento continuo: más tiempo de ejecución que plato prefabricado</li>
+        <li>Sin ascensor o planta alta: encarece la retirada de escombros y el acopio de material</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que reducen el coste sin comprometer el resultado</h3>
+      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
+        <li>Mantener la posición de la fontanería actual: elimina la partida de replanteo</li>
+        <li>Porcelánico rectificado estándar en formato 30×60 o 60×60: buen resultado a precio contenido</li>
+        <li>Plato de ducha extraplano prefabricado en lugar de ducha de obra</li>
+        <li>Sanitarios de gama media reconocida (Roca, Duravit entrada) en lugar de marca premium</li>
+        <li>Reformar en período de baja temporada: mayor disponibilidad y plazos más ajustados</li>
+      </ul>
+    </section>
+
+    <!-- M5: Qué no incluye -->
+    <section aria-labelledby="h-no-incluye-bano" class="mb-12 bg-[#F9F7F4] p-7">
+      <h2 id="h-no-incluye-bano" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Qué no incluye el precio de reforma de baño
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Estos conceptos quedan fuera del precio de una reforma de baño estándar, sea cual sea la calidad elegida. Si alguno es necesario en tu caso, se valora y presupuesta por separado.
+      </p>
+      <ul class="text-gray-700 leading-relaxed space-y-2 pl-5 list-disc">
+        <li>Renovación de tuberías generales del edificio o colectores comunitarios</li>
+        <li>Cambio del cuadro eléctrico general de la vivienda</li>
+        <li>Obras en tabiques estructurales o portantes</li>
+        <li>Calentador, termo o sistema de agua caliente sanitaria</li>
+        <li>Suelo radiante eléctrico (partida aparte, sí puede incluirse en calidad alta)</li>
+        <li>IVA: 10 % en vivienda habitual, se añade al precio de la obra</li>
+      </ul>
+    </section>
+
+    <!-- M6: Cómo comparar presupuestos -->
+    <section aria-labelledby="h-comparar-bano" class="mb-12">
+      <h2 id="h-comparar-bano" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Cómo leer y comparar presupuestos de reforma de baño
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Dos presupuestos con la misma cifra total pueden cubrir alcances y materiales muy distintos. Estas son las partidas clave que revisar antes de decidir.
+      </p>
+      <dl class="divide-y divide-gray-200 bg-white border border-gray-100 px-6">
+        {[
+          {
+            term: 'Estado de instalaciones asumido',
+            def: 'Algunos presupuestos asumen que la fontanería y la electricidad están en buen estado. Si durante la obra aparecen problemas, se cobran como extra. Pide que el presupuesto indique qué ocurre si al abrir se encuentran instalaciones deterioradas.',
+          },
+          {
+            term: 'Material especificado o no especificado',
+            def: 'Un presupuesto que no nombra el porcelánico, el sanitario ni el mueble puede resultar más caro de lo esperado cuando se elige el material real. Pide referencia de catálogo o rango de precio para cada partida.',
+          },
+          {
+            term: 'Precio cerrado o precio estimado',
+            def: 'Un precio cerrado no cambia aunque aparezcan imprevistos menores durante la obra. Un precio estimado puede ampliarse. Pregunta siempre cuál es el mecanismo para gestionar los imprevistos antes de firmar.',
+          },
+          {
+            term: 'Gestión de escombros y limpieza final',
+            def: 'Una reforma de baño genera escombros que requieren contenedor o recogida autorizada. Si no aparece como partida, pregunta si está incluida o si se cobra aparte. La limpieza final también debería estar en el precio.',
+          },
+          {
+            term: 'Fontanería nueva o adaptación de la existente',
+            def: 'Si el presupuesto dice "adaptación de fontanería existente", mantiene la tubería actual. Si la tubería tiene 25+ años, vale la pena preguntar por el estado y el coste de renovarla de paso.',
+          },
+          {
+            term: 'Impermeabilización',
+            def: 'Es la partida invisible que más errores genera en baños: si se hace mal, los problemas de humedad aparecen 1–2 años después. Pide que el presupuesto especifique el sistema de impermeabilización y la garantía sobre esa ejecución.',
+          },
+        ].map(({ term, def }) => (
+          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
+            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
+            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-6 bg-amber-50 border-l-4 border-amber-400 p-5">
+        <p class="text-sm font-semibold text-gray-900 mb-2">Sobre precio cerrado e imprevistos</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. Si al abrir aparece algo que no se podía ver antes —una instalación deteriorada detrás del alicatado, humedades en el soporte— lo comunicamos antes de tocar nada y decidimos contigo si se resuelve en esta obra o en una segunda intervención. En la mayoría de reformas de baño del Corredor, esto no ocurre. Cuando ocurre, hay un responsable que llama, explica y espera tu decisión.
+        </p>
+      </div>
+    </section>
+
+    <!-- M7: Plazos -->
+    <section aria-labelledby="h-plazos-bano" class="mb-12">
+      <h2 id="h-plazos-bano" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Plazos reales de una reforma de baño
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        El plazo depende del alcance y del tamaño, pero hay un factor que pocos presupuestos mencionan: los días que el baño está completamente fuera de servicio. En una reforma completa con cambio de alicatado, los primeros 4–6 días de demolición y preparación son los más críticos. A partir de ahí, la funcionalidad se recupera por fases.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Plazos orientativos. La fecha exacta de entrega se fija en el contrato.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Tipo de reforma</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Plazo total</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Días sin servicio</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { tipo: 'Cambio de bañera por ducha (sin alicatado)', plazo: '3–5 días', sinServicio: '2–3 días' },
+              { tipo: 'Reforma completa hasta 5 m² (calidad esencial)', plazo: '10–15 días', sinServicio: '4–6 días' },
+              { tipo: 'Reforma completa 6–8 m² (calidad media)', plazo: '12–18 días', sinServicio: '4–6 días' },
+              { tipo: 'Con redistribución de fontanería', plazo: '15–25 días', sinServicio: '5–8 días' },
+              { tipo: 'Baño alta gama con ducha de obra', plazo: '4–6 semanas', sinServicio: '4–6 días' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
+                <td class="py-3 px-4 text-gray-700">{row.tipo}</td>
+                <td class="py-3 px-4 text-right text-gray-600">{row.plazo}</td>
+                <td class="py-3 px-4 text-right text-gray-500 hidden md:table-cell">{row.sinServicio}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-3">
+        Si solo hay un baño en casa, planificamos la secuencia para reducir los días sin servicio al mínimo técnico posible, sin comprometer la impermeabilización.
+      </p>
+    </section>
+
+    <!-- M8: Errores caros -->
+    <section aria-labelledby="h-errores-bano" class="mb-12">
+      <h2 id="h-errores-bano" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Errores caros al reformar un baño
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Estos son los errores que más frecuentemente generan sobrecostes o volver a abrir en pocos años.
+      </p>
+      <ol class="space-y-5">
+        {[
+          {
+            n: '01',
+            title: 'Elegir presupuesto por precio sin revisar alcance',
+            desc: 'El presupuesto más barato puede no incluir impermeabilización correcta, gestión de escombros o revisión de instalaciones. Un metro de ahorro ahora puede suponer abrir el baño de nuevo en 2–3 años.',
+          },
+          {
+            n: '02',
+            title: 'No revisar el estado de la fontanería antes de alicatar',
+            desc: 'En pisos anteriores a 1990, las tuberías de alimentación pueden estar cerca del final de su vida útil. Si se alicata sin revisarlas, hay que volver a abrir cuando fallen. La visita técnica incluye esta valoración.',
+          },
+          {
+            n: '03',
+            title: 'Reformar solo una parte del baño cuando todo necesita intervención',
+            desc: 'Cambiar solo el alicatado sin actualizar sanitarios, o cambiar sanitarios sin alicatar, multiplica la movilización de obra. Si el estado general del baño lo requiere, reformar todo a la vez sale más barato que ir por partes.',
+          },
+          {
+            n: '04',
+            title: 'No especificar materiales antes de firmar',
+            desc: 'Un presupuesto sin material especificado puede cambiar de precio cuando se selecciona el catálogo real. La diferencia entre porcelánico estándar y gran formato puede ser de 800–1.200€ en un baño estándar.',
+          },
+          {
+            n: '05',
+            title: 'Impermeabilización insuficiente en ducha o bañera',
+            desc: 'Es la causa más frecuente de humedades en baños reformados. La impermeabilización correcta requiere tiempo y sistema certificado; si se ahorran pasos, el resultado puede parecer igual al principio y mostrar problemas pasados 12–24 meses.',
+          },
+        ].map(item => (
+          <li class="flex gap-4">
+            <span class="text-2xl font-black text-[#A85535] opacity-40 flex-shrink-0 w-8">{item.n}</span>
+            <div>
+              <p class="font-semibold text-gray-900 mb-1">{item.title}</p>
+              <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Enlace calculadora + hub -->
+    <section aria-labelledby="h-siguiente-bano" class="mb-12 bg-[#111827] p-8">
+      <h2 id="h-siguiente-bano" class="text-xl font-black text-white mb-4" style="letter-spacing:-0.02em">
+        Siguiente paso: presupuesto cerrado para tu baño
+      </h2>
+      <p class="text-gray-300 leading-relaxed mb-6">
+        Usa la calculadora para afinar la estimación según el tamaño y la calidad que necesitas, consulta el servicio de reforma de baños para ver el proceso completo y plazos, o conoce cómo trabajamos antes de llamar.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/calculadora-precio-reforma/?servicio=reforma-banos" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+          Calculadora de reforma de baño
+        </a>
+        <a href="/servicios/reforma-banos/" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
+          Servicio de reforma de baños
+        </a>
+        <a href="/como-trabajamos/" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
+          Cómo trabajamos
+        </a>
+      </div>
+    </section>
+
+    <!-- M9: FAQs -->
+    <section aria-labelledby="h-faq-bano" class="mb-12">
+      <h2 id="h-faq-bano" class="text-2xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+        Preguntas frecuentes sobre el coste de una reforma de baño
+      </h2>
+      <div class="space-y-3">
+        {faqs.map(faq => (
+          <details class="border border-gray-200 bg-white">
+            <summary class="flex justify-between items-center py-4 px-5 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50 transition-colors list-none">
+              <span>{faq.q}</span>
+              <span class="text-[#A85535] ml-4 flex-shrink-0" aria-hidden="true">+</span>
+            </summary>
+            <div class="px-5 pb-5 pt-2 text-gray-700 leading-relaxed text-sm border-t border-gray-100">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Otras guías -->
+    <section aria-labelledby="h-otras-guias-bano" class="mb-8">
+      <h2 id="h-otras-guias-bano" class="text-xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Otras guías de precios de reforma
+      </h2>
+      <ul class="space-y-2">
+        <li><a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="text-[#A85535] hover:underline font-medium">Cuánto cuesta reformar una cocina →</a></li>
+        <li><a href="/guias/cuanto-cuesta-reformar-un-piso/" class="text-[#A85535] hover:underline font-medium">Cuánto cuesta reformar un piso →</a></li>
+      </ul>
+      <p class="text-sm text-gray-500 mt-4">
+        ¿Reformas en el Corredor del Henares? Consulta también los <a href="/reforma-banos/torrejon-de-ardoz/" class="text-[#A85535] hover:underline">precios de reforma de baño en Torrejón de Ardoz</a>, <a href="/reforma-banos/alcala-de-henares/" class="text-[#A85535] hover:underline">en Alcalá de Henares</a> o <a href="/reforma-banos/coslada/" class="text-[#A85535] hover:underline">en Coslada</a>.
+      </p>
+    </section>
+
+  </article>
+
+</Layout>

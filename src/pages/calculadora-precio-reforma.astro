@@ -329,7 +329,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
       <p class="text-gray-700 leading-relaxed mb-4">Un presupuesto de 40.000 € puede significar cosas muy distintas. Uno puede incluir cuadro eléctrico nuevo, fontanería completa y redistribución de tabiques; el otro puede omitirlos y añadirlos como "extras de obra" cuando ya empezó la reforma. El número final es el mismo, el alcance real no.</p>
       <p class="text-gray-700 leading-relaxed mb-4">Los cuatro puntos que hay que revisar antes de comparar: <strong>qué instalaciones están incluidas</strong> (electricidad, fontanería, saneamiento), <strong>si hay proyecto técnico</strong> o solo albaranes, <strong>cómo se gestionan los imprevistos</strong> (precio cerrado o por administración) y <strong>si el plazo lleva penalización</strong> por retraso. Un presupuesto que no responde estas cuatro preguntas en el papel no es un presupuesto: es una estimación.</p>
-      <p class="text-gray-700 leading-relaxed mb-4">Consulta los hubs de cada servicio para ver qué incluye cada nivel de calidad, qué documentación deberías pedir y cómo comparar presupuestos correctamente:</p>
+      <p class="text-gray-700 leading-relaxed mb-4">Consulta la guía de precios de cada servicio para ver qué incluye cada nivel de calidad, qué documentación deberías pedir y cómo comparar presupuestos correctamente:</p>
       <div class="flex flex-wrap gap-3 mt-4">
         {CALC_SERVICES.filter(s => s.hubSlug).map(svc => (
           <a href={`/servicios/${svc.hubSlug}/`} class="inline-block text-sm font-medium text-[#A85535] border border-[#A85535] rounded-lg px-4 py-2 hover:bg-[#A85535] hover:text-white transition-colors">
@@ -430,11 +430,11 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
     </div>
   </section>
 
-  <!-- Enlazado a los 6 hubs (Paso 5 saliente) -->
+  <!-- Enlazado a los 6 servicios (Paso 5 saliente) -->
   <section class="py-14 max-w-5xl mx-auto px-4">
-    <h2 class="text-2xl font-black text-gray-900 mb-2">Hubs de servicio con precios detallados</h2>
+    <h2 class="text-2xl font-black text-gray-900 mb-2">Precios detallados por tipo de reforma</h2>
     <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
-    <p class="text-sm text-gray-600 mb-6">Cada hub incluye tabla de precios, qué está incluido en cada nivel, plazos y cómo funciona el proceso. Consulta el del servicio que necesitas para afinar la estimación de la calculadora.</p>
+    <p class="text-sm text-gray-600 mb-6">Cada página incluye tabla de precios, qué está incluido en cada nivel, plazos y cómo funciona el proceso. Consulta la del servicio que necesitas para afinar la estimación de la calculadora.</p>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
       {CALC_SERVICES.map(svc => (
         <div class="group flex flex-col border border-gray-200 rounded-xl hover:border-[#A85535] hover:shadow-sm transition-all">
@@ -449,7 +449,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       ))}
     </div>
     <p class="text-sm text-gray-500 mt-6">
-      También puedes consultar <a href="/como-trabajamos/" class="text-[#A85535] hover:underline font-medium">cómo trabajamos</a> y nuestros <a href="/contacto/" class="text-[#A85535] hover:underline font-medium">compromisos de precio cerrado y plazo</a>.
+      También puedes consultar <a href="/como-trabajamos/" class="text-[#A85535] hover:underline font-medium">cómo trabajamos</a> y nuestros <a href="/contacto/" class="text-[#A85535] hover:underline font-medium">compromisos de precio cerrado y plazo</a>. O profundizar en los desgloses de coste: <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="text-[#A85535] hover:underline font-medium">cuánto cuesta reformar un baño</a>, <a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="text-[#A85535] hover:underline font-medium">cuánto cuesta reformar una cocina</a> o <a href="/guias/cuanto-cuesta-reformar-un-piso/" class="text-[#A85535] hover:underline font-medium">cuánto cuesta reformar un piso</a>. <a href="/guias/" class="text-[#A85535] hover:underline font-medium">Ver todas las guías →</a>
     </p>
   </section>
 

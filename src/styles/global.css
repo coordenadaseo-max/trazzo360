@@ -11,4 +11,14 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body { @apply antialiased text-gray-900 bg-white; }
+
+  /* Focus visible — navegación por teclado */
+  :focus-visible {
+    outline: 2px solid #A85535;
+    outline-offset: 3px;
+  }
+  /* Quitar outline en click (solo teclado) */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
 }

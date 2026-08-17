@@ -1,7 +1,17 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import Layout from '../layouts/Layout.astro';
 import ProjectImage from '../components/ProjectImage.astro';
 import { SITE, SERVICES, ZONES, PROJECTS, SERVICE_ICONS, AUTHOR, COMPROMISOS } from '../data/site';
+
+// Ocultar la sección de proyectos si ningún proyecto tiene imágenes reales
+const publicDir = join(process.cwd(), 'public');
+const hasRealProjectImages = PROJECTS.some(p => {
+  const before = p.imgBefore.startsWith('/') ? p.imgBefore.slice(1) : p.imgBefore;
+  const after  = p.imgAfter.startsWith('/')  ? p.imgAfter.slice(1)  : p.imgAfter;
+  return existsSync(join(publicDir, before)) || existsSync(join(publicDir, after));
+});
 
 const tradeIcons: Record<string, string> = {
   '🧱': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="4"/><rect x="12" y="4" width="9" height="4"/><rect x="3" y="10" width="11" height="4"/><rect x="16" y="10" width="5" height="4"/><rect x="3" y="16" width="7" height="4"/><rect x="12" y="16" width="9" height="4"/></svg>`,
@@ -110,8 +120,8 @@ const faqSchema = {
           )}
         </div>
         <h1 id="h-hero" class="text-5xl lg:text-7xl font-black text-white leading-none mb-6" style="letter-spacing:-0.02em">
-          Empresa de <span class="text-[#A85535]">Reformas</span><br/>
-          en el Corredor<br/>
+          Empresa de <span class="text-[#A85535]">Reformas</span> <br/>
+          en el Corredor <br/>
           del Henares
         </h1>
         <p class="text-lg lg:text-xl text-gray-300 leading-relaxed mb-8 max-w-xl">
@@ -278,7 +288,7 @@ const faqSchema = {
 
   <!-- PROYECTOS ANTES/DESPUÉS -->
   <!-- Imágenes: añade tus fotos en /public/img/proyectos/{slug}-antes.jpg y -despues.jpg -->
-  <section id="proyectos" class="py-24 lg:py-32 bg-[#F9F7F4]" aria-labelledby="h-proyectos">
+  {hasRealProjectImages && <section id="proyectos" class="py-24 lg:py-32 bg-[#F9F7F4]" aria-labelledby="h-proyectos">
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Proyectos realizados</p>
@@ -326,7 +336,7 @@ const faqSchema = {
         </a>
       </div>
     </div>
-  </section>
+  </section>}
 
   <!-- PRECIOS ORIENTATIVOS - captura intent de PAA -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-precios">

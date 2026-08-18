@@ -2,39 +2,17 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import Layout from '../layouts/Layout.astro';
-import ProjectImage from '../components/ProjectImage.astro';
-import { SITE, SERVICES, ZONES, PROJECTS, SERVICE_ICONS, AUTHOR, COMPROMISOS } from '../data/site';
+import { SITE, SERVICES, ZONES, AUTHOR, COMPROMISOS } from '../data/site';
+import { SERVICE_ICONS } from '../data/site';
 
-// Ocultar la sección de proyectos si ningún proyecto tiene imágenes reales
 const publicDir = join(process.cwd(), 'public');
-const hasRealProjectImages = PROJECTS.some(p => {
-  const before = p.imgBefore.startsWith('/') ? p.imgBefore.slice(1) : p.imgBefore;
-  const after  = p.imgAfter.startsWith('/')  ? p.imgAfter.slice(1)  : p.imgAfter;
-  return existsSync(join(publicDir, before)) || existsSync(join(publicDir, after));
-});
+const hasRealProjectImages = false; // se activa cuando existan fotos reales de obra
 
-const tradeIcons: Record<string, string> = {
-  '🧱': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="4"/><rect x="12" y="4" width="9" height="4"/><rect x="3" y="10" width="11" height="4"/><rect x="16" y="10" width="5" height="4"/><rect x="3" y="16" width="7" height="4"/><rect x="12" y="16" width="9" height="4"/></svg>`,
-  '🔧': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
-  '⚡': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
-  '🪵': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/></svg>`,
-  '🪣': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>`,
-  '🎨': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.3 20.7 7.4-7.4"/><path d="m15.5 15.5-3.5-3.5L19 4l2 1-5.5 10.5z"/><path d="M3 22c0-1.4 1.1-2.5 2.5-2.5S8 20.6 8 22H3z"/></svg>`,
-  '📐': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6M9 17h4"/></svg>`,
-  '📋': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>`,
-};
-
-const ctaIcons: Record<string, string> = {
-  '✓': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>`,
-  '⚡': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
-  '🛡': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-  '🔑': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>`,
-};
-
-const metaIcons = {
-  pin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block w-3 h-3 mr-0.5 -mt-0.5" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
-  area: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block w-3 h-3 mr-0.5 -mt-0.5" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 14 5-5 5 5"/></svg>`,
-  clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block w-3 h-3 mr-0.5 -mt-0.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`,
+const primaryZoneDescs: Record<string, string> = {
+  'alcala-de-henares': 'Nuestra zona de mayor actividad. Trabajamos en toda la ciudad: El Val, El Ensanche, Nueva Alcalá y el centro histórico. Reformas integrales de pisos de los setenta y ochenta que necesitan instalaciones completamente nuevas, así como chalets y adosados en las urbanizaciones del extrarradio que buscan redistribución y acabados de calidad.',
+  'torrejon-de-ardoz': 'La segunda ciudad donde más obras ejecutamos. El parque de vivienda de Torrejón concentra muchos pisos de los ochenta con instalaciones envejecidas que requieren reforma integral. Reformas de cocinas, baños y rehabilitación completa de viviendas son los trabajos más frecuentes.',
+  'coslada': 'Reformas de pisos medianos donde cocinas y baños concentran la mayor parte del trabajo. Muchas viviendas de Coslada tienen un potencial de redistribución que aprovechamos sin ampliar el presupuesto. Visita gratuita con respuesta en menos de 24 horas en toda la ciudad.',
+  'san-fernando-de-henares': 'Reformas integrales de vivienda y trabajos en comunidades de vecinos: portales, escaleras y fachadas. San Fernando tiene un parque residencial de los años ochenta y noventa en buen estado estructural pero con instalaciones eléctricas y de fontanería que piden renovación completa.',
 };
 
 const faqs = [
@@ -64,22 +42,6 @@ const faqs = [
   },
 ];
 
-const primaryZoneDescs: Record<string, string> = {
-  'alcala-de-henares': 'Nuestra zona de mayor actividad. Trabajamos en toda la ciudad: El Val, El Ensanche, Nueva Alcalá y el centro histórico. Reformas integrales de pisos de los setenta y ochenta que necesitan instalaciones completamente nuevas, así como chalets y adosados en las urbanizaciones del extrarradio que buscan redistribución y acabados de calidad.',
-  'torrejon-de-ardoz': 'La segunda ciudad donde más obras ejecutamos. El parque de vivienda de Torrejón concentra muchos pisos de los ochenta con instalaciones envejecidas que requieren reforma integral. Reformas de cocinas, baños y rehabilitación completa de viviendas son los trabajos más frecuentes. Cubrimos toda la ciudad y municipios adyacentes sin coste de desplazamiento.',
-  'coslada': 'Reformas de pisos medianos donde cocinas y baños concentran la mayor parte del trabajo. Muchas viviendas de Coslada tienen un potencial de redistribución que aprovechamos sin ampliar el presupuesto. Visita gratuita con respuesta en menos de 24 horas en toda la ciudad.',
-  'san-fernando-de-henares': 'Reformas integrales de vivienda y trabajos en comunidades de vecinos: portales, escaleras y fachadas. San Fernando tiene un parque residencial de los años ochenta y noventa en buen estado estructural pero con instalaciones eléctricas y de fontanería que piden renovación completa.',
-};
-
-const reformaPhases = [
-  { n: '01', title: 'Proyecto y permisos', desc: 'Antes de empezar la obra diseñamos la distribución en planos y tramitamos la licencia en el ayuntamiento si es necesaria. Sabes exactamente qué se va a hacer, dónde y con qué materiales antes de que entre un solo operario en tu casa.' },
-  { n: '02', title: 'Derribo y redistribución', desc: 'La obra comienza con los derribos y la redistribución de tabiques. Es la fase más sucia pero también la más importante: una base mal ejecutada condiciona todo lo que viene después. Gestionamos la retirada de escombros incluida en el presupuesto.' },
-  { n: '03', title: 'Instalaciones nuevas', desc: 'Fontanería, electricidad y calefacción desde cero o adaptadas a la nueva distribución. Cuadro eléctrico nuevo, circuitos diferenciados, tomas de agua y desagüe donde los necesitas. Todo bajo normativa vigente con boletines de legalización para la distribuidora.' },
-  { n: '04', title: 'Revestimientos y pavimentos', desc: 'Alicatados, porcelánico, tarima y microcemento aplicados sobre soporte perfectamente preparado. Verificamos la nivelación y adherencia antes de colocar cualquier revestimiento para que el resultado dure décadas sin fisuras ni desprendimientos.' },
-  { n: '05', title: 'Carpintería y acabados', desc: 'Puertas, armarios empotrados, ventanas, rodapiés y pintura final. Los acabados son lo que más se ve y lo que define el resultado. Aplicamos el mismo nivel de exigencia en la última capa de pintura que en la primera fase de derribo.' },
-  { n: '06', title: 'Entrega con garantía de 2 años', desc: 'Limpieza final de obra, revisión completa y entrega con certificado de garantía de 2 años sobre toda la ejecución. Si algo falla por causas de nuestra ejecución en ese periodo, lo resolvemos sin coste adicional y sin discusiones.' },
-];
-
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -89,6 +51,11 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+// Compromisos clave para la sección de trust
+const trustCompromisos = COMPROMISOS.filter(c =>
+  ['contrato-escrito', 'pago-fases', 'garantia-ejecucion', 'imprevistos'].includes(c.id)
+);
 ---
 
 <Layout
@@ -97,383 +64,317 @@ const faqSchema = {
   schema={faqSchema}
 >
 
-  <!-- HERO -->
-  <section class="bg-[#111827] relative overflow-hidden" aria-labelledby="h-hero">
-    <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(255,255,255,0.05) 60px, rgba(255,255,255,0.05) 61px)"></div>
-    <div class="relative max-w-7xl mx-auto px-4 py-28 lg:py-40">
-      <div class="max-w-3xl">
-        <div class="flex flex-wrap items-center gap-4 mb-6">
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-0.5 bg-[#A85535]"></div>
-            <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">Alcalá · Torrejón · Coslada · San Fernando · Guadalajara</span>
-          </div>
-          {SITE.reviewCount > 0 && (
-            <a
-              href={SITE.googleBusinessUrl || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/20 transition-colors"
-            >
-              <span class="text-yellow-400">{'★'.repeat(Math.round(SITE.ratingValue))}</span>
-              <span>{SITE.ratingValue.toFixed(1)} · {SITE.reviewCount} reseñas en Google</span>
-            </a>
-          )}
-        </div>
-        <h1 id="h-hero" class="text-5xl lg:text-7xl font-black text-white leading-none mb-6" style="letter-spacing:-0.02em">
-          Empresa de <span class="text-[#A85535]">Reformas</span> <br/>
-          en el Corredor <br/>
-          del Henares
+  <!-- ══════════════════════════════════════
+       HERO — A2 · Tipográfico con sigilo
+  ══════════════════════════════════════ -->
+  <section class="bg-[#111827] hero-root flex flex-col justify-end" aria-labelledby="h-hero">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+      <!-- Sigilo: border-left terracota 4px mobile / 5px desktop.
+           Único uso de acento lineal en esta sección. -->
+      <div class="hero-sigil">
+        <h1 id="h-hero" class="font-black text-white"
+            style="font-size:clamp(2.75rem,9vw,8.5rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance">
+          Empresa de Reformas<br>en el Corredor<br>del Henares
         </h1>
-        <p class="text-lg lg:text-xl text-gray-300 leading-relaxed mb-8 max-w-xl">
-          Una reforma se complica cuando las decisiones llegan tarde, los gremios trabajan sin coordinación o el presupuesto deja demasiadas cosas abiertas. En Trazzo360 planificamos y coordinamos reformas en el Corredor del Henares con un único responsable de obra, un presupuesto que deja claro qué está incluido desde el inicio y una fecha de entrega que queda fijada en el contrato.
-        </p>
-
-        <!-- Trust signals -->
-        <div class="flex flex-wrap gap-5 mb-10">
-          {[
-            { icon: '✓', text: 'Precio cerrado en contrato' },
-            { icon: '⚡', text: 'Respondemos en 24h' },
-            { icon: '🛡', text: '2 años de garantía' },
-            { icon: '🔑', text: 'Llave en mano' },
-          ].map(item => (
-            <div class="flex items-center gap-2">
-              <span class="w-4 h-4 text-[#A85535] flex-shrink-0"><Fragment set:html={ctaIcons[item.icon] ?? item.icon} /></span>
-              <span class="text-sm text-gray-300 font-medium">{item.text}</span>
-            </div>
-          ))}
-        </div>
-
-        <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-            Solicitar valoración gratuita
-          </a>
-          <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
-            ☎ {SITE.phoneDisplay}
-          </a>
-        </div>
-        <p class="text-xs text-gray-500 mt-3">Sin compromiso · Respondemos en menos de 24h · Presupuesto cerrado en 48h</p>
       </div>
     </div>
 
-    <!-- Stats bar -->
-    <div class="relative border-t border-white/10 bg-white/5">
-      <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-        {[
-          { n: '15', label: 'Años de experiencia del responsable de obra' },
-          { n: `${ZONES.length}`, label: 'Municipios del Corredor' },
-          { n: '2 años', label: 'Garantía en ejecución' },
-          { n: '100%', label: 'Precio cerrado garantizado' },
-        ].map(s => (
-          <div>
-            <div class="text-4xl font-black text-[#A85535] mb-1">{s.n}</div>
-            <div class="text-sm text-gray-400">{s.label}</div>
+    <!-- Zona de soporte -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+      <div class="hero-support-border">
+        <div class="hero-support-grid">
+
+          <!-- Copy -->
+          <p class="text-gray-400 leading-relaxed"
+             style="font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch">
+            Una reforma se complica cuando las decisiones llegan tarde, los gremios trabajan sin coordinación o el presupuesto deja demasiadas cosas abiertas. En Trazzo360 planificamos y coordinamos reformas en el Corredor del Henares con un único responsable de obra, un presupuesto cerrado desde el inicio y una fecha de entrega que queda fijada en el contrato.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/"
+               class="inline-block text-center text-white font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+              Solicitar valoración gratuita
+            </a>
+            <a href={`tel:${SITE.phone}`}
+               class="inline-block text-center font-black text-xs uppercase text-white"
+               style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);letter-spacing:.1em">
+              {SITE.phoneDisplay}
+            </a>
+            <p class="text-[10px] text-white/50 uppercase tracking-wider">Sin compromiso · Respuesta en 24h</p>
           </div>
-        ))}
+
+          <!-- Stats desktop -->
+          <div class="text-right hidden lg:flex flex-col justify-end gap-5">
+            <div>
+              <p class="text-white font-black leading-none"
+                 style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2 años</p>
+              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Garantía sobre la ejecución</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none"
+                 style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">1</p>
+              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Responsable de obra</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none"
+                 style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">Precio cerrado</p>
+              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Por contrato desde el inicio</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Stats mobile -->
+        <div class="flex gap-5 mt-8 lg:hidden">
+          <div>
+            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">2 años</p>
+            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Garantía</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">1</p>
+            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Responsable</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">Precio cerrado</p>
+            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Por contrato</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICIOS -->
+  <!-- ══════════════════════════════════════
+       SERVICIOS — 6 cards + índice SEO
+  ══════════════════════════════════════ -->
   <section id="servicios" class="py-24 lg:py-32 bg-white" aria-labelledby="h-servicios">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="mb-14">
+      <div class="mb-12">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Nuestros servicios</p>
-        <h2 id="h-servicios" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">¿Qué quieres reformar?</h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
+        <h2 id="h-servicios" class="text-4xl lg:text-5xl font-black text-gray-900 mb-5" style="letter-spacing:-0.02em">
+          ¿Qué quieres reformar?
+        </h2>
         <p class="text-lg text-gray-500 max-w-xl">Reformas integrales y parciales en Alcalá de Henares, Torrejón de Ardoz, Coslada y toda la zona del Corredor del Henares.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- 6 cards de servicio -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 mb-12">
         {SERVICES.map(s => (
           <a href={`/servicios/${s.slug}/`}
-            class="group block p-8 bg-gray-50 border-b-4 border-transparent hover:border-[#A85535] hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
-            <div class="w-10 h-10 text-[#A85535] mb-5"><Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} /></div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">{s.title}</h3>
+             class="group block p-7 bg-white hover:bg-gray-50 transition-colors">
+            <div class="w-8 h-8 text-[#A85535] mb-4">
+              <Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} />
+            </div>
+            <h3 class="text-base font-bold text-gray-900 mb-2">{s.title}</h3>
             <p class="text-sm text-gray-500 leading-relaxed mb-4">{s.desc}</p>
-            <p class="text-xs font-bold text-gray-400 mb-4">Desde <span class="text-[#A85535] text-base font-black">{s.priceFrom}€</span></p>
-            <span class="text-sm font-bold text-[#A85535] flex items-center gap-1 group-hover:gap-2 transition-all">
-              {s.anchorLabel} en el Corredor del Henares →
-            </span>
+            <p class="text-xs font-bold text-gray-400">
+              Desde <span class="text-[#A85535] text-sm font-black">{s.priceFrom}€</span>
+            </p>
           </a>
         ))}
+      </div>
+
+      <!-- Índice de reformas por zona: útil para el usuario, rastreable -->
+      <nav aria-label="Reformas por tipo y zona" class="border-t border-gray-100 pt-8">
+        <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+          También en tu zona
+        </p>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-2">
+          {[
+            { href: '/reformas-integrales/torrejon-de-ardoz/', label: 'Reforma integral en Torrejón de Ardoz' },
+            { href: '/reformas-integrales/alcala-de-henares/', label: 'Reforma integral en Alcalá de Henares' },
+            { href: '/reforma-banos/torrejon-de-ardoz/', label: 'Reforma de baño en Torrejón de Ardoz' },
+            { href: '/reforma-banos/alcala-de-henares/', label: 'Reforma de baño en Alcalá de Henares' },
+            { href: '/reforma-cocinas/torrejon-de-ardoz/', label: 'Reforma de cocina en Torrejón de Ardoz' },
+            { href: '/reforma-cocinas/alcala-de-henares/', label: 'Reforma de cocina en Alcalá de Henares' },
+            { href: '/reformas-integrales/coslada/', label: 'Reforma integral en Coslada' },
+            { href: '/reforma-banos/coslada/', label: 'Reforma de baño en Coslada' },
+            { href: '/reformas-integrales/guadalajara/', label: 'Reforma integral en Guadalajara' },
+            { href: '/reforma-banos/guadalajara/', label: 'Reforma de baño en Guadalajara' },
+            { href: '/reforma-pisos/torrejon-de-ardoz/', label: 'Reforma de piso en Torrejón de Ardoz' },
+            { href: '/reforma-pisos/alcala-de-henares/', label: 'Reforma de piso en Alcalá de Henares' },
+          ].map(link => (
+            <li>
+              <a href={link.href}
+                 class="block text-xs text-gray-500 hover:text-[#A85535] transition-colors py-0.5 leading-snug">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       TRUST — Compromisos + responsable
+       fusionados. Apertura con declaración
+       tipográfica "1 único responsable de obra."
+  ══════════════════════════════════════ -->
+  <section id="nosotros" class="py-20 lg:py-28 bg-[#111827]" aria-labelledby="h-trust">
+    <div class="max-w-7xl mx-auto px-4">
+
+      <!-- Declaración de apertura: eje vertical -->
+      <div style="border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:3rem;margin-bottom:3.5rem">
+        <p id="h-trust" class="font-black text-white"
+           style="font-size:clamp(2rem,6vw,5rem);letter-spacing:-0.04em;line-height:0.9;text-wrap:balance">
+          <span style="font-size:clamp(4rem,12vw,9rem);line-height:1">1</span>&thinsp;único
+          responsable de obra.
+        </p>
+        <p style="font-size:clamp(0.875rem,1.4vw,1.0625rem);color:#9CA3AF;margin-top:1.25rem;max-width:52ch;line-height:1.65">
+          Desde el primer presupuesto hasta la entrega de llaves.
+          Un solo interlocutor coordina todos los gremios de tu reforma.
+        </p>
+      </div>
+
+      <!-- Contenido: compromisos + responsable -->
+      <div class="trust-content-grid">
+
+        <!-- Compromisos -->
+        <div>
+          <p class="font-black uppercase text-white/30 mb-5"
+             style="font-size:10px;letter-spacing:.15em">Lo que queda fijado en el contrato</p>
+          <ul style="list-style:none;padding:0;margin:0">
+            {trustCompromisos.map((c, i) => (
+              <li style={`padding:1.25rem 0;${i < trustCompromisos.length - 1 ? 'border-bottom:1px solid rgba(255,255,255,.07)' : ''}`}>
+                <p class="font-bold text-white text-sm mb-1">{c.title}</p>
+                <p style="font-size:0.875rem;color:#9CA3AF;line-height:1.65;max-width:48ch">{c.short}</p>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-8 flex gap-4 flex-wrap">
+            <a href="/como-trabajamos/"
+               class="inline-block text-white font-black text-xs uppercase"
+               style="padding:.75rem 1.5rem;border:1px solid rgba(255,255,255,.2);letter-spacing:.1em">
+              Ver todos los compromisos →
+            </a>
+            <a href="/calculadora-precio-reforma/"
+               class="inline-block text-white/50 font-black text-xs uppercase hover:text-white transition-colors"
+               style="padding:.75rem 1.5rem;letter-spacing:.1em">
+              Calcular precio de mi reforma →
+            </a>
+          </div>
+        </div>
+
+        <!-- Cómo coordinamos — preparado para mostrar nombre cuando AUTHOR.name exista -->
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2rem">
+          <p class="font-black uppercase text-white/30 mb-5"
+             style="font-size:10px;letter-spacing:.15em">Cómo coordinamos tu reforma</p>
+
+          {AUTHOR.name ? (
+            <p class="font-bold text-white text-sm mb-1">{AUTHOR.name}</p>
+            <p style="font-size:0.8125rem;color:#9CA3AF;margin-bottom:1rem">{AUTHOR.role}</p>
+          ) : null}
+
+          <ul style="list-style:none;padding:0;margin:0">
+            {[
+              'Una misma persona coordina la obra de principio a fin',
+              'Interlocutor único: no hablas con gremios por separado',
+              'Coordinación de albañiles, fontaneros y electricistas',
+              'Seguimiento de plazos con comunicación constante',
+              'Resolución de incidencias sin intermediarios',
+            ].map((item, i, arr) => (
+              <li style={`padding:.875rem 0;font-size:0.8125rem;color:#9CA3AF;line-height:1.55;${i < arr.length - 1 ? 'border-bottom:1px solid rgba(255,255,255,.06)' : ''}`}>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.07)">
+            <p class="font-black text-white" style="font-size:1.75rem;letter-spacing:-0.03em">
+              {AUTHOR.yearsInTrade}
+            </p>
+            <p style="font-size:10px;color:#9CA3AF;margin-top:3px;letter-spacing:.1em;text-transform:uppercase">
+              Años coordinando reformas en el Corredor
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- M8 — COMPROMISOS (high position) -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
+  <!-- ══════════════════════════════════════
+       PRECIOS — Bands sin número display
+  ══════════════════════════════════════ -->
+  <section id="precios" class="py-20 lg:py-28 bg-[#F9F7F4]" aria-labelledby="h-precios">
     <div class="max-w-7xl mx-auto px-4">
+
       <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Lo que asumimos antes de empezar</p>
-        <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">Compromisos de Trazzo360</h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
-        <p class="text-gray-500 max-w-2xl">Todo queda por escrito antes de que entre el primer operario. Sin compromisos, sin incertidumbre sobre precio o plazo.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
-        {COMPROMISOS.map(c => (
-          <div class="bg-white p-6 border-t-4 border-[#A85535]">
-            <h3 class="font-bold text-gray-900 mb-2 text-sm">{c.title}</h3>
-            <p class="text-xs text-gray-500 leading-relaxed">{c.short}</p>
-          </div>
-        ))}
-      </div>
-      <div class="flex flex-wrap gap-4 items-center">
-        <a href="/como-trabajamos/" class="inline-block px-6 py-3 text-sm font-bold text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-          Ver todos los compromisos en detalle →
-        </a>
-        <a href="/calculadora-precio-reforma/" class="inline-block px-6 py-3 text-sm font-bold text-gray-700 bg-white border border-gray-200 hover:border-[#A85535] hover:text-[#A85535] transition-all">
-          Estimar precio antes de la visita →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- REFORMAS MÁS SOLICITADAS — links a combinadas prioritarias -->
-  <section class="py-16 bg-white" aria-labelledby="h-combinadas">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 id="h-combinadas" class="text-xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">Reformas más solicitadas en el Corredor</h2>
-      <p class="text-sm text-gray-500 mb-7">Información detallada sobre precios, plazos y proceso para las combinaciones más demandadas.</p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-        {[
-          { href: '/reformas-integrales/torrejon-de-ardoz/', label: 'Reforma integral en Torrejón de Ardoz' },
-          { href: '/reformas-integrales/alcala-de-henares/', label: 'Reforma integral en Alcalá de Henares' },
-          { href: '/reforma-banos/torrejon-de-ardoz/', label: 'Reforma de baño en Torrejón de Ardoz' },
-          { href: '/reforma-banos/alcala-de-henares/', label: 'Reforma de baño en Alcalá de Henares' },
-          { href: '/reforma-cocinas/torrejon-de-ardoz/', label: 'Reforma de cocina en Torrejón de Ardoz' },
-          { href: '/reforma-cocinas/alcala-de-henares/', label: 'Reforma de cocina en Alcalá de Henares' },
-          { href: '/reformas-integrales/coslada/', label: 'Reforma integral en Coslada' },
-          { href: '/reforma-banos/coslada/', label: 'Reforma de baño en Coslada' },
-          { href: '/reformas-integrales/guadalajara/', label: 'Reforma integral en Guadalajara' },
-          { href: '/reforma-banos/guadalajara/', label: 'Reforma de baño en Guadalajara' },
-          { href: '/reforma-pisos/torrejon-de-ardoz/', label: 'Reforma de piso en Torrejón de Ardoz' },
-          { href: '/reforma-pisos/alcala-de-henares/', label: 'Reforma de piso en Alcalá de Henares' },
-        ].map(link => (
-          <a href={link.href} class="block p-4 bg-gray-50 border border-gray-100 hover:border-[#A85535] hover:text-[#A85535] text-xs font-medium text-gray-700 transition-all leading-snug">
-            {link.label} →
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- OFICIOS -->
-  <section class="py-20 bg-[#111827]" aria-labelledby="h-oficios">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="mb-12">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Profesionales de confianza</p>
-        <h2 id="h-oficios" class="text-3xl lg:text-4xl font-black text-white mb-4" style="letter-spacing:-0.02em">Todos los oficios de la reforma, el mismo criterio de trabajo</h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
-        <p class="text-gray-300 max-w-2xl">Una reforma integral implica coordinar muchos gremios: albañiles, fontaneros, electricistas, carpinteros, pintores y soladores. Todos trabajan bajo el mismo criterio de ejecución y comparten la misma forma de hacer las cosas. Un solo interlocutor para el cliente; responsabilidad completa sobre el resultado.</p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {[
-          { icon: '🧱', trade: 'Albañilería y tabiquería', desc: 'Derribos, redistribución de espacios y construcción de tabiques. Hacemos la obra sucia con rigor porque lo que no se ve importa tanto como lo que sí: una base mal ejecutada arruina los mejores acabados.' },
-          { icon: '🔧', trade: 'Fontanería y saneamiento', desc: 'Instalaciones nuevas de suministro y saneamiento para baños y cocinas. Trabajamos con materiales que duran y dejamos todo accesible y registrable para facilitar cualquier mantenimiento futuro.' },
-          { icon: '⚡', trade: 'Electricidad e iluminación', desc: 'Cuadro eléctrico nuevo, circuitos diferenciados y puntos de luz donde los necesitas. Cumplimos el reglamento electrotécnico y entregamos el boletín para la legalización ante la distribuidora.' },
-          { icon: '🪵', trade: 'Carpintería y cerramientos', desc: 'Puertas, ventanas, armarios empotrados y tarimas. Instalamos con la precisión necesaria para que todo abra bien, cierre bien y aguante el paso de los años sin deformaciones ni holguras.' },
-          { icon: '🪣', trade: 'Alicatados y pavimentos', desc: 'Cerámica, porcelánico, microcemento y tarima flotante. Preparamos el soporte antes de colocar porque sin una base perfectamente nivelada el mejor material acaba fallando antes de tiempo.' },
-          { icon: '🎨', trade: 'Pintura y acabados finales', desc: 'El último paso de una reforma es el que más se ve y más se nota. Lijamos, masillamos y aplicamos con el cuidado que merece cada estancia. Sin manchas en rodapiés, sin bordes irregulares, sin descuidos.' },
-          { icon: '📐', trade: 'Diseño y planimetría', desc: 'Antes de mover un tabique te mostramos en planos cómo va a quedar tu casa: distribución, arquitectura interior y criterios de decoración. El asesoramiento de espacios está incluido en el proyecto, sin coste adicional.' },
-          { icon: '📋', trade: 'Licencias y permisos', desc: 'Tramitamos la licencia de obra o actividad en el ayuntamiento que corresponda. Sin colas, sin papeleos innecesarios. Tú te centras en el resultado; nosotros gestionamos la burocracia.' },
-        ].map(t => (
-          <div class="bg-white/5 border border-white/10 p-5 hover:border-[#A85535]/50 transition-colors">
-            <div class="w-6 h-6 text-[#A85535] mb-3"><Fragment set:html={tradeIcons[t.icon] ?? ''} /></div>
-            <p class="text-sm font-bold text-white mb-2">{t.trade}</p>
-            <p class="text-xs text-gray-400 leading-relaxed">{t.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- PROYECTOS ANTES/DESPUÉS -->
-  <!-- Imágenes: añade tus fotos en /public/img/proyectos/{slug}-antes.jpg y -despues.jpg -->
-  {hasRealProjectImages && <section id="proyectos" class="py-24 lg:py-32 bg-[#F9F7F4]" aria-labelledby="h-proyectos">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="mb-14">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Proyectos realizados</p>
-        <h2 id="h-proyectos" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Antes y después</h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
-        <p class="text-lg text-gray-500 max-w-xl">Proyectos reales en el Corredor del Henares, cada uno con precio cerrado y entrega en el plazo acordado.</p>
-      </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {PROJECTS.map(p => (
-          <div class="bg-white">
-            <div class="grid grid-cols-2">
-              <ProjectImage
-                src={p.imgBefore}
-                alt={`${p.title} antes — ${p.location}`}
-                label="Antes"
-                service={p.service}
-              />
-              <ProjectImage
-                src={p.imgAfter}
-                alt={`${p.title} después — ${p.location}`}
-                label="Después"
-                labelBg="#A85535"
-                service={p.service}
-              />
-            </div>
-            <div class="p-6">
-              <div class="flex items-start justify-between gap-3 mb-2">
-                <h3 class="font-bold text-gray-900">{p.title}</h3>
-                <span class="text-xs font-bold text-[#A85535] whitespace-nowrap">{p.service}</span>
-              </div>
-              <p class="text-sm text-gray-500 leading-relaxed mb-4">{p.desc}</p>
-              <div class="flex flex-wrap gap-4 text-xs font-medium text-gray-400">
-                <span><Fragment set:html={metaIcons.pin} />{p.location}</span>
-                <span><Fragment set:html={metaIcons.area} />{p.surface}</span>
-                <span><Fragment set:html={metaIcons.clock} />{p.duration}</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div class="mt-12 text-center">
-        <p class="text-sm text-gray-500 mb-6">¿Tienes un proyecto en mente?</p>
-        <a href="/contacto/" class="inline-block px-10 py-4 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-          Pide presupuesto gratis
-        </a>
-      </div>
-    </div>
-  </section>}
-
-  <!-- PRECIOS ORIENTATIVOS - captura intent de PAA -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-precios">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="mb-12">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Precios orientativos</p>
-        <h2 id="h-precios" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
-          ¿Cuánto cuesta una reforma<br/>en el Corredor del Henares?
+        <h2 id="h-precios" class="font-black text-gray-900 mb-4"
+            style="font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.025em;line-height:1.1;max-width:22ch;text-wrap:balance">
+          ¿Cuánto cuesta una reforma en el Corredor del Henares?
         </h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
-        <p class="text-gray-500 max-w-xl">Precios de referencia para 2025–2026 en Alcalá de Henares, Torrejón de Ardoz y toda la zona. El precio final depende del estado actual, superficie y materiales elegidos. Siempre con <strong class="text-gray-700">precio cerrado en el contrato</strong>.</p>
+        <p class="text-gray-600 max-w-prose" style="font-size:0.9375rem;line-height:1.7">
+          Rangos basados en proyectos reales terminados en el Corredor del Henares. El presupuesto cerrado que entregamos depende del estado actual, la superficie y los materiales elegidos. Siempre con precio fijado en el contrato.
+        </p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- Bands de precio -->
+      <div class="precio-bands-container mb-10">
         {[
-          { tipo: 'Reforma de acabados · piso', detalle: '70 m² · sin instalaciones nuevas', desde: '21.000', hasta: '35.000' },
-          { tipo: 'Reforma integral esencial · piso', detalle: '70 m² · con instalaciones nuevas', desde: '45.500', hasta: '56.000' },
-          { tipo: 'Reforma de baño completo', detalle: 'Con cambio de bañera a ducha', desde: '3.200', hasta: '7.500' },
-          { tipo: 'Reforma de cocina', detalle: 'Muebles, encimera y electrodomésticos', desde: '5.500', hasta: '14.000' },
-          { tipo: 'Local comercial', detalle: '50 m²', desde: '8.000', hasta: '20.000' },
-          { tipo: 'Portal / comunidad de vecinos', detalle: 'Escalera y zonas comunes', desde: '4.900', hasta: '18.000' },
-        ].map(p => (
-          <div class="bg-white p-6 border border-gray-100">
-            <p class="text-sm font-bold text-gray-900 mb-1">{p.tipo}</p>
-            <p class="text-xs text-gray-400 mb-3">{p.detalle}</p>
-            <p class="text-2xl font-black text-[#A85535]">
-              {p.desde}€ <span class="text-lg font-normal text-gray-400">– {p.hasta}€</span>
+          { servicio: 'Reforma de baño completo', nota: 'Hasta 5 m² · Cambio completo de instalación', rango: 'desde 3.200€' },
+          { servicio: 'Reforma de cocina', nota: 'Hasta 10 m² · Redistribución incluida', rango: 'desde 5.500€' },
+          { servicio: 'Reforma de acabados de vivienda', nota: '70 m² · Sin renovación de instalaciones', rango: 'desde 21.000€' },
+          { servicio: 'Reforma integral de vivienda', nota: '70 m² · Con instalaciones nuevas', rango: 'desde 45.500€' },
+          { servicio: 'Local comercial', nota: '50 m²', rango: 'desde 8.000€' },
+          { servicio: 'Portal o comunidad de vecinos', nota: 'Escalera y zonas comunes', rango: 'desde 4.900€' },
+        ].map(({ servicio, nota, rango }) => (
+          <div class="precio-band-row">
+            <div>
+              <p class="font-bold text-gray-900 text-sm">{servicio}</p>
+              <p class="text-gray-400 mt-0.5" style="font-size:0.75rem">{nota}</p>
+            </div>
+            <p class="font-black text-gray-900 precio-band-amount">
+              {rango}
             </p>
           </div>
         ))}
       </div>
-      <p class="mt-6 text-xs text-gray-400">* Precios orientativos sin IVA. El presupuesto personalizado y gratuito es siempre más preciso.</p>
-      <a href="/contacto/" class="inline-block mt-6 px-8 py-3.5 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-        Pide tu presupuesto cerrado
+
+      <!-- Editorial + CTA -->
+      <div style="border-left:3px solid #A85535;padding-left:1.5rem;margin-bottom:2rem">
+        <p class="font-bold text-gray-900 text-sm mb-1">El precio que ves es el precio que firmas</p>
+        <p class="text-gray-600" style="font-size:0.875rem;line-height:1.65;max-width:52ch">
+          Sin cláusulas de ajuste ni imprevistos posteriores. El presupuesto cerrado que entregamos
+          incluye materiales, mano de obra y gestión. Lo que aparece en el contrato es lo que se paga.
+        </p>
+      </div>
+      <p class="text-xs text-gray-400 mb-6">Precios orientativos sin IVA. El presupuesto personalizado y gratuito es siempre más preciso.</p>
+      <a href="/contacto/"
+         class="inline-block text-white font-black text-xs uppercase"
+         style="padding:1rem 2rem;background:#A85535;letter-spacing:.12em">
+        Solicitar presupuesto cerrado
       </a>
     </div>
   </section>
 
-  <!-- QUÉ CUBRE UNA REFORMA INTEGRAL -->
-  <section class="py-24 bg-white" aria-labelledby="h-reforma-integral">
+  <!-- ══════════════════════════════════════
+       PROCESO — 4 pasos
+  ══════════════════════════════════════ -->
+  <section id="proceso" class="py-24 lg:py-32 bg-[#F9F7F4]" aria-labelledby="h-proceso"
+           style="border-top:1px solid #D1C9BD">
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-14">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">De los planos a las llaves</p>
-        <h2 id="h-reforma-integral" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Qué cubre una reforma integral de vivienda</h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-5"></div>
-        <p class="text-lg text-gray-500 max-w-2xl">Una reforma integral no es solo pintar y cambiar azulejos. Implica coordinar varias fases con distintos gremios y plazos. Esto es lo que ocurre en cada proyecto, desde que firmas el presupuesto hasta que recibes las llaves.</p>
-      </div>
-      <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style="list-style:none;padding:0;margin:0">
-        {reformaPhases.map(phase => (
-          <li class="border border-gray-100 p-7 hover:border-[#A85535]/30 transition-colors">
-            <div class="text-4xl font-black text-[#A85535]/20 mb-3" aria-hidden="true">{phase.n}</div>
-            <h3 class="text-base font-bold text-gray-900 mb-3">{phase.title}</h3>
-            <p class="text-sm text-gray-500 leading-relaxed">{phase.desc}</p>
-          </li>
-        ))}
-      </ol>
-      <div class="mt-10 p-6 bg-[#F9F7F4] border-l-4 border-[#A85535]">
-        <p class="text-sm text-gray-600 leading-relaxed">
-          <strong class="text-gray-900">Precio cerrado desde el primer presupuesto:</strong> cada fase queda reflejada con su coste en el contrato que firmas. Si durante la obra aparece algo imprevisto que no estaba en el presupuesto, te lo comunicamos antes de actuar. Nunca después.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- POR QUÉ NOSOTROS -->
-  <section id="nosotros" class="py-24 lg:py-32 bg-white" aria-labelledby="h-nosotros">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Por qué elegir Trazzo360</p>
-          <h2 id="h-nosotros" class="text-4xl lg:text-5xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
-            Reformas del hogar con precio cerrado<br/>y plazo garantizado
-          </h2>
-          <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
-          <p class="text-gray-500 leading-relaxed mb-8">Trazzo360 es una empresa de construcción y reformas del Corredor del Henares nacida con una convicción: las reformas pueden hacerse mejor. Con presupuestos que no cambian, plazos que se respetan y profesionales que tratan tu vivienda con el mismo cuidado con el que tratarían la suya. No trabajamos con cualquiera: quienes ejecutan tus proyectos llevan años trabajando con nosotros y aplican el mismo nivel de exigencia en cada obra, sea grande o pequeña.</p>
-          <div class="space-y-6">
-            {[
-              { title: 'Precio cerrado por contrato', desc: 'El presupuesto que firmas es el que pagas. Sin extras de última hora, sin modificados no comunicados. Si durante la obra aparece algo imprevisto, te lo decimos antes de actuar, nunca después.' },
-              { title: 'Plazo garantizado por escrito', desc: 'La fecha de entrega queda recogida en el contrato. Si por alguna causa propia nos retrasamos, compensamos económicamente. Sin excusas, sin semanas de silencio.' },
-              { title: 'Profesionales de confianza', desc: 'No trabajamos con cualquiera. Quienes entran en tu vivienda llevan años trabajando con nosotros y comparten el mismo criterio: hacerlo bien desde la primera vez, como si fuera para ellos.' },
-              { title: 'Pago por fases verificadas', desc: 'Pagas según avanza la obra, no todo por adelantado. En cada fase sabes exactamente qué se ha ejecutado, qué materiales se han colocado y qué queda por hacer.' },
-              { title: '2 años de garantía en la ejecución', desc: 'Toda la obra que ejecutamos está garantizada por escrito durante 2 años. Si algo falla por causas de ejecución, lo resolvemos sin coste adicional y sin discusiones.' },
-            ].map(item => (
-              <div class="flex gap-4">
-                <div class="w-6 h-6 rounded-full bg-[#A85535] flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                </div>
-                <div>
-                  <h3 class="font-bold text-gray-900 mb-1">{item.title}</h3>
-                  <p class="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div class="bg-[#111827] p-10 text-white">
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">El responsable de obra</p>
-          <div class="mb-6">
-            <p class="text-lg font-black text-white mb-1">
-              {AUTHOR.name ?? 'Responsable de obra'}
-            </p>
-            <p class="text-sm text-gray-400 mb-2">{AUTHOR.role}</p>
-            <p class="text-sm text-gray-300 leading-relaxed">
-              {AUTHOR.yearsInTrade} años en el oficio. Un único responsable coordina tu reforma de principio a fin: supervisa cada gremio, comunica el avance y firma la garantía.
-            </p>
-          </div>
-          <a href="/como-trabajamos/" class="inline-block mb-4 px-7 py-3.5 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity border border-white/30 hover:border-white transition-colors">
-            Cómo trabajamos →
-          </a>
-          <div class="border-t border-white/10 pt-6 mt-2">
-            <p class="text-xs text-gray-400 mb-3">¿Quieres saber cuánto puede costar tu reforma antes de la visita?</p>
-            <a href="/calculadora-precio-reforma/" class="inline-block w-full text-center py-3 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-              Calculadora de precios →
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESO -->
-  <section id="proceso" class="py-24 lg:py-32 bg-[#F9F7F4]" aria-labelledby="h-proceso">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-16">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
-        <h2 id="h-proceso" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Tu reforma en el Corredor, paso a paso</h2>
-        <div class="w-12 h-1 bg-[#A85535] mx-auto"></div>
+        <h2 id="h-proceso" class="font-black text-gray-900"
+            style="font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.02em;max-width:22ch;text-wrap:balance">
+          Tu reforma en el Corredor, paso a paso
+        </h2>
       </div>
-      <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" style="list-style:none;padding:0;margin:0">
+      <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          style="list-style:none;padding:0;margin:0">
         {[
           { n: '01', title: 'Visita gratuita', desc: 'Visitamos tu vivienda en Alcalá, Torrejón, Coslada o cualquier municipio del Corredor sin ningún coste ni compromiso. Evaluamos el estado real de las instalaciones, tomamos medidas y escuchamos exactamente lo que quieres conseguir.' },
           { n: '02', title: 'Presupuesto cerrado', desc: 'Tras la visita, en un máximo de 48 horas recibes un presupuesto detallado con el precio final y el plazo de entrega cerrados. Sin letra pequeña, sin partidas abiertas. Lo que aparece en el documento que firmas es lo que vas a pagar.' },
           { n: '03', title: 'Ejecución con seguimiento', desc: 'Albañiles, fontaneros, electricistas y carpinteros ejecutan la obra con seguimiento diario y comunicación constante. Sabes en todo momento en qué punto está tu reforma y qué viene a continuación.' },
-          { n: '04', title: 'Entrega con garantía', desc: 'Entregamos la obra limpia, revisada y en el plazo acordado. Recibes un certificado de garantía de 2 años sobre toda la ejecución. Si en ese periodo algo falla por nuestra parte, lo solucionamos.' },
+          { n: '04', title: 'Entrega con garantía', desc: 'Entregamos la obra limpia, revisada y en el plazo acordado. Recibes un certificado de garantía de 2 años sobre toda la ejecución. Si en ese periodo algo falla por nuestra parte, lo solucionamos sin coste adicional.' },
         ].map(step => (
-          <li class="text-center">
-            <div class="text-6xl font-black text-[#A85535]/20 mb-4" aria-hidden="true">{step.n}</div>
-            <h3 class="text-lg font-bold text-gray-900 mb-3">{step.title}</h3>
+          <li>
+            <p class="font-black text-gray-200 mb-4" style="font-size:3.5rem;letter-spacing:-0.04em;line-height:1"
+               aria-hidden="true">{step.n}</p>
+            <h3 class="text-base font-bold text-gray-900 mb-3">{step.title}</h3>
             <p class="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
           </li>
         ))}
@@ -481,63 +382,80 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- ZONAS -->
+  <!-- ══════════════════════════════════════
+       ZONAS — "8 municipios. 1 empresa."
+  ══════════════════════════════════════ -->
   <section id="zonas" class="py-24 lg:py-32 bg-[#111827]" aria-labelledby="h-zonas">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-14">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Zona de actuación</p>
-        <h2 id="h-zonas" class="text-4xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em">
-          Reformamos en todo el Corredor
+
+      <!-- Declaración territorial -->
+      <div style="border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:3rem;margin-bottom:3.5rem">
+        <h2 id="h-zonas" class="font-black text-white"
+            style="font-size:clamp(2.25rem,7vw,5.5rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance">
+          {ZONES.length} municipios.<br>1 empresa.
         </h2>
-        <div class="w-12 h-1 bg-[#A85535] mx-auto mb-6"></div>
-        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-          Cubrimos {ZONES.length} municipios entre Madrid y Guadalajara. Profesionales de confianza en toda la zona, sin costes de desplazamiento y con respuesta en menos de 24h.
+        <p style="font-size:clamp(0.875rem,1.4vw,1.0625rem);color:#9CA3AF;margin-top:1.5rem;max-width:55ch;line-height:1.65">
+          Trabajamos exclusivamente en el Corredor del Henares. No somos una plataforma nacional con delegado local: somos de aquí, conocemos los tiempos, los proveedores y el territorio.
         </p>
       </div>
 
-      <!-- Zonas primarias con H3 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+      <!-- Zonas primarias — Alcalá con diferencial visual (zona de mayor actividad) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 mb-8">
         {ZONES.filter(z => z.primary).map(z => (
           <a href={`/zonas/${z.slug}/`}
-            class="block bg-white/5 border border-white/10 p-7 hover:border-[#A85535]/50 transition-all group">
-            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#A85535] transition-colors">Empresa de reformas en {z.name}</h3>
-            <p class="text-sm text-gray-400 leading-relaxed mb-5">{primaryZoneDescs[z.slug]}</p>
-            <span class="text-xs font-bold text-[#A85535] uppercase tracking-widest">Ver todos los servicios en {z.name} →</span>
+             class="block p-7 bg-[#111827] hover:bg-white/5 transition-colors group"
+             style={z.slug === 'alcala-de-henares' ? 'border-left:3px solid #A85535' : ''}>
+            <h3 class="font-bold text-white mb-3 group-hover:text-[#A85535] transition-colors"
+                style={z.slug === 'alcala-de-henares' ? 'font-size:1.0625rem' : 'font-size:1rem'}>
+              Empresa de reformas en {z.name}
+            </h3>
+            <p class="text-sm text-gray-400 leading-relaxed mb-4">{primaryZoneDescs[z.slug]}</p>
+            <span class="text-xs font-bold text-[#A85535] uppercase tracking-widest">
+              Ver servicios en {z.name} →
+            </span>
           </a>
         ))}
       </div>
 
       <!-- Zonas secundarias -->
-      <div class="border-t border-white/10 pt-8 mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">También cubrimos</p>
+      <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:1.75rem;margin-bottom:3rem">
+        <p style="font-size:10px;color:#9CA3AF;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.875rem">
+          También operamos en
+        </p>
         <div class="flex flex-wrap gap-2">
           {ZONES.filter(z => !z.primary).map(z => (
             <a href={`/zonas/${z.slug}/`}
-              class="inline-block px-4 py-2.5 text-sm font-medium text-gray-300 border border-white/20 hover:border-[#A85535]/50 hover:text-white transition-colors"
-              style="background:rgba(255,255,255,0.04)">
-              Obras y reformas en {z.name}
+               class="inline-block px-4 py-2 text-sm font-medium text-gray-300 border border-white/15 hover:border-white/40 hover:text-white transition-colors"
+               style="background:rgba(255,255,255,.03)">
+              {z.name}
             </a>
           ))}
         </div>
       </div>
 
       <!-- CTA -->
-      <div class="text-center">
-        <a href="/contacto/" class="inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-          Pide presupuesto en tu zona
-        </a>
-        <p class="mt-3 text-sm text-gray-500">¿Tu municipio no aparece? Consúltanos, cubrimos zonas adyacentes.</p>
-      </div>
+      <a href="/contacto/"
+         class="inline-block text-white font-black text-xs uppercase"
+         style="padding:1rem 2rem;background:#A85535;letter-spacing:.12em">
+        Pedir presupuesto en tu zona
+      </a>
+      <p class="text-gray-500 mt-3" style="font-size:0.8125rem">
+        ¿Tu municipio no aparece? Consúltanos, cubrimos zonas adyacentes.
+      </p>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- ══════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════ -->
   <section id="faq" class="py-24 lg:py-32 bg-white" aria-labelledby="h-faq">
     <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-14">
+      <div class="mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 id="h-faq" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">Precios y dudas sobre<br/>reformas en el Corredor del Henares</h2>
-        <div class="w-12 h-1 bg-[#A85535] mx-auto"></div>
+        <h2 id="h-faq" class="font-black text-gray-900"
+            style="font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.025em;max-width:24ch;text-wrap:balance">
+          Precios y dudas sobre reformas en el Corredor del Henares
+        </h2>
       </div>
       <div class="divide-y divide-gray-100">
         {faqs.map(faq => (
@@ -553,45 +471,114 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- Guías de precios -->
-  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-guias-home">
-    <div class="max-w-4xl mx-auto px-4">
-      <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-2">Información de precios</p>
-      <h2 id="h-guias-home" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">¿Cuánto cuesta una reforma?</h2>
-      <p class="text-gray-600 leading-relaxed mb-6">Antes de pedir presupuesto, estas guías explican los rangos reales de precio, el desglose por partidas y cómo comparar ofertas.</p>
-      <ul class="grid sm:grid-cols-3 gap-4">
-        {[
-          { href: '/guias/cuanto-cuesta-reformar-un-bano/', label: 'Cuánto cuesta reformar un baño', desde: 'Desde 3.200€' },
-          { href: '/guias/cuanto-cuesta-reformar-una-cocina/', label: 'Cuánto cuesta reformar una cocina', desde: 'Desde 5.500€' },
-          { href: '/guias/cuanto-cuesta-reformar-un-piso/', label: 'Cuánto cuesta reformar un piso', desde: 'Desde 8.000€' },
-        ].map(g => (
-          <li>
-            <a href={g.href} class="block border border-gray-200 bg-white p-5 hover:border-[#A85535] transition-colors">
-              <span class="block font-bold text-gray-900 text-sm mb-1">{g.label}</span>
-              <span class="block text-xs text-[#A85535] font-semibold mb-2">{g.desde}</span>
-              <span class="block text-xs text-gray-500">Ver precios y desglose →</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p class="text-sm text-gray-500 mt-4"><a href="/guias/" class="text-[#A85535] hover:underline font-medium">Ver todas las guías de precios de reforma →</a></p>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="py-20 bg-[#A85535]" aria-labelledby="h-cta-final">
+  <!-- ══════════════════════════════════════
+       CTA FINAL — dark, no terracota bg
+  ══════════════════════════════════════ -->
+  <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 id="h-cta-final" class="text-3xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em">¿Listo para reformar?</h2>
-      <p class="text-white/80 text-lg mb-8">Visita gratuita y presupuesto cerrado en 48h. Fecha de entrega garantizada.</p>
+      <h2 id="h-cta-final" class="font-black text-white mb-4"
+          style="font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-0.03em">
+        ¿Listo para reformar?
+      </h2>
+      <p class="text-gray-400 mb-8" style="font-size:1.0625rem">
+        Visita gratuita y presupuesto cerrado en 48h. Fecha de entrega garantizada.
+      </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">
+        <a href="/contacto/"
+           class="inline-block text-white font-black text-xs uppercase"
+           style="padding:1.1rem 2.5rem;background:#A85535;letter-spacing:.12em">
           Solicitar valoración gratuita
         </a>
-        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/50 hover:border-white transition-colors">
-          ☎ {SITE.phoneDisplay}
+        <a href={`tel:${SITE.phone}`}
+           class="inline-block text-white font-black text-xs uppercase"
+           style="padding:1.1rem 2.5rem;border:1px solid rgba(255,255,255,.25);letter-spacing:.12em">
+          {SITE.phoneDisplay}
         </a>
       </div>
     </div>
   </section>
 
 </Layout>
+
+<style>
+  /* ── Hero ──────────────────────────────── */
+  .hero-root {
+    min-height: 100vh;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  /* Sigilo terracota: 4px mobile → 5px desktop */
+  .hero-sigil {
+    border-left: 4px solid #A85535;
+    padding-left: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .hero-sigil {
+      border-left-width: 5px;
+      padding-left: 2rem;
+    }
+  }
+
+  .hero-support-border {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: clamp(1.5rem, 2.5vw, 2.5rem);
+  }
+
+  .hero-support-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .hero-support-grid {
+      grid-template-columns: 55fr 22fr 23fr;
+      gap: 3rem;
+    }
+  }
+
+  /* ── Trust ─────────────────────────────── */
+  .trust-content-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .trust-content-grid {
+      grid-template-columns: 3fr 2fr;
+      gap: 4rem;
+    }
+  }
+
+  /* ── Precios ───────────────────────────── */
+  .precio-bands-container {
+    max-width: 48rem;
+  }
+  .precio-band-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #D1C9BD;
+  }
+  .precio-band-row:first-child {
+    border-top: 1px solid #D1C9BD;
+  }
+  .precio-band-amount {
+    font-variant-numeric: tabular-nums;
+    font-size: 1.125rem;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 640px) {
+    .precio-band-amount {
+      font-size: clamp(1rem, 2vw, 1.375rem);
+    }
+  }
+  @media (min-width: 640px) {
+    .precio-band-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      flex-direction: unset;
+      gap: 2rem;
+    }
+  }
+</style>

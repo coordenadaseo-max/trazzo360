@@ -13,17 +13,37 @@ export const getStaticPaths: GetStaticPaths = () =>
 
 const { service, zone } = Astro.props;
 
+const TITLE_OVERRIDES: Record<string, Record<string, string>> = {
+  'reforma-banos': {
+    'torrejon-de-ardoz': 'Reforma de Baños en Torrejón · Precio Cerrado | Trazzo360',
+    'alcala-de-henares':  'Reforma de Baños en Alcalá · Precio Cerrado | Trazzo360',
+  },
+  'reforma-pisos': {
+    'torrejon-de-ardoz': 'Reforma de Pisos en Torrejón · Precio Cerrado | Trazzo360',
+    'alcala-de-henares':  'Reforma de Pisos en Alcalá · Precio Cerrado | Trazzo360',
+  },
+  'comunidades-vecinos': {
+    'san-fernando-de-henares': 'Comunidades de Propietarios en San Fernando | Trazzo360',
+    'guadalajara':             'Comunidades de Propietarios en Guadalajara | Trazzo360',
+  },
+  'locales-comerciales': {
+    'torrejon-de-ardoz': 'Local Comercial en Torrejón · Reformas | Trazzo360',
+    'alcala-de-henares':  'Reforma de Locales Comerciales en Alcalá | Trazzo360',
+  },
+};
+
 const titlePart = (service as any).titleBarrio ?? service.title;
 const rawTitle = `${titlePart} en ${zone.name} | ${SITE.name}`;
 const withPrecioCerrado = `${titlePart} en ${zone.name} · Precio Cerrado | ${SITE.name}`;
 const withPresupuesto = `${titlePart} en ${zone.name} · Presupuesto | ${SITE.name}`;
-const pageTitle = rawTitle.length >= 50
-  ? rawTitle
-  : withPrecioCerrado.length <= 60
-  ? withPrecioCerrado
-  : withPresupuesto.length <= 60
-  ? withPresupuesto
-  : rawTitle;
+const pageTitle = TITLE_OVERRIDES[service.slug]?.[zone.slug]
+  ?? (rawTitle.length >= 50
+    ? rawTitle
+    : withPrecioCerrado.length <= 60
+    ? withPrecioCerrado
+    : withPresupuesto.length <= 60
+    ? withPresupuesto
+    : rawTitle);
 
 const isPrimary = zone.primary;
 const cityPresence = isPrimary

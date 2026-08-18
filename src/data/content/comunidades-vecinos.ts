@@ -172,9 +172,9 @@ export const META: Record<string, string> = {
   'alcala-de-henares':      'Obras en comunidades de vecinos en Alcalá de Henares: fachadas de ladrillo visto o revoco. IEE para edificios de más de 50 años. Presupuesto para junta.',
   'torrejon-de-ardoz':      'Obras en comunidades de vecinos en Torrejón de Ardoz: IEE y acceso a ayudas de rehabilitación. Coordinación con administrador de fincas. Presupuesto para junta.',
   'coslada':                'Obras en comunidades de vecinos en Coslada: humedades en bloques de vivienda social. Identificamos el origen antes de presupuestar. Documentación para junta.',
-  'san-fernando-de-henares':'Obras en comunidades de vecinos en San Fernando de Henares: necesidades distintas en casco histórico y Parque Roma. Diagnóstico por edificio. Presupuesto para junta.',
-  'guadalajara':            'Obras en comunidades de vecinos en Guadalajara: tramitación más predecible en ciudad media. Coordinamos IEE y ayudas de la Junta. Documentación completa para junta.',
-  'azuqueca-de-henares':    'Obras en comunidades de vecinos en Azuqueca de Henares: transición a mantenimiento preventivo en bloques 80-90. Diagnóstico previo incluido. Presupuesto para junta.',
+  'san-fernando-de-henares':'Obras en comunidades de vecinos en San Fernando: casco histórico y Parque Roma con necesidades distintas. Diagnóstico por edificio. Presupuesto para junta.',
+  'guadalajara':            'Obras en comunidades de vecinos en Guadalajara: tramitación más predecible en ciudad media. Coordinamos IEE y ayudas de la Junta. Presupuesto para junta.',
+  'azuqueca-de-henares':    'Obras en comunidades de vecinos en Azuqueca de Henares: bloques 80-90 en transición a mantenimiento preventivo. Diagnóstico incluido. Presupuesto para junta.',
   'meco':                   'Obras en comunidades de vecinos en Meco: urbanizaciones con viales, cercas y zonas comunes exteriores. Coordinación con presidente o administrador de fincas.',
   'camarma-de-esteruelas':  'Obras en comunidades de vecinos en Camarma de Esteruelas: comunidades pequeñas con decisiones más ágiles. Primeras intervenciones en urbanizaciones 2000s.',
 };

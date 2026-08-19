@@ -1,0 +1,330 @@
+---
+// Reforma de cocinas en Alcalá de Henares
+// Página standalone — arquetipo piloto Servicio × Zona
+// No modifica [servicio]/[barrio].astro ni otras combinaciones.
+// Plazos: calculator.ts (esencial 3-5 semanas). Precios: calculator.ts.
+// Claims técnicos: criterios de visita, no atributos de barrio.
+
+import Layout from '../../layouts/Layout.astro';
+import { SITE, ZONES } from '../../data/site';
+
+const zone = ZONES.find(z => z.slug === 'alcala-de-henares')!;
+
+// ── Datos autorizados ─────────────────────────────────────────────────────────
+// Precios: calculator.ts reforma-cocinas
+// tramo hasta-8 · esencial: min 5000, max 7500
+// tramo 8-12    · esencial: min 6000, max 9000
+// Plazos: calculator.ts reforma-cocinas · esencial: [3,5] semanas
+// Dato territorial: zones.ts documenta bloques 70-80 en El Val y Barrio del Pilar
+// ─────────────────────────────────────────────────────────────────────────────
+
+const faqs = [
+  {
+    q: '¿Qué información necesitáis para orientar el presupuesto antes de la visita?',
+    a: 'La superficie aproximada de la cocina, si tiene ventana al exterior o es interior, y qué quieres cambiar: solo muebles y encimera, o también instalaciones eléctricas y fontanería. Con eso podemos orientar una horquilla antes de la visita. El presupuesto cerrado siempre requiere ver el espacio.',
+  },
+  {
+    q: '¿Cómo se gestiona la extracción si la cocina no tiene ventana al exterior?',
+    a: 'Hay varias opciones según el espacio: conducto por falso techo hasta el patio, extractor con recirculación y carbón activo para cocinas pequeñas sin llamas, o redistribución que acerque la zona de cocción a una zona ventilada. Lo evaluamos en la visita y lo incluimos en el presupuesto.',
+  },
+  {
+    q: '¿Es posible abrir la cocina al salón?',
+    a: 'Depende de si el tabique entre cocina y salón es de carga o tiene instalaciones empotradas que condicionan el derribo. En pisos más antiguos, algunos tabiques tienen esas características. La visita técnica lo comprueba antes de comprometer ningún diseño ni ningún número.',
+  },
+  {
+    q: '¿Cuánto tiempo dura una reforma completa de cocina?',
+    a: 'Para una reforma completa con cambio de muebles, encimera, instalación eléctrica y fontanería, el plazo es de 3 a 5 semanas en calidad esencial. El plazo exacto depende del alcance final y del estado de las instalaciones previas, que se evalúan en la visita técnica.',
+  },
+];
+
+// Schemas
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio',            item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Reforma de Cocinas', item: `${SITE.url}/servicios/reforma-cocinas/` },
+    { '@type': 'ListItem', position: 3, name: zone.name,           item: `${SITE.url}/reforma-cocinas/${zone.slug}/` },
+  ],
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `Reforma de cocinas en ${zone.name}`,
+  url: `${SITE.url}/reforma-cocinas/${zone.slug}/`,
+  description: `Reforma de cocina en Alcalá de Henares. Extracción, instalaciones y distribución evaluados antes de presupuestar. Precio cerrado desde 5.000 €. Visita técnica gratuita.`,
+  provider: { '@type': 'GeneralContractor', '@id': `${SITE.url}/#business` },
+  areaServed: { '@type': 'City', name: zone.name },
+  offers: { '@type': 'Offer', price: '5000', priceCurrency: 'EUR', description: 'Cocina hasta 8 m² · calidad esencial · sin IVA' },
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Reforma de Cocinas en Alcalá de Henares | Trazzo360"
+  description="Reforma de cocina en Alcalá de Henares desde 5.000 €. Extracción e instalaciones evaluados en visita técnica gratuita. Precio cerrado."
+  schema={[serviceSchema, breadcrumbSchema, faqSchema]}
+>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2 flex-wrap" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li><a href="/servicios/reforma-cocinas/" class="hover:text-[#A85535] transition-colors">Reforma de Cocinas</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">{zone.name}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- ── 1. Hero ─────────────────────────────────────────────────────────── -->
+  <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <h1 id="h-hero" class="font-black text-white" style="letter-spacing:-0.035em;font-size:clamp(2.25rem,5.5vw,4.25rem);line-height:.95">
+        <span class="block font-bold leading-snug mb-5" style="font-size:clamp(.75rem,1.35vw,.9375rem);letter-spacing:.02em;color:rgba(255,255,255,.38)">
+          Reforma de cocinas en {zone.name}
+        </span>
+        En pisos anteriores<br>a los años 80, la extracción<br>y el circuito eléctrico<br>se confirman antes<br>de elegir muebles.
+      </h1>
+
+      <p class="leading-relaxed mt-7 max-w-2xl" style="font-size:1rem;color:rgba(255,255,255,.6)">
+        En viviendas de esa antigüedad, la salida de extracción de la cocina y la potencia del circuito eléctrico son los dos puntos que determinan el alcance antes de definir distribución o acabados. La visita técnica gratuita los evalúa y entrega presupuesto cerrado en 48h.
+      </p>
+
+      <!-- Stats row -->
+      <dl class="flex flex-wrap gap-x-8 gap-y-3 mt-8 pt-8" style="border-top:1px solid rgba(255,255,255,.08)">
+        <div>
+          <dt class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">Desde</dt>
+          <dd class="font-black text-white" style="font-size:1.5rem;letter-spacing:-.02em">5.000 €</dd>
+          <dd class="font-bold text-xs" style="color:rgba(255,255,255,.3)">hasta 8 m² · esencial</dd>
+        </div>
+        <div>
+          <dt class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">Plazo</dt>
+          <dd class="font-black text-white" style="font-size:1.5rem;letter-spacing:-.02em">3-5 sem.</dd>
+          <dd class="font-bold text-xs" style="color:rgba(255,255,255,.3)">calidad esencial</dd>
+        </div>
+        <div>
+          <dt class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">Precio</dt>
+          <dd class="font-black text-white" style="font-size:1.5rem;letter-spacing:-.02em">Cerrado</dd>
+          <dd class="font-bold text-xs" style="color:rgba(255,255,255,.3)">por contrato</dd>
+        </div>
+      </dl>
+
+      <div class="flex flex-col sm:flex-row gap-3 mt-8">
+        <a href="/contacto/" class="inline-block text-center px-7 py-3.5 font-black text-xs uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+          Solicitar visita técnica gratuita
+        </a>
+        <a href={`tel:${SITE.phone}`} class="inline-block text-center px-7 py-3.5 font-black text-xs uppercase tracking-widest text-white border border-white/20 hover:border-white/50 transition-colors">
+          {SITE.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2. Condicionantes técnicos + contexto local documentado ──────────── -->
+  <section class="py-20 bg-white" aria-labelledby="h-condicionantes">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Antes de elegir muebles</p>
+      <h2 id="h-condicionantes" class="text-2xl lg:text-3xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+        Lo que se comprueba antes de cerrar el presupuesto
+      </h2>
+
+      <!-- Condicionante 1: extracción -->
+      <div class="cond-item">
+        <div class="cond-num">01</div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Extracción: si la cocina no tiene salida directa al exterior</h3>
+          <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
+            Cuando la cocina no tiene ventana al exterior o la salida de extracción no da al aire libre, hay que resolver cómo se gestiona la ventilación antes de comprometer la distribución o los acabados. Las opciones —conducto por falso techo, extractor con recirculación, redistribución que acerque la zona de cocción— cambian el alcance y el presupuesto. Se evalúan en la visita técnica antes de comprometer ningún número.
+          </p>
+          <p class="text-gray-500 leading-relaxed mt-3" style="font-size:.9375rem">
+            En Alcalá, barrios como El Val y Barrio del Pilar cuentan con bloques construidos en los años 70-80. En viviendas de esa antigüedad es habitual revisar el estado de la ventilación existente antes de confirmar el tipo de extractor y su posición en la nueva cocina.
+          </p>
+        </div>
+      </div>
+
+      <!-- Condicionante 2: circuito eléctrico -->
+      <div class="cond-item">
+        <div class="cond-num">02</div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Circuito eléctrico: potencia para inducción y horno simultáneos</h3>
+          <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
+            Antes de definir los electrodomésticos, conviene revisar si el circuito de cocina tiene la potencia y los calibres adecuados para inducción y horno funcionando a la vez. En viviendas de más de 40 años es una comprobación habitual. Detectarlo en la visita permite incluirlo en el presupuesto cerrado desde el inicio, sin que aparezca como partida adicional cuando la obra ya está en marcha.
+          </p>
+        </div>
+      </div>
+
+      <!-- Condicionante 3: tabiques -->
+      <div class="cond-item">
+        <div class="cond-num">03</div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Tabiques: confirmación técnica antes de derribar</h3>
+          <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
+            Si se plantea abrir la cocina al salón, hay que confirmar que el tabique no es de carga y no tiene instalaciones empotradas que condicionen el derribo. En pisos con más de 40 años de antigüedad, esta verificación es especialmente importante antes de comprometer un diseño de cocina abierta. La visita técnica lo comprueba antes de presentar ningún número.
+          </p>
+        </div>
+      </div>
+
+      <!-- Condicionante 4: permisos -->
+      <div class="cond-item" style="border-bottom:none;padding-bottom:0">
+        <div class="cond-num">04</div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Tramitación municipal</h3>
+          <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
+            El trámite municipal para una reforma de cocina en Alcalá depende del alcance de la obra, de los elementos afectados y de si la vivienda se encuentra en un ámbito con protección específica. Lo revisamos antes de planificar el inicio para que la fecha de comienzo sea realista.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 3. Precio orientativo ────────────────────────────────────────────── -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-precio">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Precio orientativo</p>
+      <h2 id="h-precio" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+        ¿Cuánto cuesta reformar una cocina en {zone.name}?
+      </h2>
+      <p class="text-gray-500 leading-relaxed mb-8" style="font-size:.9375rem">
+        Dos referencias de superficie. El precio exacto depende del alcance, los materiales y el estado de las instalaciones previas.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full border border-gray-100 border-collapse text-sm">
+          <caption class="sr-only">Precios orientativos de reforma de cocina en {zone.name}</caption>
+          <thead>
+            <tr class="bg-[#111827]">
+              <th scope="col" class="text-left text-xs font-bold uppercase tracking-widest text-gray-400 px-6 py-4">Superficie</th>
+              <th scope="col" class="text-left text-xs font-bold uppercase tracking-widest text-gray-400 px-6 py-4">Descripción</th>
+              <th scope="col" class="text-right text-xs font-bold uppercase tracking-widest text-gray-400 px-6 py-4 whitespace-nowrap">Rango esencial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-100 bg-white">
+              <th scope="row" class="text-left px-6 py-5 font-semibold text-gray-900 whitespace-nowrap">Hasta 8 m²</th>
+              <td class="px-6 py-5 text-gray-500">Cocina lineal o en L pequeña</td>
+              <td class="px-6 py-5 text-right font-black text-[#A85535] whitespace-nowrap">5.000 – 7.500 €</td>
+            </tr>
+            <tr class="border-t border-gray-100 bg-white">
+              <th scope="row" class="text-left px-6 py-5 font-semibold text-gray-900 whitespace-nowrap">8 – 12 m²</th>
+              <td class="px-6 py-5 text-gray-500">Cocina estándar</td>
+              <td class="px-6 py-5 text-right font-black text-[#A85535] whitespace-nowrap">6.000 – 9.000 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-xs text-gray-400 mt-4">
+        Calidad esencial. Sin IVA. Electrodomésticos de superficie libre no incluidos.
+        El precio exacto se fija tras la visita técnica gratuita.
+      </p>
+
+      <div class="flex flex-wrap gap-5 mt-6">
+        <a href="/servicios/reforma-cocinas/#precios" class="text-sm font-bold text-[#A85535] hover:underline">
+          Ver tabla completa con todos los tramos →
+        </a>
+        <a href="/calculadora-precio-reforma/?servicio=reforma-cocinas" class="text-sm font-bold text-[#A85535] hover:underline">
+          Calculadora de precio orientativo →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4. FAQ específica Cocinas × Alcalá ──────────────────────────────── -->
+  <section class="py-20 bg-white" aria-labelledby="h-faq">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Preguntas frecuentes</p>
+      <h2 id="h-faq" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+        Dudas habituales sobre reforma de cocina en {zone.name}
+      </h2>
+      <p class="text-gray-500 leading-relaxed mb-8" style="font-size:.9375rem">
+        Si no encuentras tu duda aquí, escríbenos o llámanos. Respondemos el mismo día.
+      </p>
+
+      <div class="divide-y divide-gray-200">
+        {faqs.map(faq => (
+          <details class="group py-5">
+            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
+              <h3 class="font-semibold text-gray-900 leading-snug m-0" style="font-size:.9375rem">{faq.q}</h3>
+              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 5. Navegación secundaria ─────────────────────────────────────────── -->
+  <nav aria-label="Páginas relacionadas" class="py-8 bg-[#F9F7F4] border-t border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-wrap items-center gap-x-8 gap-y-3">
+      <span class="text-xs font-bold uppercase tracking-widest text-gray-400 flex-shrink-0">Ver también</span>
+      <a href="/servicios/reforma-cocinas/" class="text-sm text-gray-500 hover:text-[#A85535] transition-colors">
+        Reforma de cocinas en el Corredor del Henares
+      </a>
+      <a href="/zonas/alcala-de-henares/" class="text-sm text-gray-500 hover:text-[#A85535] transition-colors">
+        Empresa de reformas en Alcalá de Henares
+      </a>
+      <a href="/reformas-integrales/alcala-de-henares/" class="text-sm text-gray-500 hover:text-[#A85535] transition-colors">
+        Reforma integral en Alcalá
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── 6. CTA final — fondo oscuro (nunca terracota) ───────────────────── -->
+  <section class="py-16 bg-[#111827]" aria-labelledby="h-cta-final">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Visita técnica gratuita</p>
+      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
+        ¿Reformas la cocina en {zone.name}?
+      </h2>
+      <p class="leading-relaxed mb-8" style="color:rgba(255,255,255,.6)">
+        La visita técnica evalúa extracción, instalaciones y distribución antes de cerrar ningún número. Presupuesto cerrado en 48h. Sin letra pequeña.
+      </p>
+      <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+        Solicitar visita técnica gratuita
+      </a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Condicionantes — layout 2 columnas en desktop */
+  .cond-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  @media (min-width: 768px) {
+    .cond-item {
+      grid-template-columns: 3rem 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+  }
+  .cond-num {
+    font-size: .625rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    color: #a85535;
+    padding-top: .3rem;
+  }
+</style>

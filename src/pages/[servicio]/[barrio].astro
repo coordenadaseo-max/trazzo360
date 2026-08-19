@@ -3,13 +3,17 @@ import Layout from '../../layouts/Layout.astro';
 import { SITE, SERVICES, ZONES, RELATED_ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, SERVICE_ZONE_FAQS, SERVICE_ICONS } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
-export const getStaticPaths: GetStaticPaths = () =>
-  SERVICES.flatMap(s =>
-    ZONES.map(z => ({
-      params: { servicio: s.slug, barrio: z.slug },
-      props: { service: s, zone: z },
-    }))
+export const getStaticPaths: GetStaticPaths = () => {
+  const staticOverrides = new Set(['reforma-cocinas/alcala-de-henares']);
+  return SERVICES.flatMap(s =>
+    ZONES
+      .filter(z => !staticOverrides.has(`${s.slug}/${z.slug}`))
+      .map(z => ({
+        params: { servicio: s.slug, barrio: z.slug },
+        props: { service: s, zone: z },
+      }))
   );
+};
 
 const { service, zone } = Astro.props;
 

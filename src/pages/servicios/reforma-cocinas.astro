@@ -4,43 +4,57 @@ import Compromisos from '../../components/Compromisos.astro';
 import { SITE } from '../../data/site';
 
 const title = 'Reforma de Cocinas en el Corredor del Henares | Trazzo360';
-const description = 'Reforma de cocinas en el Corredor del Henares: muebles, encimera, electrodomésticos, fontanería y electricidad. Diseño incluido, precio cerrado en 48h.';
+const description = 'Reforma de cocinas en el Corredor del Henares con distribución planificada antes de la obra, precio cerrado en 48h y plazo fijado en el contrato. Desde 5.000€.';
 
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Reforma de Cocinas en el Corredor del Henares',
   description,
-  provider: { '@type': 'GeneralContractor', '@id': `${SITE.url}/#business`, name: SITE.name },
-  areaServed: ['Torrejón de Ardoz','Alcalá de Henares','Coslada','San Fernando de Henares','Guadalajara','Azuqueca de Henares','Meco','Camarma de Esteruelas'],
-  offers: { '@type': 'Offer', price: '5500', priceCurrency: 'EUR', description: 'Reforma completa de cocina desde 5.500€' },
+  provider: {
+    '@type': 'GeneralContractor',
+    '@id': `${SITE.url}/#business`,
+    name: SITE.name,
+  },
+  areaServed: [
+    'Torrejón de Ardoz', 'Alcalá de Henares', 'Coslada',
+    'San Fernando de Henares', 'Guadalajara', 'Azuqueca de Henares',
+    'Meco', 'Camarma de Esteruelas',
+  ],
+  offers: {
+    '@type': 'Offer',
+    price: '5000',
+    priceCurrency: 'EUR',
+    description: 'Reforma completa de cocina desde 5.000€',
+  },
 };
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
-    { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${SITE.url}/servicios/` },
+    { '@type': 'ListItem', position: 1, name: 'Inicio',        item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Servicios',     item: `${SITE.url}/servicios/` },
     { '@type': 'ListItem', position: 3, name: 'Reforma de Cocinas', item: `${SITE.url}/servicios/reforma-cocinas/` },
   ],
 };
 
+// FAQs — 9 preguntas; plazo corregido a fuente autorizada (calculator.ts [3,5])
 const faqs = [
   {
     q: '¿Qué incluye la reforma completa de una cocina?',
     a: 'Diseño del espacio, desescombro del estado anterior, revisión y adaptación de la instalación eléctrica para los electrodomésticos previstos, fontanería, alicatado de zona de trabajo, muebles, encimera, fregadero, grifo, electrodomésticos integrados y campana. Gestión de escombros y limpieza final incluidas.',
   },
   {
-    q: '¿Cuánto tiempo estaré sin poder usar la cocina?',
-    a: 'Entre 2 y 4 semanas para una reforma completa. La primera mitad corresponde a la obra civil: demolición, electricidad, fontanería y alicatado. La segunda mitad, con muebles y electrodomésticos instalados, permite ir recuperando funcionalidad. Si los materiales están pedidos antes de empezar, no hay pausas por espera de suministros.',
+    q: '¿Cuánto tiempo llevaré sin poder usar la cocina?',
+    a: 'Una reforma completa puede durar entre 3 y 5 semanas para un acabado esencial, 4 y 7 semanas para calidad media, y de 6 a 10 semanas cuando hay redistribución completa o materiales de encargo. Estos rangos proceden de proyectos reales. Si el plazo sin cocina es un factor crítico, lo planificamos desde el primer día para reducir los días de inactividad total.',
   },
   {
     q: '¿Debería abrir la cocina al salón o mantenerla cerrada?',
     a: 'Abrir la cocina al salón cambia radicalmente la percepción del espacio, pero antes de decidir conviene evaluar varios factores: la función estructural del tabique, cómo se resolverá la extracción, el impacto del humo y el ruido en el salón y si la distribución resultante es funcional. En la visita lo valoramos con y sin apertura para que puedas comparar opciones con información real.',
   },
   {
-    q: '¿Qué debería elegir antes de que empiece la obra de cocina?',
+    q: '¿Qué debería elegir antes de que empiece la obra?',
     a: 'Lo mínimo para poder arrancar sin pausas: distribución de muebles, encimera elegida y electrodomésticos seleccionados. Los electrodomésticos conviene tenerlos decididos antes de cerrar las instalaciones, porque su ubicación condiciona los puntos eléctricos, el agua, los desagües y, en algunos casos, la ventilación.',
   },
   {
@@ -48,32 +62,20 @@ const faqs = [
     a: 'Siempre. Antes de cerrar la distribución de la nueva cocina conviene comprobar si la instalación existente puede asumir los electrodomésticos y consumos previstos. En viviendas donde el cuadro no se ha actualizado, puede no cumplir los requisitos actuales. La instalación se adapta o renueva dentro de la reforma cuando el alcance lo requiere.',
   },
   {
-    q: '¿Vale la pena cambiar fontanería y electricidad aunque no cambie la distribución?',
-    a: 'Cuando su estado genera dudas, no se sabe cuándo se renovaron o la nueva distribución obliga a intervenir sobre ellas. Con la cocina ya abierta para instalar los nuevos muebles, el coste adicional de renovar lo que está oculto es menor que tener que volver a abrir en pocos años. Lo valoramos en la visita según el estado real de cada instalación.',
-  },
-  {
     q: '¿Qué puede encarecer una reforma de cocina respecto al presupuesto inicial?',
     a: 'Los tres factores que más amplían el alcance son: instalaciones en peor estado del esperado, un cambio de distribución decidido con la obra ya empezada, y materiales o electrodomésticos que llegan más tarde de lo previsto. Los tres se minimizan cerrando diseño, materiales e instalaciones antes de la primera jornada de obra.',
   },
   {
     q: '¿Puedo seguir cocinando de alguna manera mientras dura la reforma?',
-    a: 'Los primeros días de demolición son los más restrictivos: no hay acceso al espacio. A partir de la segunda semana, con las instalaciones hechas y los muebles en proceso de montaje, es posible preparar comidas básicas si hay microondas o cocina portátil en otro espacio de la vivienda. La última semana, cuando solo quedan remates, la cocina es ya funcional. Si el plazo sin cocina es un problema, lo planificamos desde el principio para reducir los días de inactividad total.',
+    a: 'Los primeros días de demolición son los más restrictivos: no hay acceso al espacio. Conforme avanzan las instalaciones y el montaje de muebles, la cocina va recuperando funcionalidad progresivamente. Si el plazo sin cocina es un problema, lo planificamos desde el principio para reducir los días de inactividad total.',
   },
   {
     q: '¿Qué tipo de encimera es más duradera en uso diario intensivo?',
-    a: 'La porcelana técnica de gran formato (12 mm o más) es la opción más resistente a rayones, golpes y manchas: la dureza de la porcelana supera a la del silestone en resistencia al rayado. El silestone sigue siendo la opción más popular por su relación calidad-precio y facilidad de reparación. La encimera de madera da el mejor resultado estético pero requiere mantenimiento periódico. En la visita te mostramos muestras de cada material y te decimos cuál encaja mejor con tu uso real.',
+    a: 'La porcelana técnica de gran formato es la opción más resistente a rayones, golpes y manchas. El silestone y el cuarzo compacto son la opción más habitual por su relación calidad-precio y facilidad de mantenimiento. La encimera de madera da el mejor resultado estético pero requiere mantenimiento periódico. En la visita te mostramos muestras de cada material y te asesoramos sobre cuál encaja mejor con tu uso real.',
   },
   {
     q: '¿Qué ventilación necesita una cocina sin ventana al exterior?',
     a: 'Una cocina sin ventana directa al exterior necesita una campana extractora conectada a un conducto de extracción que salga al exterior del edificio, o bien un sistema de recirculación con filtros de carbono activo que limpia el aire sin expulsarlo. La extracción directa es más eficaz, pero requiere que el conducto esté disponible o que se pueda ejecutar. En la visita técnica evaluamos qué solución es viable según la posición de la cocina en la vivienda.',
-  },
-  {
-    q: '¿Vale la pena invertir en electrodomésticos de gama alta?',
-    a: 'Depende del uso. Los hornos de gama alta con pyrolisis limpia más rápido y aguantan más ciclos; los frigoríficos No Frost de gama media-alta dan el mismo rendimiento a la mitad del precio que los de diseño premium. Donde más se nota la diferencia en uso diario es en la campana (silencio a potencia alta) y en la vitrocerámica o placa de inducción (velocidad de respuesta y potencia por zona). En la selección de electrodomésticos te ayudamos a priorizar donde el gasto tiene sentido y donde puedes ajustar sin perder calidad funcional.',
-  },
-  {
-    q: '¿Cómo cambia cocinar en una cocina bien reformada?',
-    a: 'Lo más inmediato es el espacio y la circulación: en una cocina donde la distribución está bien pensada, dos personas pueden moverse sin cruzarse y los electrodomésticos están donde se usan de verdad. A la semana de usar la cocina nueva, la referencia de la antigua desaparece. Lo que queda es más tiempo de mañana porque el café ya está listo mientras el horno calienta, más espacio de trabajo para preparar cenas, y la encimera que no acumula grasa de la misma manera que los azulejos viejos.',
   },
 ];
 
@@ -89,631 +91,870 @@ const faqSchema = {
 
 const zones = [
   { name: 'Torrejón de Ardoz',       slug: 'torrejon-de-ardoz' },
-  { name: 'Alcalá de Henares',       slug: 'alcala-de-henares' },
-  { name: 'Coslada',                 slug: 'coslada' },
-  { name: 'San Fernando de Henares', slug: 'san-fernando-de-henares' },
-  { name: 'Guadalajara',             slug: 'guadalajara' },
-  { name: 'Azuqueca de Henares',     slug: 'azuqueca-de-henares' },
-  { name: 'Meco',                    slug: 'meco' },
-  { name: 'Camarma de Esteruelas',   slug: 'camarma-de-esteruelas' },
+  { name: 'Alcalá de Henares',        slug: 'alcala-de-henares' },
+  { name: 'Coslada',                  slug: 'coslada' },
+  { name: 'San Fernando de Henares',  slug: 'san-fernando-de-henares' },
+  { name: 'Guadalajara',              slug: 'guadalajara' },
+  { name: 'Azuqueca de Henares',      slug: 'azuqueca-de-henares' },
+  { name: 'Meco',                     slug: 'meco' },
+  { name: 'Camarma de Esteruelas',    slug: 'camarma-de-esteruelas' },
+];
+
+// Precios autorizados — fuente: calculator.ts
+const tranches = [
+  {
+    label: 'Hasta 8 m²',
+    sub: 'Cocina lineal o en L pequeña',
+    esencial: '5.000 – 7.500 €',
+    media:    '7.500 – 11.000 €',
+    alta:     '11.000 – 18.000 €',
+  },
+  {
+    label: '8 – 12 m²',
+    sub: 'Cocina estándar · referencia de mercado',
+    esencial: '6.000 – 9.000 €',
+    media:    '9.000 – 14.000 €',
+    alta:     '14.000 – 22.000 €',
+  },
+  {
+    label: '12 – 16 m²',
+    sub: 'Cocina amplia o con isla pequeña',
+    esencial: '7.500 – 11.500 €',
+    media:    '11.500 – 18.000 €',
+    alta:     '18.000 – 28.000 €',
+  },
+  {
+    label: 'Más de 16 m²',
+    sub: 'Cocina abierta al salón o de diseño',
+    esencial: '9.000 – 14.000 €',
+    media:    '14.000 – 22.000 €',
+    alta:     '22.000 – 35.000 €',
+  },
 ];
 ---
 
+<style>
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero-support {
+    display: grid;
+    gap: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .hero-support { grid-template-columns: 55fr 22fr 23fr; gap: 3rem; }
+  }
+
+  /* ── DISTRIBUTION TYPES ─────────────────────────────── */
+  .dist-types-grid {
+    display: grid;
+    gap: 1px;
+    background: rgba(255,255,255,.08);
+  }
+  @media (min-width: 640px) {
+    .dist-types-grid { grid-template-columns: repeat(3,1fr); }
+  }
+
+  /* ── PARQUE TIPOLOGÍAS ──────────────────────────────── */
+  .tipologia-grid {
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 768px) {
+    .tipologia-grid { grid-template-columns: repeat(3,1fr); }
+  }
+
+  /* ── ESTADOS CONVIVENCIA ────────────────────────────── */
+  .estados-grid {
+    display: grid;
+    gap: 1px;
+    background: #D1C9BD;
+  }
+  @media (min-width: 640px) {
+    .estados-grid { grid-template-columns: repeat(3,1fr); }
+  }
+
+  /* ── PRECIOS ────────────────────────────────────────── */
+  .precio-head,
+  .precio-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 0;
+  }
+
+  /* ── ENCIMERAS TABLE ────────────────────────────────── */
+  .enc-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+  .enc-table th { text-align: left; padding: .625rem 1rem; background: #111827; color: #9CA3AF; font-size: .6875rem; letter-spacing: .1em; text-transform: uppercase; }
+  .enc-table td { padding: .75rem 1rem; border-bottom: 1px solid #E5E0D8; vertical-align: top; line-height: 1.5; }
+
+  /* ── HERO STATS RESPONSIVE ─────────────────────────── */
+  .hero-stats-desktop { display: none; flex-direction: column; justify-content: flex-end; gap: 1.25rem; text-align: right; }
+  .hero-stats-mobile   { display: flex; gap: 1.25rem; margin-top: 2rem; }
+  @media (min-width: 1024px) {
+    .hero-stats-desktop { display: flex; }
+    .hero-stats-mobile   { display: none; }
+  }
+
+  /* ── ZONAS ──────────────────────────────────────────── */
+  .zonas-grid {
+    display: grid;
+    gap: 1px;
+    background: #D1C9BD;
+  }
+  @media (min-width: 480px) {
+    .zonas-grid { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (min-width: 768px) {
+    .zonas-grid { grid-template-columns: repeat(4,1fr); }
+  }
+
+  /* ── DISTRIBUCIONES SVG ─────────────────────────────── */
+  .dist-svg-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .dist-svg-grid { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (min-width: 1024px) {
+    .dist-svg-grid { grid-template-columns: repeat(3,1fr); }
+  }
+</style>
+
 <Layout title={title} description={description} schema={[serviceSchema, breadcrumbSchema, faqSchema]}>
 
+  <!-- Breadcrumb -->
   <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
         <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
         <li aria-hidden="true" class="text-gray-300">/</li>
-        <li>Servicios</li>
+        <li><a href="/servicios/" class="hover:text-[#A85535] transition-colors">Servicios</a></li>
         <li aria-hidden="true" class="text-gray-300">/</li>
         <li class="text-gray-800 font-medium" aria-current="page">Reforma de Cocinas</li>
       </ol>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="max-w-3xl">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-8 h-0.5 bg-[#A85535]"></div>
-          <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">Reforma de cocinas · Corredor del Henares</span>
-        </div>
-        <h1 id="h-hero" class="text-4xl lg:text-6xl font-black text-white mb-6" style="letter-spacing:-0.02em">
-          Reforma de cocinas<br/>
-          <span class="text-[#A85535]">en el Corredor del Henares</span>
-        </h1>
 
-        <div role="doc-abstract" class="border-l-4 border-[#A85535] pl-6 mb-6">
-          <p class="text-lg text-gray-300 leading-relaxed">
-            Reformamos cocinas en el Corredor del Henares con diseño de espacio antes de presupuestar, todos los detalles definidos antes de que empiece la obra y circuitos eléctricos dedicados incluidos. Precio cerrado, fecha de entrega fijada en el contrato.
+  <!-- ══════════════════════════════════════════════════
+       ACTO 1 · HERO K3
+       H1 en dos niveles: keyword (contexto) +
+       tesis (declaración dominante). Semántica intacta.
+       Sin trazo decorativo. Distribución integrada.
+  ═══════════════════════════════════════════════════════ -->
+  <section class="bg-[#111827] flex flex-col justify-end" style="min-height:100vh;padding-top:2.5rem;padding-bottom:4rem" aria-labelledby="h-hero">
+
+    <!-- H1 con dos niveles visuales en un único elemento semántico -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+      <h1 id="h-hero" class="font-black text-white" style="line-height:1;text-wrap:balance">
+        <span class="block text-white/50 font-bold" style="font-size:clamp(.875rem,1.6vw,1.125rem);letter-spacing:.01em;margin-bottom:1rem">
+          Reforma de cocinas en el Corredor del Henares
+        </span>
+        <span class="block" style="font-size:clamp(2.25rem,7.5vw,7rem);letter-spacing:-0.04em;line-height:.9">
+          La distribución<br>se decide antes<br>de elegir los muebles.
+        </span>
+      </h1>
+    </div>
+
+    <!-- Separador + soporte -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+        <div class="hero-support">
+
+          <p style="color:#9CA3AF;font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch;line-height:1.65">
+            Lo que no se decide antes de la obra es lo que la alarga. En la visita técnica cerramos distribución, instalaciones y materiales. El presupuesto cerrado llega en 48 horas. El plazo queda fijado en el contrato.
           </p>
+
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/"
+               class="inline-block text-center text-white font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+              Pedir valoración gratuita
+            </a>
+            <a href={`tel:${SITE.phone}`}
+               class="inline-block text-center font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+              {SITE.phoneDisplay}
+            </a>
+            <p class="text-white/30 uppercase" style="font-size:.625rem;letter-spacing:.1em">Sin compromiso · Respuesta en 48h</p>
+          </div>
+
+          <div class="hero-stats-desktop">
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">Precio cerrado</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Por contrato antes de empezar</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2 años</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Garantía sobre la ejecución</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">40 / 40 / 20</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Pago por fases</p>
+            </div>
+          </div>
+
         </div>
 
-        <p class="text-lg text-gray-400 leading-relaxed mb-8">
-          Reformar una cocina es entre dos y cuatro semanas sin poder cocinar en casa como siempre. El olor a obra, los muebles temporales en el salón, la cerámica que llega con retraso. Lo sabemos porque lo vemos en cada reforma. Por eso la planificación empieza antes del primer día de obra, no durante.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-            Solicitar presupuesto gratis
-          </a>
-          <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
-            ☎ {SITE.phoneDisplay}
-          </a>
+        <!-- Stats móvil -->
+        <div class="hero-stats-mobile">
+          <div>
+            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">Precio cerrado</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Por contrato</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">2 años</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Garantía</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">40/40/20</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Pago fases</p>
+          </div>
         </div>
+
+        <!-- Distribuciones en el hero: taxonomía integrada -->
+        <div class="dist-types-grid mt-8" style="max-width:52rem">
+          {[
+            { tipo: 'Lineal o en L',     desc: 'Muebles en una o dos paredes. La distribución actual puede conservarse o mejorarse sin mover instalaciones.' },
+            { tipo: 'Con isla',          desc: 'Módulo central que requiere verificar circulación y salida de extracción antes de decidir su viabilidad.' },
+            { tipo: 'Apertura al salón', desc: 'Antes de abrir conviene comprobar el tabique y el conducto. En la visita valoramos las dos opciones.' },
+          ].map(({ tipo, desc }) => (
+            <div style="padding:1.25rem;background:rgba(255,255,255,.04)">
+              <p class="font-bold text-white text-sm mb-1">{tipo}</p>
+              <p style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{desc}</p>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- M2: Diagnóstico local -->
-  <section class="py-20 bg-white" aria-labelledby="h-parque">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de cocinas del Corredor</p>
-        <h2 id="h-parque" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
-          Qué cocinas reformamos más en el Corredor del Henares
-        </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
-      </div>
 
-      <p class="text-gray-700 leading-relaxed mb-8">
-        La cocina que vas a reformar no es única. En el Corredor del Henares hay tres grandes tipologías que se repiten en la mayoría de los edificios, y cada una tiene sus propios desafíos de distribución, instalación y ventilación.
-      </p>
-
-      <h3 class="text-lg font-bold text-gray-900 mb-3">Cocina galería de los años 70–80 (Coslada, San Fernando, Torrejón, Alcalá)</h3>
-      <p class="text-gray-700 leading-relaxed mb-3">
-        El formato más habitual en los bloques del Corredor construidos antes de 1990 es la cocina en galería: un pasillo estrecho de 2 a 3 metros de ancho con muebles a ambos lados y, en el mejor de los casos, una ventana pequeña al exterior o a un patio interior. El espacio de trabajo es limitado y la circulación es complicada cuando hay más de una persona.
-      </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1 pl-5 list-disc">
-        <li>Ventilación insuficiente o conducto de extracción compartido con más pisos del mismo bloque</li>
-        <li>Fontanería de cobre antigua con posibles incrustaciones en el interior de los tubos</li>
-        <li>Instalación eléctrica sin circuito dedicado para vitrocerámica ni para lavavajillas</li>
-        <li>Sin espacio para abrir al salón sin derribar un tabique de carga o una viga</li>
-        <li>Muebles de los años 80–90 con estructura de aglomerado hinchado por la humedad</li>
-      </ul>
-
-      <h3 class="text-lg font-bold text-gray-900 mb-3">Cocina con paso de los años 90–2000 (Alcalá, Azuqueca, Guadalajara)</h3>
-      <p class="text-gray-700 leading-relaxed mb-3">
-        En los pisos construidos entre 1990 y 2005, la cocina suele tener algo más de amplitud y un pasillo de tránsito hacia las habitaciones. La distribución es más funcional, pero los acabados de la época —azulejo de pequeño formato, encimera de laminado, muebles de melamina blanca— acumulan 20–30 años de desgaste.
-      </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1 pl-5 list-disc">
-        <li>Azulejo de 15×15 cm con rejuntas ennegrecidas que ya no admiten limpieza efectiva</li>
-        <li>Encimera de laminado con bordes levantados o con óxido en la zona del fregadero</li>
-        <li>Muebles en buen estado pero con estética completamente desfasada</li>
-        <li>La apertura al salón es posible en muchos casos porque el tabique es de pladur o ladrillo hueco</li>
-      </ul>
-
-      <h3 class="text-lg font-bold text-gray-900 mb-3">Cocina de chalet o adosado (Meco, Camarma, urbanizaciones de San Fernando)</h3>
-      <p class="text-gray-700 leading-relaxed mb-3">
-        Las cocinas de chalets y adosados tienen más superficie media (10–20 m²) y normalmente acceso a terraza o jardín. El desafío aquí no es el espacio sino la distribución: cocinas con islas o peninsulares que no siempre aprovechan bien la superficie disponible, o con electrodomésticos instalados en posiciones que no responden a cómo se usa realmente el espacio.
-      </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-6 space-y-1 pl-5 list-disc">
-        <li>Más superficie, pero a menudo con circulación poco eficiente entre los tres focos (nevera-fregadero-cocción)</li>
-        <li>Espacio para isla o barra americana si la distribución actual no la aprovecha</li>
-        <li>Extracción directa al exterior más sencilla gracias a la estructura de la vivienda unifamiliar</li>
-        <li>Posibilidad de integrar la cocina con el comedor o la terraza si hay conexión visual directa</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- M4: Decisión clave -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-decision">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de elegir materiales</p>
-        <h2 id="h-decision" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
-          La distribución decide. Los materiales decoran
-        </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
-      </div>
-
-      <p class="text-gray-700 leading-relaxed mb-6">
-        El error más habitual en la reforma de una cocina es empezar eligiendo el color de los muebles o el modelo de electrodomésticos antes de haber decidido la distribución. La distribución —cómo se circula, dónde se cocinan los alimentos, dónde se limpia, dónde se almacena— es lo que hace que una cocina sea agradable de usar o incómoda cada día. Una vez la distribución está en marcha, cambiarla implica rehacer instalaciones.
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white p-7 border-t-4 border-[#A85535]">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Conservar la distribución actual tiene sentido cuando…</h3>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-2">
-            <li>— La distribución existente funciona y no hay problemas de circulación</li>
-            <li>— El tabique que separa cocina y salón es de carga o afecta a otros pisos</li>
-            <li>— El presupuesto no alcanza para incluir obra de fontanería en posiciones nuevas</li>
-            <li>— La reforma es para vender o alquilar y la distribución actual no es un handicap comercial</li>
-          </ul>
-        </div>
-        <div class="bg-white p-7 border-t-4 border-gray-200">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Cambiar la distribución tiene sentido cuando…</h3>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-2">
-            <li>— La cocina actual es incómoda de usar y eso no se resuelve con muebles nuevos</li>
-            <li>— Hay espacio suficiente para abrir al salón y la circulación resultante es mejor</li>
-            <li>— Quieres una isla o una barra americana y el espacio lo permite sin obra excesiva</li>
-            <li>— Vas a hacer una reforma integral de toda la vivienda de todas formas</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="bg-white border-l-4 border-amber-400 p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-2">La trampa de la cocina americana de bajo presupuesto</p>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Abrir la cocina al salón sin resolver bien la extracción y la acústica produce exactamente el resultado opuesto al buscado: olores en el salón, ruido de la campana mientras ves la televisión y el polvo de cocinar que llega a todos los tejidos del salón. Antes de decidir si abrir o no, en la visita evaluamos el conducto de extracción disponible, el tipo de tabique y la configuración de muebles que resulta. Solo después tiene sentido hablar de muebles y encimeras.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tres esquemas de distribución -->
-  <section class="py-20 bg-white" aria-labelledby="h-esquemas">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo se distribuye una cocina</p>
-        <h2 id="h-esquemas" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
-          Cocina en línea, en L o con isla: qué necesita cada esquema
-        </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
-      </div>
-      <p class="text-gray-700 leading-relaxed mb-10">
-        Cada esquema de distribución tiene un mínimo de superficie sin el cual no funciona correctamente. Por debajo de ese mínimo, el esquema se vuelve incómodo: pasillos demasiado estrechos, triangle de trabajo interrumpido, isla que bloquea la circulación. Estos son los tres esquemas más habituales y lo que necesitan para funcionar bien.
-      </p>
-      <div class="grid md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-[#F9F7F4] p-7">
-          <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
-          <h3 class="text-base font-bold text-gray-900 mb-3">Cocina en línea</h3>
-          <p class="text-xs font-semibold text-[#A85535] uppercase tracking-wide mb-3">Desde 2,5 m de longitud útil</p>
-          <p class="text-sm text-gray-600 leading-relaxed mb-4">Todos los muebles y electrodomésticos en una sola pared. El esquema más eficiente en cocinas estrechas o en cocinas integradas en un salón sin separación.</p>
-          <ul class="text-xs text-gray-500 space-y-1">
-            <li>— Funciona bien a partir de 6 m² de superficie</li>
-            <li>— Mínimo 1,20 m de pasillo de trabajo frente a la encimera</li>
-            <li>— Ideal para pisos de hasta 80 m² con cocina separada</li>
-            <li>— Limitación: poca superficie de trabajo si la longitud no supera los 3 m</li>
-          </ul>
-        </div>
-        <div class="bg-[#F9F7F4] p-7">
-          <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
-          <h3 class="text-base font-bold text-gray-900 mb-3">Cocina en L</h3>
-          <p class="text-xs font-semibold text-[#A85535] uppercase tracking-wide mb-3">Desde 8 m² de superficie</p>
-          <p class="text-sm text-gray-600 leading-relaxed mb-4">Muebles en dos paredes contiguas formando ángulo. El esquema más versátil y el más habitual en pisos de 80 a 120 m² con cocina independiente o semiabierta.</p>
-          <ul class="text-xs text-gray-500 space-y-1">
-            <li>— Triángulo de trabajo eficiente: fregadero, fuegos y nevera en cada vértice</li>
-            <li>— El rincón de unión requiere solución de mueble específica (carrusel o bandeja)</li>
-            <li>— Permite integrar mesa de cocina en la pared libre si la superficie lo permite</li>
-            <li>— Limitación: si el rincón es muy profundo, el acceso al fondo es incómodo</li>
-          </ul>
-        </div>
-        <div class="bg-[#F9F7F4] p-7">
-          <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
-          <h3 class="text-base font-bold text-gray-900 mb-3">Cocina con isla</h3>
-          <p class="text-xs font-semibold text-[#A85535] uppercase tracking-wide mb-3">Desde 15 m² de superficie</p>
-          <p class="text-sm text-gray-600 leading-relaxed mb-4">Módulo central exento que añade superficie de trabajo, almacenaje o punto de cocción independiente. Requiere espacio real a su alrededor para que la circulación funcione.</p>
-          <ul class="text-xs text-gray-500 space-y-1">
-            <li>— Mínimo 1,20 m de pasillo libre en todos los lados de la isla</li>
-            <li>— Si hay fuegos en la isla: conducto de extracción vertical desde el techo</li>
-            <li>— Por debajo de 15 m², la isla bloquea la circulación más de lo que aporta</li>
-            <li>— Limitación: coste adicional por toma de agua, gas o extracción en posición central</li>
-          </ul>
-        </div>
-      </div>
-      <div class="bg-[#111827] text-white p-8">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Lo que no se puede cambiar una vez empezada la obra</p>
-        <p class="text-sm text-gray-300 leading-relaxed">La posición del fregadero (fontanería), los fuegos (gas o electricidad) y el extractor (conducto) son los tres puntos fijos de una distribución de cocina. Cambiarlos durante la obra implica reabrir suelos o paredes ya terminados. La distribución se cierra en papel antes de que empiece cualquier trabajo.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Qué incluye -->
-  <section class="py-20 bg-white" aria-labelledby="h-que-incluye">
+  <!-- ══════════════════════════════════════════════════
+       ACTO 2 · QUÉ INCLUYE + DIAGNÓSTICO + DISTRIBUCIÓN
+       Fusión temática: el "qué incluye" responde a
+       "qué tengo que tener en cuenta antes de pedir precio".
+       El parque local y los diagramas SVG resuelven el
+       diagnóstico sin inventar datos.
+  ═══════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-white" aria-labelledby="h-incluye-diagnostico">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="max-w-3xl mb-10">
+
+      <!-- Alcance completo -->
+      <div class="max-w-3xl mb-12">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Alcance completo</p>
-        <h2 id="h-que-incluye" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-incluye-diagnostico" class="font-black text-gray-900 mb-4" style="font-size:clamp(1.75rem,3.5vw,2.5rem);letter-spacing:-0.025em;line-height:1.1">
           Qué incluye la reforma de cocina de principio a fin
         </h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
+        <p class="text-gray-600 leading-relaxed" style="max-width:58ch">
+          Una reforma completa de cocina cubre desde el diseño inicial hasta la entrega. Cada partida se cierra antes de que empiece la obra.
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 mb-16">
         {[
-          { title: 'Diseño y planimetría', desc: 'Diseñamos tu cocina en 2D con distribución óptima según el espacio, los electrodomésticos previstos y tu uso real. El diseño va antes de cualquier presupuesto.' },
-          { title: 'Desescombro y obra civil', desc: 'Retirada de muebles y revestimientos anteriores. Albañilería, enlucido de paredes y preparación de la base para el alicatado nuevo.' },
-          { title: 'Instalación eléctrica', desc: 'Circuitos dedicados para vitrocerámica, horno, lavavajillas y frigorífico. El cuadro de la cocina se revisa y se amplía si el diseño nuevo lo requiere.' },
-          { title: 'Fontanería y desagüe', desc: 'Acometida de agua fría y caliente al fregadero, conexión de lavavajillas. Si la distribución cambia, las tuberías van a su nueva posición antes del alicatado.' },
-          { title: 'Muebles, encimera y electrodomésticos', desc: 'Muebles de catálogo o a medida. Encimera de silestone, cuarzo o porcelana de gran formato. Electrodomésticos integrados y campana extractora.' },
-          { title: 'Alicatado, fregadero y entrega', desc: 'Alicatado de zona de trabajo con el revestimiento elegido. Instalación de fregadero y grifo. Limpieza final y entrega con garantía de 2 años.' },
+          { title: 'Diseño y planimetría',         desc: 'Diseñamos la distribución en 2D según el espacio, los electrodomésticos previstos y el uso real. El diseño va antes de cualquier presupuesto.' },
+          { title: 'Desescombro y obra civil',      desc: 'Retirada de muebles y revestimientos anteriores. Albañilería, enlucido de paredes y preparación de la base para el alicatado nuevo.' },
+          { title: 'Instalación eléctrica',         desc: 'Circuitos dedicados para vitrocerámica, horno, lavavajillas y frigorífico. La instalación se revisa y adapta a los electrodomésticos previstos.' },
+          { title: 'Fontanería y desagüe',          desc: 'Acometida de agua fría y caliente al fregadero, conexión de lavavajillas. Si la distribución cambia, las tuberías van a su nueva posición antes del alicatado.' },
+          { title: 'Muebles, encimera y campana',   desc: 'Muebles de catálogo o a medida. Encimera del material elegido. Campana extractora instalada y conectada al conducto.' },
+          { title: 'Alicatado y entrega',           desc: 'Revestimiento de la zona de trabajo con el material elegido. Instalación de fregadero y grifo. Limpieza final y entrega con garantía de 2 años.' },
         ].map(item => (
-          <div class="bg-[#F9F7F4] p-7">
-            <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
-            <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
+          <div class="bg-white p-7">
+            <p class="font-bold text-gray-900 mb-2">{item.title}</p>
             <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>
-    </div>
-  </section>
 
-  <!-- Vida durante la obra -->
-  <section class="py-20 bg-[#111827]" aria-labelledby="h-vida-obra">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la obra</p>
-        <h2 id="h-vida-obra" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
-          Tres semanas sin cocinar en casa: cómo lo gestionamos
-        </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
+      <!-- El parque del Corredor: diagnóstico local -->
+      <div class="max-w-3xl mb-8">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de cocinas del Corredor</p>
+        <h3 class="font-black text-gray-900 mb-3" style="font-size:clamp(1.25rem,2.5vw,1.75rem);letter-spacing:-0.02em">
+          Qué cocinas reformamos más en el Corredor del Henares
+        </h3>
+        <p class="text-gray-600 leading-relaxed" style="max-width:60ch">
+          La cocina que vas a reformar tiene características propias del edificio y la época en que se construyó. Estas son las tres tipologías más habituales en el Corredor.
+        </p>
       </div>
-      <p class="text-gray-300 leading-relaxed mb-8">
-        Una reforma de cocina toca el espacio más usado de la vivienda durante semanas. Lo primero que hacemos en la visita es hablar de cuándo se puede empezar, cuántos días habrá sin acceso total y qué se puede hacer para que la interrupción sea lo más corta posible.
-      </p>
-      <ul class="space-y-6">
-        {[
-          { title: 'Materiales pedidos antes de la primera jornada', desc: 'La causa más frecuente de obras que se alargan es la espera de materiales con la obra parada. La encimera, los muebles y los electrodomésticos se piden antes de empezar el desescombro. Si algo llega tarde, la obra se adapta para avanzar en otras partes sin detener el proceso.' },
-          { title: 'Los primeros tres días son los más ruidosos', desc: 'El derribo de los muebles viejos y el alicatado anterior es la fase más ruidosa e incómoda. A partir del cuarto día, el espacio está preparado para las instalaciones. Te avisamos del horario de inicio cada mañana para que puedas organizarte.' },
-          { title: 'A mitad de obra ya puedes usar el microondas en el salón', desc: 'Con las instalaciones terminadas y los muebles en proceso de montaje, el fregadero nuevo ya tiene agua. Hay cierto acceso a la cocina aunque no esté completamente terminada. No es la normalidad, pero es funcional.' },
-          { title: 'El alicatado define la estética final', desc: 'El revestimiento de la zona de trabajo es lo que más se va a ver todos los días. La elección del alicatado o del panel de porcelana se cierra antes de empezar la obra, no mientras se está ejecutando. Si lo decides durante la obra, el ritmo se detiene.' },
-          { title: 'El día de entrega: todo puesto, limpio y funcionando', desc: 'Electrodomésticos instalados, fregadero en marcha, muebles nivelados, encimera sin marcas. La limpieza final de la cocina es parte del proceso. El primer día que cocinas en la cocina nueva, ya está perfectamente funcional.' },
-        ].map(item => (
-          <li class="flex gap-5">
-            <div class="w-1 flex-shrink-0 bg-[#A85535] rounded-full mt-1" style="min-height:1.25rem"></div>
-            <div>
-              <p class="font-semibold text-white mb-1">{item.title}</p>
-              <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+
+      <div class="tipologia-grid mb-16">
+
+        <div>
+          <p class="font-bold text-gray-900 mb-2">Cocina galería (años 70–80)</p>
+          <p class="text-xs font-semibold text-[#A85535] uppercase tracking-wide mb-2">Coslada, San Fernando, Torrejón, Alcalá</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            Formato estrecho con muebles a ambos lados. Espacio de trabajo limitado y circulación incómoda cuando hay más de una persona. La ventilación suele ser el punto más crítico a resolver antes de elegir distribución.
+          </p>
+          <ul class="text-sm text-gray-500 space-y-1.5">
+            <li>— Conducto de extracción que puede ser compartido con otros pisos del bloque</li>
+            <li>— Fontanería antigua que conviene revisar con la cocina ya abierta</li>
+            <li>— Instalación eléctrica sin circuito dedicado para vitrocerámica ni lavavajillas</li>
+            <li>— Apertura al salón condicionada por la estructura del tabique</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-bold text-gray-900 mb-2">Cocina con paso (años 90–2000)</p>
+          <p class="text-xs font-semibold text-[#A85535] uppercase tracking-wide mb-2">Alcalá, Azuqueca, Guadalajara</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            Más amplitud y un pasillo de tránsito hacia las habitaciones. La distribución es más funcional, pero los acabados de la época acumulan entre 20 y 30 años de desgaste. La apertura al salón es posible en muchos casos.
+          </p>
+          <ul class="text-sm text-gray-500 space-y-1.5">
+            <li>— Azulejo de pequeño formato con rejuntas que ya no admiten limpieza efectiva</li>
+            <li>— Encimera de laminado con bordes levantados o deterioro en la zona del fregadero</li>
+            <li>— Muebles en buen estado estructural pero con estética desfasada</li>
+            <li>— Tabique interior habitualmente de pladur o ladrillo hueco</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-bold text-gray-900 mb-2">Cocina de chalet o adosado</p>
+          <p class="text-xs font-semibold text-[#A85535] uppercase tracking-wide mb-2">Meco, Camarma, urbanizaciones de San Fernando</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            Mayor superficie media y acceso a terraza o jardín. El reto no suele ser el espacio sino aprovechar bien la distribución y el triángulo de trabajo entre nevera, fregadero y fuegos.
+          </p>
+          <ul class="text-sm text-gray-500 space-y-1.5">
+            <li>— Espacio para isla o barra americana si la distribución actual no la aprovecha</li>
+            <li>— Extracción directa al exterior más sencilla gracias a la estructura</li>
+            <li>— Posibilidad de integrar cocina con comedor si hay conexión visual directa</li>
+            <li>— Circulación entre los tres focos a menudo mejorable con redistribución</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- MV1: Diagramas de distribución — bloque editorial oscuro dentro de sección clara -->
+      <div style="margin-left:calc(-1 * var(--px, 1rem));margin-right:calc(-1 * var(--px, 1rem))">
+        <div class="bg-[#111827]" style="padding:clamp(2rem,4vw,3.5rem) clamp(1rem,4vw,2.5rem)">
+
+          <div style="max-width:80rem;margin:0 auto">
+            <p class="font-black uppercase mb-3" style="font-size:10px;letter-spacing:.15em;color:rgba(255,255,255,.3)">Cómo se distribuye una cocina</p>
+            <h3 class="font-black text-white mb-3" style="font-size:clamp(1.25rem,2.5vw,1.75rem);letter-spacing:-0.02em">
+              Cocina en línea, en L o con isla: qué condiciona cada esquema
+            </h3>
+            <p style="color:#9CA3AF;line-height:1.65;max-width:60ch;font-size:.9375rem;margin-bottom:2rem">
+              Cada esquema tiene requisitos propios de espacio e instalación. La distribución se cierra en papel en la visita técnica: cambiarla con la obra en marcha implica reabrir lo que ya estaba terminado.
+            </p>
+
+            <div class="dist-svg-grid" style="margin-bottom:2rem">
+
+              <!-- Lineal -->
+              <div>
+                <svg viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg"
+                     role="img" aria-label="Esquema de cocina lineal"
+                     class="w-full" style="background:#0f172a;border:1px solid rgba(255,255,255,.1)">
+                  <rect x="14" y="14" width="192" height="142" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+                  <rect x="22" y="22" width="176" height="30" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.2)" stroke-width=".75"/>
+                  <line x1="66" y1="22" x2="66" y2="52" stroke="rgba(255,255,255,.12)" stroke-width=".75" stroke-dasharray="3,2"/>
+                  <line x1="110" y1="22" x2="110" y2="52" stroke="rgba(255,255,255,.12)" stroke-width=".75" stroke-dasharray="3,2"/>
+                  <line x1="154" y1="22" x2="154" y2="52" stroke="rgba(255,255,255,.12)" stroke-width=".75" stroke-dasharray="3,2"/>
+                  <text x="110" y="40" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="7" font-family="system-ui" letter-spacing="1">MÓDULOS</text>
+                  <text x="110" y="110" text-anchor="middle" fill="rgba(255,255,255,.12)" font-size="9" font-family="system-ui">ZONA DE TRABAJO</text>
+                  <rect x="85" y="144" width="50" height="12" fill="#0f172a" stroke="rgba(255,255,255,.12)"/>
+                  <text x="110" y="153" text-anchor="middle" fill="rgba(255,255,255,.25)" font-size="6" font-family="system-ui">ENTRADA</text>
+                </svg>
+                <div style="margin-top:.875rem">
+                  <p class="font-bold text-white text-sm">Lineal</p>
+                  <p style="font-size:.8125rem;color:#9CA3AF;line-height:1.55;margin-top:.375rem">
+                    Muebles y electrodomésticos en una pared. Instalaciones concentradas. El esquema más eficiente en cocinas estrechas o integradas al salón.
+                  </p>
+                  <p style="font-size:.6875rem;color:#A85535;margin-top:.5rem;letter-spacing:.02em">Sin cambio de distribución · sin modificador</p>
+                </div>
+              </div>
+
+              <!-- En L -->
+              <div>
+                <svg viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg"
+                     role="img" aria-label="Esquema de cocina en L"
+                     class="w-full" style="background:#0f172a;border:1px solid rgba(255,255,255,.1)">
+                  <rect x="14" y="14" width="192" height="142" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+                  <rect x="22" y="22" width="138" height="26" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.2)" stroke-width=".75"/>
+                  <text x="91" y="37" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="7" font-family="system-ui" letter-spacing="1">MÓDULOS</text>
+                  <rect x="22" y="48" width="26" height="96" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.2)" stroke-width=".75"/>
+                  <text x="35" y="102" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="7" font-family="system-ui" transform="rotate(-90 35 102)" letter-spacing="1">MÓD.</text>
+                  <text x="135" y="105" text-anchor="middle" fill="rgba(255,255,255,.12)" font-size="9" font-family="system-ui">ZONA LIBRE</text>
+                  <rect x="143" y="144" width="50" height="12" fill="#0f172a" stroke="rgba(255,255,255,.12)"/>
+                  <text x="168" y="153" text-anchor="middle" fill="rgba(255,255,255,.25)" font-size="6" font-family="system-ui">ENTRADA</text>
+                </svg>
+                <div style="margin-top:.875rem">
+                  <p class="font-bold text-white text-sm">En L</p>
+                  <p style="font-size:.8125rem;color:#9CA3AF;line-height:1.55;margin-top:.375rem">
+                    Módulos en dos paredes perpendiculares. Triángulo de trabajo más eficiente. Si el fregadero cambia de pared, la fontanería requiere adaptación.
+                  </p>
+                  <p style="font-size:.6875rem;color:#A85535;margin-top:.5rem;letter-spacing:.02em">Redistribución parcial · modificador a valorar en visita</p>
+                </div>
+              </div>
+
+              <!-- Con isla -->
+              <div>
+                <svg viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg"
+                     role="img" aria-label="Esquema de cocina con isla"
+                     class="w-full" style="background:#0f172a;border:1px solid rgba(255,255,255,.1)">
+                  <rect x="14" y="14" width="192" height="142" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+                  <rect x="22" y="22" width="176" height="24" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.2)" stroke-width=".75"/>
+                  <text x="110" y="36" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="6.5" font-family="system-ui" letter-spacing=".5">MÓDULOS PERIMETRALES</text>
+                  <rect x="58" y="72" width="104" height="44" fill="rgba(168,85,53,.15)" stroke="#A85535" stroke-width="1.25"/>
+                  <text x="110" y="98" text-anchor="middle" fill="#A85535" font-size="8" font-family="system-ui" font-weight="bold" letter-spacing="1">ISLA</text>
+                  <text x="38" y="98" text-anchor="middle" fill="rgba(255,255,255,.18)" font-size="6.5" font-family="system-ui" transform="rotate(-90 38 98)">PASO</text>
+                  <text x="182" y="98" text-anchor="middle" fill="rgba(255,255,255,.18)" font-size="6.5" font-family="system-ui" transform="rotate(90 182 98)">PASO</text>
+                  <rect x="85" y="144" width="50" height="12" fill="#0f172a" stroke="rgba(255,255,255,.12)"/>
+                  <text x="110" y="153" text-anchor="middle" fill="rgba(255,255,255,.25)" font-size="6" font-family="system-ui">ENTRADA</text>
+                </svg>
+                <div style="margin-top:.875rem">
+                  <p class="font-bold text-white text-sm">Con isla</p>
+                  <p style="font-size:.8125rem;color:#9CA3AF;line-height:1.55;margin-top:.375rem">
+                    Módulo central exento que añade superficie de trabajo. Requiere verificar la circulación perimetral y la salida de extracción antes de confirmar su viabilidad.
+                  </p>
+                  <p style="font-size:.6875rem;color:#A85535;margin-top:.5rem;letter-spacing:.02em">Redistribución completa · +25% sobre presupuesto base</p>
+                </div>
+              </div>
+
             </div>
-          </li>
-        ))}
-      </ul>
+
+            <!-- Lo que no cambia una vez empezada la obra -->
+            <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:grid;gap:1px;background:rgba(255,255,255,.07)" class="md:grid-cols-2">
+              <div style="background:#111827;padding:1.5rem">
+                <p style="font-size:.625rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">
+                  Lo que no puede cambiar con la obra empezada
+                </p>
+                <p style="font-size:.875rem;color:#9CA3AF;line-height:1.65">
+                  Fregadero (fontanería), fuegos (electricidad o gas) y extractor (conducto). Cambiarlos implica reabrir lo que ya está terminado. Por eso se deciden antes de empezar.
+                </p>
+              </div>
+              <div style="background:#111827;padding:1.5rem;display:grid;gap:.625rem">
+                <p style="font-size:.625rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.125rem">
+                  Cuándo conservar · cuándo cambiar
+                </p>
+                {[
+                  ['Conservar', 'La distribución funciona y el tabique es estructural o el presupuesto no cubre fontanería nueva.'],
+                  ['Cambiar',   'La cocina es incómoda de usar, hay espacio para abrir al salón o la reforma es integral.'],
+                ].map(([label, text]) => (
+                  <div style="display:flex;gap:.5rem;align-items:flex-start">
+                    <span style="font-size:.6875rem;font-weight:900;color:#A85535;flex-shrink:0;padding-top:.15rem">{label}</span>
+                    <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- M5: Comparativa -->
-  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-comparativa">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-comparativa" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
-        Precios orientativos de reforma de cocina
-      </h2>
-      <p class="text-gray-600 leading-relaxed mb-6">
-        El precio final depende de la superficie, la distribución prevista, los materiales elegidos y el estado de las instalaciones existentes. El presupuesto cerrado se emite tras la visita técnica gratuita. Estima el coste por tramo de cocina y calidad con la <a href="/calculadora-precio-reforma/?servicio=reforma-cocinas" class="text-[#A85535] hover:underline font-medium">calculadora de precios de reforma de cocina</a>. Para un desglose detallado por partidas, consulta la <a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="text-[#A85535] hover:underline font-medium">guía de precios de reforma de cocina</a> o <a href="/guias/" class="text-[#A85535] hover:underline font-medium">todas las guías</a>.
-      </p>
-      <div class="overflow-x-auto">
+
+  <!-- ══════════════════════════════════════════════════
+       ACTO 3 · CONVIVENCIA DURANTE LA OBRA
+       Estados editoriales — sin cronología inventada.
+       Fuente: copy documentado de la página anterior
+       + directrices de CLAUDE.md sobre vida durante obra.
+  ═══════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-[#111827]" aria-labelledby="h-convivencia">
+    <div class="max-w-7xl mx-auto px-4">
+
+      <div class="max-w-2xl mb-10">
+        <p class="font-black uppercase text-white/30 mb-3" style="font-size:10px;letter-spacing:.15em">Durante la obra</p>
+        <h2 id="h-convivencia" class="font-black text-white" style="font-size:clamp(1.5rem,3.5vw,2.5rem);letter-spacing:-0.025em;line-height:1.1">
+          Semanas sin cocina. Las gestionamos desde el primer día.
+        </h2>
+      </div>
+
+      <div class="estados-grid mb-8" style="max-width:72rem">
+
+        <!-- Estado 1 -->
+        <div style="background:#0f172a;padding:2rem 1.5rem">
+          <p style="font-size:.625rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#ef4444;margin-bottom:.75rem">
+            Fase de obra civil
+          </p>
+          <p class="font-bold text-white text-sm mb-3">Sin acceso a la cocina</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.875rem">
+            {[
+              'Protección de suelos y zonas comunes antes de empezar',
+              'Los materiales pedidos antes de la primera jornada: muebles, encimera y electrodomésticos confirmados antes del desescombro',
+              'Los primeros días son los más ruidosos; desde entonces el ritmo es más llevadero',
+              'El responsable avisa el horario de inicio cada mañana',
+            ].map(p => (
+              <li style="display:flex;gap:.625rem;align-items:flex-start">
+                <span style="color:rgba(255,255,255,.2);flex-shrink:0">—</span>
+                <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Estado 2 -->
+        <div style="background:#111827;padding:2rem 1.5rem">
+          <p style="font-size:.625rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#f59e0b;margin-bottom:.75rem">
+            Instalaciones y muebles
+          </p>
+          <p class="font-bold text-white text-sm mb-3">La cocina recupera funcionalidad progresivamente</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.875rem">
+            {[
+              'Con las instalaciones terminadas el espacio empieza a tener forma',
+              'Conforme avanza el montaje de muebles, el acceso a la cocina se va ampliando',
+              'Si el plazo sin cocina es crítico, lo planificamos desde el inicio para reducir los días de inactividad total',
+              'Limpieza al terminar cada jornada',
+            ].map(p => (
+              <li style="display:flex;gap:.625rem;align-items:flex-start">
+                <span style="color:rgba(255,255,255,.2);flex-shrink:0">—</span>
+                <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Estado 3 -->
+        <div style="background:#1e293b;padding:2rem 1.5rem">
+          <p style="font-size:.625rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#22c55e;margin-bottom:.75rem">
+            Entrega
+          </p>
+          <p class="font-bold text-white text-sm mb-3">Cocina completamente operativa</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.875rem">
+            {[
+              'Electrodomésticos instalados y comprobados',
+              'Fregadero en marcha, muebles nivelados, encimera sin marcas',
+              'Limpieza final incluida en la reforma',
+              '2 años de garantía sobre la ejecución desde la fecha de entrega',
+            ].map(p => (
+              <li style="display:flex;gap:.625rem;align-items:flex-start">
+                <span style="color:rgba(255,255,255,.2);flex-shrink:0">—</span>
+                <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+      <div style="border-left:3px solid rgba(255,255,255,.12);padding-left:1.5rem;max-width:56ch">
+        <p class="font-bold text-white text-sm mb-1">Si tienes un único acceso a la cocina</p>
+        <p style="font-size:.875rem;color:#9CA3AF;line-height:1.65">
+          En viviendas con una sola cocina, planificamos desde el principio qué días son los más restrictivos y cómo adaptar la obra para que la interrupción sea lo más corta posible. Esa conversación empieza en la visita técnica, no cuando la obra ya está en marcha.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       ACTO 4 · PRECIOS + MODIFICADORES + QUÉ NO INCLUYE
+       Datos exclusivamente de calculator.ts.
+       Precio mínimo: 5.000€ (hasta-8, esencial).
+       Plazos: 3–5 / 4–7 / 6–10 sem según calidad.
+  ═══════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-precios">
+    <div class="max-w-7xl mx-auto px-4">
+
+      <div class="max-w-2xl mb-10">
+        <p class="font-black uppercase text-[#A85535] mb-3" style="font-size:10px;letter-spacing:.15em">Precios orientativos · Corredor del Henares</p>
+        <h2 id="h-precios" class="font-black text-gray-900 mb-3" style="font-size:clamp(1.75rem,3.5vw,2.5rem);letter-spacing:-0.025em;line-height:1.1">
+          ¿Cuánto cuesta reformar una cocina en el Corredor?
+        </h2>
+        <p class="text-gray-600 leading-relaxed" style="font-size:.9375rem;max-width:58ch">
+          Los rangos de abajo proceden de <a href="/calculadora-precio-reforma/?servicio=reforma-cocinas" class="text-[#A85535] hover:underline font-medium">la calculadora de presupuesto</a>. El precio cerrado que firmamos depende del estado real de las instalaciones, los materiales elegidos y la distribución prevista. Véase también la <a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="text-[#A85535] hover:underline font-medium">guía de precios de reforma de cocina</a>.
+        </p>
+      </div>
+
+      <!-- Tabla 4×3 — datos autorizados -->
+      <div style="overflow-x:auto;max-width:60rem;margin-bottom:2rem">
         <table class="w-full text-sm border-collapse bg-white">
           <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato tras la visita.
+            Precios orientativos. IVA (10 % en vivienda habitual) no incluido. Electrodomésticos de superficie libre no incluidos.
           </caption>
           <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Alcance</th>
-              <th class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo</th>
-              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Incluye</th>
+            <tr class="bg-[#111827]">
+              <th class="text-left py-3 px-5 text-white font-bold" style="font-size:.75rem;letter-spacing:.05em">Superficie</th>
+              <th class="text-right py-3 px-4 text-gray-400 font-bold" style="font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase">Esencial</th>
+              <th class="text-right py-3 px-4 text-gray-400 font-bold" style="font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase">Media</th>
+              <th class="text-right py-3 px-4 text-gray-400 font-bold" style="font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase">Alta</th>
             </tr>
           </thead>
           <tbody>
-            {[
-              { label: 'Cocina hasta 8 m² (muebles y electrodomésticos)', price: 'Desde 5.500€', includes: 'Sin obras de albañilería' },
-              { label: 'Cocina 8–12 m² (reforma completa)', price: 'Desde 8.000€', includes: 'Con alicatado, electricidad y fontanería' },
-              { label: 'Cocina 12–18 m² (reforma completa)', price: 'Desde 12.000€', includes: 'Muebles a medida incluidos' },
-              { label: 'Cocina americana o con isla', price: 'Desde 14.000€', includes: 'Con apertura al salón y proyecto técnico' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.label}</td>
-                <td class="py-3 px-5 text-right font-semibold text-[#A85535]">{row.price}</td>
-                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.includes}</td>
+            {tranches.map((t, i) => (
+              <tr style={`border-bottom:1px solid ${i < tranches.length - 1 ? '#D1C9BD' : 'transparent'}`}>
+                <td class="py-4 px-5">
+                  <p class="font-bold text-gray-900">{t.label}</p>
+                  <p class="text-xs text-gray-400 mt-0.5">{t.sub}</p>
+                </td>
+                <td class="py-4 px-4 text-right font-black text-gray-900" style="font-variant-numeric:tabular-nums;font-size:.9375rem">{t.esencial}</td>
+                <td class="py-4 px-4 text-right font-black text-gray-900" style="font-variant-numeric:tabular-nums;font-size:.9375rem">{t.media}</td>
+                <td class="py-4 px-4 text-right font-black text-gray-900" style="font-variant-numeric:tabular-nums;font-size:.9375rem">{t.alta}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      <!-- Plazos por calidad — datos autorizados -->
+      <div class="mb-8" style="max-width:60rem">
+        <p class="font-bold text-gray-700 text-sm mb-3">Plazo orientativo según calidad</p>
+        <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:1px;background:#D1C9BD">
+          {[
+            { q: 'Esencial', plazo: '3 – 5 semanas', sub: 'Renovación de acabados y mobiliario' },
+            { q: 'Media',    plazo: '4 – 7 semanas', sub: 'Con instalaciones revisadas o redistribución parcial' },
+            { q: 'Alta',     plazo: '6 – 10 semanas', sub: 'Redistribución completa o materiales de encargo' },
+          ].map(({ q, plazo, sub }) => (
+            <div class="bg-white p-4">
+              <p class="text-xs font-bold uppercase tracking-wide text-gray-400 mb-1">{q}</p>
+              <p class="font-black text-gray-900" style="font-size:1.125rem;letter-spacing:-0.02em">{plazo}</p>
+              <p class="text-xs text-gray-500 mt-1 leading-tight">{sub}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-gray-400 mt-2">La fecha de entrega queda fijada en el contrato antes de empezar.</p>
+      </div>
+
+      <!-- Modificadores -->
+      <div style="max-width:60rem;margin-bottom:2rem">
+        <p class="font-bold text-gray-700 text-sm mb-3">Factores que amplían el presupuesto base</p>
+        <div style="background:#fff;border-top:2px solid #111827">
+          {[
+            { factor: 'Vivienda anterior a 1980',      efecto: '+14 %', sub: 'Instalaciones que pueden requerir actualización estructural' },
+            { factor: 'Redistribución completa',        efecto: '+25 %', sub: 'Cambio total de posición de muebles, fregadero o apertura al salón' },
+            { factor: 'Piso sin ascensor',              efecto: '+9 %',  sub: 'Coste de porteo y logística adicional en planta alta' },
+          ].map(({ factor, efecto, sub }, i, arr) => (
+            <div style={`display:grid;grid-template-columns:1fr auto;gap:1rem;padding:.875rem 1.25rem;align-items:center;${i < arr.length - 1 ? 'border-bottom:1px solid #D1C9BD' : ''}`}>
+              <div>
+                <p class="font-bold text-gray-900 text-sm">{factor}</p>
+                <p class="text-xs text-gray-400 mt-0.5">{sub}</p>
+              </div>
+              <p class="font-black text-[#A85535]" style="font-size:1.125rem;white-space:nowrap">{efecto}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-gray-400 mt-2">Los modificadores se aplican sobre el presupuesto base de cada tramo y calidad.</p>
+      </div>
+
+      <!-- Precio cerrado e imprevistos -->
+      <div style="border-left:3px solid #A85535;padding-left:1.5rem;max-width:60ch;margin-bottom:2rem">
+        <p class="font-bold text-gray-900 text-sm mb-1">Precio cerrado e imprevistos</p>
+        <p class="text-gray-600 leading-relaxed" style="font-size:.875rem">
+          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. Si al desmontar los muebles o al abrir las paredes aparece algo no visible antes, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas de cocina del Corredor, el precio cierra sin desviaciones.
+        </p>
+      </div>
+
+      <!-- CTA de precios -->
+      <div style="display:flex;flex-direction:column;gap:.75rem;align-items:flex-start">
+        <a href="/contacto/"
+           class="inline-block text-white font-black text-xs uppercase"
+           style="padding:1rem 2rem;background:#A85535;letter-spacing:.12em">
+          Solicitar presupuesto cerrado
+        </a>
+        <p class="text-gray-400" style="font-size:.75rem">Respuesta en 48 h · Sin compromiso · Precio definitivo, no orientativo</p>
+      </div>
+
     </div>
   </section>
 
-  <!-- Comparativa de encimeras -->
-  <section class="py-16 bg-white" aria-labelledby="h-encimeras">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-8">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La decisión que más se nota cada día</p>
-        <h2 id="h-encimeras" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
-          Qué encimera elegir: comparativa por material, coste y durabilidad
-        </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
-      </div>
-      <p class="text-gray-600 leading-relaxed mb-6">
-        La encimera es la superficie con más contacto directo con el uso diario. El material que eliges determina el mantenimiento que necesitarás durante los próximos 15 o 20 años, no solo el aspecto el día de la entrega.
-      </p>
-      <div class="overflow-x-auto mb-4">
-        <table class="w-full text-sm border-collapse bg-white">
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Material</th>
-              <th class="text-right py-3 px-5 font-bold text-gray-900">Coste orientativo / ml</th>
-              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Resistencia y mantenimiento</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-gray-100">
-              <td class="py-3 px-5 text-gray-700 font-medium">Laminado (postformado)</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">80–150 €/ml</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Sensible a la humedad y al calor directo. Sin costuras en esquina. Durabilidad media: 10–15 años.</td>
-            </tr>
-            <tr class="border-b border-gray-100 bg-gray-50">
-              <td class="py-3 px-5 text-gray-700 font-medium">Compacto fenólico</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">150–280 €/ml</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Resistente al agua y a los golpes. Aspecto mate estable. Buena relación calidad-precio para uso intensivo.</td>
-            </tr>
-            <tr class="border-b border-gray-100">
-              <td class="py-3 px-5 text-gray-700 font-medium">Cuarzo (silestone, compac, dekton)</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">250–450 €/ml</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Alta resistencia a manchas y arañazos. Sin porosidad, sin sellado periódico. La opción más demandada actualmente.</td>
-            </tr>
-            <tr class="border-b border-gray-100 bg-gray-50">
-              <td class="py-3 px-5 text-gray-700 font-medium">Granito natural</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">200–400 €/ml</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Muy duro y resistente al calor directo. Requiere sellado periódico. Variación de veta entre piezas.</td>
-            </tr>
-            <tr class="border-b border-gray-100">
-              <td class="py-3 px-5 text-gray-700 font-medium">Porcelánico de gran formato</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">280–500 €/ml</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Resistencia extrema al calor y al rayado. Unión entre piezas visible en encimeras largas. Aspecto cerámico.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="text-xs text-gray-400 italic">Precios por metro lineal instalado, IVA no incluido. El precio final depende del canto, el tipo de corte y el proveedor.</p>
-    </div>
-  </section>
 
-  <!-- Electrodomésticos -->
-  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-electrodomesticos">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-8">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La fuente clásica de malentendidos</p>
-        <h2 id="h-electrodomesticos" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+  <!-- ══════════════════════════════════════════════════
+       ACTO 5 · ELECTRODOMÉSTICOS Y MATERIALES
+       Sin €/ml (no autorizado). Sin especificaciones
+       técnicas de potencia sin fuente.
+       Contenido editorial: qué incluye / qué no.
+       Encimeras: comparativa técnica sin precios.
+  ═══════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-white" aria-labelledby="h-materiales">
+    <div class="max-w-7xl mx-auto px-4">
+
+      <!-- Electrodomésticos -->
+      <div class="max-w-3xl mb-14">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Una fuente habitual de malentendidos</p>
+        <h2 id="h-materiales" class="font-black text-gray-900 mb-3" style="font-size:clamp(1.5rem,3vw,2.25rem);letter-spacing:-0.025em;line-height:1.1">
           Electrodomésticos: qué incluye el presupuesto y qué no
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
+        <p class="text-gray-600 leading-relaxed" style="max-width:58ch">
+          La pregunta sobre los electrodomésticos aparece en la primera reunión. La respuesta depende de lo que hayas pedido y de cómo esté redactado el presupuesto.
+        </p>
       </div>
-      <p class="text-gray-600 leading-relaxed mb-8">
-        Cuando renovamos o remodelamos una cocina, la pregunta sobre los electrodomésticos aparece siempre en la primera reunión. La respuesta honesta depende de lo que hayas pedido y de cómo esté redactado el presupuesto. Esto es lo habitual en cada caso.
-      </p>
-      <div class="grid md:grid-cols-2 gap-6 mb-6">
-        <div class="bg-white p-7 border-t-4 border-[#A85535]">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Incluido en el presupuesto estándar</h3>
+
+      <div class="grid md:grid-cols-2 gap-px bg-gray-100 mb-6" style="max-width:60rem">
+        <div class="bg-white p-7">
+          <p class="font-bold text-gray-900 mb-3 text-sm">Incluido en el presupuesto estándar</p>
           <ul class="text-sm text-gray-600 leading-relaxed space-y-2">
             <li>— Instalación de los electrodomésticos que el cliente aporta o selecciona</li>
-            <li>— Toma eléctrica independiente para el horno y la vitrocerámica o inducción</li>
+            <li>— Toma eléctrica independiente para horno y vitrocerámica o inducción</li>
             <li>— Conexión de lavavajillas a fontanería y electricidad</li>
             <li>— Extractor de humos: instalación y conexión al conducto existente o exterior</li>
-            <li>— Espacio previsto en muebles para el frigorífico integrado o libre</li>
+            <li>— Espacio previsto en muebles para el frigorífico integrado o de libre instalación</li>
           </ul>
         </div>
-        <div class="bg-white p-7 border-t-4 border-gray-200">
-          <h3 class="text-base font-bold text-gray-900 mb-3">No incluido por defecto (se presupuesta aparte)</h3>
+        <div class="bg-white p-7">
+          <p class="font-bold text-gray-900 mb-3 text-sm">No incluido por defecto</p>
           <ul class="text-sm text-gray-600 leading-relaxed space-y-2">
-            <li>— Compra de los electrodomésticos: puede gestionarse conjuntamente si se prefiere</li>
+            <li>— Compra de los electrodomésticos de superficie libre: puede gestionarse conjuntamente si se prefiere</li>
             <li>— Apertura de conducto de extracción nuevo si no existe o no llega al exterior</li>
-            <li>— Cambio de instalación de gas si había cocina de gas y se pasa a inducción</li>
+            <li>— Cambio de instalación de gas si se pasa a inducción</li>
             <li>— Microondas integrado en columna: requiere espacio de mueble específico y toma independiente</li>
-            <li>— Ampliación del cuadro eléctrico si no tiene capacidad para inducción</li>
+            <li>— Ampliación del cuadro eléctrico general si no tiene capacidad</li>
           </ul>
         </div>
       </div>
-      <div class="bg-white border-l-4 border-[#A85535] p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-2">Cómo evitar este malentendido</p>
-        <p class="text-sm text-gray-600 leading-relaxed">Antes de cerrar el presupuesto, cerramos también la lista de electrodomésticos previstos: marca, modelo y si los aporta el cliente o los gestionamos nosotros. Con esa información, el presupuesto incluye exactamente lo que se va a instalar, sin partidas flotantes que aparecen al final de la obra.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- M3: Licencias -->
-  <section class="py-16 bg-white" aria-labelledby="h-licencias">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-licencias" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
-        ¿Qué licencia necesitas para reformar la cocina?
-      </h2>
-      <p class="text-gray-700 leading-relaxed mb-4">
-        Una reforma de cocina interior, sin afectar a elementos estructurales ni a la fachada, se tramita habitualmente como comunicación previa u obra menor en los municipios del Corredor del Henares. Si la reforma incluye el derribo de un tabique de carga o la modificación de la distribución de manera significativa, puede requerir un proyecto técnico firmado por un arquitecto técnico.
-      </p>
-      <p class="text-gray-700 leading-relaxed mb-6">
-        En pisos de comunidad de propietarios, algunas actuaciones —especialmente si afectan a fachadas, cubiertas o elementos comunes— pueden requerir notificación previa a la comunidad. En la visita técnica te informamos del trámite exacto que corresponde a tu caso y nos encargamos de la gestión.
-      </p>
-      <div class="bg-[#F9F7F4] border-l-4 border-amber-400 p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-2">Apertura de cocina al salón: licencia de obra menor</p>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Si la reforma incluye eliminar el tabique que separa la cocina del salón, puede requerirse licencia de obra menor aunque el tabique no sea estructural. El trámite varía por municipio y por el tipo de edificio. Lo gestionamos en paralelo con la fase de proyecto para que no retrase la fecha de inicio de obra.
-          <!-- TODO: verificar plazos específicos de licencia de obra menor por municipio del Corredor -->
+      <div style="border-left:3px solid #A85535;padding-left:1.5rem;max-width:56ch;margin-bottom:4rem">
+        <p class="font-bold text-gray-900 text-sm mb-1">Cómo evitar este malentendido</p>
+        <p class="text-gray-600 leading-relaxed" style="font-size:.875rem">
+          Antes de cerrar el presupuesto, cerramos también la lista de electrodomésticos previstos: marca, modelo y si los aporta el cliente o los gestionamos nosotros. Con esa información, el presupuesto incluye exactamente lo que se va a instalar.
         </p>
       </div>
-    </div>
-  </section>
 
-  <!-- M6: Cómo comparar presupuestos -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-comparar">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-comparar" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
-        Cómo leer un presupuesto de reforma de cocina
-      </h2>
-      <p class="text-gray-600 leading-relaxed mb-8">
-        Un presupuesto de cocina puede incluir o no el diseño, los electrodomésticos, el proyecto y la gestión de escombros. Estas son las partidas que hay que revisar antes de comparar totales.
-      </p>
-      <dl class="divide-y divide-gray-200 bg-white p-6">
-        {[
-          { term: 'Diseño incluido o no', def: 'Algunos presupuestos de cocina no incluyen el diseño del espacio: te dan precio sobre la distribución que tú aportas. Si el diseño no está incluido y hay que contratar un diseñador aparte, el coste total puede ser superior al del presupuesto que sí lo incluye.' },
-          { term: 'Electrodomésticos', def: 'Revisa si los electrodomésticos están incluidos en el precio total o si son un capítulo aparte. Compara la gama incluida: un presupuesto que incluye encimera de inducción gama alta, horno con pyrolisis y campana silenciosa es muy diferente a otro que incluye equipos básicos de gama entrada.' },
-          { term: 'Instalación eléctrica', def: 'La instalación eléctrica de la cocina —circuitos dedicados para vitrocerámica, horno y lavavajillas— es una partida que algunos presupuestos marcan como opcional o como adaptación mínima. Pide que especifiquen qué circuitos se instalan y si el cuadro de la cocina se actualiza.' },
-          { term: 'Fontanería', def: 'Renovar las acometidas de agua a la cocina no siempre está incluido en el precio base. Si el presupuesto dice "adaptación de fontanería existente", significa que se mantiene la tubería actual. Si la tubería tiene 30+ años, vale la pena preguntar por el estado y el coste de renovarla.' },
-          { term: 'Gestión de escombros', def: 'El desescombro de una cocina genera entre 1 y 2 m³ de residuos. El coste del contenedor o del transporte al punto limpio debe estar incluido en el presupuesto. Si no aparece como partida, pregunta quién lo paga.' },
-          { term: 'Garantía de la instalación', def: 'Además de la garantía del fabricante sobre los electrodomésticos y los muebles, la instalación eléctrica y la fontanería deben tener garantía de ejecución. Pide que el presupuesto especifique el plazo de garantía sobre los trabajos realizados, no solo sobre los materiales.' },
-        ].map(({ term, def }) => (
-          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
-            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
-            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <div class="mt-8 bg-white border-l-4 border-[#A85535] p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-3">Precio cerrado e imprevistos en la reforma de cocina</p>
-        <p class="text-sm text-gray-700 leading-relaxed">
-          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica: los muebles, los electrodomésticos, el alicatado y las instalaciones accesibles. Si al desmontar los muebles o al abrir las paredes aparece algo no visible antes —una tubería en peor estado del que su exterior sugería, humedad en el soporte detrás del alicatado— lo comunicamos antes de tocar nada. Lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas de cocina del Corredor, el precio cierra sin desviaciones. Cuando hay algo nuevo, hay una persona que llama, explica y espera antes de actuar.
+      <!-- Encimeras: comparativa técnica sin €/ml -->
+      <div class="max-w-3xl mb-8">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La decisión que más se nota cada día</p>
+        <h3 class="font-black text-gray-900 mb-3" style="font-size:clamp(1.25rem,2.5vw,1.75rem);letter-spacing:-0.02em">
+          Qué encimera elegir: comparativa por material, durabilidad y mantenimiento
+        </h3>
+        <p class="text-gray-600 leading-relaxed" style="max-width:58ch;font-size:.9375rem">
+          La encimera es la superficie con más contacto directo con el uso diario. El material determina el mantenimiento que necesitarás durante los próximos 15 o 20 años.
         </p>
       </div>
-    </div>
-  </section>
 
-  <!-- M7: Plazos -->
-  <section class="py-16 bg-white" aria-labelledby="h-plazos">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-plazos" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
-        Plazos reales de una reforma de cocina
-      </h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
+      <div style="overflow-x:auto;max-width:60rem">
+        <table class="enc-table">
           <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Fase</th>
-              <th class="text-right py-3 px-4 font-bold text-gray-900">Cocina &lt;8 m²</th>
-              <th class="text-right py-3 px-4 font-bold text-gray-900">Cocina 8–18 m²</th>
+            <tr>
+              <th style="min-width:160px">Material</th>
+              <th>Resistencia al rayado</th>
+              <th>Resistencia al calor</th>
+              <th>Mantenimiento</th>
             </tr>
           </thead>
           <tbody>
             {[
-              { fase: 'Desescombro y demolición', c8: '1–2 días', c18: '2–3 días' },
-              { fase: 'Instalación eléctrica y fontanería', c8: '2–3 días', c18: '3–5 días' },
-              { fase: 'Alicatado zona de trabajo', c8: '1–2 días', c18: '2–3 días' },
-              { fase: 'Montaje de muebles', c8: '1–2 días', c18: '2–3 días' },
-              { fase: 'Encimera, fregadero y electrodomésticos', c8: '1 día', c18: '1–2 días' },
-              { fase: 'Remates y limpieza', c8: '1 día', c18: '1 día' },
-              { fase: 'Total orientativo', c8: '7–12 días', c18: '2–4 semanas' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i === 6 ? 'bg-[#A85535]/5 font-semibold' : i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.fase}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.c8}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.c18}</td>
+              { mat: 'Laminado (postformado)',         rayado: 'Baja',       calor: 'Baja',     mant: 'Sin sellado. Sensible a la humedad en bordes y zona del fregadero.' },
+              { mat: 'Compacto fenólico',              rayado: 'Media-alta', calor: 'Media',    mant: 'Sin sellado. Aspecto mate estable. Buena relación calidad-precio.' },
+              { mat: 'Cuarzo (silestone, compac)',     rayado: 'Alta',       calor: 'Media',    mant: 'Sin porosidad, sin sellado periódico. Muy demandado por durabilidad.' },
+              { mat: 'Granito natural',                rayado: 'Muy alta',   calor: 'Muy alta', mant: 'Requiere sellado periódico. Variación de veta entre piezas.' },
+              { mat: 'Porcelánico de gran formato',    rayado: 'Muy alta',   calor: 'Muy alta', mant: 'Sin mantenimiento. Unión entre piezas visible en encimeras largas.' },
+            ].map(({ mat, rayado, calor, mant }) => (
+              <tr>
+                <td class="font-medium text-gray-900">{mat}</td>
+                <td class="text-gray-600">{rayado}</td>
+                <td class="text-gray-600">{calor}</td>
+                <td class="text-gray-500">{mant}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        <p class="text-xs text-gray-400 mt-3 italic">En la visita técnica mostramos muestras de cada material y asesoramos sobre cuál encaja mejor con el uso real.</p>
       </div>
-      <p class="text-xs text-gray-400 mt-4">
-        Plazos orientativos sin apertura al salón. Con redistribución o apertura, añadir 3–5 días. La fecha de entrega queda fijada en el contrato.
-      </p>
+
     </div>
   </section>
 
-  <!-- M8: Compromisos -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="mb-12">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
-        <h2 id="h-compromisos" class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
-          Nuestros compromisos en la reforma de cocina
-        </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
-      </div>
-      <Compromisos variant="full" />
-    </div>
-  </section>
 
-  <!-- Proceso -->
-  <section class="py-20 bg-white" aria-labelledby="h-proceso">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
-        <h2 id="h-proceso" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
-          Del diseño a la primera cena en la cocina nueva
-        </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          { n: '01', title: 'Visita técnica y diseño', desc: 'Medimos la cocina y diseñamos la distribución óptima. Selección de materiales, muebles y electrodomésticos con tu supervisión directa.' },
-          { n: '02', title: 'Presupuesto cerrado en 48h', desc: 'Presupuesto detallado con todas las partidas incluidas: diseño, instalaciones, muebles, electrodomésticos, gestión de escombros y limpieza.' },
-          { n: '03', title: 'Pedido de materiales', desc: 'Una vez firmado el contrato, pedimos todos los materiales: muebles, encimera y electrodomésticos. La obra no empieza hasta tener confirmada la disponibilidad.' },
-          { n: '04', title: 'Desescombro e instalaciones', desc: 'Demolición del estado anterior. Instalación eléctrica con circuitos dedicados, fontanería y alicatado de zona de trabajo.' },
-          { n: '05', title: 'Montaje de muebles y acabados', desc: 'Montaje de muebles altos y bajos, encimera, fregadero, grifo y electrodomésticos. Ajuste y nivelación final.' },
-          { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo, limpieza a fondo y entrega con garantía de 2 años sobre la ejecución.' },
-        ].map(step => (
-          <div class="bg-[#F9F7F4] p-7">
-            <div class="text-4xl font-black text-gray-100 mb-4 leading-none">{step.n}</div>
-            <h3 class="text-base font-bold text-gray-900 mb-2">{step.title}</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Resultado cotidiano -->
-  <div class="bg-white py-10">
-    <div class="max-w-4xl mx-auto px-4">
-      <p class="text-base text-gray-700 italic border-l-4 border-[#A85535] pl-5">
-        La primera semana de usar la cocina nueva, la referencia de la anterior desaparece. Lo que queda es la encimera que no acumula grasa en las juntas, la campana que calla en cuanto dejas de cocinar, el cajón de los cubiertos que abre y cierra sin trabarse. La cocina es el espacio donde más horas se pasan sin contarlas. Eso es lo que cambia una reforma bien planificada.
-      </p>
-    </div>
-  </div>
-
-  <!-- Dónde hacemos reforma de cocinas -->
-  <section class="py-16 bg-white" aria-labelledby="h-zonas">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 id="h-zonas" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
-        Reforma de cocinas en el Corredor del Henares: todos los municipios
-      </h2>
-      <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
-        Hacemos reformas de cocinas en los ocho municipios del Corredor sin coste adicional de desplazamiento. Selecciona tu municipio para ver información específica de tu zona.
-      </p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {zones.map(z => (
-          <a href={`/reforma-cocinas/${z.slug}/`} class="group block p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] hover:shadow-md transition-all duration-200">
-            <p class="text-sm font-bold text-gray-900 group-hover:text-[#A85535] transition-colors">Reforma de cocinas en {z.name}</p>
-            <p class="text-xs text-gray-400 mt-1">Ver precios y plazos →</p>
-          </a>
-        ))}
-      </div>
-      <div class="mt-10 pt-8 border-t border-gray-100">
-        <p class="text-sm text-gray-500 mb-4">Si tu reforma de cocina va unida a otras zonas de la vivienda:</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="/servicios/reforma-banos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de baños</a>
-          <a href="/servicios/reforma-pisos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de pisos y viviendas</a>
-          <a href="/servicios/reformas-integrales/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reformas integrales</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
+  <!-- ══════════════════════════════════════════════════
+       ACTO 6 · FAQs
+       9 preguntas — plazos corregidos a fuente autorizada
+  ═══════════════════════════════════════════════════════ -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
     <div class="max-w-4xl mx-auto px-4">
+
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 id="h-faq" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-faq" class="font-black text-gray-900 mb-3" style="font-size:clamp(1.75rem,3.5vw,2.5rem);letter-spacing:-0.025em;line-height:1.1">
           Todo lo que necesitas saber antes de reformar la cocina
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
+
       <div class="divide-y divide-gray-200">
         {faqs.map(faq => (
           <details class="group py-5">
             <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
-              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
+              <h3 class="font-semibold text-gray-900 leading-snug m-0" style="font-size:.9375rem">{faq.q}</h3>
               <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
             </summary>
             <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
           </details>
         ))}
       </div>
+
     </div>
   </section>
 
-  <!-- CTA Final -->
-  <section class="py-20 bg-[#A85535]" aria-labelledby="h-cta-final">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">
-        ¿Cuánto cuesta reformar tu cocina?
+
+  <!-- ══════════════════════════════════════════════════
+       ACTO 7a · ZONAS
+       Navegación geográfica antes del cierre de conversión.
+  ═══════════════════════════════════════════════════════ -->
+  <section class="py-16 bg-white" aria-labelledby="h-zonas">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 id="h-zonas" class="font-black text-gray-900 mb-3" style="font-size:clamp(1.25rem,2.5vw,1.75rem);letter-spacing:-0.025em">
+        Reforma de cocinas en el Corredor del Henares: todos los municipios
       </h2>
-      <p class="text-white/80 mb-3">Visita técnica gratuita. Diseño y presupuesto cerrado en 48h.</p>
-      <p class="text-white/60 text-sm mb-8">Sin compromiso. El precio que firmamos es el precio que pagas.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">Solicitar presupuesto</a>
-        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/40 hover:border-white transition-colors">☎ {SITE.phoneDisplay}</a>
+      <p class="text-gray-600 leading-relaxed mb-8" style="max-width:56ch">
+        Hacemos reformas de cocinas en los ocho municipios del Corredor sin coste adicional de desplazamiento.
+      </p>
+
+      <div class="zonas-grid mb-10">
+        {zones.map(z => (
+          <article class="group relative p-5 bg-[#F9F7F4] transition-colors hover:bg-[#111827]">
+            <h3 class="text-sm font-bold text-gray-900 group-hover:text-white transition-colors m-0">
+              <a href={`/reforma-cocinas/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
+                Reforma de cocinas en {z.name}
+              </a>
+            </h3>
+            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 group-hover:text-gray-500 transition-colors block">Ver precios y plazos →</span>
+          </article>
+        ))}
       </div>
+
+      <div style="border-top:1px solid #E5E0D8;padding-top:1.5rem">
+        <p class="text-sm text-gray-500 mb-4">Si tu reforma de cocina va unida a otras zonas de la vivienda:</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/servicios/reforma-banos/"       class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#111827] hover:text-white transition-colors">Reforma de baños</a>
+          <a href="/servicios/reforma-pisos/"       class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#111827] hover:text-white transition-colors">Reforma de pisos</a>
+          <a href="/servicios/reformas-integrales/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#111827] hover:text-white transition-colors">Reformas integrales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       ACTO 7b · COMPROMISOS + CTA FINAL
+       Último bloque persuasivo. Fondo dark.
+  ═══════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
+    <div class="max-w-4xl mx-auto px-4">
+
+      <!-- Trust: compromisos -->
+      <div class="mb-12">
+        <p class="font-black uppercase text-white/30 mb-4" style="font-size:10px;letter-spacing:.15em">Antes de firmar</p>
+        <h2 id="h-cta-final" class="font-black text-white mb-6" style="font-size:clamp(1.5rem,3.5vw,2.5rem);letter-spacing:-0.025em;line-height:1.1">
+          Nuestros compromisos en la reforma de cocina
+        </h2>
+        <Compromisos variant="full" />
+      </div>
+
+      <!-- CTA final -->
+      <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:3rem;display:flex;flex-direction:column;gap:1.5rem;align-items:flex-start">
+        <div>
+          <p class="font-black text-white mb-1" style="font-size:clamp(1.25rem,2.5vw,1.75rem);letter-spacing:-0.02em">
+            ¿Cuánto cuesta reformar tu cocina?
+          </p>
+          <p class="text-gray-400" style="font-size:.9375rem">
+            Visita técnica gratuita. Diseño y presupuesto cerrado en 48h. Desde 5.000€.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/contacto/"
+             class="inline-block text-center text-white font-black text-xs uppercase"
+             style="padding:.9rem 2rem;background:#A85535;letter-spacing:.1em">
+            Solicitar presupuesto gratis
+          </a>
+          <a href={`tel:${SITE.phone}`}
+             class="inline-block text-center font-black text-xs uppercase"
+             style="padding:.9rem 2rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+            {SITE.phoneDisplay}
+          </a>
+        </div>
+        <p class="text-gray-500" style="font-size:.75rem">Sin compromiso · El precio que firmamos es el precio que pagas · 40 / 40 / 20</p>
+      </div>
+
     </div>
   </section>
 

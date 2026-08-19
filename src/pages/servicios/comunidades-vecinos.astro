@@ -603,10 +603,14 @@ const zones = [
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         {zones.map(z => (
-          <a href={`/comunidades-vecinos/${z.slug}/`} class="group block p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] hover:shadow-md transition-all duration-200">
-            <p class="text-sm font-bold text-gray-900 group-hover:text-[#A85535] transition-colors">Comunidades en {z.name}</p>
-            <p class="text-xs text-gray-400 mt-1">Ver información y plazos →</p>
-          </a>
+          <article class="group relative p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] transition-all duration-200">
+            <h3 class="text-sm font-bold text-gray-900 group-hover:text-[#A85535] transition-colors m-0">
+              <a href={`/comunidades-vecinos/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
+                Comunidades en {z.name}
+              </a>
+            </h3>
+            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 block">Ver información y plazos →</span>
+          </article>
         ))}
       </div>
       <div class="mt-10 pt-8 border-t border-gray-100">

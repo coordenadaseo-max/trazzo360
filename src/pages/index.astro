@@ -161,17 +161,20 @@ const trustCompromisos = COMPROMISOS.filter(c =>
       <!-- 6 cards de servicio -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 mb-12">
         {SERVICES.map(s => (
-          <a href={`/servicios/${s.slug}/`}
-             class="group block p-7 bg-white hover:bg-gray-50 transition-colors">
+          <article class="group relative p-7 bg-white hover:bg-gray-50 transition-colors">
             <div class="w-8 h-8 text-[#A85535] mb-4">
               <Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} />
             </div>
-            <h3 class="text-base font-bold text-gray-900 mb-2">{s.title}</h3>
+            <h3 class="text-base font-bold text-gray-900 mb-2 m-0">
+              <a href={`/servicios/${s.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
+                {s.title}
+              </a>
+            </h3>
             <p class="text-sm text-gray-500 leading-relaxed mb-4">{s.desc}</p>
             <p class="text-xs font-bold text-gray-400">
               Desde <span class="text-[#A85535] text-sm font-black">{s.priceFrom}€</span>
             </p>
-          </a>
+          </article>
         ))}
       </div>
 

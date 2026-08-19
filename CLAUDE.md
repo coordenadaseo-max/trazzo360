@@ -204,7 +204,91 @@ del cliente, añade esa referencia antes de continuar.
 - Todo precio va acompañado de "orientativo" y "sujeto a visita técnica".
 - Cero relleno para alcanzar recuento de palabras.
 
-## 7. Proceso de trabajo
+## 7. SEO — Estrategia de anchor text y enlaces internos
+
+### 7.1 Regla de implementación de tarjetas clicables
+
+No asumir que una tarjeta completamente clicable debe implementarse envolviendo toda la tarjeta en `<a>`. Separar siempre área interactiva, semántica HTML y estrategia de anchor text.
+
+Patrón estándar obligatorio para tarjetas:
+
+```html
+<article class="relative">
+  <h3>
+    <a href="/zonas/alcala-de-henares/" class="after:absolute after:inset-0">
+      Empresa de reformas en Alcalá de Henares
+    </a>
+  </h3>
+  <p>Texto descriptivo de la zona...</p>
+  <span aria-hidden="true">Ver servicios →</span>
+</article>
+```
+
+**Jerarquía recomendada:**
+```
+article
+ ├── h2/h3
+ │    └── a → anchor SEO principal
+ ├── p → descripción contextual
+ └── span → CTA visual (no <a>)
+```
+
+**Prohibido por defecto:**
+```html
+<a href="/destino/">
+  <h3>Título</h3>
+  <p>Párrafo completo...</p>
+  <span>Ver más</span>
+</a>
+```
+
+### 7.2 Anchor text deliberado
+
+Todo enlace interno debe tener anchor text:
+- descriptivo y comprensible fuera de contexto;
+- relacionado con la intención de búsqueda de la URL destino;
+- natural para el usuario.
+
+**Anchors genéricos prohibidos cuando exista alternativa descriptiva:** `Ver más`, `Saber más`, `Leer más`, `Aquí`, `Descubrir`.
+
+Ejemplos correctos:
+```html
+<a href="/zonas/alcala-de-henares/">Empresa de reformas en Alcalá de Henares</a>
+<a href="/servicios/reforma-cocinas/">reforma de cocinas en el Corredor</a>
+```
+
+Para URLs importantes, **variar anchors de forma natural** según el contexto. No repetir el mismo anchor exacto en múltiples apariciones hacia la misma URL. Ejemplo para `/servicios/reforma-cocinas/`: "reforma de cocinas", "reformas de cocina", "reformar una cocina", "servicio de reforma de cocinas".
+
+### 7.3 No envolver párrafos completos en `<a>`
+
+El anchor text debe limitarse al texto del enlace, no incluir el párrafo descriptivo circundante. El contexto alrededor del enlace ayuda a Google a entender de qué trata el destino; no hace falta meterlo dentro del `<a>`.
+
+### 7.4 CTA visual ≠ anchor obligatorio
+
+Textos como `Ver servicios →`, `Ver zona →`, `Conocer el servicio →` pueden ser `<span aria-hidden="true">` cuando la tarjeta ya tiene un enlace expandido por CSS desde el título. No crear tres `<a>` hacia la misma URL en la misma tarjeta.
+
+### 7.5 Una URL, señales coherentes
+
+Los anchors internos hacia una URL deben pertenecer al mismo campo semántico de la página destino. Evitar anchors ambiguos o de intención diferente a la de la URL.
+
+### 7.6 Accesibilidad irrenunciable
+
+- Navegable por teclado con `focus-visible` visible.
+- Contraste suficiente; no depender solo del color.
+- No añadir `aria-label` redundante cuando el texto visible ya describe correctamente el destino.
+
+### 7.7 Checklist antes de crear cualquier enlace interno
+
+1. ¿La URL destino es realmente relevante aquí?
+2. ¿El anchor describe correctamente lo que encontrará el usuario?
+3. ¿El anchor es natural dentro de la frase o componente?
+4. ¿Existe ya otro enlace redundante hacia la misma URL en la misma página?
+5. ¿Se está enlazando por utilidad o únicamente por SEO?
+6. ¿Podemos mantener la misma UX con un anchor más limpio?
+
+Si una tarjeta necesita ser completamente clicable → enlace expandido por CSS en lugar de envolver todo el contenido en `<a>`.
+
+## 8. Proceso de trabajo
 
 - Antes de escalar a más páginas, verifica que las existentes cumplen los umbrales de la sección 3 y no tienen placeholders.
 - Cualquier cambio de arquitectura se explica en una frase y espera confirmación.

@@ -332,12 +332,15 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {relatedServicesData.map(s => (
-            <a href={`/servicios/${s.slug}/`}
-              class="group block p-5 bg-white border-b-2 border-transparent hover:border-[#A85535] hover:shadow-sm transition-all">
+            <article class="group relative p-5 bg-white border-b-2 border-transparent hover:border-[#A85535] transition-all">
               <span class="w-7 h-7 text-[#A85535] block mb-2"><Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} /></span>
-              <p class="text-sm font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors">{s.title}</p>
-              <p class="text-xs text-gray-400 mt-1">Desde {s.priceFrom}€ · {s.anchorLabel} en el Corredor →</p>
-            </a>
+              <h3 class="text-sm font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors m-0">
+                <a href={`/servicios/${s.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
+                  {s.title}
+                </a>
+              </h3>
+              <span aria-hidden="true" class="text-xs text-gray-400 mt-1 block">Desde {s.priceFrom}€ · {s.anchorLabel} en el Corredor →</span>
+            </article>
           ))}
         </div>
       </div>

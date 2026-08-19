@@ -678,15 +678,14 @@ const zones = [
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
         {zones.map(z => (
-          <a
-            href={`/reforma-banos/${z.slug}/`}
-            class="group block p-5 bg-[#F9F7F4] hover:bg-[#111827] transition-colors duration-200"
-          >
-            <p class="text-sm font-bold text-gray-900 group-hover:text-white transition-colors duration-200">
-              Reforma de baños en {z.name}
-            </p>
-            <p class="text-xs text-gray-400 mt-1 group-hover:text-gray-300 transition-colors duration-200">Ver precios →</p>
-          </a>
+          <article class="group relative p-5 bg-[#F9F7F4] hover:bg-[#111827] transition-colors duration-200">
+            <h3 class="text-sm font-bold text-gray-900 group-hover:text-white transition-colors duration-200 m-0">
+              <a href={`/reforma-banos/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
+                Reforma de baños en {z.name}
+              </a>
+            </h3>
+            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 group-hover:text-gray-300 transition-colors duration-200 block">Ver precios →</span>
+          </article>
         ))}
       </div>
 

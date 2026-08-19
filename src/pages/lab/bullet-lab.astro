@@ -1,0 +1,240 @@
+---
+// LAB — Bullet de marca Trazzo360
+// noindex · solo para aprobación interna
+const title = 'LAB · Bullet de marca';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>{title}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; }
+
+    /* ═══════════════════════════════════════════════════
+       BULLET DE MARCA — especificación CSS
+       Microcuadrado técnico 6×6 px, sin border-radius,
+       sin sombra, sin animación, flex-shrink:0.
+    ═══════════════════════════════════════════════════ */
+
+    /* Lista base con bullet de marca */
+    .list-marca {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .625rem;
+    }
+    .list-marca li {
+      display: flex;
+      align-items: flex-start;
+      gap: .625rem;
+      line-height: 1.55;
+      font-size: .9375rem;
+    }
+
+    /* Pseudo-elemento bullet: cuadrado técnico neutro claro */
+    .list-marca li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      flex: 0 0 6px;
+      border-radius: 0;
+      margin-top: 8.625px; /* (15px × 1.55lh − 6px) / 2 */
+      border: 1px solid #9CA3AF;
+      background: transparent;
+    }
+
+    /* Variante fondo oscuro */
+    .list-marca.dark li::before {
+      border-color: rgba(255,255,255,.35);
+    }
+
+    /* Variante compromisos (terracota) */
+    .list-marca.compromisos li::before {
+      border-color: #A85535;
+    }
+
+    /* ─── Secciones de muestra ─── */
+    .sample {
+      padding: 2.5rem;
+    }
+    .sample + .sample { border-top: 1px solid rgba(0,0,0,.06); }
+    .sample.bg-white  { background: #ffffff; }
+    .sample.bg-cream  { background: #F9F7F4; }
+    .sample.bg-dark   { background: #111827; }
+
+    .label {
+      font-size: .625rem;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      opacity: .4;
+    }
+    .bg-dark .label { color: #fff; }
+
+    .sample-title {
+      font-size: .875rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+    }
+    .bg-dark .sample-title { color: #fff; }
+    .bg-white .sample-title,
+    .bg-cream .sample-title { color: #111827; }
+
+    .list-marca li span {
+      font-size: .9375rem;
+      color: #374151;
+      line-height: 1.55;
+    }
+    .bg-dark .list-marca li span { color: #9CA3AF; }
+    .bg-dark .compromisos li span { color: #d1d5db; }
+
+    /* Comparativa — antes/después */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding: 2.5rem;
+      background: #f3f4f6;
+      border-top: 3px solid #A85535;
+    }
+    .compare-col h4 {
+      font-size: .6875rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      margin-bottom: 1rem;
+    }
+    .compare-col.after h4 { color: #A85535; }
+
+    /* Lista vieja (guion largo) */
+    .list-old {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .list-old li {
+      font-size: .9375rem;
+      color: #374151;
+      line-height: 1.55;
+    }
+
+    /* Banner de lab */
+    .lab-banner {
+      background: #fef08a;
+      border-bottom: 2px solid #ca8a04;
+      padding: .625rem 2.5rem;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+    .page-title {
+      padding: 2rem 2.5rem 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -.025em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lab-banner">LAB INTERNO · Bullet de marca Trazzo360 · Solo para aprobación</div>
+
+  <h1 class="page-title">Bullet de marca — 4 variantes</h1>
+
+  <!-- ══════════════════════════════════════════
+       1. FONDO BLANCO
+  ═══════════════════════════════════════════ -->
+  <div class="sample bg-white">
+    <p class="label">Fondo blanco · border 1px solid #9CA3AF</p>
+    <p class="sample-title">Qué cocinas reformamos más en el Corredor</p>
+    <ul class="list-marca">
+      <li><span>Conducto de extracción que puede ser compartido con otros pisos del bloque</span></li>
+      <li><span>Fontanería antigua que conviene revisar con la cocina ya abierta</span></li>
+      <li><span>Instalación eléctrica sin circuito dedicado para vitrocerámica ni lavavajillas</span></li>
+      <li><span>Apertura al salón condicionada por la estructura del tabique</span></li>
+      <li><span>Texto de ejemplo con dos líneas para verificar la alineación óptica del bullet con la primera línea del texto cuando se produce un salto de línea natural</span></li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       2. FONDO CREMA
+  ═══════════════════════════════════════════ -->
+  <div class="sample bg-cream">
+    <p class="label">Fondo crema #F9F7F4 · border 1px solid #9CA3AF</p>
+    <p class="sample-title">Cuándo conviene una reforma integral</p>
+    <ul class="list-marca">
+      <li><span>La instalación eléctrica es de los años 70–80 sin actualizar</span></li>
+      <li><span>La fontanería tiene muchos años sin intervención o ya ha dado problemas</span></li>
+      <li><span>Quieres cambiar la distribución de tabiques</span></li>
+      <li><span>La vivienda no ha tenido ninguna reforma desde la construcción</span></li>
+      <li><span>Línea larga de ejemplo que se parte en dos líneas para confirmar el comportamiento del bullet en textos multilinea dentro de fondo crema</span></li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       3. FONDO OSCURO
+  ═══════════════════════════════════════════ -->
+  <div class="sample bg-dark">
+    <p class="label">Fondo oscuro #111827 · border 1px solid rgba(255,255,255,.35)</p>
+    <p class="sample-title">Qué hacemos antes de empezar</p>
+    <ul class="list-marca dark">
+      <li><span>Protección de suelos y zonas comunes antes de empezar</span></li>
+      <li><span>Los materiales pedidos antes de la primera jornada: muebles, encimera y electrodomésticos confirmados antes del desescombro</span></li>
+      <li><span>Los primeros días son los más ruidosos; desde entonces el ritmo es más llevadero</span></li>
+      <li><span>El responsable avisa el horario de inicio cada mañana</span></li>
+      <li><span>Limpieza al terminar cada jornada</span></li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       4. LISTA DE COMPROMISOS (terracota)
+  ═══════════════════════════════════════════ -->
+  <div class="sample bg-dark">
+    <p class="label">Compromisos · border 1px solid #A85535 · solo cuando jerarquiza</p>
+    <p class="sample-title" style="color:#fff">Nuestros compromisos en la reforma</p>
+    <ul class="list-marca compromisos">
+      <li><span>Precio cerrado por contrato antes de empezar. Sin revisiones al alza.</span></li>
+      <li><span>Plazo fijado en el contrato. La fecha de entrega es un compromiso, no una estimación.</span></li>
+      <li><span>Pago por fases: 40% a la firma, 40% a mitad de obra, 20% a la entrega conforme.</span></li>
+      <li><span>Garantía de 2 años sobre la ejecución por defectos de instalación.</span></li>
+      <li><span>Comunicación de cualquier imprevisto antes de actuar. Ninguna decisión sin tu aprobación.</span></li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ANTES / DESPUÉS — comparativa
+  ═══════════════════════════════════════════ -->
+  <div class="compare">
+    <div class="compare-col before">
+      <h4>Antes — guion largo</h4>
+      <ul class="list-old">
+        <li>— Conducto de extracción compartido</li>
+        <li>— Fontanería antigua a revisar</li>
+        <li>— Sin circuito dedicado para vitrocerámica</li>
+        <li>— Apertura al salón condicionada</li>
+      </ul>
+    </div>
+    <div class="compare-col after">
+      <h4>Después — microcuadrado técnico</h4>
+      <ul class="list-marca" style="background:white;padding:1rem">
+        <li><span>Conducto de extracción compartido</span></li>
+        <li><span>Fontanería antigua a revisar</span></li>
+        <li><span>Sin circuito dedicado para vitrocerámica</span></li>
+        <li><span>Apertura al salón condicionada</span></li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>

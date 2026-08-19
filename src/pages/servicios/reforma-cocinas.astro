@@ -386,11 +386,11 @@ const tranches = [
           <p class="text-sm text-gray-600 leading-relaxed mb-4">
             Formato estrecho con muebles a ambos lados. Espacio de trabajo limitado y circulación incómoda cuando hay más de una persona. La ventilación suele ser el punto más crítico a resolver antes de elegir distribución.
           </p>
-          <ul class="text-sm text-gray-500 space-y-1.5">
-            <li>— Conducto de extracción que puede ser compartido con otros pisos del bloque</li>
-            <li>— Fontanería antigua que conviene revisar con la cocina ya abierta</li>
-            <li>— Instalación eléctrica sin circuito dedicado para vitrocerámica ni lavavajillas</li>
-            <li>— Apertura al salón condicionada por la estructura del tabique</li>
+          <ul class="list-marca">
+            <li><span>Conducto de extracción que puede ser compartido con otros pisos del bloque</span></li>
+            <li><span>Fontanería antigua que conviene revisar con la cocina ya abierta</span></li>
+            <li><span>Instalación eléctrica sin circuito dedicado para vitrocerámica ni lavavajillas</span></li>
+            <li><span>Apertura al salón condicionada por la estructura del tabique</span></li>
           </ul>
         </div>
 
@@ -400,11 +400,11 @@ const tranches = [
           <p class="text-sm text-gray-600 leading-relaxed mb-4">
             Más amplitud y un pasillo de tránsito hacia las habitaciones. La distribución es más funcional, pero los acabados de la época acumulan entre 20 y 30 años de desgaste. La apertura al salón es posible en muchos casos.
           </p>
-          <ul class="text-sm text-gray-500 space-y-1.5">
-            <li>— Azulejo de pequeño formato con rejuntas que ya no admiten limpieza efectiva</li>
-            <li>— Encimera de laminado con bordes levantados o deterioro en la zona del fregadero</li>
-            <li>— Muebles en buen estado estructural pero con estética desfasada</li>
-            <li>— Tabique interior habitualmente de pladur o ladrillo hueco</li>
+          <ul class="list-marca">
+            <li><span>Azulejo de pequeño formato con rejuntas que ya no admiten limpieza efectiva</span></li>
+            <li><span>Encimera de laminado con bordes levantados o deterioro en la zona del fregadero</span></li>
+            <li><span>Muebles en buen estado estructural pero con estética desfasada</span></li>
+            <li><span>Tabique interior habitualmente de pladur o ladrillo hueco</span></li>
           </ul>
         </div>
 
@@ -414,11 +414,11 @@ const tranches = [
           <p class="text-sm text-gray-600 leading-relaxed mb-4">
             Mayor superficie media y acceso a terraza o jardín. El reto no suele ser el espacio sino aprovechar bien la distribución y el triángulo de trabajo entre nevera, fregadero y fuegos.
           </p>
-          <ul class="text-sm text-gray-500 space-y-1.5">
-            <li>— Espacio para isla o barra americana si la distribución actual no la aprovecha</li>
-            <li>— Extracción directa al exterior más sencilla gracias a la estructura</li>
-            <li>— Posibilidad de integrar cocina con comedor si hay conexión visual directa</li>
-            <li>— Circulación entre los tres focos a menudo mejorable con redistribución</li>
+          <ul class="list-marca">
+            <li><span>Espacio para isla o barra americana si la distribución actual no la aprovecha</span></li>
+            <li><span>Extracción directa al exterior más sencilla gracias a la estructura</span></li>
+            <li><span>Posibilidad de integrar cocina con comedor si hay conexión visual directa</span></li>
+            <li><span>Circulación entre los tres focos a menudo mejorable con redistribución</span></li>
           </ul>
         </div>
 
@@ -570,15 +570,14 @@ const tranches = [
             Fase de obra civil
           </p>
           <p class="font-bold text-white text-sm mb-3">Sin acceso a la cocina</p>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.875rem">
+          <ul class="list-convivencia">
             {[
               'Protección de suelos y zonas comunes antes de empezar',
               'Los materiales pedidos antes de la primera jornada: muebles, encimera y electrodomésticos confirmados antes del desescombro',
               'Los primeros días son los más ruidosos; desde entonces el ritmo es más llevadero',
               'El responsable avisa el horario de inicio cada mañana',
             ].map(p => (
-              <li style="display:flex;gap:.625rem;align-items:flex-start">
-                <span style="color:rgba(255,255,255,.2);flex-shrink:0">—</span>
+              <li>
                 <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
               </li>
             ))}
@@ -591,15 +590,14 @@ const tranches = [
             Instalaciones y muebles
           </p>
           <p class="font-bold text-white text-sm mb-3">La cocina recupera funcionalidad progresivamente</p>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.875rem">
+          <ul class="list-convivencia">
             {[
               'Con las instalaciones terminadas el espacio empieza a tener forma',
               'Conforme avanza el montaje de muebles, el acceso a la cocina se va ampliando',
               'Si el plazo sin cocina es crítico, lo planificamos desde el inicio para reducir los días de inactividad total',
               'Limpieza al terminar cada jornada',
             ].map(p => (
-              <li style="display:flex;gap:.625rem;align-items:flex-start">
-                <span style="color:rgba(255,255,255,.2);flex-shrink:0">—</span>
+              <li>
                 <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
               </li>
             ))}
@@ -612,15 +610,14 @@ const tranches = [
             Entrega
           </p>
           <p class="font-bold text-white text-sm mb-3">Cocina completamente operativa</p>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.875rem">
+          <ul class="list-convivencia">
             {[
               'Electrodomésticos instalados y comprobados',
               'Fregadero en marcha, muebles nivelados, encimera sin marcas',
               'Limpieza final incluida en la reforma',
               '2 años de garantía sobre la ejecución desde la fecha de entrega',
             ].map(p => (
-              <li style="display:flex;gap:.625rem;align-items:flex-start">
-                <span style="color:rgba(255,255,255,.2);flex-shrink:0">—</span>
+              <li>
                 <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
               </li>
             ))}
@@ -775,22 +772,22 @@ const tranches = [
       <div class="grid md:grid-cols-2 gap-px bg-gray-100 mb-6" style="max-width:60rem">
         <div class="bg-white p-7">
           <p class="font-bold text-gray-900 mb-3 text-sm">Incluido en el presupuesto estándar</p>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-2">
-            <li>— Instalación de los electrodomésticos que el cliente aporta o selecciona</li>
-            <li>— Toma eléctrica independiente para horno y vitrocerámica o inducción</li>
-            <li>— Conexión de lavavajillas a fontanería y electricidad</li>
-            <li>— Extractor de humos: instalación y conexión al conducto existente o exterior</li>
-            <li>— Espacio previsto en muebles para el frigorífico integrado o de libre instalación</li>
+          <ul class="list-marca">
+            <li><span>Instalación de los electrodomésticos que el cliente aporta o selecciona</span></li>
+            <li><span>Toma eléctrica independiente para horno y vitrocerámica o inducción</span></li>
+            <li><span>Conexión de lavavajillas a fontanería y electricidad</span></li>
+            <li><span>Extractor de humos: instalación y conexión al conducto existente o exterior</span></li>
+            <li><span>Espacio previsto en muebles para el frigorífico integrado o de libre instalación</span></li>
           </ul>
         </div>
         <div class="bg-white p-7">
           <p class="font-bold text-gray-900 mb-3 text-sm">No incluido por defecto</p>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-2">
-            <li>— Compra de los electrodomésticos de superficie libre: puede gestionarse conjuntamente si se prefiere</li>
-            <li>— Apertura de conducto de extracción nuevo si no existe o no llega al exterior</li>
-            <li>— Cambio de instalación de gas si se pasa a inducción</li>
-            <li>— Microondas integrado en columna: requiere espacio de mueble específico y toma independiente</li>
-            <li>— Ampliación del cuadro eléctrico general si no tiene capacidad</li>
+          <ul class="list-marca">
+            <li><span>Compra de los electrodomésticos de superficie libre: puede gestionarse conjuntamente si se prefiere</span></li>
+            <li><span>Apertura de conducto de extracción nuevo si no existe o no llega al exterior</span></li>
+            <li><span>Cambio de instalación de gas si se pasa a inducción</span></li>
+            <li><span>Microondas integrado en columna: requiere espacio de mueble específico y toma independiente</span></li>
+            <li><span>Ampliación del cuadro eléctrico general si no tiene capacidad</span></li>
           </ul>
         </div>
       </div>

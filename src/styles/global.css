@@ -8,6 +8,65 @@
   --color-light: #F9F7F4;
 }
 
+/* === Bullet de marca — microcuadrado técnico 6×6px === */
+.list-marca {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .625rem;
+}
+.list-marca li {
+  display: flex;
+  align-items: flex-start;
+  gap: .625rem;
+  line-height: 1.55;
+  font-size: .9375rem;
+  color: #374151;
+}
+.list-marca li::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 0;
+  margin-top: 8.625px; /* (15px × 1.55 − 6px) / 2 */
+  border: 1px solid #9CA3AF;
+  background: transparent;
+}
+.list-marca.dark li { color: #9CA3AF; }
+.list-marca.dark li::before { border-color: rgba(255,255,255,.35); }
+.list-marca.compromisos li { color: #d1d5db; }
+.list-marca.compromisos li::before { border-color: #A85535; }
+
+/* Convivencia: texto pequeño (.8125rem / 1.5lh) sobre fondo oscuro */
+.list-convivencia {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .875rem;
+}
+.list-convivencia li {
+  display: flex;
+  align-items: flex-start;
+  gap: .625rem;
+}
+.list-convivencia li::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 0;
+  margin-top: 6.75px; /* (13px × 1.5 − 6px) / 2 */
+  border: 1px solid rgba(255,255,255,.2);
+  background: transparent;
+}
+
 @layer base {
   html { scroll-behavior: smooth; }
   body { @apply antialiased text-gray-900 bg-white; }

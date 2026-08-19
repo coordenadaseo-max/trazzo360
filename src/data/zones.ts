@@ -5,7 +5,7 @@ export const ZONES = [
     primary: true,
     province: 'Madrid',
     desc: 'Ciudad histórica a 35 km de Madrid. Reformas de pisos, baños, cocinas y locales en Alcalá y sus barrios.',
-    heroIntro: 'Alcalá de Henares es una de las ciudades donde más proyectos ejecutamos en el Corredor. Conocemos el parque residencial, los plazos del Ayuntamiento y los proveedores locales. Si tienes un proyecto de reforma en Alcalá, lo gestionamos todo desde la primera visita hasta la entrega: un único interlocutor, precio cerrado y plazo garantizado por escrito.',
+    heroIntro: 'Si tienes un proyecto de reforma en Alcalá de Henares, lo gestionamos todo desde la primera visita hasta la entrega: un único interlocutor, precio cerrado y plazo garantizado por escrito. La visita técnica evalúa el estado real de la vivienda antes de comprometer ningún número.',
     localAngle: 'es una ciudad con gran parque de edificios de los años 70 y 80 en barrios como El Val, Barrio del Pilar y Reyes Católicos, donde la demanda de actualización de instalaciones eléctricas, fontanería y acabados es muy elevada',
     neighborhoods: ['Casco Histórico', 'Nueva Alcalá', 'Reyes Católicos', 'El Val', 'Barrio del Pilar', 'Ensanche', 'La Garena', 'Espartales'],
     m2BarrioNotes: [

@@ -22,7 +22,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cuánto cuesta una reforma de baño en Alcalá de Henares?',
-      a: 'Una reforma de baño con ducha de obra, alicatado completo hasta el techo y sanitarios nuevos parte de 3.500-4.500€ en acabados de gama media. El precio final depende de los metros, los materiales elegidos y si conviene revisar la fontanería en la misma obra. La visita técnica gratuita da una cifra ajustada al estado real.',
+      a: 'Una reforma de baño completo —ducha de obra, alicatado hasta el techo y sanitarios— parte de 2.800€ en acabado esencial para baños de hasta 4 m². El precio final depende de los metros, los materiales elegidos y si conviene revisar la fontanería en la misma obra. La visita técnica gratuita da una cifra ajustada al estado real.',
     },
     {
       q: '¿Cuánto tiempo lleva una reforma integral en Alcalá de Henares?',

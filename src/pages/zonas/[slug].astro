@@ -5,7 +5,8 @@ import { SITE, SERVICES, ZONES, ZONE_FAQS, SERVICE_ICONS, RELATED_ZONES } from '
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () =>
-  ZONES.map(z => ({ params: { slug: z.slug }, props: { zone: z } }));
+  ZONES.filter(z => z.slug !== 'alcala-de-henares')
+       .map(z => ({ params: { slug: z.slug }, props: { zone: z } }));
 
 const { zone } = Astro.props;
 

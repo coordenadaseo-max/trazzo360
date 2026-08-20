@@ -104,7 +104,6 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-3xl">
         <div class="flex items-center gap-3 mb-6">
-          <div class="w-8 h-0.5 bg-[#A85535]"></div>
           <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">{SITE.zone}</span>
         </div>
         <h1 id="h-hero" class="text-4xl lg:text-6xl font-black text-white mb-5" style="letter-spacing:-0.02em">
@@ -138,7 +137,6 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
         <h2 id="h-descripcion" class="text-2xl font-black text-gray-900 mb-3">
           {service.title} en el Corredor del Henares
         </h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
         {service.body ? (
           (service.body as {type: string; text: string; link?: {text: string; serviceSlug: string}}[]).map((block) =>
             block.type === 'h3' ? (
@@ -157,7 +155,7 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
         <div class="grid grid-cols-2 gap-4 mb-8">
           {['Precio cerrado por contrato', 'Un interlocutor único de principio a fin', 'Plazo de entrega garantizado', 'Visita y presupuesto gratuitos'].map(item => (
             <div class="flex items-center gap-3 p-4 bg-gray-50">
-              <div class="w-5 h-5 rounded-full bg-[#A85535] flex items-center justify-center flex-shrink-0">
+              <div class="w-5 h-5 bg-[#A85535] flex items-center justify-center flex-shrink-0">
                 <svg class="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               </div>
               <span class="text-sm font-medium text-gray-800">{item}</span>
@@ -194,7 +192,6 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
         <h2 id="h-por-que" class="text-2xl font-black text-gray-900 mb-4">
           Por qué elegir Trazzo360 para {gerund} en el Corredor del Henares
         </h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
         <div class="space-y-4">
           {[
             'Los mismos equipos en cada obra. Un único interlocutor de principio a fin.',
@@ -205,7 +202,7 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
             'Gestión de licencias y permisos de obra incluida cuando la normativa lo requiere.',
           ].map(item => (
             <div class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-[#A85535] flex items-center justify-center flex-shrink-0 mt-0.5">
+              <div class="w-5 h-5 bg-[#A85535] flex items-center justify-center flex-shrink-0 mt-0.5">
                 <svg class="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                 </svg>
@@ -244,7 +241,6 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
         <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
           Sabemos que iniciar una obra implica confiar en quien te la va a ejecutar. Por eso nuestro proceso está diseñado para que tengas certeza en cada fase: sabes cuándo empieza, cuándo termina y cuánto cuesta desde el primer día. Así organizamos cada proyecto de {gerund} en el Corredor del Henares, sin imprevistos ni cambios de precio a mitad de obra.
         </p>
-        <div class="w-12 h-1 bg-[#A85535] mb-8"></div>
         <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style="list-style:none;padding:0;margin:0">
           {(service.processSteps as {title:string;desc:string}[]).map((step, i) => (
             <li class="flex gap-4 p-6 bg-gray-50 border border-gray-100">
@@ -270,9 +266,8 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
           ¿Cuánto cuestan las {gerund} en el Corredor del Henares?
         </h2>
         <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
-          Los precios que ves a continuación son orientativos, calculados sobre proyectos reales que hemos ejecutado en la zona. El presupuesto exacto depende del estado previo de tu vivienda o local, los materiales que elijas y el alcance de la obra. Visita gratuita y presupuesto cerrado en 48 horas, sin ningún compromiso.
+          Los precios que ves a continuación son orientativos, calculados según superficie, alcance y nivel de calidad. El presupuesto exacto depende del estado previo de tu vivienda o local, los materiales que elijas y el alcance de la obra. Visita gratuita y presupuesto cerrado en 48 horas, sin ningún compromiso.
         </p>
-        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
         <table class="w-full border border-gray-100 border-collapse text-sm">
           <caption class="sr-only">Precios orientativos de {gerund} en el Corredor del Henares</caption>
           <thead>
@@ -307,11 +302,10 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
       <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
         Trabajamos en todos los municipios del Corredor del Henares sin coste de desplazamiento adicional. Tanto si tu vivienda, local o comunidad está en el núcleo urbano como en una urbanización, cubrimos toda la zona. Haz clic en tu municipio para ver los precios específicos y cómo trabajamos allí.
       </p>
-      <div class="w-12 h-1 bg-[#A85535] mb-8"></div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         {ZONES.map(z => (
           <a href={`/${service.slug}/${z.slug}/`}
-            class="block p-4 bg-gray-50 border border-gray-100 hover:border-[#A85535] hover:shadow-md transition-all group">
+            class="block p-4 bg-gray-50 border border-gray-100 hover:border-[#A85535] transition-colors group">
             <p class="font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors text-sm">{z.name}</p>
             <p class="text-xs text-gray-400 mt-1 group-hover:text-[#A85535]/70 transition-colors">{service.anchorLabel} en {z.name} →</p>
           </a>
@@ -332,7 +326,7 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {relatedServicesData.map(s => (
-            <article class="group relative p-5 bg-white border-b-2 border-transparent hover:border-[#A85535] transition-all">
+            <article class="group relative p-5 bg-white border-b-2 border-transparent hover:border-[#A85535] transition-colors">
               <span class="w-7 h-7 text-[#A85535] block mb-2"><Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} /></span>
               <h3 class="text-sm font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors m-0">
                 <a href={`/servicios/${s.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
@@ -355,7 +349,6 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
         <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
           Es normal tener dudas sobre plazos, precios, licencias y qué incluye exactamente la obra. A continuación respondemos las preguntas que más nos hacen antes de contratar. Si no encuentras la tuya, llámanos o escríbenos por WhatsApp y te respondemos el mismo día.
         </p>
-        <div class="w-12 h-1 bg-[#A85535] mb-8"></div>
         <div class="divide-y divide-gray-100">
           {service.faqs.map(faq => (
             <details class="group py-5">
@@ -372,11 +365,11 @@ const schemas = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
   )}
 
   <!-- CTA Final -->
-  <section class="py-16 bg-[#A85535]" aria-labelledby="h-cta-final">
+  <section class="py-16 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">¿Necesitas {necesitas} en el Corredor del Henares?</h2>
       <p class="text-white/80 mb-7">Visita gratuita. Presupuesto cerrado en 48h. Plazo garantizado por escrito.</p>
-      <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">
+      <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8f4329] transition-colors">
         Solicitar valoración gratuita
       </a>
     </div>

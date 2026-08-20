@@ -290,7 +290,7 @@ export const META: Record<string, string> = {
   'coslada':                'Reforma integral en Coslada: evaluamos instalaciones y humedades en visita. Primera obra integral en vivienda social. Presupuesto cerrado que no cambia a mitad.',
   'san-fernando-de-henares':'Reforma integral en San Fernando de Henares: casco antiguo o Parque Roma, el alcance cambia. Instalaciones evaluadas en visita gratuita. Precio cerrado.',
   'guadalajara':            'Reforma integral en Guadalajara: permisos en capital de provincia. Aislamiento en clima continental. Instalaciones evaluadas en visita gratuita. Precio cerrado.',
-  'azuqueca-de-henares':    'Reforma integral en Azuqueca de Henares: bloques 80-90 con instalaciones aprovechables. Más margen para distribución y acabados. Precio cerrado. Desde 24.900€.',
+  'azuqueca-de-henares':    'Reforma integral en Azuqueca de Henares: bloques 80-90 con instalaciones aprovechables. Más margen para distribución y acabados. Precio cerrado.',
   'meco':                   'Reforma integral en Meco: adosados de dos plantas con cubierta y terrazas. Evaluamos el alcance completo en visita gratuita. Precio cerrado sin sorpresas.',
   'camarma-de-esteruelas':  'Reforma integral en Camarma de Esteruelas: viviendas unifamiliares 2000-2010, primera reforma integral. Instalaciones en buen estado. Precio cerrado.',
 };

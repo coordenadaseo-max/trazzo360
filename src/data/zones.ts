@@ -48,7 +48,7 @@ export const ZONES = [
     primary: true,
     province: 'Madrid',
     desc: 'Municipio de referencia en el Corredor. Precio cerrado, presupuesto gratis en 24h.',
-    heroIntro: 'Torrejón de Ardoz es uno de los municipios donde más proyectos ejecutamos en el Corredor. Si estás valorando si tiene más sentido hacer la reforma de una sola vez o ir por fases, o qué parte de la vivienda priorizar, la visita técnica gratuita te da una respuesta concreta basada en el estado real de tu vivienda.',
+    heroIntro: 'Si tienes un proyecto de reforma en Torrejón de Ardoz y estás valorando si tiene más sentido hacerlo de una sola vez o ir por fases, la visita técnica gratuita te da una respuesta concreta basada en el estado real de tu vivienda. Precio cerrado y plazo garantizado desde el primer día.',
     localAngle: 'cuenta con una alta concentración de bloques de los años 70 y 90 en barrios como Soto del Henares, Parque Cataluña y Las Veredillas, donde los propietarios buscan modernizar distribuciones anticuadas y renovar baños y cocinas',
     neighborhoods: ['Centro', 'Casco Antiguo', 'Soto del Henares', 'Parque Cataluña', 'Las Veredillas', 'San José', 'Fronteras', 'Cobos'],
     m2BarrioNotes: [
@@ -58,7 +58,7 @@ export const ZONES = [
       },
       {
         barrio: 'Soto del Henares',
-        text: 'Bloques de los años 80 con bañeras que ya tienen 40 años. La actuación más habitual: cambio de bañera por ducha de obra con alicatado completo hasta el techo. La mayoría de los proyectos en esta zona incluyen también sustitución de sanitarios y cambio del mueble de baño. Cuando la fontanería lleva décadas sin revisarse, conviene evaluarla en la misma visita.',
+        text: 'Bloques de los años 80 con bañeras que ya tienen 40 años. La actuación más habitual: cambio de bañera por ducha de obra con alicatado completo hasta el techo, con sustitución de sanitarios y cambio del mueble de baño. Cuando la fontanería lleva décadas sin revisarse, conviene evaluarla en la misma visita.',
       },
       {
         barrio: 'Parque Cataluña y Las Veredillas',

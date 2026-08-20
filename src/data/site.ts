@@ -31,8 +31,11 @@ export { IMAGE_SLOTS } from './images';
 export { LEGAL } from './legal';
 
 // ── Proyectos antes/después
-// tipo: 'obra-propia' — solo cuando existan las fotos reales en /public/img/proyectos/
-// Mientras las fotos no existan el componente renderiza el fallback visual (paso 5)
+// PROTECCIÓN: published: false bloquea renderizado público.
+// Solo activar un proyecto cuando existan fotos reales verificadas en /public/img/proyectos/
+// y el proyecto haya sido confirmado como obra real ejecutada.
+// Los componentes deben filtrar con PROJECTS.filter(p => p.published) antes de renderizar.
+// Nunca activar por la mera presencia accidental de un archivo de imagen con el mismo nombre.
 export const PROJECTS = [
   {
     slug: 'reforma-integral-alcala',
@@ -42,6 +45,7 @@ export const PROJECTS = [
     duration: '10 semanas',
     service: 'Reforma integral',
     type: 'obra-propia' as const,
+    published: false,
     desc: 'Redistribución completa, instalaciones eléctricas y de fontanería nuevas, baño, cocina, suelos de porcelánico y pintura final.',
     imgBefore: '/img/proyectos/reforma-integral-alcala-antes.jpg',
     imgAfter: '/img/proyectos/reforma-integral-alcala-despues.jpg',
@@ -54,6 +58,7 @@ export const PROJECTS = [
     duration: '2 semanas',
     service: 'Reforma de cocina',
     type: 'obra-propia' as const,
+    published: false,
     desc: 'Cocina nueva con muebles a medida, encimera de silestone, electrodomésticos integrados y alicatado nuevo de gran formato.',
     imgBefore: '/img/proyectos/cocina-torrejon-antes.jpg',
     imgAfter: '/img/proyectos/cocina-torrejon-despues.jpg',
@@ -66,6 +71,7 @@ export const PROJECTS = [
     duration: '8 días',
     service: 'Reforma de baño',
     type: 'obra-propia' as const,
+    published: false,
     desc: 'Cambio de bañera por ducha de obra, sanitarios nuevos, mampara fija, alicatado y microcemento en suelo.',
     imgBefore: '/img/proyectos/bano-coslada-antes.jpg',
     imgAfter: '/img/proyectos/bano-coslada-despues.jpg',
@@ -78,6 +84,7 @@ export const PROJECTS = [
     duration: '3 semanas',
     service: 'Local comercial',
     type: 'obra-propia' as const,
+    published: false,
     desc: 'Transformación de local vacío en espacio comercial. Instalaciones completas y tramitación de licencia de actividad incluidas.',
     imgBefore: '/img/proyectos/local-san-fernando-antes.jpg',
     imgAfter: '/img/proyectos/local-san-fernando-despues.jpg',

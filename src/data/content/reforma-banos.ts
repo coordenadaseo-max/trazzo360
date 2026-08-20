@@ -285,12 +285,12 @@ export const FAQS: Record<string, { q: string; a: string }[]> = {
 };
 
 export const META: Record<string, string> = {
-  'alcala-de-henares':      'Reforma de baño en Alcalá de Henares: evaluamos soporte e instalaciones en visita gratuita. Casco antiguo o barrios recientes. Precio cerrado. Desde 3.200€.',
-  'torrejon-de-ardoz':      'Reforma de baño en Torrejón de Ardoz: bloques de los 80 con alicatado original. Bañera por ducha o reforma completa. Precio cerrado. Desde 3.200€.',
-  'coslada':                'Reforma de baño en Coslada: baños compactos con historial de humedad. Impermeabilización incluida desde el primer presupuesto. Precio cerrado. Desde 3.200€.',
-  'san-fernando-de-henares':'Reforma de baño en San Fernando de Henares: casco antiguo o Parque Roma, el alcance cambia. Fontanería evaluada en visita. Precio cerrado. Desde 3.200€.',
-  'guadalajara':            'Reforma de baño en Guadalajara: centro histórico o expansión reciente. Accesibilidad sin obra adicional mayor. Permisos incluidos. Precio cerrado. Desde 3.200€.',
-  'azuqueca-de-henares':    'Reforma de baño en Azuqueca de Henares: bloques 80-90, instalaciones que suelen aguantar. Reforma de acabados sin tocar fontanería. Precio cerrado. Desde 3.200€',
-  'meco':                   'Reforma de baño en Meco: adosados con baños de 6 a 9 m². Ducha de obra, doble lavabo o separación de zonas. Precio cerrado. Desde 3.200€.',
+  'alcala-de-henares':      'Reforma de baño en Alcalá de Henares: evaluamos soporte e instalaciones en visita gratuita. Casco antiguo o barrios recientes. Precio cerrado. Desde 2.800€.',
+  'torrejon-de-ardoz':      'Reforma de baño en Torrejón de Ardoz: bloques de los 80 con alicatado original. Bañera por ducha o reforma completa. Precio cerrado. Desde 2.800€.',
+  'coslada':                'Reforma de baño en Coslada: baños compactos con historial de humedad. Impermeabilización incluida desde el primer presupuesto. Precio cerrado. Desde 2.800€.',
+  'san-fernando-de-henares':'Reforma de baño en San Fernando de Henares: casco antiguo o Parque Roma, el alcance cambia. Fontanería evaluada en visita. Precio cerrado. Desde 2.800€.',
+  'guadalajara':            'Reforma de baño en Guadalajara: centro histórico o expansión reciente. Accesibilidad sin obra adicional mayor. Permisos incluidos. Precio cerrado. Desde 2.800€.',
+  'azuqueca-de-henares':    'Reforma de baño en Azuqueca de Henares: bloques 80-90, instalaciones que suelen aguantar. Reforma de acabados sin tocar fontanería. Precio cerrado. Desde 2.800€',
+  'meco':                   'Reforma de baño en Meco: adosados con baños de 6 a 9 m². Ducha de obra, doble lavabo o separación de zonas. Precio cerrado. Desde 2.800€.',
   'camarma-de-esteruelas':  'Reforma de baño en Camarma de Esteruelas: urbanizaciones 2000-2010 con materiales de 15-20 años. Varios baños, alcances distintos. Precio cerrado.',
 };

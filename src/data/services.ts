@@ -86,8 +86,8 @@ export const SERVICES = [
       { type: 'h3', text: '¿Necesitas licencia para reformar el baño? Lo que dice la normativa' },
       { type: 'p',  text: 'El trámite depende del alcance de la reforma y de la normativa municipal aplicable. Una renovación interior sin afectar a instalaciones comunes suele considerarse obra menor, pero los requisitos exactos varían por ayuntamiento: nos encargamos de informarte y gestionarlo. La impermeabilización debe resolverse correctamente en las zonas expuestas al agua para evitar filtraciones hacia soportes y estancias colindantes: es la razón por la que presupuestos más baratos que la omiten acaban siendo más caros cuando aparecen las humedades.' },
     ],
-    priceFrom: '3.200',
-    priceDesc: 'Reforma completa de baño',
+    priceFrom: '2.800',
+    priceDesc: 'Baño hasta 4 m² · esencial · sin IVA',
     processSteps: [
       { title: 'Visita y diseño', desc: 'Medimos el baño y te mostramos opciones de distribución, materiales y acabados ajustados a tu presupuesto.' },
       { title: 'Retirada y desescombro', desc: 'Retiramos la bañera o ducha anterior, alicatados y solado existente. Limpieza completa del espacio.' },
@@ -97,7 +97,7 @@ export const SERVICES = [
     ],
     priceTable: [
       { label: 'Cambio de bañera por ducha (sin cambio de alicatado)', price: 'Desde 1.800€', includes: 'Plato, mampara y fontanería' },
-      { label: 'Reforma completa baño pequeño (hasta 5 m²)', price: 'Desde 3.200€', includes: 'Alicatado, sanitarios y mueble' },
+      { label: 'Reforma completa baño pequeño (hasta 4 m²)', price: 'Desde 2.800€', includes: 'Alicatado, sanitarios y mueble' },
       { label: 'Reforma completa baño grande (6–8 m²)', price: 'Desde 4.500€', includes: 'Con mueble a medida y ducha de obra' },
       { label: 'Reforma con cambio de distribución', price: 'Desde 5.500€', includes: 'Incluye fontanería nueva completa' },
     ],
@@ -150,8 +150,8 @@ export const SERVICES = [
       { type: 'h3', text: 'Instalación eléctrica en la cocina: qué hay que revisar antes de presupuestar' },
       { type: 'p',  text: 'Antes de cerrar la distribución de una cocina nueva, conviene revisar si la instalación eléctrica existente puede asumir los electrodomésticos y consumos previstos. Si no cumple las necesidades del nuevo diseño, deberá adaptarse dentro de la reforma. La instalación eléctrica queda incluida en el presupuesto cerrado cuando el alcance la requiere. Si la reforma incluye abrir la cocina al salón, tramitamos también la licencia de obra menor cuando corresponde.' },
     ],
-    priceFrom: '5.500',
-    priceDesc: 'Reforma completa de cocina',
+    priceFrom: '5.000',
+    priceDesc: 'Cocina hasta 8 m² · esencial · sin IVA',
     processSteps: [
       { title: 'Diseño y planimetría', desc: 'Diseñamos tu cocina en 2D con distribución óptima según el espacio. Selección de materiales, muebles y electrodomésticos.' },
       { title: 'Desescombro', desc: 'Retirada de muebles y revestimientos anteriores. Preparación del espacio para la nueva instalación.' },
@@ -160,9 +160,9 @@ export const SERVICES = [
       { title: 'Encimera y acabados', desc: 'Colocación de encimera, instalación de fregadero, grifo y últimos remates. Limpieza y entrega.' },
     ],
     priceTable: [
-      { label: 'Cocina hasta 8 m² (muebles y electrodomésticos)', price: 'Desde 5.500€', includes: 'Sin obras de albañilería' },
-      { label: 'Cocina 8–12 m² (reforma completa)', price: 'Desde 8.000€', includes: 'Con alicatado, electricidad y fontanería' },
-      { label: 'Cocina 12–18 m² (reforma completa)', price: 'Desde 12.000€', includes: 'Muebles a medida incluidos' },
+      { label: 'Cocina hasta 8 m² (muebles y electrodomésticos)', price: 'Desde 5.000€', includes: 'Sin obras de albañilería' },
+      { label: 'Cocina 8–12 m² (reforma completa)', price: 'Desde 6.000€', includes: 'Con alicatado, electricidad y fontanería' },
+      { label: 'Cocina 12–16 m² (reforma completa)', price: 'Desde 7.500€', includes: 'Muebles a medida incluidos' },
       { label: 'Cocina americana o con isla', price: 'Desde 14.000€', includes: 'Con apertura al salón y proyecto técnico' },
     ],
     faqs: [
@@ -172,7 +172,7 @@ export const SERVICES = [
       },
       {
         q: '¿Cuánto tiempo estaré sin poder usar la cocina?',
-        a: 'Entre 2 y 4 semanas para una reforma completa. La primera mitad corresponde a la obra civil: demolición, electricidad, fontanería y alicatado. La segunda mitad, con muebles y electrodomésticos instalados, permite ir recuperando funcionalidad. Si los materiales están pedidos antes de empezar, no hay pausas por espera de suministros.',
+        a: 'Entre 3 y 5 semanas para una reforma completa esencial. La primera fase corresponde a la obra civil: demolición, electricidad, fontanería y alicatado. La segunda, con muebles y electrodomésticos instalados, permite ir recuperando funcionalidad. Si los materiales están pedidos antes de empezar, no hay pausas por espera de suministros.',
       },
       {
         q: '¿Debería abrir la cocina al salón o mantenerla cerrada?',
@@ -209,9 +209,9 @@ export const SERVICES = [
     desc: 'Reforma de pisos antiguos y modernos, áticos y chalets: suelos, carpintería, redistribución de tabiques, baño, cocina y pintura. Precio cerrado.',
     body: [
       { type: 'h3', text: 'Reforma parcial o integral: cómo saber qué necesita tu vivienda' },
-      { type: 'p',  text: 'La clave está en el estado de las instalaciones. Si el cuadro eléctrico y la fontanería funcionan correctamente, suelos nuevos, baño, cocina y pintura pueden transformar el piso completamente por menos de 20.000€ sin necesitar obra pesada. Si las instalaciones son de los años 70 u 80 y hay que renovarlas, la forma más eficiente es hacer todo a la vez con el piso abierto una sola vez: eso ya es territorio de reforma integral, con un presupuesto desde 24.900€. En la visita evaluamos el estado real y te decimos exactamente en qué punto está tu vivienda.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
+      { type: 'p',  text: 'La clave está en el estado de las instalaciones. Si el cuadro eléctrico y la fontanería funcionan correctamente, suelos nuevos, baño, cocina y pintura pueden transformar el piso completamente por menos de 20.000€ sin necesitar obra pesada. Si las instalaciones son de los años 70 u 80 y hay que renovarlas, la forma más eficiente es hacer todo a la vez con el piso abierto una sola vez: eso ya es territorio de reforma integral, con un presupuesto calculado según superficie y alcance. En la visita evaluamos el estado real y te decimos exactamente en qué punto está tu vivienda.', link: { text: 'reforma integral', serviceSlug: 'reformas-integrales' } },
       { type: 'h3', text: 'Qué da más por menos: cómo priorizar cuando no puedes hacerlo todo' },
-      { type: 'p',  text: 'Con 15.000–20.000€ y las instalaciones en buen estado puedes renovar los tres espacios de mayor impacto: baño completo (3.200–4.500€), cocina con muebles y electrodomésticos (5.500–8.000€), suelos nuevos en toda la vivienda (3.000–4.500€) y pintura (1.500–2.500€). Si el presupuesto es más ajustado, suelos nuevos y pintura en todo el piso son lo que más cambia la percepción visual del conjunto por el menor coste por metro cuadrado. La carpintería interior (puertas y armarios) transforma la percepción del espacio interior con un coste por zona contenido.' },
+      { type: 'p',  text: 'Con 15.000–20.000€ y las instalaciones en buen estado puedes renovar los tres espacios de mayor impacto: baño completo (2.800–4.500€), cocina con muebles y electrodomésticos (5.000–7.500€), suelos nuevos en toda la vivienda (3.000–4.500€) y pintura (1.500–2.500€). Si el presupuesto es más ajustado, suelos nuevos y pintura en todo el piso son lo que más cambia la percepción visual del conjunto por el menor coste por metro cuadrado. La carpintería interior (puertas y armarios) transforma la percepción del espacio interior con un coste por zona contenido.' },
       { type: 'h3', text: 'Reformar para vender o alquilar: qué conviene priorizar' },
       { type: 'p',  text: 'En pisos de los años 70–90 en el Corredor del Henares, una reforma de 15.000–20.000€ concentrada en baño, cocina y suelos puede mejorar significativamente la posición del piso en el mercado y reducir el tiempo hasta la venta. Para alquiler, suelos nuevos y pintura son la inversión más eficiente: es lo primero que ve el inquilino y lo que determina el perfil de persona y la renta posible. Para venta, baño y cocina tienen mayor impacto. Te orientamos en la visita sobre qué reformas tienen mayor impacto según el estado y el objetivo de tu vivienda.' },
     ],

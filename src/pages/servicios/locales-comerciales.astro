@@ -4,7 +4,7 @@ import Compromisos from '../../components/Compromisos.astro';
 import { SITE } from '../../data/site';
 
 const title = 'Reforma de Locales y Oficinas en el Corredor | Trazzo360';
-const description = 'Reforma de locales y oficinas en el Corredor del Henares: electricidad, fontanería, pladur y licencia de actividad. Apertura garantizada. Precio cerrado.';
+const description = 'Reforma de locales y oficinas en el Corredor del Henares: electricidad, fontanería, pladur y tramitación de licencia de actividad si aplica. Precio cerrado.';
 
 const serviceSchema = {
   '@context': 'https://schema.org',
@@ -13,7 +13,6 @@ const serviceSchema = {
   description,
   provider: { '@type': 'GeneralContractor', '@id': `${SITE.url}/#business`, name: SITE.name },
   areaServed: ['Torrejón de Ardoz','Alcalá de Henares','Coslada','San Fernando de Henares','Guadalajara','Azuqueca de Henares','Meco','Camarma de Esteruelas'],
-  offers: { '@type': 'Offer', price: '8000', priceCurrency: 'EUR', description: 'Reforma de local comercial hasta 40 m² desde 8.000€' },
 };
 
 const breadcrumbSchema = {
@@ -117,18 +116,15 @@ const zones = [
   <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-3xl">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-8 h-0.5 bg-[#A85535]"></div>
-          <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">Reforma local comercial · Oficinas · Corredor del Henares</span>
-        </div>
-        <h1 id="h-hero" class="text-4xl lg:text-6xl font-black text-white mb-6" style="letter-spacing:-0.02em">
-          Reforma de locales<br/>
-          <span class="text-[#A85535]">y oficinas en el Corredor</span>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">Reforma local comercial · Oficinas · Corredor del Henares</p>
+        <h1 id="h-hero" class="text-white mb-6" style="letter-spacing:-0.02em">
+          <span class="block text-4xl lg:text-6xl font-black">Reforma de locales y oficinas en el Corredor del Henares</span>
+          <span class="block text-xl lg:text-2xl font-bold text-gray-300 mt-3">La fecha de entrega de la obra queda fijada en el contrato antes de empezar.</span>
         </h1>
 
         <div role="doc-abstract" class="border-l-4 border-[#A85535] pl-6 mb-6">
           <p class="text-lg text-gray-300 leading-relaxed">
-            Transformamos locales vacíos en negocios abiertos al público: reforma local comercial, hostelería, oficinas y clínicas. Tramitación de licencia de actividad incluida. Fecha de apertura fijada en el contrato antes de empezar la obra.
+            Transformamos locales vacíos en espacios listos para operar: hostelería, comercio, oficinas y actividades de servicio. La obra se entrega en el plazo fijado en el contrato. En la visita técnica revisamos qué tramitaciones corresponden a tu actividad y cómo coordinarlas con la planificación de la obra.
           </p>
         </div>
 
@@ -156,7 +152,6 @@ const zones = [
         <h2 id="h-parque" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Qué tipos de locales reformamos en el Corredor del Henares
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
 
       <p class="text-gray-700 leading-relaxed mb-8">
@@ -207,39 +202,38 @@ const zones = [
         <h2 id="h-reforma-oficinas" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Reforma de oficinas: puestos de trabajo, acústica y climatización por zonas
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <p class="text-gray-700 leading-relaxed mb-8">
         La reforma de oficinas tiene una lógica diferente a la del comercio o la hostelería. El resultado no se evalúa por el impacto visual el primer día: se evalúa por el confort de trabajo a los seis meses. Una oficina bien reformada es silenciosa cuando hace falta, fresca en agosto, caliente en enero, con iluminación que no cansa la vista y con puntos de datos donde se necesitan, no donde llegaba el cable anterior.
       </p>
       <div class="grid md:grid-cols-2 gap-6 mb-8">
         <div class="bg-white p-7">
-          <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
+
           <h3 class="text-base font-bold text-gray-900 mb-2">Distribución de puestos de trabajo</h3>
           <p class="text-sm text-gray-600 leading-relaxed">El primer proyecto de una reforma de oficinas es la distribución: puestos individuales, trabajo compartido, sala de reuniones con privacidad acústica real y zona de descanso. Cada decisión de distribución tiene un impacto directo en las instalaciones necesarias.</p>
         </div>
         <div class="bg-white p-7">
-          <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
+
           <h3 class="text-base font-bold text-gray-900 mb-2">Acústica y tabiques de separación</h3>
           <p class="text-sm text-gray-600 leading-relaxed">Las particiones de pladur o vidrio se dimensionan según el uso. Una sala de reuniones necesita aislamiento acústico real, no solo visual. Las particiones de vidrio con cámara de aire y perfilería acústica combinan privacidad y sensación de espacio.</p>
         </div>
         <div class="bg-white p-7">
-          <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
+
           <h3 class="text-base font-bold text-gray-900 mb-2">Climatización por zonas independientes</h3>
           <p class="text-sm text-gray-600 leading-relaxed">Las zonas de servidores, las salas de reuniones de uso intensivo y los puestos individuales tienen demandas distintas. La solución habitual son los splits inverter con control independiente o los sistemas de conductos con termostato por zona. El dimensionado sin tener en cuenta los aportes de calor internos (equipos, personas) es el error más frecuente.</p>
         </div>
         <div class="bg-white p-7">
-          <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
+
           <h3 class="text-base font-bold text-gray-900 mb-2">Cableado estructurado y puntos de datos</h3>
           <p class="text-sm text-gray-600 leading-relaxed">El cableado de red se planifica antes de cerrar techos y suelos. Puntos de red RJ45 categoría 6A, puntos de acceso WiFi empotrados, canalizaciones para cámaras y control de accesos, y en muchos casos suelo técnico elevado o techo técnico para el paso de instalaciones sin necesidad de obra posterior.</p>
         </div>
         <div class="bg-white p-7">
-          <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
+
           <h3 class="text-base font-bold text-gray-900 mb-2">Iluminación de trabajo</h3>
           <p class="text-sm text-gray-600 leading-relaxed">La iluminación de oficina no es la misma que la de un local comercial: temperatura de color, índice de reproducción cromática y nivel de iluminancia en el plano de trabajo determinan el confort visual. LED con control de intensidad y temperatura ajustable según la hora del día es la solución actual.</p>
         </div>
         <div class="bg-white p-7">
-          <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
+
           <h3 class="text-base font-bold text-gray-900 mb-2">Accesibilidad</h3>
           <p class="text-sm text-gray-600 leading-relaxed">Las oficinas con acceso al público están sometidas a la normativa de accesibilidad: ancho de pasillos, rampa si hay desnivel, aseo adaptado si hay más de un aseo. La visita técnica identifica qué adaptaciones son obligatorias según el uso y el aforo previsto.</p>
         </div>
@@ -260,7 +254,6 @@ const zones = [
         <h2 id="h-decision" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           La actividad define el alcance. Siempre
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
 
       <p class="text-gray-700 leading-relaxed mb-6">
@@ -279,7 +272,7 @@ const zones = [
           </ul>
         </div>
         <div class="bg-white p-7 border-t-4 border-gray-200">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Hostelería, clínicas y actividades clasificadas</h3>
+          <h3 class="text-base font-bold text-gray-900 mb-3">Hostelería y actividades clasificadas</h3>
           <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Mayor complejidad técnica y administrativa</p>
           <ul class="list-marca">
             <li><span>Instalación eléctrica de alta potencia + circuitos dedicados</span></li>
@@ -307,7 +300,6 @@ const zones = [
         <h2 id="h-que-incluye" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Qué incluye la reforma completa de un local comercial
         </h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -317,10 +309,9 @@ const zones = [
           { title: 'Fontanería y climatización', desc: 'Acometidas de agua según el uso: puntos de lavamanos, barra, cocina profesional. Instalación de climatización según superficie y normativa.' },
           { title: 'Particiones de pladur y techo técnico', desc: 'Divisiones de pladur con distintos grados de aislamiento acústico según el uso. Techo técnico registrable para acceso a instalaciones.' },
           { title: 'Suelos, pintura y carpintería', desc: 'Pavimento según actividad: baldosa antideslizante, tarima técnica, resina. Pintura de paredes y techo. Carpintería interior y acceso.' },
-          { title: 'Proyecto técnico y licencia de actividad', desc: 'Redacción del proyecto técnico necesario y tramitación de la licencia de actividad en el ayuntamiento correspondiente del Corredor.' },
+          { title: 'Proyecto técnico y licencia de actividad (si aplica)', desc: 'Si tu actividad lo requiere, redactamos el proyecto técnico y gestionamos la tramitación ante el ayuntamiento. En la visita técnica determinamos qué documentación corresponde.' },
         ].map(item => (
           <div class="bg-[#F9F7F4] p-7">
-            <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
             <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
             <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
           </div>
@@ -335,23 +326,22 @@ const zones = [
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Gestión del plazo</p>
         <h2 id="h-apertura" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
-          La fecha de apertura como eje de toda la obra
+          La fecha de entrega de la obra como eje de la planificación
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <p class="text-gray-300 leading-relaxed mb-8">
         La diferencia entre una reforma de local y una reforma de vivienda es que aquí hay una fecha que cuesta dinero si no se cumple. Cada día de retraso en la apertura es un día de alquiler pagado sin ingresos, o un compromiso con un cliente incumplido. Por eso la planificación empieza por la fecha de apertura, no por el diseño.
       </p>
       <ul class="space-y-6">
         {[
-          { title: 'La fecha de apertura determina el cronograma, no al revés', desc: 'Si tienes una fecha comprometida —por contrato de franquicia, por temporada o por acuerdo con proveedores— la planificamos desde esa fecha hacia atrás. El cronograma de obra, el pedido de materiales y el inicio de los trámites de licencia se organizan para llegar a esa fecha, no para ver "cuándo termina la obra".' },
-          { title: 'Licencia y obra en paralelo desde el primer día', desc: 'El proyecto técnico y la solicitud de licencia de actividad se inician el mismo día que empieza la obra. No esperamos a que la obra esté terminada para empezar a tramitar. En municipios del Corredor con procedimiento de declaración responsable, esto puede reducir el tiempo total entre inicio de obra y apertura en varias semanas.' },
+          { title: 'La fecha de entrega de la obra determina el cronograma, no al revés', desc: 'Si tienes una fecha comprometida —por contrato de franquicia, por temporada o por acuerdo con proveedores— la planificamos desde esa fecha hacia atrás. El cronograma de obra y el pedido de materiales se organizan para llegar a esa fecha de entrega. La apertura efectiva puede depender además de trámites, inspecciones o autorizaciones externas que se coordinan en paralelo.' },
+          { title: 'Tramitación en paralelo con la obra cuando aplica', desc: 'En los casos en que tu actividad requiere tramitación previa o durante la obra, iniciamos la documentación desde el primer día. No esperamos a tener la obra terminada para comenzar el proceso. En la visita técnica determinamos qué régimen aplica a tu actividad y municipio.' },
           { title: 'Sin esperas por materiales ni por instalaciones', desc: 'Todos los materiales de largo plazo de entrega —techo técnico, carpintería especial, climatización— se piden antes de que empiece la obra. Las instalaciones eléctricas y de fontanería se ejecutan en la secuencia correcta para no retrasar los acabados.' },
           { title: 'Coordinación con el administrador del edificio si aplica', desc: 'Si el local está en un edificio con comunidad de propietarios, gestionamos la comunicación con el administrador para el acceso durante la obra, el horario de carga y descarga, y cualquier requisito específico del edificio.' },
           { title: 'Entrega con documentación completa para apertura', desc: 'Junto con la entrega de la obra te damos toda la documentación técnica generada: certificados de instalaciones, memoria descriptiva, planos as-built. Es la documentación que necesitas para el expediente de licencia si aún no se ha resuelto.' },
         ].map(item => (
           <li class="flex gap-5">
-            <div class="w-1 flex-shrink-0 bg-[#A85535] rounded-full mt-1" style="min-height:1.25rem"></div>
+            <div class="w-1 flex-shrink-0 bg-[#A85535] mt-1" style="min-height:1.25rem"></div>
             <div>
               <p class="font-semibold text-white mb-1">{item.title}</p>
               <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
@@ -385,14 +375,14 @@ const zones = [
           </thead>
           <tbody>
             {[
-              { label: 'Local pequeño hasta 40 m² (reforma básica)', price: 'Desde 8.000€', includes: 'Instalaciones, suelo y pintura' },
-              { label: 'Local medio 40–80 m² (reforma completa)', price: 'Desde 15.000€', includes: 'Con proyecto y tramitación de licencia' },
-              { label: 'Local grande 80–150 m²', price: 'Desde 28.000€', includes: 'Presupuesto según uso y actividad' },
-              { label: 'Restaurante o local de hostelería', price: 'Desde 35.000€', includes: 'Con proyecto técnico de actividad' },
+              { label: 'Acondicionamiento esencial (400–600 €/m²)', price: '8.000–30.000€', includes: '20–50 m² · sin IVA · tramitación no incluida' },
+              { label: 'Reforma media (600–800 €/m²)', price: '12.000–64.000€', includes: '20–80 m² · sin IVA · tramitación no incluida' },
+              { label: 'Reforma alta (800–1.100 €/m²)', price: '16.000–110.000€', includes: '20–100 m² · sin IVA · tramitación no incluida' },
+              { label: 'Tramitación de licencia (adicional si aplica)', price: 'Variable según actividad', includes: 'Ver visita técnica para tu uso concreto' },
             ].map((row, i) => (
               <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
                 <td class="py-3 px-5 text-gray-700">{row.label}</td>
-                <td class="py-3 px-5 text-right font-semibold text-[#A85535]">{row.price}</td>
+                <td class={`py-3 px-5 text-right font-semibold ${i === 3 ? 'text-gray-600' : 'text-[#A85535]'}`}>{row.price}</td>
                 <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.includes}</td>
               </tr>
             ))}
@@ -512,7 +502,6 @@ const zones = [
         <h2 id="h-compromisos" class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
           Nuestros compromisos en la reforma de tu local
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <Compromisos variant="full" />
     </div>
@@ -526,7 +515,6 @@ const zones = [
         <h2 id="h-proceso" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Del local vacío al día de apertura
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
@@ -535,7 +523,7 @@ const zones = [
           { n: '03', title: 'Inicio de tramitación y obra', desc: 'Presentamos el expediente de licencia de actividad el mismo día que empieza la demolición. Los dos procesos en paralelo.' },
           { n: '04', title: 'Instalaciones y obra civil', desc: 'Vaciado, electricidad con alumbrado de emergencia, fontanería, particiones y techo técnico.' },
           { n: '05', title: 'Acabados y equipamiento', desc: 'Suelos, pintura, carpintería, climatización y cualquier equipamiento previsto. Sin esperas entre gremios.' },
-          { n: '06', title: 'Inspección y entrega', desc: 'Coordinamos la inspección técnica para la licencia. Entrega del local con toda la documentación. Garantía de 2 años.' },
+          { n: '06', title: 'Entrega y documentación', desc: 'Entrega de la obra conforme al alcance y plazo del contrato. Documentación técnica completa. Garantía de 2 años sobre la ejecución.' },
         ].map(step => (
           <div class="bg-[#F9F7F4] p-7">
             <div class="text-4xl font-black text-gray-100 mb-4 leading-none">{step.n}</div>
@@ -558,7 +546,7 @@ const zones = [
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         {zones.map(z => (
-          <article class="group relative p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] transition-all duration-200">
+          <article class="group relative p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] transition-colors duration-200">
             <h3 class="text-sm font-bold text-gray-900 group-hover:text-[#A85535] transition-colors m-0">
               <a href={`/locales-comerciales/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
                 Reforma de locales en {z.name}
@@ -571,7 +559,7 @@ const zones = [
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si la obra afecta a zonas comunes del edificio:</p>
         <div class="flex flex-wrap gap-3">
-          <a href="/servicios/comunidades-vecinos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Obras en comunidades de propietarios</a>
+          <a href="/servicios/comunidades-vecinos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Obras en comunidades de propietarios</a>
         </div>
       </div>
     </div>
@@ -585,7 +573,6 @@ const zones = [
         <h2 id="h-faq" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Todo lo que necesitas saber sobre reforma de local comercial
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <div class="divide-y divide-gray-200">
         {faqs.map(faq => (
@@ -602,15 +589,15 @@ const zones = [
   </section>
 
   <!-- CTA Final -->
-  <section class="py-20 bg-[#A85535]" aria-labelledby="h-cta-final">
+  <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">
         ¿Cuánto cuesta reformar tu local o tu oficina?
       </h2>
-      <p class="text-white/80 mb-3">Visita técnica gratuita. Proyecto y presupuesto cerrado en 48h.</p>
-      <p class="text-white/60 text-sm mb-8">Incluimos la tramitación de la licencia de actividad. El precio que firmamos es el que pagas.</p>
+      <p class="text-white/80 mb-3">Visita técnica gratuita. Presupuesto cerrado en 48h.</p>
+      <p class="text-white/60 text-sm mb-8">El precio que firmamos es el que pagas.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">Solicitar presupuesto</a>
+        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar presupuesto</a>
         <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/40 hover:border-white transition-colors">☎ {SITE.phoneDisplay}</a>
       </div>
     </div>

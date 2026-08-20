@@ -13,7 +13,6 @@ const serviceSchema = {
   description,
   provider: { '@type': 'GeneralContractor', '@id': `${SITE.url}/#business`, name: SITE.name },
   areaServed: ['Torrejón de Ardoz','Alcalá de Henares','Coslada','San Fernando de Henares','Guadalajara','Azuqueca de Henares','Meco','Camarma de Esteruelas'],
-  offers: { '@type': 'Offer', price: '18000', priceCurrency: 'EUR', description: 'Reforma de acabados desde 300 €/m² (sin IVA) · Reforma integral esencial desde 650 €/m²' },
 };
 
 const breadcrumbSchema = {
@@ -117,13 +116,10 @@ const zones = [
   <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-3xl">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-8 h-0.5 bg-[#A85535]"></div>
-          <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">Reformas integrales · Corredor del Henares</span>
-        </div>
-        <h1 id="h-hero" class="text-4xl lg:text-6xl font-black text-white mb-6" style="letter-spacing:-0.02em">
-          Reformas integrales<br/>
-          <span class="text-[#A85535]">en el Corredor del Henares</span>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">Reformas integrales · Corredor del Henares</p>
+        <h1 id="h-hero" class="text-white mb-6" style="letter-spacing:-0.02em">
+          <span class="block text-4xl lg:text-6xl font-black">Reformas integrales en el Corredor del Henares</span>
+          <span class="block text-xl lg:text-2xl font-bold text-gray-300 mt-3">Un único responsable coordina todos los gremios desde el primer día hasta la entrega.</span>
         </h1>
 
         <div role="doc-abstract" class="border-l-4 border-[#A85535] pl-6 mb-6">
@@ -156,7 +152,6 @@ const zones = [
         <h2 id="h-parque" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Qué reformas integrales vemos habitualmente en el Corredor
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
 
       <p class="text-gray-700 leading-relaxed mb-8">
@@ -214,7 +209,6 @@ const zones = [
         <h2 id="h-decision" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Reforma parcial o integral: dónde está el umbral
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
 
       <p class="text-gray-700 leading-relaxed mb-6">
@@ -261,7 +255,6 @@ const zones = [
         <h2 id="h-que-incluye" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Qué incluye una reforma integral
         </h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
         <p class="text-gray-600 leading-relaxed">
           Una reforma integral cubre todo el proceso de principio a fin. Lo que dice el presupuesto es lo que se ejecuta: no hay partidas que se descubran durante la obra que no estuvieran ya contempladas en la inspección previa.
         </p>
@@ -277,7 +270,6 @@ const zones = [
           { title: 'Suelos, carpintería y entrega', desc: 'Tarima o porcelánico en toda la vivienda, puertas interiores nuevas, armarios si aplica, pintura final y limpieza de obra. Entrega con garantía de 2 años.' },
         ].map(item => (
           <div class="bg-[#F9F7F4] p-7">
-            <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
             <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
             <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
           </div>
@@ -292,9 +284,8 @@ const zones = [
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la obra</p>
         <h2 id="h-vida-obra" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
-          Ocho semanas fuera del piso: cómo lo gestionamos
+          Cómo organizamos la obra cuando la vivienda no puede utilizarse con normalidad
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <p class="text-gray-300 leading-relaxed mb-8">
         Una reforma integral requiere que abandones el piso durante semanas. Es incómodo, tiene un coste de alojamiento real y condiciona tu vida durante ese tiempo. Por eso el primer paso de la planificación no es el cronograma de obra: es saber cuándo puedes irte, cuánto tiempo puedes estar fuera y cuándo necesitas volver.
@@ -308,7 +299,7 @@ const zones = [
           { title: 'El piso al entrar: limpio, no "casi terminado"', desc: 'La limpieza final de la obra es parte del proceso, no un extra. Cuando te entregamos el piso, está en condiciones de empezar a vivir, no en condiciones de terminar de limpiar.' },
         ].map(item => (
           <li class="flex gap-5">
-            <div class="w-1 flex-shrink-0 bg-[#A85535] rounded-full mt-1" style="min-height:1.25rem"></div>
+            <div class="w-1 flex-shrink-0 bg-[#A85535] mt-1" style="min-height:1.25rem"></div>
             <div>
               <p class="font-semibold text-white mb-1">{item.title}</p>
               <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
@@ -370,7 +361,6 @@ const zones = [
         <h2 id="h-que-encarece" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Qué encarece una reforma integral y qué puede ajustarse
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <p class="text-gray-600 leading-relaxed mb-8">
         El presupuesto de una reforma integral no es un número redondo ni un precio por metro cuadrado. Está compuesto por partidas con pesos muy distintos. Conocer cuánto representa cada una permite saber dónde hay margen de ajuste real y dónde no lo hay.
@@ -452,7 +442,6 @@ const zones = [
         <h2 id="h-elegir-empresa" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Cómo elegir una empresa de reformas integrales
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <p class="text-gray-600 leading-relaxed mb-8">
         Una reforma integral es probablemente la compra más cara que harás en tu vivienda. La empresa de reformas integrales que elijas determina si el resultado es el que esperabas o si aparecen problemas meses después de la entrega. Estos son los criterios que importan, en el orden en que importan.
@@ -492,7 +481,7 @@ const zones = [
         Depende del alcance. Una reforma interior que no afecta a elementos estructurales ni fachada puede tramitarse como comunicación previa o licencia de obra menor en la mayoría de los municipios del Corredor del Henares. El derribo de muros de carga o la modificación de la estructura del edificio requiere proyecto de arquitecto técnico y licencia de obra mayor.
       </p>
       <p class="text-gray-700 leading-relaxed mb-6">
-        En los ayuntamientos del Corredor, la obra menor suele resolverse en plazos de 15 a 30 días hábiles, aunque los plazos varían por municipio y por carga administrativa en cada momento. Iniciamos el trámite en paralelo con la fase de proyecto para que la licencia esté disponible cuando la obra esté lista para empezar.
+        Iniciamos el trámite en paralelo con la fase de proyecto para que la licencia esté disponible cuando la obra esté lista para empezar. Los plazos de resolución varían por municipio y por carga administrativa del ayuntamiento en cada momento; en la visita técnica te informamos de los pasos que corresponden a tu caso.
       </p>
       <div class="bg-[#F9F7F4] border-l-4 border-amber-400 p-6 mb-6">
         <p class="text-sm font-semibold text-gray-900 mb-2">Comunidades de propietarios en bloques</p>
@@ -552,34 +541,36 @@ const zones = [
       </p>
       <div class="overflow-x-auto">
         <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Peso orientativo de cada fase sobre el total de la obra. El plazo absoluto depende del alcance y la superficie; la fecha de entrega queda fijada en el contrato.
+          </caption>
           <thead>
             <tr class="border-b-2 border-[#A85535]">
               <th class="text-left py-3 px-5 font-bold text-gray-900">Fase</th>
-              <th class="text-right py-3 px-4 font-bold text-gray-900">Piso 60 m²</th>
-              <th class="text-right py-3 px-4 font-bold text-gray-900">Piso 90 m²</th>
+              <th class="text-right py-3 px-4 font-bold text-gray-900">Peso sobre el total</th>
+              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Qué condiciona la siguiente fase</th>
             </tr>
           </thead>
           <tbody>
             {[
-              { fase: 'Demolición y derribo de tabiques', c60: '1 sem.', c90: '1–2 sem.' },
-              { fase: 'Instalación eléctrica y fontanería', c60: '1–2 sem.', c90: '2–3 sem.' },
-              { fase: 'Tabiquería nueva y enlucido', c60: '1 sem.', c90: '1–2 sem.' },
-              { fase: 'Solados y alicatados', c60: '1–2 sem.', c90: '2–3 sem.' },
-              { fase: 'Baño y cocina (simultáneo o secuencial)', c60: '2–3 sem.', c90: '3–4 sem.' },
-              { fase: 'Carpintería, pintura y acabados', c60: '1–2 sem.', c90: '2–3 sem.' },
-              { fase: 'Total orientativo', c60: '7–10 sem.', c90: '10–14 sem.' },
+              { fase: 'Demolición', pct: '12%', nota: 'Define el estado real de las instalaciones existentes' },
+              { fase: 'Instalaciones (eléctrica y fontanería)', pct: '28%', nota: 'Fase más larga; debe completarse antes de cerrar paramentos' },
+              { fase: 'Albañilería (tabiquería, enlucido)', pct: '15%', nota: 'Precondición para comenzar cualquier revestimiento' },
+              { fase: 'Revestimientos (solados y alicatados)', pct: '25%', nota: 'Incluye baño y cocina; determina los plazos de carpintería' },
+              { fase: 'Carpintería interior', pct: '12%', nota: 'Se instala sobre solados terminados; puertas, armarios, premarcos' },
+              { fase: 'Pintura, limpieza y entrega', pct: '8%', nota: 'Fase final; incluye revisión y acta de entrega' },
             ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i === 6 ? 'bg-[#A85535]/5 font-semibold' : i % 2 === 1 ? 'bg-white' : ''}`}>
+              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
                 <td class="py-3 px-5 text-gray-700">{row.fase}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.c60}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.c90}</td>
+                <td class="py-3 px-4 text-right font-semibold text-[#A85535]" style="font-variant-numeric:tabular-nums">{row.pct}</td>
+                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.nota}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <p class="text-xs text-gray-400 mt-4">
-        Plazos orientativos sin redistribución de tabiques. Con redistribución, añadir 1–2 semanas. La fecha de entrega queda fijada en el contrato.
+        La secuencia no es flexible: las instalaciones condicionan el cierre de paramentos, y el cierre de paramentos condiciona los revestimientos. Solapar fases incompatibles genera problemas que se detectan meses después de la entrega.
       </p>
     </div>
   </section>
@@ -592,7 +583,6 @@ const zones = [
         <h2 id="h-compromisos" class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
           Nuestros compromisos en la reforma integral
         </h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-4"></div>
         <p class="text-gray-600 max-w-2xl">
           Estos compromisos quedan recogidos en el contrato que firmamos antes de empezar la obra. No son promesas: son las condiciones del acuerdo.
         </p>
@@ -609,7 +599,6 @@ const zones = [
         <h2 id="h-proceso" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Del primer contacto a la entrega llave en mano
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
@@ -650,7 +639,7 @@ const zones = [
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         {zones.map(z => (
-          <article class="group relative p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] transition-all duration-200">
+          <article class="group relative p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] transition-colors">
             <h3 class="text-sm font-bold text-gray-900 group-hover:text-[#A85535] transition-colors m-0">
               <a href={`/reformas-integrales/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
                 Reformas integrales en {z.name}
@@ -663,15 +652,15 @@ const zones = [
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si solo necesitas reformar una zona de la vivienda:</p>
         <div class="flex flex-wrap gap-3">
-          <a href="/servicios/reforma-banos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de baños</a>
-          <a href="/servicios/reforma-cocinas/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de cocinas</a>
-          <a href="/servicios/reforma-pisos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de pisos</a>
+          <a href="/servicios/reforma-banos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de baños</a>
+          <a href="/servicios/reforma-cocinas/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de cocinas</a>
+          <a href="/servicios/reforma-pisos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de pisos</a>
         </div>
         <div class="mt-6">
           <p class="text-sm text-gray-500 mb-3">Información sobre el parque de vivienda y las reformas más habituales en cada municipio:</p>
           <div class="flex flex-wrap gap-2">
             {zones.map(z => (
-              <a href={`/zonas/${z.slug}/`} class="inline-block px-3 py-1.5 text-xs font-medium text-gray-600 bg-gray-50 border border-gray-200 hover:border-[#A85535] hover:text-[#A85535] transition-all">
+              <a href={`/zonas/${z.slug}/`} class="inline-block px-3 py-1.5 text-xs font-medium text-gray-600 bg-gray-50 border border-gray-200 hover:border-[#A85535] hover:text-[#A85535] transition-colors">
                 Obras en {z.name}
               </a>
             ))}
@@ -689,7 +678,6 @@ const zones = [
         <h2 id="h-faq" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Todo lo que necesitas saber antes de una reforma integral
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <div class="divide-y divide-gray-200">
         {faqs.map(faq => (
@@ -709,7 +697,7 @@ const zones = [
   <!-- TODO: activar cuando haya fotografías reales de reformas integrales en el Corredor -->
 
   <!-- CTA Final -->
-  <section class="py-20 bg-[#A85535]" aria-labelledby="h-cta-final">
+  <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">
         ¿Cuánto cuesta reformar tu piso de manera integral?
@@ -717,7 +705,7 @@ const zones = [
       <p class="text-white/80 mb-3">Visita técnica gratuita. Presupuesto cerrado en 48h.</p>
       <p class="text-white/60 text-sm mb-8">Sin compromiso. El precio que firmamos es el precio que pagas.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">Solicitar presupuesto</a>
+        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar presupuesto</a>
         <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/40 hover:border-white transition-colors">☎ {SITE.phoneDisplay}</a>
       </div>
     </div>

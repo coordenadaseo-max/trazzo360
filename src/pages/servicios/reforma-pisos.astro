@@ -4,7 +4,7 @@ import Compromisos from '../../components/Compromisos.astro';
 import { SITE } from '../../data/site';
 
 const title = 'Reforma de Pisos y Viviendas en el Corredor | Trazzo360';
-const description = 'Reforma de pisos en el Corredor del Henares: suelos, baño, cocina, carpintería y pintura. Presupuesto cerrado tras visita técnica gratuita. Desde 18.000€.';
+const description = 'Reforma de pisos en el Corredor del Henares: suelos, baño, cocina, carpintería y pintura. Presupuesto cerrado tras visita técnica gratuita. Desde 14.000€.';
 
 const serviceSchema = {
   '@context': 'https://schema.org',
@@ -13,7 +13,6 @@ const serviceSchema = {
   description,
   provider: { '@type': 'GeneralContractor', '@id': `${SITE.url}/#business`, name: SITE.name },
   areaServed: ['Torrejón de Ardoz','Alcalá de Henares','Coslada','San Fernando de Henares','Guadalajara','Azuqueca de Henares','Meco','Camarma de Esteruelas'],
-  offers: { '@type': 'Offer', price: '18000', priceCurrency: 'EUR', description: 'Reforma de piso 60 m² (baño, cocina, suelos y pintura) desde 18.000€' },
 };
 
 const breadcrumbSchema = {
@@ -117,13 +116,10 @@ const zones = [
   <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-3xl">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-8 h-0.5 bg-[#A85535]"></div>
-          <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">Reforma de pisos y viviendas · Corredor del Henares</span>
-        </div>
-        <h1 id="h-hero" class="text-4xl lg:text-6xl font-black text-white mb-6" style="letter-spacing:-0.02em">
-          Reforma de pisos<br/>
-          <span class="text-[#A85535]">y viviendas en el Corredor</span>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">Reforma de pisos y viviendas · Corredor del Henares</p>
+        <h1 id="h-hero" class="text-white mb-6" style="letter-spacing:-0.02em">
+          <span class="block text-4xl lg:text-6xl font-black">Reforma de pisos y viviendas en el Corredor del Henares</span>
+          <span class="block text-xl lg:text-2xl font-bold text-gray-300 mt-3">Baño, cocina, suelos y acabados. El estado de las instalaciones determina el alcance correcto.</span>
         </h1>
 
         <div role="doc-abstract" class="border-l-4 border-[#A85535] pl-6 mb-6">
@@ -156,7 +152,6 @@ const zones = [
         <h2 id="h-parque" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Qué viviendas necesitan reforma en el Corredor del Henares
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
 
       <p class="text-gray-700 leading-relaxed mb-8">
@@ -209,7 +204,6 @@ const zones = [
         <h2 id="h-decision" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Reforma de vivienda o reforma integral: cómo decidir
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
 
       <p class="text-gray-700 leading-relaxed mb-6">
@@ -225,7 +219,7 @@ const zones = [
             <li><span>El objetivo es mejorar el aspecto y la funcionalidad sin obra pesada</span></li>
             <li><span>La vivienda es de construcción posterior a 1990</span></li>
           </ul>
-          <p class="text-sm font-semibold text-[#A85535] mt-4">Desde 8.000€ (suelos+pintura) / Desde 18.000€ (baño+cocina+suelos+pintura)</p>
+          <p class="text-sm font-semibold text-[#A85535] mt-4">Desde 14.000€ · 350–450 €/m² · piso 40 m² esencial sin IVA</p>
         </div>
         <div class="bg-white p-7 border-t-4 border-gray-200">
           <h3 class="text-base font-bold text-gray-900 mb-3">Reforma integral (instalaciones + acabados)</h3>
@@ -235,7 +229,7 @@ const zones = [
             <li><span>Quieres cambiar la distribución de tabiques</span></li>
             <li><span>La vivienda no ha tenido ninguna reforma desde la construcción</span></li>
           </ul>
-          <p class="text-sm font-semibold text-gray-500 mt-4">Desde 18.000€ — <a href="/servicios/reformas-integrales/" class="underline hover:text-[#A85535]">ver reformas integrales</a></p>
+          <p class="text-sm font-semibold text-gray-500 mt-4">Desde 26.000€ · 650 €/m² · 40 m² esencial — <a href="/servicios/reformas-integrales/" class="underline hover:text-[#A85535]">ver reformas integrales</a></p>
         </div>
       </div>
     </div>
@@ -249,7 +243,6 @@ const zones = [
         <h2 id="h-pisos-antiguos" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Reforma de pisos antiguos: lo que cambia en viviendas anteriores a 1985
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <p class="text-gray-700 leading-relaxed mb-8">
         Reformar una vivienda antigua en el Corredor del Henares no es igual que reformar una vivienda moderna. Los bloques construidos entre 1960 y 1985 en Coslada, San Fernando y Torrejón de Ardoz acumulan décadas sin intervención en instalaciones. Lo que aparece al abrir paredes o levantar suelos es sistemáticamente distinto de lo que se ve en la primera visita: por eso el proceso de inspección previa es más exhaustivo y el presupuesto reserva siempre una partida específica para imprevistos en instalaciones.
@@ -289,7 +282,6 @@ const zones = [
         <h2 id="h-que-incluye" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Qué incluye la reforma de cada zona de la vivienda
         </h2>
-        <div class="w-12 h-1 bg-[#A85535] mb-6"></div>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -302,7 +294,6 @@ const zones = [
           { title: 'Pintura y acabados finales', desc: 'Pintura de todas las estancias en el color elegido. Remates de escayola, rodapiés y transiciones entre pavimentos. Limpieza final de obra.' },
         ].map(item => (
           <div class="bg-[#F9F7F4] p-7">
-            <div class="w-8 h-0.5 bg-[#A85535] mb-4"></div>
             <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
             <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
           </div>
@@ -317,9 +308,8 @@ const zones = [
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la reforma de vivienda</p>
         <h2 id="h-vida-obra" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
-          Seis a diez semanas de obra: cómo se vive desde dentro
+          Cómo se organiza una reforma cuando el piso no puede utilizarse con normalidad
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <p class="text-gray-300 leading-relaxed mb-8">
         La reforma de una vivienda completa toca todos los espacios a la vez durante semanas. Lo que planificamos antes de empezar no es solo la obra: es dónde vas a estar mientras dura, cuándo puedes volver y qué encuentras cuando entras.
@@ -333,7 +323,7 @@ const zones = [
           { title: 'El piso al entrar: en condiciones de vivir, no de terminar', desc: 'La limpieza final de la obra es parte del proceso. El día que te entregamos el piso, puedes meter los muebles y empezar a vivir. No en condiciones de "casi terminado". En condiciones de vivir.' },
         ].map(item => (
           <li class="flex gap-5">
-            <div class="w-1 flex-shrink-0 bg-[#A85535] rounded-full mt-1" style="min-height:1.25rem"></div>
+            <div class="w-1 flex-shrink-0 bg-[#A85535] mt-1" style="min-height:1.25rem"></div>
             <div>
               <p class="font-semibold text-white mb-1">{item.title}</p>
               <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
@@ -367,9 +357,9 @@ const zones = [
           </thead>
           <tbody>
             {[
-              { label: 'Suelos + pintura + carpintería (sin baño ni cocina)', price: 'Desde 8.000€', note: 'Piso 60–80 m², sin obra pesada' },
-              { label: 'Baño + cocina + suelos + pintura', price: 'Desde 18.000€', note: 'Piso 60–80 m², instalaciones en buen estado' },
-              { label: 'Reforma con redistribución de tabiques', price: 'Desde 28.000€', note: 'Incluye licencia de obra menor' },
+              { label: 'Acabados esencial (350–450 €/m²)', price: '14.000–36.000€', note: '40–80 m² · sin renovar instalaciones · sin IVA' },
+              { label: 'Acabados media (450–600 €/m²)', price: '18.000–48.000€', note: '40–80 m² · sin renovar instalaciones · sin IVA' },
+              { label: 'Acabados alta (600–800 €/m²)', price: '24.000–64.000€', note: '40–80 m² · sin renovar instalaciones · sin IVA' },
               { label: 'Si las instalaciones necesitan renovación', price: 'Ver Reformas Integrales', note: 'Cuadro, fontanería, gremios coordinados' },
             ].map((row, i) => (
               <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
@@ -482,7 +472,6 @@ const zones = [
         <h2 id="h-compromisos" class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
           Lo que comprometemos antes de empezar la reforma
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <Compromisos variant="full" />
     </div>
@@ -496,7 +485,6 @@ const zones = [
         <h2 id="h-proceso" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Del primer contacto a la llave en mano
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
@@ -537,7 +525,7 @@ const zones = [
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         {zones.map(z => (
-          <article class="group relative p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] transition-all duration-200">
+          <article class="group relative p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] transition-colors duration-200">
             <h3 class="text-sm font-bold text-gray-900 group-hover:text-[#A85535] transition-colors m-0">
               <a href={`/reforma-pisos/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
                 Reforma de pisos en {z.name}
@@ -550,9 +538,9 @@ const zones = [
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si tu reforma necesita un alcance diferente:</p>
         <div class="flex flex-wrap gap-3">
-          <a href="/servicios/reformas-integrales/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reformas integrales (instalaciones incluidas)</a>
-          <a href="/servicios/reforma-banos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de baños</a>
-          <a href="/servicios/reforma-cocinas/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-all">Reforma de cocinas</a>
+          <a href="/servicios/reformas-integrales/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reformas integrales (instalaciones incluidas)</a>
+          <a href="/servicios/reforma-banos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de baños</a>
+          <a href="/servicios/reforma-cocinas/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de cocinas</a>
         </div>
       </div>
     </div>
@@ -566,7 +554,6 @@ const zones = [
         <h2 id="h-faq" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
           Todo lo que necesitas saber sobre reforma de vivienda
         </h2>
-        <div class="w-12 h-1 bg-[#A85535]"></div>
       </div>
       <div class="divide-y divide-gray-200">
         {faqs.map(faq => (
@@ -583,15 +570,15 @@ const zones = [
   </section>
 
   <!-- CTA Final -->
-  <section class="py-20 bg-[#A85535]" aria-labelledby="h-cta-final">
+  <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">
         ¿Cuánto cuesta reformar tu vivienda?
       </h2>
-      <p class="text-white/80 mb-3">Visita técnica gratuita. Presupuesto cerrado en 48h. Desde 18.000€.</p>
+      <p class="text-white/80 mb-3">Visita técnica gratuita. Presupuesto cerrado en 48h.</p>
       <p class="text-white/60 text-sm mb-8">Sin compromiso. El precio que firmamos es el precio que pagas.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">Solicitar presupuesto</a>
+        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar presupuesto</a>
         <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/40 hover:border-white transition-colors">☎ {SITE.phoneDisplay}</a>
       </div>
     </div>

@@ -1,4 +1,5 @@
 export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
+  // ─── ALCALÁ — SIN CAMBIOS ───────────────────────────────────────────────
   'alcala-de-henares': [
     {
       q: '¿Qué tipos de obras realizáis en Alcalá de Henares?',
@@ -37,22 +38,16 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
       a: 'Sí. Acondicionamiento de locales comerciales y oficinas en Alcalá con gestión de licencia de actividad cuando procede. El proceso es el mismo: visita técnica gratuita, presupuesto cerrado en 48h, contrato con precio y plazo fijados, y garantía de 2 años sobre la ejecución.',
     },
   ],
+
+  // ─── TORREJÓN — 9 → 6 (sin ¿Cómo solicito?, ¿Puedo pedir sin decidir?, ¿Podéis coordinar?) ──
   'torrejon-de-ardoz': [
     {
       q: '¿Qué tipos de obras realizáis en Torrejón de Ardoz?',
       a: 'Reformas integrales, reforma de baño, cocina, pisos, locales comerciales y obras en comunidades de propietarios. Cubrimos Torrejón de Ardoz con precio cerrado y plazo garantizado. Si no tienes claro el alcance, la visita técnica gratuita evalúa el estado de la vivienda y orienta antes de presupuestar.',
     },
     {
-      q: '¿Cómo solicito una visita para valorar una reforma en Torrejón de Ardoz?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. En la visita evaluamos el estado de las instalaciones, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto lo recibes en las 48 horas siguientes.',
-    },
-    {
       q: '¿Qué hay que comprobar antes de fijar la fecha de inicio de la obra en Torrejón?',
       a: 'Si la obra requiere algún tipo de tramitación municipal, ese plazo condiciona la fecha de inicio. Los requisitos dependen del alcance y de la normativa del Ayuntamiento de Torrejón de Ardoz. Lo revisamos en la fase de proyecto, antes de comprometer ninguna fecha, para que el calendario sea realista desde el principio.',
-    },
-    {
-      q: '¿Puedo pedir presupuesto si todavía no he decidido todo lo que quiero reformar?',
-      a: 'Sí. La visita técnica también sirve para orientar el alcance: evaluamos el estado del piso y te explicamos qué tiene más impacto según tu objetivo. No es necesario tener todo decidido antes de la visita; con una descripción general del estado de la vivienda y de tus prioridades es suficiente para empezar.',
     },
     {
       q: '¿Cuándo tiene sentido reformar el piso antes de venderlo o alquilarlo en Torrejón?',
@@ -70,19 +65,13 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
       q: '¿Hay diferencias en el alcance de la reforma según el barrio de Torrejón?',
       a: 'Depende más de la época de construcción que del barrio. Los bloques de los años 80 en Soto del Henares tienen mayor probabilidad de necesitar revisión de instalaciones antes de cerrar el presupuesto. Las viviendas de los años 90 en Parque Cataluña suelen tener instalaciones en mejor estado, lo que puede enfocar la reforma en acabados. La visita técnica evalúa el estado real.',
     },
-    {
-      q: '¿Podéis coordinar toda la reforma en Torrejón sin que yo tenga que gestionar los gremios?',
-      a: 'Sí. Un único interlocutor gestiona fontaneros, electricistas, alicatadores, pintores y carpinteros. No tienes que coordinar con varios proveedores ni estar presente en cada fase. Te informamos del avance y te avisamos cuando necesitamos tu confirmación para alguna decisión de materiales o distribución.',
-    },
   ],
+
+  // ─── COSLADA — 8 → 6 (sin ¿Cómo solicito?, sin ¿Es necesaria autorización comunidad?) ────
   'coslada': [
     {
       q: '¿Qué reformas realizáis en Coslada?',
       a: 'Reformas integrales, reforma de baño, cocina, piso, locales comerciales y obras en comunidades de propietarios. El mismo equipo, el mismo sistema de presupuesto cerrado y el mismo compromiso de plazo en Coslada que en el resto del Corredor del Henares.',
-    },
-    {
-      q: '¿Cómo solicito una visita técnica en Coslada?',
-      a: 'A través del formulario de contacto o por teléfono. La visita es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. En la visita evaluamos el estado de la vivienda o local, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto llega en las 48 horas siguientes.',
     },
     {
       q: '¿Conviene reformar baño y cocina en la misma obra en Coslada?',
@@ -104,27 +93,13 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
       q: '¿Cuánto tiempo tarda una reforma en Coslada?',
       a: 'Un baño completo: 8-12 días hábiles. Una cocina: 2-3 semanas. Baño y cocina combinados: 3-4 semanas. Una reforma integral de 75-90 m² con instalaciones: 10-14 semanas. La fecha de entrega queda fijada en el contrato antes de empezar.',
     },
-    {
-      q: '¿Podéis hacer la reforma de un local comercial en Coslada?',
-      a: 'Sí. Acondicionamos locales comerciales en Coslada con presupuesto cerrado y gestión de licencia de actividad cuando procede. El proceso es el mismo: visita técnica gratuita, presupuesto detallado en 48h, contrato con precio y plazo, y garantía de 2 años sobre la ejecución.',
-    },
-    {
-      q: '¿Es necesaria alguna autorización de la comunidad de propietarios para reformar en Coslada?',
-      a: 'Depende de lo que afecte la reforma. Las actuaciones que solo intervienen en el interior de la vivienda no requieren autorización de la comunidad. Las que afectan a elementos comunes (bajantes comunitarias, fachada, forjado o elementos estructurales) pueden requerir su aprobación previa. Lo determinamos en la fase de proyecto antes de planificar el inicio.',
-    },
   ],
+
+  // ─── SAN FERNANDO — 8 → 6 (sin ¿Cómo solicito?, sin ¿Qué información sirve?) ────────────
   'san-fernando-de-henares': [
     {
       q: '¿Qué diferencias hay entre reformar en el casco de San Fernando y en Parque Roma?',
       a: 'El alcance depende del estado de las instalaciones de cada vivienda, no de la zona. En general, cuanto más antigua es la vivienda, más probable es que el cuadro eléctrico o la fontanería necesiten revisión antes de cerrar el presupuesto. La visita técnica gratuita evalúa el estado real de cada caso antes de comprometer ningún número.',
-    },
-    {
-      q: '¿Cómo solicito una visita para valorar una reforma en San Fernando de Henares?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. Evaluamos el estado de las instalaciones, tomamos medidas y escuchamos qué quieres cambiar. El presupuesto lo recibes en las 48 horas siguientes.',
-    },
-    {
-      q: '¿Qué información sirve para orientar el presupuesto antes de la visita en San Fernando?',
-      a: 'La superficie de la vivienda o local, el año de construcción aproximado y una descripción del alcance previsto. Si ya tienes claro que las instalaciones tienen años sin actualizarse, mencionarlo ayuda a que la visita los evalúe en detalle. Con eso podemos dar una orientación antes de la visita si lo necesitas.',
     },
     {
       q: '¿Podéis reformar locales comerciales en San Fernando de Henares?',
@@ -147,22 +122,12 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
       a: 'Sí. Cerramiento de terrazas con gestión del permiso correspondiente según lo que requiera el Ayuntamiento de San Fernando. El sistema constructivo respeta la normativa del edificio y la estética de la fachada. El presupuesto incluye la gestión del trámite si es necesario.',
     },
   ],
+
+  // ─── GUADALAJARA — 9 → 6 (sin ¿Qué reformas?, ¿Cómo solicito?, ¿Cómo se orienta alcance?) ─
   'guadalajara': [
-    {
-      q: '¿Qué tipo de reformas realizáis en Guadalajara?',
-      a: 'Reformas integrales, baño, cocina, piso, locales comerciales y obras en comunidades de propietarios. Cubrimos Guadalajara capital y municipios próximos con el mismo equipo y el mismo sistema de presupuesto cerrado que en el Corredor del Henares madrileño.',
-    },
-    {
-      q: '¿Cómo solicito una visita para valorar una reforma en Guadalajara?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. En la visita evaluamos el estado de la vivienda o local y cerramos la información que necesitamos para el presupuesto. Lo recibes en las 48 horas siguientes.',
-    },
     {
       q: '¿Los trámites de licencia de obra son diferentes en Guadalajara que en los municipios madrileños?',
       a: 'El proceso es similar pero el trámite se hace en el Ayuntamiento de Guadalajara, con sus propios plazos y documentación. El trámite depende del alcance de la actuación y de los elementos afectados. Antes de fijar una fecha de inicio comprobamos qué procedimiento corresponde y lo gestionamos en su totalidad.',
-    },
-    {
-      q: '¿Cómo se orienta el alcance de la reforma antes de presupuestar en Guadalajara?',
-      a: 'La visita técnica evalúa el estado de las instalaciones y el alcance de lo que quieres cambiar. Eso determina si la reforma puede centrarse en acabados o si las instalaciones necesitan también intervención. Cuantas más variables tengamos claras antes de la visita, más preciso puede ser el presupuesto desde el primer momento.',
     },
     {
       q: '¿Cuándo conviene incluir el cambio de carpintería exterior en la reforma en Guadalajara?',
@@ -184,53 +149,33 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
       q: '¿Trabajáis también en municipios próximos a Guadalajara?',
       a: 'Cubrimos Guadalajara capital y los municipios del entorno próximo. Si tienes un proyecto fuera de la capital, consúltanos: evaluamos si entra en nuestra zona habitual y, en caso afirmativo, trabajamos con el mismo sistema de precio cerrado y compromiso de plazo.',
     },
-    {
-      q: '¿Cómo afecta el clima de Guadalajara a las reformas?',
-      a: 'La amplitud térmica de Guadalajara, con inviernos más fríos que en la zona madrileña del Corredor, hace que la carpintería exterior y el aislamiento tengan un peso mayor en las reformas. Sustituir ventanas con baja estanqueidad puede tener un impacto más notorio en el confort habitual, lo que suele justificar su inclusión en la misma obra.',
-    },
   ],
+
+  // ─── AZUQUECA — 7 → 4 (solo: ¿Trabajáis en GU?, ¿Parcial/integral?, ¿Coste baño?, ¿Afecta GU?) ─
   'azuqueca-de-henares': [
     {
       q: '¿Trabajáis en Azuqueca de Henares aunque pertenezca a la provincia de Guadalajara?',
       a: 'Sí. Azuqueca de Henares forma parte de nuestra zona habitual de trabajo. El mismo equipo que trabaja en Alcalá, Torrejón y Coslada cubre también Azuqueca y Guadalajara. Mismo proceso, mismo sistema de presupuesto cerrado y mismo compromiso de plazo.',
     },
     {
-      q: '¿Cómo solicito una visita para valorar una reforma en Azuqueca de Henares?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. Evaluamos el estado de la vivienda o local, tomamos medidas y orientamos el alcance antes de cerrar el presupuesto. Lo recibes en las 48 horas siguientes.',
-    },
-    {
       q: '¿Cómo se decide si conviene reforma parcial o integral en Azuqueca?',
       a: 'La visita técnica evalúa el estado de las instalaciones. Si el cuadro y la fontanería están en buen estado, la reforma puede centrarse en baño, cocina, suelos y pintura. Si las instalaciones necesitan renovación, hacerlo todo en la misma obra es más eficiente que abrir el piso dos veces. El resultado de la visita define qué alcance tiene más sentido en cada caso.',
-    },
-    {
-      q: '¿Hay que tramitar algo antes de empezar una reforma en Azuqueca de Henares?',
-      a: 'Depende del alcance concreto y de la normativa del Ayuntamiento de Azuqueca de Henares. Las actuaciones que afectan a fachada, estructura o elementos comunes tienen un tratamiento diferente a las que solo intervienen en el interior de la vivienda. Lo determinamos antes de planificar el inicio.',
-    },
-    {
-      q: '¿Cuándo conviene reformar el piso completo en Azuqueca en lugar de solo baño y cocina?',
-      a: 'Cuando las instalaciones necesitan renovación. Si el cuadro eléctrico o la fontanería requieren sustitución, hacerlo todo en la misma obra evita abrir el piso dos veces. Si las instalaciones están en buen estado, baño, cocina, suelos y pintura pueden renovar completamente el piso sin obra pesada.',
     },
     {
       q: '¿Cuánto cuesta reformar un baño en Azuqueca de Henares?',
       a: 'Una reforma de baño con ducha de obra, alicatado hasta el techo, sanitarios y mueble parte de 3.500-4.500€ en gama media. El precio depende de los metros, el estado actual de la fontanería y los materiales elegidos. La visita técnica gratuita da la cifra ajustada al caso concreto.',
     },
     {
-      q: '¿Cuánto tiempo lleva una reforma en Azuqueca de Henares?',
-      a: 'Un baño: 8-12 días hábiles. Una cocina: 2-3 semanas. Baño y cocina combinados: 3-4 semanas. Una reforma integral de piso: 10-14 semanas según el alcance. La fecha de entrega queda fijada en el contrato antes de empezar la obra.',
-    },
-    {
       q: '¿El hecho de que Azuqueca pertenezca a Guadalajara afecta al proceso de reforma?',
       a: 'El proceso de obra es idéntico al del resto del Corredor: visita técnica, presupuesto cerrado y contrato con precio y plazo. Lo que puede variar es la tramitación municipal: el Ayuntamiento de Azuqueca tiene sus propios plazos y procedimientos. Lo gestionamos en su totalidad antes de planificar el inicio.',
     },
   ],
+
+  // ─── MECO — 8 → 5 (adosados, tramitación, diferencias, coste, permiso terraza) ────────────
   'meco': [
     {
       q: '¿Hacéis reformas de chalets y adosados en Meco?',
       a: 'Sí. Reforma integral, baño, cocina, instalaciones, cerramiento de terrazas y actuaciones en exterior. El mismo proceso y sistema de presupuesto cerrado que en pisos de bloque, ajustado a las características de la vivienda unifamiliar.',
-    },
-    {
-      q: '¿Cómo solicito una visita para valorar una reforma en Meco?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad, cubriendo tanto la vivienda como cualquier elemento exterior que quieras incluir en el alcance. El presupuesto llega en las 48 horas siguientes.',
     },
     {
       q: '¿Hay que tramitar algo antes de empezar una reforma en Meco?',
@@ -241,50 +186,28 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
       a: 'La vivienda unifamiliar puede tener instalaciones independientes y más superficie para gestionar. También puede haber más de una planta a coordinar. La logística de materiales suele ser más sencilla al tener acceso directo. El proceso de presupuesto y obra es el mismo, ajustado a las características de cada vivienda.',
     },
     {
-      q: '¿Cuándo tiene sentido reformar toda la vivienda de una vez en Meco en lugar de ir por zonas?',
-      a: 'Cuando hay instalaciones que renovar o redistribución entre plantas. Abrir la vivienda una sola vez es más eficiente que dos obras separadas. Si las instalaciones están en buen estado y no hay redistribución, puede tener sentido priorizar las zonas más urgentes y dejar el resto para cuando el presupuesto lo permita.',
-    },
-    {
       q: '¿Cuánto cuesta reformar un adosado en Meco?',
       a: 'Depende del alcance. Un cerramiento de terraza puede partir de 4.000-8.000€ según las dimensiones y el sistema constructivo. Una reforma integral de adosado de dos plantas de 150-200 m² puede estar entre 50.000 y 90.000€ según el estado de partida y los materiales. El presupuesto cerrado lo recibes tras la visita técnica gratuita.',
-    },
-    {
-      q: '¿Cuánto tiempo tarda una reforma integral de adosado en Meco?',
-      a: 'Una reforma integral de adosado de dos plantas puede llevar entre 14 y 20 semanas, según la superficie y el alcance. Si la reforma es parcial (baño y cocina sin instalaciones), el plazo puede ser de 4-6 semanas. La fecha de entrega queda fijada en el contrato antes de empezar.',
     },
     {
       q: '¿Necesito permiso del Ayuntamiento de Meco para cerrar la terraza?',
       a: 'En la mayoría de los casos sí, aunque el tipo de tramitación depende del sistema constructivo y de la normativa aplicable en la urbanización concreta. Lo revisamos antes de presupuestar y gestionamos el permiso en su totalidad. La fecha de inicio de la obra se fija una vez que la tramitación está en orden.',
     },
   ],
+
+  // ─── CAMARMA — 8 → 4 (reformas unifamiliares, cuánto tarda, cuánto cuesta, cubierta) ──────
   'camarma-de-esteruelas': [
     {
       q: '¿Hacéis reformas integrales de viviendas unifamiliares en Camarma de Esteruelas?',
       a: 'Sí. Reforma integral, baño, cocina, instalaciones, carpintería exterior y actuaciones en cubierta o exterior cuando la vivienda lo requiere. El mismo equipo, el mismo sistema de presupuesto cerrado y el mismo compromiso de plazo que en cualquier tipo de vivienda.',
     },
     {
-      q: '¿Cómo solicito una visita para valorar una reforma en Camarma?',
-      a: 'A través del formulario de contacto o por teléfono. La visita técnica es gratuita y sin compromiso. Tras el primer contacto organizamos la visita según disponibilidad. Evaluamos el estado de la vivienda, tomamos medidas y escuchamos el alcance previsto. El presupuesto lo recibes en las 48 horas siguientes.',
-    },
-    {
-      q: '¿Hay que tramitar algo antes de empezar una reforma en Camarma de Esteruelas?',
-      a: 'Depende del alcance y de la normativa del Ayuntamiento de Camarma de Esteruelas. Las actuaciones que afectan a fachada, estructura o elementos comunes tienen un tratamiento diferente a las que solo intervienen en el interior de la vivienda. Gestionamos la tramitación completa según lo que corresponda a cada proyecto.',
-    },
-    {
       q: '¿Cuánto tarda una reforma integral en una vivienda unifamiliar de Camarma?',
       a: 'Una reforma integral de una vivienda unifamiliar lleva entre 14 y 20 semanas según la superficie y el alcance. Si la reforma es parcial (solo una planta o solo instalaciones y acabados), el plazo puede ser significativamente menor. La fecha de entrega queda fijada en el contrato antes de empezar.',
     },
     {
-      q: '¿Cuándo conviene revisar las instalaciones antes de planificar la reforma en Camarma?',
-      a: 'Antes de cerrar el alcance de cualquier reforma. El estado del cuadro eléctrico, la fontanería y la carpintería exterior condiciona qué tipo de actuación tiene más sentido. En viviendas que llevan tiempo sin una revisión de instalaciones, evaluar su estado antes de planificar los acabados evita que el presupuesto quede desfasado cuando empieza la obra.',
-    },
-    {
       q: '¿Cuánto cuesta reformar una vivienda unifamiliar en Camarma de Esteruelas?',
       a: 'Depende de la superficie y el alcance. Una reforma integral de unifamiliar de 150-200 m² con instalaciones, baño, cocina y suelos puede estar entre 50.000 y 90.000€ según el estado de partida y los materiales. Una reforma parcial de baño y cocina puede estar entre 10.000 y 20.000€. El presupuesto cerrado lo recibes tras la visita técnica gratuita.',
-    },
-    {
-      q: '¿Cuánto tarda una reforma integral en Camarma de Esteruelas?',
-      a: 'Una reforma integral de vivienda unifamiliar de dos plantas puede llevar entre 14 y 20 semanas, según la superficie y el alcance. Una reforma parcial de baño y cocina en buen estado de instalaciones puede completarse en 4-6 semanas. La fecha de entrega queda fijada en el contrato antes de empezar.',
     },
     {
       q: '¿Podéis hacer también reforma de cubierta en viviendas de Camarma?',

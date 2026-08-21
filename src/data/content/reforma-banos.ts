@@ -259,7 +259,7 @@ export const FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cuánto puede costar reformar el baño principal de una vivienda en Meco?',
-      a: 'El precio depende del alcance: si se renueva la fontanería, si hay cambio de distribución y el tipo de materiales. En un baño de 6 a 9 metros cuadrados con reforma completa (alicatado, sanitarios, mueble, mampara y fontanería incluidas) el precio parte desde los 4.500 euros. El presupuesto cerrado y sin letra pequeña lo recibes en 48 horas tras la visita técnica gratuita.',
+      a: 'El precio depende del alcance: si se renueva la fontanería, si hay cambio de distribución y el tipo de materiales. En un baño de 6 a 9 metros cuadrados con reforma completa (alicatado, sanitarios, mueble, mampara y fontanería incluidas) el precio parte desde los 4.500 euros. El presupuesto cerrado y sin letra pequeña lo recibes por escrito tras la visita técnica gratuita.',
     },
   ],
 

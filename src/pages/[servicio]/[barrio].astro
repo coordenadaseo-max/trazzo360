@@ -87,7 +87,7 @@ const pageSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: `${service.title} en ${zone.name}`,
-  description: `${service.headline} Servicio en ${zone.name}. Precio cerrado, plazo garantizado y presupuesto gratis en 24h.`,
+  description: `${service.headline} Servicio en ${zone.name}. Precio cerrado, plazo garantizado y presupuesto gratuito.`,
   provider: {
     '@type': 'GeneralContractor',
     '@id': `${SITE.url}/#business`,
@@ -143,7 +143,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
 
 <Layout
   title={pageTitle}
-  description={SERVICE_ZONE_META[service.slug]?.[zone.slug] ?? `${service.title} en ${zone.name} desde ${service.priceFrom}€. Precio cerrado y presupuesto gratuito en 48h. ${SITE.name}.`}
+  description={SERVICE_ZONE_META[service.slug]?.[zone.slug] ?? `${service.title} en ${zone.name} desde ${service.priceFrom}€. Precio cerrado y presupuesto gratuito. ${SITE.name}.`}
   schema={[pageSchema, faqSchema, breadcrumbSchema]}
 >
 
@@ -254,7 +254,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
         <a href={`tel:${SITE.phone}`} class="block text-center py-3.5 text-sm font-semibold text-gray-300 border border-white/20 hover:border-white mb-4">
           ☎ {SITE.phoneDisplay}
         </a>
-        <p class="text-xs text-gray-500 text-center">Presupuesto cerrado en 48h</p>
+        <p class="text-xs text-gray-500 text-center">Visita técnica gratuita</p>
         <a href={`/calculadora-precio-reforma/?servicio=${service.slug}`} class="block text-center text-xs text-gray-400 hover:text-white mt-3">
           Estimar precio antes →
         </a>
@@ -294,9 +294,9 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
       </div>
       <div class="bg-[#111827] p-8 text-white">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratuito</p>
-        <p class="text-xl font-black text-white mb-2">Respondemos en 24h. Presupuesto cerrado tras la visita.</p>
+        <p class="text-xl font-black text-white mb-2">Cuéntanos tu proyecto. Presupuesto cerrado tras la visita.</p>
         <p class="text-sm text-gray-400 mb-6">
-          Sin compromiso. Cuéntanos qué quieres reformar en {zone.name}, concertamos visita técnica y entregamos presupuesto cerrado en 48h.
+          Sin compromiso. Concertamos visita técnica en {zone.name} y entregamos presupuesto cerrado por escrito.
         </p>
         <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 mb-3" style="background:#A85535">
           Solicitar presupuesto en {zone.name}
@@ -363,7 +363,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
           ¿Cuánto cuesta {costar} en {zone.name}?
         </h2>
         <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
-          Precios de referencia calculados según superficie, alcance y nivel de calidad. El presupuesto exacto, cerrado y sin sorpresas, lo recibes gratis en 48h tras la visita técnica.
+          Precios de referencia calculados según superficie, alcance y nivel de calidad. El presupuesto exacto, cerrado y sin sorpresas, lo recibes por escrito tras la visita técnica gratuita.
         </p>
         <table class="w-full border border-gray-100 border-collapse text-sm">
           <caption class="sr-only">Precios orientativos de {costar} en {zone.name}</caption>
@@ -466,7 +466,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
       <h2 class="text-3xl font-black text-white mb-3">
         ¿{service.title} en {zone.name}?
       </h2>
-      <p class="text-white/80 mb-7">Visita gratuita. Presupuesto cerrado en 48h. Sin letra pequeña.</p>
+      <p class="text-white/80 mb-7">Visita técnica gratuita. Presupuesto cerrado por escrito. Sin letra pequeña.</p>
       <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8f4329]">
         Solicitar valoración gratuita
       </a>

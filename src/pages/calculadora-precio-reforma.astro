@@ -437,7 +437,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
     <p class="text-sm text-gray-600 mb-6">Cada página incluye tabla de precios, qué está incluido en cada nivel, plazos y cómo funciona el proceso. Consulta la del servicio que necesitas para afinar la estimación de la calculadora.</p>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
       {CALC_SERVICES.map(svc => (
-        <div class="group flex flex-col border border-gray-200 rounded-xl hover:border-[#A85535] hover:shadow-sm transition-all">
+        <div class="group flex flex-col border border-gray-200 hover:border-[#A85535] transition-colors">
           <a href={`/servicios/${svc.hubSlug}/`}
              aria-label={`Ver precios detallados de ${svc.label}`}
              class="p-5 pb-2 flex-1">
@@ -458,7 +458,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
     <div class="max-w-5xl mx-auto px-4 text-center">
       <h2 class="text-2xl font-black text-white mb-3">¿Quieres un presupuesto real con precio cerrado?</h2>
       <p class="text-gray-400 mb-6">La calculadora orienta. El precio cerrado se firma en el contrato tras la visita técnica gratuita, sin compromiso.</p>
-      <a href="/contacto/" class="inline-block bg-[#A85535] text-white font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-opacity text-sm tracking-wide uppercase">
+      <a href="/contacto/" class="inline-block bg-[#A85535] text-white font-bold px-8 py-4 hover:opacity-90 transition-opacity text-sm tracking-wide uppercase">
         Solicitar visita técnica gratuita
       </a>
     </div>

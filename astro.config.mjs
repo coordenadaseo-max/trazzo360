@@ -10,6 +10,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [sitemap({
-    filter: (page) => !page.includes('/gracias/') && !page.includes('/lab/'),
+    filter: (page) => !page.includes('/gracias/') && !page.includes('/lab/') && !page.includes('/aviso-legal/') && !page.includes('/privacidad/'),
   })],
 });

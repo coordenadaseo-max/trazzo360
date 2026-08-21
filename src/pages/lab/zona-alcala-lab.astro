@@ -1,0 +1,865 @@
+---
+// LAB — Arquetipo ZONA · Alcalá de Henares
+// noindex · solo para validación y aprobación interna
+const title = 'LAB · Zona Alcalá de Henares';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>{title}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; background: #fff; color: #111827; }
+
+    /* ── ADN Trazzo360 tokens ── */
+    :root {
+      --dark:  #111827;
+      --cream: #F9F7F4;
+      --brand: #A85535;
+      --brand-dark: #8a4229;
+      --white: #ffffff;
+      --g200:  #E5E7EB;
+      --g400:  #9CA3AF;
+      --g500:  #6B7280;
+      --g600:  #4B5563;
+      --g700:  #374151;
+      --g900:  #111827;
+    }
+
+    /* ── Bullet de marca (copia standalone) ── */
+    .list-marca {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: .625rem;
+    }
+    .list-marca li {
+      display: flex; align-items: flex-start; gap: .625rem;
+      line-height: 1.55; font-size: .9375rem; color: var(--g700);
+    }
+    .list-marca li::before {
+      content: ''; display: block;
+      width: 6px; height: 6px; flex: 0 0 6px; border-radius: 0;
+      margin-top: 8.625px;
+      border: 1px solid var(--g400); background: transparent;
+    }
+    .list-marca.on-dark li { color: var(--g400); }
+    .list-marca.on-dark li::before { border-color: rgba(255,255,255,.35); }
+
+    /* ── Lab chrome ── */
+    .lab-banner {
+      position: sticky; top: 0; z-index: 100;
+      background: #fef08a;
+      border-bottom: 2px solid #ca8a04;
+      padding: .4375rem 1.5rem;
+      font-size: .5625rem;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #78350f;
+    }
+    .section-label {
+      background: #f9fafb;
+      border-top: 2px solid var(--g200);
+      border-bottom: 1px solid #f3f4f6;
+      padding: .5625rem 1.5rem;
+      display: flex; align-items: baseline; gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .section-label b {
+      font-size: .5625rem; font-weight: 900;
+      letter-spacing: .13em; text-transform: uppercase;
+      color: var(--brand);
+    }
+    .section-label span {
+      font-size: .5625rem; color: var(--g400);
+    }
+
+    /* ── Shared typography ── */
+    .eyebrow {
+      display: block;
+      font-size: .6875rem; font-weight: 900;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--brand); margin-bottom: 1.25rem;
+    }
+    .seo-eyebrow {
+      display: block;
+      font-size: clamp(.75rem, 1.35vw, .9375rem);
+      font-weight: 700;
+      color: rgba(255,255,255,.38);
+      letter-spacing: .02em; line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Hero base ── */
+    .hero { background: var(--dark); padding: 5rem 1.5rem; }
+    .hero-inner { max-width: 80rem; margin: 0 auto; }
+
+    /* ── Hero A: 2-col ── */
+    .hero-a-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+    @media (min-width: 1024px) {
+      .hero-a-grid {
+        grid-template-columns: 9fr 7fr;
+        align-items: center;
+        gap: 6rem;
+      }
+    }
+
+    /* Hero A – left col */
+    .h1-a {
+      font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+      font-weight: 900;
+      line-height: .95;
+      letter-spacing: -0.035em;
+      color: #fff;
+    }
+    .body-lead {
+      font-size: 1rem;
+      color: rgba(255,255,255,.6);
+      line-height: 1.7;
+      max-width: 52ch;
+      margin-top: 1.75rem;
+    }
+    .cta-row {
+      display: flex; flex-wrap: wrap; gap: .75rem;
+      margin-top: 2.5rem;
+    }
+    .btn-brand {
+      display: inline-block; padding: .875rem 1.75rem;
+      background: var(--brand); color: #fff;
+      font-size: .6875rem; font-weight: 900;
+      letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none;
+    }
+    .btn-brand:hover { background: var(--brand-dark); }
+    .btn-ghost {
+      display: inline-block; padding: .875rem 1.75rem;
+      background: transparent; color: rgba(255,255,255,.7);
+      font-size: .6875rem; font-weight: 900;
+      letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.2);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+    .meta-row {
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      margin-top: 1.75rem; padding-top: 1.75rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .meta-item {
+      font-size: .625rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+    }
+    .meta-item strong { color: rgba(255,255,255,.65); font-weight: 900; }
+
+    /* Hero A – right col: typology index */
+    .typo-index {
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .typo-item {
+      padding: 1.375rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .typo-barrios {
+      font-size: .9375rem; font-weight: 700; color: #fff;
+      margin-bottom: .375rem;
+    }
+    .typo-epoca {
+      font-size: .625rem; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      color: var(--brand); margin-bottom: .75rem;
+    }
+    .typo-note {
+      font-size: .8125rem; color: rgba(255,255,255,.45);
+      line-height: 1.6;
+    }
+
+    /* ── Hero C: single wide col ── */
+    .hero-c-inner { max-width: 54rem; }
+    .h1-c {
+      font-size: clamp(2rem, 4.5vw, 3.75rem);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      color: #fff;
+    }
+    .body-note {
+      font-size: .9375rem;
+      color: rgba(255,255,255,.32);
+      line-height: 1.65;
+      max-width: 50ch;
+      margin-top: 1rem;
+    }
+
+    /* ── Section shells ── */
+    .sec-white { background: var(--white); padding: 5rem 1.5rem; }
+    .sec-cream  { background: var(--cream); padding: 5rem 1.5rem; }
+    .sec-inner    { max-width: 80rem; margin: 0 auto; }
+    .sec-inner-md { max-width: 64rem; margin: 0 auto; }
+
+    .sec-h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 900; letter-spacing: -0.02em;
+      color: var(--g900); line-height: 1.1;
+      margin-bottom: .75rem;
+    }
+    .sec-intro {
+      font-size: .9375rem; color: var(--g500);
+      line-height: 1.65; max-width: 65ch;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Comparativa A vs C ── */
+    .compare-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+    }
+    @media (min-width: 768px) { .compare-grid { grid-template-columns: 1fr 1fr; } }
+
+    .compare-card {
+      padding: 2rem; background: var(--dark);
+    }
+    .compare-card.rec { border-top: 3px solid var(--brand); }
+    .compare-card h3 {
+      font-size: .5625rem; font-weight: 900;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--brand); margin-bottom: 1.5rem;
+    }
+    .cr { /* compare row */
+      display: grid; grid-template-columns: 7rem 1fr;
+      gap: .75rem; padding: .625rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .cr-dt {
+      font-size: .5rem; font-weight: 900;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.28); line-height: 1.4;
+      padding-top: .1rem;
+    }
+    .cr-dd {
+      font-size: .8125rem; color: rgba(255,255,255,.7);
+      line-height: 1.55;
+    }
+    .compare-note {
+      margin-top: 1.5rem; padding: 1.25rem;
+      background: var(--cream);
+      border-left: 3px solid var(--brand);
+    }
+    .compare-note p {
+      font-size: .8125rem; color: var(--g700); line-height: 1.65;
+    }
+
+    /* ── Matriz tipológica ── */
+    .matriz-grid {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+    }
+    @media (min-width: 768px) {
+      .matriz-grid { grid-template-columns: repeat(3, 1fr); }
+      .matriz-cell + .matriz-cell { border-left: 1px solid rgba(255,255,255,.06); }
+    }
+    .matriz-cell {
+      background: var(--dark); padding: 2rem 1.75rem;
+    }
+    .mz-zone {
+      font-size: .5rem; font-weight: 900;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(255,255,255,.22); margin-bottom: .875rem;
+    }
+    .mz-barrios {
+      font-size: 1.0625rem; font-weight: 700;
+      color: #fff; margin-bottom: .375rem; line-height: 1.25;
+    }
+    .mz-epoca {
+      font-size: .625rem; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      color: var(--brand); margin-bottom: 1.25rem;
+    }
+    .mz-note {
+      font-size: .8125rem; color: rgba(255,255,255,.48);
+      line-height: 1.65; margin-bottom: 1.5rem;
+    }
+    .mz-impl {
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .mz-impl-label {
+      font-size: .4375rem; font-weight: 900;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(255,255,255,.2); margin-bottom: .5rem;
+    }
+    .mz-impl-text {
+      font-size: .875rem; color: rgba(255,255,255,.75);
+      font-weight: 600; line-height: 1.5;
+    }
+    .mz-source {
+      font-size: .625rem; color: var(--g400);
+      font-style: italic; margin-top: 1.5rem;
+    }
+
+    /* ── Servicios editorial ── */
+    .srv-item {
+      display: grid; grid-template-columns: 1fr; gap: 1rem;
+      padding: 2.25rem 0;
+      border-top: 1px solid var(--g200);
+    }
+    .srv-item:last-child { border-bottom: 1px solid var(--g200); }
+    @media (min-width: 768px) {
+      .srv-item {
+        grid-template-columns: 13rem 1fr;
+        gap: 3rem; align-items: start;
+      }
+    }
+    .srv-case {
+      font-size: .5625rem; font-weight: 900;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--brand); line-height: 1.5;
+      padding-top: .25rem;
+    }
+    .srv-name {
+      font-size: 1.125rem; font-weight: 700;
+      color: var(--g900); letter-spacing: -.01em;
+      margin-bottom: .625rem;
+    }
+    .srv-body {
+      font-size: .9375rem; color: var(--g500);
+      line-height: 1.65; margin-bottom: 1rem;
+    }
+    .srv-link {
+      font-size: .6875rem; font-weight: 700;
+      color: var(--brand); text-decoration: none;
+      letter-spacing: .04em;
+    }
+    .srv-links { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+
+    /* ── Validación ── */
+    .vtable-wrap { overflow-x: auto; }
+    .vtable {
+      width: 100%; border-collapse: collapse; font-size: .8125rem;
+    }
+    .vtable th {
+      text-align: left;
+      font-size: .5rem; font-weight: 900;
+      letter-spacing: .13em; text-transform: uppercase;
+      color: var(--g400);
+      padding: .75rem 1rem;
+      border-bottom: 2px solid var(--g200);
+      white-space: nowrap;
+    }
+    .vtable td {
+      padding: .75rem 1rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top; line-height: 1.5;
+      color: var(--g600);
+    }
+    .vtable td:first-child { color: var(--g900); font-weight: 500; }
+    .vtable td:nth-child(2) {
+      font-size: .6875rem; color: var(--g400);
+      font-family: ui-monospace, 'SF Mono', monospace;
+      white-space: nowrap;
+    }
+    .badge {
+      display: inline-block; padding: .1875rem .5rem;
+      font-size: .5rem; font-weight: 900;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .ok   { background: #f0fdf4; color: #16a34a; }
+    .warn { background: #fff7ed; color: #c2410c; }
+    .fix  { background: #fef2f2; color: #dc2626; }
+
+    /* ── FAQ precio baño ── */
+    .faq-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1rem;
+      margin-top: 2rem;
+    }
+    @media (min-width: 768px) { .faq-grid { grid-template-columns: 1fr 1fr; } }
+    .faq-card { padding: 1.5rem; }
+    .faq-card.err  { background: #fef2f2; border-left: 3px solid #dc2626; }
+    .faq-card.good { background: #f0fdf4; border-left: 3px solid #16a34a; }
+    .faq-badge {
+      font-size: .5rem; font-weight: 900;
+      letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .faq-card.err  .faq-badge { color: #dc2626; }
+    .faq-card.good .faq-badge { color: #16a34a; }
+    .faq-text {
+      font-size: .875rem; color: var(--g700); line-height: 1.65;
+    }
+    .faq-source {
+      font-size: .6875rem; margin-top: .75rem; line-height: 1.5;
+    }
+    .faq-card.err  .faq-source { color: #dc2626; }
+    .faq-card.good .faq-source { color: #16a34a; }
+
+    /* ── Corrección bloque ── */
+    .correction {
+      margin-top: 2rem; padding: 1.25rem 1.5rem;
+      background: #fff7ed; border-left: 3px solid var(--brand);
+    }
+    .correction-label {
+      font-size: .5rem; font-weight: 900;
+      letter-spacing: .13em; text-transform: uppercase;
+      color: var(--brand); margin-bottom: .5rem;
+    }
+    .correction-text {
+      font-size: .8125rem; color: var(--g700); line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+
+<div class="lab-banner">LAB INTERNO · Arquetipo ZONA · Alcalá de Henares · noindex · solo validación interna</div>
+
+
+<!-- ════════════════════════════════════════════════════
+     HERO A — Doble perfil residencial
+════════════════════════════════════════════════════ -->
+<div class="section-label">
+  <b>Hero A — Doble perfil residencial</b>
+  <span>2 columnas · H1 semántico con keyword · índice tipológico editorial sin imagen · datos solo de zones.ts</span>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-a-grid">
+
+      <!-- Col izquierda -->
+      <div>
+        <h1 class="h1-a">
+          <span class="seo-eyebrow">Empresa de reformas en Alcalá de Henares</span>
+          En Alcalá, el barrio<br>y el año del edificio<br>determinan el alcance<br>de la reforma.
+        </h1>
+
+        <p class="body-lead">
+          El parque residencial de Alcalá no es homogéneo. Los bloques de los años 70 y 80 en El Val y Barrio del Pilar tienen instalaciones que condicionan el alcance antes de elegir materiales. Las zonas de crecimiento más reciente permiten centrarse directamente en los acabados.
+        </p>
+
+        <div class="cta-row">
+          <a href="#" class="btn-brand">Solicitar visita técnica gratuita</a>
+          <a href="#" class="btn-ghost">Llamar ahora</a>
+        </div>
+
+        <div class="meta-row">
+          <span class="meta-item"><strong>Precio cerrado</strong> por contrato</span>
+          <span class="meta-item"><strong>Plazo</strong> garantizado</span>
+          <span class="meta-item"><strong>2 años</strong> de garantía</span>
+        </div>
+      </div>
+
+      <!-- Col derecha: índice tipológico -->
+      <nav class="typo-index" aria-label="Perfiles de barrio en Alcalá">
+        <div class="typo-item">
+          <p class="typo-barrios">El Val · Barrio del Pilar</p>
+          <p class="typo-epoca">Bloques años 70–80</p>
+          <p class="typo-note">Mayor concentración de bloques de esta época en Alcalá. El cuadro eléctrico lleva en muchos casos décadas sin actualizar y suele ser la primera partida que aparece en la evaluación técnica.</p>
+        </div>
+        <div class="typo-item">
+          <p class="typo-barrios">Casco Histórico · Reyes Católicos</p>
+          <p class="typo-epoca">Vivienda histórica y promotoras 80–90</p>
+          <p class="typo-note">El alcance varía mucho según el estado real de cada inmueble. En Reyes Católicos, la demanda se centra en baño y cocina con menor necesidad de intervenir en instalaciones.</p>
+        </div>
+        <div class="typo-item">
+          <p class="typo-barrios">La Garena · Espartales</p>
+          <p class="typo-epoca">Crecimiento más reciente</p>
+          <p class="typo-note">Vivienda más reciente. La reforma se centra en acabados: suelos resistentes, baño actualizado y cocina funcional. El plazo de ejecución es relevante cuando hay arrendamiento pendiente.</p>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     HERO C — La pregunta como entrada
+════════════════════════════════════════════════════ -->
+<div class="section-label">
+  <b>Hero C — La pregunta como entrada</b>
+  <span>1 columna · keyword en span dentro de H1 · pregunta específica para pisos con instalaciones antiguas · no generalizable a toda Alcalá</span>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-c-inner">
+
+      <h1>
+        <span class="seo-eyebrow">Empresa de reformas en Alcalá de Henares</span>
+        <span class="h1-c">¿Solo el baño y la cocina, o merece la pena reformar el piso completo?</span>
+      </h1>
+
+      <p class="body-lead">
+        En pisos de El Val, Barrio del Pilar y el Casco Histórico, la respuesta depende del estado del cuadro eléctrico y la fontanería. Si llevan décadas sin actualizar, abrir el piso una sola vez es más eficiente que volver a intervenir en dos años. Si las instalaciones están bien, baño y cocina pueden ser suficientes para lo que buscas.
+      </p>
+
+      <p class="body-note">
+        La visita técnica gratuita evalúa el estado real antes de comprometer ningún número ni plazo.
+      </p>
+
+      <div class="cta-row">
+        <a href="#" class="btn-brand">Solicitar visita técnica en Alcalá</a>
+        <a href="#" class="btn-ghost">Llamar ahora</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     COMPARATIVA A vs C
+════════════════════════════════════════════════════ -->
+<div class="section-label">
+  <b>Comparativa Hero A vs Hero C</b>
+  <span>Función, keyword SEO, diferenciación, riesgo de plantilla, recomendación</span>
+</div>
+
+<div class="sec-white">
+  <div class="sec-inner">
+    <h2 class="sec-h2">Evaluación de variantes de hero</h2>
+    <p class="sec-intro">Criterios: función editorial, solidez del keyword SEO, diferenciación respecto a Home / Baños / Cocinas, dependencia de imagen, y riesgo de replicabilidad genérica.</p>
+
+    <div class="compare-grid">
+
+      <div class="compare-card rec">
+        <h3>Hero A · Doble perfil residencial ← Recomendado</h3>
+        <div>
+          <div class="cr">
+            <span class="cr-dt">Función</span>
+            <span class="cr-dd">Posiciona la ciudad como territorio con características propias antes de proponer el servicio</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Keyword SEO</span>
+            <span class="cr-dd">H1 semántico claro. El span del eyebrow está dentro del H1, no es un párrafo separado</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Tesis editorial</span>
+            <span class="cr-dd">Específica de Alcalá. El índice tipológico solo funciona si el contenido es real de la ciudad</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Diferenciación</span>
+            <span class="cr-dd">Alta. 2 columnas con índice editorial no se repite en Home, Baños ni Cocinas</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Dependencia imagen</span>
+            <span class="cr-dd">Cero. Funciona completamente con tipografía y datos documentados</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Riesgo plantilla</span>
+            <span class="cr-dd">Bajo. La estructura requiere datos de ciudad reales para tener sentido</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Responsive</span>
+            <span class="cr-dd">Bien. El índice tipológico apila en columna vertical bajo el H1 en móvil</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-card">
+        <h3>Hero C · La pregunta como entrada</h3>
+        <div>
+          <div class="cr">
+            <span class="cr-dt">Función</span>
+            <span class="cr-dd">Interpela directamente con la duda más frecuente para pisos con instalaciones antiguas</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Keyword SEO</span>
+            <span class="cr-dd">Keyword en eyebrow dentro del H1, visualmente secundario pero semánticamente válido</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Tesis editorial</span>
+            <span class="cr-dd">Específica para pisos con instalaciones antiguas, no generalizable a Alcalá completa</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Diferenciación</span>
+            <span class="cr-dd">Media. La pregunta en H1 es efectiva pero el formato es más predecible y replicable</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Dependencia imagen</span>
+            <span class="cr-dd">Cero. Texto puro, funciona en cualquier contexto</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Riesgo plantilla</span>
+            <span class="cr-dd">Medio. Una pregunta + respuesta es efectiva pero no requiere datos locales reales</span>
+          </div>
+          <div class="cr">
+            <span class="cr-dt">Responsive</span>
+            <span class="cr-dd">Excelente. Columna única pura, escala perfectamente a móvil</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="compare-note">
+      <p><strong>Recomendación:</strong> Hero A. Construye una tesis de ciudad completa con el índice tipológico, que es el recurso visual más distintivo del arquetipo ZONA y no puede replicarse a Torrejón o Coslada sin cambiar los datos. Hero C es eficaz para audiencias con la decisión ya formulada, pero no posiciona Alcalá como territorio con características propias. La pregunta de Hero C puede aparecer como primera FAQ o como subhead en el cuerpo de la página real, sin necesidad de ser el hero.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════
+     MATRIZ TIPOLÓGICA
+════════════════════════════════════════════════════ -->
+<div class="section-label">
+  <b>Momento visual — Matriz tipológica de Alcalá</b>
+  <span>Componente propio del arquetipo ZONA · solo datos de zones.ts · sin datos de demanda inventados ni porcentajes</span>
+</div>
+
+<div class="sec-cream">
+  <div class="sec-inner">
+    <span class="eyebrow">El parque residencial</span>
+    <h2 class="sec-h2">Alcalá de Henares — tres perfiles de barrio</h2>
+    <p class="sec-intro">La época de construcción y el estado de las instalaciones condicionan el alcance de cada reforma. Esta caracterización refleja lo que encontramos con más frecuencia en cada zona del parque residencial.</p>
+
+    <div class="matriz-grid">
+
+      <div class="matriz-cell">
+        <p class="mz-zone">Zona A · instalaciones a evaluar primero</p>
+        <p class="mz-barrios">El Val · Barrio del Pilar</p>
+        <p class="mz-epoca">Bloques años 70–80</p>
+        <p class="mz-note">Mayor concentración de bloques de esta época en Alcalá. En muchos casos el cuadro eléctrico lleva décadas sin actualizar y suele ser la primera partida que aparece en la evaluación técnica antes de cerrar el presupuesto.</p>
+        <div class="mz-impl">
+          <p class="mz-impl-label">Implicación para el alcance</p>
+          <p class="mz-impl-text">La evaluación de instalaciones precede a la elección de acabados. Si requieren renovación, abordar todo en la misma obra es más eficiente que intervenir en dos momentos distintos.</p>
+        </div>
+      </div>
+
+      <div class="matriz-cell">
+        <p class="mz-zone">Zona B · variabilidad alta por inmueble</p>
+        <p class="mz-barrios">Casco Histórico · Reyes Católicos</p>
+        <p class="mz-epoca">Vivienda histórica y promotoras 80–90</p>
+        <p class="mz-note">El Casco combina vivienda antigua rehabilitada con pisos sin tocar en décadas. En Reyes Católicos predominan promociones de los 80-90 con instalaciones en general en mejor estado.</p>
+        <div class="mz-impl">
+          <p class="mz-impl-label">Implicación para el alcance</p>
+          <p class="mz-impl-text">El alcance varía mucho según el estado real de cada inmueble. En Reyes Católicos, la demanda se centra en baño y cocina con menor necesidad de intervenir en instalaciones.</p>
+        </div>
+      </div>
+
+      <div class="matriz-cell">
+        <p class="mz-zone">Zona C · crecimiento más reciente</p>
+        <p class="mz-barrios">La Garena · Espartales</p>
+        <p class="mz-epoca">Promociones más recientes</p>
+        <p class="mz-note">Vivienda más reciente con instalaciones en mejor estado. Hay propietarios que compran para reformar y alquilar, para los que el plazo de ejecución es relevante cuando hay un contrato de arrendamiento pendiente.</p>
+        <div class="mz-impl">
+          <p class="mz-impl-label">Implicación para el alcance</p>
+          <p class="mz-impl-text">La reforma se centra en acabados: suelos de porcelánico resistente, baño renovado y cocina funcional. Sin intervención habitual en instalaciones salvo revisión preventiva.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="mz-source">Fuente: zones.ts (Trazzo360) · m2BarrioNotes · Esta caracterización refleja el conocimiento del parque residencial documentado internamente. El alcance real de cada reforma se determina en la visita técnica del inmueble concreto.</p>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════
+     SERVICIOS — Lista editorial
+════════════════════════════════════════════════════ -->
+<div class="section-label">
+  <b>Servicios disponibles en Alcalá — Lista editorial</b>
+  <span>Organizada por caso o necesidad · anchor text descriptivo · sin ranking de demanda inventado · datos de topWorks de zones.ts</span>
+</div>
+
+<div class="sec-white">
+  <div class="sec-inner-md">
+    <span class="eyebrow">Reformas en Alcalá de Henares</span>
+    <h2 class="sec-h2">Cubrimos todas las obras con precio cerrado</h2>
+    <p class="sec-intro">La visita técnica gratuita define el alcance según el estado real de la vivienda o local. Precio cerrado por contrato antes de empezar, plazo garantizado por escrito.</p>
+
+    <div>
+
+      <div class="srv-item">
+        <div>
+          <p class="srv-case">Si la vivienda tiene instalaciones de los años 70–80</p>
+        </div>
+        <div>
+          <p class="srv-name">Reforma integral con instalaciones</p>
+          <p class="srv-body">Cuando el cuadro eléctrico o la fontanería necesitan renovación, abordar todo en la misma obra es más eficiente. Se abre el piso una sola vez, los gremios se coordinan en un único periodo y el plazo total no se multiplica por el número de intervenciones. La actuación más habitual en El Val y Barrio del Pilar.</p>
+          <a href="/reforma-integral/alcala-de-henares/" class="srv-link">Reforma integral en Alcalá de Henares →</a>
+        </div>
+      </div>
+
+      <div class="srv-item">
+        <div>
+          <p class="srv-case">Si el baño necesita renovación completa</p>
+        </div>
+        <div>
+          <p class="srv-name">Reforma de baño</p>
+          <p class="srv-body">Cambio de bañera por ducha de obra, alicatado hasta el techo, sanitarios y mueble. En bloques de los años 70-80 conviene evaluar la fontanería de la vivienda en la misma visita técnica, para no tener que reabrir el alicatado una vez terminado el baño.</p>
+          <a href="/reforma-banos/alcala-de-henares/" class="srv-link">Reforma de baño en Alcalá de Henares →</a>
+        </div>
+      </div>
+
+      <div class="srv-item">
+        <div>
+          <p class="srv-case">Si la cocina está desfasada en acabados o distribución</p>
+        </div>
+        <div>
+          <p class="srv-name">Reforma de cocina</p>
+          <p class="srv-body">Muebles, encimera y alicatado con electrodomésticos integrados. En Alcalá es frecuente combinar la reforma de cocina con la renovación del suelo de toda la vivienda en la misma obra, para aprovechar la movilización y evitar cortes de suministro en dos momentos distintos.</p>
+          <a href="/reforma-cocinas/alcala-de-henares/" class="srv-link">Reforma de cocina en Alcalá de Henares →</a>
+        </div>
+      </div>
+
+      <div class="srv-item">
+        <div>
+          <p class="srv-case">Si las instalaciones están bien y el objetivo son los acabados</p>
+        </div>
+        <div>
+          <p class="srv-name">Reforma de piso</p>
+          <p class="srv-body">Suelos, baño, cocina y pintura sin intervenir en instalaciones. Permite renovar completamente el aspecto de la vivienda en un plazo acotado. La combinación habitual cuando el objetivo es preparar la vivienda para uso o arrendamiento en zonas con vivienda más reciente.</p>
+          <a href="/reforma-pisos/alcala-de-henares/" class="srv-link">Reforma de piso en Alcalá de Henares →</a>
+        </div>
+      </div>
+
+      <div class="srv-item">
+        <div>
+          <p class="srv-case">También en Alcalá</p>
+        </div>
+        <div>
+          <p class="srv-name">Locales comerciales y comunidades de vecinos</p>
+          <p class="srv-body">Acondicionamiento de locales con gestión de licencia de actividad incluida, y obras en zonas comunes de comunidades de propietarios. Mismo proceso: visita técnica, presupuesto cerrado y plazo garantizado por contrato.</p>
+          <div class="srv-links">
+            <a href="/locales-comerciales/alcala-de-henares/" class="srv-link">Reforma de locales en Alcalá →</a>
+            <a href="/comunidades-vecinos/alcala-de-henares/" class="srv-link">Comunidades de vecinos en Alcalá →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════
+     VALIDACIÓN DE DATOS
+════════════════════════════════════════════════════ -->
+<div class="section-label">
+  <b>Validación de datos · trazabilidad de afirmaciones</b>
+  <span>Fuente de cada dato utilizado en el laboratorio · corrección FAQ precio baño · corrección comparativa arquetipos</span>
+</div>
+
+<div class="sec-cream">
+  <div class="sec-inner">
+    <h2 class="sec-h2">Trazabilidad de afirmaciones</h2>
+    <p class="sec-intro">Cada afirmación usada en el laboratorio referenciada a su fuente en el codebase.</p>
+
+    <div class="vtable-wrap">
+      <table class="vtable">
+        <thead>
+          <tr>
+            <th>Afirmación utilizada</th>
+            <th>Fuente</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>El Val y Barrio del Pilar: mayor concentración de bloques años 70-80</td>
+            <td>zones.ts · alcala · m2BarrioNotes[0].text</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>"El cuadro eléctrico lleva en muchos casos décadas sin actualizar"</td>
+            <td>zones.ts · m2BarrioNotes[0].text · literal</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>"suele ser la primera partida que aparece en la evaluación técnica"</td>
+            <td>zones.ts · m2BarrioNotes[0].text · literal</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>El Casco combina vivienda antigua con pisos sin tocar en décadas</td>
+            <td>zones.ts · m2BarrioNotes[1].text</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>Reyes Católicos: promociones 80-90, demanda en baño y cocina</td>
+            <td>zones.ts · m2BarrioNotes[1].text</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>La Garena y Espartales: "crecimiento más reciente"</td>
+            <td>zones.ts · m2BarrioNotes[2].text · literal</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>"propietarios que compran para reformar y alquilar" (La Garena)</td>
+            <td>zones.ts · m2BarrioNotes[2].text · literal · fraseado como perfil, no como definición exclusiva</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>La Garena: plazo relevante cuando hay arrendamiento pendiente</td>
+            <td>zones.ts · m2BarrioNotes[2].text · literal</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>Suelos de porcelánico resistente, baño renovado, cocina funcional</td>
+            <td>zones.ts · m2BarrioNotes[2].text</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>Reforma integral + instalaciones en una sola obra</td>
+            <td>zones.ts · topWorks[0].desc</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>En bloques 70-80, conviene evaluar fontanería en la misma visita</td>
+            <td>zones.ts · topWorks[1].desc · literal</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>Combinar reforma cocina + suelo en la misma movilización</td>
+            <td>zones.ts · topWorks[3].desc · literal</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>"donde más proyectos ejecutamos en el Corredor" (heroIntro actual)</td>
+            <td>zones.ts · heroIntro · dato de volumen sin fuente documentada</td>
+            <td><span class="badge fix">ELIMINAR · CLAUDE.md §0 · ninguna cifra comercial sin confirmación</span></td>
+          </tr>
+          <tr>
+            <td>"Conocemos los proveedores locales" (heroIntro actual)</td>
+            <td>zones.ts · heroIntro · claim de arraigo local no documentado</td>
+            <td><span class="badge warn">REFORMULAR · sustituir por criterio técnico objetivo verificable</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FAQ precio baño -->
+    <h3 style="font-size:1rem;font-weight:700;color:var(--g900);margin:3rem 0 0">
+      Corrección pendiente: FAQ precio de baño en zones-content.ts
+    </h3>
+
+    <div class="faq-grid">
+      <div class="faq-card err">
+        <p class="faq-badge">Texto actual en zones-content.ts · INCORRECTO</p>
+        <p class="faq-text">"Una reforma de baño con ducha de obra, alicatado completo hasta el techo y sanitarios nuevos <strong>parte de 3.500–4.500€</strong> en acabados de gama media."</p>
+        <p class="faq-source">calculator.ts fija el mínimo en 2.800€ (hasta-4m², esencial). El rango 3.500–4.500€ no corresponde a ningún tramo de calculator.ts: el tramo hasta-4 media es 3.800–5.500€ y el tramo 4-6 esencial es 3.800–4.800€. El texto actual no es reconocible en la calculadora.</p>
+      </div>
+      <div class="faq-card good">
+        <p class="faq-badge">Formulación corregida · según calculator.ts</p>
+        <p class="faq-text">"Una reforma de baño completo —ducha de obra, alicatado hasta el techo y sanitarios— parte de <strong>2.800€</strong> en acabado esencial para baños de hasta 4 m². El precio final depende de los metros, los materiales elegidos y si conviene revisar la fontanería en la misma obra. La visita técnica define el alcance antes de comprometer ningún número."</p>
+        <p class="faq-source">Fuente: calculator.ts · reforma-banos · hasta-4 · esencial → min: 2800, max: 3800</p>
+      </div>
+    </div>
+
+    <!-- Corrección comparativa arquetipo Home -->
+    <div class="correction">
+      <p class="correction-label">Corrección comparativa de arquetipos — informe anterior</p>
+      <p class="correction-text">El informe previo afirmaba que la Home "no muestra precios". Esta afirmación es incorrecta. <strong>La Home sí utiliza price bands panorámicos</strong> mediante rangos de entrada por servicio. La diferencia con los hubs de servicio no es precio sí/no, sino profundidad: la Home muestra el precio mínimo de entrada por servicio; los hubs muestran tablas por tramos y acabados. Las páginas de zona (incluida Alcalá) no muestran precios propios, sino que redirigen a los hubs de servicio combinados zona+tipo.</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

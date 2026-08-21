@@ -1,0 +1,1260 @@
+---
+import '../../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>LAB · Cocinas · Decisiones visuales y datos</title>
+  <style>
+    html { scroll-behavior: smooth }
+    * { box-sizing: border-box }
+
+    /* ── HÉROE LAYOUT ─────────────────────── */
+    .hero-support-3col {
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 1024px) {
+      .hero-support-3col { grid-template-columns: 55fr 22fr 23fr; gap: 3rem; }
+    }
+
+    /* K2: plazo columns */
+    .plazo-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,.08);
+    }
+
+    /* K3: tipología row */
+    .tipologia-row {
+      display: grid;
+      gap: 1px;
+      background: rgba(255,255,255,.08);
+    }
+    @media (min-width: 640px) {
+      .tipologia-row { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ── PRECIO BANDS ─────────────────────── */
+    .precio-tranche {
+      border-top: 1px solid #D1C9BD;
+      padding: 1.5rem 0;
+    }
+    .precio-tranche:last-child { border-bottom: 1px solid #D1C9BD; }
+
+    .calidad-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+    }
+    .calidad-cell {
+      padding: .75rem 1rem .75rem 0;
+    }
+    .calidad-cell + .calidad-cell {
+      padding-left: 1rem;
+      border-left: 1px solid #E5E0D8;
+    }
+
+    /* ── CONVIVENCIA ──────────────────────── */
+    .timeline-weeks {
+      display: grid;
+      gap: 0;
+    }
+    @media (min-width: 640px) {
+      .timeline-weeks { grid-template-columns: repeat(5, 1fr); }
+    }
+
+    .estado-phases {
+      display: grid;
+      gap: 1px;
+      background: #D1C9BD;
+    }
+    @media (min-width: 640px) {
+      .estado-phases { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    /* ── MATRIZ ───────────────────────────── */
+    .matriz-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .8125rem;
+    }
+    .matriz-table th {
+      text-align: left;
+      padding: .5rem .75rem;
+      background: #111827;
+      color: #9CA3AF;
+      font-size: .6875rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .matriz-table td {
+      padding: .5rem .75rem;
+      border-bottom: 1px solid #E5E0D8;
+      vertical-align: top;
+      line-height: 1.4;
+    }
+    .matriz-table tr:hover td { background: #F3F0EB; }
+    .ok  { color: #16a34a; font-weight: bold }
+    .warn { color: #dc2626; font-weight: bold }
+    .note { color: #9CA3AF; }
+
+    /* ── FLUJO ────────────────────────────── */
+    .flujo-grid {
+      display: grid;
+      gap: 1px;
+      background: #D1C9BD;
+    }
+    @media (min-width: 768px) {
+      .flujo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── LAB DIVIDER ──────────────────────── */
+    .lab-div {
+      background: #fde047;
+      color: #713f12;
+      text-align: center;
+      padding: .5rem 1rem;
+      font-size: .625rem;
+      font-weight: 900;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased m-0 p-0 bg-white">
+
+  <!-- ══ LAB NAV ══════════════════════════════════════════ -->
+  <div class="fixed top-0 left-0 right-0 z-50 bg-yellow-400 text-yellow-950 px-4 py-1.5 flex items-center justify-between">
+    <span class="text-[10px] font-black uppercase tracking-[0.15em]">LAB · Cocinas · Decisiones pre-implementación</span>
+    <nav class="hidden md:flex gap-3 text-[9px] font-bold uppercase tracking-widest">
+      <a href="#matriz">1. Matriz</a>
+      <a href="#heroes">2. Héroes K1/K2/K3</a>
+      <a href="#mv1">4. Distribuciones</a>
+      <a href="#mv2">5. Convivencia</a>
+      <a href="#precios">6. Precios</a>
+      <a href="#flujo">7. Flujo</a>
+    </nav>
+  </div>
+  <div style="height:36px"></div>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       ENTREGA 1 · MATRIZ DE PROCEDENCIA DE DATOS
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="matriz" class="bg-[#F9F7F4] py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-black uppercase text-[#A85535] mb-2" style="font-size:10px;letter-spacing:.15em">Entrega 1</p>
+      <h2 class="font-black text-[#111827] mb-2" style="font-size:1.75rem;letter-spacing:-.025em">Matriz de procedencia de datos</h2>
+      <p class="text-gray-500 mb-8" style="font-size:.875rem;max-width:65ch">
+        Cada dato propuesto para la página. Las celdas vacías indican que esa columna no aplica.
+        <strong class="text-[#dc2626]">Rojo = bloqueado hasta verificación del propietario.</strong>
+      </p>
+
+      <div style="overflow-x:auto">
+        <table class="matriz-table">
+          <thead>
+            <tr>
+              <th style="min-width:220px">Dato</th>
+              <th>calculator.ts</th>
+              <th>CLAUDE.md</th>
+              <th>Página actual</th>
+              <th>Estado</th>
+              <th>Acción requerida</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Precio mínimo "desde 5.000 €"</strong> (hasta-8, esencial)</td>
+              <td class="ok">✓ min:5000</td>
+              <td></td>
+              <td class="warn">5.500 € en JSON-LD</td>
+              <td class="warn">⚠️ DISCREPANCIA</td>
+              <td>Usar 5.000 € o confirmar si 5.500 € tiene origen</td>
+            </tr>
+            <tr>
+              <td><strong>Plazo "2–4 semanas"</strong> (actual FAQ)</td>
+              <td class="warn">Esencial: 3–5 sem</td>
+              <td></td>
+              <td class="warn">2–4 sem (L36)</td>
+              <td class="warn">⚠️ DISCREPANCIA</td>
+              <td>Corregir a 3–5 / 4–7 / 6–10 según calidad</td>
+            </tr>
+            <tr>
+              <td><strong>Plazo esencial 3–5 semanas</strong></td>
+              <td class="ok">✓ [3,5]</td>
+              <td></td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td>Usar sin reformular como "media"</td>
+            </tr>
+            <tr>
+              <td><strong>Plazo media 4–7 semanas</strong></td>
+              <td class="ok">✓ [4,7]</td>
+              <td></td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Plazo alta 6–10 semanas</strong></td>
+              <td class="ok">✓ [6,10]</td>
+              <td></td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Pago 40 / 40 / 20 %</strong></td>
+              <td></td>
+              <td class="ok">✓ Explícito</td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Garantía 2 años sobre ejecución</strong></td>
+              <td></td>
+              <td class="ok">✓ Explícito</td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Experiencia directa en obra</strong> (del responsable)</td>
+              <td></td>
+              <td class="ok">✓ Explícito</td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td>Solo atribuible a la persona, no a Trazzo360</td>
+            </tr>
+            <tr>
+              <td><strong>Modificador antigüedad pre-1980 +14 %</strong></td>
+              <td class="ok">✓ factor:1.14</td>
+              <td></td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td>Solo en calculadora y contexto técnico</td>
+            </tr>
+            <tr>
+              <td><strong>Modificador redistribución completa +25 %</strong></td>
+              <td class="ok">✓ factor:1.25</td>
+              <td></td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Modificador sin ascensor +9 %</strong></td>
+              <td class="ok">✓ factor:1.09</td>
+              <td></td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Desglose por partidas</strong> (demolición 8 %, instalaciones 15 %…)</td>
+              <td class="ok">✓ breakdown</td>
+              <td></td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td>Presentar como orientativo del peso relativo</td>
+            </tr>
+            <tr>
+              <td><strong>IVA 10 % vivienda habitual no incluido</strong></td>
+              <td class="ok">✓ neverIncludes</td>
+              <td></td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Electrodomésticos de superficie libre no incluidos</strong></td>
+              <td class="ok">✓ neverIncludes</td>
+              <td></td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td></td>
+            </tr>
+            <tr style="background:#fef2f2">
+              <td><strong>Encimera: precios €/ml</strong> (laminado 80-150, silestone 250-450…)</td>
+              <td class="warn">No existe</td>
+              <td class="warn">No existe</td>
+              <td>Sí (L408-460)</td>
+              <td class="warn">⛔ SIN FUENTE</td>
+              <td>Eliminar o que el propietario confirme la fuente</td>
+            </tr>
+            <tr style="background:#fef2f2">
+              <td><strong>Potencia inducción 7.2–11 kW</strong></td>
+              <td class="warn">No existe</td>
+              <td class="warn">No existe</td>
+              <td>Sí (inferido)</td>
+              <td class="warn">⛔ SIN FUENTE</td>
+              <td>Eliminar o confirmar fuente técnica</td>
+            </tr>
+            <tr style="background:#fef2f2">
+              <td><strong>Isla: mínimo 15 m²</strong></td>
+              <td class="warn">No existe</td>
+              <td class="warn">No existe</td>
+              <td>Inferencia</td>
+              <td class="warn">⛔ SIN FUENTE</td>
+              <td>Eliminar o confirmar fuente técnica (es estándar de diseño)</td>
+            </tr>
+            <tr style="background:#fef2f2">
+              <td><strong>Isla: pasillo mínimo 1.20 m</strong></td>
+              <td class="warn">No existe</td>
+              <td class="warn">No existe</td>
+              <td>Inferencia</td>
+              <td class="warn">⛔ SIN FUENTE</td>
+              <td>Eliminar o confirmar (norma ergonómica habitual)</td>
+            </tr>
+            <tr style="background:#fef2f2">
+              <td><strong>Conductos compartidos en bloque</strong></td>
+              <td class="warn">No existe</td>
+              <td class="warn">No existe</td>
+              <td>Editorial</td>
+              <td class="warn">⚠️ EDITORIAL</td>
+              <td>Verificar si el responsable lo confirma como hecho habitual</td>
+            </tr>
+            <tr>
+              <td><strong>Equipos estables, un solo interlocutor</strong></td>
+              <td></td>
+              <td class="ok">✓ Explícito</td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td>Nunca "equipo propio" ni "sin subcontratas"</td>
+            </tr>
+            <tr>
+              <td><strong>Municipio principal: Torrejón de Ardoz</strong></td>
+              <td></td>
+              <td class="ok">✓ Explícito</td>
+              <td></td>
+              <td class="ok">✓ Autorizado</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 p-4 bg-red-50" style="border-left:3px solid #dc2626">
+        <p class="font-bold text-red-700 text-sm mb-1">Pendiente de autorización del propietario</p>
+        <p class="text-red-600" style="font-size:.8125rem">
+          (a) Confirmar si "5.500 €" tiene origen distinto al calculator.ts o corregir a "desde 5.000 €" ·
+          (b) Confirmar si los €/ml de encimeras son datos propios o eliminar ·
+          (c) Confirmar si 15 m² / 1,20 m de isla son datos que el responsable puede avalar
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       ENTREGA 2–3 · HÉROES K1 / K2 / K3
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="lab-div" id="heroes">↓ ENTREGA 2–3 · HÉROES K1 / K2 / K3 ↓</div>
+
+  <!-- ── HERO K1 ───────────────────────────────────────────
+       Tesis: la complejidad gestionada
+       Distinción: sin trazo lateral, sin eyebrow.
+       El H1 termina en punto —declaración cerrada.
+       La fecha de entrega y el plazo están en el contrato,
+       no como promesa sino como hecho verificable.
+  ─────────────────────────────────────────────────────────── -->
+  <section id="k1" class="bg-[#111827] flex flex-col justify-end relative"
+           style="min-height:100vh;padding-top:2.5rem;padding-bottom:4rem">
+
+    <div class="absolute top-12 left-0 right-0 flex justify-center pointer-events-none">
+      <span class="text-[10px] font-black uppercase tracking-[0.2em] text-white/20">
+        K1 · Tesis: la complejidad gestionada · Sin trazo terracota en H1
+      </span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+      <h1 class="font-black text-white"
+          style="font-size:clamp(2.75rem,8.5vw,8rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance">
+        Reforma de Cocinas<br>en el Corredor<br>del Henares.
+      </h1>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+        <div class="hero-support-3col">
+
+          <div>
+            <p style="color:#9CA3AF;font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch;line-height:1.65">
+              Una reforma de cocina tiene más variables que cualquier otra obra dentro de la vivienda: instalaciones, distribución, materiales y plazos de entrega que hay que coordinar antes de la primera jornada. En Trazzo360 cerramos el diseño, la instalación y la fecha de entrega antes de empezar.
+            </p>
+            <p style="color:#9CA3AF;font-size:.875rem;line-height:1.65;margin-top:1rem;max-width:52ch">
+              Lo que queda sin decidir al inicio es lo que convierte una reforma en una obra que se alarga.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/" class="inline-block text-center text-white font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+              Pedir valoración gratuita
+            </a>
+            <a href="tel:000" class="inline-block text-center font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+              Llamar ahora
+            </a>
+            <p class="text-[10px] text-white/30 uppercase tracking-wider">Visita técnica gratuita · Sin compromiso</p>
+          </div>
+
+          <div class="hidden lg:flex flex-col justify-end gap-5 text-right">
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2 años</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Garantía sobre la ejecución</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">Precio cerrado</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Por contrato antes de empezar</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">40/40/20</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Forma de pago por fases</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="flex gap-5 mt-8 lg:hidden">
+          <div>
+            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">2 años</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Garantía</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">Precio cerrado</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Por contrato</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">40/40/20</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Pago por fases</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="lab-div">↓ HERO K2 ↓</div>
+
+  <!-- ── HERO K2 ───────────────────────────────────────────
+       Tesis: el plazo como eje editorial
+       El plazo aparece desglosado por calidad (datos autorizados).
+       Solo horquillas reales. Sin "media" ni "aproximadamente".
+       Sin trazo terracota decorativo.
+  ─────────────────────────────────────────────────────────── -->
+  <section id="k2" class="bg-[#111827] flex flex-col justify-end relative"
+           style="min-height:100vh;padding-top:2.5rem;padding-bottom:4rem">
+
+    <div class="absolute top-12 left-0 right-0 flex justify-center pointer-events-none">
+      <span class="text-[10px] font-black uppercase tracking-[0.2em] text-white/20">
+        K2 · Tesis: plazo como editorial · Datos autorizados calculator.ts
+      </span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+      <p class="font-black uppercase text-white/30 mb-4" style="font-size:10px;letter-spacing:.15em">
+        Reforma de cocinas · Corredor del Henares
+      </p>
+      <h1 class="font-black text-white"
+          style="font-size:clamp(2.5rem,7.5vw,7rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance;max-width:16ch">
+        El plazo en el contrato antes de empezar.
+      </h1>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+
+        <!-- Plazo cols — datos exactos de calculator.ts -->
+        <div class="plazo-cols mb-8" style="max-width:48rem">
+          {[
+            { calidad: 'Esencial', plazo: '3 – 5 sem.', sub: 'Renovación de acabados y mobiliario', fuente: 'calculator.ts · timelineWeeks:[3,5]' },
+            { calidad: 'Media',    plazo: '4 – 7 sem.', sub: 'Instalaciones revisadas o redistribución parcial', fuente: 'calculator.ts · timelineWeeks:[4,7]' },
+            { calidad: 'Alta',     plazo: '6 – 10 sem.', sub: 'Redistribución completa o materiales de encargo', fuente: 'calculator.ts · timelineWeeks:[6,10]' },
+          ].map(({ calidad, plazo, sub, fuente }) => (
+            <div style="padding:1.25rem;background:rgba(255,255,255,.04)">
+              <p style="font-size:9px;color:#9CA3AF;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem">{calidad}</p>
+              <p class="font-black text-white" style="font-size:clamp(1.25rem,2.5vw,1.75rem);letter-spacing:-0.03em;line-height:1">{plazo}</p>
+              <p style="font-size:.75rem;color:#9CA3AF;margin-top:.5rem;line-height:1.4">{sub}</p>
+              <p style="font-size:.625rem;color:rgba(255,255,255,.15);margin-top:.75rem;font-style:italic">{fuente}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="hero-support-3col">
+          <p style="color:#9CA3AF;font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch;line-height:1.65">
+            El plazo que aparece en el presupuesto es el plazo que firmamos. No una estimación orientativa: una fecha de entrega con la que organizas tu vida. Cuando los materiales están pedidos antes de que empiece la obra, no hay pausas por espera de suministros.
+          </p>
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/" class="inline-block text-center text-white font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+              Pedir valoración gratuita
+            </a>
+            <a href="tel:000" class="inline-block text-center font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+              Llamar ahora
+            </a>
+          </div>
+          <div class="hidden lg:flex flex-col justify-end gap-5 text-right">
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2 años</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Garantía sobre la ejecución</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">Precio cerrado</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Por contrato</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="lab-div">↓ HERO K3 ↓</div>
+
+  <!-- ── HERO K3 ───────────────────────────────────────────
+       Tesis: la distribución decide el presupuesto
+       Posiciona a Trazzo360 como autoridad técnica.
+       Las 3 tipologías de distribución como taxonomía visual
+       en la parte inferior del hero.
+       Sin trazo decorativo. Apertura de salón como decisión
+       editorial, no como venta de amplitud.
+  ─────────────────────────────────────────────────────────── -->
+  <section id="k3" class="bg-[#111827] flex flex-col justify-end relative"
+           style="min-height:100vh;padding-top:2.5rem;padding-bottom:4rem">
+
+    <div class="absolute top-12 left-0 right-0 flex justify-center pointer-events-none">
+      <span class="text-[10px] font-black uppercase tracking-[0.2em] text-white/20">
+        K3 · Tesis: distribución decide presupuesto · Taxonomía tipológica
+      </span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+      <h1 class="font-black text-white"
+          style="font-size:clamp(2.5rem,7.5vw,7rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance;max-width:18ch">
+        La distribución se decide antes de elegir los muebles.
+      </h1>
+      <p style="color:#9CA3AF;font-size:clamp(.875rem,1.4vw,1.0625rem);margin-top:1.5rem;max-width:55ch;line-height:1.65">
+        Reforma de cocinas en el Corredor del Henares · Precio cerrado por escrito · Torrejón de Ardoz y área metropolitana.
+      </p>
+    </div>
+
+    <!-- Tipología row: 3 tipos de cocina -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+
+        <div class="tipologia-row mb-8">
+          {[
+            { tipo: 'Lineal o en L', desc: 'Cocinas hasta 12 m². Redistribución puede mejorar circulación sin cambiar fontanería.', nota: 'Modificador distribución: 0 % si no se mueven tomas' },
+            { tipo: 'En U o con isla', desc: 'Requiere evaluar dimensiones antes de comprometer ningún material. La isla condiciona la extracción.', nota: 'Modificador distribución completa: +25 % (calculator.ts)' },
+            { tipo: 'Apertura al salón', desc: 'Antes de abrir hay que comprobar función estructural del tabique y salida de extracción. Lo valoramos en visita.', nota: 'Variable según tipología edificatoria' },
+          ].map(({ tipo, desc, nota }) => (
+            <div style="padding:1.5rem 1.25rem;background:rgba(255,255,255,.04)">
+              <p class="font-black text-white text-sm mb-2">{tipo}</p>
+              <p style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{desc}</p>
+              <p style="font-size:.625rem;color:rgba(255,255,255,.2);margin-top:.75rem;font-style:italic">{nota}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="hero-support-3col">
+          <p style="color:#9CA3AF;font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch;line-height:1.65">
+            Lo que no se decide antes de la obra es lo que la alarga. En la visita técnica cerramos distribución, instalaciones y materiales. El presupuesto cerrado llega por escrito.
+          </p>
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/" class="inline-block text-center text-white font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+              Pedir valoración gratuita
+            </a>
+            <a href="tel:000" class="inline-block text-center font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+              Llamar ahora
+            </a>
+          </div>
+          <div class="hidden lg:flex flex-col justify-end gap-5 text-right">
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2 años</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Garantía sobre la ejecución</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">40/40/20</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Pago por fases</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPARACIÓN HEROES ════════════════════════════════ -->
+  <section class="bg-[#F9F7F4] py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-black uppercase text-[#A85535] mb-4" style="font-size:10px;letter-spacing:.15em">Entrega 3 · Comparación y recomendación</p>
+      <div style="display:grid;gap:1.5rem" class="md:grid-cols-3">
+        {[
+          {
+            id: 'K1',
+            titulo: 'La complejidad gestionada',
+            pros: ['H1 limpio, sin elemento decorativo en cabecera', 'Copy explica el por qué sin prometer arbitrariamente', 'Stats de confianza (40/40/20, 2 años) al alcance inmediato'],
+            contras: ['Menos diferenciador visualmente', 'Podría confundirse con Baños si no se cuida el copy'],
+            recomendado: false,
+          },
+          {
+            id: 'K2',
+            titulo: 'El plazo como editorial',
+            pros: ['Dato real y diferenciador vs competencia', 'Tabla de plazos por calidad es única en el sector', 'SEO: keyword + territorio en eyebrow + H1 implícito en tesis'],
+            contras: ['El H1 es una tesis, no la keyword literal — puede perjudicar SEO si Google no asocia la tesis con la consulta', 'Requiere que el propietario confirme que el eyebrow funciona como H1 semántico'],
+            recomendado: false,
+          },
+          {
+            id: 'K3',
+            titulo: 'La distribución decide',
+            pros: ['Tesis única: ningún competidor local la usa', 'Posiciona autoridad técnica desde la primera pantalla', 'La taxonomía de 3 tipologías es un MV orgánico del hero', 'SEO: keyword en subtítulo de soporte + zona'],
+            contras: ['H1 es tesis — SEO necesita refuerzo estructural (canonical, breadcrumb, JSON-LD)', 'Riesgo si el cliente no entiende la tesis en 3 segundos'],
+            recomendado: true,
+          },
+        ].map(({ id, titulo, pros, contras, recomendado }) => (
+          <div style={recomendado ? 'background:#fff;border:2px solid #A85535;padding:1.5rem' : 'background:#fff;border:1px solid #D1C9BD;padding:1.5rem'}>
+            {recomendado && <p class="font-black text-[#A85535] text-xs uppercase tracking-wider mb-2">★ Recomendado</p>}
+            <p class="font-black text-[#111827] mb-1">{id} · {titulo}</p>
+            <p class="font-bold text-gray-500 text-xs uppercase tracking-wide mt-3 mb-1">A favor</p>
+            <ul style="list-style:disc;padding-left:1.25rem;color:#374151;font-size:.8125rem;line-height:1.6">
+              {pros.map(p => <li>{p}</li>)}
+            </ul>
+            <p class="font-bold text-gray-500 text-xs uppercase tracking-wide mt-3 mb-1">Riesgo</p>
+            <ul style="list-style:disc;padding-left:1.25rem;color:#6B7280;font-size:.8125rem;line-height:1.6">
+              {contras.map(c => <li>{c}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div class="mt-6 p-4 bg-white" style="border-left:3px solid #A85535;max-width:72ch">
+        <p class="font-bold text-[#111827] text-sm mb-1">Recomendación: K3 con refuerzo SEO estructural</p>
+        <p class="text-gray-600" style="font-size:.875rem;line-height:1.65">
+          K3 es el único hero que no puede pertenecer a ningún competidor local. La tesis "la distribución se decide antes de elegir los muebles" es verificable, útil para el cliente y posiciona autoridad técnica real. Para compensar el SEO del H1 tesis: añadir el H1 tradicional ("Reforma de Cocinas en el Corredor del Henares") como visually-hidden o via JSON-LD/breadcrumb + etiqueta title con keyword al inicio. Verificar CTR antes de dar por definitivo. K1 queda como fallback seguro si K3 no convierte.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       ENTREGA 4 · MV1 · DIAGRAMA SVG DISTRIBUCIONES
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="lab-div" id="mv1">↓ ENTREGA 4 · MV1 · DIAGRAMA DE DISTRIBUCIONES ↓</div>
+
+  <section class="bg-[#111827] py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-black uppercase text-white/30 mb-2" style="font-size:10px;letter-spacing:.15em">Momento visual 1 · Diagnóstico técnico</p>
+      <h2 class="font-black text-white mb-3" style="font-size:clamp(1.5rem,3.5vw,2.5rem);letter-spacing:-.025em">
+        Tres distribuciones. Tres alcances distintos.
+      </h2>
+      <p style="color:#9CA3AF;max-width:58ch;line-height:1.65;font-size:.9375rem;margin-bottom:3rem">
+        La distribución que tienes ahora condiciona lo que es viable reformar y a qué coste. Antes de cualquier decisión de muebles o materiales, la visita técnica determina qué distribución tiene sentido para tu cocina.
+      </p>
+
+      <!-- Diagramas SVG — proporciones esquemáticas, sin dimensiones inventadas -->
+      <div style="display:grid;gap:2rem" class="sm:grid-cols-3">
+
+        <!-- Cocina lineal -->
+        <div>
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg"
+               style="width:100%;border:1px solid rgba(255,255,255,.1);background:#1a2232">
+            <!-- Paredes -->
+            <rect x="10" y="10" width="180" height="140" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
+            <!-- Módulos lineales (pared superior) -->
+            <rect x="18" y="18" width="164" height="28" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+            <line x1="59" y1="18" x2="59" y2="46" stroke="#3b82f6" stroke-width=".5" stroke-dasharray="2,2"/>
+            <line x1="100" y1="18" x2="100" y2="46" stroke="#3b82f6" stroke-width=".5" stroke-dasharray="2,2"/>
+            <line x1="141" y1="18" x2="141" y2="46" stroke="#3b82f6" stroke-width=".5" stroke-dasharray="2,2"/>
+            <!-- Encimera label -->
+            <text x="100" y="37" text-anchor="middle" fill="#60a5fa" font-size="7" font-family="monospace">MÓDULOS</text>
+            <!-- Zona libre -->
+            <text x="100" y="100" text-anchor="middle" fill="rgba(255,255,255,.2)" font-size="8" font-family="monospace">ZONA DE PASO</text>
+            <!-- Puerta -->
+            <rect x="80" y="140" width="40" height="8" fill="#111827" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+            <text x="100" y="147" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="6" font-family="monospace">ENTRADA</text>
+          </svg>
+          <div class="mt-3">
+            <p class="font-bold text-white text-sm">Lineal</p>
+            <p style="font-size:.8125rem;color:#9CA3AF;line-height:1.5;margin-top:.25rem">
+              Todos los módulos en una pared. La instalación eléctrica y de fontanería queda concentrada. Reforma sin redistribución posible.
+            </p>
+            <p style="font-size:.75rem;color:#A85535;margin-top:.5rem">Modificador distribución: 0 %</p>
+          </div>
+        </div>
+
+        <!-- Cocina en L -->
+        <div>
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg"
+               style="width:100%;border:1px solid rgba(255,255,255,.1);background:#1a2232">
+            <rect x="10" y="10" width="180" height="140" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
+            <!-- Módulos pared superior -->
+            <rect x="18" y="18" width="130" height="24" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+            <text x="83" y="33" text-anchor="middle" fill="#60a5fa" font-size="6.5" font-family="monospace">MÓDULOS</text>
+            <!-- Módulos pared izquierda -->
+            <rect x="18" y="42" width="24" height="90" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+            <text x="30" y="90" text-anchor="middle" fill="#60a5fa" font-size="6.5" font-family="monospace" transform="rotate(-90 30 90)">MÓDULOS</text>
+            <!-- Zona libre (L-shape corner) -->
+            <text x="120" y="100" text-anchor="middle" fill="rgba(255,255,255,.2)" font-size="8" font-family="monospace">ZONA LIBRE</text>
+            <!-- Puerta -->
+            <rect x="130" y="140" width="40" height="8" fill="#111827" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+            <text x="150" y="147" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="6" font-family="monospace">ENTRADA</text>
+          </svg>
+          <div class="mt-3">
+            <p class="font-bold text-white text-sm">En L</p>
+            <p style="font-size:.8125rem;color:#9CA3AF;line-height:1.5;margin-top:.25rem">
+              Módulos en dos paredes perpendiculares. Mejora la circulación. La fontanería puede requerir adaptación si el fregadero cambia de pared.
+            </p>
+            <p style="font-size:.75rem;color:#A85535;margin-top:.5rem">Distribución parcial: a valorar en visita</p>
+          </div>
+        </div>
+
+        <!-- Cocina con isla -->
+        <div>
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg"
+               style="width:100%;border:1px solid rgba(255,255,255,.1);background:#1a2232">
+            <rect x="10" y="10" width="180" height="140" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
+            <!-- Módulos pared superior -->
+            <rect x="18" y="18" width="164" height="22" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+            <text x="100" y="32" text-anchor="middle" fill="#60a5fa" font-size="6.5" font-family="monospace">MÓDULOS PERIMETRALES</text>
+            <!-- Isla central -->
+            <rect x="55" y="70" width="90" height="40" fill="#14364f" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="100" y="94" text-anchor="middle" fill="#38bdf8" font-size="7" font-family="monospace">ISLA</text>
+            <!-- Zona de paso indicada (sin dimensión exacta) -->
+            <line x1="18" y1="60" x2="55" y2="60" stroke="rgba(255,255,255,.1)" stroke-width=".5" stroke-dasharray="2,2"/>
+            <line x1="145" y1="60" x2="182" y2="60" stroke="rgba(255,255,255,.1)" stroke-width=".5" stroke-dasharray="2,2"/>
+            <!-- Nota circulación -->
+            <text x="36" y="95" text-anchor="middle" fill="rgba(255,255,255,.2)" font-size="5.5" font-family="monospace" transform="rotate(-90 36 95)">PASO</text>
+            <text x="164" y="95" text-anchor="middle" fill="rgba(255,255,255,.2)" font-size="5.5" font-family="monospace" transform="rotate(90 164 95)">PASO</text>
+            <!-- Puerta -->
+            <rect x="75" y="140" width="50" height="8" fill="#111827" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+            <text x="100" y="147" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="6" font-family="monospace">ENTRADA</text>
+          </svg>
+          <div class="mt-3">
+            <p class="font-bold text-white text-sm">Con isla</p>
+            <p style="font-size:.8125rem;color:#9CA3AF;line-height:1.5;margin-top:.25rem">
+              Requiere verificar espacio de circulación perimetral y salida de extracción. La viabilidad depende de las dimensiones reales de la cocina.
+            </p>
+            <p style="font-size:.75rem;color:#A85535;margin-top:.5rem">Modificador redistribución completa: +25 %</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-8 p-4" style="border:1px solid rgba(255,255,255,.08);max-width:64ch">
+        <p style="font-size:.75rem;color:rgba(255,255,255,.3);font-style:italic">
+          Nota de datos: los diagramas son esquemáticos. No representan dimensiones reales ni proporciones exactas.
+          Las proporciones reales de cada obra se determinan en visita técnica.
+          Fuente de modificadores: calculator.ts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       ENTREGA 5 · MV2 · CONVIVENCIA DURANTE LA OBRA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="lab-div" id="mv2">↓ ENTREGA 5 · MV2 · CONVIVENCIA · DOS ALTERNATIVAS ↓</div>
+
+  <!-- MV2-A: Timeline semanal -->
+  <section class="bg-[#F9F7F4] py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-black uppercase text-[#A85535] mb-2" style="font-size:10px;letter-spacing:.15em">MV2 · Alternativa A · Timeline semanal</p>
+      <h2 class="font-black text-[#111827] mb-2" style="font-size:clamp(1.5rem,3vw,2.25rem);letter-spacing:-.025em">
+        Lo que pasa semana a semana
+      </h2>
+      <p class="text-gray-500 mb-8" style="font-size:.875rem;max-width:58ch">
+        Para una reforma esencial (3–5 semanas). Fuente: calculator.ts timelineWeeks:[3,5].
+        No se llama "media" — se presenta como rango real.
+      </p>
+
+      <div class="timeline-weeks" style="max-width:60rem">
+        {[
+          { sem: 'Sem. 1', fase: 'Obra civil', desc: 'Demolición, desescombro, protección de zonas comunes. Los primeros días son los más restrictivos: sin acceso al espacio.', estado: 'Sin cocina' },
+          { sem: 'Sem. 2', fase: 'Instalaciones', desc: 'Electricidad, fontanería. Con la obra abierta, el coste de renovar lo que está oculto es mínimo respecto a intervenir después.', estado: 'Sin cocina' },
+          { sem: 'Sem. 3', fase: 'Alicatado y solado', desc: 'Revestimientos. A partir de aquí el espacio empieza a tener forma. Microondas o cocina portátil en otra habitación: es la solución habitual.', estado: 'Uso limitado' },
+          { sem: 'Sem. 4', fase: 'Muebles y encimera', desc: 'Montaje de mobiliario. El agua y el gas vuelven. La cocina es funcional para uso básico cuando los muebles están colocados.', estado: 'Funcional parcial' },
+          { sem: 'Sem. 5', fase: 'Remates y entrega', desc: 'Electrodomésticos integrados, acabados, limpieza final. La última semana solo quedan detalles. La cocina es ya completamente operativa.', estado: 'Cocina operativa' },
+        ].map(({ sem, fase, desc, estado }, i) => (
+          <div style={`background:${i < 2 ? '#111827' : i === 2 ? '#1e293b' : i === 3 ? '#374151' : '#4B5563'};padding:1.25rem 1rem`}>
+            <p style="font-size:9px;color:#9CA3AF;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.25rem">{sem}</p>
+            <p class="font-bold text-white text-sm mb-1.5">{fase}</p>
+            <p style="font-size:.75rem;color:#9CA3AF;line-height:1.5;margin-bottom:1rem">{desc}</p>
+            <p style={`font-size:.625rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:${i < 2 ? '#ef4444' : i === 2 ? '#f59e0b' : i === 3 ? '#84cc16' : '#22c55e'}`}>{estado}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MV2-B: Estado editorial en 3 fases -->
+  <section class="bg-[#F9F7F4] py-16" style="border-top:1px solid #D1C9BD">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-black uppercase text-[#A85535] mb-2" style="font-size:10px;letter-spacing:.15em">MV2 · Alternativa B · Estados editoriales</p>
+      <h2 class="font-black text-[#111827] mb-2" style="font-size:clamp(1.5rem,3vw,2.25rem);letter-spacing:-.025em">
+        Tres momentos. Los gestionamos los tres.
+      </h2>
+      <p class="text-gray-500 mb-8" style="font-size:.875rem;max-width:58ch">
+        Sin granularidad semanal. Tres estados que el cliente puede reconocer de inmediato desde su experiencia como usuario de la cocina.
+      </p>
+
+      <div class="estado-phases" style="max-width:60rem">
+        {[
+          {
+            estado: 'Sin cocina',
+            periodo: 'Primera mitad de la reforma',
+            color: '#111827',
+            colorText: '#ef4444',
+            puntos: [
+              'Protección de suelos y zonas comunes antes de empezar',
+              'Limpieza diaria al terminar la jornada',
+              'El responsable comunica el horario de inicio cada mañana',
+              'Planificación de comidas desde el primer día: microondas, cocina portátil',
+            ],
+          },
+          {
+            estado: 'Uso parcial',
+            periodo: 'Cuando entran los muebles',
+            color: '#1e293b',
+            colorText: '#f59e0b',
+            puntos: [
+              'El agua y el gas vuelven con los muebles',
+              'Cocina funcional para uso básico',
+              'Electrodomésticos integrados pendientes de instalación final',
+              'La encimera define la superficie de trabajo disponible',
+            ],
+          },
+          {
+            estado: 'Cocina operativa',
+            periodo: 'Entrega y limpieza final',
+            color: '#374151',
+            colorText: '#22c55e',
+            puntos: [
+              'Electrodomésticos integrados y comprobados',
+              'Limpieza final incluida en la reforma',
+              'Acta de entrega: cualquier ajuste pendiente queda documentado',
+              '2 años de garantía sobre la ejecución desde la entrega',
+            ],
+          },
+        ].map(({ estado, periodo, color, colorText, puntos }) => (
+          <div style={`background:${color};padding:2rem 1.5rem`}>
+            <p style={`font-size:.625rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:${colorText};margin-bottom:.5rem`}>{estado}</p>
+            <p style="font-size:.8125rem;color:#9CA3AF;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:1rem">{periodo}</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem">
+              {puntos.map(p => (
+                <li style="display:flex;gap:.625rem;align-items:flex-start">
+                  <span style="color:rgba(255,255,255,.3);flex-shrink:0;margin-top:.125rem">—</span>
+                  <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <!-- Recomendación MV2 -->
+      <div class="mt-8 p-4 bg-white" style="border-left:3px solid #A85535;max-width:64ch">
+        <p class="font-bold text-[#111827] text-sm mb-1">Recomendación: Alternativa B (estados editoriales)</p>
+        <p class="text-gray-600" style="font-size:.875rem;line-height:1.65">
+          La Alternativa A (timeline semanal) es más informativa pero visualmente imita la sección de Baños. La B usa los 3 estados que el cliente experimenta directamente. Es diferente de Baños y más memorable. Los 5 puntos de cada estado proceden del copy autorizado de la página actual (líneas 336-366). No inventa ningún dato nuevo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       ENTREGA 6 · PRECIOS · SOLO DATOS AUTORIZADOS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="lab-div" id="precios">↓ ENTREGA 6 · PRECIOS CON DATOS AUTORIZADOS · calculator.ts ↓</div>
+
+  <section class="bg-[#F9F7F4] py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-black uppercase text-[#A85535] mb-2" style="font-size:10px;letter-spacing:.15em">Precios orientativos · Corredor del Henares</p>
+      <h2 class="font-black text-[#111827] mb-3" style="font-size:clamp(1.5rem,3.5vw,2.5rem);letter-spacing:-.025em;max-width:20ch">
+        ¿Cuánto cuesta reformar una cocina en el Corredor?
+      </h2>
+      <p class="text-gray-500 mb-2" style="font-size:.875rem;max-width:60ch;line-height:1.7">
+        Los rangos de abajo proceden directamente de la calculadora de presupuesto. Tres calidades, cuatro superficies.
+        El presupuesto cerrado que firmamos depende del estado real de las instalaciones, los materiales elegidos y la distribución.
+      </p>
+      <p class="text-gray-400 mb-8" style="font-size:.8125rem">
+        IVA (10 % vivienda habitual) no incluido · Electrodomésticos de superficie libre no incluidos
+      </p>
+
+      <!-- Tabla de rangos -->
+      <div style="max-width:56rem">
+
+        <!-- Cabecera -->
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:0;background:#111827;padding:.75rem 1rem;margin-bottom:2px">
+          <p style="font-size:9px;color:#9CA3AF;letter-spacing:.1em;text-transform:uppercase">Superficie</p>
+          <p style="font-size:9px;color:#9CA3AF;letter-spacing:.1em;text-transform:uppercase;text-align:right">Esencial</p>
+          <p style="font-size:9px;color:#9CA3AF;letter-spacing:.1em;text-transform:uppercase;text-align:right">Media</p>
+          <p style="font-size:9px;color:#9CA3AF;letter-spacing:.1em;text-transform:uppercase;text-align:right">Alta</p>
+        </div>
+
+        {[
+          {
+            tramo: 'Hasta 8 m²',
+            sub: 'Cocina lineal o en L pequeña',
+            esencial: '5.000 – 7.500 €',
+            media: '7.500 – 11.000 €',
+            alta: '11.000 – 18.000 €',
+          },
+          {
+            tramo: '8 – 12 m²',
+            sub: 'Cocina estándar · Referencia de mercado',
+            esencial: '6.000 – 9.000 €',
+            media: '9.000 – 14.000 €',
+            alta: '14.000 – 22.000 €',
+          },
+          {
+            tramo: '12 – 16 m²',
+            sub: 'Cocina amplia o con isla pequeña',
+            esencial: '7.500 – 11.500 €',
+            media: '11.500 – 18.000 €',
+            alta: '18.000 – 28.000 €',
+          },
+          {
+            tramo: 'Más de 16 m²',
+            sub: 'Cocina abierta al salón o de diseño',
+            esencial: '9.000 – 14.000 €',
+            media: '14.000 – 22.000 €',
+            alta: '22.000 – 35.000 €',
+          },
+        ].map(({ tramo, sub, esencial, media, alta }, i, arr) => (
+          <div style={`display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:0;padding:1rem;background:#fff;border-bottom:${i < arr.length-1 ? '1px solid #D1C9BD' : 'none'};align-items:center`}>
+            <div>
+              <p class="font-bold text-[#111827] text-sm">{tramo}</p>
+              <p class="text-gray-400" style="font-size:.75rem;margin-top:.125rem">{sub}</p>
+            </div>
+            <p class="font-black text-[#111827] text-right" style="font-size:.9375rem;font-variant-numeric:tabular-nums">{esencial}</p>
+            <p class="font-black text-[#111827] text-right" style="font-size:.9375rem;font-variant-numeric:tabular-nums">{media}</p>
+            <p class="font-black text-[#111827] text-right" style="font-size:.9375rem;font-variant-numeric:tabular-nums">{alta}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Modificadores -->
+      <div class="mt-6" style="max-width:56rem">
+        <p class="font-bold text-[#111827] text-sm mb-3">Factores que amplían el presupuesto</p>
+        <div style="display:grid;gap:.5rem">
+          {[
+            { factor: 'Vivienda anterior a 1980', efecto: '+14 % sobre el presupuesto base', sub: 'Instalaciones que requieren actualización estructural' },
+            { factor: 'Redistribución completa de la cocina', efecto: '+25 % sobre el presupuesto base', sub: 'Cambio de posición de fregadero, muebles o apertura de cocina al salón' },
+            { factor: 'Piso sin ascensor', efecto: '+9 % sobre el presupuesto base', sub: 'Coste de porteo y logística adicional' },
+          ].map(({ factor, efecto, sub }) => (
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:.875rem 1rem;background:#fff;border-bottom:1px solid #D1C9BD;border-top:1px solid #D1C9BD;margin-top:-1px;align-items:center">
+              <div>
+                <p class="font-bold text-[#111827] text-sm">{factor}</p>
+                <p class="text-gray-400" style="font-size:.75rem">{sub}</p>
+              </div>
+              <p class="font-black text-[#A85535] text-right text-sm">{efecto}</p>
+            </div>
+          ))}
+        </div>
+        <p style="font-size:.6875rem;color:#9CA3AF;margin-top:.75rem;font-style:italic">
+          Fuente de todos los datos: calculator.ts · Los modificadores se aplican sobre el presupuesto base de cada tramo y calidad
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-8" style="display:flex;flex-direction:column;gap:.75rem;align-items:flex-start;max-width:32rem">
+        <a href="/contacto/" class="inline-block text-white font-black text-xs uppercase"
+           style="padding:1rem 2rem;background:#A85535;letter-spacing:.12em">
+          Solicitar presupuesto cerrado
+        </a>
+        <p class="text-gray-400" style="font-size:.75rem">Respuesta en 48 h · Sin compromiso · Precio definitivo, no orientativo</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       ENTREGA 7 · FLUJO SIMPLIFICADO
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="lab-div" id="flujo">↓ ENTREGA 7 · FLUJO SIMPLIFICADO RECOMENDADO ↓</div>
+
+  <section class="bg-[#F9F7F4] py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-black uppercase text-[#A85535] mb-2" style="font-size:10px;letter-spacing:.15em">Entrega 7 · Flujo recomendado</p>
+      <h2 class="font-black text-[#111827] mb-3" style="font-size:clamp(1.5rem,3vw,2.25rem);letter-spacing:-.025em">
+        De 11 secciones a 7. Sin pérdida de contenido.
+      </h2>
+      <p class="text-gray-500 mb-8" style="font-size:.875rem;max-width:64ch;line-height:1.7">
+        La fusión es temática, no editorial: cada sección resultante tiene un único trabajo que hacer para el usuario y para el SEO.
+        No se pierde ningún dato SEO ni ningún contenido de conversión.
+      </p>
+
+      <!-- Comparativa: antes / después -->
+      <div style="display:grid;gap:2rem;max-width:72rem" class="md:grid-cols-2">
+
+        <!-- ANTES -->
+        <div>
+          <p class="font-bold text-gray-400 text-xs uppercase tracking-wider mb-3">Flujo propuesto (11 secciones)</p>
+          <div class="flujo-grid">
+            {[
+              ['1', 'Hero', ''],
+              ['2', 'Qué incluye la reforma de cocina', ''],
+              ['3', 'Diagnóstico técnico (instalaciones, década)', '→ fusionar'],
+              ['4', 'Distribución y tipologías', '→ fusionar'],
+              ['5', 'Implicaciones técnicas (extracción, potencia, isla)', '→ fusionar'],
+              ['6', 'Vida durante la obra', ''],
+              ['7', 'Precios por tramo y calidad', '→ fusionar'],
+              ['8', 'Encimeras (materiales, €/ml)', '→ fusionar ⚠️ datos sin fuente'],
+              ['9', 'Electrodomésticos (selección, prioridades)', '→ fusionar'],
+              ['10', 'Cómo leer el presupuesto', '→ fusionar'],
+              ['11', 'FAQs + CTA final', ''],
+            ].map(([num, titulo, nota]) => (
+              <div style={`background:#fff;padding:.875rem 1rem;display:flex;gap:.75rem;align-items:flex-start;${nota.includes('fusionar') ? 'border-left:3px solid #f59e0b' : ''}`}>
+                <span style="font-size:9px;color:#9CA3AF;font-variant-numeric:tabular-nums;flex-shrink:0;padding-top:.125rem">{num}</span>
+                <div>
+                  <p class="text-[#111827] text-sm">{titulo}</p>
+                  {nota && <p style="font-size:.6875rem;color:#b45309;margin-top:.125rem">{nota}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- DESPUÉS -->
+        <div>
+          <p class="font-bold text-[#A85535] text-xs uppercase tracking-wider mb-3">Flujo recomendado (7 secciones)</p>
+          <div style="display:flex;flex-direction:column;gap:1px;background:#D1C9BD">
+            {[
+              {
+                num: '1',
+                titulo: 'Hero (K3 recomendado)',
+                contenido: 'H1 tesis + 3 tipologías distribución + CTAs + stats contractuales',
+                ganancia: 'Diferenciación + autoridad técnica desde el primer scroll',
+              },
+              {
+                num: '2',
+                titulo: 'Qué incluye + Diagnóstico + Distribución',
+                contenido: 'Alcance de la reforma · Cómo la antigüedad y la distribución condicionan el presupuesto · Los 3 esquemas SVG (lineal / L / isla)',
+                ganancia: 'Fusión temática natural: el "qué incluye" responde a "¿qué tengo que tener en cuenta antes de pedir precio?"',
+              },
+              {
+                num: '3',
+                titulo: 'Vida durante la obra (MV2-B)',
+                contenido: '3 estados editoriales: Sin cocina · Uso parcial · Cocina operativa',
+                ganancia: 'Sección con identidad propia, diferente de Baños',
+              },
+              {
+                num: '4',
+                titulo: 'Precios + Modificadores + Notas de lectura',
+                contenido: 'Tabla 4 tramos × 3 calidades (datos autorizados) · Modificadores +14/+25/+9% · Qué no incluye · Cómo interpretar la horquilla',
+                ganancia: 'Elimina secciones editoriales con datos sin fuente (encimeras €/ml, potencia inducción)',
+              },
+              {
+                num: '5',
+                titulo: 'Electrodomésticos (editorial ligero)',
+                contenido: 'Qué se decide antes de cerrar la instalación · Por qué condicionan el diseño · Sin precios ni gamas específicas',
+                ganancia: 'Mantiene el contenido SEO sin datos inventados',
+              },
+              {
+                num: '6',
+                titulo: 'FAQs (8–9 preguntas)',
+                contenido: 'Reducir de 12 a 9. Eliminar FAQ duplicada con cita editorial (L648). Mantener distribución, extracción, electricidad, plazo, encimera (sin €/ml)',
+                ganancia: 'Schema FAQPage sin pérdida de cobertura semántica',
+              },
+              {
+                num: '7',
+                titulo: 'CTA final + Zonas + Trust',
+                contenido: '40/40/20 · 2 años garantía · Municipios · CTA a presupuesto',
+                ganancia: 'Conversión al final del scroll largo',
+              },
+            ].map(({ num, titulo, contenido, ganancia }) => (
+              <div style="background:#fff;padding:1.25rem 1rem">
+                <div style="display:flex;gap:.75rem;align-items:flex-start">
+                  <span style="font-size:9px;color:#A85535;font-weight:900;font-variant-numeric:tabular-nums;flex-shrink:0;padding-top:.125rem">{num}</span>
+                  <div>
+                    <p class="font-bold text-[#111827] text-sm mb-1">{titulo}</p>
+                    <p style="font-size:.8125rem;color:#6B7280;line-height:1.5;margin-bottom:.5rem">{contenido}</p>
+                    <p style="font-size:.75rem;color:#A85535;font-style:italic">{ganancia}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       ENTREGA 8 · COMPARACIÓN FINAL VS BAÑOS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="lab-div">↓ ENTREGA 8 · COMPARACIÓN FINAL COCINAS VS BAÑOS ↓</div>
+
+  <section class="bg-[#F9F7F4] py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-black uppercase text-[#A85535] mb-4" style="font-size:10px;letter-spacing:.15em">Entrega 8 · Cocinas vs Baños</p>
+      <div style="overflow-x:auto">
+        <table class="matriz-table" style="max-width:72rem">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Baños (referencia)</th>
+              <th>Cocinas (propuesto)</th>
+              <th>¿Diferenciado?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hero / H1</strong></td>
+              <td>H1 + eyebrow tipología · Terracota en CTA</td>
+              <td>K3: Tesis distribución · Sin trazo decorativo en H1</td>
+              <td class="ok">✓ Diferente</td>
+            </tr>
+            <tr>
+              <td><strong>Identidad visual del hero</strong></td>
+              <td>A2 sigil: border-left terracota</td>
+              <td>Sin sigil — el H1 tesis es la diferencia</td>
+              <td class="ok">✓ Diferente</td>
+            </tr>
+            <tr>
+              <td><strong>Momento visual distintivo</strong></td>
+              <td>Tipologías de baño (galería)</td>
+              <td>Diagramas de distribución SVG (MV1)</td>
+              <td class="ok">✓ Diferente</td>
+            </tr>
+            <tr>
+              <td><strong>Convivencia durante la obra</strong></td>
+              <td>5 puntos de lista · Énfasis en el único baño</td>
+              <td>3 estados editoriales (MV2-B) · Énfasis en sin cocina → uso parcial → operativa</td>
+              <td class="ok">✓ Diferente</td>
+            </tr>
+            <tr>
+              <td><strong>Precios</strong></td>
+              <td>Bandas por tipología (tabla)</td>
+              <td>Tabla 4 tramos × 3 calidades + modificadores</td>
+              <td class="ok">✓ Más granular, diferente</td>
+            </tr>
+            <tr>
+              <td><strong>Autoridad técnica</strong></td>
+              <td>Sección "Instalaciones ocultas"</td>
+              <td>Distribución condiciona presupuesto (en hero + sección 2)</td>
+              <td class="ok">✓ Diferente</td>
+            </tr>
+            <tr>
+              <td><strong>Trust</strong></td>
+              <td>2 años, 40/40/20, responsable único</td>
+              <td>Idéntico — es el ADN Trazzo360</td>
+              <td class="note">= Compartido (correcto)</td>
+            </tr>
+            <tr>
+              <td><strong>FAQs</strong></td>
+              <td>8 preguntas específicas de baño</td>
+              <td>8-9 preguntas específicas de cocina (revisadas)</td>
+              <td class="ok">✓ Diferente</td>
+            </tr>
+            <tr>
+              <td><strong>Estructura general</strong></td>
+              <td>Hero → Incluye → Obra → Materiales → Precios → FAQs</td>
+              <td>Hero(tesis+tipos) → Incluye+Diagnóstico → Convivencia → Precios+Modificadores → Electrodomésticos → FAQs → CTA</td>
+              <td class="ok">✓ Diferente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       ENTREGA 9 · RECOMENDACIÓN EXACTA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="lab-div">↓ ENTREGA 9 · RECOMENDACIÓN EXACTA DE IMPLEMENTACIÓN ↓</div>
+
+  <section class="bg-[#111827] py-16">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <p class="font-black uppercase text-white/30 mb-4" style="font-size:10px;letter-spacing:.15em">Entrega 9 · Recomendación de implementación</p>
+
+      <div style="display:grid;gap:1.5rem;max-width:72rem">
+
+        <div style="background:rgba(255,255,255,.04);padding:1.5rem;border-left:3px solid #A85535">
+          <p class="font-black text-white mb-1">Hero: K3</p>
+          <p style="font-size:.875rem;color:#9CA3AF;line-height:1.65">
+            H1 tesis ("La distribución se decide antes de elegir los muebles") + eyebrow con keyword + territorio en title y JSON-LD.
+            Los 3 tipos de distribución como taxonomía integrada en el hero. Sin trazo terracota en H1.
+            <strong style="color:#fbbf24"> ⚠️ Pendiente: confirmar con propietario que el H1 tesis es aceptable para SEO antes de implementar.</strong>
+            Alternativa segura: K1.
+          </p>
+        </div>
+
+        <div style="background:rgba(255,255,255,.04);padding:1.5rem">
+          <p class="font-black text-white mb-1">Sección distribuciones: MV1 SVG</p>
+          <p style="font-size:.875rem;color:#9CA3AF;line-height:1.65">
+            Los 3 diagramas SVG de esta página (lineal / L / isla) integrados en la sección 2. Sin dimensiones inventadas.
+            Modificadores de calculator.ts como nota al pie de cada diagrama.
+          </p>
+        </div>
+
+        <div style="background:rgba(255,255,255,.04);padding:1.5rem">
+          <p class="font-black text-white mb-1">Convivencia: MV2-B (estados editoriales)</p>
+          <p style="font-size:.875rem;color:#9CA3AF;line-height:1.65">
+            3 estados Sin Cocina / Uso Parcial / Cocina Operativa. Contenido de líneas 336-366 de la página actual + puntos de CLAUDE.md sobre la vida durante la obra.
+            No se copian las 5 fases de Baños.
+          </p>
+        </div>
+
+        <div style="background:rgba(255,255,255,.04);padding:1.5rem">
+          <p class="font-black text-white mb-1">Precios: tabla completa 4×3 + modificadores</p>
+          <p style="font-size:.875rem;color:#9CA3AF;line-height:1.65">
+            Datos exactos de calculator.ts. Mínimo desde 5.000 € (hasta-8, esencial).
+            <strong style="color:#fbbf24">⚠️ Confirmar antes de implementar: si el propietario quiere usar 5.500 €, necesita justificar la fuente.</strong>
+            Notas de exclusión: IVA 10 %, electrodomésticos de superficie libre.
+            Desglose porcentual (demolición 8 %, etc.) solo si el propietario confirma que es publicable.
+          </p>
+        </div>
+
+        <div style="background:rgba(255,255,255,.04);padding:1.5rem">
+          <p class="font-black text-white mb-1">Datos que NO se implementan sin confirmación</p>
+          <ul style="list-style:disc;padding-left:1.25rem;margin:0;display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem">
+            {[
+              'Encimeras €/ml (laminado, silestone, porcelana): sin fuente en calculator.ts ni CLAUDE.md',
+              'Potencia de inducción 7.2–11 kW: sin fuente',
+              'Superficie mínima para isla 15 m²: sin fuente',
+              'Pasillo mínimo 1,20 m para isla: sin fuente',
+              'Conductos compartidos en bloque: verificar con responsable',
+            ].map(item => (
+              <li style="font-size:.8125rem;color:#ef4444;line-height:1.5">{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div style="background:rgba(255,255,255,.04);padding:1.5rem;border-left:3px solid #22c55e">
+          <p class="font-black text-white mb-1">Flujo de implementación</p>
+          <ol style="list-style:decimal;padding-left:1.25rem;margin:0;display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem">
+            {[
+              'Propietario aprueba esta entrega completa y resuelve las 3 verificaciones pendientes (precio mínimo, datos encimeras, H1 tesis vs keyword)',
+              'Crear reforma-cocinas.astro con flujo de 7 secciones',
+              'Implementar K3 (o K1 si se descarta la tesis) con datos autorizados',
+              'Integrar MV1 SVG en sección 2 y MV2-B en sección 3',
+              'Tabla de precios completa con calculator.ts exacto',
+              'FAQs reducidas a 9 (eliminar FAQ duplicada y las 2–3 que dependen de datos sin fuente)',
+              'Build + audit-links + audit-content antes de cerrar',
+            ].map(step => (
+              <li style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{step}</li>
+            ))}
+          </ol>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="lab-div">⚑ FIN DEL LAB · ESPERAR APROBACIÓN ANTES DE IMPLEMENTAR reforma-cocinas.astro ⚑</div>
+
+</body>
+</html>

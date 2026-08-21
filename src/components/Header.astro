@@ -8,10 +8,12 @@ import { SITE, SERVICES, ZONES } from '../data/site';
     <a href={`tel:${SITE.phone}`} class="hover:text-orange-300 transition-colors font-medium">
       ☎ {SITE.phoneDisplay}
     </a>
-    <span class="opacity-40">|</span>
-    <span>{SITE.hours}</span>
-    <span class="opacity-40">|</span>
-    <span>Respondemos en 24h</span>
+    {SITE.phone !== 'TU_TELEFONO' && (
+      <>
+        <span class="opacity-40">|</span>
+        <span>{SITE.hours}</span>
+      </>
+    )}
   </div>
 </div>
 

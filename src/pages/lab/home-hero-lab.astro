@@ -1,0 +1,221 @@
+---
+import '../../styles/global.css';
+const cities = 'Alcalá · Torrejón · Coslada · San Fernando · Guadalajara';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>LAB · Home Hero A1 vs A2</title>
+  <style>
+    html { scroll-behavior: smooth }
+    * { box-sizing: border-box }
+
+    /* A1 & A2 shared layout */
+    .hero-support {
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 1024px) {
+      .hero-support { grid-template-columns: 55fr 22fr 23fr; gap: 3rem; }
+    }
+
+    /* A2 specific: sigil vertical terracota */
+    .h1-sigil {
+      border-left: 4px solid #A85535;
+      padding-left: 1.5rem;
+    }
+    @media (min-width: 1024px) {
+      .h1-sigil {
+        border-left-width: 5px;
+        padding-left: 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased m-0 p-0">
+
+  <!-- LAB NAV -->
+  <div class="fixed top-0 left-0 right-0 z-50 bg-yellow-400 text-yellow-950 px-4 py-1.5 flex items-center justify-between">
+    <span class="text-[10px] font-black uppercase tracking-[0.15em]">LAB · Home Hero · A1 vs A2</span>
+    <nav class="hidden md:flex gap-4 text-[10px] font-bold uppercase tracking-widest">
+      <a href="#a1">A1</a>
+      <a href="#a2">A2</a>
+      <a href="/lab/home-sections-lab">Trust · Zonas · Precios →</a>
+    </nav>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       HERO A1 · H1 completamente blanco
+       Sin ningún uso de terracota en la cabecera.
+       La terracota aparece solo en el CTA primario.
+  ══════════════════════════════════════════════ -->
+  <section id="a1" class="bg-[#111827] flex flex-col justify-end relative"
+           style="min-height:100vh;padding-top:2.5rem;padding-bottom:4rem">
+
+    <!-- Label de sección (lab only) -->
+    <div class="absolute top-12 left-0 right-0 flex justify-center pointer-events-none">
+      <span class="text-[10px] font-black uppercase tracking-[0.2em] text-white/20">A1 — H1 completamente blanco</span>
+    </div>
+
+    <!-- H1 -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+      <p class="font-black uppercase text-white/30 mb-6" style="font-size:10px;letter-spacing:.15em">
+        Empresa de reformas · Corredor del Henares
+      </p>
+      <h1 class="font-black text-white"
+          style="font-size:clamp(2.75rem,9vw,8.5rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance;margin-bottom:0">
+        Empresa de Reformas<br>en el Corredor<br>del Henares
+      </h1>
+    </div>
+
+    <!-- Separador + soporte -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+        <div class="hero-support">
+
+          <!-- Copy -->
+          <p style="color:#9CA3AF;font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch;line-height:1.65">
+            Una reforma se complica cuando las decisiones llegan tarde, los gremios trabajan sin coordinación o el presupuesto deja demasiadas cosas abiertas. En Trazzo360 planificamos y coordinamos con un único responsable de obra, un presupuesto cerrado desde el inicio y una fecha de entrega que queda fijada en el contrato.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/" class="inline-block text-center text-white font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+              Solicitar valoración gratuita
+            </a>
+            <a href="tel:000" class="inline-block text-center font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+              Llamar ahora
+            </a>
+            <p class="text-[10px] text-white/30 uppercase tracking-wider">Sin compromiso · Visita técnica gratuita</p>
+          </div>
+
+          <!-- Stats desktop -->
+          <div class="text-right hidden lg:flex flex-col justify-end gap-5">
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2 años</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Garantía sobre la ejecución</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">1</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Responsable de obra</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">Precio cerrado</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Por contrato desde el inicio</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Stats mobile -->
+        <div class="flex gap-5 mt-8 lg:hidden">
+          <div>
+            <p class="text-white font-black" style="font-size:1.25rem;letter-spacing:-0.02em">2 años</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Garantía</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.25rem;letter-spacing:-0.02em">1</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Responsable</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.25rem;letter-spacing:-0.02em">Precio cerrado</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Por contrato</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divisor entre heros -->
+  <div class="bg-yellow-400 text-yellow-950 text-center py-2">
+    <span class="text-[10px] font-black uppercase tracking-[0.2em]">↓ Hero A2 ↓</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       HERO A2 · H1 blanco + sigilo terracota
+       Un único uso de terracota: un trazo vertical
+       de 3px a la izquierda del bloque H1. El texto
+       permanece completamente blanco. El acento
+       es posicional, no léxico.
+  ══════════════════════════════════════════════ -->
+  <section id="a2" class="bg-[#111827] flex flex-col justify-end relative"
+           style="min-height:100vh;padding-top:2.5rem;padding-bottom:4rem">
+
+    <div class="absolute top-12 left-0 right-0 flex justify-center pointer-events-none">
+      <span class="text-[10px] font-black uppercase tracking-[0.2em] text-white/20">A2 — Sigilo terracota vertical</span>
+    </div>
+
+    <!-- H1 con sigilo — sin eyebrow: el trazo y el H1 forman una unidad -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+      <!-- El border-left es el único uso de terracota en este hero -->
+      <div class="h1-sigil">
+        <h1 class="font-black text-white"
+            style="font-size:clamp(2.75rem,9vw,8.5rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance;margin-bottom:0">
+          Empresa de Reformas<br>en el Corredor<br>del Henares
+        </h1>
+      </div>
+    </div>
+
+    <!-- Separador + soporte (idéntico a A1) -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+        <div class="hero-support">
+
+          <p style="color:#9CA3AF;font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch;line-height:1.65">
+            Una reforma se complica cuando las decisiones llegan tarde, los gremios trabajan sin coordinación o el presupuesto deja demasiadas cosas abiertas. En Trazzo360 planificamos y coordinamos con un único responsable de obra, un presupuesto cerrado desde el inicio y una fecha de entrega que queda fijada en el contrato.
+          </p>
+
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/" class="inline-block text-center text-white font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+              Solicitar valoración gratuita
+            </a>
+            <a href="tel:000" class="inline-block text-center font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+              Llamar ahora
+            </a>
+            <p class="text-[10px] text-white/30 uppercase tracking-wider">Sin compromiso · Visita técnica gratuita</p>
+          </div>
+
+          <div class="text-right hidden lg:flex flex-col justify-end gap-5">
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2 años</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Garantía sobre la ejecución</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">1</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Responsable de obra</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">Precio cerrado</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Por contrato desde el inicio</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="flex gap-5 mt-8 lg:hidden">
+          <div>
+            <p class="text-white font-black" style="font-size:1.25rem;letter-spacing:-0.02em">2 años</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Garantía</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.25rem;letter-spacing:-0.02em">1</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Responsable</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.25rem;letter-spacing:-0.02em">Precio cerrado</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Por contrato</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

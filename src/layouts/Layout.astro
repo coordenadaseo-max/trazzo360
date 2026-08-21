@@ -35,10 +35,11 @@ const baseSchema: Record<string, unknown> = {
     addressCountry: 'ES',
   },
   areaServed: ['Alcalá de Henares', 'Torrejón de Ardoz', 'Coslada', 'San Fernando de Henares', 'Guadalajara', 'Azuqueca de Henares', 'Meco', 'Camarma de Esteruelas'],
-  openingHoursSpecification: [
+  // PRE-LAUNCH BLOCKER: confirmar horario con titular antes de publicar en schema
+  ...(SITE.phone !== 'TU_TELEFONO' ? { openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '08:00', closes: '20:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '09:00', closes: '14:00' },
-  ],
+  ]} : {}),
   ...(SITE.reviewCount > 0 ? {
     aggregateRating: {
       '@type': 'AggregateRating',

@@ -35,7 +35,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Hacéis también reformas en locales y oficinas en Alcalá de Henares?',
-      a: 'Sí. Acondicionamiento de locales comerciales y oficinas en Alcalá con gestión de licencia de actividad cuando procede. El proceso es el mismo: visita técnica gratuita, presupuesto cerrado en 48h, contrato con precio y plazo fijados, y garantía de 2 años sobre la ejecución.',
+      a: 'Sí. Acondicionamiento de locales comerciales y oficinas en Alcalá con gestión de licencia de actividad cuando procede. El proceso es el mismo: visita técnica gratuita, presupuesto cerrado por escrito, contrato con precio y plazo fijados, y garantía de 2 años sobre la ejecución.',
     },
   ],
 

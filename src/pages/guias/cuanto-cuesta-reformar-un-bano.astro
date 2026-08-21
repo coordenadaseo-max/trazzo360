@@ -93,7 +93,7 @@ const faqSchema = {
       </h1>
       <div class="border-l-4 border-[#A85535] pl-6 bg-[#F9F7F4] py-5 pr-6 mb-6">
         <p class="text-lg text-gray-800 leading-relaxed font-medium">
-          Una reforma completa de baño cuesta entre 3.200€ y 7.500€ para un baño estándar de 4 a 6 m² con materiales de calidad media. El factor que más condiciona el precio no es el tamaño, sino el estado de las instalaciones existentes y los materiales elegidos. Estima tu caso con la <a href="/calculadora-precio-reforma/?servicio=reforma-banos" class="text-[#A85535] underline hover:opacity-80">calculadora de precios</a>.
+          Una reforma completa de baño cuesta entre 3.500€ y 7.500€ para un baño de 4 a 6 m² con materiales de calidad media. Para baños de hasta 4 m², el rango esencial parte de 2.800€. El factor que más condiciona el precio no es el tamaño, sino el estado de las instalaciones existentes y los materiales elegidos. Estima tu caso con la <a href="/calculadora-precio-reforma/?servicio=reforma-banos" class="text-[#A85535] underline hover:opacity-80">calculadora de precios</a>.
         </p>
       </div>
       <p class="text-gray-600 leading-relaxed">
@@ -124,9 +124,10 @@ const faqSchema = {
           <tbody>
             {[
               { label: 'Cambio de bañera por ducha (sin tocar alicatado)', price: 'Desde 1.800€', days: '3–5 días' },
-              { label: 'Reforma completa baño pequeño hasta 5 m²', price: 'Desde 3.200€', days: '10–15 días' },
-              { label: 'Reforma completa baño 6–8 m²', price: 'Desde 4.500€', days: '12–18 días' },
-              { label: 'Reforma con redistribución de fontanería', price: 'Desde 5.500€', days: '15–25 días' },
+              { label: 'Reforma completa baño pequeño hasta 4 m²', price: 'Desde 2.800€', days: '2–3 semanas' },
+              { label: 'Reforma completa baño 4–6 m²', price: 'Desde 3.500€', days: '2–3 semanas' },
+              { label: 'Reforma completa baño 6–9 m²', price: 'Desde 4.500€', days: '2–3 semanas' },
+              { label: 'Reforma con redistribución de fontanería', price: 'Desde 5.500€', days: '3–5 semanas' },
             ].map((row, i) => (
               <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
                 <td class="py-3 px-4 text-gray-700">{row.label}</td>

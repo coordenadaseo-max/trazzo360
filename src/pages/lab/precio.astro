@@ -1,0 +1,114 @@
+---
+import '../../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>LAB · Momento 2 · Precio y presupuesto</title>
+  <style>html{scroll-behavior:smooth}*{box-sizing:border-box}</style>
+</head>
+<body class="font-sans antialiased m-0 p-0 bg-white">
+
+  <div class="fixed top-0 left-0 right-0 z-50 bg-yellow-400 text-yellow-950 px-4 py-1.5 flex items-center justify-between">
+    <span class="text-[10px] font-black uppercase tracking-[0.15em]">LAB · Momento 2 · Precio y presupuesto · Sin watermark</span>
+    <nav class="hidden md:flex gap-4 text-[10px] font-bold uppercase tracking-widest">
+      <a href="/lab/hero-a">A</a>
+      <a href="/lab/hero-c">C</a>
+      <a href="/lab/tiempo">Tiempo</a>
+      <a href="/lab/precio" class="underline">Precio</a>
+      <a href="/lab/garantia">Garantía</a>
+    </nav>
+  </div>
+
+  <section class="bg-white" style="min-height:100vh;padding-top:calc(30px + 4rem);padding-bottom:5rem">
+    <div class="max-w-5xl mx-auto px-4 lg:px-8">
+
+      <!-- Apertura editorial: precio como statement -->
+      <div style="border-bottom:1px solid #E5E7EB;padding-bottom:2.5rem;margin-bottom:2.5rem">
+        <p style="font-size:9px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#A85535;margin-bottom:1.25rem">
+          ¿Cuánto cuesta reformar un baño en el Corredor del Henares?
+        </p>
+        <div class="grid items-end gap-10 lg:gap-16" style="grid-template-columns:auto 1fr">
+          <div>
+            <p class="text-gray-900 font-black leading-none" style="font-size:clamp(3.5rem,7vw,6rem);letter-spacing:-0.04em">3.200€</p>
+            <p class="text-gray-500" style="font-size:.8125rem;margin-top:.5rem">reforma completa · baño hasta 5 m² · IVA no incluido</p>
+          </div>
+          <div style="padding-bottom:.25rem">
+            <p class="text-gray-600 leading-relaxed" style="max-width:50ch;font-size:.9375rem">
+              El factor que más influye en el precio no es el tamaño del baño: es el estado de las instalaciones existentes. Tuberías a renovar, fontanería a reubicar, humedades que no eran visibles.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla -->
+      <div style="margin-bottom:3rem">
+        <p class="text-gray-400" style="font-size:.75rem;margin-bottom:1rem">Precios orientativos. El precio final se fija en el contrato tras la visita técnica gratuita.</p>
+        <div class="overflow-x-auto">
+          <table style="width:100%;border-collapse:collapse;font-size:.875rem">
+            <thead>
+              <tr style="border-bottom:2px solid #A85535">
+                <th style="text-align:left;padding:.75rem 1rem;font-weight:700;color:#111827;background:white">Alcance de la reforma</th>
+                <th style="text-align:right;padding:.75rem 1rem;font-weight:700;color:#111827;background:white;white-space:nowrap">Precio orientativo</th>
+                <th style="text-align:right;padding:.75rem 1rem;font-weight:700;color:#111827;background:white">Plazo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #F3F4F6;background:white">
+                <td style="padding:.875rem 1rem;color:#374151">Cambio de bañera por ducha (sin cambio de alicatado)</td>
+                <td style="padding:.875rem 1rem;text-align:right;font-weight:600;color:#111827;white-space:nowrap">Desde 1.800€</td>
+                <td style="padding:.875rem 1rem;text-align:right;color:#6B7280;white-space:nowrap">3–5 días</td>
+              </tr>
+              <tr style="border-bottom:1px solid #F3F4F6;background:#F9FAFB">
+                <td style="padding:.875rem 1rem;color:#374151">Reforma completa baño pequeño hasta 5 m²</td>
+                <td style="padding:.875rem 1rem;text-align:right;font-weight:600;color:#111827;white-space:nowrap">Desde 3.200€</td>
+                <td style="padding:.875rem 1rem;text-align:right;color:#6B7280;white-space:nowrap">10–15 días</td>
+              </tr>
+              <tr style="border-bottom:1px solid #F3F4F6;background:white">
+                <td style="padding:.875rem 1rem;color:#374151">Reforma completa baño grande 6–8 m²</td>
+                <td style="padding:.875rem 1rem;text-align:right;font-weight:600;color:#111827;white-space:nowrap">Desde 4.500€</td>
+                <td style="padding:.875rem 1rem;text-align:right;color:#6B7280;white-space:nowrap">12–18 días</td>
+              </tr>
+              <tr style="background:#F9FAFB">
+                <td style="padding:.875rem 1rem;color:#374151">Reforma con cambio de distribución o fontanería</td>
+                <td style="padding:.875rem 1rem;text-align:right;font-weight:600;color:#111827;white-space:nowrap">Desde 5.500€</td>
+                <td style="padding:.875rem 1rem;text-align:right;color:#6B7280;white-space:nowrap">15–25 días</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Forma de pago: 3 bloques horizontales -->
+      <div style="border-top:1px solid #E5E7EB;padding-top:2.5rem">
+        <p style="font-size:9px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#9CA3AF;margin-bottom:1.75rem">
+          Pago en tres fases · Precio cerrado por contrato
+        </p>
+        <div class="grid grid-cols-3" style="border:1px solid #E5E7EB">
+          <div style="padding:1.75rem 2rem;border-right:1px solid #E5E7EB">
+            <p class="text-gray-900 font-black leading-none" style="font-size:clamp(1.75rem,3.5vw,2.5rem);letter-spacing:-0.035em;margin-bottom:.75rem;font-variant-numeric:tabular-nums">40%</p>
+            <p class="text-gray-900 font-bold text-xs" style="margin-bottom:.3rem">Al inicio</p>
+            <p class="text-gray-500" style="font-size:.75rem;line-height:1.5">Firma del contrato y reserva de agenda</p>
+          </div>
+          <div style="padding:1.75rem 2rem;border-right:1px solid #E5E7EB">
+            <p class="text-gray-900 font-black leading-none" style="font-size:clamp(1.75rem,3.5vw,2.5rem);letter-spacing:-0.035em;margin-bottom:.75rem;font-variant-numeric:tabular-nums">40%</p>
+            <p class="text-gray-900 font-bold text-xs" style="margin-bottom:.3rem">A mitad de obra</p>
+            <p class="text-gray-500" style="font-size:.75rem;line-height:1.5">Cuando la instalación está en marcha</p>
+          </div>
+          <div style="padding:1.75rem 2rem">
+            <p class="text-gray-900 font-black leading-none" style="font-size:clamp(1.75rem,3.5vw,2.5rem);letter-spacing:-0.035em;margin-bottom:.75rem;font-variant-numeric:tabular-nums">20%</p>
+            <p class="text-gray-900 font-bold text-xs" style="margin-bottom:.3rem">En la entrega</p>
+            <p class="text-gray-500" style="font-size:.75rem;line-height:1.5">Revisión final y recepción conforme</p>
+          </div>
+        </div>
+        <p class="text-gray-400" style="margin-top:1rem;font-size:.75rem">El último 20% se paga en la entrega: si algo no está bien, no cerramos la obra.</p>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

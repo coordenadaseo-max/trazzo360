@@ -1,0 +1,87 @@
+---
+import '../../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>LAB · Hero C · Tipográfico</title>
+  <style>
+    html{scroll-behavior:smooth}*{box-sizing:border-box}
+    @media(min-width:1024px){.support-grid{grid-template-columns:55fr 22fr 23fr}}
+  </style>
+</head>
+<body class="font-sans antialiased m-0 p-0">
+
+  <div class="fixed top-0 left-0 right-0 z-50 bg-yellow-400 text-yellow-950 px-4 py-1.5 flex items-center justify-between">
+    <span class="text-[10px] font-black uppercase tracking-[0.15em]">LAB · HERO C · Tipográfico · Sin fotografía · Escala + espacio + asimetría</span>
+    <nav class="hidden md:flex gap-4 text-[10px] font-bold uppercase tracking-widest">
+      <a href="/lab/hero-a">A</a>
+      <a href="/lab/hero-c" class="underline">C</a>
+      <a href="/lab/tiempo">Tiempo</a>
+      <a href="/lab/precio">Precio</a>
+      <a href="/lab/garantia">Garantía</a>
+    </nav>
+  </div>
+
+  <section class="bg-[#111827] flex flex-col justify-end" style="min-height:100vh;padding-top:30px;padding-bottom:4rem">
+
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+
+      <!-- Headline: domina el viewport entero, alineado abajo -->
+      <h1 class="text-white font-black"
+          style="font-size:clamp(3rem,9.5vw,8.5rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance;margin-bottom:0">
+        Reforma de baños<br>en el Corredor del Henares
+      </h1>
+
+    </div>
+
+    <!-- Separador + capa de soporte -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:3rem">
+      <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:2.5rem">
+
+        <!-- Tres columnas asimétricas: párrafo / CTAs / stats -->
+        <div class="support-grid grid gap-6 lg:gap-12 items-end">
+
+          <!-- Párrafo: columna principal, ancho restringido -->
+          <p class="leading-relaxed" style="color:#9CA3AF;font-size:clamp(0.85rem,1vw,0.95rem);max-width:50ch">
+            Precio cerrado por contrato. Cambio de bañera por ducha, alicatado completo, fontanería y sanitarios. El plazo habitual es de 10 a 15 días laborables para un baño de 5 m². El presupuesto no varía una vez firmado.
+          </p>
+
+          <!-- CTAs: columna central -->
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/" class="inline-block text-center text-white font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+              Presupuesto gratis
+            </a>
+            <a href="tel:000" class="inline-block text-center text-white font-black text-xs uppercase"
+               style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.2);letter-spacing:.1em">
+              900 000 000
+            </a>
+          </div>
+
+          <!-- Stats: columna derecha, alineados a la derecha -->
+          <div class="text-right hidden lg:block">
+            <div style="margin-bottom:1.25rem">
+              <p class="text-white font-black leading-none" style="font-size:1.5rem;letter-spacing:-0.03em">3.200€</p>
+              <p style="font-size:9px;color:#4B5563;margin-top:3px;letter-spacing:.1em;text-transform:uppercase">Desde · baño 5 m²</p>
+            </div>
+            <div style="margin-bottom:1.25rem">
+              <p class="text-white font-black leading-none" style="font-size:1.5rem;letter-spacing:-0.03em">10–15</p>
+              <p style="font-size:9px;color:#4B5563;margin-top:3px;letter-spacing:.1em;text-transform:uppercase">Días laborables</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:1.5rem;letter-spacing:-0.02em">40/40/20</p>
+              <p style="font-size:9px;color:#4B5563;margin-top:3px;letter-spacing:.1em;text-transform:uppercase">Fases de pago</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

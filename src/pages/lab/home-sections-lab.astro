@@ -1,0 +1,289 @@
+---
+import '../../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>LAB · Home Sections · Trust · Zonas · Precios</title>
+  <style>
+    html { scroll-behavior: smooth }
+    * { box-sizing: border-box }
+
+    /* Trust grid */
+    .trust-content-grid {
+      display: grid;
+      gap: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      .trust-content-grid { grid-template-columns: 3fr 2fr; gap: 4rem; }
+    }
+
+    /* Precios bands */
+    .precio-band {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid #D1C9BD;
+    }
+    .precio-band:first-child {
+      border-top: 1px solid #D1C9BD;
+    }
+    .precio-band-amount {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+    @media (min-width: 640px) {
+      .precio-band {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: baseline;
+        flex-direction: unset;
+        gap: 2rem;
+      }
+    }
+
+    /* Zonas grid */
+    .zonas-primary-grid {
+      display: grid;
+      gap: 1px;
+      background: rgba(255,255,255,.08);
+    }
+    @media (min-width: 640px) {
+      .zonas-primary-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .zonas-primary-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased m-0 p-0">
+
+  <!-- LAB NAV -->
+  <div class="fixed top-0 left-0 right-0 z-50 bg-yellow-400 text-yellow-950 px-4 py-1.5 flex items-center justify-between">
+    <span class="text-[10px] font-black uppercase tracking-[0.15em]">LAB · Trust · Zonas · Precios</span>
+    <nav class="hidden md:flex gap-4 text-[10px] font-bold uppercase tracking-widest">
+      <a href="/lab/home-hero-lab">← Hero A1/A2</a>
+      <a href="#trust">Trust</a>
+      <a href="#zonas">Zonas</a>
+      <a href="#precios">Precios</a>
+    </nav>
+  </div>
+
+  <div style="height:36px"></div>
+
+  <!-- ═══════════════════════════════════════════
+       TRUST — Sección unificada
+       Composición: declaración al top (eje vertical),
+       contenido debajo en dos columnas.
+       "1" integrado en la declaración tipográfica,
+       no como número standalone a la izquierda.
+  ══════════════════════════════════════════════ -->
+  <section id="trust" class="bg-[#111827] py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+
+      <!-- Declaración: "1" integrado en el texto, no aislado -->
+      <div style="border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:3rem;margin-bottom:3.5rem">
+        <p class="font-black text-white leading-none"
+           style="font-size:clamp(2rem,6vw,5rem);letter-spacing:-0.04em;text-wrap:balance;line-height:0.9">
+          <span style="font-size:clamp(4rem,12vw,9rem);color:#fff;vertical-align:baseline;line-height:1">1</span>&thinsp;único
+          responsable de obra.
+          <span style="color:#9CA3AF;font-size:0.55em;font-weight:400;letter-spacing:0;line-height:1.4;display:block;margin-top:0.6em">
+            Desde el primer presupuesto hasta la entrega de llaves.
+          </span>
+        </p>
+      </div>
+
+      <!-- Contenido: compromisos + responsable -->
+      <div class="trust-content-grid">
+
+        <!-- Compromisos -->
+        <div>
+          <p class="font-black uppercase text-white/40 mb-6" style="font-size:10px;letter-spacing:.15em">
+            Lo que queda fijado en el contrato
+          </p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0">
+            {[
+              ['Precio cerrado', 'El presupuesto no varía una vez firmado. Ni materiales, ni mano de obra, ni imprevistos.'],
+              ['Plazo en el contrato', 'La fecha de entrega queda fijada antes de empezar. Si nos retrasamos, el coste corre de nuestra cuenta.'],
+              ['2 años de garantía', 'Sobre la ejecución completa. No sobre piezas sueltas.'],
+              ['Un solo interlocutor', 'No coordinas con electricistas, pintores o fontaneros por separado. Hay un único responsable que coordina todo.'],
+            ].map(([titulo, texto], i, arr) => (
+              <li style={`padding: 1.25rem 0; ${i < arr.length - 1 ? 'border-bottom:1px solid rgba(255,255,255,.08)' : ''}`}>
+                <p class="font-bold text-white text-sm mb-1">{titulo}</p>
+                <p style="font-size:0.875rem;color:#9CA3AF;line-height:1.6;max-width:48ch">{texto}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Responsable -->
+        <div class="bg-gray-900 p-8" style="border:1px solid rgba(255,255,255,.06)">
+          <p class="font-black uppercase text-white/30 mb-5" style="font-size:9px;letter-spacing:.15em">
+            El responsable de tu obra
+          </p>
+
+          <!-- Placeholder nombre real -->
+          <p class="font-black text-white mb-1" style="font-size:1.25rem;letter-spacing:-0.02em">
+            [Nombre del responsable]
+          </p>
+          <p style="font-size:0.8125rem;color:#9CA3AF;margin-bottom:1.5rem">
+            Coordinador de obra · Trazzo360
+          </p>
+
+          <p style="font-size:0.875rem;color:#9CA3AF;line-height:1.7;border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem">
+            "En Trazzo360 el presupuesto que firmas es el que pagas. No porque tengamos una cláusula que lo diga, sino porque es la única forma en que puedo coordinar a todos los gremios sin que cada uno meta su margen extra al final."
+          </p>
+
+          <div class="mt-6" style="border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem">
+            <p class="font-black text-white" style="font-size:1.5rem;letter-spacing:-0.02em">15</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Años coordinando reformas en el Corredor</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Divisor lab -->
+  <div class="bg-yellow-400 text-yellow-950 text-center py-2">
+    <span class="text-[10px] font-black uppercase tracking-[0.2em]">↓ Zonas ↓</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       ZONAS — "8 municipios. 1 empresa."
+       Declaración territorial sin mapa, sin iconos.
+       El peso está en la tipografía y la lista posterior.
+       La cifra "8" y "1" refuerzan en tamaño pero
+       integradas en el enunciado, no como display puro.
+  ══════════════════════════════════════════════ -->
+  <section id="zonas" class="bg-[#111827] py-20 lg:py-28"
+           style="border-top:2px solid rgba(255,255,255,.12)">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+
+      <!-- Declaración territorial -->
+      <div style="border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:3rem;margin-bottom:3.5rem">
+        <p class="font-black text-white"
+           style="font-size:clamp(2.25rem,7vw,5.5rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance">
+          8 municipios.<br>1 empresa.
+        </p>
+        <p style="font-size:clamp(0.875rem,1.2vw,1rem);color:#9CA3AF;margin-top:1.5rem;max-width:55ch;line-height:1.65">
+          Trabajamos exclusivamente en el Corredor del Henares. No somos una plataforma nacional con un delegado local: somos de aquí, conocemos los tiempos, los proveedores y el territorio.
+        </p>
+      </div>
+
+      <!-- Zonas primarias -->
+      <div>
+        <p class="font-black uppercase text-white/30 mb-4" style="font-size:9px;letter-spacing:.15em">
+          Zonas de actuación principal
+        </p>
+        <div class="zonas-primary-grid rounded-none">
+          {[
+            { zona: 'Alcalá de Henares', sub: 'Madrid', principal: true },
+            { zona: 'Torrejón de Ardoz', sub: 'Madrid', principal: false },
+            { zona: 'Coslada', sub: 'Madrid', principal: false },
+            { zona: 'San Fernando de Henares', sub: 'Madrid', principal: false },
+            { zona: 'Guadalajara', sub: 'Castilla-La Mancha', principal: false },
+            { zona: 'Azuqueca de Henares', sub: 'Guadalajara', principal: false },
+          ].map(({ zona, sub, principal }) => (
+            <a href="#"
+               class="block bg-gray-900 hover:bg-gray-800 transition-colors"
+               style={principal ? 'padding:1.75rem 1.5rem;border-left:3px solid #A85535' : 'padding:1.25rem 1.5rem'}>
+              <p class={`font-${principal ? 'black' : 'bold'} text-white ${principal ? '' : 'text-sm'}`}
+                 style={principal ? 'font-size:1.0625rem' : ''}>{zona}</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:3px;letter-spacing:.08em;text-transform:uppercase">
+                {principal ? 'Zona principal · Mayor cobertura' : sub}
+              </p>
+            </a>
+          ))}
+        </div>
+
+        <!-- Zonas secundarias en texto comprimido -->
+        <div class="mt-6" style="border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem">
+          <p style="font-size:9px;color:#9CA3AF;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">
+            También operamos en
+          </p>
+          <p style="font-size:0.8125rem;color:#9CA3AF;line-height:1.8">
+            Meco · Paracuellos de Jarama · Daganzo de Arriba · Alovera · Cabanillas del Campo · Villanueva de la Torre
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Divisor lab -->
+  <div class="bg-yellow-400 text-yellow-950 text-center py-2">
+    <span class="text-[10px] font-black uppercase tracking-[0.2em]">↓ Precios ↓</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       PRECIOS — Sin número display gigante
+       Jerarquía por composición tipográfica:
+       tabla de rangos como "bands" con alineación
+       precio a la derecha + copy editorial debajo.
+       El peso viene de la alineación y el peso tipográfico,
+       no de un único número dominante.
+  ══════════════════════════════════════════════ -->
+  <section id="precios" class="bg-[#F9F7F4] py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+
+      <p class="font-black uppercase text-[#A85535] mb-4" style="font-size:10px;letter-spacing:.15em">
+        Precios orientativos · Corredor del Henares
+      </p>
+      <h2 class="font-black text-gray-900 mb-4"
+          style="font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.025em;line-height:1.1;max-width:18ch;text-wrap:balance">
+        ¿Cuánto cuesta una reforma en el Corredor?
+      </h2>
+      <p class="text-gray-600 mb-10" style="font-size:0.9375rem;max-width:52ch;line-height:1.7">
+        Los rangos de abajo son orientativos. El presupuesto cerrado que firmamos contigo depende del estado actual, los materiales elegidos y las instalaciones. Revisamos tu solicitud y te enviamos precio definitivo.
+      </p>
+
+      <!-- Bands de precio -->
+      <div class="mb-12" style="max-width:48rem">
+        {[
+          { servicio: 'Reforma de baño', rango: 'desde 3.200 €', nota: 'Baño hasta 5 m² · Cambio completo de instalación' },
+          { servicio: 'Reforma de cocina', rango: 'desde 4.500 €', nota: 'Cocina hasta 10 m² · Redistribución incluida' },
+          { servicio: 'Reforma integral de vivienda', rango: 'desde 8.000 €', nota: 'Piso de 80 m² · Precio cerrado por proyecto' },
+          { servicio: 'Cambio de bañera por ducha', rango: 'desde 900 €', nota: 'En 2 días laborables · Con suelo antideslizante' },
+          { servicio: 'Sustitución de suelo', rango: 'desde 25 €/m²', nota: 'Material y colocación · Porcelánico o vinílico' },
+          { servicio: 'Pintura interior', rango: 'desde 6 €/m²', nota: 'Mano de imprimación + dos manos de acabado' },
+        ].map(({ servicio, rango, nota }) => (
+          <div class="precio-band">
+            <div>
+              <p class="font-bold text-gray-900 text-sm">{servicio}</p>
+              <p class="text-gray-500 mt-0.5" style="font-size:0.75rem">{nota}</p>
+            </div>
+            <p class="font-black text-gray-900 precio-band-amount"
+               style="font-size:clamp(1rem,2vw,1.375rem)">
+              {rango}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Copy de confianza + CTA -->
+      <div style="display:grid;gap:2rem;max-width:48rem">
+        <div style="border-left:3px solid #A85535;padding-left:1.5rem">
+          <p class="font-bold text-gray-900 text-sm mb-1">El precio que ves es el precio que firmas</p>
+          <p class="text-gray-600" style="font-size:0.875rem;line-height:1.65">
+            Estos rangos están basados en proyectos reales terminados en el Corredor del Henares. El presupuesto cerrado que entregamos no tiene cláusulas de ajuste ni imprevistos posteriores.
+          </p>
+        </div>
+        <div>
+          <a href="/contacto/" class="inline-block text-white font-black text-xs uppercase"
+             style="padding:1rem 2rem;background:#A85535;letter-spacing:.12em">
+            Solicitar presupuesto cerrado
+          </a>
+          <p class="text-gray-500 mt-3" style="font-size:0.75rem">Visita técnica gratuita · Sin compromiso</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

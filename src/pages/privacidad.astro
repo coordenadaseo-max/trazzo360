@@ -1,12 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { SITE } from '../data/site';
-const updated = '2025-01-01'; // Actualizar cuando se modifique esta política
+const updated = '2026-08-21'; // Actualizar cuando se modifique esta política
 ---
 
 <Layout
   title={`Política de Privacidad y Protección de Datos | ${SITE.name}`}
   description={`Política de privacidad de ${SITE.name}. Información sobre cómo tratamos tus datos personales de acuerdo con el RGPD y la LOPD-GDD.`}
+  robots="noindex, follow"
 >
   <nav class="bg-gray-50 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 py-3 text-sm text-gray-500 flex items-center gap-2">

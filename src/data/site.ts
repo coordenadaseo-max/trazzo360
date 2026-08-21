@@ -98,6 +98,7 @@ import { CONTENT as RC_C, FAQS as RC_F, META as RC_M } from './content/reforma-c
 import { CONTENT as RP_C, FAQS as RP_F, META as RP_M } from './content/reforma-pisos';
 import { CONTENT as LC_C, FAQS as LC_F, META as LC_M } from './content/locales-comerciales';
 import { CONTENT as CV_C, FAQS as CV_F, META as CV_M } from './content/comunidades-vecinos';
+export { SERVICE_ZONE_LEVEL } from './content/levels';
 
 export const SERVICE_ZONE_CONTENT = {
   'reformas-integrales': RI_C,

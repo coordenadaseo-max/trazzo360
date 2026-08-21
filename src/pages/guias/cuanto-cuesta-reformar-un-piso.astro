@@ -18,7 +18,7 @@ const breadcrumbSchema = {
 const faqs = [
   {
     q: '¿Cuánto cuesta reformar un piso de 70 m²?',
-    a: 'Una reforma de acabados de un piso de 70 m² —suelos, baño, cocina, carpintería y pintura, sin renovar instalaciones— parte de 18.000€ con calidad media. Solo suelos y pintura puede hacerse desde 8.000€. Si las instalaciones (cuadro eléctrico, fontanería) necesitan renovación, estamos ante una reforma integral que parte de 45.000€ para ese mismo tamaño. El presupuesto exacto cierra tras la visita técnica gratuita.',
+    a: 'Una reforma de acabados esencial de un piso de 60 m² —suelos, pintura y puertas, sin renovar instalaciones— parte de 21.000€ (350 €/m² · reforma-pisos · esencial · sin IVA). Para un alcance completo que incluya baño y cocina, el nivel de calidad sube y el precio también. Solo suelos y pintura en un piso de menor tamaño puede hacerse desde 8.000€. Si las instalaciones (cuadro eléctrico, fontanería) necesitan renovación, estamos ante una reforma integral. El presupuesto exacto cierra tras la visita técnica gratuita.',
   },
   {
     q: '¿Cuándo merece la pena hacer una reforma integral en lugar de solo baño y cocina?',
@@ -50,7 +50,7 @@ const faqs = [
   },
   {
     q: '¿Qué pasa si al abrir el suelo aparece algo que no estaba previsto?',
-    a: 'En pisos anteriores a 1985 es relativamente frecuente encontrar tuberías en peor estado del visible o una instalación eléctrica que requiere intervención al abrirse. Cuando aparece algo no previsto, comunicamos el hallazgo antes de tocar nada y lo valoramos por separado. Ninguna decisión de ampliar el alcance se toma sin tu aprobación. En la mayoría de reformas de acabados del Corredor, el precio cierra sin desviaciones.',
+    a: 'En pisos anteriores a 1985 pueden encontrarse tuberías en peor estado del visible o una instalación eléctrica que requiere intervención al abrirse. Cuando aparece algo no previsto, comunicamos el hallazgo antes de tocar nada y lo valoramos por separado. Ninguna decisión de ampliar el alcance se toma sin tu aprobación. En la mayoría de reformas de acabados del Corredor, el precio cierra sin desviaciones.',
   },
   {
     q: '¿La reforma de pisos necesita licencia?',
@@ -93,7 +93,7 @@ const faqSchema = {
       </h1>
       <div class="border-l-4 border-[#A85535] pl-6 bg-[#F9F7F4] py-5 pr-6 mb-6">
         <p class="text-lg text-gray-800 leading-relaxed font-medium">
-          Una reforma de piso completa —baño, cocina, suelos y pintura, sin renovar instalaciones— parte de 18.000€ para un piso de 60–80 m² con materiales de calidad media. Solo suelos y pintura puede hacerse desde 8.000€. Si las instalaciones necesitan renovación, es una reforma integral con un coste diferente. Estima tu caso con la <a href="/calculadora-precio-reforma/?servicio=reforma-pisos" class="text-[#A85535] underline hover:opacity-80">calculadora de precios</a>.
+          Una reforma de acabados esencial de un piso de 60 m² —suelos, pintura y puertas, sin renovar instalaciones— parte de 21.000€ (350 €/m² · sin IVA). Para alcances que incluyan baño y cocina, el precio es mayor según calidad elegida. Solo suelos y pintura puede hacerse desde 8.000€. Si las instalaciones necesitan renovación, es una reforma integral con un coste diferente. Estima tu caso con la <a href="/calculadora-precio-reforma/?servicio=reforma-pisos" class="text-[#A85535] underline hover:opacity-80">calculadora de precios</a>.
         </p>
       </div>
       <p class="text-gray-600 leading-relaxed">
@@ -124,7 +124,7 @@ const faqSchema = {
           <tbody>
             {[
               { label: 'Suelos + pintura + carpintería (sin baño ni cocina)', price: 'Desde 8.000€', plazo: '2–4 semanas' },
-              { label: 'Baño + cocina + suelos + pintura', price: 'Desde 18.000€', plazo: '6–10 semanas' },
+              { label: 'Acabados esencial · suelos, pintura y puertas (60 m²)', price: 'Desde 21.000€', plazo: '5–8 semanas' },
               { label: 'Con redistribución de tabiques', price: 'Desde 28.000€', plazo: '8–12 semanas' },
               { label: 'Si las instalaciones necesitan renovación', price: 'Ver Reformas Integrales', plazo: 'Desde 10 semanas' },
             ].map((row, i) => (
@@ -191,7 +191,7 @@ const faqSchema = {
             <li>El objetivo es mejorar el aspecto y la funcionalidad</li>
             <li>El edificio es posterior a 1990</li>
           </ul>
-          <p class="text-sm font-semibold text-[#A85535] mt-4">Desde 8.000€ (suelos) / Desde 18.000€ (baño+cocina+suelos+pintura)</p>
+          <p class="text-sm font-semibold text-[#A85535] mt-4">Desde 8.000€ (solo suelos y pintura) / Desde 21.000€ (acabados esencial: suelos, pintura y puertas · 60 m² · sin IVA)</p>
         </div>
         <div class="bg-white p-6 border-t-4 border-gray-300 border border-gray-100">
           <h3 class="text-base font-bold text-gray-900 mb-3">Reforma integral (instalaciones + acabados)</h3>

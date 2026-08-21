@@ -11,7 +11,7 @@ const hasRealProjectImages = false; // se activa cuando existan fotos reales de 
 const primaryZoneDescs: Record<string, string> = {
   'alcala-de-henares': 'Nuestra zona de mayor actividad. Trabajamos en toda la ciudad: El Val, El Ensanche, Nueva Alcalá y el centro histórico. Reformas integrales de pisos de los setenta y ochenta que necesitan instalaciones completamente nuevas, así como chalets y adosados en las urbanizaciones del extrarradio que buscan redistribución y acabados de calidad.',
   'torrejon-de-ardoz': 'La segunda ciudad donde más obras ejecutamos. El parque de vivienda de Torrejón concentra muchos pisos de los ochenta con instalaciones envejecidas que requieren reforma integral. Reformas de cocinas, baños y rehabilitación completa de viviendas son los trabajos más frecuentes.',
-  'coslada': 'Reformas de pisos medianos donde cocinas y baños concentran la mayor parte del trabajo. Muchas viviendas de Coslada tienen un potencial de redistribución que aprovechamos sin ampliar el presupuesto. Visita gratuita con respuesta en menos de 24 horas en toda la ciudad.',
+  'coslada': 'Reformas de pisos medianos donde cocinas y baños concentran la mayor parte del trabajo. Muchas viviendas de Coslada tienen un potencial de redistribución que aprovechamos sin ampliar el presupuesto. Visita técnica gratuita en toda la ciudad.',
   'san-fernando-de-henares': 'Reformas integrales de vivienda y trabajos en comunidades de vecinos: portales, escaleras y fachadas. San Fernando tiene un parque residencial de los años ochenta y noventa en buen estado estructural pero con instalaciones eléctricas y de fontanería que piden renovación completa.',
 };
 
@@ -60,7 +60,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
 
 <Layout
   title="Reformas Corredor del Henares · Precio Cerrado | Trazzo360"
-  description="Empresa de reformas en el Corredor del Henares con precio cerrado. Alcalá de Henares, Torrejón, Coslada, San Fernando. Presupuesto gratis en 24h. Desde 2.800€."
+  description="Empresa de reformas en el Corredor del Henares con precio cerrado. Alcalá de Henares, Torrejón, Coslada, San Fernando. Presupuesto gratuito. Desde 2.800€."
   schema={faqSchema}
 >
 
@@ -102,7 +102,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
                style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);letter-spacing:.1em">
               {SITE.phoneDisplay}
             </a>
-            <p class="text-[10px] text-white/50 uppercase tracking-wider">Sin compromiso · Respuesta en 24h</p>
+            <p class="text-[10px] text-white/50 uppercase tracking-wider">Sin compromiso · Visita técnica gratuita</p>
           </div>
 
           <!-- Stats desktop -->
@@ -284,14 +284,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
             ))}
           </ul>
 
-          <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.07)">
-            <p class="font-black text-white" style="font-size:1.75rem;letter-spacing:-0.03em">
-              {AUTHOR.yearsInTrade}
-            </p>
-            <p style="font-size:10px;color:#9CA3AF;margin-top:3px;letter-spacing:.1em;text-transform:uppercase">
-              Años coordinando reformas en el Corredor
-            </p>
-          </div>
+          {/* PRE-LAUNCH BLOCKER: cifra de años pendiente confirmación titular */}
         </div>
 
       </div>
@@ -484,7 +477,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
         ¿Listo para reformar?
       </h2>
       <p class="text-gray-400 mb-8" style="font-size:1.0625rem">
-        Visita gratuita y presupuesto cerrado en 48h. Fecha de entrega garantizada.
+        Visita técnica gratuita y presupuesto cerrado por escrito. Fecha de entrega garantizada.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/contacto/"

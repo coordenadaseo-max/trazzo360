@@ -229,7 +229,7 @@ export const FAQS: Record<string, { q: string; a: string }[]> = {
   'azuqueca-de-henares': [
     {
       q: '¿Hay alguna diferencia en el proceso para una reforma integral en Azuqueca frente a otros municipios del Corredor?',
-      a: 'El proceso es el mismo: visita técnica gratuita, presupuesto cerrado en 48 horas y contrato con precio y plazo fijados. El mismo equipo que trabaja en Alcalá y Torrejón cubre Azuqueca sin coste adicional de desplazamiento. Si la reforma necesita licencia, el trámite es en el Ayuntamiento de Azuqueca de Henares.',
+      a: 'El proceso es el mismo: visita técnica gratuita, presupuesto cerrado por escrito y contrato con precio y plazo fijados. El mismo equipo que trabaja en Alcalá y Torrejón cubre Azuqueca sin coste adicional de desplazamiento. Si la reforma necesita licencia, el trámite es en el Ayuntamiento de Azuqueca de Henares.',
     },
     {
       q: '¿Cómo puedo verificar que el presupuesto de reforma integral en Azuqueca cubre realmente lo que hay que hacer?',
@@ -286,7 +286,7 @@ export const FAQS: Record<string, { q: string; a: string }[]> = {
 };
 
 export const META: Record<string, string> = {
-  'alcala-de-henares':      'Reforma integral en Alcalá de Henares: revisamos cuadro eléctrico y fontanería antes de cerrar precio. Pisos de los 70 y 80. Presupuesto cerrado en 48h.',
+  'alcala-de-henares':      'Reforma integral en Alcalá de Henares: revisamos cuadro eléctrico y fontanería antes de cerrar precio. Pisos de los 70 y 80. Presupuesto cerrado por escrito.',
   'torrejon-de-ardoz':      'Reforma integral en Torrejón de Ardoz: diagnóstico de instalaciones en visita gratuita. Todo a la vez o por fases. Precio cerrado. Plazo garantizado.',
   'coslada':                'Reforma integral en Coslada: evaluamos instalaciones y humedades en visita. Primera obra integral en vivienda social. Presupuesto cerrado que no cambia a mitad.',
   'san-fernando-de-henares':'Reforma integral en San Fernando de Henares: casco antiguo o Parque Roma, el alcance cambia. Instalaciones evaluadas en visita gratuita. Precio cerrado.',

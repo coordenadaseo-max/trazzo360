@@ -5,7 +5,7 @@ import { SITE, SERVICES } from '../data/site';
 
 <Layout
   title={`Solicitud de presupuesto de reforma enviada | ${SITE.name}`}
-  description="Hemos recibido tu solicitud de presupuesto. Te contactamos en menos de 24 horas para concertar la visita técnica gratuita."
+  description="Hemos recibido tu solicitud de presupuesto. Revisamos los detalles y te contactamos para concertar la visita técnica gratuita."
   robots="noindex, follow"
 >
 
@@ -21,7 +21,7 @@ import { SITE, SERVICES } from '../data/site';
         Solicitud recibida
       </h1>
       <p class="text-lg text-gray-300 mb-3">
-        Te contactamos en menos de 24 horas (días laborables) para conocer tu proyecto y concertar la visita técnica gratuita.
+        Revisamos tu solicitud y te contactamos para concertar la visita técnica gratuita.
       </p>
       <p class="text-sm text-gray-500 mb-8">Si tienes urgencia, llámanos directamente.</p>
       {SITE.phone !== 'TU_TELEFONO' && (
@@ -42,7 +42,7 @@ import { SITE, SERVICES } from '../data/site';
         {[
           {
             n: '1',
-            title: 'Te llamamos en menos de 24h',
+            title: 'Revisamos tu solicitud',
             desc: 'Revisamos tu solicitud y nos ponemos en contacto para escuchar los detalles del proyecto. Sin compromiso, sin presión de venta.',
           },
           {
@@ -52,7 +52,7 @@ import { SITE, SERVICES } from '../data/site';
           },
           {
             n: '3',
-            title: 'Presupuesto cerrado en 48h',
+            title: 'Presupuesto cerrado por escrito',
             desc: 'Tras la visita recibes un presupuesto detallado con el precio final y el plazo de entrega. Sin partidas abiertas, sin letra pequeña. Lo que aparece en el documento es lo que pagas.',
           },
           {
@@ -99,7 +99,7 @@ import { SITE, SERVICES } from '../data/site';
           },
           {
             title: 'Preguntas concretas',
-            desc: 'Sobre plazos, materiales, financiación o permisos. Respondemos todo en la visita o en las 24h siguientes si requiere consulta técnica.',
+            desc: 'Sobre plazos, materiales, financiación o permisos. Lo resolvemos en la visita técnica gratuita.',
           },
         ].map(item => (
           <li class="bg-white p-6 border border-gray-100">

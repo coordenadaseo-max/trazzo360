@@ -1,0 +1,87 @@
+---
+import '../../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>LAB · Momento 3 · Garantía y compromisos</title>
+  <style>html{scroll-behavior:smooth}*{box-sizing:border-box}</style>
+</head>
+<body class="font-sans antialiased m-0 p-0">
+
+  <div class="fixed top-0 left-0 right-0 z-50 bg-yellow-400 text-yellow-950 px-4 py-1.5 flex items-center justify-between">
+    <span class="text-[10px] font-black uppercase tracking-[0.15em]">LAB · Momento 3 · Garantía · "2 años" como recurso editorial único</span>
+    <nav class="hidden md:flex gap-4 text-[10px] font-bold uppercase tracking-widest">
+      <a href="/lab/hero-a">A</a>
+      <a href="/lab/hero-c">C</a>
+      <a href="/lab/tiempo">Tiempo</a>
+      <a href="/lab/precio">Precio</a>
+      <a href="/lab/garantia" class="underline">Garantía</a>
+    </nav>
+  </div>
+
+  <section class="bg-[#111827]" style="min-height:100vh;padding-top:calc(30px + 4rem);padding-bottom:5rem">
+    <div class="max-w-5xl mx-auto px-4 lg:px-8">
+
+      <!-- Apertura: el "2" como acto editorial — ÚNICO en la página -->
+      <div class="grid items-start gap-10 lg:gap-16"
+           style="grid-template-columns:auto 1fr;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:3.5rem;margin-bottom:3.5rem">
+
+        <!-- El número "2" — editorial, tamaño máximo con criterio -->
+        <div>
+          <p class="text-white font-black leading-none" style="font-size:clamp(6rem,14vw,10rem);letter-spacing:-0.055em;line-height:1">2</p>
+          <div style="margin-top:.5rem">
+            <p class="text-white font-bold" style="font-size:clamp(.875rem,1.5vw,1.125rem);line-height:1.3">años de garantía</p>
+            <p class="text-gray-600" style="font-size:.75rem;margin-top:.25rem">sobre la ejecución</p>
+          </div>
+        </div>
+
+        <!-- Contexto: lo que significa la garantía -->
+        <div style="padding-top:.5rem">
+          <p style="font-size:9px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#A85535;margin-bottom:1rem">
+            Lo que se recoge en el contrato
+          </p>
+          <h2 class="text-white font-black" style="font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-0.02em;text-wrap:balance;margin-bottom:1.25rem">
+            Lo que firmamos antes de empezar
+          </h2>
+          <p class="leading-relaxed" style="color:#6B7280;font-size:.9375rem;max-width:48ch;margin-bottom:2rem">
+            Estos compromisos no son cláusulas en letra pequeña. Son el núcleo del acuerdo que firmamos antes del primer día de obra. Están por escrito y son exigibles.
+          </p>
+          <div class="flex gap-8">
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:1.5rem;letter-spacing:-0.03em">40/40/20</p>
+              <p style="font-size:9px;color:#374151;margin-top:3px;letter-spacing:.1em;text-transform:uppercase">Fases de pago</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:1.5rem;letter-spacing:-0.03em">✓</p>
+              <p style="font-size:9px;color:#374151;margin-top:3px;letter-spacing:.1em;text-transform:uppercase">Presupuesto</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de compromisos: 2 cols -->
+      <dl class="grid md:grid-cols-2 gap-x-12 gap-y-7">
+        {[
+          { t: 'Precio cerrado', b: 'El precio firmado es el precio final. Los imprevistos no visibles en la visita se comunican y presupuestan antes de ejecutarse.' },
+          { t: 'Plazo garantizado', b: 'El plazo comprometido es el plazo de entrega. Si hay un retraso por nuestra parte, lo comunicamos con antelación.' },
+          { t: 'Un interlocutor', b: 'Hay una persona responsable de tu obra desde la visita hasta la entrega. Es a quien llamas, y es quien tiene respuesta.' },
+          { t: 'Limpieza diaria', b: 'Al final de cada jornada, el baño y el pasillo quedan recogidos. No perfectos —es una obra— pero sin escombros en medio.' },
+          { t: 'Garantía de 2 años', b: 'Cubrimos humedades, desprendimientos, funcionamiento de sanitarios y cualquier problema atribuible a nuestra ejecución.' },
+          { t: 'Sin pago completo adelantado', b: 'El último 20% se paga en la recepción conforme. El pago completo por adelantado no forma parte de cómo trabajamos.' },
+        ].map(c => (
+          <div>
+            <dt class="text-white font-bold text-sm" style="margin-bottom:.4rem">{c.t}</dt>
+            <dd class="text-gray-600 leading-relaxed" style="font-size:.8125rem;max-width:40ch">{c.b}</dd>
+          </div>
+        ))}
+      </dl>
+
+    </div>
+  </section>
+
+</body>
+</html>

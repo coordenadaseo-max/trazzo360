@@ -23,7 +23,7 @@ export const SERVICES = [
     priceDesc: 'Reforma integral 40 m² · esencial · sin IVA',
     processSteps: [
       { title: 'Visita y medición gratuita', desc: 'Visitamos la vivienda sin coste ni compromiso. Tomamos medidas, evaluamos el estado previo y escuchamos tus necesidades.' },
-      { title: 'Presupuesto cerrado en 48h', desc: 'Entregamos presupuesto detallado con todas las partidas incluidas. Sin sorpresas posteriores: el precio que firmamos es el que pagas.' },
+      { title: 'Presupuesto cerrado por escrito', desc: 'Entregamos presupuesto detallado con todas las partidas incluidas. Sin sorpresas posteriores: el precio que firmamos es el que pagas.' },
       { title: 'Proyecto y licencia', desc: 'Redactamos el proyecto y gestionamos la licencia de obras en el ayuntamiento. Nos encargamos de toda la burocracia.' },
       { title: 'Derribo e instalaciones', desc: 'Vaciado, demolición de tabiques y ejecución de instalaciones nuevas de electricidad y fontanería con materiales homologados.' },
       { title: 'Albañilería y acabados', desc: 'Solados, alicatados, falso techo, carpintería interior, baño, cocina y pintura final. Coordinación de todos los gremios. Un interlocutor único.' },
@@ -219,7 +219,7 @@ export const SERVICES = [
     priceDesc: 'Piso 40 m² · acabados esencial · sin renovar instalaciones · sin IVA',
     processSteps: [
       { title: 'Visita gratuita', desc: 'Evaluamos el estado del piso, tomamos medidas y determinamos qué tipo de reforma tiene sentido según las instalaciones.' },
-      { title: 'Proyecto y presupuesto', desc: 'Presupuesto cerrado en 48h con todas las partidas. Si hay derribo de muros, incluimos proyecto técnico.' },
+      { title: 'Proyecto y presupuesto', desc: 'Presupuesto cerrado con todas las partidas. Si hay derribo de muros, incluimos proyecto técnico.' },
       { title: 'Licencia (si aplica)', desc: 'Tramitamos la licencia de obra menor en el ayuntamiento correspondiente del Corredor del Henares.' },
       { title: 'Demolición y preparación', desc: 'Demolición ligera, retirada de revestimientos y preparación de soportes. Sin tocar instalaciones salvo que el alcance lo requiera.' },
       { title: 'Acabados y entrega', desc: 'Solados, pintura, carpintería, baño y cocina. Limpieza final y entrega con garantía de 2 años sobre la ejecución.' },

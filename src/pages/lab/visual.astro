@@ -1,0 +1,468 @@
+---
+// ⚠️  LABORATORIO VISUAL INTERNO · NO PUBLICAR · NO INDEXAR
+// Propósito: validación de dirección artística.
+import '../../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>LAB VISUAL · Trazzo360 · Solo interno</title>
+  <style>
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+  </style>
+</head>
+<body class="font-sans antialiased bg-gray-200">
+
+  <!-- ── LAB NAVIGATION BAR ─────────────────────────────────── -->
+  <div class="sticky top-0 z-50 bg-yellow-400 text-yellow-950 px-4 py-2 flex items-center justify-between gap-4">
+    <span class="text-[10px] font-black uppercase tracking-[0.15em]">⚠ LAB VISUAL · No publicar · No indexar · Solo validación interna</span>
+    <nav class="hidden md:flex items-center gap-5 text-[10px] font-bold uppercase tracking-widest shrink-0">
+      <a href="#hero-a" class="hover:underline">Hero A</a>
+      <span class="opacity-40">·</span>
+      <a href="#hero-c" class="hover:underline">Hero C</a>
+      <span class="opacity-40">·</span>
+      <a href="#momento-tiempo" class="hover:underline">Tiempo</a>
+      <span class="opacity-40">·</span>
+      <a href="#momento-precio" class="hover:underline">Precio</a>
+      <span class="opacity-40">·</span>
+      <a href="#momento-garantia" class="hover:underline">Garantía</a>
+    </nav>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- PROTOTIPO A: HERO CON FOTOGRAFÍA                          -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="bg-yellow-50 border-y border-yellow-300 px-4 py-2">
+    <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-yellow-700">
+      Prototipo A · Hero con fotografía · Composición 60/40 · Foto a sangre en lateral derecho
+    </p>
+  </div>
+
+  <section id="hero-a" class="bg-[#111827] relative overflow-hidden min-h-[92vh]">
+
+    <!-- Foto: ocupa el 42% derecho del viewport, full height, absolute -->
+    <div class="hidden lg:flex absolute right-0 top-0 bottom-0 w-[42%] flex-col">
+      <!-- Placeholder neutro: fondo diferenciado del editorial negro -->
+      <div class="absolute inset-0 bg-[#1D2A3E]">
+        <!-- Grid sutil para indicar que es un hueco de imagen real -->
+        <div class="absolute inset-0 opacity-[0.04]"
+             style="background-image: repeating-linear-gradient(0deg, #fff 0, #fff 1px, transparent 1px, transparent 48px),
+                                      repeating-linear-gradient(90deg, #fff 0, #fff 1px, transparent 1px, transparent 48px);">
+        </div>
+      </div>
+      <!-- Label interno del placeholder -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="text-center">
+          <svg class="w-8 h-8 text-gray-600 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="1" stroke-width="1.5"/>
+            <circle cx="8.5" cy="8.5" r="1.5" stroke-width="1.5"/>
+            <path d="m21 15-5-5L5 21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-600">Prototipo</p>
+          <p class="text-[10px] text-gray-700 uppercase tracking-widest mt-1">Fotografía real · Baño terminado</p>
+          <p class="text-[10px] text-gray-700 mt-0.5">Formato vertical 3:4 · A sangre</p>
+        </div>
+      </div>
+      <!-- Overlay de dato en esquina inferior izquierda de la foto -->
+      <div class="absolute bottom-10 left-8">
+        <div class="bg-[#111827]/95 px-6 py-5">
+          <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-1">Precio orientativo desde</p>
+          <p class="text-4xl font-black text-white leading-none" style="letter-spacing:-0.035em">3.200€</p>
+          <p class="text-xs text-gray-500 mt-1.5">reforma completa · baño hasta 5 m²</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texto: columna izquierda en contenedor normal -->
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="lg:w-[56%] flex flex-col justify-center min-h-[92vh] py-20 lg:py-0 lg:pr-12">
+
+        <p class="text-[10px] font-black uppercase tracking-[0.15em] text-[#A85535] mb-7">
+          Reforma de baños · Corredor del Henares
+        </p>
+
+        <h1 class="font-black text-white mb-8"
+            style="font-size:clamp(2.5rem,5.5vw,5.5rem); letter-spacing:-0.03em; line-height:0.95; text-wrap:balance">
+          Reforma de baños en el Corredor del Henares
+        </h1>
+
+        <p class="text-[#D1D5DB] leading-relaxed mb-10"
+           style="font-size:clamp(0.95rem,1.2vw,1.125rem); max-width:52ch">
+          Reformamos baños con precio cerrado por contrato: cambio de bañera por ducha, alicatado completo, fontanería y sanitarios. El presupuesto, cerrado tras la visita técnica gratuita, no varía una vez firmado.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+          <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-[0.1em] uppercase text-white bg-[#A85535] hover:bg-[#8a4229] transition-colors">
+            Solicitar presupuesto gratis
+          </a>
+          <a href="tel:000000000" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-[0.1em] uppercase text-white border border-white/25 hover:border-white/60 transition-colors">
+            900 000 000
+          </a>
+        </div>
+
+        <!-- Stats inline — solo mobile (en desktop están en la foto) -->
+        <div class="flex gap-8 pt-6 border-t border-white/10 lg:hidden">
+          <div>
+            <p class="text-2xl font-black text-white leading-none" style="letter-spacing:-0.03em">3.200€</p>
+            <p class="text-xs text-gray-500 mt-1">reforma completa</p>
+          </div>
+          <div>
+            <p class="text-2xl font-black text-white leading-none" style="letter-spacing:-0.03em">10–15</p>
+            <p class="text-xs text-gray-500 mt-1">días laborables</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- PROTOTIPO C: HERO TIPOGRÁFICO SIN FOTOGRAFÍA              -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="bg-yellow-50 border-y border-yellow-300 px-4 py-2 mt-px">
+    <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-yellow-700">
+      Prototipo C · Hero tipográfico · Sin fotografía · Escala + espacio + asimetría
+    </p>
+  </div>
+
+  <section id="hero-c" class="bg-[#111827] min-h-[92vh] flex flex-col justify-end pb-14 lg:pb-20">
+    <div class="max-w-7xl mx-auto px-4 w-full">
+
+      <!-- Headline: domina el viewport -->
+      <h1 class="font-black text-white mb-0"
+          style="font-size:clamp(3rem,9.5vw,8.5rem); letter-spacing:-0.04em; line-height:0.88; text-wrap:balance">
+        Reforma de baños<br>en el Corredor<br class="lg:hidden"> del Henares
+      </h1>
+
+    </div>
+
+    <!-- Separador editorial entre headline y capa de soporte -->
+    <div class="max-w-7xl mx-auto px-4 w-full mt-10 lg:mt-14">
+      <div class="border-t border-white/15 pt-8 lg:pt-10">
+
+        <!-- Capa de soporte: asimétrica — párrafo 60% + CTAs + stats -->
+        <div class="grid lg:grid-cols-[55fr_25fr_20fr] gap-8 lg:gap-12 items-end">
+
+          <!-- Párrafo: columna principal -->
+          <p class="text-[#9CA3AF] leading-relaxed"
+             style="font-size:clamp(0.875rem,1.1vw,1rem); max-width:52ch">
+            Precio cerrado por contrato. Cambio de bañera por ducha, alicatado completo, fontanería y sanitarios. El plazo habitual es de 10 a 15 días laborables. El presupuesto no varía una vez firmado.
+          </p>
+
+          <!-- CTAs: columna central -->
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/" class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white bg-[#A85535] hover:bg-[#8a4229] transition-colors">
+              Presupuesto gratis
+            </a>
+            <a href="tel:000000000" class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white border border-white/25 hover:border-white/60 transition-colors">
+              900 000 000
+            </a>
+          </div>
+
+          <!-- Stats: columna derecha, alineados a la derecha -->
+          <div class="hidden lg:block text-right">
+            <div class="mb-5">
+              <p class="text-2xl font-black text-white leading-none" style="letter-spacing:-0.03em">3.200€</p>
+              <p class="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">Desde · baño 5 m²</p>
+            </div>
+            <div class="mb-5">
+              <p class="text-2xl font-black text-white leading-none" style="letter-spacing:-0.03em">10–15</p>
+              <p class="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">Días laborables</p>
+            </div>
+            <div>
+              <p class="text-2xl font-black text-white leading-none" style="letter-spacing:-0.02em">40/40/20</p>
+              <p class="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">Fases de pago</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MOMENTO 1: TIEMPO DE OBRA — LÍNEA TEMPORAL EDITORIAL      -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="bg-yellow-50 border-y border-yellow-300 px-4 py-2 mt-px">
+    <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-yellow-700">
+      Momento 1 · Tiempo de obra · Representación editorial del plazo · Para sección §5 "La obra en tu casa"
+    </p>
+  </div>
+
+  <section id="momento-tiempo" class="py-20 lg:py-28 bg-[#F9F7F4]">
+    <div class="max-w-5xl mx-auto px-4">
+
+      <div class="mb-12">
+        <p class="text-[10px] font-black uppercase tracking-[0.15em] text-[#A85535] mb-4">Plazo de obra</p>
+        <h2 class="text-3xl lg:text-4xl font-black text-gray-900 mb-4"
+            style="letter-spacing:-0.02em; text-wrap:balance">
+          10–15 días laborables para un baño completo
+        </h2>
+        <p class="text-gray-600 leading-relaxed" style="max-width:60ch">
+          La secuencia de fases es siempre la misma. Los tiempos de curado y fraguado son obligatorios: reducirlos es la causa más frecuente de humedades a los 2 o 3 años.
+        </p>
+      </div>
+
+      <!-- Timeline tipográfica — 4 fases en grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 border-t border-gray-300">
+
+        <!-- Fase 1: Demolición — acento terracota (días más críticos) -->
+        <div class="border-r border-gray-300 pr-6 pt-7 pb-8 lg:pr-8">
+          <p class="text-[10px] font-black uppercase tracking-[0.15em] text-[#A85535] mb-3">Fase 1</p>
+          <p class="text-4xl lg:text-5xl font-black text-gray-900 leading-none mb-3"
+             style="letter-spacing:-0.03em; font-variant-numeric:tabular-nums">
+            1–4
+          </p>
+          <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Días laborables</p>
+          <p class="font-bold text-gray-900 text-sm mb-2">Demolición</p>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            Retirada de alicatados, bañera y sanitarios. Gestión de escombros. Es la fase de más ruido y polvo.
+          </p>
+          <p class="text-[10px] text-[#A85535] font-semibold mt-3 uppercase tracking-widest">↑ Días más críticos</p>
+        </div>
+
+        <!-- Fase 2: Impermeabilización -->
+        <div class="border-r border-gray-300 px-6 pt-7 pb-8 lg:px-8">
+          <p class="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 mb-3">Fase 2</p>
+          <p class="text-4xl lg:text-5xl font-black text-gray-900 leading-none mb-3"
+             style="letter-spacing:-0.03em; font-variant-numeric:tabular-nums">
+            5–6
+          </p>
+          <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Días laborables</p>
+          <p class="font-bold text-gray-900 text-sm mb-2">Impermeabilización</p>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            Aplicación de impermeabilizante. Curado mínimo 48 h. No hay atajos aquí.
+          </p>
+        </div>
+
+        <!-- Fase 3: Alicatado e instalación -->
+        <div class="border-r border-gray-300 px-6 pt-7 pb-8 lg:px-8">
+          <p class="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 mb-3">Fase 3</p>
+          <p class="text-4xl lg:text-5xl font-black text-gray-900 leading-none mb-3"
+             style="letter-spacing:-0.03em; font-variant-numeric:tabular-nums">
+            7–12
+          </p>
+          <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Días laborables</p>
+          <p class="font-bold text-gray-900 text-sm mb-2">Alicatado e instalación</p>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            Revestimiento de paredes y suelo. Plato de ducha, fontanería, sanitarios. La obra avanza con claridad.
+          </p>
+        </div>
+
+        <!-- Fase 4: Acabados y entrega -->
+        <div class="pl-6 pt-7 pb-8 lg:pl-8">
+          <p class="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 mb-3">Fase 4</p>
+          <p class="text-4xl lg:text-5xl font-black text-gray-900 leading-none mb-3"
+             style="letter-spacing:-0.03em; font-variant-numeric:tabular-nums">
+            13–15
+          </p>
+          <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Días laborables</p>
+          <p class="font-bold text-gray-900 text-sm mb-2">Acabados y entrega</p>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            Mueble de baño, espejo, iluminación, accesorios, sellado de juntas. Limpieza final. Revisión contigo.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Línea de progreso visual bajo el grid -->
+      <div class="mt-0 border-b border-gray-300 relative h-[3px] overflow-hidden">
+        <div class="absolute left-0 top-0 bottom-0 w-[27%] bg-[#A85535]"></div>
+        <div class="absolute left-[27%] top-0 bottom-0 w-[13%] bg-gray-400"></div>
+        <div class="absolute left-[40%] top-0 bottom-0 w-[40%] bg-gray-300"></div>
+        <div class="absolute left-[80%] top-0 bottom-0 w-[20%] bg-gray-200"></div>
+      </div>
+
+      <!-- Nota de cierre -->
+      <p class="mt-10 text-sm text-gray-500 leading-relaxed" style="max-width:60ch">
+        Si solo tienes un baño, planificamos para que recuperes el acceso básico al final del día 4 o principios del 5, dentro del plazo comprometido y sin comprometer la impermeabilización.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MOMENTO 2: PRECIO Y PRESUPUESTO                           -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="bg-yellow-50 border-y border-yellow-300 px-4 py-2 mt-px">
+    <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-yellow-700">
+      Momento 2 · Precio y presupuesto · Composición alternativa a la actual §6 · Sin watermark
+    </p>
+  </div>
+
+  <section id="momento-precio" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+
+      <!-- Apertura editorial: el precio como statement -->
+      <div class="border-b border-gray-200 pb-10 mb-10">
+        <p class="text-[10px] font-black uppercase tracking-[0.15em] text-[#A85535] mb-5">
+          ¿Cuánto cuesta reformar un baño?
+        </p>
+
+        <!-- Precio principal: grande y con contexto claro -->
+        <div class="grid lg:grid-cols-[auto_1fr] lg:gap-16 lg:items-end">
+          <div>
+            <p class="font-black text-gray-900 leading-none"
+               style="font-size:clamp(3rem,7vw,6rem); letter-spacing:-0.04em">
+              3.200€
+            </p>
+            <p class="text-sm text-gray-500 mt-2">
+              reforma completa · baño estándar hasta 5 m² · IVA no incluido
+            </p>
+          </div>
+          <div class="lg:pb-1.5">
+            <p class="text-gray-600 leading-relaxed" style="max-width:50ch; font-size:0.95rem">
+              El factor que más influye en el precio no es el tamaño del baño: es el estado de las instalaciones existentes. Tuberías a renovar, fontanería a reubicar, humedades que no eran visibles antes de la demolición.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla: sin cambios — el dato real ya es bueno -->
+      <div class="mb-12">
+        <p class="text-xs text-gray-400 mb-4">Precios orientativos. El precio final se fija en el contrato tras la visita técnica gratuita.</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b-2 border-[#A85535]">
+                <th class="text-left py-3 px-4 font-bold text-gray-900 bg-white">Alcance de la reforma</th>
+                <th class="text-right py-3 px-4 font-bold text-gray-900 bg-white whitespace-nowrap">Precio orientativo</th>
+                <th class="text-right py-3 px-4 font-bold text-gray-900 bg-white">Plazo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { label: 'Cambio de bañera por ducha (sin cambio de alicatado)', price: 'Desde 1.800€', days: '3–5 días' },
+                { label: 'Reforma completa baño pequeño hasta 5 m²',             price: 'Desde 3.200€', days: '10–15 días' },
+                { label: 'Reforma completa baño grande 6–8 m²',                  price: 'Desde 4.500€', days: '12–18 días' },
+                { label: 'Reforma con cambio de distribución o fontanería',       price: 'Desde 5.500€', days: '15–25 días' },
+              ].map((row, i) => (
+                <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50/60' : 'bg-white'}`}>
+                  <td class="py-3.5 px-4 text-gray-700">{row.label}</td>
+                  <td class="py-3.5 px-4 text-right font-semibold text-gray-900 whitespace-nowrap">{row.price}</td>
+                  <td class="py-3.5 px-4 text-right text-gray-500 whitespace-nowrap">{row.days}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Forma de pago: composición en tres bloques horizontales -->
+      <div class="border-t border-gray-200 pt-10">
+        <p class="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 mb-7">
+          Pago en tres fases · Precio cerrado
+        </p>
+        <div class="grid grid-cols-3 border border-gray-200">
+          {[
+            { pct: '40%', label: 'Al inicio', desc: 'Firma del contrato y reserva de agenda' },
+            { pct: '40%', label: 'A mitad de obra', desc: 'Cuando la instalación está en marcha' },
+            { pct: '20%', label: 'En la entrega', desc: 'Revisión final y recepción conforme' },
+          ].map((fase, i) => (
+            <div class={`px-5 lg:px-8 py-7 ${i < 2 ? 'border-r border-gray-200' : ''}`}>
+              <p class="text-3xl lg:text-4xl font-black text-gray-900 leading-none mb-3"
+                 style="letter-spacing:-0.03em; font-variant-numeric:tabular-nums">
+                {fase.pct}
+              </p>
+              <p class="text-xs font-bold text-gray-900 mb-1">{fase.label}</p>
+              <p class="text-xs text-gray-500 leading-relaxed">{fase.desc}</p>
+            </div>
+          ))}
+        </div>
+        <p class="mt-5 text-xs text-gray-400">El último 20% se paga en la entrega: si algo no está bien, no cerramos la obra.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MOMENTO 3: GARANTÍA Y COMPROMISOS                         -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="bg-yellow-50 border-y border-yellow-300 px-4 py-2 mt-px">
+    <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-yellow-700">
+      Momento 3 · Garantía y compromisos · "2 años" como protagonista · Recurso editorial único
+    </p>
+  </div>
+
+  <section id="momento-garantia" class="py-20 lg:py-28 bg-[#111827]">
+    <div class="max-w-5xl mx-auto px-4">
+
+      <!-- Apertura: el "2" como acto editorial — usado solo aquí -->
+      <div class="grid lg:grid-cols-[auto_1fr] lg:gap-16 items-start mb-14 pb-14 border-b border-white/10">
+
+        <!-- El número "2" — editorial, tamaño máximo pero con criterio -->
+        <div class="flex items-baseline gap-4 lg:block">
+          <p class="font-black text-white leading-none"
+             style="font-size:clamp(5rem,14vw,10rem); letter-spacing:-0.05em; line-height:1">
+            2
+          </p>
+          <div class="lg:mt-2">
+            <p class="text-base lg:text-xl font-bold text-white leading-tight">años de garantía</p>
+            <p class="text-sm text-gray-500 mt-1">sobre la ejecución</p>
+          </div>
+        </div>
+
+        <!-- Contexto -->
+        <div class="lg:pt-4">
+          <p class="text-[10px] font-black uppercase tracking-[0.15em] text-[#A85535] mb-4">
+            Lo que se recoge en el contrato
+          </p>
+          <h2 class="text-2xl lg:text-3xl font-black text-white mb-5"
+              style="letter-spacing:-0.02em; text-wrap:balance">
+            Lo que firmamos antes de empezar
+          </h2>
+          <p class="text-gray-400 leading-relaxed mb-6" style="max-width:50ch">
+            Estos compromisos no son cláusulas en letra pequeña. Son el núcleo del acuerdo que firmamos antes del primer día de obra. Están por escrito y son exigibles.
+          </p>
+          <!-- Stats de soporte -->
+          <div class="flex gap-8">
+            <div>
+              <p class="text-2xl font-black text-white leading-none" style="letter-spacing:-0.03em">40/40/20</p>
+              <p class="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">Fases de pago</p>
+            </div>
+            <div>
+              <p class="text-2xl font-black text-white leading-none" style="letter-spacing:-0.03em">✓</p>
+              <p class="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">Presupuesto</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de compromisos: 2 columnas, sin decoración -->
+      <dl class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+        {[
+          { title: 'Precio cerrado', body: 'El precio firmado en el contrato es el precio final. Los imprevistos que no eran visibles en la visita se comunican y presupuestan antes de ejecutarse.' },
+          { title: 'Plazo garantizado', body: 'El plazo comprometido es el plazo de entrega. Si hay un retraso atribuible a nuestra organización, lo comunicamos con antelación.' },
+          { title: 'Un interlocutor', body: 'Hay una persona responsable de tu obra desde la visita hasta la entrega. Es a quien llamas, y es quien tiene respuesta.' },
+          { title: 'Limpieza diaria', body: 'Al final de cada jornada, el baño y el pasillo quedan recogidos. No perfectos —es una obra— pero sin escombros ni herramientas en medio.' },
+          { title: 'Garantía de 2 años', body: 'Cubrimos humedades, desprendimientos, funcionamiento de sanitarios y cualquier problema atribuible a la ejecución durante 2 años desde la entrega.' },
+          { title: 'Sin pago adelantado completo', body: 'El último 20% se paga en la recepción conforme. El pago completo por adelantado no forma parte de nuestro modelo de trabajo.' },
+        ].map(c => (
+          <div>
+            <dt class="font-bold text-white mb-1.5 text-sm">{c.title}</dt>
+            <dd class="text-sm text-gray-500 leading-relaxed" style="max-width:42ch">{c.body}</dd>
+          </div>
+        ))}
+      </dl>
+
+    </div>
+  </section>
+
+  <!-- ── Pie del lab ────────────────────────────────────────── -->
+  <div class="bg-yellow-400 text-yellow-950 px-4 py-3 text-center">
+    <p class="text-[10px] font-black uppercase tracking-[0.15em]">
+      Fin del laboratorio visual · Trazzo360 · Archivo interno · No publicar
+    </p>
+  </div>
+
+</body>
+</html>

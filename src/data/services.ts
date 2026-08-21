@@ -19,8 +19,8 @@ export const SERVICES = [
       { type: 'h3', text: 'Licencias y normativa: qué necesitas tramitar en tu ayuntamiento' },
       { type: 'p',  text: 'El trámite necesario depende del alcance de la reforma y de la normativa municipal aplicable: actuaciones interiores sencillas no se gestionan igual que obras que modifican distribución, instalaciones o elementos de fachada. El derribo de muros de carga exige proyecto de arquitecto técnico. En la visita informamos del trámite exacto que corresponde a tu caso y nos encargamos de la gestión completa.' },
     ],
-    priceFrom: '18.000',
-    priceDesc: 'Reforma de acabados 60 m² · sin IVA',
+    priceFrom: '26.000',
+    priceDesc: 'Reforma integral 40 m² · esencial · sin IVA',
     processSteps: [
       { title: 'Visita y medición gratuita', desc: 'Visitamos la vivienda sin coste ni compromiso. Tomamos medidas, evaluamos el estado previo y escuchamos tus necesidades.' },
       { title: 'Presupuesto cerrado en 48h', desc: 'Entregamos presupuesto detallado con todas las partidas incluidas. Sin sorpresas posteriores: el precio que firmamos es el que pagas.' },

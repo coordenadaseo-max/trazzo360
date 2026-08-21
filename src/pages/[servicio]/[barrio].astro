@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES, RELATED_ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, SERVICE_ZONE_FAQS, SERVICE_ICONS } from '../../data/site';
+import { SITE, SERVICES, ZONES, RELATED_ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, SERVICE_ZONE_FAQS, SERVICE_ICONS, SERVICE_ZONE_LEVEL } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -51,8 +51,9 @@ const pageTitle = TITLE_OVERRIDES[service.slug]?.[zone.slug]
 
 const isPrimary = zone.primary;
 const cityPresence = isPrimary
-  ? `con presencia habitual en ${zone.name}`
-  : `cubriendo regularmente ${zone.name} y la comarca`;
+  ? `en ${zone.name}`
+  : `en ${zone.name} y la comarca`;
+const szLevel = SERVICE_ZONE_LEVEL[service.slug]?.[zone.slug] ?? 'S2';
 
 // Intro único por combinación servicio×localidad
 const szc = SERVICE_ZONE_CONTENT[service.slug]?.[zone.slug];
@@ -93,10 +94,8 @@ const pageSchema = {
     name: SITE.name,
   },
   areaServed: {
-    '@type': 'PostalAddress',
-    addressLocality: zone.name,
-    addressRegion: zone.province,
-    addressCountry: 'ES',
+    '@type': 'City',
+    name: zone.name,
   },
   offers: {
     '@type': 'Offer',
@@ -152,9 +151,9 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
   <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="text-sm text-gray-500 flex items-center gap-2 flex-wrap" style="list-style:none;padding:0;margin:0">
-        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li><a href="/" class="hover:text-[#A85535]">Inicio</a></li>
         <li aria-hidden="true" class="text-gray-300">/</li>
-        <li><a href={`/servicios/${service.slug}/`} class="hover:text-[#A85535] transition-colors">{service.title}</a></li>
+        <li><a href={`/servicios/${service.slug}/`} class="hover:text-[#A85535]">{service.title}</a></li>
         <li aria-hidden="true" class="text-gray-300">/</li>
         <li class="text-gray-800 font-medium" aria-current="page">{zone.name}</li>
       </ol>
@@ -168,21 +167,25 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
         <div class="flex items-center gap-3 mb-6">
           <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">{SITE.zone}</span>
         </div>
-        <h1 id="h-hero" class="text-4xl lg:text-6xl font-black text-white mb-5" style="letter-spacing:-0.02em">
-          {service.title}{' '}<br/>
-          <span class="text-[#A85535]">en {zone.name}</span>
+        <h1 id="h-hero" class="text-3xl lg:text-5xl font-black text-white mb-5" style="letter-spacing:-0.02em;text-wrap:balance">
+          {(service as any).titleBarrio ?? service.title} en {zone.name}
         </h1>
         <p class="text-lg text-gray-300 leading-relaxed mb-4">{service.headline}</p>
-        <p class="text-base text-gray-400 leading-relaxed mb-6">{intro}</p>
+        {szLevel !== 'S3' && <p class="text-base text-gray-400 leading-relaxed mb-4">{intro}</p>}
+        {(szc as any)?.intersectionThesis && (
+          <div class="border-l-2 border-[#A85535] pl-4 mb-6">
+            <p class="text-sm font-semibold text-gray-300">{(szc as any).intersectionThesis}</p>
+          </div>
+        )}
         <p class="text-sm text-gray-400 mb-8">
           Desde <span class="text-white font-black text-2xl">{service.priceFrom}€</span>
           <span class="ml-2 text-gray-500">· {service.priceDesc}</span>
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+          <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90" style="background:#A85535">
             Solicitar presupuesto en {zone.name}
           </a>
-          <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
+          <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white">
             ☎ {SITE.phoneDisplay}
           </a>
         </div>
@@ -245,14 +248,14 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratis</p>
         <p class="text-xl font-black mb-1">Desde <span class="text-[#A85535] text-3xl">{service.priceFrom}€</span></p>
         <p class="text-sm text-gray-400 mb-6">{service.priceDesc}</p>
-        <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity mb-3" style="background:#A85535">
+        <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 mb-3" style="background:#A85535">
           Pedir presupuesto
         </a>
-        <a href={`tel:${SITE.phone}`} class="block text-center py-3.5 text-sm font-semibold text-gray-300 border border-white/20 hover:border-white transition-colors mb-4">
+        <a href={`tel:${SITE.phone}`} class="block text-center py-3.5 text-sm font-semibold text-gray-300 border border-white/20 hover:border-white mb-4">
           ☎ {SITE.phoneDisplay}
         </a>
         <p class="text-xs text-gray-500 text-center">Presupuesto cerrado en 48h</p>
-        <a href={`/calculadora-precio-reforma/?servicio=${service.slug}`} class="block text-center text-xs text-gray-400 hover:text-white mt-3 transition-colors">
+        <a href={`/calculadora-precio-reforma/?servicio=${service.slug}`} class="block text-center text-xs text-gray-400 hover:text-white mt-3">
           Estimar precio antes →
         </a>
       </div>
@@ -295,10 +298,10 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
         <p class="text-sm text-gray-400 mb-6">
           Sin compromiso. Cuéntanos qué quieres reformar en {zone.name}, concertamos visita técnica y entregamos presupuesto cerrado en 48h.
         </p>
-        <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity mb-3" style="background:#A85535">
+        <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 mb-3" style="background:#A85535">
           Solicitar presupuesto en {zone.name}
         </a>
-        <a href={`tel:${SITE.phone}`} class="block text-center py-3 text-sm text-gray-300 border border-white/20 hover:border-white transition-colors">
+        <a href={`tel:${SITE.phone}`} class="block text-center py-3 text-sm text-gray-300 border border-white/20 hover:border-white">
           ☎ {SITE.phoneDisplay}
         </a>
       </div>
@@ -306,7 +309,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
   </section>
 
   <!-- Proceso paso a paso -->
-  {service.processSteps && (service.processSteps as {title:string;desc:string}[]).length > 0 && (
+  {szLevel !== 'S3' && service.processSteps && (service.processSteps as {title:string;desc:string}[]).length > 0 && (
     <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-4">
         <h2 class="text-xl font-black text-gray-900 mb-3">
@@ -353,7 +356,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
   </section>
 
   <!-- Precios orientativos -->
-  {service.priceTable && (service.priceTable as {label:string;price:string;includes?:string}[]).length > 0 && (
+  {szLevel !== 'S3' && service.priceTable && (service.priceTable as {label:string;price:string;includes?:string}[]).length > 0 && (
     <section class="py-16 bg-white">
       <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-xl font-black text-gray-900 mb-3">
@@ -372,7 +375,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
           </thead>
           <tbody>
             {(service.priceTable as {label:string;price:string;includes?:string}[]).map(row => (
-              <tr class="border-t border-gray-100 hover:bg-gray-50 transition-colors">
+              <tr class="border-t border-gray-100 hover:bg-gray-50">
                 <th scope="row" class="text-left p-5 font-normal">
                   <span class="font-semibold text-gray-900 block">{row.label}</span>
                   {row.includes && <span class="text-xs text-gray-400 mt-0.5 block">{row.includes}</span>}
@@ -399,13 +402,13 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
       <div class="flex flex-wrap gap-2">
         {otherZones.map(z => (
           <a href={`/${service.slug}/${z.slug}/`}
-            class="inline-block px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 hover:border-[#A85535] hover:text-[#A85535] transition-colors">
+            class="inline-block px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 hover:border-[#A85535] hover:text-[#A85535]">
             {service.anchorLabel} en {z.name}
           </a>
         ))}
       </div>
       <p class="text-sm text-gray-400 mt-4">
-        También puedes ver la <a href={`/zonas/${zone.slug}/`} class="underline hover:text-[#A85535] transition-colors">página completa de {zone.name}</a> o todos los trabajos de <a href={`/servicios/${service.slug}/`} class="underline hover:text-[#A85535] transition-colors">{service.title.toLowerCase()}</a> que realizamos.
+        También puedes ver la <a href={`/zonas/${zone.slug}/`} class="underline hover:text-[#A85535]">página completa de {zone.name}</a> o todos los trabajos de <a href={`/servicios/${service.slug}/`} class="underline hover:text-[#A85535]">{service.title.toLowerCase()}</a> que realizamos.
       </p>
     </div>
   </section>
@@ -423,9 +426,9 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
         <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
           {relatedServices.map(s => (
             <a href={`/${s.slug}/${zone.slug}/`}
-              class="group block p-4 bg-gray-50 border-b-2 border-transparent hover:border-[#A85535] transition-colors">
+              class="group block p-4 bg-gray-50 border-b-2 border-transparent hover:border-[#A85535]">
               <span class="w-7 h-7 text-[#A85535] block mb-2"><Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} /></span>
-              <p class="text-sm font-semibold text-gray-800 group-hover:text-[#A85535] transition-colors">{s.title}</p>
+              <p class="text-sm font-semibold text-gray-800 group-hover:text-[#A85535]">{s.title}</p>
               <p class="text-xs text-gray-400 mt-0.5">Desde {s.priceFrom}€</p>
             </a>
           ))}
@@ -448,7 +451,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
           <details class="group py-5">
             <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
               <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
-              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45">+</span>
             </summary>
             <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
           </details>
@@ -464,7 +467,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
         ¿{service.title} en {zone.name}?
       </h2>
       <p class="text-white/80 mb-7">Visita gratuita. Presupuesto cerrado en 48h. Sin letra pequeña.</p>
-      <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8f4329] transition-colors">
+      <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8f4329]">
         Solicitar valoración gratuita
       </a>
     </div>

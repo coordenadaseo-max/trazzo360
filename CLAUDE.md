@@ -3,6 +3,29 @@
 Sitio Astro estático de SEO local para una empresa de reformas del Corredor del Henares.
 Arquitectura: home + 6 hubs de servicio + 8 hubs de zona + 48 combinadas `/{servicio}/{zona}/` + calculadora + guías + páginas de utilidad.
 
+---
+
+## Contexto de proyecto obligatorio — leer antes de cualquier modificación de producción
+
+**Antes de modificar cualquier página, template, dato o componente, leer en este orden:**
+
+1. [`PRODUCT.md`](./PRODUCT.md) — definición de producto, usuarios, compromisos de marca
+2. [`DESIGN.md`](./DESIGN.md) — sistema de tokens, tipografía, color, componentes
+3. [`docs/TRAZZO360-SYSTEM.md`](./docs/TRAZZO360-SYSTEM.md) — sistema operativo completo: datos, precios, SEO, copy, arquitectura
+4. [`docs/VISUAL-ROLLOUT-MAP.md`](./docs/VISUAL-ROLLOUT-MAP.md) — reglas visuales globales, estado de rollout V1/V2/V3, patrones prohibidos
+5. [`docs/DECISION-REGISTER.md`](./docs/DECISION-REGISTER.md) — registro de decisiones estructurales aprobadas
+
+**Regla de parada obligatoria:**
+Si una modificación planificada contradice cualquiera de los 5 documentos anteriores, **DETENER** la implementación e informar al usuario antes de proceder. No implementar y luego avisar; avisar primero.
+
+**Precedencia de datos:**
+`src/data/calculator.ts` > `docs/TRAZZO360-SYSTEM.md` > `CLAUDE.md` > implementación actual en `src/`
+
+**No leer:**
+`docs/archive/RECOVERY-CONTEXT-2026-08.md` no es fuente operativa. Es un archivo histórico.
+
+---
+
 ## 0. Contexto de negocio (léelo antes de escribir una sola línea de copy)
 
 La empresa **está arrancando**. No tiene todavía reseñas, ni fotos de obra propia, ni histórico de proyectos. La estrategia de contenido no lo disimula: lo compensa con transparencia, criterio técnico y compromisos verificables. Esto no es una limitación a esconder, es el posicionamiento.
@@ -288,9 +311,62 @@ Los anchors internos hacia una URL deben pertenecer al mismo campo semántico de
 
 Si una tarjeta necesita ser completamente clicable → enlace expandido por CSS en lugar de envolver todo el contenido en `<a>`.
 
-## 8. Proceso de trabajo
+## 8. Sistema de bullet de marca
+
+### 8.1 Especificación CSS (congelada)
+
+```css
+/* Lista base */
+.list-marca {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: .625rem;
+}
+.list-marca li {
+  display: flex; align-items: flex-start; gap: .625rem;
+  line-height: 1.55; font-size: .9375rem; color: #374151;
+}
+.list-marca li::before {
+  content: ''; display: block;
+  width: 6px; height: 6px; flex: 0 0 6px;
+  border-radius: 0;
+  margin-top: 8.625px; /* (15px × 1.55 − 6px) / 2 — centrado matemático */
+  border: 1px solid #9CA3AF; background: transparent;
+}
+/* Variante oscura */
+.list-marca.dark li { color: #9CA3AF; }
+.list-marca.dark li::before { border-color: rgba(255,255,255,.35); }
+/* Variante compromisos (terracota — solo en lista de peso máximo) */
+.list-marca.compromisos li { color: #d1d5db; }
+.list-marca.compromisos li::before { border-color: #A85535; }
+/* Convivencia: texto .8125rem/1.5lh sobre fondo oscuro */
+.list-convivencia li::before {
+  margin-top: 6.75px; /* (13px × 1.5 − 6px) / 2 */
+  border-color: rgba(255,255,255,.2);
+}
+```
+
+### 8.2 Reglas de uso
+
+- **PROHIBIDO** usar `—` (guion largo) como marcador visual de listas en cualquier página.
+- El marcador es siempre CSS `::before`, nunca un carácter tipográfico ni un emoji.
+- `compromisos` solo cuando la lista sea una garantía contractual de máximo peso; no para listas normales.
+- El `—` tipográfico DENTRO del texto de prosa (no como marcador) está permitido y no se toca.
+
+### 8.3 Estructura HTML obligatoria
+
+```html
+<ul class="list-marca">
+  <li><span>Texto del ítem</span></li>
+</ul>
+<!-- Variante oscura: <ul class="list-marca dark"> -->
+<!-- Compromisos: <ul class="list-marca compromisos"> -->
+```
+
+## 9. Proceso de trabajo
 
 - Antes de escalar a más páginas, verifica que las existentes cumplen los umbrales de la sección 3 y no tienen placeholders.
 - Cualquier cambio de arquitectura se explica en una frase y espera confirmación.
 - Los hallazgos de SEO se guardan en `docs/`, no se pierden en el chat.
+- Antes de cualquier tarea de producción: leer los 5 documentos del "Contexto de proyecto obligatorio" en la sección inicial de este archivo.
+- Flujo obligatorio para cerrar cualquier tarea: `npm run build` → `npm run audit-links` → `npm run audit-content`. Reportar resultados en tabla.
 - Al terminar cualquier tarea: `npm run build` y reporta páginas generadas, errores y `TODO:` pendientes.

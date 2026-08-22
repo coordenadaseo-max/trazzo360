@@ -91,7 +91,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cuánto tiempo tarda una reforma en Coslada?',
-      a: 'Un baño completo: 8-12 días hábiles. Una cocina: 2-3 semanas. Baño y cocina combinados: 3-4 semanas. Una reforma integral de 75-90 m² con instalaciones: 10-14 semanas. La fecha de entrega queda fijada en el contrato antes de empezar.',
+      a: 'Un baño completo: 2-3 semanas. Una cocina: 4-7 semanas. Baño y cocina combinados: 3-4 semanas. Una reforma integral de 75-90 m² con instalaciones: 10-14 semanas. La fecha de entrega queda fijada en el contrato antes de empezar.',
     },
   ],
 
@@ -115,7 +115,7 @@ export const ZONE_FAQS: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: '¿Cuánto tiempo lleva reformar un piso en San Fernando de Henares?',
-      a: 'Una reforma de baño: 8-12 días. Baño y cocina combinados: 3-4 semanas. Reforma integral de 75-90 m² con instalaciones: 10-14 semanas. El plazo queda fijado en el contrato antes de empezar.',
+      a: 'Una reforma de baño: 2-3 semanas. Baño y cocina combinados: 3-4 semanas. Reforma integral de 75-90 m² con instalaciones: 10-14 semanas. El plazo queda fijado en el contrato antes de empezar.',
     },
     {
       q: '¿Hacéis también cerramientos de terraza en San Fernando de Henares?',

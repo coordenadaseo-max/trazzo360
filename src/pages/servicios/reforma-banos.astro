@@ -25,7 +25,7 @@ const serviceSchema = {
     '@type': 'Offer',
     price: '3200',
     priceCurrency: 'EUR',
-    description: 'Reforma completa de baño desde 3.200€',
+    description: 'Reforma completa de baño desde 2.800€',
   },
 };
 
@@ -161,12 +161,12 @@ const zones = [
           <!-- Stats desktop -->
           <div class="hidden lg:block text-right">
             <div class="mb-5">
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">3.200€</p>
-              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Desde · baño 5&nbsp;m²</p>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2.800€</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Desde · baño ≤4&nbsp;m²</p>
             </div>
             <div class="mb-5">
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">10–15</p>
-              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Días laborables</p>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2–3</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Semanas · reforma completa</p>
             </div>
             <div>
               <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.02em">40/40/20</p>
@@ -177,12 +177,12 @@ const zones = [
         <!-- Stats mobile -->
         <div class="flex gap-8 mt-6 pt-5 lg:hidden" style="border-top:1px solid rgba(255,255,255,.08)">
           <div>
-            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">3.200€</p>
+            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">2.800€</p>
             <p class="text-xs mt-1" style="color:#9CA3AF">reforma completa</p>
           </div>
           <div>
-            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">10–15</p>
-            <p class="text-xs mt-1" style="color:#9CA3AF">días laborables</p>
+            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">2–3</p>
+            <p class="text-xs mt-1" style="color:#9CA3AF">semanas</p>
           </div>
         </div>
       </div>
@@ -441,12 +441,12 @@ const zones = [
       <div class="precio-apertura-grid mb-8 pb-8" style="border-bottom:1px solid #D1C9BD">
         <div>
           <p class="font-black text-gray-900 leading-none" style="font-size:clamp(3rem,7vw,5.5rem);letter-spacing:-0.04em;font-variant-numeric:tabular-nums">
-            3.200<span style="font-size:0.7em">€</span>
+            2.800<span style="font-size:0.7em">€</span>
           </p>
-          <p class="text-xs text-gray-500 mt-2 uppercase tracking-wider">reforma completa · baño hasta 5&nbsp;m² · desde</p>
+          <p class="text-xs text-gray-500 mt-2 uppercase tracking-wider">reforma completa · baño hasta 4&nbsp;m² · desde</p>
         </div>
         <p class="text-gray-700 leading-relaxed" style="max-width:55ch">
-          Una reforma completa de baño cuesta entre 3.200€ y 7.500€ para un baño estándar de 4 a 6&nbsp;m². El factor que más influye en el precio no es el tamaño, sino el estado de las instalaciones existentes: tuberías a renovar, fontanería a reubicar, instalación eléctrica que requiere intervención. Consulta la <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="text-[#A85535] hover:underline font-medium">guía de precios detallada</a> o usa la <a href="/calculadora-precio-reforma/?servicio=reforma-banos" class="text-[#A85535] hover:underline font-medium">calculadora de reforma de baño</a>.
+          Una reforma completa de baño parte de 2.800€ para baños hasta 4&nbsp;m² y de 3.500€ para baños de 4 a 6&nbsp;m². El factor que más influye en el precio no es el tamaño, sino el estado de las instalaciones existentes: tuberías a renovar, fontanería a reubicar, instalación eléctrica que requiere intervención. Consulta la <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="text-[#A85535] hover:underline font-medium">guía de precios detallada</a> o usa la <a href="/calculadora-precio-reforma/?servicio=reforma-banos" class="text-[#A85535] hover:underline font-medium">calculadora de reforma de baño</a>.
         </p>
       </div>
       <style>
@@ -467,9 +467,10 @@ const zones = [
           <tbody>
             {[
               { label: 'Cambio de bañera por ducha (sin cambio de alicatado)', price: 'Desde 1.800€', days: '3–5 días' },
-              { label: 'Reforma completa baño pequeño hasta 5 m²', price: 'Desde 3.200€', days: '10–15 días' },
-              { label: 'Reforma completa baño grande 6–8 m²', price: 'Desde 4.500€', days: '12–18 días' },
-              { label: 'Reforma con cambio de distribución o fontanería completa', price: 'Desde 5.500€', days: '15–25 días' },
+              { label: 'Reforma completa baño pequeño hasta 4 m²', price: 'Desde 2.800€', days: '2–3 semanas' },
+              { label: 'Reforma completa baño 4–6 m²', price: 'Desde 3.500€', days: '2–3 semanas' },
+              { label: 'Reforma completa baño 6–9 m²', price: 'Desde 4.500€', days: '2–3 semanas' },
+              { label: 'Reforma con cambio de distribución o fontanería completa', price: 'Desde 5.500€', days: '3–5 semanas' },
             ].map((row, i) => (
               <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
                 <td class="py-3 px-5 text-gray-700">{row.label}</td>

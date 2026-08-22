@@ -365,6 +365,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
         <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
           Precios de referencia calculados según superficie, alcance y nivel de calidad. El presupuesto exacto, cerrado y sin sorpresas, lo recibes por escrito tras la visita técnica gratuita.
         </p>
+        <div class="overflow-x-auto">
         <table class="w-full border border-gray-100 border-collapse text-sm">
           <caption class="sr-only">Precios orientativos de {costar} en {zone.name}</caption>
           <thead>
@@ -385,6 +386,7 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
             ))}
           </tbody>
         </table>
+        </div>
         <p class="text-xs text-gray-400 mt-4">* Precios orientativos IVA incluido. El precio exacto depende del estado previo, los materiales y el alcance de la obra. <a href="/contacto/" class="underline hover:text-[#A85535]">Solicita presupuesto gratuito.</a></p>
       </div>
     </section>

@@ -1,0 +1,100 @@
+version: 1
+description: >
+  Reglas de enlazado interno para trazzo360.es.
+  Objetivo: ninguna página SEO con menos de 8 enlaces entrantes desde <main>.
+
+# ── Ring geográfico ───────────────────────────────────────────────────────────
+ring:
+  rationale: >
+    Las 8 zonas se ordenan siguiendo el eje A-2 (Coslada → Guadalajara).
+    Cada zona enlaza a las 2 anteriores y 2 siguientes del anillo.
+  order:
+    - coslada
+    - san-fernando-de-henares
+    - torrejon-de-ardoz
+    - alcala-de-henares
+    - camarma-de-esteruelas
+    - meco
+    - azuqueca-de-henares
+    - guadalajara
+  neighbors_per_side: 2
+  total_neighbors: 4
+
+# ── Umbrales ──────────────────────────────────────────────────────────────────
+thresholds:
+  min_inbound_from_main: 8
+  scope: seo_pages         # excluye: /, /gracias/, /privacidad/, /aviso-legal/, /cookies/
+  audit_script: scripts/audit-links.mjs
+
+# ── Reglas por tipo de página ─────────────────────────────────────────────────
+rules:
+  - id: zone-to-all-services
+    description: Hub de zona enlaza a todas las páginas combinadas de esa zona
+    from:  /zonas/{zone}/
+    to:    /{service}/{zone}/
+    count: 6   # un enlace por cada uno de los 6 servicios
+
+  - id: zone-to-ring-neighbors
+    description: Hub de zona enlaza a los 4 vecinos del ring (2 anteriores, 2 siguientes)
+    from:  /zonas/{zone}/
+    to:    /zonas/{neighbor}/
+    count: 4
+
+  - id: service-hub-to-all-zones
+    description: Hub de servicio enlaza a todas las páginas combinadas de ese servicio
+    from:  /servicios/{service}/
+    to:    /{service}/{zone}/
+    count: 8   # un enlace por cada una de las 8 zonas
+
+  - id: combinada-to-service-hub
+    description: Página combinada enlaza de vuelta a su hub de servicio
+    from:  /{service}/{zone}/
+    to:    /servicios/{service}/
+    count: 1
+
+  - id: combinada-to-zone-hub
+    description: Página combinada enlaza de vuelta a su hub de zona
+    from:  /{service}/{zone}/
+    to:    /zonas/{zone}/
+    count: 1
+
+  - id: combinada-to-ring-neighbors
+    description: Página combinada enlaza a la misma combinada en las zonas vecinas del ring
+    from:  /{service}/{zone}/
+    to:    /{service}/{neighbor}/
+    count: 4
+
+# ── Anti-canibalización ───────────────────────────────────────────────────────
+anti_cannibalization:
+  rule: one_keyword_per_url
+  conflict_resolution: >
+    La página de menor prioridad resume el tema en 2-3 frases y enlaza
+    a la página canónica con anchor text descriptivo.
+  priority_order:
+    - servicios/{service}/     # hub de servicio (mayor prioridad)
+    - zonas/{zone}/            # hub de zona
+    - /{service}/{zone}/       # combinada (menor prioridad)
+
+# ── Páginas de precio (nuevas, pendientes de crear) ──────────────────────────
+price_cluster:
+  - url:  /calculadora-presupuesto-reforma/
+    type: tool
+    links_from:
+      - /servicios/reforma-banos/
+      - /servicios/reforma-cocinas/
+      - /servicios/reformas-integrales/
+
+  - url:  /guias/cuanto-cuesta-reformar-un-bano/
+    type: guide
+    canonical_for: ["precio reforma baño", "cuanto cuesta reformar baño"]
+    links_from:
+      - /servicios/reforma-banos/    # en bloque de precios → TODO: page exists
+      - /reforma-banos/*/            # todas las combinadas de baños
+
+  - url:  /guias/cuanto-cuesta-reformar-una-cocina/
+    type: guide
+    canonical_for: ["precio reforma cocina", "cuanto cuesta reformar cocina"]
+
+  - url:  /guias/cuanto-cuesta-una-reforma-integral/
+    type: guide
+    canonical_for: ["precio reforma integral", "cuanto cuesta reforma integral"]

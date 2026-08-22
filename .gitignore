@@ -23,3 +23,12 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .vercel
+
+# tooling local de agentes (no necesario para clon limpio ni para build)
+.mcp.json
+skills-lock.json
+.claude/agents/
+.claude/skills/
+.codex/
+.agents/
+.impeccable/

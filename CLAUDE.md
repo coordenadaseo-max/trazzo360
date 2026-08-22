@@ -15,14 +15,37 @@ Arquitectura: home + 6 hubs de servicio + 8 hubs de zona + 48 combinadas `/{serv
 4. [`docs/VISUAL-ROLLOUT-MAP.md`](./docs/VISUAL-ROLLOUT-MAP.md) — reglas visuales globales, estado de rollout V1/V2/V3, patrones prohibidos
 5. [`docs/DECISION-REGISTER.md`](./docs/DECISION-REGISTER.md) — registro de decisiones estructurales aprobadas
 
+**Protocolo de contraste obligatorio antes de implementar:**
+
+1. Documentos canónicos (orden de lectura arriba)
+2. Fuentes de datos: `src/data/calculator.ts`, `src/data/site.ts`, `src/data/trust.ts`
+3. Código actual en `src/` — para entender el estado, no como autoridad
+4. Páginas golden renderizadas (Playwright) cuando el cambio afecte composición o contenido visible
+5. Git history y diffs cuando ayuden a entender el origen de una decisión
+6. Contexto vigente de la sesión actual de Claude Code
+
+**Relación código / documentos canónicos:**
+
+Los documentos canónicos son el estándar. El código actual representa implementación, no autoridad.
+Si código y canon contradicen: clasificar la implementación como posible **deuda técnica o regresión**, no como argumento para relajar el estándar.
+Si un documento canónico y una **decisión posterior claramente demostrable** (git, sesión, instrucción explícita) contradicen: **DETENER y reportar** antes de implementar. No resolver unilateralmente.
+
+**Interpretación:**
+
+Las reglas se interpretan por su intención, no se aplican como checklist mecánica. SEO, copy, ángulo editorial y diseño se resuelven conjuntamente: una decisión en uno de ellos afecta a los demás. El objetivo es coherencia de sistema, no conformidad formal.
+
 **Regla de parada obligatoria:**
 Si una modificación planificada contradice cualquiera de los 5 documentos anteriores, **DETENER** la implementación e informar al usuario antes de proceder. No implementar y luego avisar; avisar primero.
 
 **Precedencia de datos:**
 `src/data/calculator.ts` > `docs/TRAZZO360-SYSTEM.md` > `CLAUDE.md` > implementación actual en `src/`
 
-**No leer:**
-`docs/archive/RECOVERY-CONTEXT-2026-08.md` no es fuente operativa. Es un archivo histórico.
+**Fuentes de autoridad del proyecto:**
+`CLAUDE.md` + documentos canónicos (`docs/TRAZZO360-SYSTEM.md`, `docs/VISUAL-ROLLOUT-MAP.md`, `docs/DECISION-REGISTER.md`, `PRODUCT.md`, `DESIGN.md`) = **autoridad del proyecto**.
+Memoria de Claude (archivos `.claude/`) = contexto auxiliar de sesión. No sustituye a los documentos canónicos.
+
+**Contexto histórico:**
+`docs/archive/RECOVERY-CONTEXT-2026-08.md` no es fuente operativa. Úsalo únicamente para investigar el origen de una decisión cuando no esté claro en los docs canónicos ni en git history.
 
 ---
 

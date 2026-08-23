@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Compromisos from '../../components/Compromisos.astro';
-import { SITE, SERVICES, ZONES, ZONE_FAQS, SERVICE_ICONS, RELATED_ZONES } from '../../data/site';
+import { SITE, SERVICES, ZONES, ZONE_FAQS, RELATED_ZONES } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -9,31 +9,20 @@ export const getStaticPaths: GetStaticPaths = () =>
        .map(z => ({ params: { slug: z.slug }, props: { zone: z } }));
 
 const { zone } = Astro.props;
-const zoneAny = zone as any;
 
 const faqs = ZONE_FAQS[zone.slug] ?? [];
 const relatedZoneSlugs: string[] = RELATED_ZONES[zone.slug] ?? [];
 const relatedZones = ZONES.filter(z => relatedZoneSlugs.includes(z.slug));
 
-// Variant and config flags
-const heroVariant: 'directa' | 'tipologica' | 'editorial' = zoneAny.heroVariant ?? 'directa';
-const thesis: string = zoneAny.thesis ?? '';
-const heroContext: { label?: string; text?: string; items?: Array<{ title: string; subtitle: string; note: string }> } | undefined = zoneAny.heroContext;
-const isCompact: boolean = zoneAny.compact === true;
-
-// Module visibility
 const hasBarrioNotes = Array.isArray(zone.m2BarrioNotes) && zone.m2BarrioNotes.length > 0;
-const hasTopWorks = !isCompact && Array.isArray(zone.topWorks) && zone.topWorks.length > 0;
-const showCompromisos = !isCompact;
 const hasNeighborhoods = Array.isArray(zone.neighborhoods) && zone.neighborhoods.length > 0;
-const hasFaqs = faqs.length > 0;
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Inicio',  item: `${SITE.url}/` },
-    { '@type': 'ListItem', position: 2, name: zone.name, item: `${SITE.url}/zonas/${zone.slug}/` },
+    { '@type': 'ListItem', position: 1, name: 'Inicio',    item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: zone.name,   item: `${SITE.url}/zonas/${zone.slug}/` },
   ],
 };
 
@@ -42,12 +31,12 @@ const zoneSchema = {
   '@type': 'Service',
   name: `Obras y reformas en ${zone.name}`,
   url: `${SITE.url}/zonas/${zone.slug}/`,
-  description: `Reformas integrales, baños, cocinas, pisos, locales y comunidades de vecinos en ${zone.name}. Precio cerrado y presupuesto gratuito.`,
+  description: `Trazzo360, empresa de reformas en ${zone.name}. Reformas integrales, baños, cocinas, pisos y locales. Precio cerrado y presupuesto gratuito.`,
   provider: { '@type': 'GeneralContractor', '@id': `${SITE.url}/#business` },
   areaServed: { '@type': 'City', name: zone.name },
 };
 
-const faqSchema = hasFaqs ? {
+const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: faqs.map(f => ({
@@ -55,53 +44,20 @@ const faqSchema = hasFaqs ? {
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
-} : null;
-
-const schemas = faqSchema ? [zoneSchema, breadcrumbSchema, faqSchema] : [zoneSchema, breadcrumbSchema];
+};
 ---
 
-<style>
-  /* Hero editorial grid: 5fr / 4fr on lg+ */
-  .hero-editorial-grid {
-    display: grid;
-    gap: 3rem;
-    align-items: start;
-  }
-  @media (min-width: 1024px) {
-    .hero-editorial-grid {
-      grid-template-columns: 5fr 4fr;
-    }
-  }
-
-  /* Services list */
-  .srv-divider {
-    border-top: 1px solid #e5e7eb;
-  }
-  .srv-divider:first-child {
-    border-top: none;
-  }
-</style>
-
 <Layout
-  title={(() => {
-    if (zoneAny.seoTitle) return zoneAny.seoTitle;
-    const raw = `Empresa de Reformas en ${zone.name} | ${SITE.name}`;
-    if (raw.length < 50) {
-      const mod: string = zoneAny.seoModifier ?? '· Precio Cerrado';
-      const withMod = `Empresa de Reformas en ${zone.name} ${mod} | ${SITE.name}`;
-      return withMod.length <= 60 ? withMod : raw;
-    }
-    return raw;
-  })()}
-  description={zoneAny.metaDesc ?? `Trazzo360, empresa de reformas en ${zone.name}. Reformas integrales, baños, cocinas, pisos y locales. Precio cerrado y presupuesto gratuito.`}
-  schema={schemas}
+  title={`Empresa de Reformas en ${zone.name} | ${SITE.name}`}
+  description={`Trazzo360, empresa de reformas en ${zone.name}. Reformas integrales, baños, cocinas, pisos y locales con precio cerrado y visita técnica gratuita.`}
+  schema={[zoneSchema, breadcrumbSchema, faqSchema]}
 >
 
   <!-- Breadcrumb -->
   <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 py-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
       <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
-        <li><a href="/" class="hover:underline">Inicio</a></li>
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
         <li aria-hidden="true" class="text-gray-300">/</li>
         <li>Zonas</li>
         <li aria-hidden="true" class="text-gray-300">/</li>
@@ -110,136 +66,114 @@ const schemas = faqSchema ? [zoneSchema, breadcrumbSchema, faqSchema] : [zoneSch
     </div>
   </nav>
 
-  <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
+  <!-- ── Hero A: dos columnas ── -->
+  <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class={hasBarrioNotes ? 'hero-a-grid' : 'max-w-3xl'}>
 
-  {heroVariant === 'directa' && (
-    <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="max-w-3xl">
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">{SITE.zone}</p>
-          <h1 id="h-hero" class="text-3xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em;text-wrap:balance">
-            <span class="block">Empresa de reformas en {zone.name}</span>
-            <span class="block font-black text-lg lg:text-2xl mt-2">{thesis}</span>
+        <!-- Columna izquierda: H1 + intro + CTAs + trust badges -->
+        <div>
+          <h1 id="h-hero" class="font-black text-white" style="letter-spacing:-0.035em;font-size:clamp(2.25rem,5.5vw,4.5rem);line-height:.95">
+            <span class="block font-bold leading-snug mb-5" style="font-size:clamp(.75rem,1.35vw,.9375rem);letter-spacing:.02em;color:rgba(255,255,255,.38)">
+              Empresa de reformas en {zone.name}
+            </span>
+            {zone.heroIntro}
           </h1>
-          <p class="text-lg text-gray-300 leading-relaxed mb-8">{zone.heroIntro}</p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white" style="background:#A85535">
-              Presupuesto gratis en {zone.name}
+
+          <p class="leading-relaxed mt-7 max-w-prose" style="font-size:1rem;color:rgba(255,255,255,.6)">
+            {zone.name} {zone.localAngle}. La época de construcción y el estado de las instalaciones condicionan el alcance de cada reforma antes de elegir materiales.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 mt-10">
+            <a href="/contacto/" class="inline-block text-center px-7 py-3.5 font-black text-xs uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+              Solicitar visita técnica gratuita
             </a>
-            <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white">
+            <a href={`tel:${SITE.phone}`} class="inline-block text-center px-7 py-3.5 font-black text-xs uppercase tracking-widest text-white border border-white/20 hover:border-white/50 transition-colors">
               {SITE.phoneDisplay}
             </a>
           </div>
-        </div>
-      </div>
-    </section>
-  )}
 
-  {heroVariant === 'tipologica' && (
-    <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="max-w-3xl">
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">{SITE.zone}</p>
-          <h1 id="h-hero" class="text-3xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em;text-wrap:balance">
-            <span class="block">Empresa de reformas en {zone.name}</span>
-            <span class="block font-black text-lg lg:text-2xl mt-2">{thesis}</span>
-          </h1>
-          <p class="text-lg text-gray-300 leading-relaxed mb-6">{zone.heroIntro}</p>
-          {heroContext && (
-            <div class="border border-white/20 p-5 mb-8">
-              {heroContext.label && (
-                <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">{heroContext.label}</p>
-              )}
-              {heroContext.text && (
-                <p class="text-sm text-gray-300 leading-relaxed">{heroContext.text}</p>
-              )}
-            </div>
-          )}
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white" style="background:#A85535">
-              Presupuesto gratis en {zone.name}
-            </a>
-            <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white">
-              {SITE.phoneDisplay}
-            </a>
+          <div class="flex flex-wrap gap-7 mt-7 pt-7" style="border-top:1px solid rgba(255,255,255,.08)">
+            <span class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">
+              <strong style="color:rgba(255,255,255,.65)">Precio cerrado</strong> por contrato
+            </span>
+            <span class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">
+              <strong style="color:rgba(255,255,255,.65)">Plazo</strong> garantizado
+            </span>
+            <span class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">
+              <strong style="color:rgba(255,255,255,.65)">2 años</strong> de garantía
+            </span>
           </div>
         </div>
-      </div>
-    </section>
-  )}
 
-  {heroVariant === 'editorial' && (
-    <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="hero-editorial-grid">
-          <!-- Columna izquierda: H1 + intro + CTAs -->
-          <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">{SITE.zone}</p>
-            <h1 id="h-hero" class="text-3xl lg:text-5xl font-black text-white mb-4" style="letter-spacing:-0.02em;text-wrap:balance">
-              <span class="block">Empresa de reformas en {zone.name}</span>
-              <span class="block font-black text-lg lg:text-2xl mt-2">{thesis}</span>
-            </h1>
-            <p class="text-lg text-gray-300 leading-relaxed mb-8">{zone.heroIntro}</p>
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white" style="background:#A85535">
-                Presupuesto gratis en {zone.name}
-              </a>
-              <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white">
-                {SITE.phoneDisplay}
-              </a>
-            </div>
-          </div>
-          <!-- Columna derecha: heroContext -->
-          {heroContext && (
-            <div class="border border-white/10 p-6">
-              {heroContext.label && (
-                <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">{heroContext.label}</p>
-              )}
-              {heroContext.text && (
-                <p class="text-sm text-gray-300 leading-relaxed">{heroContext.text}</p>
-              )}
-              {heroContext.items && heroContext.items.length > 0 && (
-                <div class="space-y-4">
-                  {heroContext.items.map((item: { title: string; subtitle: string; note: string }) => (
-                    <div class="border-t border-white/10 pt-4">
-                      <p class="font-bold text-white text-sm">{item.title}</p>
-                      <p class="text-xs text-[#A85535] font-medium mb-1">{item.subtitle}</p>
-                      <p class="text-xs text-gray-400 leading-relaxed">{item.note}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  )}
+        <!-- Columna derecha: índice tipológico (solo si hay datos de barrio) -->
+        {hasBarrioNotes && (
+          <nav aria-label={`Perfiles de barrio en ${zone.name}`} style="border-top:1px solid rgba(255,255,255,.08)">
+            {zone.m2BarrioNotes.map((note: { barrio: string; text: string }) => (
+              <div class="py-5" style="border-bottom:1px solid rgba(255,255,255,.08)">
+                <p class="font-bold text-white mb-3" style="font-size:.9375rem">{note.barrio}</p>
+                <p style="font-size:.8125rem;color:rgba(255,255,255,.45);line-height:1.6">{note.text}</p>
+              </div>
+            ))}
+          </nav>
+        )}
 
-  <!-- ─── SERVICIOS — filas editoriales con enlace semántico ───────────── -->
-  <section class="py-20 bg-white" aria-labelledby="h-servicios">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-servicios" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
-        Obras y reformas en {zone.name}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Parque residencial ── -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-parque">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">El parque residencial</p>
+      <h2 id="h-parque" class="text-2xl lg:text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        {zone.name} — parque de vivienda y alcance
       </h2>
-      <p class="text-gray-600 leading-relaxed mb-10 max-w-2xl">
-        Precio cerrado y plazo garantizado en contrato para todos los tipos de obra en {zone.name}. La visita técnica gratuita evalúa el estado real de la vivienda o local antes de comprometer ninguna cifra.
+      <p class="text-gray-500 leading-relaxed mb-10 max-w-2xl" style="font-size:.9375rem">
+        La época de construcción y el estado de las instalaciones condicionan el alcance de cada reforma. Esta caracterización refleja lo que encontramos con más frecuencia en cada zona.
       </p>
+
+      {hasBarrioNotes && (
+        <div class="matriz-grid mb-8">
+          {zone.m2BarrioNotes.map((note: { barrio: string; text: string }) => (
+            <div class="bg-[#111827] p-7">
+              <p class="font-bold text-white mb-4" style="font-size:1.0625rem;line-height:1.25">{note.barrio}</p>
+              <p style="font-size:.8125rem;color:rgba(255,255,255,.48);line-height:1.65">{note.text}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div class="bg-[#111827] p-6 text-white">
+        <p class="font-bold text-xs uppercase tracking-widest text-[#A85535] mb-3">Permisos y tramitación</p>
+        <p class="text-sm text-gray-300 leading-relaxed">{zone.m3Permits}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Servicios editorial ── -->
+  <section class="py-20 bg-white" aria-labelledby="h-servicios">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Reformas en {zone.name}</p>
+      <h2 id="h-servicios" class="text-2xl lg:text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        Cubrimos todas las obras con precio cerrado
+      </h2>
+      <p class="text-gray-500 leading-relaxed mb-12 max-w-2xl" style="font-size:.9375rem">
+        La visita técnica gratuita define el alcance según el estado real de la vivienda o local. Precio cerrado por contrato antes de empezar, plazo garantizado por escrito.
+      </p>
+
       <div>
         {SERVICES.map((s: any) => (
-          <div class="srv-divider py-6 flex gap-5 items-start">
-            <div class="w-6 h-6 text-[#A85535] flex-shrink-0 mt-0.5">
-              <Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} />
+          <div class="srv-item">
+            <div>
+              <p class="srv-caso">{s.anchorLabel}</p>
             </div>
-            <div class="flex-1 min-w-0">
-              <p class="font-bold text-gray-900 mb-1">{s.title} en {zone.name}</p>
-              <p class="text-sm text-gray-500 leading-relaxed mb-2">{s.desc}</p>
-              <p class="text-xs text-gray-400 mb-2">
-                Desde <strong class="text-gray-700">{s.priceFrom}€</strong> · {s.priceDesc}
-              </p>
-              <a href={`/${s.slug}/${zone.slug}/`} class="text-xs font-bold text-[#A85535] hover:underline">
-                Ver precios de {s.anchorLabel.toLowerCase()} en {zone.name} →
-              </a>
+            <div>
+              <p class="font-bold text-gray-900 mb-2" style="font-size:1.125rem;letter-spacing:-.01em">{s.title} en {zone.name}</p>
+              <p class="text-gray-500 leading-relaxed mb-4" style="font-size:.9375rem">{s.desc}</p>
+              <div class="flex flex-wrap gap-5">
+                <a href={`/${s.slug}/${zone.slug}/`} class="srv-link">Ver precios de {s.anchorLabel.toLowerCase()} en {zone.name} →</a>
+              </div>
             </div>
           </div>
         ))}
@@ -247,162 +181,173 @@ const schemas = faqSchema ? [zoneSchema, breadcrumbSchema, faqSchema] : [zoneSch
     </div>
   </section>
 
-  <!-- ─── BARRIO POR BARRIO + PERMISOS (condicional) ─────────────────────── -->
-  {hasBarrioNotes && (
-    <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-barrios-contexto">
-      <div class="max-w-4xl mx-auto px-4">
-        <h2 id="h-barrios-contexto" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
-          Parque de vivienda en {zone.name}
+  <!-- ── Compromisos + CTA interior ── -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 id="h-compromisos" class="text-2xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+          Lo que asumimos antes de empezar en {zone.name}
         </h2>
-        <p class="text-gray-600 leading-relaxed mb-10">
-          {zone.name} {zone.localAngle}. La época de construcción y el estado de las instalaciones determinan el alcance adecuado de cada reforma.
+        <Compromisos variant="condensed" />
+        <p class="text-xs text-gray-400 mt-5">
+          <a href="/como-trabajamos/" class="text-[#A85535] hover:underline font-medium">Ver todos nuestros compromisos →</a>
         </p>
-        <div class="space-y-4 mb-10">
-          {zone.m2BarrioNotes.map((note: { barrio: string; text: string }) => (
-            <div class="bg-white border-l-4 border-[#A85535] p-6">
-              <h3 class="font-bold text-gray-900 mb-2">{note.barrio}</h3>
-              <p class="text-sm text-gray-600 leading-relaxed">{note.text}</p>
-            </div>
-          ))}
-        </div>
-        <div class="bg-[#111827] p-6 text-white">
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Permisos y tramitación</p>
-          <p class="text-sm text-gray-300 leading-relaxed">{zone.m3Permits}</p>
-        </div>
       </div>
-    </section>
-  )}
-
-  <!-- ─── OBRAS REPRESENTATIVAS (condicional: no compact, tiene topWorks) ─── -->
-  {hasTopWorks && (
-    <section class="py-20 bg-white" aria-labelledby="h-obras-habituales">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 id="h-obras-habituales" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
-          Obras que presupuestamos en {zone.name}
-        </h2>
-        <p class="text-gray-500 text-sm mb-10">
-          El alcance exacto depende siempre del estado real de la vivienda, que evaluamos antes de cerrar ningún número.
+      <div class="bg-[#111827] p-8 text-white">
+        <p class="font-bold text-xs uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratuito</p>
+        <p class="text-xl font-black text-white mb-2">Cuéntanos tu proyecto. Presupuesto cerrado tras la visita.</p>
+        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+          Sin compromiso. Cuéntanos qué quieres reformar en {zone.name}, concertamos visita técnica y entregamos presupuesto cerrado por escrito.
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {zone.topWorks.map((w: { title: string; desc: string }) => (
-            <div class="p-6 bg-gray-50 border-t-2 border-[#A85535]">
-              <h3 class="font-bold text-gray-900 mb-2">{w.title}</h3>
-              <p class="text-sm text-gray-600 leading-relaxed">{w.desc}</p>
-            </div>
-          ))}
-        </div>
+        <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity mb-3" style="background:#A85535">
+          Solicitar presupuesto en {zone.name}
+        </a>
+        <a href={`tel:${SITE.phone}`} class="block text-center py-3 text-sm text-gray-300 border border-white/20 hover:border-white/50 transition-colors">
+          {SITE.phoneDisplay}
+        </a>
       </div>
-    </section>
-  )}
+    </div>
+  </section>
 
-  <!-- ─── COMPROMISOS + CTA INTERIOR (condicional: no compact) ──────────── -->
-  {showCompromisos && (
-    <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
-      <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 id="h-compromisos" class="text-2xl font-black text-gray-900 mb-6">
-            Lo que asumimos antes de empezar en {zone.name}
-          </h2>
-          <Compromisos variant="condensed" />
-          <p class="text-xs text-gray-400 mt-5">
-            <a href="/como-trabajamos/" class="text-[#A85535] hover:underline font-medium">Ver todos nuestros compromisos →</a>
-          </p>
-        </div>
-        <div class="bg-[#111827] p-8 text-white">
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratuito</p>
-          <p class="text-xl font-black text-white mb-2">Cuéntanos tu proyecto. Presupuesto cerrado tras la visita.</p>
-          <p class="text-sm text-gray-400 mb-6">
-            Sin compromiso. Cuéntanos qué quieres reformar en {zone.name}, concertamos visita técnica y entregamos presupuesto cerrado por escrito.
-          </p>
-          <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white mb-3" style="background:#A85535">
-            Solicitar presupuesto en {zone.name}
-          </a>
-          <a href={`tel:${SITE.phone}`} class="block text-center py-3 text-sm text-gray-300 border border-white/20 hover:border-white">
-            {SITE.phoneDisplay}
-          </a>
-        </div>
+  <!-- ── Barrios chips ── -->
+  <section class="py-14 bg-white" aria-labelledby="h-barrios">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h2 id="h-barrios" class="text-xl font-black text-gray-900 mb-2" style="letter-spacing:-0.01em">
+        Barrios y zonas de {zone.name} donde actuamos
+      </h2>
+      <p class="text-sm text-gray-500 mb-6">
+        Cubrimos todos los barrios y urbanizaciones de {zone.name} sin coste adicional por desplazamiento.
+      </p>
+      <ul class="flex flex-wrap gap-2" style="list-style:none;padding:0;margin:0">
+        {hasNeighborhoods && zone.neighborhoods.map((n: string) => (
+          <li class="inline-block px-4 py-2 bg-gray-50 border border-gray-200 text-sm text-gray-700 font-medium">
+            {n}
+          </li>
+        ))}
+        <li class="inline-block px-4 py-2 bg-gray-50 border border-dashed border-gray-300 text-sm text-gray-400">
+          ¿Tu barrio no aparece? Consúltanos
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Otras zonas: navegación secundaria compacta ── -->
+  <nav aria-label="Otras zonas del Corredor" class="py-8 bg-[#F9F7F4] border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center gap-x-6 gap-y-2">
+      <span class="text-xs font-bold uppercase tracking-widest text-gray-400 flex-shrink-0">Otras zonas</span>
+      {relatedZones.map(z => (
+        <a href={`/zonas/${z.slug}/`} class="text-sm text-gray-500 hover:text-[#A85535] transition-colors">
+          {z.name}
+        </a>
+      ))}
+    </div>
+  </nav>
+
+  <!-- ── FAQ ── -->
+  <section class="py-20 bg-white" aria-labelledby="h-faq">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 id="h-faq" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Preguntas frecuentes sobre obras en {zone.name}
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        Si tienes dudas sobre plazos, precios o qué incluye cada servicio en {zone.name}, aquí respondemos las más habituales. Si no encuentras la tuya, escríbenos o llámanos y te respondemos el mismo día.
+      </p>
+      <div class="divide-y divide-gray-200">
+        {faqs.map(faq => (
+          <details class="group py-5">
+            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
+              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
+              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
+          </details>
+        ))}
       </div>
-    </section>
-  )}
+    </div>
+  </section>
 
-  <!-- ─── BARRIOS (condicional) ──────────────────────────────────────────── -->
-  {hasNeighborhoods && (
-    <section class="py-14 bg-white">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-xl font-black text-gray-900 mb-2">
-          Barrios y zonas de {zone.name} donde actuamos
-        </h2>
-        <p class="text-sm text-gray-500 mb-6">
-          Cubrimos todos los barrios y urbanizaciones de {zone.name} sin coste adicional por desplazamiento.
-        </p>
-        <ul class="flex flex-wrap gap-2" style="list-style:none;padding:0;margin:0">
-          {zone.neighborhoods.map((n: string) => (
-            <li class="inline-block px-4 py-2 bg-gray-50 border border-gray-200 text-sm text-gray-700 font-medium">
-              {n}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  )}
-
-  <!-- ─── OTRAS ZONAS (ring nav) ─────────────────────────────────────────── -->
-  {relatedZones.length > 0 && (
-    <section class="py-14 bg-[#F9F7F4]">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-xl font-black text-gray-900 mb-2">
-          También hacemos obras en estos municipios del Corredor
-        </h2>
-        <p class="text-sm text-gray-500 mb-6">
-          Cubrimos todo el Corredor del Henares sin coste de desplazamiento adicional.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          {relatedZones.map(z => (
-            <a href={`/zonas/${z.slug}/`} class="text-sm text-gray-600 font-medium underline underline-offset-2 hover:text-[#A85535]">
-              Reformas en {z.name}
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- ─── FAQ (condicional) ──────────────────────────────────────────────── -->
-  {hasFaqs && (
-    <section class="py-20 bg-white" aria-labelledby="h-faq">
-      <div class="max-w-4xl mx-auto px-4">
-        <h2 id="h-faq" class="text-2xl font-black text-gray-900 mb-4">
-          Preguntas frecuentes sobre obras en {zone.name}
-        </h2>
-        <p class="text-gray-600 leading-relaxed mb-8">
-          Si tienes dudas sobre plazos, precios o el proceso de reforma en {zone.name}, aquí respondemos las más habituales.
-        </p>
-        <div class="divide-y divide-gray-200">
-          {faqs.map(faq => (
-            <details class="group py-5">
-              <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
-                <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
-                <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45" style="transition:transform 0.2s">+</span>
-              </summary>
-              <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- ─── CTA FINAL (siempre presente) ──────────────────────────────────── -->
+  <!-- ── CTA final ── -->
   <section class="py-16 bg-[#111827]" aria-labelledby="h-cta-final">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Visita gratuita sin compromiso</p>
+      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
         ¿Necesitas presupuesto de obra en {zone.name}?
       </h2>
-      <p class="text-gray-400 mb-7">Visita gratuita. Presupuesto cerrado por escrito. Sin letra pequeña.</p>
-      <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white" style="background:#A85535">
+      <p class="mb-8 leading-relaxed" style="color:rgba(255,255,255,.6)">
+        Presupuesto cerrado por escrito. Sin letra pequeña.
+      </p>
+      <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
         Solicitar valoración gratuita
       </a>
     </div>
   </section>
 
 </Layout>
+
+<style>
+  /* Hero A — 2 columnas responsive */
+  .hero-a-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  @media (min-width: 1024px) {
+    .hero-a-grid {
+      grid-template-columns: 9fr 7fr;
+      gap: 5rem;
+      align-items: center;
+    }
+  }
+
+  /* Matriz tipológica — 3 columnas responsive */
+  .matriz-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .matriz-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .matriz-grid > div + div {
+      border-left: 1px solid rgba(255, 255, 255, 0.06);
+    }
+  }
+
+  /* Servicios editorial */
+  .srv-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 2.25rem 0;
+    border-top: 1px solid #e5e7eb;
+  }
+  .srv-item:last-child {
+    border-bottom: 1px solid #e5e7eb;
+  }
+  @media (min-width: 768px) {
+    .srv-item {
+      grid-template-columns: 13rem 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+  }
+  .srv-caso {
+    font-size: 0.5625rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a85535;
+    line-height: 1.5;
+    padding-top: 0.25rem;
+  }
+  .srv-link {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #a85535;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .srv-link:hover {
+    text-decoration: underline;
+  }
+</style>

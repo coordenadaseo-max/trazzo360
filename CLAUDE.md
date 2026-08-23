@@ -334,6 +334,61 @@ Los anchors internos hacia una URL deben pertenecer al mismo campo semántico de
 
 Si una tarjeta necesita ser completamente clicable → enlace expandido por CSS en lugar de envolver todo el contenido en `<a>`.
 
+### 7.8 Reglas de enlazado interno — conjunto completo
+
+Las 12 reglas acordadas con el equipo de contenido. Aplican a toda modificación de enlaces.
+
+**R1 — Enlace contextual antes que decorativo.** El enlace aparece donde el contenido justifica realmente el destino. Se puede añadir una frase si mejora la explicación y permite un enlace natural; nunca texto de relleno creado solo para meter enlaces.
+
+**R2 — Anchor descriptivo y específico.** Evitar `ver más`, `aquí`, `leer más`, `saber más`. Usar anchors como `reforma integral en Alcalá de Henares` o `precios de reforma de baño en Alcalá`. Variar naturalmente; sin repetir obsesivamente la keyword exacta.
+
+**R3 — Una URL, una aparición contextual por página.** No repetir dos o tres veces el mismo enlace hacia la misma URL dentro del contenido de una página.
+
+**R4 — No envolver tarjetas completas con `<a>`.** El `<a>` envuelve el elemento que representa realmente el enlace (normalmente el título o texto descriptivo), expandido con `after:absolute after:inset-0` para hacer clicable toda la tarjeta sin encadenar múltiples anchors. Ver §7.1.
+
+**R5 — Priorizar semántica de proximidad.** El enlace surge de la relación semántica, no de cubrir cuotas de URLs. Hablar de reforma parcial vs. integral → enlazar a `/servicios/reformas-integrales/`, no a Cocinas porque "falta enlazar esa página".
+
+**R6 — Arquitectura de zonas.** Una página de municipio puede enlazar a: sus servicios disponibles, páginas Servicio × Zona relevantes, `/contacto/`, `/calculadora/` cuando aporte, y las zonas vecinas del ring (±2 vecinos, ver §7.9). No una lista indiscriminada de todas las localidades.
+
+**R7 — Ring de zonas compacto.** Los 4 vecinos del ring se muestran como texto plano o enlaces compactos en `<nav>`. No cards, no chips SEO del tipo `Empresa de reformas en X`. No añadir municipios fuera del ring.
+
+**R8 — Barrios sin URL propia = sin enlace.** Se pueden mostrar como texto/chip, pero no crear falsos enlaces SEO ni URLs de barrio que no existen.
+
+**R9 — Peso territorial diferenciado en Servicio × Zona.** No dar exactamente el mismo peso a todas las combinaciones. Locales puede tener mayor prominencia desde Coslada; Integrales desde Meco, si el contenido lo justifica.
+
+**R10 — Sin enlaces redundantes de navegación.** No añadir enlace contextual a Home (ya cubierta por nav/breadcrumbs). No encadenar hub genérico + Servicio × Zona cuando el segundo resuelve la intención del usuario completamente.
+
+**R11 — Breadcrumbs ≠ relaciones de contenido.** Breadcrumbs expresan `Inicio → Servicio → Municipio` (jerarquía estructural). Los enlaces dentro del contenido expresan relaciones semánticas entre páginas. No confundir ambas funciones.
+
+**R12 — Nunca enlazar a páginas inexistentes.** Ni `/lab/`, ni placeholders, ni futuras URLs. Si una página no existe o no está en producción, no recibe enlaces. `audit-links` debe quedar limpio.
+
+### 7.9 Ring de zonas — orden canónico
+
+```
+coslada → san-fernando → torrejon → alcala → camarma → meco → azuqueca → guadalajara
+```
+
+Cada zona enlaza a sus ±2 vecinos inmediatos en el ring (4 enlaces). El ring es circular. Patrón HTML obligatorio: `<nav aria-label="Otras zonas">` con enlaces planos, `py-8 bg-[#F9F7F4]`, sin cards ni chips SEO.
+
+### 7.10 Arquitectura de enlazado por familia de página
+
+```
+Hub de servicio  →  zonas del ring / Servicio × Zona propias
+Zona             →  servicios disponibles / Servicio × Zona / 4 vecinos del ring
+Servicio × Zona  →  hub de servicio + hub de zona (cuando aporte) + relaciones contextuales
+```
+
+Sin mallas artificiales entre todas las URLs. Sin enlaces de hub a hub de forma sistemática.
+
+### 7.11 Regla maestra de enlazado
+
+> **"¿Al usuario que está leyendo exactamente esto le ayuda ir ahora a esa página?"**
+
+- Si la respuesta es **sí** → enlace contextual con anchor descriptivo.
+- Si la respuesta es **"lo ponemos porque SEO necesita más enlaces"** → no se implementa.
+
+Esta regla prevalece sobre cualquier otra consideración de SEO o cobertura de URLs.
+
 ## 8. Sistema de bullet de marca
 
 ### 8.1 Especificación CSS (congelada)

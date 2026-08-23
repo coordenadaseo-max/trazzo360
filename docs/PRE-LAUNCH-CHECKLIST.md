@@ -67,12 +67,12 @@
 | Área | Estado |
 |------|--------|
 | Build (86 páginas) | ✅ OK |
-| 0 claims 24h/48h | ✅ OK — verificado con grep en dist/ |
+| 0 claims 24h/48h | ⚠️ PENDIENTE — existen promesas de "48 horas" en index.astro:366 y zones-content.ts:14. Confirmar con titular si son realistas antes de publicar |
 | yearsInTrade no renderizado | ✅ OK — bloqueado en index y como-trabajamos |
 | wa.me condicional (0 renders con placeholder) | ✅ OK — Layout, Header, contacto |
 | openingHoursSpecification condicional | ✅ OK — Layout.astro |
 | SITE.hours condicional | ✅ OK — Header, Footer, contacto |
-| noindex en /gracias/, /aviso-legal/, /privacidad/, /lab/*, /404 | ✅ OK |
+| noindex global (staging/dev) | ✅ OK — controlado por PUBLIC_SITE_INDEXING=false en .env. Activar con PUBLIC_SITE_INDEXING=true en servidor de producción |
 | Sitemap: 71 URLs (excluye noindex + lab) | ✅ OK |
 | robots.txt (Disallow: /lab/, /gracias/) | ✅ OK |
 | Formulario: labels, required, privacidad, redirect /gracias/ | ✅ OK (pendiente ID real) |
@@ -83,7 +83,7 @@
 | Precios alineados con calculator.ts | ✅ OK |
 | Plazos reforma-banos alineados (2-3 semanas) | ✅ OK |
 | 404 page con noindex | ✅ OK |
-| Breadcrumb /servicios/ (broken link) corregido | ✅ OK |
+| Breadcrumb JSON-LD sin URLs inexistentes | ✅ OK — eliminado item /servicios/ de breadcrumb en 6 páginas hub |
 | Schema JSON-LD GeneralContractor | ✅ OK |
 | Canonical URLs | ✅ OK |
 | Meta descriptions en todas las páginas | ✅ OK |

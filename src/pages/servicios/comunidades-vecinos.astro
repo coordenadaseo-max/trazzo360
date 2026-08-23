@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     q: '¿Cuánto dura la rehabilitación de una fachada?',
-    a: 'Depende de la superficie total y del estado previo. Una fachada de un bloque de 6 alturas con 20 metros lineales de frente —unos 300–400 m² de fachada— puede llevar entre 4 y 8 semanas de trabajo según el alcance: saneado del soporte, aplicación del sistema de impermeabilización o del aislamiento por el exterior (SATE), acabado y pintura. La instalación del andamiaje y su retirada añaden tiempo al cómputo total. La fecha de entrega queda fijada en el contrato antes de empezar.',
+    a: 'Depende de la superficie total y del estado previo. Una fachada de un bloque de 6 alturas con 20 metros lineales de frente (unos 300–400 m² de fachada) puede llevar entre 4 y 8 semanas de trabajo según el alcance: saneado del soporte, aplicación del sistema de impermeabilización o del aislamiento por el exterior (SATE), acabado y pintura. La instalación del andamiaje y su retirada añaden tiempo al cómputo total. La fecha de entrega queda fijada en el contrato antes de empezar.',
   },
   {
     q: '¿Qué pasa si un vecino no paga su parte de la derrama de la obra de comunidad?',
@@ -64,7 +64,7 @@ const faqs = [
   },
   {
     q: '¿Existen ayudas o subvenciones para la rehabilitación de edificios?',
-    a: 'Existen programas de ayuda para rehabilitación energética de edificios a nivel estatal, autonómico y europeo (Fondos Next Generation EU). Las ayudas más accesibles son las del Plan de Rehabilitación y Regeneración Urbana de la Comunidad de Madrid y las ayudas directas del IDAE para mejora de eficiencia energética. La tramitación de estas ayudas requiere proyecto técnico de rehabilitación, informe de diagnóstico energético y cumplir con requisitos específicos de mejora de la calificación energética. Te informamos en la visita técnica sobre qué programa puede aplicar a vuestro edificio según el alcance previsto.',
+    a: 'Existen programas de ayuda para rehabilitación energética de edificios a nivel estatal, autonómico y europeo (Fondos Next Generation EU). Las ayudas más accesibles son las del Plan de Rehabilitación y Regeneración Urbana de la Comunidad de Madrid y las ayudas directas del IDAE para mejora de eficiencia energética. La tramitación de estas ayudas requiere proyecto técnico de rehabilitación, informe de diagnóstico energético y cumplir con requisitos específicos de mejora de la calificación energética. La solicitud y tramitación corresponde a la comunidad de propietarios, habitualmente con el apoyo del administrador de fincas.',
   },
   {
     q: '¿Conviene hacer una inspección técnica del edificio antes de la rehabilitación?',
@@ -113,32 +113,31 @@ const zones = [
   </nav>
 
   <!-- Hero -->
-  <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="max-w-3xl">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">Rehabilitación de edificios · Comunidades · Corredor del Henares</p>
-        <h1 id="h-hero" class="text-white mb-6" style="letter-spacing:-0.02em">
-          <span class="block text-4xl lg:text-6xl font-black">Rehabilitación de edificios y comunidades de propietarios</span>
-          <span class="block text-xl lg:text-2xl font-bold text-gray-300 mt-3">Presupuesto desglosado listo para junta. Precio cerrado antes de aprobar la derrama.</span>
-        </h1>
-
-        <div role="doc-abstract" class="border-l-4 border-[#A85535] pl-6 mb-6">
-          <p class="text-lg text-gray-300 leading-relaxed">
-            Ejecutamos obras de rehabilitación de edificios, fachadas y zonas comunes en el Corredor del Henares con presupuesto desglosado listo para junta, coordinación directa con el administrador y precio cerrado antes de aprobar la derrama.
+  <section class="bg-[#111827] flex flex-col justify-end" style="min-height:100vh;padding-top:5rem;padding-bottom:3.5rem" aria-labelledby="h-hero">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+      <h1 id="h-hero" class="font-black text-white" style="line-height:1">
+        <span class="block font-bold" style="font-size:clamp(1rem,2vw,1.625rem);letter-spacing:-0.02em;margin-bottom:.75em">
+          Rehabilitación de edificios y comunidades de propietarios
+        </span>
+        <span class="block" style="font-size:clamp(1.875rem,5vw,4.5rem);letter-spacing:-0.04em;line-height:.9;text-wrap:balance">
+          La junta aprueba<br>antes de que<br>empiece la obra.
+        </span>
+      </h1>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+        <div class="hero-comun-grid">
+          <p style="color:#9CA3AF;font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch;line-height:1.65">
+            Rehabilitación de fachadas, cubiertas y zonas comunes en el Corredor del Henares. Presupuesto desglosado listo para junta. Coordinación directa con el administrador. Precio cerrado antes de la derrama.
           </p>
-        </div>
-
-        <p class="text-lg text-gray-400 leading-relaxed mb-8">
-          Una obra de comunidad de propietarios tiene que poder aprobarse antes de ejecutarse. El presupuesto tiene que ser comprensible para todos los propietarios, el alcance tiene que estar bien definido antes de la junta, y el administrador necesita documentación técnica para gestionarlo correctamente. Todo eso va antes de la primera palada.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-            Solicitar presupuesto para junta
-          </a>
-          <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
-            ☎ {SITE.phoneDisplay}
-          </a>
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/" class="inline-block text-center text-white font-black text-xs uppercase" style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+              Solicitar presupuesto para junta
+            </a>
+            <a href={`tel:${SITE.phone}`} class="inline-block text-center font-black text-xs uppercase" style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+              {SITE.phoneDisplay}
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -149,7 +148,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de edificios del Corredor</p>
-        <h2 id="h-parque" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-parque" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué edificios necesitan rehabilitación en el Corredor del Henares
         </h2>
       </div>
@@ -198,7 +197,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Qué cubre una rehabilitación completa</p>
-        <h2 id="h-rehab-edificios" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-rehab-edificios" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Rehabilitación de edificios: envolvente, cubierta, fachada e instalaciones
         </h2>
       </div>
@@ -231,9 +230,9 @@ const zones = [
         La ventilación de garajes y sótanos es otro elemento habitual en las obras de comunidades: los sistemas de ventilación natural de los años 70–80 no son suficientes para garajes con plazas de carga eléctrica. En la rehabilitación de fachada, la fachada ventilada es la alternativa al SATE cuando el edificio necesita renovar el acabado exterior sin añadir peso ni grosor significativo a la fachada existente; actúa como barrera frente a la humedad y mejora el comportamiento térmico del muro.
       </p>
       <div class="bg-[#111827] text-white p-8">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Subvenciones a la rehabilitación energética</p>
-        <p class="text-lg font-semibold mb-3">El proyecto técnico es la llave para acceder a las ayudas</p>
-        <p class="text-gray-300 leading-relaxed">Las ayudas Next Generation EU para rehabilitación de edificios exigen un proyecto técnico previo que acredite la mejora energética. Es una condición para acceder a subvenciones que pueden cubrir entre el 40% y el 80% de la obra según la mejora conseguida. El presupuesto que presentamos a la junta incluye esta información desglosada.</p>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Rehabilitación energética y ayudas públicas</p>
+        <p class="text-lg font-semibold mb-3">Las ayudas exigen proyecto técnico previo a la obra</p>
+        <p class="text-gray-300 leading-relaxed">Los programas de rehabilitación energética (Plan de Rehabilitación de la Comunidad de Madrid, fondos Next Generation EU) requieren un proyecto técnico que acredite la mejora energética antes de iniciar la obra. La solicitud y tramitación de estas ayudas corresponde a la comunidad de propietarios, habitualmente con el apoyo del administrador de fincas. Nosotros ejecutamos la obra que el proyecto define.</p>
       </div>
     </div>
   </section>
@@ -243,7 +242,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La intervención más visible del edificio</p>
-        <h2 id="h-reforma-fachadas" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-reforma-fachadas" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Reforma de fachadas: opciones técnicas y coste orientativo
         </h2>
       </div>
@@ -297,7 +296,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de la junta</p>
-        <h2 id="h-decision" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-decision" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Cómo presentar una obra de comunidad para que se apruebe
         </h2>
       </div>
@@ -328,9 +327,15 @@ const zones = [
         </div>
       </div>
 
-      <p class="text-gray-700 leading-relaxed">
-        La visita técnica gratuita produce un presupuesto con todos los elementos necesarios para presentarlo en junta. Si el administrador o el presidente necesita asistir a la reunión para explicar el presupuesto, podemos asistir si así se decide.
+      <p class="text-gray-700 leading-relaxed mb-6">
+        La visita técnica gratuita produce un presupuesto con todos los elementos necesarios para presentarlo en junta. Si el administrador o el presidente necesita que expliquemos el presupuesto en la reunión, podemos asistir si así se decide.
       </p>
+
+      <div class="bg-[#111827] p-7">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La junta como hito de la obra</p>
+        <p class="text-white font-semibold mb-3">La aprobación en junta no es un trámite previo. Es el punto de partida de todo lo que viene después.</p>
+        <p class="text-gray-400 text-sm leading-relaxed">La propuesta que lleva el administrador a la junta define el alcance, el precio y el plazo. Una vez aprobada, la coordinación con la empresa puede empezar: permisos, inicio de obra, gestión de vecinos e informe de avance semanal. La junta da la autorización; nosotros ejecutamos lo que se autorizó, exactamente en los términos del presupuesto aprobado.</p>
+      </div>
     </div>
   </section>
 
@@ -339,7 +344,7 @@ const zones = [
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-3xl mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Alcance completo</p>
-        <h2 id="h-que-incluye" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-que-incluye" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué obras hacemos en comunidades de propietarios
         </h2>
       </div>
@@ -367,7 +372,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la obra en zonas comunes</p>
-        <h2 id="h-vecinos-obra" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-vecinos-obra" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Trabajar en un edificio habitado: cómo lo gestionamos
         </h2>
       </div>
@@ -450,7 +455,6 @@ const zones = [
         <p class="text-sm font-semibold text-gray-900 mb-2">Inspección Técnica de Edificios (ITE) en el Corredor</p>
         <p class="text-sm text-gray-600 leading-relaxed">
           Los edificios de más de 50 años de antigüedad en la Comunidad de Madrid están sujetos a la Inspección Técnica de Edificios. Si la comunidad no ha pasado la ITE o hay deficiencias detectadas en la última inspección, la rehabilitación puede ser el momento de resolver esas deficiencias y obtener el certificado favorable.
-          <!-- TODO: verificar plazos y requisitos exactos de ITE por municipio del Corredor -->
         </p>
       </div>
       <p class="text-gray-700 leading-relaxed">
@@ -487,7 +491,7 @@ const zones = [
       <div class="mt-8 bg-white border-l-4 border-[#A85535] p-6">
         <p class="text-sm font-semibold text-gray-900 mb-3">Precio cerrado e imprevistos en obras de comunidad</p>
         <p class="text-sm text-gray-700 leading-relaxed">
-          El precio cerrado en obras de comunidad cubre todo lo que es visible e inspeccionable en la visita técnica: el estado del soporte de fachada, la superficie de cubierta, las zonas comunes a intervenir. Si al iniciar la obra aparece algo que no era accesible en la inspección —una viga con deterioro oculto bajo el enfoscado, una capa de impermeabilización anterior que no se podía ver desde el exterior— lo comunicamos antes de tocar nada, lo presupuestamos por separado y esperamos la autorización del interlocutor designado por la junta. Ningún imprevisto se ejecuta sin validación previa.
+          El precio cerrado en obras de comunidad cubre todo lo que es visible e inspeccionable en la visita técnica: el estado del soporte de fachada, la superficie de cubierta, las zonas comunes a intervenir. Si al iniciar la obra aparece algo que no era accesible en la inspección (una viga con deterioro oculto bajo el enfoscado, una capa de impermeabilización anterior que no se podía ver desde el exterior) lo comunicamos antes de tocar nada, lo presupuestamos por separado y esperamos la autorización del interlocutor designado por la junta. Ningún imprevisto se ejecuta sin validación previa.
         </p>
       </div>
     </div>
@@ -530,13 +534,16 @@ const zones = [
   </section>
 
   <!-- M8: Compromisos -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
+  <section class="py-20 bg-white" aria-labelledby="h-compromisos">
     <div class="max-w-5xl mx-auto px-4">
       <div class="mb-12">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de votar en junta</p>
-        <h2 id="h-compromisos" class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em;text-wrap:balance">
           Lo que comprometemos antes de empezar la obra de comunidad
         </h2>
+        <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
+          Presupuesto desglosado listo para junta. Precio cerrado antes de la derrama. Las condiciones del acuerdo por escrito antes de la primera palada.
+        </p>
       </div>
       <Compromisos variant="full" />
     </div>
@@ -547,11 +554,11 @@ const zones = [
     <div class="max-w-5xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
-        <h2 id="h-proceso" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-proceso" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           De la visita técnica a la entrega con certificado
         </h2>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="space-y-8" style="max-width:44rem">
         {[
           { n: '01', title: 'Visita técnica gratuita', desc: 'Inspeccionamos las zonas comunes y elaboramos un informe del estado previo con fotografías para la documentación de junta.' },
           { n: '02', title: 'Presupuesto para junta', desc: 'Presupuesto desglosado con memoria descriptiva, fotografías del estado previo y cronograma. Listo para presentar en la reunión de propietarios.' },
@@ -560,10 +567,12 @@ const zones = [
           { n: '05', title: 'Ejecución con mínimas molestias', desc: 'Horarios adaptados a los vecinos. Accesos siempre operativos. Protección de zonas no afectadas. Informe semanal al administrador.' },
           { n: '06', title: 'Entrega con documentación', desc: 'Certificado de obra, documentación para el seguro del edificio, garantías por escrito y certificados de instalaciones intervenidas.' },
         ].map(step => (
-          <div class="bg-[#F9F7F4] p-7">
-            <div class="text-4xl font-black text-gray-100 mb-4 leading-none">{step.n}</div>
-            <h3 class="text-base font-bold text-gray-900 mb-2">{step.title}</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+          <div class="grid items-start" style="grid-template-columns:3rem 1fr;gap:1.25rem">
+            <p class="text-4xl font-black text-gray-200 leading-none pt-0.5" aria-hidden="true">{step.n}</p>
+            <div>
+              <p class="font-bold text-gray-900 mb-1">{step.title}</p>
+              <p class="text-sm text-gray-600 leading-relaxed" style="max-width:48ch">{step.desc}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -573,8 +582,8 @@ const zones = [
   <!-- Resultado cotidiano -->
   <div class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-4">
-      <p class="text-base text-gray-700 italic border-l-4 border-[#A85535] pl-5">
-        Cuando termina la rehabilitación de un edificio, lo primero que cambia no es lo que se ve: es lo que no sucede. No hay filtraciones en el techo de la última planta cuando llueve. No hay humedad en la entrada del portal. No hay vecinos que llamen al administrador para quejarse de lo mismo de siempre. El edificio funciona. Eso no tiene precio de mercado, pero tiene mucho valor para los que viven allí cada día.
+      <p class="text-base text-gray-600 leading-relaxed" style="max-width:58ch">
+        Cuando termina la rehabilitación de un edificio, lo primero que cambia no es lo que se ve: es lo que no sucede. No hay filtraciones en el techo de la última planta cuando llueve. No hay humedad en la entrada del portal. No hay vecinos que llamen al administrador para quejarse de lo mismo de siempre. El edificio funciona.
       </p>
     </div>
   </div>
@@ -614,7 +623,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 id="h-faq" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-faq" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Todo lo que necesitas saber sobre obras en comunidades
         </h2>
       </div>
@@ -648,3 +657,8 @@ const zones = [
   </section>
 
 </Layout>
+
+<style>
+  .hero-comun-grid { display:grid; gap:1.5rem; }
+  @media(min-width:768px){ .hero-comun-grid { grid-template-columns:1fr auto; gap:3rem; align-items:start; } }
+</style>

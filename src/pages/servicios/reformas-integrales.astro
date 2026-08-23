@@ -113,32 +113,59 @@ const zones = [
   </nav>
 
   <!-- Hero -->
-  <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="max-w-3xl">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-6">Reformas integrales · Corredor del Henares</p>
-        <h1 id="h-hero" class="text-white mb-6" style="letter-spacing:-0.02em">
-          <span class="block text-4xl lg:text-6xl font-black">Reformas integrales en el Corredor del Henares</span>
-          <span class="block text-xl lg:text-2xl font-bold text-gray-300 mt-3">Un único responsable coordina todos los gremios desde el primer día hasta la entrega.</span>
-        </h1>
-
-        <div role="doc-abstract" class="border-l-4 border-[#A85535] pl-6 mb-6">
-          <p class="text-lg text-gray-300 leading-relaxed">
-            Hacemos reformas integrales de pisos, áticos y chalets en el Corredor del Henares con un único interlocutor que coordina todos los gremios: demolición, instalaciones, distribución, baño, cocina y acabados. Precio cerrado por contrato, plazo fijado antes de empezar.
+  <section class="bg-[#111827] flex flex-col justify-end" style="min-height:100vh;padding-top:5rem;padding-bottom:3.5rem" aria-labelledby="h-hero">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+      <h1 id="h-hero" class="font-black text-white" style="line-height:1">
+        <span class="block font-bold" style="font-size:clamp(1rem,2vw,1.625rem);letter-spacing:-0.02em;margin-bottom:.75em">
+          Reformas integrales en el Corredor del Henares
+        </span>
+        <span class="block" style="font-size:clamp(2.25rem,7.5vw,7rem);letter-spacing:-0.04em;line-height:.9;text-wrap:balance">
+          La coordinación de los gremios<br>no es un plus.<br>Es el producto.
+        </span>
+      </h1>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+        <div class="hero-intg-grid">
+          <p style="color:#9CA3AF;font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch;line-height:1.65">
+            Reformas integrales de pisos, áticos y chalets en el Corredor del Henares. Un único interlocutor coordina todos los gremios. Precio cerrado por contrato, plazo fijado antes de empezar.
           </p>
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/" class="inline-block text-center text-white font-black text-xs uppercase" style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+              Solicitar presupuesto gratis
+            </a>
+            <a href={`tel:${SITE.phone}`} class="inline-block text-center font-black text-xs uppercase" style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+              {SITE.phoneDisplay}
+            </a>
+          </div>
+          <div class="hero-intg-stats-d">
+            <div style="margin-bottom:1.5rem">
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.25rem,2vw,1.75rem);letter-spacing:-0.03em">Desde 26.000€</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">40 m² · precio orientativo</p>
+            </div>
+            <div style="margin-bottom:1.5rem">
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.25rem,2vw,1.75rem);letter-spacing:-0.03em">10–14 sem.</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Plazo piso esencial</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.25rem,2vw,1.75rem);letter-spacing:-0.03em">40 / 40 / 20</p>
+              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Fases de pago</p>
+            </div>
+          </div>
         </div>
-
-        <p class="text-lg text-gray-400 leading-relaxed mb-8">
-          Una reforma integral es la obra más larga que va a pasar en tu vida diaria: durante semanas, tu piso no existe como lo conocías. Eso es real y hay que planificarlo bien. Lo primero que hacemos es establecer cuándo puedes volver y qué vas a encontrarte cuando entres.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-            Solicitar presupuesto gratis
-          </a>
-          <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white transition-colors">
-            ☎ {SITE.phoneDisplay}
-          </a>
+        <div class="hero-intg-stats-m">
+          <div>
+            <p class="text-white font-black" style="font-size:1.0625rem;letter-spacing:-0.02em">Desde 26.000€</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">40 m²</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.0625rem;letter-spacing:-0.02em">10–14 sem.</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Plazo</p>
+          </div>
+          <div>
+            <p class="text-white font-black" style="font-size:1.0625rem;letter-spacing:-0.02em">40 / 40 / 20</p>
+            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Pago</p>
+          </div>
         </div>
       </div>
     </div>
@@ -149,7 +176,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de vivienda del Corredor</p>
-        <h2 id="h-parque" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-parque" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué reformas integrales vemos habitualmente en el Corredor
         </h2>
       </div>
@@ -206,7 +233,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La pregunta que define el presupuesto</p>
-        <h2 id="h-decision" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-decision" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Reforma parcial o integral: dónde está el umbral
         </h2>
       </div>
@@ -252,7 +279,7 @@ const zones = [
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-3xl mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Alcance completo</p>
-        <h2 id="h-que-incluye" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-que-incluye" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué incluye una reforma integral
         </h2>
         <p class="text-gray-600 leading-relaxed">
@@ -278,12 +305,66 @@ const zones = [
     </div>
   </section>
 
+  <!-- Coordinación de gremios — A1 thesis section -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-coordinacion">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Por qué la coordinación es la obra</p>
+        <h2 id="h-coordinacion" class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+          Seis equipos distintos. Una secuencia sin holgura.
+        </h2>
+        <p class="text-gray-600 max-w-2xl leading-relaxed">
+          En una reforma integral intervienen electricistas, fontaneros, albañiles, alicatadores, carpinteros y pintores. Cada equipo depende de que el anterior haya terminado exactamente lo que le corresponde. Un electricista que no sabe dónde van las rozas del fontanero las duplica. Una cuadrilla de alicatado que entra antes de tiempo cierra paredes con instalaciones sin terminar. La coordinación entre ellos no es gestión administrativa: es lo que determina si la obra sale bien o si aparecen problemas meses después.
+        </p>
+      </div>
+
+      <!-- Diagrama de fases -->
+      <div class="overflow-x-auto mb-10">
+        <div class="min-w-[640px]">
+          <div class="grid grid-cols-6 gap-px bg-gray-200">
+            {[
+              { n: '01', fase: 'Demolición', dep: 'Revela el estado real de instalaciones', accent: false },
+              { n: '02', fase: 'Instalaciones', dep: 'Electricidad + fontanería en toda la vivienda', accent: true },
+              { n: '03', fase: 'Albañilería', dep: 'Cierre de paramentos y tabiquería', accent: false },
+              { n: '04', fase: 'Revestimientos', dep: 'Baño, cocina y suelos coordinados', accent: false },
+              { n: '05', fase: 'Carpintería', dep: 'Puertas, armarios y marcos', accent: false },
+              { n: '06', fase: 'Entrega', dep: 'Pintura, limpieza y revisión final', accent: false },
+            ].map(f => (
+              <div class={`bg-white p-5 border-t-4 ${f.accent ? 'border-[#A85535]' : 'border-gray-100'}`}>
+                <div class="text-xs font-bold text-gray-300 mb-2">{f.n}</div>
+                <div class="text-sm font-bold text-gray-900 mb-1">{f.fase}</div>
+                <div class="text-xs text-gray-500 leading-snug">{f.dep}</div>
+              </div>
+            ))}
+          </div>
+          <div class="bg-[#A85535] h-1 w-full mt-0"></div>
+          <p class="text-xs text-gray-400 mt-2">Un único responsable de obra coordina la entrada y salida de cada equipo a lo largo de toda la secuencia.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 border-l-4 border-[#A85535]">
+          <h3 class="text-sm font-bold text-gray-900 mb-2">Sin tiempos muertos entre gremios</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Cada equipo entra cuando el anterior ha terminado lo que le corresponde, no antes ni después. No hay semanas de espera entre fases porque no hay nadie que las coordine.</p>
+        </div>
+        <div class="bg-white p-6 border-l-4 border-gray-200">
+          <h3 class="text-sm font-bold text-gray-900 mb-2">Un interlocutor en todo momento</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">No hablas con el electricista un día y con el fontanero otro. Hay una persona responsable de toda la obra que coordina los equipos y que responde ante cualquier incidencia.</p>
+        </div>
+        <div class="bg-white p-6 border-l-4 border-gray-200">
+          <h3 class="text-sm font-bold text-gray-900 mb-2">La secuencia no es flexible</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Las instalaciones van antes del cierre de paramentos. Los revestimientos van sobre paramentos terminados. Saltarse pasos genera defectos que se detectan meses después de la entrega, no en la revisión final.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Vida durante la obra -->
   <section class="py-20 bg-[#111827]" aria-labelledby="h-vida-obra">
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la obra</p>
-        <h2 id="h-vida-obra" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-vida-obra" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Cómo organizamos la obra cuando la vivienda no puede utilizarse con normalidad
         </h2>
       </div>
@@ -307,7 +388,7 @@ const zones = [
           </li>
         ))}
       </ul>
-      <p class="text-gray-500 text-sm mt-10 italic">
+      <p class="text-gray-500 text-sm mt-10">
         Todo esto no está en el presupuesto porque no tiene precio. Está en cómo trabajamos.
       </p>
     </div>
@@ -430,7 +511,7 @@ const zones = [
           <p class="text-sm text-gray-600 leading-relaxed">Madera maciza o microcemento en suelos, cocina lacada, encimera de dekton o porcelánico de gran formato, griferías de diseño, ducha de obra con revestimiento continuo.</p>
         </div>
       </div>
-      <p class="text-sm text-gray-500 italic">En todos los casos, el precio cerrado en el contrato es el precio final: no hay suplementos por materiales ni por trabajo que "no se había previsto".</p>
+      <p class="text-sm text-gray-500">En todos los casos, el precio cerrado en el contrato es el precio final: no hay suplementos por materiales ni por trabajo que "no se había previsto".</p>
     </div>
   </section>
 
@@ -487,7 +568,6 @@ const zones = [
         <p class="text-sm font-semibold text-gray-900 mb-2">Comunidades de propietarios en bloques</p>
         <p class="text-sm text-gray-600 leading-relaxed">
           Si el piso está en un edificio con comunidad de propietarios, algunos estatutos exigen notificación previa para obras que generen ruido en horario de convivencia o que afecten a zonas comunes. Te informamos del procedimiento antes de empezar. El horario de obra está sujeto a la normativa municipal de ruido de cada municipio.
-          <!-- TODO: verificar horarios exactos de obra para cada municipio del Corredor -->
         </p>
       </div>
       <p class="text-gray-700 leading-relaxed">
@@ -505,7 +585,7 @@ const zones = [
       <p class="text-gray-600 leading-relaxed mb-8">
         Dos presupuestos con el mismo importe total pueden cubrir alcances completamente distintos. Estas son las partidas que hay que revisar en cualquier propuesta que recibas.
       </p>
-      <dl class="divide-y divide-gray-200 bg-white p-6 rounded-sm">
+      <dl class="divide-y divide-gray-200 bg-white p-6">
         {[
           { term: 'Alcance de las instalaciones', def: 'El presupuesto debe especificar si la instalación eléctrica y la fontanería se renuevan o solo se adaptan. "Reforma integral" que mantiene las instalaciones existentes es, en realidad, una reforma parcial.' },
           { term: 'Gestión de escombros', def: 'En una reforma integral, la demolición genera varios metros cúbicos de escombro. El coste del contenedor o del transporte a punto limpio debe estar incluido en el presupuesto, no aparecer como extra al final.' },
@@ -576,16 +656,23 @@ const zones = [
   </section>
 
   <!-- M8: Compromisos -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
+  <section class="py-20 bg-white" aria-labelledby="h-compromisos">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="mb-12">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
-        <h2 id="h-compromisos" class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
-          Nuestros compromisos en la reforma integral
-        </h2>
-        <p class="text-gray-600 max-w-2xl">
-          Estos compromisos quedan recogidos en el contrato que firmamos antes de empezar la obra. No son promesas: son las condiciones del acuerdo.
-        </p>
+      <div class="compromisos-apertura-grid mb-14 pb-14" style="border-bottom:1px solid #D1C9BD">
+        <div>
+          <p class="font-black text-gray-900 leading-none" style="font-size:clamp(5rem,14vw,10rem);letter-spacing:-0.055em;line-height:1">2</p>
+          <p class="text-sm font-bold text-gray-900 mt-3">años de garantía</p>
+          <p class="text-xs text-gray-500">sobre la ejecución</p>
+        </div>
+        <div class="lg:pt-4">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
+          <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-5" style="letter-spacing:-0.02em;text-wrap:balance">
+            Nuestros compromisos en la reforma integral
+          </h2>
+          <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
+            Estos compromisos quedan recogidos en el contrato que firmamos antes de empezar la obra. No son promesas: son las condiciones del acuerdo.
+          </p>
+        </div>
       </div>
       <Compromisos variant="full" />
     </div>
@@ -596,11 +683,11 @@ const zones = [
     <div class="max-w-5xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
-        <h2 id="h-proceso" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-proceso" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Del primer contacto a la entrega llave en mano
         </h2>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="space-y-8" style="max-width:44rem">
         {[
           { n: '01', title: 'Visita técnica gratuita', desc: 'Visitamos el piso, evaluamos instalaciones, tomamos medidas y escuchamos qué quieres. Sin compromiso ni coste.' },
           { n: '02', title: 'Presupuesto cerrado por escrito', desc: 'Presupuesto detallado por partidas. Materiales especificados. Precio que no cambia una vez firmado.' },
@@ -609,10 +696,12 @@ const zones = [
           { n: '05', title: 'Acabados coordinados', desc: 'Solados, baño, cocina, carpintería y pintura. Un único equipo coordinado, sin esperas entre gremios.' },
           { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo, limpieza de obra y entrega con garantía de 2 años sobre la ejecución.' },
         ].map(step => (
-          <div class="bg-[#F9F7F4] p-7">
-            <div class="text-4xl font-black text-gray-100 mb-4 leading-none">{step.n}</div>
-            <h3 class="text-base font-bold text-gray-900 mb-2">{step.title}</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+          <div class="grid items-start" style="grid-template-columns:3rem 1fr;gap:1.25rem">
+            <p class="text-4xl font-black text-gray-200 leading-none pt-0.5" aria-hidden="true">{step.n}</p>
+            <div>
+              <p class="font-bold text-gray-900 mb-1">{step.title}</p>
+              <p class="text-sm text-gray-600 leading-relaxed" style="max-width:48ch">{step.desc}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -622,7 +711,7 @@ const zones = [
   <!-- Resultado cotidiano -->
   <div class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-4">
-      <p class="text-base text-gray-700 italic border-l-4 border-[#A85535] pl-5">
+      <p class="text-base text-gray-600 leading-relaxed" style="max-width:58ch">
         Al mes de vivir en el piso reformado, la referencia del anterior desaparece. Lo que queda es la instalación eléctrica que aguanta el aire acondicionado sin disparar el diferencial, el agua caliente que llega sin esperar, la cocina donde cabe más de una persona, el suelo que no cruje. La reforma integral no cambia solo lo que se ve: cambia lo que se vive cada día.
       </p>
     </div>
@@ -675,7 +764,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 id="h-faq" class="text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-faq" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
           Todo lo que necesitas saber antes de una reforma integral
         </h2>
       </div>
@@ -712,3 +801,14 @@ const zones = [
   </section>
 
 </Layout>
+
+<style>
+  .hero-intg-grid { display:grid; gap:1.5rem; }
+  @media(min-width:1024px){ .hero-intg-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
+  .hero-intg-stats-d { display:none; text-align:right; }
+  @media(min-width:1024px){ .hero-intg-stats-d { display:block; } }
+  .hero-intg-stats-m { display:flex; gap:2rem; margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid rgba(255,255,255,.08); flex-wrap:wrap; }
+  @media(min-width:1024px){ .hero-intg-stats-m { display:none; } }
+  .compromisos-apertura-grid { display:grid; gap:2rem; }
+  @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
+</style>

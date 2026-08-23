@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES, RELATED_ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, SERVICE_ZONE_FAQS, SERVICE_ICONS, SERVICE_ZONE_LEVEL } from '../../data/site';
+import { SITE, SERVICES, ZONES, RELATED_ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, SERVICE_ZONE_FAQS, SERVICE_ZONE_LEVEL } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -39,35 +39,11 @@ const TITLE_OVERRIDES: Record<string, Record<string, string>> = {
 const titlePart = (service as any).titleBarrio ?? service.title;
 const rawTitle = `${titlePart} en ${zone.name} | ${SITE.name}`;
 const withPrecioCerrado = `${titlePart} en ${zone.name} · Precio Cerrado | ${SITE.name}`;
-const withPresupuesto = `${titlePart} en ${zone.name} · Presupuesto | ${SITE.name}`;
 const pageTitle = TITLE_OVERRIDES[service.slug]?.[zone.slug]
-  ?? (rawTitle.length >= 50
-    ? rawTitle
-    : withPrecioCerrado.length <= 60
-    ? withPrecioCerrado
-    : withPresupuesto.length <= 60
-    ? withPresupuesto
-    : rawTitle);
+  ?? (rawTitle.length >= 50 ? rawTitle : withPrecioCerrado.length <= 60 ? withPrecioCerrado : rawTitle);
 
-const isPrimary = zone.primary;
-const cityPresence = isPrimary
-  ? `en ${zone.name}`
-  : `en ${zone.name} y la comarca`;
-const szLevel = SERVICE_ZONE_LEVEL[service.slug]?.[zone.slug] ?? 'S2';
-
-// Intro único por combinación servicio×localidad
 const szc = SERVICE_ZONE_CONTENT[service.slug]?.[zone.slug];
 
-const serviceFeatures: Record<string, string[]> = {
-  'reformas-integrales': ['Diseño personalizado sin coste extra', 'Gestión de licencias en ' + zone.name, 'Coordinación de todos los gremios', 'Entrega llave en mano'],
-  'reforma-banos': ['Cambio de bañera por ducha', 'Alicatados y pavimentos nuevos', 'Fontanería y electricidad incluidas', 'Muebles y mampara a medida'],
-  'reforma-cocinas': ['Muebles de cocina a medida', 'Encimeras y electrodomésticos', 'Fontanería y electricidad completa', 'Diseño 3D previo a la obra'],
-  'reforma-pisos': ['Derribo y redistribución de tabiques', 'Suelos laminados, parquet o microcemento', 'Ventanas y carpintería de aluminio', 'Pintura y acabados completos'],
-  'locales-comerciales': ['Proyecto técnico incluido', 'Tramitación licencia de actividad', 'Electricidad, fontanería y ventilación', 'Adecuación a normativa sectorial'],
-  'comunidades-vecinos': ['Presupuesto para junta de propietarios', 'Trabajamos sin cortar el paso', 'Fachadas, portales y cubiertas', 'Coordinación con administrador de fincas'],
-};
-
-// FAQ: 1 pregunta de precio con la localidad + preguntas específicas del servicio
 const priceLbl: Record<string, string> = {
   'reformas-integrales': 'una reforma integral',
   'reforma-banos':       'reformar un baño',
@@ -77,34 +53,49 @@ const priceLbl: Record<string, string> = {
   'comunidades-vecinos': 'una reforma de zonas comunes',
 };
 const costar = priceLbl[service.slug] ?? service.title.toLowerCase();
+
 const priceFaq = {
   q: `¿Cuánto cuesta ${costar} en ${zone.name}?`,
   a: `${costar.charAt(0).toUpperCase() + costar.slice(1)} en ${zone.name} parte desde ${service.priceFrom}€ (${service.priceDesc}). El precio exacto depende del alcance y los materiales; lo recibes cerrado y sin letra pequeña tras la visita técnica gratuita.`,
 };
 const faqs = [priceFaq, ...(SERVICE_ZONE_FAQS[service.slug]?.[zone.slug] ?? [])];
 
+// Agrupar body en secciones numeradas [h3 + p...]
+type BodyBlock = { type: string; text: string; link?: { text: string; serviceSlug: string } };
+const bodySource: BodyBlock[] = (szc?.body ?? service.body ?? []) as BodyBlock[];
+const bodyGroups: { title: string; paras: BodyBlock[] }[] = [];
+let currentGroup: { title: string; paras: BodyBlock[] } | null = null;
+for (const block of bodySource) {
+  if (block.type === 'h3') {
+    currentGroup = { title: block.text, paras: [] };
+    bodyGroups.push(currentGroup);
+  } else if (block.type === 'p' && currentGroup) {
+    currentGroup.paras.push(block);
+  }
+}
+
+function renderBody(block: BodyBlock, zSlug: string): string {
+  const lnk = block.link;
+  if (!lnk) return block.text;
+  const href = `/${lnk.serviceSlug}/${zSlug}/`;
+  return block.text.replace(lnk.text, `<a href="${href}" class="text-[#A85535] hover:underline font-medium">${lnk.text}</a>`);
+}
+
+const relatedZoneSlugs: string[] = RELATED_ZONES[zone.slug] ?? [];
+const otherZones = ZONES.filter(z => relatedZoneSlugs.includes(z.slug));
+const relatedServiceSlugs: string[] = (service as any).relatedServices ?? [];
+const relatedServices = SERVICES.filter(s => relatedServiceSlugs.includes(s.slug));
+
 const pageSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: `${service.title} en ${zone.name}`,
+  url: `${SITE.url}/${service.slug}/${zone.slug}/`,
   description: `${service.headline} Servicio en ${zone.name}. Precio cerrado, plazo garantizado y presupuesto gratuito.`,
-  provider: {
-    '@type': 'GeneralContractor',
-    '@id': `${SITE.url}/#business`,
-    name: SITE.name,
-  },
-  areaServed: {
-    '@type': 'City',
-    name: zone.name,
-  },
-  offers: {
-    '@type': 'Offer',
-    price: service.priceFrom,
-    priceCurrency: 'EUR',
-    description: service.priceDesc,
-  },
+  provider: { '@type': 'GeneralContractor', '@id': `${SITE.url}/#business`, name: SITE.name },
+  areaServed: { '@type': 'City', name: zone.name },
+  offers: { '@type': 'Offer', price: service.priceFrom, priceCurrency: 'EUR', description: service.priceDesc },
 };
-
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -114,31 +105,15 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
-
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
-    { '@type': 'ListItem', position: 2, name: service.title, item: `${SITE.url}/servicios/${service.slug}/` },
-    { '@type': 'ListItem', position: 3, name: zone.name, item: `${SITE.url}/${service.slug}/${zone.slug}/` },
+    { '@type': 'ListItem', position: 1, name: 'Inicio',       item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: service.title,  item: `${SITE.url}/servicios/${service.slug}/` },
+    { '@type': 'ListItem', position: 3, name: zone.name,      item: `${SITE.url}/${service.slug}/${zone.slug}/` },
   ],
 };
-
-
-const relatedZoneSlugs: string[] = RELATED_ZONES[zone.slug] ?? [];
-const otherZones = ZONES.filter(z => relatedZoneSlugs.includes(z.slug));
-const relatedServiceSlugs: string[] = (service as any).relatedServices ?? [];
-const relatedServices = SERVICES.filter(s => relatedServiceSlugs.includes(s.slug));
-const features = serviceFeatures[service.slug] ?? [];
-const intro = szc?.intro ?? service.desc;
-
-function renderBody(block: {type: string; text: string; link?: {text: string; serviceSlug: string}}, zSlug: string): string {
-  const lnk = block.link;
-  if (!lnk) return block.text;
-  const href = `/${lnk.serviceSlug}/${zSlug}/`;
-  return block.text.replace(lnk.text, `<a href="${href}" class="text-[#A85535] hover:underline font-medium">${lnk.text}</a>`);
-}
 ---
 
 <Layout
@@ -149,311 +124,178 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
 
   <!-- Breadcrumb -->
   <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 py-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
       <ol class="text-sm text-gray-500 flex items-center gap-2 flex-wrap" style="list-style:none;padding:0;margin:0">
-        <li><a href="/" class="hover:text-[#A85535]">Inicio</a></li>
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
         <li aria-hidden="true" class="text-gray-300">/</li>
-        <li><a href={`/servicios/${service.slug}/`} class="hover:text-[#A85535]">{service.title}</a></li>
+        <li><a href={`/servicios/${service.slug}/`} class="hover:text-[#A85535] transition-colors">{service.title}</a></li>
         <li aria-hidden="true" class="text-gray-300">/</li>
         <li class="text-gray-800 font-medium" aria-current="page">{zone.name}</li>
       </ol>
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- ── 1. Hero ─────────────────────────────────────────────────────────── -->
   <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="max-w-3xl">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="text-xs font-bold uppercase tracking-widest text-[#A85535]">{SITE.zone}</span>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <p class="font-bold block leading-snug mb-5" style="font-size:clamp(.75rem,1.35vw,.9375rem);letter-spacing:.02em;color:rgba(255,255,255,.38)">
+        {service.title} en {zone.name}
+      </p>
+      <h1 id="h-hero" class="font-black text-white" style="letter-spacing:-0.035em;font-size:clamp(2.25rem,5.5vw,4.25rem);line-height:.95">
+        {titlePart} en {zone.name}
+      </h1>
+
+      <p class="leading-relaxed mt-7 max-w-2xl" style="font-size:1rem;color:rgba(255,255,255,.6)">
+        {szc?.intro ?? service.headline}
+      </p>
+
+      <!-- Stats row -->
+      <dl class="flex flex-wrap gap-x-8 gap-y-3 mt-8 pt-8" style="border-top:1px solid rgba(255,255,255,.08)">
+        <div>
+          <dt class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">Desde</dt>
+          <dd class="font-black text-white" style="font-size:1.5rem;letter-spacing:-.02em">{service.priceFrom} €</dd>
+          <dd class="font-bold text-xs" style="color:rgba(255,255,255,.3)">{service.priceDesc}</dd>
         </div>
-        <h1 id="h-hero" class="text-3xl lg:text-5xl font-black text-white mb-5" style="letter-spacing:-0.02em;text-wrap:balance">
-          {(service as any).titleBarrio ?? service.title} en {zone.name}
-        </h1>
-        <p class="text-lg text-gray-300 leading-relaxed mb-4">{service.headline}</p>
-        {szLevel !== 'S3' && <p class="text-base text-gray-400 leading-relaxed mb-4">{intro}</p>}
-        {(szc as any)?.intersectionThesis && (
-          <div class="border-l-2 border-[#A85535] pl-4 mb-6">
-            <p class="text-sm font-semibold text-gray-300">{(szc as any).intersectionThesis}</p>
-          </div>
-        )}
-        <p class="text-sm text-gray-400 mb-8">
-          Desde <span class="text-white font-black text-2xl">{service.priceFrom}€</span>
-          <span class="ml-2 text-gray-500">· {service.priceDesc}</span>
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/contacto/" class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90" style="background:#A85535">
-            Solicitar presupuesto en {zone.name}
-          </a>
-          <a href={`tel:${SITE.phone}`} class="inline-block text-center px-8 py-4 font-bold text-sm tracking-widest uppercase text-white border-2 border-white/30 hover:border-white">
-            ☎ {SITE.phoneDisplay}
-          </a>
+        <div>
+          <dt class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">Precio</dt>
+          <dd class="font-black text-white" style="font-size:1.5rem;letter-spacing:-.02em">Cerrado</dd>
+          <dd class="font-bold text-xs" style="color:rgba(255,255,255,.3)">por contrato</dd>
         </div>
+        <div>
+          <dt class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">Garantía</dt>
+          <dd class="font-black text-white" style="font-size:1.5rem;letter-spacing:-.02em">2 años</dd>
+          <dd class="font-bold text-xs" style="color:rgba(255,255,255,.3)">sobre la ejecución</dd>
+        </div>
+      </dl>
+
+      <div class="flex flex-col sm:flex-row gap-3 mt-8">
+        <a href="/contacto/" class="inline-block text-center px-7 py-3.5 font-black text-xs uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+          Solicitar visita técnica gratuita
+        </a>
+        <a href={`tel:${SITE.phone}`} class="inline-block text-center px-7 py-3.5 font-black text-xs uppercase tracking-widest text-white border border-white/20 hover:border-white/50 transition-colors">
+          {SITE.phoneDisplay}
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Contenido principal -->
-  <section class="py-20 bg-white" aria-labelledby="h-contenido">
-    <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-3 gap-12">
-      <div class="lg:col-span-2">
-        <h2 id="h-contenido" class="text-2xl font-black text-gray-900 mb-3">
-          {service.title} en {zone.name}: qué incluye y cómo funciona
+  <!-- ── 2. Contenido editorial ─────────────────────────────────────────── -->
+  {bodyGroups.length > 0 && (
+    <section class="py-20 bg-white" aria-labelledby="h-contenido">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+        <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Antes de presupuestar</p>
+        <h2 id="h-contenido" class="text-2xl lg:text-3xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+          {service.title} en {zone.name}: qué se evalúa antes de cerrar el precio
         </h2>
 
-        {(szc?.body ?? service.body) ? (
-          (szc?.body ?? service.body as {type: string; text: string; link?: {text: string; serviceSlug: string}}[]).map((block) =>
-            block.type === 'h3' ? (
-              <h3 class="text-lg font-bold text-gray-900 mt-8 mb-2">{block.text}</h3>
-            ) : block.type === 'h4' ? (
-              <h4 class="text-base font-semibold text-gray-800 mt-5 mb-1">{block.text}</h4>
-            ) : block.link ? (
-              <p class="text-gray-600 leading-relaxed mb-4" set:html={renderBody(block, zone.slug)} />
-            ) : (
-              <p class="text-gray-600 leading-relaxed mb-4">{block.text}</p>
-            )
-          )
-        ) : (
-          <p class="text-gray-600 leading-relaxed mb-6">{service.desc}</p>
-        )}
-
-        {features.length > 0 && (
-          <div>
-            <h3 class="text-lg font-black text-gray-900 mb-4">Qué incluye este servicio en {zone.name}</h3>
-            <div class="grid sm:grid-cols-2 gap-3">
-              {features.map(item => (
-                <div class="flex items-center gap-3 p-4 bg-gray-50">
-                  <div class="w-5 h-5 bg-[#A85535] flex items-center justify-center flex-shrink-0">
-                    <svg class="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                    </svg>
-                  </div>
-                  <span class="text-sm font-medium text-gray-800">{item}</span>
-                </div>
+        {bodyGroups.map((group, i) => (
+          <div class={`cond-item${i === bodyGroups.length - 1 ? ' cond-item--last' : ''}`}>
+            <div class="cond-num">{String(i + 1).padStart(2, '0')}</div>
+            <div>
+              <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">{group.title}</h3>
+              {group.paras.map(p => (
+                p.link
+                  ? <p class="text-gray-500 leading-relaxed mt-3" style="font-size:.9375rem" set:html={renderBody(p, zone.slug)} />
+                  : <p class="text-gray-500 leading-relaxed mt-3" style="font-size:.9375rem">{p.text}</p>
               ))}
             </div>
           </div>
-        )}
+        ))}
 
-        <div class="bg-[#F9F7F4] border-l-4 border-[#A85535] p-6 mt-8">
-          <p class="text-sm font-semibold text-gray-900 mb-2">Antes de pedir presupuesto en {zone.name}</p>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            Si el inmueble tiene más de 30 años, asegúrate de que el presupuesto evalúe el estado de las instalaciones antes de cerrar el precio. Un presupuesto que no las contempla puede quedar obsoleto en cuanto empiece la obra. La revisión de instalaciones está incluida en la visita técnica gratuita.
-          </p>
-        </div>
-      </div>
-
-      <!-- Sidebar CTA -->
-      <div class="bg-[#111827] p-8 text-white h-fit sticky top-6">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratis</p>
-        <p class="text-xl font-black mb-1">Desde <span class="text-[#A85535] text-3xl">{service.priceFrom}€</span></p>
-        <p class="text-sm text-gray-400 mb-6">{service.priceDesc}</p>
-        <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 mb-3" style="background:#A85535">
-          Pedir presupuesto
-        </a>
-        <a href={`tel:${SITE.phone}`} class="block text-center py-3.5 text-sm font-semibold text-gray-300 border border-white/20 hover:border-white mb-4">
-          ☎ {SITE.phoneDisplay}
-        </a>
-        <p class="text-xs text-gray-500 text-center">Visita técnica gratuita</p>
-        <a href={`/calculadora-precio-reforma/?servicio=${service.slug}`} class="block text-center text-xs text-gray-400 hover:text-white mt-3">
-          Estimar precio antes →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Por qué Trazzo360 -->
-  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-por-que">
-    <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 id="h-por-que" class="text-2xl font-black text-gray-900 mb-4">
-          Por qué elegir Trazzo360 para {service.title.toLowerCase()} en {zone.name}
-        </h2>
-        <div class="space-y-4">
-          {[
-            `Los mismos equipos ${cityPresence}. Un único interlocutor de principio a fin.`,
-            'Precio cerrado en el contrato desde el primer presupuesto. Sin extras de última hora.',
-            'Plazo de entrega garantizado por escrito. Con penalización si nos retrasamos sin causa de fuerza mayor.',
-            'Visita técnica y presupuesto gratuitos. Sin compromiso ni presión.',
-            'Garantía de 2 años sobre la ejecución. Si algo falla por nuestra parte, lo resolvemos sin coste.',
-            'Gestión de licencias y permisos de obra incluida cuando la normativa lo requiere.',
-          ].map(item => (
-            <div class="flex items-start gap-3">
-              <div class="w-5 h-5 bg-[#A85535] flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                </svg>
-              </div>
-              <span class="text-sm text-gray-700">{item}</span>
-            </div>
-          ))}
-          <p class="text-xs text-gray-400 mt-4">
-            <a href="/como-trabajamos/" class="text-[#A85535] hover:underline font-medium">Ver todos nuestros compromisos →</a>
-          </p>
-        </div>
-      </div>
-      <div class="bg-[#111827] p-8 text-white">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratuito</p>
-        <p class="text-xl font-black text-white mb-2">Cuéntanos tu proyecto. Presupuesto cerrado tras la visita.</p>
-        <p class="text-sm text-gray-400 mb-6">
-          Sin compromiso. Concertamos visita técnica en {zone.name} y entregamos presupuesto cerrado por escrito.
-        </p>
-        <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 mb-3" style="background:#A85535">
-          Solicitar presupuesto en {zone.name}
-        </a>
-        <a href={`tel:${SITE.phone}`} class="block text-center py-3 text-sm text-gray-300 border border-white/20 hover:border-white">
-          ☎ {SITE.phoneDisplay}
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Proceso paso a paso -->
-  {szLevel !== 'S3' && service.processSteps && (service.processSteps as {title:string;desc:string}[]).length > 0 && (
-    <section class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-xl font-black text-gray-900 mb-3">
-          Cómo trabajamos: {service.title.toLowerCase()} en {zone.name}
-        </h2>
-        <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
-          Plazos reales, precio cerrado y sin imprevistos. Así organizamos cada proyecto en {zone.name}, desde la visita técnica gratuita hasta la entrega con garantía de 2 años.
-        </p>
-        <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" style="list-style:none;padding:0;margin:0">
-          {(service.processSteps as {title:string;desc:string}[]).map((step, i) => (
-            <li class="flex gap-4 p-6 bg-gray-50 border border-gray-100">
-              <div class="w-7 h-7 bg-[#A85535] text-white text-xs font-black flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                {i + 1}
-              </div>
-              <div>
-                <h3 class="font-bold text-gray-900 mb-1 text-sm">{step.title}</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
   )}
 
-  <!-- Barrios y zonas donde actuamos -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-lg font-black text-gray-900 mb-2">
+  <!-- ── 3. Precio orientativo ────────────────────────────────────────────── -->
+  {service.priceTable && (service.priceTable as {label:string;price:string;includes?:string}[]).length > 0 && (
+    <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-precio">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+        <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Precio orientativo</p>
+        <h2 id="h-precio" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+          ¿Cuánto cuesta {costar} en {zone.name}?
+        </h2>
+        <p class="text-gray-500 leading-relaxed mb-8" style="font-size:.9375rem">
+          El precio exacto depende del alcance, los materiales y el estado de las instalaciones previas. Lo recibes por escrito tras la visita técnica gratuita.
+        </p>
+
+        <div class="overflow-x-auto">
+          <table class="w-full border border-gray-100 border-collapse text-sm">
+            <caption class="sr-only">Precios orientativos de {costar} en {zone.name}</caption>
+            <thead>
+              <tr class="bg-[#111827]">
+                <th scope="col" class="text-left text-xs font-bold uppercase tracking-widest text-gray-400 px-6 py-4">Tipo de obra</th>
+                <th scope="col" class="text-left text-xs font-bold uppercase tracking-widest text-gray-400 px-6 py-4">Qué incluye</th>
+                <th scope="col" class="text-right text-xs font-bold uppercase tracking-widest text-gray-400 px-6 py-4 whitespace-nowrap">Precio orientativo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(service.priceTable as {label:string;price:string;includes?:string}[]).map(row => (
+                <tr class="border-t border-gray-100 bg-white">
+                  <th scope="row" class="text-left px-6 py-5 font-semibold text-gray-900 whitespace-nowrap align-top">{row.label}</th>
+                  <td class="px-6 py-5 text-gray-500 align-top">{row.includes ?? '—'}</td>
+                  <td class="px-6 py-5 text-right font-black text-[#A85535] whitespace-nowrap align-top">{row.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-xs text-gray-400 mt-4">
+          Sin IVA. El precio exacto se fija tras la visita técnica gratuita.
+        </p>
+        <div class="flex flex-wrap gap-5 mt-6">
+          <a href={`/servicios/${service.slug}/#precios`} class="text-sm font-bold text-[#A85535] hover:underline">
+            Ver tabla completa de precios →
+          </a>
+          <a href={`/calculadora-precio-reforma/?servicio=${service.slug}`} class="text-sm font-bold text-[#A85535] hover:underline">
+            Calculadora de precio orientativo →
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ── 4. Barrios ─────────────────────────────────────────────────────── -->
+  <section class="py-14 bg-white" aria-labelledby="h-barrios">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 id="h-barrios" class="text-lg font-black text-gray-900 mb-2" style="letter-spacing:-0.01em">
         Zonas de {zone.name} donde trabajamos
       </h2>
-      <p class="text-sm text-gray-500 mb-5">Cubrimos todos los barrios y urbanizaciones de {zone.name} sin recargo por desplazamiento.</p>
+      <p class="text-sm text-gray-500 mb-5">
+        Cubrimos todos los barrios y urbanizaciones de {zone.name} sin recargo por desplazamiento.
+      </p>
       <ul class="flex flex-wrap gap-2" style="list-style:none;padding:0;margin:0">
         {zone.neighborhoods.map((n: string) => (
-          <li class="inline-block px-3 py-1.5 bg-white border border-gray-200 text-sm text-gray-700 font-medium">
-            {n}
-          </li>
+          <li class="inline-block px-3 py-1.5 bg-gray-50 border border-gray-200 text-sm text-gray-700 font-medium">{n}</li>
         ))}
-        <li class="inline-block px-3 py-1.5 bg-white border border-dashed border-gray-300 text-sm text-gray-400">
-          ¿Tu zona no aparece? Consúltanos igualmente
+        <li class="inline-block px-3 py-1.5 bg-gray-50 border border-dashed border-gray-300 text-sm text-gray-400">
+          ¿Tu zona no aparece? Consúltanos
         </li>
       </ul>
     </div>
   </section>
 
-  <!-- Precios orientativos -->
-  {szLevel !== 'S3' && service.priceTable && (service.priceTable as {label:string;price:string;includes?:string}[]).length > 0 && (
-    <section class="py-16 bg-white">
-      <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-xl font-black text-gray-900 mb-3">
-          ¿Cuánto cuesta {costar} en {zone.name}?
-        </h2>
-        <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl">
-          Precios de referencia calculados según superficie, alcance y nivel de calidad. El presupuesto exacto, cerrado y sin sorpresas, lo recibes por escrito tras la visita técnica gratuita.
-        </p>
-        <div class="overflow-x-auto">
-        <table class="w-full border border-gray-100 border-collapse text-sm">
-          <caption class="sr-only">Precios orientativos de {costar} en {zone.name}</caption>
-          <thead>
-            <tr class="bg-gray-50 border-b border-gray-100">
-              <th scope="col" class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3">Tipo de obra</th>
-              <th scope="col" class="text-right text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3 whitespace-nowrap">Precio orientativo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {(service.priceTable as {label:string;price:string;includes?:string}[]).map(row => (
-              <tr class="border-t border-gray-100 hover:bg-gray-50">
-                <th scope="row" class="text-left p-5 font-normal">
-                  <span class="font-semibold text-gray-900 block">{row.label}</span>
-                  {row.includes && <span class="text-xs text-gray-400 mt-0.5 block">{row.includes}</span>}
-                </th>
-                <td class="text-right text-[#A85535] font-black text-base p-5 whitespace-nowrap">{row.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        </div>
-        <p class="text-xs text-gray-400 mt-4">* Precios orientativos IVA incluido. El precio exacto depende del estado previo, los materiales y el alcance de la obra. <a href="/contacto/" class="underline hover:text-[#A85535]">Solicita presupuesto gratuito.</a></p>
-      </div>
-    </section>
-  )}
-
-  <!-- Este servicio en otras ciudades -->
-  <section class="py-14 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-lg font-black text-gray-900 mb-2">
-        {service.title} en otras ciudades del Corredor
-      </h2>
-      <p class="text-sm text-gray-500 mb-5">
-        Trabajamos en todos los municipios del Corredor del Henares con el mismo precio cerrado y el mismo compromiso de plazo. Un único interlocutor, sin coste adicional por desplazamiento.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        {otherZones.map(z => (
-          <a href={`/${service.slug}/${z.slug}/`}
-            class="inline-block px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 hover:border-[#A85535] hover:text-[#A85535]">
-            {service.anchorLabel} en {z.name}
-          </a>
-        ))}
-      </div>
-      <p class="text-sm text-gray-400 mt-4">
-        También puedes ver la <a href={`/zonas/${zone.slug}/`} class="underline hover:text-[#A85535]">página completa de {zone.name}</a> o todos los trabajos de <a href={`/servicios/${service.slug}/`} class="underline hover:text-[#A85535]">{service.title.toLowerCase()}</a> que realizamos.
-      </p>
-    </div>
-  </section>
-
-  <!-- Otros servicios en esta ciudad -->
-  {relatedServices.length > 0 && (
-    <section class="py-14 bg-white">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-lg font-black text-gray-900 mb-2">
-          Otros servicios de reforma en {zone.name}
-        </h2>
-        <p class="text-sm text-gray-500 mb-5">
-          En Trazzo360 cubrimos todos los tipos de obra en {zone.name} con el mismo equipo y el mismo compromiso de precio y plazo. Elige el servicio que necesitas.
-        </p>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {relatedServices.map(s => (
-            <a href={`/${s.slug}/${zone.slug}/`}
-              class="group block p-4 bg-gray-50 border-b-2 border-transparent hover:border-[#A85535]">
-              <span class="w-7 h-7 text-[#A85535] block mb-2"><Fragment set:html={SERVICE_ICONS[s.slug] ?? ''} /></span>
-              <p class="text-sm font-semibold text-gray-800 group-hover:text-[#A85535]">{s.title}</p>
-              <p class="text-xs text-gray-400 mt-0.5">Desde {s.priceFrom}€</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- FAQ -->
+  <!-- ── 5. FAQ ──────────────────────────────────────────────────────────── -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-faq" class="text-2xl font-black text-gray-900 mb-4">
-        Preguntas frecuentes: {service.title} en {zone.name}
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Preguntas frecuentes</p>
+      <h2 id="h-faq" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+        Dudas habituales sobre {costar} en {zone.name}
       </h2>
-      <p class="text-gray-600 leading-relaxed mb-8">
-        Precios, plazos, permisos y qué incluye exactamente el servicio. Si no encuentras tu duda aquí, escríbenos por WhatsApp o llámanos y te respondemos el mismo día.
+      <p class="text-gray-500 leading-relaxed mb-8" style="font-size:.9375rem">
+        Si no encuentras tu duda aquí, escríbenos o llámanos. Respondemos el mismo día.
       </p>
+
       <div class="divide-y divide-gray-200">
         {faqs.map(faq => (
           <details class="group py-5">
             <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
-              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
-              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45">+</span>
+              <h3 class="font-semibold text-gray-900 leading-snug m-0" style="font-size:.9375rem">{faq.q}</h3>
+              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
             </summary>
             <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
           </details>
@@ -462,17 +304,72 @@ function renderBody(block: {type: string; text: string; link?: {text: string; se
     </div>
   </section>
 
-  <!-- CTA final -->
+  <!-- ── 6. Navegación secundaria ─────────────────────────────────────────── -->
+  <nav aria-label="Páginas relacionadas" class="py-8 bg-[#F9F7F4] border-t border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-wrap items-center gap-x-8 gap-y-3">
+      <span class="text-xs font-bold uppercase tracking-widest text-gray-400 flex-shrink-0">Ver también</span>
+      <a href={`/servicios/${service.slug}/`} class="text-sm text-gray-500 hover:text-[#A85535] transition-colors">
+        {service.title} en el Corredor del Henares
+      </a>
+      <a href={`/zonas/${zone.slug}/`} class="text-sm text-gray-500 hover:text-[#A85535] transition-colors">
+        Empresa de reformas en {zone.name}
+      </a>
+      {relatedServices.map(s => (
+        <a href={`/${s.slug}/${zone.slug}/`} class="text-sm text-gray-500 hover:text-[#A85535] transition-colors">
+          {s.anchorLabel} en {zone.name}
+        </a>
+      ))}
+      {otherZones.slice(0, 3).map(z => (
+        <a href={`/${service.slug}/${z.slug}/`} class="text-sm text-gray-500 hover:text-[#A85535] transition-colors">
+          {service.anchorLabel} en {z.name}
+        </a>
+      ))}
+    </div>
+  </nav>
+
+  <!-- ── 7. CTA final ──────────────────────────────────────────────────── -->
   <section class="py-16 bg-[#111827]" aria-labelledby="h-cta-final">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-black text-white mb-3">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Visita técnica gratuita</p>
+      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
         ¿{service.title} en {zone.name}?
       </h2>
-      <p class="text-white/80 mb-7">Visita técnica gratuita. Presupuesto cerrado por escrito. Sin letra pequeña.</p>
-      <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8f4329]">
-        Solicitar valoración gratuita
+      <p class="leading-relaxed mb-8" style="color:rgba(255,255,255,.6)">
+        La visita técnica evalúa el estado previo antes de cerrar ningún número. Presupuesto cerrado por escrito. Sin letra pequeña.
+      </p>
+      <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+        Solicitar visita técnica gratuita
       </a>
     </div>
   </section>
 
 </Layout>
+
+<style>
+  /* Condicionantes — layout editorial 2 columnas */
+  .cond-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .cond-item--last {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  @media (min-width: 768px) {
+    .cond-item {
+      grid-template-columns: 3rem 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+  }
+  .cond-num {
+    font-size: .625rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    color: #a85535;
+    padding-top: .3rem;
+  }
+</style>

@@ -113,48 +113,53 @@ const zones = [
   </nav>
 
   <!-- 1. Hero -->
-  <section class="bg-[#111827] flex flex-col justify-end" style="min-height:100vh;padding-top:5rem;padding-bottom:3.5rem" aria-labelledby="h-hero">
+  <section class="bg-[#111827] flex flex-col justify-center lg:justify-end"
+           style="min-height:100vh;padding-bottom:3.5rem"
+           aria-labelledby="h-hero">
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
-      <h1 id="h-hero" class="font-black text-white" style="line-height:1">
-        <span class="block font-bold" style="font-size:clamp(1rem,2vw,1.625rem);letter-spacing:-0.02em;margin-bottom:.75em">
-          Reforma de locales comerciales en el Corredor del Henares
-        </span>
-        <span class="block" style="font-size:clamp(2rem,5.5vw,5rem);letter-spacing:-0.04em;line-height:.9;text-wrap:balance">
-          La actividad define<br>el alcance antes<br>de hablar de materiales.
-        </span>
+      <p class="font-black uppercase text-[#A85535] mb-6" style="font-size:10px;letter-spacing:.15em">Locales comerciales · Corredor del Henares</p>
+      <h1 id="h-hero" class="font-black text-white"
+          style="font-size:clamp(2.5rem,9.5vw,8.5rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance;margin-bottom:0">
+        Reforma de locales<br>comerciales en el Corredor
       </h1>
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
-      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
-        <div class="hero-locales-grid">
-          <p style="color:#9CA3AF;font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch;line-height:1.65">
-            Transformamos locales vacíos en espacios listos para operar: hostelería, comercio, oficinas y actividades profesionales. La visita técnica identifica los condicionantes antes de cerrar el alcance y el presupuesto.
+      <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+        <div class="hero-c-grid">
+          <p class="text-gray-400 leading-relaxed" style="font-size:clamp(0.875rem,1vw,0.95rem);max-width:50ch">
+            Hostelería, comercio, oficinas y actividades profesionales. La visita técnica identifica los condicionantes antes de cerrar el alcance. Precio cerrado por contrato antes de la primera palada.
           </p>
           <div class="flex flex-col gap-3">
-            <a href="/contacto/" class="inline-block text-center text-white font-black text-xs uppercase" style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+            <a href="/contacto/" class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
               Solicitar visita gratuita
             </a>
-            <a href={`tel:${SITE.phone}`} class="inline-block text-center font-black text-xs uppercase" style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+            <a href={`tel:${SITE.phone}`} class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white border border-white/25 hover:border-white/60 transition-colors">
               {SITE.phoneDisplay}
             </a>
           </div>
-          <div class="hero-locales-acts">
-            <div style="padding:.875rem 1rem;border-left:2px solid rgba(255,255,255,.18)">
-              <p class="font-bold text-white leading-tight" style="font-size:.8125rem;margin-bottom:2px">Hostelería</p>
-              <p style="font-size:.75rem;color:#9CA3AF;line-height:1.4">Bar, cafetería, restaurante</p>
+          <div class="hidden lg:block text-right">
+            <div class="mb-5">
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">400 €/m²</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Desde · acondicionamiento</p>
             </div>
-            <div style="padding:.875rem 1rem;border-left:2px solid rgba(255,255,255,.18)">
-              <p class="font-bold text-white leading-tight" style="font-size:.8125rem;margin-bottom:2px">Comercio</p>
-              <p style="font-size:.75rem;color:#9CA3AF;line-height:1.4">Tienda, showroom, exposición</p>
+            <div class="mb-5">
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">4–8</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Semanas · obra estándar</p>
             </div>
-            <div style="padding:.875rem 1rem;border-left:2px solid rgba(255,255,255,.18)">
-              <p class="font-bold text-white leading-tight" style="font-size:.8125rem;margin-bottom:2px">Oficinas</p>
-              <p style="font-size:.75rem;color:#9CA3AF;line-height:1.4">Despacho, coworking, empresa</p>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.02em">40/40/20</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Fases de pago</p>
             </div>
-            <div style="padding:.875rem 1rem;border-left:2px solid rgba(255,255,255,.18)">
-              <p class="font-bold text-white leading-tight" style="font-size:.8125rem;margin-bottom:2px">Clínica / taller</p>
-              <p style="font-size:.75rem;color:#9CA3AF;line-height:1.4">Consulta, estudio, actividad profesional</p>
-            </div>
+          </div>
+        </div>
+        <div class="flex gap-8 mt-6 pt-5 lg:hidden" style="border-top:1px solid rgba(255,255,255,.08)">
+          <div>
+            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">400 €/m²</p>
+            <p class="text-xs mt-1" style="color:#9CA3AF">acondicionamiento</p>
+          </div>
+          <div>
+            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">4–8</p>
+            <p class="text-xs mt-1" style="color:#9CA3AF">semanas</p>
           </div>
         </div>
       </div>
@@ -162,7 +167,7 @@ const zones = [
   </section>
 
   <!-- 2. GridActividades -->
-  <section class="py-20 bg-white" aria-labelledby="h-actividades">
+  <section class="py-20 lg:py-28 bg-white" aria-labelledby="h-actividades">
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-2xl mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Qué revisamos según tu uso</p>
@@ -175,7 +180,7 @@ const zones = [
       </div>
 
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-px border border-gray-200 bg-gray-200">
-        <div class="bg-white p-6 lg:p-8" style="border-top:4px solid #A85535">
+        <div class="bg-white p-7 border-t-4 border-[#A85535]">
           <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-2">Hostelería</p>
           <p class="text-sm font-semibold text-gray-900 mb-4 leading-tight">Bar, restaurante, cafetería</p>
           <ul class="list-marca space-y-2">
@@ -185,7 +190,7 @@ const zones = [
             <li><span class="text-sm text-gray-600">Requisitos de actividad clasificada</span></li>
           </ul>
         </div>
-        <div class="bg-white p-6 lg:p-8" style="border-top:4px solid #E5E7EB">
+        <div class="bg-white p-7 border-t-4 border-gray-200">
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Comercio</p>
           <p class="text-sm font-semibold text-gray-900 mb-4 leading-tight">Tienda, showroom, exposición</p>
           <ul class="list-marca space-y-2">
@@ -195,7 +200,7 @@ const zones = [
             <li><span class="text-sm text-gray-600">Normativa de accesibilidad</span></li>
           </ul>
         </div>
-        <div class="bg-white p-6 lg:p-8" style="border-top:4px solid #E5E7EB">
+        <div class="bg-white p-7 border-t-4 border-gray-200">
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Oficina</p>
           <p class="text-sm font-semibold text-gray-900 mb-4 leading-tight">Despacho, coworking, empresa</p>
           <ul class="list-marca space-y-2">
@@ -205,7 +210,7 @@ const zones = [
             <li><span class="text-sm text-gray-600">Iluminación de trabajo</span></li>
           </ul>
         </div>
-        <div class="bg-white p-6 lg:p-8" style="border-top:4px solid #E5E7EB">
+        <div class="bg-white p-7 border-t-4 border-gray-200">
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Clínica o taller</p>
           <p class="text-sm font-semibold text-gray-900 mb-4 leading-tight">Sanitario, estética, mecánico</p>
           <ul class="list-marca space-y-2">
@@ -330,7 +335,7 @@ const zones = [
           <h3 class="text-base font-bold text-gray-900 mb-3">Casco urbano</h3>
           <p class="text-sm text-gray-500 font-medium mb-3">Alcalá, Torrejón, Coslada, Guadalajara</p>
           <p class="text-sm text-gray-600 leading-relaxed mb-4">Locales en planta baja de edificios residenciales. Alturas de 2,80 a 3,50 m y superficies de 30 a 150 m². La relación con el edificio (horario de obra, ventilación, accesos) condiciona la planificación.</p>
-          <ul class="list-marca space-y-1">
+          <ul class="list-marca space-y-1.5">
             <li><span class="text-sm text-gray-600">Instalaciones eléctricas con poca capacidad</span></li>
             <li><span class="text-sm text-gray-600">Conductos de ventilación compartidos</span></li>
             <li><span class="text-sm text-gray-600">Accesos estrechos para materiales</span></li>
@@ -340,7 +345,7 @@ const zones = [
           <h3 class="text-base font-bold text-gray-900 mb-3">Polígonos industriales</h3>
           <p class="text-sm text-gray-500 font-medium mb-3">San Fernando, Torrejón, Coslada, Azuqueca</p>
           <p class="text-sm text-gray-600 leading-relaxed mb-4">Naves diáfanas de 200 a 2.000 m² para centros de servicio, showrooms u hostelería de gran volumen. Alturas de 4 a 8 m. La distribución de espacio es el primer proyecto.</p>
-          <ul class="list-marca space-y-1">
+          <ul class="list-marca space-y-1.5">
             <li><span class="text-sm text-gray-600">Instalaciones básicas sin desarrollar</span></li>
             <li><span class="text-sm text-gray-600">Mayor libertad de horario de obra</span></li>
             <li><span class="text-sm text-gray-600">Climatización compleja por superficie</span></li>
@@ -350,7 +355,7 @@ const zones = [
           <h3 class="text-base font-bold text-gray-900 mb-3">Reforma de oficinas en el Corredor</h3>
           <p class="text-sm text-gray-500 font-medium mb-3">Guadalajara, Alcalá, Torrejón y accesos a autopista</p>
           <p class="text-sm text-gray-600 leading-relaxed mb-4">Plantas de edificios de usos mixtos y naves acondicionadas en polígonos. Prioridad: conectividad, iluminación de trabajo, distribución y acústica.</p>
-          <ul class="list-marca space-y-1">
+          <ul class="list-marca space-y-1.5">
             <li><span class="text-sm text-gray-600">Techo técnico para instalaciones</span></li>
             <li><span class="text-sm text-gray-600">Particiones de pladur o vidrio</span></li>
             <li><span class="text-sm text-gray-600">Iluminación LED con control de intensidad</span></li>
@@ -464,7 +469,7 @@ const zones = [
             ].map((row, i) => (
               <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
                 <td class="py-3 px-5 text-gray-700">{row.label}</td>
-                <td class="py-3 px-5 text-right font-semibold text-[#A85535]">{row.price}</td>
+                <td class="py-3 px-5 text-right font-semibold text-gray-900">{row.price}</td>
                 <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.notes}</td>
               </tr>
             ))}
@@ -614,14 +619,21 @@ const zones = [
   <!-- 12. Compromisos -->
   <section class="py-20 bg-white" aria-labelledby="h-compromisos">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="mb-12">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
-        <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em;text-wrap:balance">
-          Nuestros compromisos en la reforma de tu local
-        </h2>
-        <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
-          Precio cerrado antes de la primera palada. Plazo en el contrato. Las condiciones por escrito antes del primer día de obra.
-        </p>
+      <div class="compromisos-apertura-grid mb-14 pb-14" style="border-bottom:1px solid #D1C9BD">
+        <div>
+          <p class="font-black text-gray-900 leading-none" style="font-size:clamp(5rem,14vw,10rem);letter-spacing:-0.055em;line-height:1">2</p>
+          <p class="text-sm font-bold text-gray-900 mt-3">años de garantía</p>
+          <p class="text-xs text-gray-500">sobre la ejecución</p>
+        </div>
+        <div class="lg:pt-4">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
+          <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-5" style="letter-spacing:-0.02em;text-wrap:balance">
+            Nuestros compromisos en la reforma de tu local
+          </h2>
+          <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
+            Precio cerrado antes de la primera palada. Plazo en el contrato. Las condiciones por escrito antes del primer día de obra.
+          </p>
+        </div>
       </div>
       <Compromisos variant="full" />
     </div>
@@ -629,7 +641,7 @@ const zones = [
 
   <!-- 13. Proceso -->
   <section class="py-20 bg-white" aria-labelledby="h-proceso">
-    <div class="max-w-5xl mx-auto px-4">
+    <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
         <h2 id="h-proceso" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
@@ -668,13 +680,13 @@ const zones = [
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         {zones.map(z => (
-          <article class="group relative p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] transition-colors duration-200">
-            <h3 class="text-sm font-bold text-gray-900 group-hover:text-[#A85535] transition-colors m-0">
+          <article class="group relative p-5 bg-[#F9F7F4] hover:bg-[#111827] transition-colors duration-200">
+            <h3 class="text-sm font-bold text-gray-900 group-hover:text-white transition-colors duration-200 m-0">
               <a href={`/locales-comerciales/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
                 Reforma de locales en {z.name}
               </a>
             </h3>
-            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 block">Ver precios y trámites →</span>
+            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 group-hover:text-gray-300 transition-colors duration-200 block">Ver precios y trámites →</span>
           </article>
         ))}
       </div>
@@ -701,7 +713,8 @@ const zones = [
           <details class="group py-5">
             <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
               <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
-              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+              <span class="text-gray-400 text-xl leading-none select-none font-normal block group-open:hidden" aria-hidden="true">+</span>
+              <span class="text-gray-400 text-xl leading-none select-none font-normal hidden group-open:block" aria-hidden="true">−</span>
             </summary>
             <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
           </details>
@@ -713,14 +726,14 @@ const zones = [
   <!-- 16. CTA Final -->
   <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">
+      <h2 id="h-cta-final" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em">
         Cuéntanos qué actividad va al local
       </h2>
-      <p class="text-white/80 mb-3">Visita técnica gratuita. Presupuesto orientativo por escrito.</p>
-      <p class="text-white/60 text-sm mb-8">Sin presupuesto sin ver el local. Sin alcance sin conocer la actividad.</p>
+      <p class="text-gray-400 mb-2">Visita técnica gratuita. Presupuesto orientativo por escrito.</p>
+      <p class="text-gray-600 text-sm mb-10">Sin presupuesto sin ver el local. Sin alcance sin conocer la actividad.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar visita gratuita</a>
-        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/40 hover:border-white transition-colors">☎ {SITE.phoneDisplay}</a>
+        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">{SITE.phoneDisplay}</a>
       </div>
     </div>
   </section>
@@ -728,8 +741,8 @@ const zones = [
 </Layout>
 
 <style>
-  .hero-locales-grid { display:grid; gap:1.5rem; }
-  @media(min-width:1024px){ .hero-locales-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
-  .hero-locales-acts { display:none; }
-  @media(min-width:1024px){ .hero-locales-acts { display:grid; grid-template-columns:1fr; gap:.625rem; align-content:start; } }
+  .hero-c-grid { display:grid; gap:1.5rem; }
+  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
+  .compromisos-apertura-grid { display:grid; gap:2rem; }
+  @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
 </style>

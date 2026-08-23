@@ -113,58 +113,53 @@ const zones = [
   </nav>
 
   <!-- Hero -->
-  <section class="bg-[#111827] flex flex-col justify-end" style="min-height:100vh;padding-top:5rem;padding-bottom:3.5rem" aria-labelledby="h-hero">
+  <section class="bg-[#111827] flex flex-col justify-center lg:justify-end"
+           style="min-height:100vh;padding-bottom:3.5rem"
+           aria-labelledby="h-hero">
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
-      <h1 id="h-hero" class="font-black text-white" style="line-height:1">
-        <span class="block font-bold" style="font-size:clamp(1rem,2vw,1.625rem);letter-spacing:-0.02em;margin-bottom:.75em">
-          Reformas integrales en el Corredor del Henares
-        </span>
-        <span class="block" style="font-size:clamp(2.25rem,7.5vw,7rem);letter-spacing:-0.04em;line-height:.9;text-wrap:balance">
-          La coordinación de los gremios<br>no es un plus.<br>Es el producto.
-        </span>
+      <p class="font-black uppercase text-[#A85535] mb-6" style="font-size:10px;letter-spacing:.15em">Reformas integrales · Corredor del Henares</p>
+      <h1 id="h-hero" class="font-black text-white"
+          style="font-size:clamp(2.5rem,9.5vw,8.5rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance;margin-bottom:0">
+        Reformas integrales<br>en el Corredor del Henares
       </h1>
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
-      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
-        <div class="hero-intg-grid">
-          <p style="color:#9CA3AF;font-size:clamp(0.875rem,1.4vw,1.0625rem);max-width:52ch;line-height:1.65">
-            Reformas integrales de pisos, áticos y chalets en el Corredor del Henares. Un único interlocutor coordina todos los gremios. Precio cerrado por contrato, plazo fijado antes de empezar.
+      <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+        <div class="hero-c-grid">
+          <p class="text-gray-400 leading-relaxed" style="font-size:clamp(0.875rem,1vw,0.95rem);max-width:50ch">
+            Un único interlocutor coordina todos los gremios: electricistas, fontaneros, alicatadores, carpinteros y pintores. Precio cerrado por contrato. Plazo garantizado antes de empezar.
           </p>
           <div class="flex flex-col gap-3">
-            <a href="/contacto/" class="inline-block text-center text-white font-black text-xs uppercase" style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+            <a href="/contacto/" class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
               Solicitar presupuesto gratis
             </a>
-            <a href={`tel:${SITE.phone}`} class="inline-block text-center font-black text-xs uppercase" style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);color:#fff;letter-spacing:.1em">
+            <a href={`tel:${SITE.phone}`} class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white border border-white/25 hover:border-white/60 transition-colors">
               {SITE.phoneDisplay}
             </a>
           </div>
-          <div class="hero-intg-stats-d">
-            <div style="margin-bottom:1.5rem">
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.25rem,2vw,1.75rem);letter-spacing:-0.03em">Desde 26.000€</p>
-              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">40 m² · precio orientativo</p>
+          <div class="hidden lg:block text-right">
+            <div class="mb-5">
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">26.000€</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Desde · 40&nbsp;m² esencial</p>
             </div>
-            <div style="margin-bottom:1.5rem">
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.25rem,2vw,1.75rem);letter-spacing:-0.03em">10–14 sem.</p>
-              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Plazo piso esencial</p>
+            <div class="mb-5">
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">10–14</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Semanas · reforma completa</p>
             </div>
             <div>
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.25rem,2vw,1.75rem);letter-spacing:-0.03em">40 / 40 / 20</p>
-              <p style="font-size:9px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Fases de pago</p>
+              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.02em">40/40/20</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Fases de pago</p>
             </div>
           </div>
         </div>
-        <div class="hero-intg-stats-m">
+        <div class="flex gap-8 mt-6 pt-5 lg:hidden" style="border-top:1px solid rgba(255,255,255,.08)">
           <div>
-            <p class="text-white font-black" style="font-size:1.0625rem;letter-spacing:-0.02em">Desde 26.000€</p>
-            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">40 m²</p>
+            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">26.000€</p>
+            <p class="text-xs mt-1" style="color:#9CA3AF">reforma completa</p>
           </div>
           <div>
-            <p class="text-white font-black" style="font-size:1.0625rem;letter-spacing:-0.02em">10–14 sem.</p>
-            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Plazo</p>
-          </div>
-          <div>
-            <p class="text-white font-black" style="font-size:1.0625rem;letter-spacing:-0.02em">40 / 40 / 20</p>
-            <p style="font-size:9px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Pago</p>
+            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">10–14</p>
+            <p class="text-xs mt-1" style="color:#9CA3AF">semanas</p>
           </div>
         </div>
       </div>
@@ -172,7 +167,7 @@ const zones = [
   </section>
 
   <!-- M2: Diagnóstico del parque residencial -->
-  <section class="py-20 bg-white" aria-labelledby="h-parque">
+  <section class="py-20 lg:py-28 bg-white" aria-labelledby="h-parque">
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de vivienda del Corredor</p>
@@ -189,7 +184,7 @@ const zones = [
       <p class="text-gray-700 leading-relaxed mb-3">
         Son los candidatos más habituales a la reforma integral. En estos edificios, las instalaciones tienen décadas de uso: cuadros eléctricos con fusibles de cerámica o magnetotérmicos de baja capacidad, tuberías de plomo o acero galvanizado en los más antiguos, de cobre con juntas de latón en los de los 80. Muchos no han tenido ninguna intervención desde la construcción.
       </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1 pl-5 list-disc">
+      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
         <li>Cuadro eléctrico sin capacidad para la carga actual (vitrocerámica, secadora, aire acondicionado)</li>
         <li>Fontanería de plomo o acero galvanizado: ya fuera de norma, con riesgo de rotura interna</li>
         <li>Distribución diseñada para los años 70: pasillos largos, habitaciones pequeñas, cocinas sin conexión visual al salón</li>
@@ -201,7 +196,7 @@ const zones = [
       <p class="text-gray-700 leading-relaxed mb-3">
         Los pisos construidos entre 1990 y 2005 tienen instalaciones en mejor estado, pero pueden necesitar una reforma integral por razones de distribución o de acabados envejecidos. El cuadro eléctrico suele tener más capacidad, pero los materiales (alicatados, pavimentos, carpintería) acumulan 20–30 años de uso.
       </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1 pl-5 list-disc">
+      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
         <li>Instalación eléctrica con diferencial y magnetotérmicos, pero sin circuitos independientes para cada electrodoméstico</li>
         <li>Fontanería de cobre o multicapa en buen estado en la mayoría de los casos</li>
         <li>Acabados de la época: baldosa hidráulica, gres de pequeño formato, puertas de DM con molduras</li>
@@ -215,7 +210,7 @@ const zones = [
       <p class="text-gray-700 leading-relaxed mb-3">
         En viviendas unifamiliares, la reforma integral tiene más superficie y más zonas que coordinar: varios baños, cocina grande, posiblemente garaje o sótano con humedad. El mayor reto aquí no es el alcance sino la secuencia: qué se abre primero, cómo se coordina sin que el acceso al chalet quede bloqueado.
       </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-6 space-y-1 pl-5 list-disc">
+      <ul class="text-sm text-gray-600 leading-relaxed mb-6 space-y-1.5 pl-5 list-disc">
         <li>Mayor superficie = más materiales, más tiempo, más gremios en paralelo</li>
         <li>Instalaciones de calefacción por radiadores que conviene revisar durante la obra</li>
         <li>Cubiertas inclinadas con posibles filtraciones no visibles en el interior</li>
@@ -310,7 +305,7 @@ const zones = [
     <div class="max-w-5xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Por qué la coordinación es la obra</p>
-        <h2 id="h-coordinacion" class="text-3xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        <h2 id="h-coordinacion" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em;text-wrap:balance">
           Seis equipos distintos. Una secuencia sin holgura.
         </h2>
         <p class="text-gray-600 max-w-2xl leading-relaxed">
@@ -424,7 +419,7 @@ const zones = [
             ].map((row, i) => (
               <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
                 <td class="py-3 px-5 text-gray-700">{row.label}</td>
-                <td class="py-3 px-5 text-right font-semibold text-[#A85535]">{row.price}</td>
+                <td class="py-3 px-5 text-right font-semibold text-gray-900">{row.price}</td>
                 <td class="py-3 px-5 text-right text-gray-500">{row.days}</td>
               </tr>
             ))}
@@ -458,54 +453,54 @@ const zones = [
           <tbody>
             <tr class="border-b border-gray-100">
               <td class="py-3 px-5 text-gray-700">Cocina (muebles, encimera, instalación)</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">20–30%</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">20–30%</td>
               <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Alto: el material de muebles y encimera varía mucho de precio sin afectar a la funcionalidad</td>
             </tr>
             <tr class="border-b border-gray-100 bg-gray-50">
               <td class="py-3 px-5 text-gray-700">Baño (sanitarios, revestimiento, instalación)</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">15–25%</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">15–25%</td>
               <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Alto: el formato del revestimiento y la gama de los sanitarios tienen rangos de precio muy amplios</td>
             </tr>
             <tr class="border-b border-gray-100">
               <td class="py-3 px-5 text-gray-700">Instalación eléctrica completa</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">10–15%</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">10–15%</td>
               <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Bajo: el trabajo es similar independientemente del acabado final elegido</td>
             </tr>
             <tr class="border-b border-gray-100 bg-gray-50">
               <td class="py-3 px-5 text-gray-700">Fontanería completa</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">8–12%</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">8–12%</td>
               <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Bajo: coste de materiales y mano de obra bastante fijo según el número de puntos</td>
             </tr>
             <tr class="border-b border-gray-100">
               <td class="py-3 px-5 text-gray-700">Suelos (tarima, porcelánico o microcemento)</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">10–18%</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">10–18%</td>
               <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Medio: el material puede variar bastante; la mano de obra de colocación es fija</td>
             </tr>
             <tr class="border-b border-gray-100 bg-gray-50">
               <td class="py-3 px-5 text-gray-700">Tabiquería, demolición y redistribución</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">8–12%</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">8–12%</td>
               <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Depende del alcance: sin redistribuir tabiques, el peso de esta partida cae significativamente</td>
             </tr>
             <tr class="border-b border-gray-100">
               <td class="py-3 px-5 text-gray-700">Pintura, carpintería interior y entrega</td>
-              <td class="py-3 px-5 text-right font-semibold text-[#A85535]">8–12%</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">8–12%</td>
               <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Medio: la carpintería interior es donde hay más diferencia de calidad visible en el resultado</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="grid md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-[#F9F7F4] p-6">
+        <div class="bg-[#F9F7F4] p-7">
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Gama entrada</p>
           <p class="text-sm font-bold text-gray-900 mb-2">Funcional y duradero</p>
           <p class="text-sm text-gray-600 leading-relaxed">Porcelánico de 45×45, muebles de cocina de catálogo estándar, sanitarios blancos de marca de referencia, pintura plástica. El resultado es limpio y funcional durante 15–20 años con mantenimiento mínimo.</p>
         </div>
-        <div class="bg-[#F9F7F4] p-6 border-t-4 border-[#A85535]">
+        <div class="bg-[#F9F7F4] p-7 border-t-4 border-[#A85535]">
           <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-2">Gama media</p>
           <p class="text-sm font-bold text-gray-900 mb-2">La elección más habitual</p>
           <p class="text-sm text-gray-600 leading-relaxed">Porcelánico de gran formato, muebles de cocina a medida en melamina de calidad, encimera de cuarzo, griferías de marca reconocida, tarima o vinílico técnico. El estándar que se pide con más frecuencia.</p>
         </div>
-        <div class="bg-[#F9F7F4] p-6">
+        <div class="bg-[#F9F7F4] p-7">
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Gama alta</p>
           <p class="text-sm font-bold text-gray-900 mb-2">Materiales sin compromiso</p>
           <p class="text-sm text-gray-600 leading-relaxed">Madera maciza o microcemento en suelos, cocina lacada, encimera de dekton o porcelánico de gran formato, griferías de diseño, ducha de obra con revestimiento continuo.</p>
@@ -642,7 +637,7 @@ const zones = [
             ].map((row, i) => (
               <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
                 <td class="py-3 px-5 text-gray-700">{row.fase}</td>
-                <td class="py-3 px-4 text-right font-semibold text-[#A85535]" style="font-variant-numeric:tabular-nums">{row.pct}</td>
+                <td class="py-3 px-4 text-right font-semibold text-gray-900" style="font-variant-numeric:tabular-nums">{row.pct}</td>
                 <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.nota}</td>
               </tr>
             ))}
@@ -680,7 +675,7 @@ const zones = [
 
   <!-- Proceso -->
   <section class="py-20 bg-white" aria-labelledby="h-proceso">
-    <div class="max-w-5xl mx-auto px-4">
+    <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
         <h2 id="h-proceso" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
@@ -728,13 +723,13 @@ const zones = [
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         {zones.map(z => (
-          <article class="group relative p-5 bg-[#F9F7F4] border-b-4 border-transparent hover:border-[#A85535] transition-colors">
-            <h3 class="text-sm font-bold text-gray-900 group-hover:text-[#A85535] transition-colors m-0">
+          <article class="group relative p-5 bg-[#F9F7F4] hover:bg-[#111827] transition-colors duration-200">
+            <h3 class="text-sm font-bold text-gray-900 group-hover:text-white transition-colors duration-200 m-0">
               <a href={`/reformas-integrales/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
                 Reformas integrales en {z.name}
               </a>
             </h3>
-            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 block">Ver precios y plazos →</span>
+            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 group-hover:text-gray-300 transition-colors duration-200 block">Ver precios y plazos →</span>
           </article>
         ))}
       </div>
@@ -773,7 +768,8 @@ const zones = [
           <details class="group py-5">
             <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
               <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
-              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+              <span class="text-gray-400 text-xl leading-none select-none font-normal block group-open:hidden" aria-hidden="true">+</span>
+              <span class="text-gray-400 text-xl leading-none select-none font-normal hidden group-open:block" aria-hidden="true">−</span>
             </summary>
             <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
           </details>
@@ -788,14 +784,14 @@ const zones = [
   <!-- CTA Final -->
   <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3">
+      <h2 id="h-cta-final" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em">
         ¿Cuánto cuesta reformar tu piso de manera integral?
       </h2>
-      <p class="text-white/80 mb-3">Visita técnica gratuita. Presupuesto cerrado por escrito.</p>
-      <p class="text-white/60 text-sm mb-8">Sin compromiso. El precio que firmamos es el precio que pagas.</p>
+      <p class="text-gray-400 mb-2">Visita técnica gratuita. Presupuesto cerrado por escrito.</p>
+      <p class="text-gray-600 text-sm mb-10">Sin compromiso. El precio que firmamos es el precio que pagas.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar presupuesto</a>
-        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/40 hover:border-white transition-colors">☎ {SITE.phoneDisplay}</a>
+        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">{SITE.phoneDisplay}</a>
       </div>
     </div>
   </section>
@@ -803,12 +799,8 @@ const zones = [
 </Layout>
 
 <style>
-  .hero-intg-grid { display:grid; gap:1.5rem; }
-  @media(min-width:1024px){ .hero-intg-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
-  .hero-intg-stats-d { display:none; text-align:right; }
-  @media(min-width:1024px){ .hero-intg-stats-d { display:block; } }
-  .hero-intg-stats-m { display:flex; gap:2rem; margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid rgba(255,255,255,.08); flex-wrap:wrap; }
-  @media(min-width:1024px){ .hero-intg-stats-m { display:none; } }
+  .hero-c-grid { display:grid; gap:1.5rem; }
+  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
   .compromisos-apertura-grid { display:grid; gap:2rem; }
   @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
 </style>

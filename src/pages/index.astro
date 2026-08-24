@@ -6,7 +6,7 @@ import { SITE, SERVICES, ZONES, AUTHOR, COMPROMISOS } from '../data/site';
 import { SERVICE_ICONS } from '../data/site';
 
 const publicDir = join(process.cwd(), 'public');
-const hasRealProjectImages = false; // se activa cuando existan fotos reales de obra
+const hasRealProjectImages = true;
 
 const primaryZoneDescs: Record<string, string> = {
   'alcala-de-henares': 'Zona prioritaria de actuación. Trabajamos en toda la ciudad: El Val, El Ensanche, Nueva Alcalá y el centro histórico. Reformas integrales de pisos de los setenta y ochenta que necesitan instalaciones completamente nuevas, así como chalets y adosados en las urbanizaciones del extrarradio que buscan redistribución y acabados de calidad.',
@@ -67,8 +67,14 @@ const trustCompromisos = COMPROMISOS.filter(c =>
   <!-- ══════════════════════════════════════
        HERO — A2 · Tipográfico con sigilo
   ══════════════════════════════════════ -->
-  <section class="bg-[#111827] hero-root flex flex-col justify-end" aria-labelledby="h-hero">
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+  <section class="bg-[#111827] hero-root flex flex-col justify-end" aria-labelledby="h-hero" style="position:relative">
+    <!-- Imagen de fondo: cubre la mitad derecha en desktop, fondo completo en mobile -->
+    <div class="hero-img-wrap" aria-hidden="true">
+      <img src="/img/hero-reforma-salon-corredor-henares.webp" alt="" class="hero-img" />
+      <div class="hero-img-overlay"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
       <!-- Sigilo: border-left terracota 4px mobile / 5px desktop.
            Único uso de acento lineal en esta sección. -->
       <div class="hero-sigil">
@@ -80,7 +86,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
     </div>
 
     <!-- Zona de soporte -->
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1">
       <div class="hero-support-border">
         <div class="hero-support-grid">
 
@@ -379,6 +385,67 @@ const trustCompromisos = COMPROMISOS.filter(c =>
   </section>
 
   <!-- ══════════════════════════════════════
+       PROYECTOS — Antes / Después
+  ══════════════════════════════════════ -->
+  {hasRealProjectImages && (
+  <section id="proyectos" class="py-24 lg:py-32 bg-white" aria-labelledby="h-proyectos">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-14">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Proyectos reales</p>
+        <h2 id="h-proyectos" class="font-black text-gray-900"
+            style="font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.02em;max-width:22ch;text-wrap:balance">
+          Antes y después de la reforma
+        </h2>
+      </div>
+
+      <div class="proyectos-grid">
+        {[
+          {
+            label: 'Baño · Torrejón de Ardoz',
+            antes: '/img/proyectos/bano-principal-antes-de-la-reforma-torrejon-madrid.webp',
+            despues: '/img/proyectos/bano-principal-despues-de-la-reforma-torrejon-madrid.webp',
+          },
+          {
+            label: 'Cambio bañera por plato de ducha · Guadalajara',
+            antes: '/img/proyectos/cambio-banera-plato-ducha-antes-guadalajara.webp',
+            despues: '/img/proyectos/cambio-banera-plato-ducha-despues-guadalajara.webp',
+          },
+          {
+            label: 'Cocina · Alcalá de Henares',
+            antes: '/img/proyectos/cocina-antes-alcala-madrid.webp',
+            despues: '/img/proyectos/cocina-despues-alcala-madrid.webp',
+          },
+          {
+            label: 'Buhardilla · Ajalvir',
+            antes: '/img/proyectos/estado-original-de-buhardilla-antes-de-la-reforma-ajalvir-madrid.jpg.webp',
+            despues: '/img/proyectos/estado-original-de-buhardilla-despues-de-la-reforma-ajalvir-madrid.jpg.webp',
+          },
+          {
+            label: 'Apartamento 50 m² · Madrid',
+            antes: '/img/proyectos/reforma-apartamento-50-m2-antes-madrid.jpg.webp',
+            despues: '/img/proyectos/reforma-apartamento-50-m2-despues-madrid.jpg.webp',
+          },
+        ].map(p => (
+          <article class="proyecto-item">
+            <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">{p.label}</p>
+            <div class="proyecto-pair">
+              <div class="proyecto-img-wrap">
+                <img src={p.antes} alt={`Antes de la reforma — ${p.label}`} class="proyecto-img" loading="lazy" />
+                <span class="proyecto-badge antes">Antes</span>
+              </div>
+              <div class="proyecto-img-wrap">
+                <img src={p.despues} alt={`Después de la reforma — ${p.label}`} class="proyecto-img" loading="lazy" />
+                <span class="proyecto-badge despues">Después</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  )}
+
+  <!-- ══════════════════════════════════════
        ZONAS — "8 municipios. 1 empresa."
   ══════════════════════════════════════ -->
   <section id="zonas" class="py-24 lg:py-32 bg-[#111827]" aria-labelledby="h-zonas">
@@ -504,6 +571,43 @@ const trustCompromisos = COMPROMISOS.filter(c =>
     padding-bottom: 4rem;
   }
 
+  .hero-img-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  /* Mobile: overlay oscuro casi total */
+  .hero-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.82);
+  }
+  /* Desktop: imagen en mitad derecha, texto en mitad izquierda limpia */
+  @media (min-width: 1024px) {
+    .hero-img {
+      left: 40%;
+      width: 60%;
+    }
+    .hero-img-overlay {
+      background: linear-gradient(
+        to right,
+        #111827 35%,
+        rgba(17, 24, 39, 0.6) 60%,
+        rgba(17, 24, 39, 0.15) 100%
+      );
+      left: 0;
+      width: 100%;
+    }
+  }
+
   /* Sigilo terracota: 4px mobile → 5px desktop */
   .hero-sigil {
     border-left: 4px solid #A85535;
@@ -542,6 +646,49 @@ const trustCompromisos = COMPROMISOS.filter(c =>
       grid-template-columns: 3fr 2fr;
       gap: 4rem;
     }
+  }
+
+  /* ── Proyectos ─────────────────────────── */
+  .proyectos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+  .proyecto-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: #D1C9BD;
+  }
+  .proyecto-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: #f0ede8;
+  }
+  .proyecto-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .proyecto-badge {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.625rem;
+  }
+  .proyecto-badge.antes {
+    background: rgba(0, 0, 0, 0.55);
+    color: #9CA3AF;
+  }
+  .proyecto-badge.despues {
+    background: #A85535;
+    color: #fff;
   }
 
   /* ── Precios ───────────────────────────── */

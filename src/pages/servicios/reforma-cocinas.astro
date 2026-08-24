@@ -134,6 +134,13 @@ const tranches = [
 
 <style>
   /* ── HERO ───────────────────────────────────────────── */
+  .hero-img-wrap { position:absolute; inset:0; overflow:hidden; }
+  .hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .hero-img-overlay { position:absolute; inset:0; background:rgba(17,24,39,.82); }
+  @media(min-width:1024px){
+    .hero-img { inset:unset; top:0; bottom:0; left:40%; width:60%; }
+    .hero-img-overlay { background:linear-gradient(to right,#111827 35%,rgba(17,24,39,.6) 60%,rgba(17,24,39,.15) 100%); }
+  }
   .hero-support {
     display: grid;
     gap: 1.5rem;
@@ -240,10 +247,14 @@ const tranches = [
        tesis (declaración dominante). Semántica intacta.
        Sin trazo decorativo. Distribución integrada.
   ═══════════════════════════════════════════════════════ -->
-  <section class="bg-[#111827] flex flex-col justify-end" style="min-height:100vh;padding-top:2.5rem;padding-bottom:4rem" aria-labelledby="h-hero">
+  <section class="bg-[#111827] flex flex-col justify-end" style="min-height:100vh;padding-top:2.5rem;padding-bottom:4rem;position:relative" aria-labelledby="h-hero">
+    <div class="hero-img-wrap" aria-hidden="true">
+      <img src="/img/hero-reforma-cocinas-corredor-henares.webp" alt="" class="hero-img" loading="eager" />
+      <div class="hero-img-overlay"></div>
+    </div>
 
     <!-- H1 con dos niveles visuales en un único elemento semántico -->
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
       <h1 id="h-hero" class="font-black text-white" style="line-height:1;text-wrap:balance">
         <span class="block text-white/50 font-bold" style="font-size:clamp(.875rem,1.6vw,1.125rem);letter-spacing:.01em;margin-bottom:1rem">
           Reforma de cocinas en el Corredor del Henares
@@ -255,7 +266,7 @@ const tranches = [
     </div>
 
     <!-- Separador + soporte -->
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1">
       <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
         <div class="hero-support">
 

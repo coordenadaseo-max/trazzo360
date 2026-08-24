@@ -132,16 +132,20 @@ const zones = [
 
   <!-- ── 1. HERO C — Tipográfico ──────────────────────────────── -->
   <section class="bg-[#111827] flex flex-col justify-center lg:justify-end"
-           style="min-height:100vh;padding-bottom:3.5rem"
+           style="min-height:100vh;padding-bottom:3.5rem;position:relative"
            aria-labelledby="h-hero">
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full">
+    <div class="hero-img-wrap" aria-hidden="true">
+      <img src="/img/hero-reforma-banos-corredor-henares.webp" alt="" class="hero-img" loading="eager" />
+      <div class="hero-img-overlay"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
       <p class="font-black uppercase text-[#A85535] mb-6" style="font-size:10px;letter-spacing:.15em">Reforma de baños · Corredor del Henares</p>
       <h1 id="h-hero" class="font-black text-white"
           style="font-size:clamp(2.5rem,9.5vw,8.5rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance;margin-bottom:0">
         Reforma de baños<br>en el Corredor del Henares
       </h1>
     </div>
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem)">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1">
       <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
         <div class="hero-c-grid">
           <!-- Párrafo principal -->
@@ -190,6 +194,13 @@ const zones = [
   <style>
     .hero-c-grid { display:grid; gap:1.5rem; }
     @media(min-width:1024px){ .hero-c-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
+    .hero-img-wrap { position:absolute; inset:0; overflow:hidden; }
+    .hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .hero-img-overlay { position:absolute; inset:0; background:rgba(17,24,39,.82); }
+    @media(min-width:1024px){
+      .hero-img { left:40%; width:60%; inset:unset; top:0; bottom:0; }
+      .hero-img-overlay { background:linear-gradient(to right,#111827 35%,rgba(17,24,39,.6) 60%,rgba(17,24,39,.15) 100%); }
+    }
   </style>
 
   <!-- ── 2. EL PARQUE DEL CORREDOR (white, 70/30) ───────────── -->

@@ -1,0 +1,896 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Compromisos from '../../components/Compromisos.astro';
+import { SITE } from '../../data/site';
+
+const title = 'Reformas Integrales en el Corredor del Henares | Trazzo360';
+const description = 'Reformas integrales en el Corredor del Henares: redistribución, instalaciones, baño, cocina y acabados. Un interlocutor, precio cerrado, plazo garantizado.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Reformas Integrales en el Corredor del Henares',
+  description,
+  provider: { '@type': 'GeneralContractor', '@id': `${SITE.url}/#business`, name: SITE.name },
+  areaServed: ['Torrejón de Ardoz','Alcalá de Henares','Coslada','San Fernando de Henares','Guadalajara','Azuqueca de Henares','Meco','Camarma de Esteruelas'],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Reformas Integrales', item: `${SITE.url}/servicios/reformas-integrales/` },
+  ],
+};
+
+const faqs = [
+  {
+    q: '¿Cuándo tiene sentido hacer una reforma integral en lugar de reformar solo baño o cocina?',
+    a: 'Cuando las instalaciones necesitan renovación. Si el cuadro eléctrico es insuficiente o la fontanería presenta problemas, abrirlo todo a la vez es más eficiente que hacer obras sucesivas: separar en dos obras puede obligar a repetir desescombros, coordinaciones de gremios y acabados de transición, por lo que conviene comparar ambos planteamientos antes de decidir.',
+  },
+  {
+    q: '¿Qué incluye una reforma integral y qué puede quedar fuera del alcance básico?',
+    a: 'Una reforma integral completa abarca derribo y redistribución de tabiques, instalación eléctrica nueva, fontanería, solados y alicatados, reforma de baño y cocina, carpintería interior y pintura final. Lo que puede quedar fuera son los electrodomésticos de alta gama, el mobiliario de salón y obras en cubierta o fachada que requieren tramitación adicional.',
+  },
+  {
+    q: '¿Qué debería tener claro antes de pedir presupuesto de una reforma integral?',
+    a: 'Lo fundamental es la distribución final: qué tabiques se derriban y cómo quedan los espacios. El diseño de materiales puede cerrarse después, pero si la distribución cambia con la obra ya empezada, el presupuesto se desvía. En la visita técnica gratuita evaluamos el estado de las instalaciones y te orientamos si todavía no tienes todo definido.',
+  },
+  {
+    q: '¿Qué puede aparecer como imprevisto durante una reforma integral?',
+    a: 'Al abrir paredes y suelos pueden aparecer instalaciones en peor estado del que sugería la inspección previa: tuberías con corrosión interna, cableado deteriorado bajo el yeso o soportes que necesitan reparación. Si durante la obra aparece algo nuevo, lo comunicamos antes de actuar y lo valoramos por separado. Nunca ampliamos el alcance sin tu autorización.',
+  },
+  {
+    q: '¿Puedo seguir viviendo en el piso durante la reforma integral?',
+    a: 'No es recomendable. El polvo, el ruido y los cortes de suministros hacen inviable la convivencia habitual durante la fase de demolición e instalaciones. Si no tienes alternativa de alojamiento, podemos plantear una ejecución por fases que te permita tener siempre una zona habitable, aunque esto alarga el plazo total.',
+  },
+  {
+    q: '¿Cuánto dura una reforma integral?',
+    a: 'Una reforma completa de un piso de 70–90 m² lleva entre 8 y 14 semanas según el alcance y si hay redistribución de tabiques. La fecha de entrega se fija en el contrato y, si nos retrasamos por causas propias, aplicamos las penalizaciones pactadas por escrito.',
+  },
+  {
+    q: '¿Cómo comparo dos presupuestos de reforma integral?',
+    a: 'Compáralos partida por partida, no solo por el total. Dos presupuestos con el mismo importe pueden contemplar alcances distintos en demolición, estado de instalaciones que se asumen renovadas o conservadas, calidad de materiales y gestión de escombros. Pide que cada uno especifique qué está incluido y qué está excluido antes de decidir.',
+  },
+  {
+    q: '¿Cuánto tiempo tendré que estar fuera del piso durante la reforma?',
+    a: 'En una reforma integral estándar de 70–90 m², entre 8 y 14 semanas. Durante la fase de demolición e instalaciones (primeras 4–6 semanas), no es viable vivir en el piso: los cortes de agua y luz son frecuentes y el nivel de polvo y ruido es muy alto. A partir de la fase de acabados, la situación mejora, pero el polvo sigue presente. Si puedes encontrar alojamiento alternativo para todo el período, el resultado final es mejor porque no hay que adaptar la secuencia.',
+  },
+  {
+    q: '¿Cómo se coordinan todos los gremios para que no haya retrasos entre ellos?',
+    a: 'Hay un responsable de obra que planifica y coordina a todos los gremios desde el primer día: electricistas, fontaneros, alicatadores, carpinteros, pintores. Ese responsable es quien conoce el cronograma, gestiona los solapamientos y avisa cuando la siguiente fase puede entrar. No hablas con cada gremio por separado: hay una sola persona que tienes como referencia durante toda la obra.',
+  },
+  {
+    q: '¿Cuándo tiene sentido incluir suelo radiante en una reforma integral?',
+    a: 'Cuando la vivienda no tiene instalación de calefacción o la existente necesita renovación completa. El suelo radiante es más eficiente que los radiadores cuando se combina con caldera de condensación o bomba de calor, y da más confort térmico en invierno. Su instalación tiene sentido hacerla durante la reforma integral porque requiere levantar todos los suelos, algo que ya se hace en ese tipo de obra. El sobrecoste respecto a una tarima o porcelánico estándar puede recuperarse en eficiencia energética en 5–8 años según el uso.',
+  },
+  {
+    q: '¿Qué ventajas tiene abrir la cocina al salón en una reforma integral?',
+    a: 'La apertura cambia completamente la percepción del espacio: el salón parece más grande, la luz natural llega a la cocina y se mejora la comunicación entre quien cocina y quien está en el salón. El inconveniente es que el ruido y los olores también circulan más. Antes de decidir, hay que revisar si el tabique es estructural (requiere proyecto técnico) y cómo se va a resolver la extracción de la cocina abierta.',
+  },
+  {
+    q: '¿Cómo cambia vivir en un piso reformado integralmente?',
+    a: 'Lo que más se nota no es lo estético, sino lo funcional. Una instalación eléctrica nueva soporta los electrodomésticos actuales sin disparar el diferencial. Una fontanería renovada elimina las goteras y el ruido de tuberías por la noche. Los suelos nuevos y la pintura reciente cambian la percepción de limpieza y amplitud. Al cabo de un mes de vivir en el piso reformado, la referencia mental del anterior se borra completamente.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const zones = [
+  { name: 'Torrejón de Ardoz',       slug: 'torrejon-de-ardoz' },
+  { name: 'Alcalá de Henares',       slug: 'alcala-de-henares' },
+  { name: 'Coslada',                 slug: 'coslada' },
+  { name: 'San Fernando de Henares', slug: 'san-fernando-de-henares' },
+  { name: 'Guadalajara',             slug: 'guadalajara' },
+  { name: 'Azuqueca de Henares',     slug: 'azuqueca-de-henares' },
+  { name: 'Meco',                    slug: 'meco' },
+  { name: 'Camarma de Esteruelas',   slug: 'camarma-de-esteruelas' },
+];
+---
+
+<Layout title={title} description={description} schema={[serviceSchema, breadcrumbSchema, faqSchema]}>
+
+  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
+        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li>Servicios</li>
+        <li aria-hidden="true" class="text-gray-300">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Reformas Integrales</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-[#111827] flex flex-col justify-center lg:justify-end"
+           style="min-height:100vh;padding-bottom:3.5rem;position:relative"
+           aria-labelledby="h-hero">
+    <div class="hero-img-wrap" aria-hidden="true">
+      <img src="/img/hero-reformas-integrales-corredor-henares.webp" alt="" class="hero-img" loading="eager" />
+      <div class="hero-img-overlay"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
+      <h1 id="h-hero" class="font-black text-white"
+          style="font-size:clamp(2.75rem,10vw,9rem);letter-spacing:-0.04em;line-height:0.88;margin-bottom:0">
+        <span class="hero-line"><span>Reformas integrales</span></span>
+        <span class="hero-line"><span>en el Corredor</span></span>
+        <span class="hero-line"><span>del Henares</span></span>
+      </h1>
+    </div>
+    <div class="hero-sub max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1">
+      <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
+        <div class="hero-c-grid">
+          <p class="text-gray-400 leading-relaxed" style="font-size:clamp(0.875rem,1vw,0.95rem);max-width:50ch">
+            Un único interlocutor coordina todos los gremios: electricistas, fontaneros, alicatadores, carpinteros y pintores. Precio cerrado por contrato. Plazo garantizado antes de empezar.
+          </p>
+          <div class="flex flex-col gap-3">
+            <a href="/contacto/" class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+              Solicitar presupuesto gratis
+            </a>
+            <a href={`tel:${SITE.phone}`} class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white border border-white/25 hover:border-white/60 transition-colors">
+              {SITE.phoneDisplay}
+            </a>
+          </div>
+          <div class="hidden lg:flex flex-col gap-6 text-right">
+            <div>
+              <p class="text-white font-black leading-none metric-value" data-count="26000" data-suffix="€" style="font-size:clamp(2rem,3.5vw,3rem);letter-spacing:-0.04em">26.000€</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:6px;letter-spacing:.1em;text-transform:uppercase">Desde · 40&nbsp;m² esencial</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(2rem,3.5vw,3rem);letter-spacing:-0.04em">10–14</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:6px;letter-spacing:.1em;text-transform:uppercase">Semanas · reforma completa</p>
+            </div>
+            <div>
+              <p class="text-white font-black leading-none" style="font-size:clamp(2rem,3.5vw,3rem);letter-spacing:-0.04em">40/40/20</p>
+              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:6px;letter-spacing:.1em;text-transform:uppercase">Fases de pago</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-8 mt-6 pt-5 lg:hidden" style="border-top:1px solid rgba(255,255,255,.08)">
+          <div>
+            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">26.000€</p>
+            <p class="text-xs mt-1" style="color:#9CA3AF">reforma completa</p>
+          </div>
+          <div>
+            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">10–14</p>
+            <p class="text-xs mt-1" style="color:#9CA3AF">semanas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M2: Diagnóstico del parque residencial -->
+  <section class="py-20 lg:py-28 bg-white" aria-labelledby="h-parque">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <h2 id="h-parque" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
+          Qué reformas integrales vemos habitualmente en el Corredor
+        </h2>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed mb-8">
+        Una reforma integral no empieza por los azulejos. Empieza por una pregunta: ¿qué estado tienen las instalaciones? La respuesta cambia radicalmente el alcance y el presupuesto. Y esa respuesta depende, sobre todo, de cuándo se construyó el edificio.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Pisos de los años 70–80 (bloques de Coslada, San Fernando, Torrejón y Alcalá)</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        Son los candidatos más habituales a la reforma integral. En estos edificios, las instalaciones tienen décadas de uso: cuadros eléctricos con fusibles de cerámica o magnetotérmicos de baja capacidad, tuberías de plomo o acero galvanizado en los más antiguos, de cobre con juntas de latón en los de los 80. Muchos no han tenido ninguna intervención desde la construcción.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
+        <li>Cuadro eléctrico sin capacidad para la carga actual (vitrocerámica, secadora, aire acondicionado)</li>
+        <li>Fontanería de plomo o acero galvanizado: ya fuera de norma, con riesgo de rotura interna</li>
+        <li>Distribución diseñada para los años 70: pasillos largos, habitaciones pequeñas, cocinas sin conexión visual al salón</li>
+        <li>Aislamiento acústico y térmico por debajo de las exigencias actuales</li>
+        <li>Humedades por capilaridad en plantas bajas o filtraciones en cubiertas planas</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Viviendas de los años 90–2000 (Alcalá, Azuqueca, Guadalajara y municipios en expansión)</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        Los pisos construidos entre 1990 y 2005 tienen instalaciones en mejor estado, pero pueden necesitar una reforma integral por razones de distribución o de acabados envejecidos. El cuadro eléctrico suele tener más capacidad, pero los materiales (alicatados, pavimentos, carpintería) acumulan 20–30 años de uso.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
+        <li>Instalación eléctrica con diferencial y magnetotérmicos, pero sin circuitos independientes para cada electrodoméstico</li>
+        <li>Fontanería de cobre o multicapa en buen estado en la mayoría de los casos</li>
+        <li>Acabados de la época: baldosa hidráulica, gres de pequeño formato, puertas de DM con molduras</li>
+        <li>Distribución funcional pero mejorable con la apertura de la cocina al salón</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mt-4 mb-8">
+        Las ventanas de aluminio instaladas en edificios anteriores a 2006 no tienen rotura de puente térmico: el frío exterior llega directamente al interior y genera condensaciones en los marcos en invierno. En una reforma integral, cambiarlas en la misma obra tiene un coste marginal frente al sobrecoste de organizar una obra de carpintería independiente más adelante. La visita técnica evalúa el estado del marco: si está en buen estado, puede bastar con cambiar solo el vidrio por uno de baja emisividad.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Chalets y adosados (Meco, Camarma, San Fernando y urbanizaciones periféricas)</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        En viviendas unifamiliares, la reforma integral tiene más superficie y más zonas que coordinar: varios baños, cocina grande, posiblemente garaje o sótano con humedad. El mayor reto aquí no es el alcance sino la secuencia: qué se abre primero, cómo se coordina sin que el acceso al chalet quede bloqueado.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-6 space-y-1.5 pl-5 list-disc">
+        <li>Mayor superficie = más materiales, más tiempo, más gremios en paralelo</li>
+        <li>Instalaciones de calefacción por radiadores que conviene revisar durante la obra</li>
+        <li>Cubiertas inclinadas con posibles filtraciones no visibles en el interior</li>
+        <li>Jardín y zonas exteriores que pueden requerir intervención adicional</li>
+      </ul>
+
+      <p class="text-gray-700 leading-relaxed">
+        En la visita técnica gratuita evaluamos el estado de las instalaciones, la estructura y el alcance real antes de dar ningún precio. Lo que encontramos en esa visita determina si estás ante una reforma de pisos (acabados y baño+cocina sin tocar instalaciones) o ante una reforma integral. La diferencia de presupuesto puede ser de 10.000€ para arriba.
+      </p>
+    </div>
+  </section>
+
+  <!-- M4: La decisión clave -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-decision">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <h2 id="h-decision" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
+          Reforma parcial o integral: dónde está el umbral
+        </h2>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed mb-6">
+        La pregunta que separa una reforma parcial (baño + cocina + suelos) de una integral es el estado de las instalaciones. No es una cuestión de presupuesto ni de ambición: es una cuestión técnica. Si el cuadro eléctrico no puede asumir la carga actual o la fontanería lleva décadas sin intervención, renovar solo los acabados es posponer el problema, no resolverlo.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-7 border-t-4 border-[#A85535]">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Reforma parcial tiene sentido cuando…</h3>
+          <ul class="list-marca">
+            <li><span>El cuadro eléctrico tiene capacidad suficiente para los electrodomésticos actuales</span></li>
+            <li><span>La fontanería no ha dado problemas y está en buen estado a la inspección visual</span></li>
+            <li><span>Solo quieres renovar acabados, baño, cocina y suelos</span></li>
+            <li><span>El presupuesto máximo disponible no permite abordar instalaciones nuevas</span></li>
+          </ul>
+          <p class="text-sm font-semibold text-[#A85535] mt-4">300–500 €/m² · ejemplo: 18.000–40.000€ para un piso de 60–80 m² (sin IVA)</p>
+        </div>
+        <div class="bg-white p-7 border-t-4 border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Reforma integral tiene sentido cuando…</h3>
+          <ul class="list-marca">
+            <li><span>El cuadro eléctrico es de los años 70–80 o no cumple la normativa actual</span></li>
+            <li><span>La fontanería es de plomo, acero galvanizado o cobre con problemas</span></li>
+            <li><span>Quieres cambiar la distribución (derribar o levantar tabiques)</span></li>
+            <li><span>La vivienda no ha tenido ninguna reforma desde la construcción</span></li>
+          </ul>
+          <p class="text-sm font-semibold text-gray-500 mt-4">650–1.400 €/m² · ejemplo: desde 32.500€ para un piso de 50 m² (sin IVA)</p>
+        </div>
+      </div>
+
+      <div class="bg-white border-l-4 border-[#A85535] p-6">
+        <p class="text-sm font-semibold text-gray-900 mb-2">El coste real de posponer las instalaciones</p>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Si haces una reforma parcial hoy y en tres años el cuadro eléctrico o la fontanería necesitan intervención, tendrás que volver a abrir suelos, paredes y posiblemente desmontar parte de lo que acabas de reformar. El sobrecoste de hacer dos obras en lugar de una es sistemáticamente mayor que el de hacer la integral desde el principio. La visita técnica lo cuantifica antes de que tomes ninguna decisión.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué incluye -->
+  <section class="py-20 bg-white" aria-labelledby="h-que-incluye">
+    <div class="max-w-7xl mx-auto px-4">
+      <figure style="margin-bottom:3rem;overflow:hidden;aspect-ratio:16/7;background:#f0ede8">
+        <img src="/img/servicios/obra-en-ejecucion-reforma-integral.webp"
+             alt="Obra en ejecución durante reforma integral: tabiquería y estructura preparada"
+             style="width:100%;height:100%;object-fit:cover;display:block"
+             loading="lazy" />
+      </figure>
+
+      <div class="max-w-3xl mb-14 reveal">
+        <h2 id="h-que-incluye" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
+          Qué incluye una reforma integral
+        </h2>
+        <p class="text-gray-600 leading-relaxed" style="max-width:58ch">
+          Una reforma integral cubre todo el proceso de principio a fin. Lo que dice el presupuesto es lo que se ejecuta: no hay partidas que se descubran durante la obra que no estuvieran ya contempladas en la inspección previa.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-0 reveal-stagger" style="border-top:1px solid #E5E7EB">
+        {[
+          { n:'01', title: 'Demolición y redistribución', desc: 'Derribo de tabiques existentes, apertura de huecos y redistribución según el proyecto. Gestión de escombros a contenedor.' },
+          { n:'02', title: 'Instalación eléctrica', desc: 'Cuadro nuevo con magnetotérmicos y diferencial, circuitos independientes para electrodomésticos de alta potencia, tomas y puntos de luz.' },
+          { n:'03', title: 'Fontanería completa', desc: 'Renovación de tuberías de suministro y desagüe, acometidas a baño y cocina, revisión de caldera y adaptación a nuevos puntos.' },
+          { n:'04', title: 'Tabiquería y acabados base', desc: 'Nuevas particiones de pladur o ladrillo, enlucido, revestimientos de paredes y techos. Falso techo donde aplique.' },
+          { n:'05', title: 'Baño y cocina coordinados', desc: 'Reforma completa en la misma obra: sin costes de movilización dobles, sin solapamientos de gremios, materiales elegidos antes de empezar.' },
+          { n:'06', title: 'Suelos, carpintería y entrega', desc: 'Tarima o porcelánico en toda la vivienda, puertas interiores nuevas, armarios si aplica, pintura final y limpieza. Garantía de 2 años.' },
+        ].map(item => (
+          <div class="flex gap-6 py-8 px-2" style="border-bottom:1px solid #E5E7EB">
+            <span class="font-black text-[#A85535] leading-none flex-shrink-0 select-none" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.05em;opacity:0.25;line-height:1;padding-top:2px">{item.n}</span>
+            <div>
+              <h3 class="text-base font-bold text-gray-900 mb-1">{item.title}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Coordinación de gremios — A1 thesis section -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-coordinacion">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-10">
+        <h2 id="h-coordinacion" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
+          Seis equipos distintos. Una secuencia sin holgura.
+        </h2>
+        <p class="text-gray-600 max-w-2xl leading-relaxed">
+          En una reforma integral intervienen electricistas, fontaneros, albañiles, alicatadores, carpinteros y pintores. Cada equipo depende de que el anterior haya terminado exactamente lo que le corresponde. Un electricista que no sabe dónde van las rozas del fontanero las duplica. Una cuadrilla de alicatado que entra antes de tiempo cierra paredes con instalaciones sin terminar. La coordinación entre ellos no es gestión administrativa: es lo que determina si la obra sale bien o si aparecen problemas meses después.
+        </p>
+      </div>
+
+      <!-- Diagrama de fases -->
+      <div class="overflow-x-auto mb-10">
+        <div class="min-w-[640px]">
+          <div class="grid grid-cols-6 gap-px bg-gray-200">
+            {[
+              { n: '01', fase: 'Demolición', dep: 'Revela el estado real de instalaciones', accent: false },
+              { n: '02', fase: 'Instalaciones', dep: 'Electricidad + fontanería en toda la vivienda', accent: true },
+              { n: '03', fase: 'Albañilería', dep: 'Cierre de paramentos y tabiquería', accent: false },
+              { n: '04', fase: 'Revestimientos', dep: 'Baño, cocina y suelos coordinados', accent: false },
+              { n: '05', fase: 'Carpintería', dep: 'Puertas, armarios y marcos', accent: false },
+              { n: '06', fase: 'Entrega', dep: 'Pintura, limpieza y revisión final', accent: false },
+            ].map(f => (
+              <div class={`bg-white p-5 border-t-4 ${f.accent ? 'border-[#A85535]' : 'border-gray-100'}`}>
+                <div class="text-xs font-bold text-gray-300 mb-2">{f.n}</div>
+                <div class="text-sm font-bold text-gray-900 mb-1">{f.fase}</div>
+                <div class="text-xs text-gray-500 leading-snug">{f.dep}</div>
+              </div>
+            ))}
+          </div>
+          <div class="bg-[#A85535] h-1 w-full mt-0"></div>
+          <p class="text-xs text-gray-400 mt-2">Un único responsable de obra coordina la entrada y salida de cada equipo a lo largo de toda la secuencia.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 border-l-4 border-[#A85535]">
+          <h3 class="text-sm font-bold text-gray-900 mb-2">Sin tiempos muertos entre gremios</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Cada equipo entra cuando el anterior ha terminado lo que le corresponde, no antes ni después. No hay semanas de espera entre fases porque no hay nadie que las coordine.</p>
+        </div>
+        <div class="bg-white p-6 border-l-4 border-gray-200">
+          <h3 class="text-sm font-bold text-gray-900 mb-2">Un interlocutor en todo momento</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">No hablas con el electricista un día y con el fontanero otro. Hay una persona responsable de toda la obra que coordina los equipos y que responde ante cualquier incidencia.</p>
+        </div>
+        <div class="bg-white p-6 border-l-4 border-gray-200">
+          <h3 class="text-sm font-bold text-gray-900 mb-2">La secuencia no es flexible</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Las instalaciones van antes del cierre de paramentos. Los revestimientos van sobre paramentos terminados. Saltarse pasos genera defectos que se detectan meses después de la entrega, no en la revisión final.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vida durante la obra -->
+  <section class="py-20 bg-[#111827]" aria-labelledby="h-vida-obra">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <h2 id="h-vida-obra" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+          Cómo organizamos la obra cuando la vivienda no puede utilizarse con normalidad
+        </h2>
+      </div>
+      <p class="text-gray-300 leading-relaxed mb-8">
+        Una reforma integral requiere que abandones el piso durante semanas. Es incómodo, tiene un coste de alojamiento real y condiciona tu vida durante ese tiempo. Por eso el primer paso de la planificación no es el cronograma de obra: es saber cuándo puedes irte, cuánto tiempo puedes estar fuera y cuándo necesitas volver.
+      </p>
+      <ul class="space-y-6">
+        {[
+          { title: 'Cronograma con fecha de vuelta comprometida', desc: 'No te damos un plazo genérico de "8 a 14 semanas". Te damos una fecha de entrega concreta que queda en el contrato. Si nos retrasamos por causas propias, aplicamos las penalizaciones acordadas.' },
+          { title: 'Comunicación semanal del avance', desc: 'Cada semana recibes un resumen del estado de la obra con fotos. Sabes exactamente en qué fase está tu piso sin tener que llamar para preguntarlo.' },
+          { title: 'Sin sorpresas de alcance', desc: 'Si al abrir paredes o suelos aparece algo que no era visible en la inspección, lo comunicamos antes de actuar. Te decimos qué encontramos, cuánto cuesta resolverlo y esperamos tu decisión.' },
+          { title: 'Un solo interlocutor durante toda la obra', desc: 'No hablas con el electricista un día y con el fontanero otro. Hay una persona responsable de toda la obra que coordina los gremios y que es tu contacto directo en todo momento.' },
+          { title: 'El piso al entrar: limpio, no "casi terminado"', desc: 'La limpieza final de la obra es parte del proceso, no un extra. Cuando te entregamos el piso, está en condiciones de empezar a vivir, no en condiciones de terminar de limpiar.' },
+        ].map(item => (
+          <li class="flex gap-5">
+            <div class="w-1 flex-shrink-0 bg-[#A85535] mt-1" style="min-height:1.25rem"></div>
+            <div>
+              <p class="font-semibold text-white mb-1">{item.title}</p>
+              <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p class="text-gray-500 text-sm mt-10">
+        Todo esto no está en el presupuesto porque no tiene precio. Está en cómo trabajamos.
+      </p>
+    </div>
+  </section>
+
+  <!-- M5: Comparativa -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-comparativa">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-comparativa" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        Opciones y precios orientativos
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        El precio de una reforma integral depende del estado de las instalaciones, del alcance de la redistribución y de los materiales elegidos. Los siguientes rangos son orientativos para el Corredor del Henares; el presupuesto exacto se cierra tras la visita técnica gratuita. Puedes obtener una estimación inicial ajustada a tu superficie y calidad en la <a href="/calculadora-precio-reforma/" class="text-[#A85535] hover:underline font-medium">calculadora de precios de reforma</a>. Si tu reforma no incluye renovación de instalaciones, consulta también las guías de precios: <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="text-[#A85535] hover:underline font-medium">reforma de baño</a>, <a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="text-[#A85535] hover:underline font-medium">reforma de cocina</a> y <a href="/guias/cuanto-cuesta-reformar-un-piso/" class="text-[#A85535] hover:underline font-medium">reforma de piso</a>.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-white">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato tras la visita.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th class="text-left py-3 px-5 font-bold text-gray-900">Alcance</th>
+              <th class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo</th>
+              <th class="text-right py-3 px-5 font-bold text-gray-900">Plazo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: 'Reforma de acabados (sin renovar instalaciones)', price: '300–500 €/m²', days: '5–8 sem.' },
+              { label: 'Reforma integral esencial (instalaciones nuevas)', price: '650–800 €/m²', days: '10–14 sem.' },
+              { label: 'Reforma integral media', price: '800–1.000 €/m²', days: '12–16 sem.' },
+              { label: 'Reforma integral alta', price: '1.000–1.400 €/m²', days: '14–20 sem.' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-5 text-gray-700">{row.label}</td>
+                <td class="py-3 px-5 text-right font-semibold text-gray-900">{row.price}</td>
+                <td class="py-3 px-5 text-right text-gray-500">{row.days}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué encarece una reforma integral -->
+  <section class="py-16 bg-white" aria-labelledby="h-que-encarece">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-8">
+        <h2 id="h-que-encarece" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Qué encarece una reforma integral y qué puede ajustarse
+        </h2>
+      </div>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        El presupuesto de una reforma integral no es un número redondo ni un precio por metro cuadrado. Está compuesto por partidas con pesos muy distintos. Conocer cuánto representa cada una permite saber dónde hay margen de ajuste real y dónde no lo hay.
+      </p>
+      <div class="overflow-x-auto mb-10">
+        <table class="w-full text-sm border-collapse bg-white">
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th class="text-left py-3 px-5 font-bold text-gray-900">Partida</th>
+              <th class="text-right py-3 px-5 font-bold text-gray-900">Peso sobre el total</th>
+              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Margen de ajuste</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 px-5 text-gray-700">Cocina (muebles, encimera, instalación)</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">20–30%</td>
+              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Alto: el material de muebles y encimera varía mucho de precio sin afectar a la funcionalidad</td>
+            </tr>
+            <tr class="border-b border-gray-100 bg-gray-50">
+              <td class="py-3 px-5 text-gray-700">Baño (sanitarios, revestimiento, instalación)</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">15–25%</td>
+              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Alto: el formato del revestimiento y la gama de los sanitarios tienen rangos de precio muy amplios</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 px-5 text-gray-700">Instalación eléctrica completa</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">10–15%</td>
+              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Bajo: el trabajo es similar independientemente del acabado final elegido</td>
+            </tr>
+            <tr class="border-b border-gray-100 bg-gray-50">
+              <td class="py-3 px-5 text-gray-700">Fontanería completa</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">8–12%</td>
+              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Bajo: coste de materiales y mano de obra bastante fijo según el número de puntos</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 px-5 text-gray-700">Suelos (tarima, porcelánico o microcemento)</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">10–18%</td>
+              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Medio: el material puede variar bastante; la mano de obra de colocación es fija</td>
+            </tr>
+            <tr class="border-b border-gray-100 bg-gray-50">
+              <td class="py-3 px-5 text-gray-700">Tabiquería, demolición y redistribución</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">8–12%</td>
+              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Depende del alcance: sin redistribuir tabiques, el peso de esta partida cae significativamente</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 px-5 text-gray-700">Pintura, carpintería interior y entrega</td>
+              <td class="py-3 px-5 text-right font-semibold text-gray-900">8–12%</td>
+              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Medio: la carpintería interior es donde hay más diferencia de calidad visible en el resultado</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-[#F9F7F4] p-7">
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Gama entrada</p>
+          <p class="text-sm font-bold text-gray-900 mb-2">Funcional y duradero</p>
+          <p class="text-sm text-gray-600 leading-relaxed">Porcelánico de 45×45, muebles de cocina de catálogo estándar, sanitarios blancos de marca de referencia, pintura plástica. El resultado es limpio y funcional durante 15–20 años con mantenimiento mínimo.</p>
+        </div>
+        <div class="bg-[#F9F7F4] p-7 border-t-4 border-[#A85535]">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-2">Gama media</p>
+          <p class="text-sm font-bold text-gray-900 mb-2">La elección más habitual</p>
+          <p class="text-sm text-gray-600 leading-relaxed">Porcelánico de gran formato, muebles de cocina a medida en melamina de calidad, encimera de cuarzo, griferías de marca reconocida, tarima o vinílico técnico. El estándar que se pide con más frecuencia.</p>
+        </div>
+        <div class="bg-[#F9F7F4] p-7">
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Gama alta</p>
+          <p class="text-sm font-bold text-gray-900 mb-2">Materiales sin compromiso</p>
+          <p class="text-sm text-gray-600 leading-relaxed">Madera maciza o microcemento en suelos, cocina lacada, encimera de dekton o porcelánico de gran formato, griferías de diseño, ducha de obra con revestimiento continuo.</p>
+        </div>
+      </div>
+      <p class="text-sm text-gray-500">En todos los casos, el precio cerrado en el contrato es el precio final: no hay suplementos por materiales ni por trabajo que "no se había previsto".</p>
+    </div>
+  </section>
+
+  <!-- Empresa de reformas integrales -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-elegir-empresa">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-8">
+        <h2 id="h-elegir-empresa" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+          Cómo elegir una empresa de reformas integrales
+        </h2>
+      </div>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        Una reforma integral es probablemente la compra más cara que harás en tu vivienda. La empresa de reformas integrales que elijas determina si el resultado es el que esperabas o si aparecen problemas meses después de la entrega. Estos son los criterios que importan, en el orden en que importan.
+      </p>
+      <div class="space-y-4 mb-8">
+        <div class="bg-white p-7 border-l-4 border-[#A85535]">
+          <h3 class="text-base font-bold text-gray-900 mb-2">1. Precio cerrado en el contrato, no presupuesto orientativo</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">El presupuesto que firmas tiene que ser el precio final. Cualquier empresa que ofrezca un presupuesto "orientativo sujeto a confirmación durante la obra" está trasladándote el riesgo a ti. Una empresa de reformas integrales que trabaja con precio cerrado ha inspeccionado el piso antes de presupuestar, ha documentado el estado de las instalaciones y se hace responsable de lo que firma.</p>
+        </div>
+        <div class="bg-white p-7 border-l-4 border-[#A85535]">
+          <h3 class="text-base font-bold text-gray-900 mb-2">2. Un interlocutor durante toda la obra, no un gremio distinto cada semana</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">La coordinación entre gremios es el punto de fallo más frecuente en las reformas integrales. Si el electricista termina y el fontanero no puede empezar porque el primero no dejó las canalizaciones donde correspondía, quien pierde tiempo eres tú. Un responsable de obra único que coordina a todos los gremios y responde ante cualquier incidencia es la diferencia entre una reforma que avanza y una que se para.</p>
+        </div>
+        <div class="bg-white p-7 border-l-4 border-[#A85535]">
+          <h3 class="text-base font-bold text-gray-900 mb-2">3. Plazo comprometido con penalizaciones, no "aproximadamente"</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Si el plazo no está en el contrato con consecuencias claras en caso de incumplimiento, no existe. Pregunta directamente: "¿qué pasa si la obra se retrasa por causas propias?" Si la respuesta no incluye una penalización concreta, el plazo es aspiracional.</p>
+        </div>
+        <div class="bg-white p-7 border-l-4 border-[#A85535]">
+          <h3 class="text-base font-bold text-gray-900 mb-2">4. Obra propia en el área donde vives</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Una empresa de reformas integrales que trabaja en el Corredor del Henares conoce los plazos reales de las licencias en cada municipio, los proveedores de materiales de la zona y las particularidades del parque de edificios local. La cercanía no es solo logística: es conocimiento del contexto en el que va a ejecutarse la obra.</p>
+        </div>
+      </div>
+      <div class="bg-white border-l-4 border-[#A85535] p-6">
+        <p class="text-sm font-semibold text-gray-900 mb-2">La visita técnica gratuita es el primer criterio de selección</p>
+        <p class="text-sm text-gray-600 leading-relaxed">Una empresa de reformas integrales que presupuesta sin visitar el piso no puede darte un precio cerrado. La visita previa al presupuesto no es una formalidad: es la fase en la que se inspeccionan las instalaciones, se identifica qué puede aparecer al abrir y se determina si el alcance pedido es ejecutable con el presupuesto disponible. Si alguien te da un precio integral por teléfono o por m², ese precio no es el precio final.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- M3: Licencias -->
+  <section class="py-16 bg-white" aria-labelledby="h-licencias">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-licencias" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        ¿Qué licencia necesitas para una reforma integral?
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Depende del alcance. Una reforma interior que no afecta a elementos estructurales ni fachada puede tramitarse como comunicación previa o licencia de obra menor en la mayoría de los municipios del Corredor del Henares. El derribo de muros de carga o la modificación de la estructura del edificio requiere proyecto de arquitecto técnico y licencia de obra mayor.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Iniciamos el trámite en paralelo con la fase de proyecto para que la licencia esté disponible cuando la obra esté lista para empezar. Los plazos de resolución varían por municipio y por carga administrativa del ayuntamiento en cada momento; en la visita técnica te informamos de los pasos que corresponden a tu caso.
+      </p>
+      <div class="bg-[#F9F7F4] border-l-4 border-amber-400 p-6 mb-6">
+        <p class="text-sm font-semibold text-gray-900 mb-2">Comunidades de propietarios en bloques</p>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Si el piso está en un edificio con comunidad de propietarios, algunos estatutos exigen notificación previa para obras que generen ruido en horario de convivencia o que afecten a zonas comunes. Te informamos del procedimiento antes de empezar. El horario de obra está sujeto a la normativa municipal de ruido de cada municipio.
+        </p>
+      </div>
+      <p class="text-gray-700 leading-relaxed">
+        Nos encargamos de toda la gestión documental: informe de estado previo, memoria descriptiva, proyecto técnico si aplica y gestión de la licencia. El tiempo de tramitación queda reflejado en el cronograma de la obra y no penaliza el plazo de entrega comprometido.
+      </p>
+    </div>
+  </section>
+
+  <!-- M6: Cómo comparar presupuestos -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-comparar">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-comparar" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Cómo leer un presupuesto de reforma integral
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        Dos presupuestos con el mismo importe total pueden cubrir alcances completamente distintos. Estas son las partidas que hay que revisar en cualquier propuesta que recibas.
+      </p>
+      <dl class="divide-y divide-gray-200 bg-white p-6">
+        {[
+          { term: 'Alcance de las instalaciones', def: 'El presupuesto debe especificar si la instalación eléctrica y la fontanería se renuevan o solo se adaptan. "Reforma integral" que mantiene las instalaciones existentes es, en realidad, una reforma parcial.' },
+          { term: 'Gestión de escombros', def: 'En una reforma integral, la demolición genera varios metros cúbicos de escombro. El coste del contenedor o del transporte a punto limpio debe estar incluido en el presupuesto, no aparecer como extra al final.' },
+          { term: 'Proyecto técnico', def: 'Si hay derribo de muros o modificación estructural, el presupuesto debe incluir el proyecto de arquitecto técnico y su visado. Si no lo incluye, pregunta quién lo paga y si ya está tramitado.' },
+          { term: 'Materiales especificados', def: 'El presupuesto debe indicar la calidad de los materiales (tarima maciza vs. laminada, porcelánico rectificado vs. baldosa estándar, marca de sanitarios). Si dice "mueble de baño según selección", pide que aclaren el rango de precio.' },
+          { term: 'Coordinación de gremios', def: 'Pregunta quién coordina la entrada y salida de cada gremio. Un presupuesto que suma trabajos por separado no tiene por qué incluir la coordinación entre ellos: puede haber tiempos muertos que alargan el plazo y los costes de varios meses de obra.' },
+          { term: 'Garantía de ejecución', def: 'La garantía sobre la obra debe cubrir al menos 2 años desde la entrega. Es diferente de la garantía de los materiales, que la da el fabricante. Si el presupuesto no la menciona, pregunta qué pasa si hay problemas al año siguiente.' },
+        ].map(({ term, def }) => (
+          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
+            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
+            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-8 bg-white border-l-4 border-[#A85535] p-6">
+        <p class="text-sm font-semibold text-gray-900 mb-3">Precio cerrado e imprevistos en una reforma integral</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma integral, eso incluye el estado de las instalaciones accesibles, la estructura observable y los elementos que se pueden medir antes de abrir. Si al derribar un tabique aparece un problema estructural no previsto o al abrir el suelo encontramos tuberías en peor estado del visible, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas integrales del Corredor, el precio cierra sin desviaciones. Cuando hay imprevistos, hay una persona que llama, explica y espera antes de actuar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- M7: Plazos -->
+  <section class="py-16 bg-white" aria-labelledby="h-plazos">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-plazos" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+        Plazos reales de una reforma integral
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        La secuencia de fases en una reforma integral no es flexible: las instalaciones van antes de los acabados, y los acabados van en un orden específico. Saltarse pasos o solapar fases incompatibles genera problemas que se notan al cabo de meses o años.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
+          <caption class="text-left text-xs text-gray-400 mb-3 block">
+            Peso orientativo de cada fase sobre el total de la obra. El plazo absoluto depende del alcance y la superficie; la fecha de entrega queda fijada en el contrato.
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th class="text-left py-3 px-5 font-bold text-gray-900">Fase</th>
+              <th class="text-right py-3 px-4 font-bold text-gray-900">Peso sobre el total</th>
+              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Qué condiciona la siguiente fase</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { fase: 'Demolición', pct: '12%', nota: 'Define el estado real de las instalaciones existentes' },
+              { fase: 'Instalaciones (eléctrica y fontanería)', pct: '28%', nota: 'Fase más larga; debe completarse antes de cerrar paramentos' },
+              { fase: 'Albañilería (tabiquería, enlucido)', pct: '15%', nota: 'Precondición para comenzar cualquier revestimiento' },
+              { fase: 'Revestimientos (solados y alicatados)', pct: '25%', nota: 'Incluye baño y cocina; determina los plazos de carpintería' },
+              { fase: 'Carpintería interior', pct: '12%', nota: 'Se instala sobre solados terminados; puertas, armarios, premarcos' },
+              { fase: 'Pintura, limpieza y entrega', pct: '8%', nota: 'Fase final; incluye revisión y acta de entrega' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
+                <td class="py-3 px-5 text-gray-700">{row.fase}</td>
+                <td class="py-3 px-4 text-right font-semibold text-gray-900" style="font-variant-numeric:tabular-nums">{row.pct}</td>
+                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.nota}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-400 mt-4">
+        La secuencia no es flexible: las instalaciones condicionan el cierre de paramentos, y el cierre de paramentos condiciona los revestimientos. Solapar fases incompatibles genera problemas que se detectan meses después de la entrega.
+      </p>
+    </div>
+  </section>
+
+  <!-- M8: Compromisos -->
+  <section class="py-20 bg-white" aria-labelledby="h-compromisos">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="compromisos-apertura-grid mb-14 pb-14" style="border-bottom:1px solid #D1C9BD">
+        <div>
+          <p class="font-black text-gray-900 leading-none" style="font-size:clamp(5rem,14vw,10rem);letter-spacing:-0.055em;line-height:1">2</p>
+          <p class="text-sm font-bold text-gray-900 mt-3">años de garantía</p>
+          <p class="text-xs text-gray-500">sobre la ejecución</p>
+        </div>
+        <div class="lg:pt-4">
+          <h2 id="h-compromisos" class="text-4xl lg:text-5xl font-black text-gray-900 mb-5 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
+            Nuestros compromisos en la reforma integral
+          </h2>
+          <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
+            Estos compromisos quedan recogidos en el contrato que firmamos antes de empezar la obra. No son promesas: son las condiciones del acuerdo.
+          </p>
+        </div>
+      </div>
+      <Compromisos variant="full" />
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section class="py-20 bg-white" aria-labelledby="h-proceso">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-12 reveal">
+        <h2 id="h-proceso" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
+          Del primer contacto a la entrega llave en mano
+        </h2>
+      </div>
+      <div class="proceso-steps space-y-0" style="max-width:44rem">
+        {[
+          { n: '01', title: 'Visita técnica gratuita', desc: 'Visitamos el piso, evaluamos instalaciones, tomamos medidas y escuchamos qué quieres. Sin compromiso ni coste.' },
+          { n: '02', title: 'Presupuesto cerrado por escrito', desc: 'Presupuesto detallado por partidas. Materiales especificados. Precio que no cambia una vez firmado.' },
+          { n: '03', title: 'Proyecto y licencia', desc: 'Redactamos el proyecto técnico y tramitamos la licencia de obra en el ayuntamiento en paralelo con la preparación.' },
+          { n: '04', title: 'Demolición e instalaciones', desc: 'Vaciado, derribo de tabiques y ejecución de instalaciones nuevas de electricidad y fontanería.' },
+          { n: '05', title: 'Acabados coordinados', desc: 'Solados, baño, cocina, carpintería y pintura. Un único equipo coordinado, sin esperas entre gremios.' },
+          { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo, limpieza de obra y entrega con garantía de 2 años sobre la ejecución.' },
+        ].map(step => (
+          <div class="grid items-start py-7" style="grid-template-columns:3rem 1fr;gap:1.5rem;border-bottom:1px solid #F3F4F6">
+            <p class="font-black leading-none" style="font-size:1.5rem;letter-spacing:-0.04em;color:#A85535;line-height:1.1" aria-hidden="true">{step.n}</p>
+            <div>
+              <p class="font-bold text-gray-900 mb-1.5 text-base">{step.title}</p>
+              <p class="text-sm text-gray-500 leading-relaxed" style="max-width:48ch">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Resultado cotidiano -->
+  <div class="bg-white py-10">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-base text-gray-600 leading-relaxed" style="max-width:58ch">
+        Al mes de vivir en el piso reformado, la referencia del anterior desaparece. Lo que queda es la instalación eléctrica que aguanta el aire acondicionado sin disparar el diferencial, el agua caliente que llega sin esperar, la cocina donde cabe más de una persona, el suelo que no cruje. La reforma integral no cambia solo lo que se ve: cambia lo que se vive cada día.
+      </p>
+    </div>
+  </div>
+
+  <!-- Dónde hacemos reformas integrales -->
+  <section class="py-16 bg-white" aria-labelledby="h-zonas">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 id="h-zonas" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        Reformas integrales en el Corredor del Henares: todos los municipios
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
+        Hacemos reformas integrales en los ocho municipios del Corredor del Henares sin coste adicional de desplazamiento. Selecciona tu municipio para ver precios orientativos y los plazos habituales en tu zona.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {zones.map(z => (
+          <article class="group relative p-5 bg-[#F9F7F4] hover:bg-[#111827] transition-colors duration-200">
+            <h3 class="text-sm font-bold text-gray-900 group-hover:text-white transition-colors duration-200 m-0">
+              <a href={`/reformas-integrales/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
+                Reformas integrales en {z.name}
+              </a>
+            </h3>
+            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 group-hover:text-gray-300 transition-colors duration-200 block">Ver precios y plazos →</span>
+          </article>
+        ))}
+      </div>
+      <div class="mt-10 pt-8 border-t border-gray-100">
+        <p class="text-sm text-gray-500 mb-4">Si solo necesitas reformar una zona de la vivienda:</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/servicios/reforma-banos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de baños</a>
+          <a href="/servicios/reforma-cocinas/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de cocinas</a>
+          <a href="/servicios/reforma-pisos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de pisos</a>
+        </div>
+        <div class="mt-6">
+          <p class="text-sm text-gray-500 mb-3">Información sobre el parque de vivienda y las reformas más habituales en cada municipio:</p>
+          <div class="flex flex-wrap gap-2">
+            {zones.map(z => (
+              <a href={`/zonas/${z.slug}/`} class="inline-block px-3 py-1.5 text-xs font-medium text-gray-600 bg-gray-50 border border-gray-200 hover:border-[#A85535] hover:text-[#A85535] transition-colors">
+                Obras en {z.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <h2 id="h-faq" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
+          Todo lo que necesitas saber antes de una reforma integral
+        </h2>
+      </div>
+      <div class="divide-y divide-gray-200">
+        {faqs.map(faq => (
+          <details class="group py-5">
+            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
+              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
+              <span class="text-gray-400 text-xl leading-none select-none font-normal block group-open:hidden" aria-hidden="true">+</span>
+              <span class="text-gray-400 text-xl leading-none select-none font-normal hidden group-open:block" aria-hidden="true">−</span>
+            </summary>
+            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- M9 placeholder -->
+  <!-- TODO: activar cuando haya fotografías reales de reformas integrales en el Corredor -->
+
+  <!-- CTA Final -->
+  <section class="py-28 bg-[#111827]" aria-labelledby="h-cta-final">
+    <div class="max-w-4xl mx-auto px-4 text-center reveal">
+      <h2 id="h-cta-final" class="font-black text-white mb-5" style="font-size:clamp(2.25rem,6vw,4rem);letter-spacing:-0.04em;line-height:0.92;text-wrap:balance">
+        ¿Cuánto cuesta reformar<br>tu piso integralmente?
+      </h2>
+      <p class="text-gray-400 mb-2 text-lg">Visita técnica gratuita. Presupuesto cerrado por escrito.</p>
+      <p class="text-gray-600 text-sm mb-12">Sin compromiso. El precio que firmamos es el precio que pagas.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto/" class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar presupuesto</a>
+        <a href={`tel:${SITE.phone}`} class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">{SITE.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Layout */
+  .hero-c-grid { display:grid; gap:1.5rem; }
+  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
+  .hero-img-wrap { position:absolute; inset:0; overflow:hidden; }
+  .hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .hero-img-overlay { position:absolute; inset:0; background:rgba(17,24,39,.68); }
+  .compromisos-apertura-grid { display:grid; gap:2rem; }
+  @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
+
+  /* Hero line animation */
+  .hero-line { overflow:hidden; display:block; }
+  .hero-line > span { display:block; transform:translateY(110%); animation:heroSlideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .hero-line:nth-child(1) > span { animation-delay:0.05s; }
+  .hero-line:nth-child(2) > span { animation-delay:0.18s; }
+  .hero-line:nth-child(3) > span { animation-delay:0.31s; }
+  @keyframes heroSlideUp { to { transform:translateY(0); } }
+
+  /* Sub-hero content fade in */
+  .hero-sub { opacity:0; animation:heroFade 0.7s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; }
+  @keyframes heroFade { to { opacity:1; } }
+
+  /* Scroll reveals */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.visible { opacity:1; transform:none; }
+
+  /* Stagger grid reveal */
+  .reveal-stagger > * { opacity:0; transform:translateY(18px); transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+  .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.07s; }
+  .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.14s; }
+  .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.21s; }
+  .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.28s; }
+  .reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.35s; }
+
+  /* Proceso connector line */
+  .proceso-steps { position:relative; }
+  .proceso-steps::before {
+    content:''; position:absolute;
+    left:1.35rem; top:1.75rem; bottom:0;
+    width:1px;
+    background:linear-gradient(to bottom, #A85535 0%, #E5E7EB 60%, transparent 100%);
+  }
+
+  /* Metric count-up */
+  .metric-value { font-variant-numeric:tabular-nums; }
+
+  /* Browser surfaces */
+  ::selection { background:#A85535; color:#fff; }
+  :focus-visible { outline:2px solid #A85535; outline-offset:3px; }
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#D1C9BD; }
+  ::-webkit-scrollbar-thumb:hover { background:#A85535; }
+
+  /* Reduced motion */
+  @media(prefers-reduced-motion:reduce) {
+    .hero-line > span, .hero-sub { animation:none; opacity:1; transform:none; }
+    .reveal, .reveal-stagger > * { opacity:1; transform:none; transition:none; }
+  }
+</style>
+
+<script>
+  // Scroll reveals
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+  // Count-up for [data-count]
+  function countUp(el: HTMLElement) {
+    const target = parseFloat((el as HTMLElement & { dataset: { count: string; suffix?: string } }).dataset.count);
+    const suffix = (el as HTMLElement & { dataset: { suffix?: string } }).dataset.suffix || '';
+    const dur = 1100;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toLocaleString('es-ES') + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  const cio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { countUp(e.target as HTMLElement); cio.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+</script>

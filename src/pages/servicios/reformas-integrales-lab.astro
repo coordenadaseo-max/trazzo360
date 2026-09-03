@@ -183,10 +183,7 @@ const zones = [
 
       <div class="era-timeline">
         <div class="era-col">
-          <div class="era-col__header">
-            <span class="era-decade font-display">70–80</span>
-            <span class="era-tag">Instalaciones obsoletas</span>
-          </div>
+          <p class="era-tag">Instalaciones obsoletas</p>
           <h3 class="era-col__title">Pisos de los años 70–80 (bloques de Coslada, San Fernando, Torrejón y Alcalá)</h3>
           <p class="era-col__body">Los candidatos más habituales. Instalaciones con décadas de uso sin intervención: cuadros con fusibles de cerámica, tuberías de plomo o acero galvanizado. Muchos no han tenido ninguna reforma desde la construcción.</p>
           <ul class="era-list">
@@ -199,10 +196,7 @@ const zones = [
         </div>
 
         <div class="era-col">
-          <div class="era-col__header">
-            <span class="era-decade font-display">90–00</span>
-            <span class="era-tag">Distribución y acabados envejecidos</span>
-          </div>
+          <p class="era-tag">Distribución y acabados envejecidos</p>
           <h3 class="era-col__title">Viviendas de los años 90–2000 (Alcalá, Azuqueca, Guadalajara y municipios en expansión)</h3>
           <p class="era-col__body">Los pisos construidos entre 1990 y 2005 tienen instalaciones en mejor estado, pero pueden necesitar una reforma integral por razones de distribución o de acabados envejecidos. El cuadro eléctrico suele tener más capacidad, pero los materiales acumulan 20–30 años de uso.</p>
           <ul class="era-list">
@@ -215,10 +209,7 @@ const zones = [
         </div>
 
         <div class="era-col">
-          <div class="era-col__header">
-            <span class="era-decade era-decade--tipo font-display">Chalet</span>
-            <span class="era-tag">Coordinación y secuencia de gremios</span>
-          </div>
+          <p class="era-tag">Coordinación y secuencia de gremios</p>
           <h3 class="era-col__title">Chalets y adosados (Meco, Camarma, San Fernando y urbanizaciones periféricas)</h3>
           <p class="era-col__body">En viviendas unifamiliares, la reforma integral tiene más superficie y más zonas que coordinar: varios baños, cocina grande, posiblemente garaje o sótano con humedad. El mayor reto aquí no es el alcance sino la secuencia.</p>
           <ul class="era-list">
@@ -1031,98 +1022,89 @@ const zones = [
     border-top:3px solid #111827;
   }
   @media(min-width:768px){
-    .era-timeline {
-      grid-template-columns:repeat(3,1fr);
-    }
+    .era-timeline { grid-template-columns:repeat(3,1fr); }
   }
 
   .era-col {
     padding:1.75rem 0 2rem 0;
     border-bottom:1px solid #E5E7EB;
+    transition:background 0.25s ease;
+    cursor:default;
   }
   @media(min-width:768px){
     .era-col {
       padding:2rem 2rem 2rem 0;
       border-bottom:none;
       border-right:1px solid #D1D5DB;
+      position:relative;
     }
     .era-col:last-child { border-right:none; }
     .era-col:not(:first-child){ padding-left:2rem; }
   }
   @media(max-width:767px){ .era-col:last-child { border-bottom:none; } }
 
-  /* Header: número + pill en la misma línea */
-  .era-col__header {
-    display:flex;
-    align-items:baseline;
-    gap:0.875rem;
-    flex-wrap:wrap;
-    margin-bottom:1rem;
-    padding-bottom:1rem;
-    border-bottom:1px solid #F3F4F6;
+  /* Top accent — terracota on hover */
+  .era-col::before {
+    content:'';
+    position:absolute;
+    top:-3px; left:0;
+    width:0; height:3px;
+    background:#A85535;
+    transition:width 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  @media(min-width:768px){
+    .era-col:hover::before { width:100%; }
+    .era-col:hover { background:#FAFAF8; }
   }
 
-  .era-decade {
-    font-size:clamp(2.25rem,4vw,3.25rem);
-    font-weight:900;
-    letter-spacing:-0.04em;
-    line-height:1;
-    color:#111827;
-    flex-shrink:0;
-  }
-  .era-decade--tipo { font-size:clamp(1.75rem,3vw,2.5rem); }
-
-  /* Tag pill — inline con el número */
+  /* Pill eyebrow */
   .era-tag {
     display:inline-flex;
     align-items:center;
     gap:0.35rem;
     font-size:0.625rem;
     font-weight:700;
-    color:#6B7280;
-    letter-spacing:0.06em;
+    color:#A85535;
+    letter-spacing:0.1em;
     text-transform:uppercase;
-    padding:0.25rem 0.6rem 0.25rem 0.45rem;
-    background:#F3F4F6;
-    border-radius:2px;
-    white-space:nowrap;
-    flex-shrink:0;
-    margin-bottom:0.15rem;
+    margin-bottom:0.75rem;
+    font-family:'Courier New', monospace;
   }
   .era-tag::before {
     content:'';
     width:4px; height:4px;
     border-radius:50%;
-    background:#A85535;
+    background:currentColor;
     flex-shrink:0;
   }
 
-  /* Title */
+  /* H3 — protagonista */
   .era-col__title {
-    font-size:0.9375rem;
-    font-weight:700;
+    font-size:clamp(1.0625rem,1.5vw,1.25rem);
+    font-weight:800;
     color:#111827;
-    line-height:1.4;
-    margin-bottom:0.625rem;
+    line-height:1.35;
+    letter-spacing:-0.02em;
+    margin-bottom:1rem;
+    padding-bottom:1rem;
+    border-bottom:1px solid #F3F4F6;
   }
 
   /* Body */
   .era-col__body {
     font-size:0.8125rem;
     color:#6B7280;
-    line-height:1.65;
-    margin-bottom:0.875rem;
-    padding-bottom:0.875rem;
-    border-bottom:1px solid #F3F4F6;
+    line-height:1.7;
+    margin-bottom:1rem;
   }
 
   /* Issue list */
-  .era-list { list-style:none; padding:0; margin:0; }
+  .era-list { list-style:none; padding:0; margin:0; border-top:1px solid #F3F4F6; }
   .era-list li {
     font-size:0.8125rem;
     color:#374151;
     line-height:1.5;
-    padding:0.45rem 0;
+    padding:0.5rem 0;
     border-bottom:1px solid #F3F4F6;
     display:grid;
     grid-template-columns:0.875rem 1fr;

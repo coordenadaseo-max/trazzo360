@@ -720,7 +720,7 @@ const zones = [
           Del primer contacto a la entrega llave en mano
         </h2>
       </div>
-      <div class="proceso-steps space-y-0" style="max-width:44rem">
+      <div class="proceso-steps" style="max-width:44rem">
         {[
           { n: '01', title: 'Visita técnica gratuita', desc: 'Visitamos el piso, evaluamos instalaciones, tomamos medidas y escuchamos qué quieres. Sin compromiso ni coste.' },
           { n: '02', title: 'Presupuesto cerrado por escrito', desc: 'Presupuesto detallado por partidas. Materiales especificados. Precio que no cambia una vez firmado.' },
@@ -729,11 +729,11 @@ const zones = [
           { n: '05', title: 'Acabados coordinados', desc: 'Solados, baño, cocina, carpintería y pintura. Un único equipo coordinado, sin esperas entre gremios.' },
           { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo, limpieza de obra y entrega con garantía de 2 años sobre la ejecución.' },
         ].map(step => (
-          <div class="grid items-start py-7" style="grid-template-columns:3rem 1fr;gap:1.5rem;border-bottom:1px solid #F3F4F6">
-            <p class="font-black leading-none" style="font-size:1.5rem;letter-spacing:-0.04em;color:#A85535;line-height:1.1" aria-hidden="true">{step.n}</p>
-            <div>
-              <p class="font-bold text-gray-900 mb-1.5 text-base">{step.title}</p>
-              <p class="text-sm text-gray-500 leading-relaxed" style="max-width:48ch">{step.desc}</p>
+          <div class="proceso-step">
+            <span class="proceso-step__n" aria-hidden="true">{step.n}</span>
+            <div class="proceso-step__body">
+              <p class="proceso-step__title">{step.title}</p>
+              <p class="proceso-step__desc">{step.desc}</p>
             </div>
           </div>
         ))}
@@ -941,10 +941,15 @@ const zones = [
   .proceso-steps { position:relative; }
   .proceso-steps::before {
     content:''; position:absolute;
-    left:1.35rem; top:1.75rem; bottom:0;
+    left:0.875rem; top:2rem; bottom:0;
     width:1px;
     background:linear-gradient(to bottom, #A85535 0%, #E5E7EB 60%, transparent 100%);
   }
+  .proceso-step { display:grid; grid-template-columns:2rem 1fr; gap:0 1.5rem; padding:1.375rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s, padding-left 0.2s; position:relative; }
+  .proceso-step:hover { background:#F9F7F4; padding-left:0.875rem; }
+  .proceso-step__n { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.3rem; z-index:1; position:relative; }
+  .proceso-step__title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.375rem; }
+  .proceso-step__desc { font-size:0.875rem; color:#4B5563; line-height:1.65; max-width:48ch; }
 
   /* Metric count-up */
   .metric-value { font-variant-numeric:tabular-nums; }

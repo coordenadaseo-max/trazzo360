@@ -585,17 +585,28 @@ const zones = [
       <h2 id="h-licencias" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
         ¿Qué licencia necesitas para una reforma integral?
       </h2>
-      <p class="text-gray-700 leading-relaxed mb-4">
+      <p class="text-gray-700 leading-relaxed mb-6">
         Depende del alcance. Una reforma interior que no afecta a elementos estructurales ni fachada puede tramitarse como comunicación previa o licencia de obra menor en la mayoría de los municipios del Corredor del Henares. El derribo de muros de carga o la modificación de la estructura del edificio requiere proyecto de arquitecto técnico y licencia de obra mayor.
       </p>
+
+      <!-- Dos tipos de licencia -->
+      <div class="licencia-grid mb-6">
+        <div class="licencia-card">
+          <p class="licencia-card__tag">Comunicación previa · Obra menor</p>
+          <p class="licencia-card__body">Reforma interior sin afectar estructura ni fachada. Instalaciones, tabiquería interior, baño, cocina y acabados. La mayoría de las reformas integrales residenciales entran en esta categoría.</p>
+        </div>
+        <div class="licencia-card licencia-card--mayor">
+          <p class="licencia-card__tag licencia-card__tag--dark">Licencia de obra mayor</p>
+          <p class="licencia-card__body">Derribo de muros de carga o modificación estructural del edificio. Requiere proyecto de arquitecto técnico y visado previo al inicio de la obra.</p>
+        </div>
+      </div>
+
       <p class="text-gray-700 leading-relaxed mb-6">
         Iniciamos el trámite en paralelo con la fase de proyecto para que la licencia esté disponible cuando la obra esté lista para empezar. Los plazos de resolución varían por municipio y por carga administrativa del ayuntamiento en cada momento; en la visita técnica te informamos de los pasos que corresponden a tu caso.
       </p>
-      <div class="bg-[#F9F7F4] border-l-4 border-amber-400 p-6 mb-6">
-        <p class="text-sm font-semibold text-gray-900 mb-2">Comunidades de propietarios en bloques</p>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Si el piso está en un edificio con comunidad de propietarios, algunos estatutos exigen notificación previa para obras que generen ruido en horario de convivencia o que afecten a zonas comunes. Te informamos del procedimiento antes de empezar. El horario de obra está sujeto a la normativa municipal de ruido de cada municipio.
-        </p>
+      <div class="empresa-callout mb-6">
+        <p class="empresa-callout__title">Comunidades de propietarios en bloques</p>
+        <p class="empresa-callout__body">Si el piso está en un edificio con comunidad de propietarios, algunos estatutos exigen notificación previa para obras que generen ruido en horario de convivencia o que afecten a zonas comunes. Te informamos del procedimiento antes de empezar. El horario de obra está sujeto a la normativa municipal de ruido de cada municipio.</p>
       </div>
       <p class="text-gray-700 leading-relaxed">
         Nos encargamos de toda la gestión documental: informe de estado previo, memoria descriptiva, proyecto técnico si aplica y gestión de la licencia. El tiempo de tramitación queda reflejado en el cronograma de la obra y no penaliza el plazo de entrega comprometido.
@@ -1268,6 +1279,15 @@ const zones = [
   @media(min-width:640px){ .empresa-callout { grid-template-columns:14rem 1fr; gap:0 2rem; align-items:start; } }
   .empresa-callout__title { font-size:0.875rem; font-weight:700; color:#111827; line-height:1.35; }
   .empresa-callout__body { font-size:0.8125rem; color:#6B7280; line-height:1.65; }
+
+  /* Tarjetas tipo de licencia */
+  .licencia-grid { display:grid; grid-template-columns:1fr; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
+  @media(min-width:640px){ .licencia-grid { grid-template-columns:1fr 1fr; } }
+  .licencia-card { background:#F9F7F4; padding:1.5rem; }
+  .licencia-card--mayor { background:#fff; }
+  .licencia-card__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; margin-bottom:0.625rem; }
+  .licencia-card__tag--dark { color:#111827; }
+  .licencia-card__body { font-size:0.8125rem; color:#4B5563; line-height:1.6; }
 
   /* Fase cards - dynamic */
   /* Fase grid — responsive */

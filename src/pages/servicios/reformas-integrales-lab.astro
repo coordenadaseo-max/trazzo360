@@ -184,12 +184,13 @@ const zones = [
 
       <div class="era-timeline">
         <div class="era-col">
-          <div class="era-col__head">
-            <span class="era-decade font-display" aria-hidden="true">70–80</span>
+          <div class="era-stamp">
+            <span class="era-label">Construido en</span>
+            <span class="era-decade font-display">70–80</span>
           </div>
+          <p class="era-tag">Instalaciones obsoletas</p>
           <h3 class="era-col__title">Pisos de los años 70–80 (bloques de Coslada, San Fernando, Torrejón y Alcalá)</h3>
-          <p class="era-col__diagnosis">Instalaciones obsoletas</p>
-          <p class="text-sm text-gray-600 leading-relaxed mb-3">Los candidatos más habituales. Instalaciones con décadas de uso sin intervención: cuadros con fusibles de cerámica, tuberías de plomo o acero galvanizado. Muchos no han tenido ninguna reforma desde la construcción.</p>
+          <p class="era-col__body">Los candidatos más habituales. Instalaciones con décadas de uso sin intervención: cuadros con fusibles de cerámica, tuberías de plomo o acero galvanizado. Muchos no han tenido ninguna reforma desde la construcción.</p>
           <ul class="era-list">
             <li>Cuadro eléctrico sin capacidad para vitrocerámica, secadora o aire acondicionado</li>
             <li>Fontanería de plomo o acero galvanizado: fuera de norma, con riesgo de rotura interna</li>
@@ -200,12 +201,13 @@ const zones = [
         </div>
 
         <div class="era-col">
-          <div class="era-col__head">
-            <span class="era-decade font-display" aria-hidden="true">90–00</span>
+          <div class="era-stamp">
+            <span class="era-label">Construido en</span>
+            <span class="era-decade font-display">90–00</span>
           </div>
+          <p class="era-tag">Distribución y acabados envejecidos</p>
           <h3 class="era-col__title">Viviendas de los años 90–2000 (Alcalá, Azuqueca, Guadalajara y municipios en expansión)</h3>
-          <p class="era-col__diagnosis">Distribución y acabados envejecidos</p>
-          <p class="text-sm text-gray-600 leading-relaxed mb-3">Los pisos construidos entre 1990 y 2005 tienen instalaciones en mejor estado, pero pueden necesitar una reforma integral por razones de distribución o de acabados envejecidos. El cuadro eléctrico suele tener más capacidad, pero los materiales acumulan 20–30 años de uso.</p>
+          <p class="era-col__body">Los pisos construidos entre 1990 y 2005 tienen instalaciones en mejor estado, pero pueden necesitar una reforma integral por razones de distribución o de acabados envejecidos. El cuadro eléctrico suele tener más capacidad, pero los materiales acumulan 20–30 años de uso.</p>
           <ul class="era-list">
             <li>Instalación eléctrica con diferencial y magnetotérmicos, pero sin circuitos independientes para cada electrodoméstico</li>
             <li>Fontanería de cobre o multicapa en buen estado en la mayoría de los casos</li>
@@ -216,12 +218,13 @@ const zones = [
         </div>
 
         <div class="era-col">
-          <div class="era-col__head">
-            <span class="era-decade font-display" style="font-size:clamp(2rem,4.5vw,4rem)" aria-hidden="true">Chalet</span>
+          <div class="era-stamp">
+            <span class="era-label">Tipología</span>
+            <span class="era-decade era-decade--tipo font-display">Chalet</span>
           </div>
+          <p class="era-tag">Coordinación y secuencia de gremios</p>
           <h3 class="era-col__title">Chalets y adosados (Meco, Camarma, San Fernando y urbanizaciones periféricas)</h3>
-          <p class="era-col__diagnosis">Coordinación y secuencia de gremios</p>
-          <p class="text-sm text-gray-600 leading-relaxed mb-3">En viviendas unifamiliares, la reforma integral tiene más superficie y más zonas que coordinar: varios baños, cocina grande, posiblemente garaje o sótano con humedad. El mayor reto aquí no es el alcance sino la secuencia.</p>
+          <p class="era-col__body">En viviendas unifamiliares, la reforma integral tiene más superficie y más zonas que coordinar: varios baños, cocina grande, posiblemente garaje o sótano con humedad. El mayor reto aquí no es el alcance sino la secuencia.</p>
           <ul class="era-list">
             <li>Mayor superficie = más materiales, más tiempo, más gremios en paralelo</li>
             <li>Instalaciones de calefacción por radiadores que conviene revisar durante la obra</li>
@@ -850,21 +853,113 @@ const zones = [
 
   /* Era timeline - parque section */
   .parque-header { max-width:52rem; }
-  .era-timeline { display:grid; grid-template-columns:1fr; gap:0; border-top:2px solid #111827; }
+  /* Era Timeline — precisión técnica */
+  .era-timeline { display:grid; grid-template-columns:1fr; gap:0; }
   @media(min-width:768px){ .era-timeline { grid-template-columns:repeat(3,1fr); } }
-  .era-col { padding:2rem 1.5rem 2rem 0; border-bottom:1px solid #E5E7EB; }
-  @media(min-width:768px){ .era-col { padding:2.5rem 2rem 2.5rem 0; border-bottom:none; border-right:1px solid #E5E7EB; } .era-col:last-child { border-right:none; padding-right:0; } .era-col:not(:first-child){ padding-left:2rem; } }
+
+  .era-col {
+    padding:2rem 0 2.5rem 0;
+    border-bottom:1px solid #E5E7EB;
+    position:relative;
+  }
+  .era-col::before {
+    content:'';
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:2px;
+    background:#111827;
+  }
+  @media(min-width:768px){
+    .era-col { padding:2.5rem 2.5rem 2.5rem 0; border-bottom:none; border-right:1px solid #E5E7EB; }
+    .era-col:last-child { border-right:none; }
+    .era-col:not(:first-child){ padding-left:2.5rem; }
+    .era-col::before { width:2px; height:100%; top:0; left:0; }
+    .era-col:not(:first-child)::before { display:none; }
+  }
   @media(max-width:767px){ .era-col:last-child { border-bottom:none; } }
-  .era-col__head { display:flex; align-items:flex-end; gap:1rem; margin-bottom:1.25rem; padding-bottom:1.25rem; border-bottom:1px solid #F3F4F6; }
-  .era-decade { font-size:clamp(3rem,5vw,4.5rem); font-weight:900; letter-spacing:-0.04em; line-height:1; color:#A85535; opacity:0.7; flex-shrink:0; }
-  .era-col__meta { }
-  .era-col__title { font-size:0.8125rem; font-weight:700; color:#111827; line-height:1.3; margin-bottom:0.2rem; }
-  .era-col__zones { font-size:0.6875rem; color:#9CA3AF; letter-spacing:0.01em; }
-  .era-col__diagnosis { font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#A85535; margin-bottom:0.875rem; }
-  .era-col__verdict { font-size:0.75rem; color:#9CA3AF; line-height:1.5; margin-top:1rem; padding-top:1rem; border-top:1px solid #F3F4F6; font-style:italic; }
+
+  /* Stamp — decade label + number */
+  .era-stamp { margin-bottom:1.5rem; }
+  .era-label {
+    display:block;
+    font-size:0.625rem;
+    font-weight:700;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:#9CA3AF;
+    margin-bottom:0.35rem;
+    font-family:'Courier New', monospace;
+  }
+  .era-decade {
+    display:block;
+    font-size:clamp(2.75rem,5vw,4rem);
+    font-weight:900;
+    letter-spacing:-0.04em;
+    line-height:1;
+    color:#111827;
+  }
+  .era-decade--tipo { font-size:clamp(2rem,3.5vw,3rem); }
+
+  /* Tag — diagnosis pill */
+  .era-tag {
+    display:inline-flex;
+    align-items:center;
+    gap:0.375rem;
+    font-size:0.6875rem;
+    font-weight:600;
+    color:#6B7280;
+    letter-spacing:0.03em;
+    margin-bottom:1rem;
+    padding:0.3rem 0.75rem 0.3rem 0.5rem;
+    background:#F3F4F6;
+    border-radius:2px;
+  }
+  .era-tag::before {
+    content:'';
+    width:5px; height:5px;
+    border-radius:50%;
+    background:#A85535;
+    flex-shrink:0;
+  }
+
+  /* Title + body */
+  .era-col__title {
+    font-size:0.875rem;
+    font-weight:700;
+    color:#111827;
+    line-height:1.45;
+    margin-bottom:0.75rem;
+  }
+  .era-col__body {
+    font-size:0.8125rem;
+    color:#6B7280;
+    line-height:1.65;
+    margin-bottom:1.25rem;
+    padding-bottom:1.25rem;
+    border-bottom:1px solid #F3F4F6;
+  }
+
+  /* Issue list */
   .era-list { list-style:none; padding:0; margin:0; }
-  .era-list li { font-size:0.8125rem; color:#4B5563; line-height:1.5; padding:0.4rem 0; border-bottom:1px solid #F3F4F6; display:flex; gap:0.6rem; align-items:baseline; }
-  .era-list li::before { content:''; flex-shrink:0; width:2px; height:0.75rem; background:#A85535; opacity:0.45; margin-top:0.2rem; }
+  .era-list li {
+    font-size:0.8125rem;
+    color:#374151;
+    line-height:1.5;
+    padding:0.55rem 0;
+    border-bottom:1px solid #F3F4F6;
+    display:grid;
+    grid-template-columns:1rem 1fr;
+    gap:0.5rem;
+    align-items:baseline;
+  }
+  .era-list li:last-child { border-bottom:none; }
+  .era-list li::before {
+    content:'–';
+    color:#A85535;
+    font-weight:700;
+    font-size:0.875rem;
+    line-height:1.5;
+  }
 
   /* Vida-obra 2-col dark */
   .vida-grid { display:grid; grid-template-columns:1fr; gap:3rem; }

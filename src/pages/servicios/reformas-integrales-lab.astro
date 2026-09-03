@@ -511,32 +511,34 @@ const zones = [
               <span class="partida-name">{p.label}</span>
               <span class="partida-sub">{p.sub}</span>
             </div>
-            <div class="partida-bar-wrap">
-              <div class="partida-bar" style={`width:${p.pctMax}%`}></div>
-              <span class="partida-pct">{p.pct}</span>
-            </div>
-            <div class="partida-ajuste-wrap hidden md:flex">
-              <span class={`partida-ajuste-badge ajuste-${p.ajuste.toLowerCase()}`}>{p.ajuste}</span>
+            <div class="partida-bar-col">
+              <div class="partida-bar-track">
+                <div class="partida-bar-fill" style={`width:${p.pctMax}%`}></div>
+              </div>
+              <div class="partida-bar-meta">
+                <span class="partida-pct">{p.pct}</span>
+                <span class={`partida-ajuste-badge ajuste-${p.ajuste.toLowerCase()}`}>{p.ajuste}</span>
+              </div>
               <span class="partida-nota">{p.nota}</span>
             </div>
           </div>
         ))}
       </div>
-      <div class="grid md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-[#F9F7F4] p-7">
-          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Gama entrada</p>
-          <p class="text-sm font-bold text-gray-900 mb-2">Funcional y duradero</p>
-          <p class="text-sm text-gray-600 leading-relaxed">Porcelánico de 45×45, muebles de cocina de catálogo estándar, sanitarios blancos de marca de referencia, pintura plástica. El resultado es limpio y funcional durante 15–20 años con mantenimiento mínimo.</p>
+      <div class="gama-grid mb-6">
+        <div class="gama-card">
+          <p class="gama-card__tag">Gama entrada</p>
+          <p class="gama-card__title">Funcional y duradero</p>
+          <p class="gama-card__body">Porcelánico de 45×45, muebles de cocina de catálogo estándar, sanitarios blancos de marca de referencia, pintura plástica. El resultado es limpio y funcional durante 15–20 años con mantenimiento mínimo.</p>
         </div>
-        <div class="bg-[#F9F7F4] p-7 border-t-4 border-[#A85535]">
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-2">Gama media</p>
-          <p class="text-sm font-bold text-gray-900 mb-2">La elección más habitual</p>
-          <p class="text-sm text-gray-600 leading-relaxed">Porcelánico de gran formato, muebles de cocina a medida en melamina de calidad, encimera de cuarzo, griferías de marca reconocida, tarima o vinílico técnico. El estándar que se pide con más frecuencia.</p>
+        <div class="gama-card gama-card--highlight">
+          <p class="gama-card__tag gama-card__tag--accent">Gama media</p>
+          <p class="gama-card__title">La elección más habitual</p>
+          <p class="gama-card__body">Porcelánico de gran formato, muebles de cocina a medida en melamina de calidad, encimera de cuarzo, griferías de marca reconocida, tarima o vinílico técnico. El estándar que se pide con más frecuencia.</p>
         </div>
-        <div class="bg-[#F9F7F4] p-7">
-          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Gama alta</p>
-          <p class="text-sm font-bold text-gray-900 mb-2">Materiales sin compromiso</p>
-          <p class="text-sm text-gray-600 leading-relaxed">Madera maciza o microcemento en suelos, cocina lacada, encimera de dekton o porcelánico de gran formato, griferías de diseño, ducha de obra con revestimiento continuo.</p>
+        <div class="gama-card">
+          <p class="gama-card__tag">Gama alta</p>
+          <p class="gama-card__title">Materiales sin compromiso</p>
+          <p class="gama-card__body">Madera maciza o microcemento en suelos, cocina lacada, encimera de dekton o porcelánico de gran formato, griferías de diseño, ducha de obra con revestimiento continuo.</p>
         </div>
       </div>
       <p class="text-sm text-gray-500">En todos los casos, el precio cerrado en el contrato es el precio final: no hay suplementos por materiales ni por trabajo que "no se había previsto".</p>
@@ -1436,22 +1438,37 @@ const zones = [
   .price-guide-chip:hover .price-guide-chip__arrow { opacity:1; transform:translateX(0); }
 
   /* Partida bars */
-  .partida-list { }
-  .partida-row { display:grid; grid-template-columns:1fr 1fr; gap:0.5rem 2rem; padding:0.875rem 0; border-bottom:1px solid #F3F4F6; align-items:center; }
-  @media(min-width:768px){ .partida-row { grid-template-columns:1fr 1fr 1fr; } }
-  .partida-info { display:flex; flex-direction:column; gap:0.1rem; }
+  /* Partida list */
+  .partida-row { display:grid; grid-template-columns:10rem 1fr; gap:0.75rem 1.5rem; padding:1rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s; }
+  .partida-row:hover { background:#FAFAF8; }
+  @media(min-width:768px){ .partida-row { grid-template-columns:12rem 1fr; } }
+  .partida-info { display:flex; flex-direction:column; gap:0.15rem; padding-top:0.125rem; }
   .partida-name { font-size:0.875rem; font-weight:600; color:#111827; }
-  .partida-sub { font-size:0.75rem; color:#9CA3AF; }
-  .partida-bar-wrap { display:flex; align-items:center; gap:0.75rem; }
-  .partida-bar { height:3px; background:#A85535; opacity:0.4; border-radius:1px; flex-shrink:0; max-width:100%; }
-  .partida-pct { font-size:0.8125rem; font-weight:700; color:#374151; font-variant-numeric:tabular-nums; white-space:nowrap; }
-  .partida-ajuste-wrap { display:flex; align-items:baseline; gap:0.6rem; }
-  .partida-ajuste-badge { font-size:0.625rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.15rem 0.4rem; border-radius:2px; white-space:nowrap; }
-  .ajuste-alto { background:#FEF3C7; color:#92400E; }
-  .ajuste-medio { background:#E5E7EB; color:#374151; }
-  .ajuste-bajo { background:#DCFCE7; color:#166534; }
-  .ajuste-variable { background:#EDE9FE; color:#5B21B6; }
-  .partida-nota { font-size:0.75rem; color:#9CA3AF; line-height:1.4; }
+  .partida-sub { font-size:0.6875rem; color:#9CA3AF; }
+  .partida-bar-col { display:flex; flex-direction:column; gap:0.375rem; }
+  .partida-bar-track { position:relative; height:6px; background:#F3F4F6; width:100%; }
+  .partida-bar-fill { position:absolute; inset:0 auto 0 0; background:#A85535; height:100%; }
+  .partida-bar-meta { display:flex; align-items:center; gap:0.625rem; }
+  .partida-pct { font-size:0.8125rem; font-weight:700; color:#111827; font-variant-numeric:tabular-nums; font-family:'Courier New', monospace; }
+  .partida-ajuste-badge { font-size:0.5625rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-family:'Courier New', monospace; padding:0.15rem 0.4rem; white-space:nowrap; }
+  .ajuste-alto { background:#FDEEE8; color:#A85535; border:1px solid rgba(168,85,53,.25); }
+  .ajuste-medio { background:#F3F4F6; color:#6B7280; border:1px solid #E5E7EB; }
+  .ajuste-bajo { background:#F3F4F6; color:#9CA3AF; border:1px solid #E5E7EB; }
+  .ajuste-variable { background:#fff; color:#6B7280; border:1px solid #D1D5DB; }
+  .partida-nota { font-size:0.6875rem; color:#9CA3AF; line-height:1.5; }
+
+  /* Tarjetas de gama */
+  .gama-grid { display:grid; grid-template-columns:1fr; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
+  @media(min-width:768px){ .gama-grid { grid-template-columns:repeat(3,1fr); } }
+  .gama-card { background:#F9F7F4; padding:1.5rem; transition:background 0.2s; }
+  .gama-card:hover { background:#FAFAF8; }
+  .gama-card--highlight { background:#fff; position:relative; }
+  .gama-card--highlight::before { content:''; position:absolute; top:-2px; left:0; right:0; height:2px; background:#A85535; }
+  .gama-card--highlight:hover { background:#FFF9F6; }
+  .gama-card__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; margin-bottom:0.5rem; }
+  .gama-card__tag--accent { color:#A85535; }
+  .gama-card__title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.625rem; }
+  .gama-card__body { font-size:0.8125rem; color:#6B7280; line-height:1.6; }
 
   /* CTA hover lift */
   a[style*="background:#A85535"],

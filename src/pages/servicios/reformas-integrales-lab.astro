@@ -656,16 +656,14 @@ const zones = [
       <p class="text-gray-700 leading-relaxed mb-6">
         La secuencia de fases en una reforma integral no es flexible: las instalaciones van antes de los acabados, y los acabados van en un orden específico. Saltarse pasos o solapar fases incompatibles genera problemas que se notan al cabo de meses o años.
       </p>
+      <caption class="plazos-caption">Peso orientativo de cada fase sobre el total de la obra. El plazo absoluto depende del alcance y la superficie; la fecha de entrega queda fijada en el contrato.</caption>
       <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Peso orientativo de cada fase sobre el total de la obra. El plazo absoluto depende del alcance y la superficie; la fecha de entrega queda fijada en el contrato.
-          </caption>
+        <table class="plazos-table">
           <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Fase</th>
-              <th class="text-right py-3 px-4 font-bold text-gray-900">Peso sobre el total</th>
-              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Qué condiciona la siguiente fase</th>
+            <tr>
+              <th class="plazos-th text-left">Fase</th>
+              <th class="plazos-th text-right">Peso</th>
+              <th class="plazos-th text-left hidden md:table-cell">Qué condiciona la siguiente fase</th>
             </tr>
           </thead>
           <tbody>
@@ -676,11 +674,11 @@ const zones = [
               { fase: 'Revestimientos (solados y alicatados)', pct: '25%', nota: 'Incluye baño y cocina; determina los plazos de carpintería' },
               { fase: 'Carpintería interior', pct: '12%', nota: 'Se instala sobre solados terminados; puertas, armarios, premarcos' },
               { fase: 'Pintura, limpieza y entrega', pct: '8%', nota: 'Fase final; incluye revisión y acta de entrega' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.fase}</td>
-                <td class="py-3 px-4 text-right font-semibold text-gray-900" style="font-variant-numeric:tabular-nums">{row.pct}</td>
-                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.nota}</td>
+            ].map((row) => (
+              <tr class="plazos-tr">
+                <td class="plazos-td plazos-td--fase">{row.fase}</td>
+                <td class="plazos-td plazos-td--pct">{row.pct}</td>
+                <td class="plazos-td plazos-td--nota hidden md:table-cell">{row.nota}</td>
               </tr>
             ))}
           </tbody>
@@ -1297,6 +1295,17 @@ const zones = [
   .presupuesto-term { font-size:0.9375rem; font-weight:700; color:#111827; line-height:1.35; grid-column:2; }
   .presupuesto-def { font-size:0.875rem; color:#4B5563; line-height:1.65; grid-column:2; }
   @media(min-width:640px){ .presupuesto-def { grid-column:3; grid-row:1; } }
+
+  /* Tabla de plazos */
+  .plazos-caption { font-size:0.6875rem; color:#9CA3AF; letter-spacing:0.02em; display:block; margin-bottom:0.75rem; }
+  .plazos-table { width:100%; border-collapse:collapse; border-top:2px solid #111827; }
+  .plazos-th { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; padding:0.625rem 0.75rem; border-bottom:1px solid #E5E7EB; }
+  .plazos-tr { border-bottom:1px solid #F3F4F6; transition:background 0.2s; }
+  .plazos-tr:hover { background:#F9F7F4; }
+  .plazos-td { padding:0.875rem 0.75rem; vertical-align:top; }
+  .plazos-td--fase { font-size:0.9375rem; font-weight:600; color:#111827; }
+  .plazos-td--pct { font-size:1rem; font-weight:800; color:#A85535; font-family:'Courier New', monospace; font-variant-numeric:tabular-nums; white-space:nowrap; text-align:right; }
+  .plazos-td--nota { font-size:0.8125rem; color:#6B7280; line-height:1.5; }
 
   /* Fase cards - dynamic */
   /* Fase grid — responsive */

@@ -420,18 +420,40 @@ const zones = [
       <p class="text-gray-600 leading-relaxed mb-6">
         El precio de una reforma integral depende del estado de las instalaciones, del alcance de la redistribución y de los materiales elegidos. Los siguientes rangos son orientativos para el Corredor del Henares; el presupuesto exacto se cierra tras la visita técnica gratuita. Puedes obtener una estimación inicial ajustada a tu superficie y calidad en la <a href="/calculadora-precio-reforma/" class="text-[#A85535] hover:underline font-medium">calculadora de precios de reforma</a>. Si tu reforma no incluye renovación de instalaciones, consulta también las guías de precios: <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="text-[#A85535] hover:underline font-medium">reforma de baño</a>, <a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="text-[#A85535] hover:underline font-medium">reforma de cocina</a> y <a href="/guias/cuanto-cuesta-reformar-un-piso/" class="text-[#A85535] hover:underline font-medium">reforma de piso</a>.
       </p>
-      <p class="text-xs text-gray-400 mb-5" style="font-variant-numeric:tabular-nums">Precios orientativos · IVA no incluido · precio cerrado tras visita técnica</p>
       <div class="price-ledger">
+        <!-- Cabecera -->
+        <div class="price-header">
+          <span>Tipo de reforma</span>
+          <span class="text-right">€/m² orientativo</span>
+          <span class="text-right hidden sm:block">Plazo</span>
+        </div>
+
+        <!-- Fila de referencia: no integral -->
+        <div class="price-row price-row--ref">
+          <div class="price-row__label">
+            <span class="price-row__name">Reforma de acabados</span>
+            <span class="price-row__sub">Sin renovar instalaciones · para comparar</span>
+          </div>
+          <div class="price-row__value">
+            <span class="price-row__num price-row__num--muted">300–500</span>
+            <span class="price-row__unit"> €/m²</span>
+          </div>
+          <div class="price-row__plazo">5–8 sem.</div>
+        </div>
+
+        <!-- Filas integrales -->
         {[
-          { label: 'Reforma de acabados', sub: 'Sin renovar instalaciones', price: '300–500', plazo: '5–8 sem.' },
           { label: 'Reforma integral esencial', sub: 'Instalaciones nuevas incluidas', price: '650–800', plazo: '10–14 sem.' },
-          { label: 'Reforma integral media', sub: 'Materiales de gama media', price: '800–1.000', plazo: '12–16 sem.' },
+          { label: 'Reforma integral media', sub: 'Materiales de gama media', price: '800–1.000', plazo: '12–16 sem.', highlight: true },
           { label: 'Reforma integral alta', sub: 'Materiales sin compromiso', price: '1.000–1.400', plazo: '14–20 sem.' },
-        ].map((row, i) => (
-          <div class={`price-row ${i === 0 ? 'price-row--light' : ''}`}>
+        ].map((row) => (
+          <div class={`price-row price-row--integral ${row.highlight ? 'price-row--highlight' : ''}`}>
             <div class="price-row__label">
               <span class="price-row__name">{row.label}</span>
-              <span class="price-row__sub">{row.sub}</span>
+              <span class="price-row__sub">
+                {row.sub}
+                {row.highlight && <span class="price-row__badge">La más habitual</span>}
+              </span>
             </div>
             <div class="price-row__value">
               <span class="price-row__num">{row.price}</span>
@@ -440,6 +462,8 @@ const zones = [
             <div class="price-row__plazo">{row.plazo}</div>
           </div>
         ))}
+
+        <p class="price-footer">Precios orientativos · IVA no incluido · precio cerrado en contrato tras visita técnica gratuita</p>
       </div>
     </div>
   </section>
@@ -1345,16 +1369,44 @@ const zones = [
 
   /* Price ledger */
   .price-ledger { border-top:2px solid #A85535; }
-  .price-row { display:grid; grid-template-columns:1fr auto auto; gap:1rem 2rem; align-items:center; padding:1rem 0; border-bottom:1px solid #E5E7EB; }
+
+  /* Cabecera de columnas */
+  .price-header { display:grid; grid-template-columns:1fr auto auto; gap:1rem 2rem; padding:0.5rem 0 0.5rem; border-bottom:1px solid #E5E7EB; }
+  .price-header span { font-size:0.625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#9CA3AF; font-family:'Courier New', monospace; }
+  .price-header span:nth-child(2) { white-space:nowrap; min-width:7rem; text-align:right; }
+  .price-header span:nth-child(3) { min-width:5rem; text-align:right; }
+  @media(max-width:600px){ .price-header { grid-template-columns:1fr auto; } .price-header span:nth-child(3) { display:none; } }
+
+  /* Fila base */
+  .price-row { display:grid; grid-template-columns:1fr auto auto; gap:1rem 2rem; align-items:center; padding:1rem 0.5rem; border-bottom:1px solid #E5E7EB; transition:background 0.2s, padding-left 0.2s; }
   @media(max-width:600px){ .price-row { grid-template-columns:1fr auto; } .price-row__plazo { display:none; } }
-  .price-row--light .price-row__num { color:#9CA3AF; }
-  .price-row__label { display:flex; flex-direction:column; gap:0.1rem; }
+
+  /* Fila de referencia (acabados — no integral) */
+  .price-row--ref { background:#FAFAF8; }
+  .price-row--ref .price-row__name { color:#6B7280; }
+  .price-row--ref .price-row__sub { display:flex; align-items:center; gap:0.375rem; }
+  .price-row--ref .price-row__sub::before { content:''; display:inline-block; width:0.5rem; height:1px; background:#D1D5DB; }
+
+  /* Filas integrales */
+  .price-row--integral { cursor:default; }
+  .price-row--integral:hover { background:#FAFAF8; padding-left:0.75rem; }
+
+  /* Fila destacada */
+  .price-row--highlight { background:#FFF9F6; border-left:2px solid #A85535; padding-left:0.75rem; }
+  .price-row--highlight:hover { background:#FFF3EE; }
+
+  .price-row__label { display:flex; flex-direction:column; gap:0.125rem; }
   .price-row__name { font-size:0.9375rem; font-weight:600; color:#111827; }
-  .price-row__sub { font-size:0.75rem; color:#9CA3AF; }
-  .price-row__value { white-space:nowrap; }
+  .price-row__sub { font-size:0.75rem; color:#9CA3AF; display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; }
+  .price-row__badge { font-size:0.5625rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; border:1px solid #A85535; padding:0.125rem 0.375rem; white-space:nowrap; }
+  .price-row__value { white-space:nowrap; text-align:right; min-width:7rem; }
   .price-row__num { font-size:1.125rem; font-weight:800; color:#A85535; letter-spacing:-0.03em; font-variant-numeric:tabular-nums; }
+  .price-row__num--muted { color:#C4C9D4; }
   .price-row__unit { font-size:0.75rem; color:#6B7280; font-weight:400; }
   .price-row__plazo { font-size:0.8125rem; color:#9CA3AF; white-space:nowrap; font-variant-numeric:tabular-nums; min-width:5rem; text-align:right; }
+
+  /* Pie del ledger */
+  .price-footer { font-size:0.6875rem; color:#9CA3AF; padding-top:0.875rem; letter-spacing:0.02em; }
 
   /* Partida bars */
   .partida-list { }

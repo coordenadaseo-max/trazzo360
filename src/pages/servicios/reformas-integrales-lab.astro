@@ -417,9 +417,26 @@ const zones = [
       <h2 id="h-comparativa" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
         Opciones y precios orientativos
       </h2>
-      <p class="text-gray-600 leading-relaxed mb-6">
-        El precio de una reforma integral depende del estado de las instalaciones, del alcance de la redistribución y de los materiales elegidos. Los siguientes rangos son orientativos para el Corredor del Henares; el presupuesto exacto se cierra tras la visita técnica gratuita. Puedes obtener una estimación inicial ajustada a tu superficie y calidad en la <a href="/calculadora-precio-reforma/" class="text-[#A85535] hover:underline font-medium">calculadora de precios de reforma</a>. Si tu reforma no incluye renovación de instalaciones, consulta también las guías de precios: <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="text-[#A85535] hover:underline font-medium">reforma de baño</a>, <a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="text-[#A85535] hover:underline font-medium">reforma de cocina</a> y <a href="/guias/cuanto-cuesta-reformar-un-piso/" class="text-[#A85535] hover:underline font-medium">reforma de piso</a>.
+      <p class="text-gray-600 leading-relaxed mb-4">
+        El precio de una reforma integral depende del estado de las instalaciones, del alcance de la redistribución y de los materiales elegidos. Los siguientes rangos son orientativos para el Corredor del Henares; el presupuesto exacto se cierra tras la visita técnica gratuita. Puedes obtener una estimación inicial ajustada a tu superficie y calidad en la <a href="/calculadora-precio-reforma/" class="text-[#A85535] hover:underline font-medium">calculadora de precios de reforma</a>. Si tu reforma no incluye renovación de instalaciones, consulta también las guías de precios de reforma parcial:
       </p>
+      <div class="price-guides mb-8">
+        <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="price-guide-chip">
+          <span class="price-guide-chip__label">Guía</span>
+          <span class="price-guide-chip__text">¿Cuánto cuesta reformar un baño?</span>
+          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="price-guide-chip">
+          <span class="price-guide-chip__label">Guía</span>
+          <span class="price-guide-chip__text">¿Cuánto cuesta reformar una cocina?</span>
+          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/guias/cuanto-cuesta-reformar-un-piso/" class="price-guide-chip">
+          <span class="price-guide-chip__label">Guía</span>
+          <span class="price-guide-chip__text">¿Cuánto cuesta reformar un piso?</span>
+          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
       <div class="price-ledger">
         <!-- Cabecera -->
         <div class="price-header">
@@ -1407,6 +1424,16 @@ const zones = [
 
   /* Pie del ledger */
   .price-footer { font-size:0.6875rem; color:#9CA3AF; padding-top:0.875rem; letter-spacing:0.02em; }
+
+  /* Cluster de guías */
+  .price-guides { display:flex; flex-direction:column; gap:0.5rem; }
+  @media(min-width:640px){ .price-guides { flex-direction:row; flex-wrap:wrap; gap:0.5rem; } }
+  .price-guide-chip { display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 0.875rem; border:1px solid #D1D5DB; background:#fff; color:#374151; text-decoration:none; transition:border-color 0.2s, color 0.2s, background 0.2s; }
+  .price-guide-chip:hover { border-color:#A85535; color:#A85535; background:#FFF9F6; }
+  .price-guide-chip__label { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; flex-shrink:0; }
+  .price-guide-chip__text { font-size:0.8125rem; font-weight:500; }
+  .price-guide-chip__arrow { flex-shrink:0; opacity:0; transform:translateX(-4px); transition:opacity 0.2s, transform 0.2s; }
+  .price-guide-chip:hover .price-guide-chip__arrow { opacity:1; transform:translateX(0); }
 
   /* Partida bars */
   .partida-list { }

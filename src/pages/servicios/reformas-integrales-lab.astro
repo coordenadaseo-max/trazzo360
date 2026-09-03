@@ -384,7 +384,7 @@ const zones = [
           <p class="text-gray-400 leading-relaxed mb-8" style="font-size:1rem;max-width:38ch">
             El primer paso no es el cronograma de obra: es saber cuándo puedes irte y cuándo necesitas volver.
           </p>
-          <p class="text-gray-600 text-sm" style="border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;max-width:34ch">
+          <p class="text-sm" style="border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;max-width:34ch;color:rgba(255,255,255,.35)">
             Todo esto no está en el presupuesto porque no tiene precio. Está en cómo trabajamos.
           </p>
         </div>
@@ -398,7 +398,7 @@ const zones = [
               { n: '05', title: 'El piso al entrar: limpio, no "casi terminado"', desc: 'La limpieza final es parte del proceso. Cuando te lo entregamos, está en condiciones de empezar a vivir.' },
             ].map(item => (
               <li class="vida-item">
-                <span class="vida-item__n font-display" aria-hidden="true">{item.n}</span>
+                <span class="vida-item__n" aria-hidden="true">{item.n}</span>
                 <div>
                   <p class="vida-item__title">{item.title}</p>
                   <p class="vida-item__desc">{item.desc}</p>
@@ -1176,14 +1176,43 @@ const zones = [
   /* Vida-obra 2-col dark */
   .vida-grid { display:grid; grid-template-columns:1fr; gap:3rem; }
   @media(min-width:900px){ .vida-grid { grid-template-columns:42% 1fr; gap:5rem; align-items:start; } }
-  .vida-left { }
-  .vida-right { }
   .vida-list { list-style:none; padding:0; margin:0; }
-  .vida-item { display:grid; grid-template-columns:2.5rem 1fr; gap:0 1rem; padding:1.25rem 0; border-bottom:1px solid rgba(255,255,255,.07); align-items:start; }
+  .vida-item {
+    display:grid;
+    grid-template-columns:2rem 1fr;
+    gap:0 1rem;
+    padding:1.125rem 0.75rem 1.125rem 0.75rem;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    align-items:start;
+    margin:0 -0.75rem;
+    border-left:2px solid transparent;
+    transition:background 0.2s ease, border-left-color 0.2s ease;
+  }
   .vida-item:first-child { border-top:1px solid rgba(255,255,255,.07); }
-  .vida-item__n { font-size:0.6875rem; font-weight:700; letter-spacing:0.08em; color:#A85535; line-height:1.8; }
-  .vida-item__title { font-size:0.9375rem; font-weight:600; color:#F9F7F4; margin-bottom:0.25rem; line-height:1.35; }
-  .vida-item__desc { font-size:0.8125rem; color:#6B7280; line-height:1.6; }
+  .vida-item:hover {
+    background:rgba(255,255,255,.04);
+    border-left-color:#A85535;
+  }
+  .vida-item__n {
+    font-size:0.625rem;
+    font-weight:700;
+    letter-spacing:0.12em;
+    color:#A85535;
+    line-height:1.9;
+    font-family:'Courier New', monospace;
+  }
+  .vida-item__title {
+    font-size:0.9375rem;
+    font-weight:600;
+    color:#F9F7F4;
+    margin-bottom:0.3rem;
+    line-height:1.35;
+  }
+  .vida-item__desc {
+    font-size:0.8125rem;
+    color:rgba(255,255,255,.48);
+    line-height:1.65;
+  }
 
   /* Criterios elegir empresa */
   .criterios-list { }

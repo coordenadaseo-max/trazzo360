@@ -623,7 +623,7 @@ const zones = [
       <p class="text-gray-600 leading-relaxed mb-8">
         Dos presupuestos con el mismo importe total pueden cubrir alcances completamente distintos. Estas son las partidas que hay que revisar en cualquier propuesta que recibas.
       </p>
-      <dl class="divide-y divide-gray-200 bg-white p-6">
+      <dl class="presupuesto-dl">
         {[
           { term: 'Alcance de las instalaciones', def: 'El presupuesto debe especificar si la instalación eléctrica y la fontanería se renuevan o solo se adaptan. "Reforma integral" que mantiene las instalaciones existentes es, en realidad, una reforma parcial.' },
           { term: 'Gestión de escombros', def: 'En una reforma integral, la demolición genera varios metros cúbicos de escombro. El coste del contenedor o del transporte a punto limpio debe estar incluido en el presupuesto, no aparecer como extra al final.' },
@@ -631,19 +631,18 @@ const zones = [
           { term: 'Materiales especificados', def: 'El presupuesto debe indicar la calidad de los materiales (tarima maciza vs. laminada, porcelánico rectificado vs. baldosa estándar, marca de sanitarios). Si dice "mueble de baño según selección", pide que aclaren el rango de precio.' },
           { term: 'Coordinación de gremios', def: 'Pregunta quién coordina la entrada y salida de cada gremio. Un presupuesto que suma trabajos por separado no tiene por qué incluir la coordinación entre ellos: puede haber tiempos muertos que alargan el plazo y los costes de varios meses de obra.' },
           { term: 'Garantía de ejecución', def: 'La garantía sobre la obra debe cubrir al menos 2 años desde la entrega. Es diferente de la garantía de los materiales, que la da el fabricante. Si el presupuesto no la menciona, pregunta qué pasa si hay problemas al año siguiente.' },
-        ].map(({ term, def }) => (
-          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
-            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
-            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
+        ].map(({ term, def }, i) => (
+          <div class="presupuesto-row">
+            <span class="presupuesto-n">{String(i + 1).padStart(2, '0')}</span>
+            <dt class="presupuesto-term">{term}</dt>
+            <dd class="presupuesto-def">{def}</dd>
           </div>
         ))}
       </dl>
 
-      <div class="mt-8 bg-white border-l-4 border-[#A85535] p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-3">Precio cerrado e imprevistos en una reforma integral</p>
-        <p class="text-sm text-gray-700 leading-relaxed">
-          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma integral, eso incluye el estado de las instalaciones accesibles, la estructura observable y los elementos que se pueden medir antes de abrir. Si al derribar un tabique aparece un problema estructural no previsto o al abrir el suelo encontramos tuberías en peor estado del visible, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas integrales del Corredor, el precio cierra sin desviaciones. Cuando hay imprevistos, hay una persona que llama, explica y espera antes de actuar.
-        </p>
+      <div class="mt-8 empresa-callout">
+        <p class="empresa-callout__title">Precio cerrado e imprevistos en una reforma integral</p>
+        <p class="empresa-callout__body">El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma integral, eso incluye el estado de las instalaciones accesibles, la estructura observable y los elementos que se pueden medir antes de abrir. Si al derribar un tabique aparece un problema estructural no previsto o al abrir el suelo encontramos tuberías en peor estado del visible, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas integrales del Corredor, el precio cierra sin desviaciones. Cuando hay imprevistos, hay una persona que llama, explica y espera antes de actuar.</p>
       </div>
     </div>
   </section>
@@ -1288,6 +1287,16 @@ const zones = [
   .licencia-card__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; margin-bottom:0.625rem; }
   .licencia-card__tag--dark { color:#111827; }
   .licencia-card__body { font-size:0.8125rem; color:#4B5563; line-height:1.6; }
+
+  /* Presupuesto checklist */
+  .presupuesto-dl { border-top:2px solid #111827; }
+  .presupuesto-row { display:grid; grid-template-columns:2rem 1fr; grid-template-rows:auto auto; gap:0.125rem 1rem; padding:1.125rem 0.5rem; border-bottom:1px solid #E5E7EB; transition:background 0.2s, padding-left 0.2s; }
+  .presupuesto-row:hover { background:#F9F7F4; padding-left:0.875rem; }
+  @media(min-width:640px){ .presupuesto-row { grid-template-columns:2rem 14rem 1fr; grid-template-rows:auto; align-items:baseline; } }
+  .presupuesto-n { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.25rem; grid-row:1; }
+  .presupuesto-term { font-size:0.9375rem; font-weight:700; color:#111827; line-height:1.35; grid-column:2; }
+  .presupuesto-def { font-size:0.875rem; color:#4B5563; line-height:1.65; grid-column:2; }
+  @media(min-width:640px){ .presupuesto-def { grid-column:3; grid-row:1; } }
 
   /* Fase cards - dynamic */
   /* Fase grid — responsive */

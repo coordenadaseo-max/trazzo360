@@ -162,7 +162,10 @@ const zones = [
     </div>
     <!-- Scroll indicator -->
     <div class="hero-scroll" aria-hidden="true">
-      <span class="hero-scroll__line"></span>
+      <svg width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="22" height="36" rx="11" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <rect class="hero-scroll__dot" x="10.5" y="7" width="3" height="7" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+      </svg>
     </div>
   </section>
 
@@ -850,18 +853,16 @@ const zones = [
   /* Scroll indicator */
   .hero-scroll {
     position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
-    display:flex; flex-direction:column; align-items:center; gap:0.5rem;
     z-index:1; opacity:0;
-    animation:heroFade 0.7s ease 1.2s forwards;
+    animation:heroFade 0.7s ease 1.4s forwards;
   }
-  .hero-scroll__line {
-    display:block; width:1px; height:3rem;
-    background:linear-gradient(to bottom, rgba(255,255,255,.5), rgba(255,255,255,0));
-    animation:scrollPulse 2s ease-in-out 1.5s infinite;
+  .hero-scroll__dot {
+    animation:scrollDot 2s cubic-bezier(0.45,0,0.55,1) 1.8s infinite;
   }
-  @keyframes scrollPulse {
-    0%,100% { transform:scaleY(1); opacity:.5; }
-    50% { transform:scaleY(1.2); opacity:1; }
+  @keyframes scrollDot {
+    0%   { transform:translateY(0);    opacity:.7; }
+    50%  { transform:translateY(10px); opacity:.2; }
+    100% { transform:translateY(0);    opacity:.7; }
   }
   .compromisos-apertura-grid { display:grid; gap:2rem; }
   @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }

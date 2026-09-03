@@ -330,9 +330,9 @@ const zones = [
       </div>
 
       <!-- Diagrama de fases dinámico -->
-      <div class="overflow-x-auto mb-10">
-        <div class="min-w-[640px]">
-          <div class="grid grid-cols-6 gap-px bg-gray-200" id="fase-grid">
+      <div class="mb-10">
+        <div class="fase-grid-wrap">
+          <div class="fase-grid" id="fase-grid">
             {[
               { n: '01', fase: 'Demolición', dep: 'Revela el estado real de instalaciones' },
               { n: '02', fase: 'Instalaciones', dep: 'Electricidad + fontanería en toda la vivienda' },
@@ -1195,6 +1195,21 @@ const zones = [
   .criterio-desc { font-size:0.875rem; color:#4B5563; line-height:1.65; }
 
   /* Fase cards - dynamic */
+  /* Fase grid — responsive */
+  .fase-grid-wrap { }
+  .fase-grid {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1px;
+    background:#D1D5DB;
+  }
+  @media(min-width:640px){
+    .fase-grid { grid-template-columns:repeat(3,1fr); }
+  }
+  @media(min-width:1024px){
+    .fase-grid { grid-template-columns:repeat(6,1fr); }
+  }
+
   /* Fase carousel */
   .fase-card {
     background:#F9F7F4;

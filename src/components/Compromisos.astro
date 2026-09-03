@@ -17,16 +17,16 @@ const icons: Record<string, string> = {
 ---
 
 {variant === 'full' ? (
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="compromisos-full-grid">
     {COMPROMISOS.map(c => (
-      <div id={c.id} class="bg-white border border-gray-100 p-7 hover:border-[#A85535]/40 transition-colors scroll-mt-24">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="w-10 h-10 flex-shrink-0 text-[#A85535]">
+      <div id={c.id} class="compromisos-card scroll-mt-24">
+        <div class="compromisos-card__header">
+          <div class="compromisos-card__icon">
             <Fragment set:html={icons[c.id] ?? ''} />
           </div>
-          <h3 class="text-lg font-bold text-gray-900 leading-snug pt-1">{c.title}</h3>
+          <h3 class="compromisos-card__title">{c.title}</h3>
         </div>
-        <p class="text-sm text-gray-600 leading-relaxed">{c.body}</p>
+        <p class="compromisos-card__body">{c.body}</p>
       </div>
     ))}
   </div>
@@ -47,3 +47,49 @@ const icons: Record<string, string> = {
     ))}
   </ul>
 )}
+
+<style>
+  .compromisos-full-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: #E5E7EB;
+    border-top: 2px solid #111827;
+  }
+  @media (min-width: 768px) {
+    .compromisos-full-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .compromisos-card {
+    background: #F9F7F4;
+    padding: 1.75rem;
+    transition: background 0.2s;
+  }
+  .compromisos-card:hover { background: #fff; }
+  .compromisos-card__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    margin-bottom: 0.875rem;
+  }
+  .compromisos-card__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    color: #A85535;
+    margin-top: 0.2rem;
+  }
+  .compromisos-card__title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.35;
+    margin: 0;
+  }
+  .compromisos-card__body {
+    font-size: 0.8125rem;
+    color: #4B5563;
+    line-height: 1.65;
+    padding-left: 2.125rem;
+    margin: 0;
+  }
+</style>

@@ -341,13 +341,13 @@ const zones = [
               { n: '05', fase: 'Carpintería', dep: 'Puertas, armarios y marcos' },
               { n: '06', fase: 'Entrega', dep: 'Pintura, limpieza y revisión final' },
             ].map((f, i) => (
-              <div class="fase-card bg-white p-5 border-t-4 border-gray-100" data-phase-idx={i}>
-                <div class="fase-n text-xs font-bold text-gray-300 mb-2 transition-colors duration-500">{f.n}</div>
-                <div class="fase-label text-sm font-bold text-gray-900 mb-1">{f.fase}</div>
-                <div class="text-xs text-gray-500 leading-snug">{f.dep}</div>
-                <div class="fase-progress mt-3 h-0.5 bg-gray-100 overflow-hidden">
-                  <div class="fase-bar h-full bg-[#A85535] w-0"></div>
+              <div class="fase-card" data-phase-idx={i}>
+                <div class="fase-progress-top">
+                  <div class="fase-bar"></div>
                 </div>
+                <div class="fase-n">{f.n}</div>
+                <div class="fase-label">{f.fase}</div>
+                <div class="fase-dep">{f.dep}</div>
               </div>
             ))}
           </div>
@@ -355,19 +355,20 @@ const zones = [
         </div>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 border-l-4 border-[#A85535]">
-          <h3 class="text-sm font-bold text-gray-900 mb-2">Sin tiempos muertos entre gremios</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Cada equipo entra cuando el anterior ha terminado lo que le corresponde, no antes ni después. No hay semanas de espera entre fases porque no hay nadie que las coordine.</p>
-        </div>
-        <div class="bg-white p-6 border-l-4 border-gray-200">
-          <h3 class="text-sm font-bold text-gray-900 mb-2">Un interlocutor en todo momento</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">No hablas con el electricista un día y con el fontanero otro. Hay una persona responsable de toda la obra que coordina los equipos y que responde ante cualquier incidencia.</p>
-        </div>
-        <div class="bg-white p-6 border-l-4 border-gray-200">
-          <h3 class="text-sm font-bold text-gray-900 mb-2">La secuencia no es flexible</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Las instalaciones van antes del cierre de paramentos. Los revestimientos van sobre paramentos terminados. Saltarse pasos genera defectos que se detectan meses después de la entrega, no en la revisión final.</p>
-        </div>
+      <div class="coord-pills">
+        {[
+          { title: 'Sin tiempos muertos entre gremios', body: 'Cada equipo entra cuando el anterior ha terminado lo que le corresponde, no antes ni después. No hay semanas de espera entre fases porque no hay nadie que las coordine.' },
+          { title: 'Un interlocutor en todo momento', body: 'No hablas con el electricista un día y con el fontanero otro. Hay una persona responsable de toda la obra que coordina los equipos y que responde ante cualquier incidencia.' },
+          { title: 'La secuencia no es flexible', body: 'Las instalaciones van antes del cierre de paramentos. Los revestimientos van sobre paramentos terminados. Saltarse pasos genera defectos que se detectan meses después de la entrega, no en la revisión final.' },
+        ].map((item, i) => (
+          <div class="coord-pill">
+            <span class="coord-pill__n">{String(i+1).padStart(2,'0')}</span>
+            <div>
+              <h3 class="coord-pill__title">{item.title}</h3>
+              <p class="coord-pill__body">{item.body}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -1194,9 +1195,107 @@ const zones = [
   .criterio-desc { font-size:0.875rem; color:#4B5563; line-height:1.65; }
 
   /* Fase cards - dynamic */
-  .fase-card { transition: border-top-color 0.5s ease, background-color 0.5s ease; }
-  .fase-card.is-active { border-top-color:#A85535 !important; background:#FEFCFA; }
+  /* Fase carousel */
+  .fase-card {
+    background:#F9F7F4;
+    padding:1.25rem 1rem;
+    position:relative;
+    overflow:hidden;
+    transition:background 0.45s ease;
+    cursor:default;
+  }
+  .fase-card.is-active { background:#111827; }
+
+  .fase-progress-top {
+    position:absolute;
+    top:0; left:0; right:0;
+    height:2px;
+    background:transparent;
+    overflow:hidden;
+  }
+  .fase-bar {
+    height:100%;
+    width:0;
+    background:#A85535;
+  }
+
+  .fase-n {
+    font-size:0.625rem;
+    font-weight:700;
+    letter-spacing:0.12em;
+    color:#9CA3AF;
+    margin-bottom:0.625rem;
+    font-family:'Courier New', monospace;
+    transition:color 0.45s ease;
+  }
   .fase-card.is-active .fase-n { color:#A85535; }
+
+  .fase-label {
+    font-size:0.875rem;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:0.375rem;
+    line-height:1.3;
+    transition:color 0.45s ease;
+  }
+  .fase-card.is-active .fase-label { color:#fff; }
+
+  .fase-dep {
+    font-size:0.6875rem;
+    color:#6B7280;
+    line-height:1.45;
+    transition:color 0.45s ease;
+  }
+  .fase-card.is-active .fase-dep { color:rgba(255,255,255,.5); }
+
+  /* Coord pills — bottom 3 */
+  .coord-pills {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    border-top:1px solid #E5E7EB;
+  }
+  @media(min-width:768px){ .coord-pills { grid-template-columns:repeat(3,1fr); } }
+
+  .coord-pill {
+    display:grid;
+    grid-template-columns:2rem 1fr;
+    gap:0 1rem;
+    padding:1.5rem 0;
+    border-bottom:1px solid #E5E7EB;
+    align-items:start;
+  }
+  @media(min-width:768px){
+    .coord-pill {
+      padding:1.5rem 1.5rem 1.5rem 0;
+      border-bottom:none;
+      border-right:1px solid #E5E7EB;
+    }
+    .coord-pill:last-child { border-right:none; }
+    .coord-pill:not(:first-child){ padding-left:1.5rem; }
+  }
+  @media(max-width:767px){ .coord-pill:last-child { border-bottom:none; } }
+
+  .coord-pill__n {
+    font-size:0.6875rem;
+    font-weight:700;
+    color:#A85535;
+    letter-spacing:0.08em;
+    font-family:'Courier New', monospace;
+    padding-top:0.125rem;
+  }
+  .coord-pill__title {
+    font-size:0.875rem;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:0.5rem;
+    line-height:1.35;
+  }
+  .coord-pill__body {
+    font-size:0.8125rem;
+    color:#6B7280;
+    line-height:1.65;
+  }
   .fase-bar { transition: width 0s linear; }
   .fase-card.is-active .fase-bar { width:100%; }
 

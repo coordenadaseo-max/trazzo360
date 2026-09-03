@@ -743,10 +743,13 @@ const zones = [
 
   <!-- Resultado cotidiano -->
   <div class="resultado-wrap">
-    <div class="max-w-4xl mx-auto px-4">
-      <p class="resultado-text">
-        Al mes de vivir en el piso reformado, la referencia del anterior desaparece. Lo que queda es la instalación eléctrica que aguanta el aire acondicionado sin disparar el diferencial, el agua caliente que llega sin esperar, la cocina donde cabe más de una persona, el suelo que no cruje. La reforma integral no cambia solo lo que se ve: cambia lo que se vive cada día.
-      </p>
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="resultado-tag">Resultado</p>
+      <blockquote class="resultado-body">
+        <p class="resultado-lead">Al mes de vivir en el piso reformado, la referencia del anterior desaparece.</p>
+        <p class="resultado-detail">Lo que queda es la instalación eléctrica que aguanta el aire acondicionado sin disparar el diferencial, el agua caliente que llega sin esperar, la cocina donde cabe más de una persona, el suelo que no cruje.</p>
+        <p class="resultado-kicker">La reforma integral no cambia solo lo que se ve: cambia lo que se vive cada día.</p>
+      </blockquote>
     </div>
   </div>
 
@@ -982,8 +985,12 @@ const zones = [
   .proceso-step__desc { font-size:0.875rem; color:#4B5563; line-height:1.65; max-width:48ch; }
 
   /* Resultado cotidiano */
-  .resultado-wrap { background:#F9F7F4; padding:3rem 0; border-top:1px solid #E5E7EB; }
-  .resultado-text { font-size:clamp(1.0625rem,2vw,1.25rem); color:#374151; line-height:1.7; max-width:58ch; font-weight:400; }
+  .resultado-wrap { background:#111827; padding:clamp(4rem,8vw,7rem) 0; border-top:2px solid #A85535; }
+  .resultado-tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; margin-bottom:2rem; }
+  .resultado-body { margin:0; padding:0; border:none; }
+  .resultado-lead { font-size:clamp(1.375rem,3vw,2.25rem); color:rgba(255,255,255,.9); line-height:1.25; font-weight:700; letter-spacing:-0.02em; max-width:22ch; margin-bottom:1.75rem; }
+  .resultado-detail { font-size:clamp(1rem,2vw,1.375rem); color:rgba(255,255,255,.55); line-height:1.55; max-width:36ch; margin-bottom:2rem; font-weight:400; }
+  .resultado-kicker { font-size:clamp(1rem,1.75vw,1.25rem); color:rgba(255,255,255,.75); line-height:1.4; max-width:32ch; font-weight:600; letter-spacing:-0.01em; padding-top:2rem; border-top:1px solid rgba(255,255,255,.08); }
 
   /* Grid de municipios */
   .zonas-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#E5E7EB; border-top:2px solid #111827; }

@@ -208,66 +208,62 @@ const zones = [
     </div>
   </section>
 
-  <!-- ── 2. EL PARQUE DEL CORREDOR (white, 70/30) ───────────── -->
+  <!-- ── 2. EL PARQUE DEL CORREDOR (white) ────────────────────── -->
   <section class="py-20 lg:py-28 bg-white" aria-labelledby="h-parque">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid lg:grid-cols-[2fr_1fr] gap-12 lg:gap-16 items-start">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="parque-header mb-14 reveal">
+        <h2 id="h-parque" class="text-4xl lg:text-5xl font-black text-gray-900 mb-5" style="letter-spacing:-0.03em;text-wrap:balance">
+          Qué baños vemos habitualmente en el Corredor del Henares
+        </h2>
+        <p class="text-gray-600" style="font-size:1.0625rem;line-height:1.75;max-width:60ch">
+          El Corredor del Henares tiene una concentración alta de edificios construidos entre 1960 y 1990. El tipo de construcción condiciona directamente el estado de las instalaciones que vamos a encontrar.
+        </p>
+      </div>
 
-        <!-- Columna principal 70% -->
-        <div>
-          <h2 id="h-parque" class="reveal text-3xl lg:text-4xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em; text-wrap:balance">
-            Qué baños vemos habitualmente en el Corredor del Henares
-          </h2>
-          <p class="text-gray-700 leading-relaxed mb-8" style="max-width:65ch">
-            El Corredor del Henares tiene una concentración alta de edificios construidos entre 1960 y 1990, años en que el parque de vivienda se expandió para acoger la industrialización de la zona. El tipo de construcción condiciona directamente el estado de las instalaciones que vamos a encontrar.
-          </p>
-
-          <h3 class="text-lg font-bold text-gray-900 mb-3">Bloques de piso: Coslada, San Fernando, Torrejón y Alcalá</h3>
-          <p class="text-gray-700 leading-relaxed mb-4" style="max-width:65ch">
-            En Coslada, San Fernando de Henares y Torrejón de Ardoz abundan los bloques de los años 70. En Alcalá el crecimiento continuó durante los 80 y 90. El patrón de instalaciones es similar en ambas décadas: baños de 3 a 5&nbsp;m², bañera empotrada, alicatado completo hasta el techo. La diferencia está en las tuberías: plomo o acero galvanizado en los edificios más antiguos, cobre con juntas de latón en los de los 80, muchas ya con indicios de deterioro.
-          </p>
-          <ul class="text-sm text-gray-600 leading-relaxed mb-10 space-y-1.5 pl-5 list-disc" style="max-width:62ch">
+      <div class="era-timeline">
+        <div class="era-col">
+          <p class="era-tag">Bloques años 70–90</p>
+          <h3 class="era-col__title">Bloques de piso: Coslada, San Fernando, Torrejón y Alcalá</h3>
+          <p class="era-col__body">En Coslada, San Fernando y Torrejón abundan los bloques de los años 70. En Alcalá el crecimiento continuó durante los 80 y 90. Baños de 3 a 5&nbsp;m², bañera empotrada, alicatado completo hasta el techo. La diferencia está en las tuberías: plomo o acero galvanizado en los más antiguos, cobre en los de los 80.</p>
+          <ul class="era-list">
             <li>Bañera empotrada de hierro fundido o acrílico, usualmente 1,50–1,60 m</li>
             <li>Alicatado hasta media altura o completo, con juntas envejecidas</li>
             <li>Fontanería de plomo, acero galvanizado o cobre según la década</li>
             <li>Ventilación por conducto comunitario al patio interior</li>
             <li>Sanitarios de primera o segunda generación, de difícil repuesto</li>
           </ul>
+        </div>
 
-          <h3 class="text-lg font-bold text-gray-900 mb-3">Unifamiliares y adosados: Meco, Camarma, Azuqueca</h3>
-          <p class="text-gray-700 leading-relaxed mb-4" style="max-width:65ch">
-            En los municipios más pequeños del Corredor predominan viviendas unifamiliares y adosados, muchos con baño principal y aseo secundario sin reformar desde la construcción. La casuística es distinta: más metros cuadrados, más superficie de alicatado, y frecuentemente una instalación de agua caliente sanitaria que también necesita actualización.
-          </p>
-          <ul class="text-sm text-gray-600 leading-relaxed mb-10 space-y-1.5 pl-5 list-disc" style="max-width:62ch">
+        <div class="era-col">
+          <p class="era-tag">Unifamiliares y adosados</p>
+          <h3 class="era-col__title">Unifamiliares y adosados: Meco, Camarma, Azuqueca</h3>
+          <p class="era-col__body">En los municipios más pequeños predominan viviendas unifamiliares y adosados, muchos con baño principal y aseo secundario sin reformar desde la construcción. Más metros cuadrados, más superficie de alicatado, y frecuentemente una instalación de agua caliente que también necesita actualización.</p>
+          <ul class="era-list">
             <li>Baño principal de 5–8 m² y aseo de 2–3 m²</li>
             <li>Materiales de los 90–2000: mayólica o gres de formato pequeño</li>
             <li>Ventana al exterior en la mayoría de los casos</li>
             <li>Instalación de PVC en viviendas posteriores a 2000</li>
           </ul>
-
-          <h3 class="text-lg font-bold text-gray-900 mb-3">Ventilación: el problema que más se infravalora</h3>
-          <p class="text-gray-700 leading-relaxed mb-4" style="max-width:65ch">
-            La mayoría de los baños del Corredor construidos antes de los 90 no tienen ventana al exterior: ventilan por conductos de ventilación forzada al patio interior o al conducto comunitario. Con el tiempo, esos conductos se obstruyen parcial o totalmente y el extractor pierde eficacia. El resultado es humedad ambiental crónica, manchas negras en las juntas del alicatado y condensaciones en el espejo.
-          </p>
-          <p class="text-gray-700 leading-relaxed" style="max-width:65ch">
-            En la visita técnica revisamos el estado del conducto y la potencia del extractor. Si la ventilación es deficiente, lo incluimos en el alcance de la reforma: renovar el extractor y limpiar o reparar el conducto cuesta poco y cambia mucho la experiencia diaria del baño. Un baño bien ventilado se limpia menos, huele mejor y aguanta más años sin manchas en las juntas.
-          </p>
         </div>
 
-        <!-- Sidebar 30% -->
-        <div class="lg:pt-12 space-y-4">
-          <div class="bg-[#F9F7F4] p-7">
-            <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Antes de la visita</p>
-            <p class="text-sm text-gray-700 leading-relaxed">
-              Evaluamos el estado real de las instalaciones antes de dar precio: qué puede aprovecharse, qué hay que renovar y qué conviene resolver en la misma obra para no volver a abrir en pocos años. El presupuesto solo cierra después de la visita, nunca antes.
-            </p>
-          </div>
-          <div class="bg-[#111827] p-7 text-white">
-            <p class="text-6xl font-black leading-none mb-2" style="letter-spacing:-0.03em">✓</p>
-            <p class="text-sm text-gray-400">Presupuesto por escrito</p>
-            <p class="text-xs text-gray-400 mt-1">Días laborables</p>
-          </div>
+        <div class="era-col">
+          <p class="era-tag">El problema más infravalurado</p>
+          <h3 class="era-col__title">Ventilación: el problema que más se infravalora</h3>
+          <p class="era-col__body">La mayoría de los baños del Corredor construidos antes de los 90 no tienen ventana al exterior. Con el tiempo, los conductos de ventilación se obstruyen y el extractor pierde eficacia. El resultado es humedad ambiental crónica, manchas negras en las juntas y condensaciones en el espejo.</p>
+          <ul class="era-list">
+            <li>Conductos de ventilación forzada al patio interior o comunitario</li>
+            <li>Obstrucción progresiva que reduce la eficacia del extractor</li>
+            <li>Humedad ambiental crónica y manchas en juntas del alicatado</li>
+            <li>Revisamos el conducto y el extractor en la visita técnica</li>
+          </ul>
         </div>
+      </div>
+
+      <div class="empresa-callout mt-8">
+        <p class="empresa-callout__title">Antes de la visita técnica</p>
+        <p class="empresa-callout__body">
+          Evaluamos el estado real de las instalaciones antes de dar precio: qué puede aprovecharse, qué hay que renovar y qué conviene resolver en la misma obra para no volver a abrir en pocos años. El presupuesto solo cierra después de la visita, nunca antes.
+        </p>
       </div>
     </div>
   </section>
@@ -286,21 +282,29 @@ const zones = [
         Pero la decisión no es solo estética. Hay que considerar si en la vivienda hay personas mayores o con movilidad reducida que necesiten bañarse, si el baño va a ponerse a la venta, y qué tipo de ducha encaja mejor con el espacio y el presupuesto disponible.
       </p>
 
-      <!-- Dos opciones comparables — cards justificadas -->
-      <div class="grid md:grid-cols-2 gap-5 mb-8">
-        <div class="bg-white p-7 border border-gray-100">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Plato de ducha extraplano</h3>
-          <p class="text-sm text-gray-600 leading-relaxed mb-5">
-            Altura de 5&nbsp;cm sobre el suelo, instalación sencilla y estanca. La opción más habitual en reformas de baños de 4 a 6&nbsp;m² en bloques de pisos. Se coloca sobre el solado existente si está en buen estado, o sobre el nuevo si se cambia el alicatado completo. Mampara de vidrio templado o cortina según el espacio.
-          </p>
-          <p class="text-sm font-bold text-gray-900">Desde 1.800€ <span class="font-normal text-gray-400">(solo cambio, sin alicatado)</span></p>
+      <!-- Dos opciones comparables — decision-card pattern -->
+      <div class="decision-grid mb-8">
+        <div class="decision-card decision-card--light">
+          <p class="decision-card__eyebrow">La opción más habitual</p>
+          <h3 class="decision-card__title">Plato de ducha extraplano</h3>
+          <ul class="decision-list">
+            <li>Altura de 5&nbsp;cm sobre el suelo, instalación sencilla y estanca</li>
+            <li>Opción más habitual en baños de 4–6&nbsp;m² en bloques de pisos</li>
+            <li>Se coloca sobre el solado existente si está en buen estado</li>
+            <li>Mampara de vidrio templado o cortina según el espacio</li>
+          </ul>
+          <p class="decision-card__price">Desde 1.800€ · solo cambio, sin alicatado</p>
         </div>
-        <div class="bg-white p-7 border border-gray-100">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Ducha a ras de suelo (italiana)</h3>
-          <p class="text-sm text-gray-600 leading-relaxed mb-5">
-            Sin plato, con impermeabilización de toda la zona y desagüe lineal integrado en el suelo. Diseño continuo entre el suelo de la ducha y el del baño. Requiere planificar el desagüe con más detalle y una impermeabilización más exhaustiva. La opción preferida en baños grandes de chalets y adosados donde se busca un acabado sin barreras.
-          </p>
-          <p class="text-sm text-gray-500">Precio según diseño — a valorar en visita</p>
+        <div class="decision-card decision-card--dark">
+          <p class="decision-card__eyebrow" style="color:#D97B58">Acabado sin barreras</p>
+          <h3 class="decision-card__title" style="color:#fff">Ducha a ras de suelo (italiana)</h3>
+          <ul class="decision-list decision-list--dark">
+            <li>Sin plato, con impermeabilización total de la zona húmeda</li>
+            <li>Desagüe lineal integrado en el suelo, diseño continuo</li>
+            <li>Requiere planificación del desagüe y mayor impermeabilización</li>
+            <li>Preferida en baños grandes de chalets y adosados</li>
+          </ul>
+          <p class="decision-card__price" style="color:#D97B58">Precio según diseño · a valorar en visita</p>
         </div>
       </div>
 
@@ -343,22 +347,23 @@ const zones = [
              loading="lazy" />
       </figure>
 
-      <!-- Lista editorial en lugar de grid de 6 cards -->
-      <div class="grid md:grid-cols-2 gap-x-12 gap-y-7 max-w-4xl mb-12">
+      <!-- Lista tipo incluye-list del lab -->
+      <div class="incluye-list reveal-stagger mb-12">
         {[
-          { title: 'Demolición y desescombro', desc: 'Retirada de alicatados, solado, bañera o ducha anterior y sanitarios. Gestión de escombros a contenedor. El espacio queda limpio para empezar.' },
-          { title: 'Impermeabilización', desc: 'Aplicación de impermeabilizante en suelo y primer metro de pared en toda la zona húmeda. Es la partida más importante para evitar filtraciones futuras.' },
-          { title: 'Alicatado y solado', desc: 'Colocación de nuevo revestimiento cerámico en paredes y suelo. Rejuntado con material hidrófugo. Sellado de juntas de dilatación en los encuentros.' },
-          { title: 'Plato de ducha o bañera', desc: 'Instalación del plato de ducha (extraplano o a ras de suelo) o nueva bañera según elección. Incluye la adaptación de la fontanería de acometida.' },
-          { title: 'Mampara y sanitarios', desc: 'Montaje de mampara de vidrio templado, inodoro, lavabo y pedestal o mueble. Conexión de todos los puntos de agua y desagüe.' },
-          { title: 'Mueble, espejo e iluminación', desc: 'Instalación de mueble de baño con lavabo integrado, espejo con o sin luz, y apliques de iluminación sobre espejo. Acabado completo.' },
+          { n:'01', title: 'Demolición y desescombro', desc: 'Retirada de alicatados, solado, bañera o ducha anterior y sanitarios. Gestión de escombros a contenedor. El espacio queda limpio para empezar.' },
+          { n:'02', title: 'Impermeabilización', desc: 'Aplicación de impermeabilizante en suelo y primer metro de pared en toda la zona húmeda. Es la partida más importante para evitar filtraciones futuras.' },
+          { n:'03', title: 'Alicatado y solado', desc: 'Colocación de nuevo revestimiento cerámico en paredes y suelo. Rejuntado con material hidrófugo. Sellado de juntas de dilatación en los encuentros.' },
+          { n:'04', title: 'Plato de ducha o bañera', desc: 'Instalación del plato de ducha (extraplano o a ras de suelo) o nueva bañera según elección. Incluye la adaptación de la fontanería de acometida.' },
+          { n:'05', title: 'Mampara y sanitarios', desc: 'Montaje de mampara de vidrio templado, inodoro, lavabo y pedestal o mueble. Conexión de todos los puntos de agua y desagüe.' },
+          { n:'06', title: 'Mueble, espejo e iluminación', desc: 'Instalación de mueble de baño con lavabo integrado, espejo con o sin luz, y apliques de iluminación sobre espejo. Acabado completo.' },
         ].map(item => (
-          <div class="flex gap-4 items-start">
-            <div class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gray-300 mt-[5px]"></div>
-            <div>
-              <p class="font-bold text-gray-900 mb-1">{item.title}</p>
-              <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+          <div class="incluye-row">
+            <span class="incluye-n" aria-hidden="true">{item.n}</span>
+            <div class="incluye-body">
+              <p class="incluye-title">{item.title}</p>
+              <p class="incluye-desc">{item.desc}</p>
             </div>
+            <span class="incluye-arrow" aria-hidden="true">→</span>
           </div>
         ))}
       </div>
@@ -377,28 +382,41 @@ const zones = [
   </section>
 
   <!-- ── 5. LA OBRA EN TU CASA (dark) ─────────────────────── -->
-  <section class="py-20 bg-[#111827]" aria-labelledby="h-vida-obra">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-vida-obra" class="reveal text-3xl lg:text-4xl font-black text-white mb-5" style="letter-spacing:-0.02em; text-wrap:balance">
-        Cómo organizamos la obra para que te afecte lo menos posible
-      </h2>
-      <p class="text-gray-300 leading-relaxed mb-10" style="max-width:60ch">
-        Una reforma de baño es incómoda. No hay forma de evitarlo del todo, pero sí de gestionarla bien desde el principio.
-      </p>
-      <div class="space-y-7">
-        {[
-          { title: 'Protección antes de empezar', desc: 'Cubrir suelos del pasillo, la entrada y las zonas comunes del edificio antes de retirar el primer azulejo. Los vecinos no tienen que vivir con polvo en el rellano porque tú reformas el baño.' },
-          { title: 'Limpieza diaria al terminar', desc: 'Al final de cada jornada, el baño y el pasillo quedan recogidos. No perfectos —es una obra— pero sin escombros sueltos ni herramientas en medio.' },
-          { title: 'Horario claro y respetado', desc: 'Empezamos a la hora acordada. Si hay un cambio, avisamos antes. No aparecemos sin previo aviso ni desaparecemos días sin explicación.' },
-          { title: 'Un solo interlocutor', desc: 'No hablas con el fontanero un día, con el alicatador otro y con la empresa cuando hay un problema. Hay una persona responsable de la obra que tiene tu número y que es a quien llamas si tienes una pregunta.' },
-          { title: 'Los días más difíciles, anunciados', desc: 'Los primeros 3–4 días de demolición son los de más ruido y polvo. A partir del quinto día, la obra entra en fase de construcción: más silenciosa y con menos interferencia en tu vida diaria. Si solo tienes un baño, lo planificamos para que recuperes el acceso básico lo antes posible dentro del plazo.' },
-        ].map(item => (
-          <div>
-            <p class="font-semibold text-white mb-1">{item.title}</p>
-            <p class="text-sm text-gray-400 leading-relaxed" style="max-width:58ch">{item.desc}</p>
-          </div>
-        ))}
+  <section class="py-20 lg:py-28 bg-[#111827]" aria-labelledby="h-vida-obra">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="vida-grid">
+        <div class="vida-left">
+          <h2 id="h-vida-obra" class="text-white mb-6" style="font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-0.02em;line-height:0.92;font-weight:900;text-wrap:balance">
+            Cómo organizamos la obra para que te afecte lo menos posible
+          </h2>
+          <p class="text-gray-400 leading-relaxed mb-8" style="font-size:1rem;max-width:36ch">
+            Una reforma de baño es incómoda. No hay forma de evitarlo del todo, pero sí de gestionarla bien desde el principio.
+          </p>
+          <p class="text-sm" style="border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;max-width:34ch;color:rgba(255,255,255,.65)">
+            Todo esto no está en el presupuesto porque no tiene precio. Está en cómo trabajamos.
+          </p>
+        </div>
+        <div class="vida-right">
+          <ul class="vida-list">
+            {[
+              { n: '01', title: 'Protección antes de empezar', desc: 'Cubrir suelos del pasillo, la entrada y las zonas comunes del edificio antes de retirar el primer azulejo. Los vecinos no tienen que vivir con polvo en el rellano porque tú reformas el baño.' },
+              { n: '02', title: 'Limpieza diaria al terminar', desc: 'Al final de cada jornada, el baño y el pasillo quedan recogidos. No perfectos —es una obra— pero sin escombros sueltos ni herramientas en medio.' },
+              { n: '03', title: 'Horario claro y respetado', desc: 'Empezamos a la hora acordada. Si hay un cambio, avisamos antes. No aparecemos sin previo aviso ni desaparecemos días sin explicación.' },
+              { n: '04', title: 'Un solo interlocutor', desc: 'No hablas con el fontanero un día, con el alicatador otro y con la empresa cuando hay un problema. Hay una persona responsable de la obra que tiene tu número y que es a quien llamas si tienes una pregunta.' },
+              { n: '05', title: 'Los días más difíciles, anunciados', desc: 'Los primeros 3–4 días de demolición son los de más ruido y polvo. A partir del quinto día la obra entra en fase de construcción. Si solo tienes un baño, lo planificamos para que recuperes el acceso básico lo antes posible.' },
+            ].map(item => (
+              <li class="vida-item">
+                <span class="vida-item__n" aria-hidden="true">{item.n}</span>
+                <div>
+                  <p class="vida-item__title">{item.title}</p>
+                  <p class="vida-item__desc">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
+
 
       <!-- Timeline de fases de obra -->
       <div class="mt-12" style="border-top:1px solid rgba(255,255,255,.12)">
@@ -866,6 +884,67 @@ const zones = [
   .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.21s; }
   .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.28s; }
   .reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.35s; }
+
+  /* ── Parque header ── */
+  .parque-header { max-width:52rem; }
+
+  /* ── Era timeline (parque section) ── */
+  .era-timeline { display:grid; grid-template-columns:1fr; gap:0; border-top:3px solid #111827; }
+  @media(min-width:768px){ .era-timeline { grid-template-columns:repeat(3,1fr); } }
+  .era-col { padding:1.75rem 0 2rem 0; border-bottom:1px solid #E5E7EB; transition:background 0.25s ease; cursor:default; }
+  @media(min-width:768px){ .era-col { padding:2rem 2rem 2rem 0; border-bottom:none; border-right:1px solid #D1D5DB; position:relative; } .era-col:last-child { border-right:none; } .era-col:not(:first-child){ padding-left:2rem; } }
+  @media(max-width:767px){ .era-col:last-child { border-bottom:none; } }
+  .era-col::before { content:''; position:absolute; top:-3px; left:0; width:0; height:3px; background:#A85535; transition:width 0.35s cubic-bezier(0.16,1,0.3,1); }
+  @media(min-width:768px){ .era-col:hover::before { width:100%; } .era-col:hover { background:#FAFAF8; } }
+  .era-tag { display:inline-flex; align-items:center; gap:0.35rem; font-size:0.625rem; font-weight:700; color:#A85535; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem; font-family:'Courier New', monospace; }
+  .era-tag::before { content:''; width:4px; height:4px; border-radius:50%; background:currentColor; flex-shrink:0; }
+  .era-col__title { font-size:clamp(1.0625rem,1.5vw,1.25rem); font-weight:800; color:#111827; line-height:1.35; letter-spacing:-0.02em; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid #F3F4F6; }
+  .era-col__body { font-size:0.8125rem; color:#6B7280; line-height:1.7; margin-bottom:1rem; }
+  .era-list { list-style:none; padding:0; margin:0; border-top:1px solid #F3F4F6; }
+  .era-list li { font-size:0.8125rem; color:#374151; line-height:1.5; padding:0.5rem 0; border-bottom:1px solid #F3F4F6; display:grid; grid-template-columns:0.875rem 1fr; gap:0.5rem; align-items:baseline; }
+  .era-list li:last-child { border-bottom:none; }
+  .era-list li::before { content:'–'; color:#A85535; font-weight:900; font-size:0.75rem; line-height:1.5; }
+
+  /* ── Decision cards (ducha options) ── */
+  .decision-grid { display:grid; grid-template-columns:1fr; gap:0; }
+  @media(min-width:768px){ .decision-grid { grid-template-columns:1fr 1fr; } }
+  .decision-card { padding:2rem; }
+  @media(min-width:768px){ .decision-card { padding:2.5rem; } }
+  .decision-card--light { background:#fff; border:1px solid #E5E7EB; }
+  .decision-card--dark { background:#111827; border:1px solid #111827; }
+  .decision-card__eyebrow { font-size:0.625rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#9CA3AF; margin-bottom:0.5rem; font-family:'Courier New', monospace; }
+  .decision-card__title { font-size:1.0625rem; font-weight:700; color:#111827; margin-bottom:1.25rem; line-height:1.3; }
+  .decision-card__price { font-size:0.75rem; font-weight:600; color:#9CA3AF; margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid #E5E7EB; line-height:1.5; }
+  .decision-card--dark .decision-card__price { border-top-color:rgba(255,255,255,.1); }
+  .decision-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0; }
+  .decision-list li { font-size:0.8375rem; color:#374151; padding:0.6rem 0; border-bottom:1px solid #F3F4F6; display:grid; grid-template-columns:1rem 1fr; gap:0.5rem; line-height:1.5; align-items:baseline; }
+  .decision-list li:last-child { border-bottom:none; }
+  .decision-list li::before { content:'✓'; font-size:0.6875rem; font-weight:700; color:#9CA3AF; line-height:1.5; }
+  .decision-list--dark li { color:rgba(255,255,255,.75); border-bottom-color:rgba(255,255,255,.08); }
+  .decision-list--dark li::before { color:#A85535; }
+
+  /* ── Incluye list (qué incluye section) ── */
+  .incluye-list { border-top:1px solid #E5E7EB; }
+  .incluye-row { display:grid; grid-template-columns:2.5rem 1fr auto; gap:0 1.5rem; align-items:center; padding:1.25rem 0.5rem; border-bottom:1px solid #E5E7EB; transition:background 0.2s ease, padding-left 0.2s ease; cursor:default; }
+  .incluye-row:hover { background:#FAFAF8; padding-left:1rem; }
+  .incluye-n { font-size:0.6875rem; font-weight:700; color:#A85535; letter-spacing:0.1em; font-family:'Courier New', monospace; line-height:1; padding-top:0.1rem; }
+  .incluye-body { min-width:0; }
+  .incluye-title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.2rem; line-height:1.3; }
+  .incluye-desc { font-size:0.8125rem; color:#6B7280; line-height:1.6; }
+  .incluye-arrow { font-size:1rem; color:#D1D5DB; flex-shrink:0; transition:color 0.2s ease, transform 0.2s ease; display:none; }
+  @media(min-width:768px){ .incluye-arrow { display:block; } }
+  .incluye-row:hover .incluye-arrow { color:#A85535; transform:translateX(4px); }
+
+  /* ── Vida-obra (dark section) ── */
+  .vida-grid { display:grid; grid-template-columns:1fr; gap:3rem; }
+  @media(min-width:900px){ .vida-grid { grid-template-columns:42% 1fr; gap:5rem; align-items:start; } }
+  .vida-list { list-style:none; padding:0; margin:0; }
+  .vida-item { display:grid; grid-template-columns:2rem 1fr; gap:0 1rem; padding:1.125rem 0.75rem; border-bottom:1px solid rgba(255,255,255,.07); align-items:start; margin:0 -0.75rem; border-left:2px solid transparent; transition:background 0.2s ease, border-left-color 0.2s ease; }
+  .vida-item:first-child { border-top:1px solid rgba(255,255,255,.07); }
+  .vida-item:hover { background:rgba(255,255,255,.04); border-left-color:#A85535; }
+  .vida-item__n { font-size:0.625rem; font-weight:700; letter-spacing:0.12em; color:#A85535; line-height:1.9; font-family:'Courier New', monospace; }
+  .vida-item__title { font-size:0.9375rem; font-weight:600; color:#F9F7F4; margin-bottom:0.3rem; line-height:1.35; }
+  .vida-item__desc { font-size:0.8125rem; color:rgba(255,255,255,.65); line-height:1.65; }
 
   /* ── Zonas grid ── */
   .zonas-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#E5E7EB; border-top:2px solid #111827; }

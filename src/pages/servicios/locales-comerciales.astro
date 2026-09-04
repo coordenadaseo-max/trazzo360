@@ -182,8 +182,8 @@ const zones = [
         </p>
       </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-px border border-gray-200 bg-gray-200">
-        <div class="bg-white p-7 border-t-4 border-[#A85535]">
+      <div class="actividades-grid">
+        <div class="bg-white p-7" style="border-top:2px solid #111827">
           <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-2">Hostelería</p>
           <p class="text-sm font-semibold text-gray-900 mb-4 leading-tight">Bar, restaurante, cafetería</p>
           <ul class="list-marca space-y-2">
@@ -193,7 +193,7 @@ const zones = [
             <li><span class="text-sm text-gray-600">Requisitos de actividad clasificada</span></li>
           </ul>
         </div>
-        <div class="bg-white p-7 border-t-4 border-gray-200">
+        <div class="bg-white p-7" style="border-top:2px solid #E5E7EB">
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Comercio</p>
           <p class="text-sm font-semibold text-gray-900 mb-4 leading-tight">Tienda, showroom, exposición</p>
           <ul class="list-marca space-y-2">
@@ -203,7 +203,7 @@ const zones = [
             <li><span class="text-sm text-gray-600">Normativa de accesibilidad</span></li>
           </ul>
         </div>
-        <div class="bg-white p-7 border-t-4 border-gray-200">
+        <div class="bg-white p-7" style="border-top:2px solid #E5E7EB">
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Oficina</p>
           <p class="text-sm font-semibold text-gray-900 mb-4 leading-tight">Despacho, coworking, empresa</p>
           <ul class="list-marca space-y-2">
@@ -213,7 +213,7 @@ const zones = [
             <li><span class="text-sm text-gray-600">Iluminación de trabajo</span></li>
           </ul>
         </div>
-        <div class="bg-white p-7 border-t-4 border-gray-200">
+        <div class="bg-white p-7" style="border-top:2px solid #E5E7EB">
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Clínica o taller</p>
           <p class="text-sm font-semibold text-gray-900 mb-4 leading-tight">Sanitario, estética, mecánico</p>
           <ul class="list-marca space-y-2">
@@ -243,7 +243,7 @@ const zones = [
       </p>
 
       <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white p-7 border-t-4 border-[#A85535]">
+        <div class="bg-white p-7" style="border-top:2px solid #111827">
           <h3 class="text-base font-bold text-gray-900 mb-3">Comercio minorista y oficinas</h3>
           <p class="text-xs font-semibold text-[#A85535] uppercase tracking-wide mb-3">Menor complejidad técnica y administrativa</p>
           <ul class="list-marca">
@@ -253,7 +253,7 @@ const zones = [
             <li><span>Plazos de tramitación generalmente más cortos</span></li>
           </ul>
         </div>
-        <div class="bg-white p-7 border-t-4 border-gray-200">
+        <div class="bg-white p-7" style="border-top:2px solid #E5E7EB">
           <h3 class="text-base font-bold text-gray-900 mb-3">Hostelería y actividades clasificadas</h3>
           <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Mayor complejidad técnica y administrativa</p>
           <ul class="list-marca">
@@ -265,9 +265,9 @@ const zones = [
         </div>
       </div>
 
-      <div class="bg-white border-l-4 border-amber-400 p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-2">El error que más retrasa aperturas en el Corredor</p>
-        <p class="text-sm text-gray-600 leading-relaxed">
+      <div class="empresa-callout">
+        <p class="empresa-callout__title">El error que más retrasa aperturas en el Corredor</p>
+        <p class="empresa-callout__body">
           Iniciar la tramitación de la licencia cuando la obra ya está terminada. En actividades que requieren inspección técnica (hostelería, clínicas, actividades clasificadas), la cadena es: proyecto, visado, tramitación, inspección, licencia. Todo eso puede tardar entre 4 y 12 semanas según el municipio y la actividad. Si se empieza después de que acaba la obra, se suman esas semanas al plazo de apertura. La documentación técnica puede empezar en cuanto se define el alcance, sin esperar a que finalice la obra.
         </p>
       </div>
@@ -487,7 +487,7 @@ const zones = [
         </table>
       </div>
 
-      <div class="bg-white p-6 border-l-4 border-gray-200">
+      <div class="bg-white p-6" style="border-top:2px solid #E5E7EB">
         <p class="text-sm font-semibold text-gray-900 mb-3">Tramitación de licencia (partida adicional, orientativa)</p>
         <div class="overflow-x-auto">
           <table class="w-full text-sm border-collapse">
@@ -536,13 +536,13 @@ const zones = [
         La tramitación de la licencia de actividad varía según el municipio y el tipo de negocio. En los municipios del Corredor (Torrejón de Ardoz, Alcalá de Henares, Coslada, San Fernando de Henares, Guadalajara, Azuqueca de Henares, Meco y Camarma de Esteruelas) los procedimientos habituales son dos: declaración responsable para actividades de menor impacto, y licencia ordinaria para actividades clasificadas o con mayor repercusión sobre el entorno.
       </p>
       <div class="grid md:grid-cols-2 gap-6 mb-6">
-        <div class="bg-[#F9F7F4] p-6 border-l-4 border-[#A85535]">
+        <div class="bg-[#F9F7F4] p-6" style="border-top:2px solid #111827">
           <p class="text-sm font-bold text-gray-900 mb-2">Declaración responsable</p>
           <p class="text-sm text-gray-600 leading-relaxed">
             Aplicable a comercios, oficinas y actividades sin impacto relevante sobre el entorno. Presentación de documentación y, según el municipio y el procedimiento aplicable, posible inicio de actividad sin esperar a la resolución formal. Plazos generalmente más cortos.
           </p>
         </div>
-        <div class="bg-[#F9F7F4] p-6 border-l-4 border-gray-300">
+        <div class="bg-[#F9F7F4] p-6" style="border-top:2px solid #E5E7EB">
           <p class="text-sm font-bold text-gray-900 mb-2">Licencia de actividad ordinaria</p>
           <p class="text-sm text-gray-600 leading-relaxed">
             Para hostelería, actividades sanitarias, guarderías y actividades clasificadas. Requiere proyecto técnico, visado colegial e inspección antes de la resolución. Plazos más largos y proceso más exigente.
@@ -577,9 +577,9 @@ const zones = [
         ))}
       </dl>
 
-      <div class="mt-8 bg-white border-l-4 border-[#A85535] p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-3">Precio cerrado e imprevistos en la reforma de un local</p>
-        <p class="text-sm text-gray-700 leading-relaxed">
+      <div class="empresa-callout mt-8">
+        <p class="empresa-callout__title">Precio cerrado e imprevistos en la reforma de un local</p>
+        <p class="empresa-callout__body">
           El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica: las instalaciones accesibles, la estructura observable y el alcance definido en el proyecto. Si al vaciar el local aparece algo que no era visible en la inspección (una instalación eléctrica en peor estado del esperado, humedad en el forjado, un conducto de extracción inaccesible), lo comunicamos antes de actuar. Lo valoramos por separado y esperamos tu autorización. En la reforma de locales, los imprevistos más frecuentes son los relacionados con las instalaciones originales del edificio.
         </p>
       </div>
@@ -688,22 +688,26 @@ const zones = [
       <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
         Reformamos locales comerciales y oficinas en los ocho municipios del Corredor del Henares sin coste adicional de desplazamiento. Selecciona tu municipio para ver información específica sobre licencias y plazos en tu zona.
       </p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="zonas-grid">
         {zones.map(z => (
-          <article class="group relative p-5 bg-[#F9F7F4] hover:bg-[#111827] transition-colors duration-200">
-            <h3 class="text-sm font-bold text-gray-900 group-hover:text-white transition-colors duration-200 m-0">
+          <article class="zona-card group relative">
+            <h3 class="zona-card__title">
               <a href={`/locales-comerciales/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
                 Reforma de locales en {z.name}
               </a>
             </h3>
-            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 group-hover:text-gray-300 transition-colors duration-200 block">Ver precios y trámites →</span>
+            <span aria-hidden="true" class="zona-card__sub">Ver precios y trámites →</span>
           </article>
         ))}
       </div>
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si la obra afecta a zonas comunes del edificio:</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="/servicios/comunidades-vecinos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Obras en comunidades de propietarios</a>
+        <div class="flex flex-wrap gap-2">
+          <a href="/servicios/comunidades-vecinos/" class="price-guide-chip">
+            <span class="price-guide-chip__label">Servicio</span>
+            <span class="price-guide-chip__text">Obras en comunidades de propietarios</span>
+            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -718,15 +722,16 @@ const zones = [
           Todo lo que necesitas saber sobre reforma de local comercial
         </h2>
       </div>
-      <div class="divide-y divide-gray-200">
+      <div class="faq-list">
         {faqs.map(faq => (
-          <details class="group py-5">
-            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
-              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
-              <span class="text-gray-400 text-xl leading-none select-none font-normal block group-open:hidden" aria-hidden="true">+</span>
-              <span class="text-gray-400 text-xl leading-none select-none font-normal hidden group-open:block" aria-hidden="true">−</span>
+          <details class="faq-item group">
+            <summary class="faq-summary">
+              <h3 class="faq-q">{faq.q}</h3>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </summary>
-            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
+            <div class="faq-body"><p class="faq-a">{faq.a}</p></div>
           </details>
         ))}
       </div>
@@ -758,4 +763,45 @@ const zones = [
   .hero-img-overlay { position:absolute; inset:0; background:rgba(17,24,39,.65); }
   .compromisos-apertura-grid { display:grid; gap:2rem; }
   @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
+
+  /* ── Actividades grid ── */
+  .actividades-grid { display:grid; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
+  @media(min-width:640px){ .actividades-grid { grid-template-columns:repeat(2,1fr); } }
+  @media(min-width:1024px){ .actividades-grid { grid-template-columns:repeat(4,1fr); } }
+
+  /* ── Lab design system ── */
+  .zonas-grid { display:grid; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
+  @media(min-width:480px){ .zonas-grid { grid-template-columns:repeat(2,1fr); } }
+  @media(min-width:768px){ .zonas-grid { grid-template-columns:repeat(4,1fr); } }
+  .zona-card { background:#F9F7F4; padding:1.25rem 1.25rem 1rem; position:relative; transition:background 0.2s; }
+  .zona-card:hover { background:#111827; }
+  .zona-card__title { font-size:.875rem; font-weight:700; color:#111827; margin:0 0 .25rem; transition:color 0.2s; }
+  .zona-card:hover .zona-card__title { color:#fff; }
+  .zona-card__title a::after { content:''; position:absolute; inset:0; }
+  .zona-card__sub { display:block; font-size:.75rem; color:#9CA3AF; transition:color 0.2s; }
+  .zona-card:hover .zona-card__sub { color:#6B7280; }
+  .price-guide-chip { display:inline-flex; align-items:center; gap:.5rem; padding:.375rem .75rem; background:#F3F4F6; border:1px solid #E5E7EB; font-size:.8125rem; color:#374151; text-decoration:none; transition:background 0.15s,color 0.15s,border-color 0.15s; }
+  .price-guide-chip:hover { background:#111827; color:#fff; border-color:#111827; }
+  .price-guide-chip__label { font-size:.5625rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-family:'Courier New',monospace; color:#A85535; transition:color 0.15s; }
+  .price-guide-chip:hover .price-guide-chip__label { color:rgba(255,255,255,.55); }
+  .price-guide-chip__text { font-weight:600; }
+  .price-guide-chip__arrow { opacity:.4; flex-shrink:0; }
+  .price-guide-chip:hover .price-guide-chip__arrow { opacity:.7; }
+  .empresa-callout { border-top:2px solid #111827; background:#fff; display:grid; grid-template-columns:1fr; gap:.75rem; padding:1.25rem 1.5rem; }
+  @media(min-width:640px){ .empresa-callout { grid-template-columns:14rem 1fr; gap:1.5rem; padding:1.5rem 2rem; } }
+  .empresa-callout__title { font-size:.6875rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-family:'Courier New',monospace; color:#A85535; line-height:1.5; padding-top:.125rem; }
+  .empresa-callout__body { font-size:.875rem; color:#4B5563; line-height:1.7; max-width:60ch; margin:0; }
+  .faq-list { border-top:2px solid #111827; }
+  .faq-item { border-bottom:1px solid #E5E7EB; }
+  .faq-summary { display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; padding:1.25rem 0; cursor:pointer; list-style:none; transition:padding-left 0.2s; }
+  .faq-summary::-webkit-details-marker { display:none; }
+  .faq-item[open] .faq-summary, .faq-summary:hover { padding-left:.5rem; }
+  .faq-q { font-size:.9375rem; font-weight:600; color:#111827; margin:0; line-height:1.45; }
+  .faq-chevron { flex-shrink:0; color:#A85535; transition:transform 0.25s; margin-top:.125rem; }
+  .faq-item[open] .faq-chevron { transform:rotate(180deg); }
+  .faq-body { padding-bottom:1.25rem; }
+  .faq-a { font-size:.875rem; color:#6B7280; line-height:1.7; max-width:60ch; margin:0; }
+  @media(prefers-reduced-motion:reduce){
+    .zona-card,.zona-card__title,.zona-card__sub,.price-guide-chip,.price-guide-chip__label,.price-guide-chip__arrow,.faq-summary,.faq-chevron { transition:none; }
+  }
 </style>

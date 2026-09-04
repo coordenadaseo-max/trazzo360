@@ -325,7 +325,7 @@ const zones = [
       </p>
 
       <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white p-7 border-t-4 border-[#A85535]">
+        <div class="bg-white p-7" style="border-top:2px solid #111827">
           <h3 class="text-base font-bold text-gray-900 mb-3">Reforma de vivienda por acabados (sin tocar instalaciones)</h3>
           <ul class="list-marca">
             <li><span>El cuadro eléctrico tiene capacidad suficiente para los electrodomésticos actuales</span></li>
@@ -335,7 +335,7 @@ const zones = [
           </ul>
           <p class="text-sm font-semibold text-[#A85535] mt-4">Desde 14.000€ · 350–450 €/m² · piso 40 m² esencial sin IVA</p>
         </div>
-        <div class="bg-white p-7 border-t-4 border-gray-200">
+        <div class="bg-white p-7" style="border-top:2px solid #E5E7EB">
           <h3 class="text-base font-bold text-gray-900 mb-3">Reforma integral (instalaciones + acabados)</h3>
           <ul class="list-marca">
             <li><span>La instalación eléctrica es de los años 70–80 sin actualizar</span></li>
@@ -362,7 +362,7 @@ const zones = [
         Reformar una vivienda antigua en el Corredor del Henares no es igual que reformar una vivienda moderna. Los bloques construidos entre 1960 y 1985 en Coslada, San Fernando y Torrejón de Ardoz acumulan décadas sin intervención en instalaciones. Lo que aparece al abrir paredes o levantar suelos es sistemáticamente distinto de lo que se ve en la primera visita: por eso el proceso de inspección previa es más exhaustivo y el presupuesto reserva siempre una partida específica para imprevistos en instalaciones.
       </p>
       <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white p-7 border-t-4 border-[#A85535]">
+        <div class="bg-white p-7" style="border-top:2px solid #111827">
           <h3 class="text-base font-bold text-gray-900 mb-3">Lo que suele aparecer al abrir</h3>
           <ul class="list-marca">
             <li><span>Instalación eléctrica de aluminio o sin toma de tierra: renovación completa necesaria</span></li>
@@ -372,7 +372,7 @@ const zones = [
             <li><span>Carpintería exterior encastrada en la fábrica, con premarco de madera</span></li>
           </ul>
         </div>
-        <div class="bg-white p-7 border-t-4 border-gray-200">
+        <div class="bg-white p-7" style="border-top:2px solid #E5E7EB">
           <h3 class="text-base font-bold text-gray-900 mb-3">Cómo lo gestionamos</h3>
           <ul class="list-marca">
             <li><span>Visita técnica con sondeos en paredes y suelos: documentamos el estado real antes de presupuestar</span></li>
@@ -507,9 +507,9 @@ const zones = [
       <p class="text-gray-700 leading-relaxed mb-6">
         En bloques de pisos con comunidad de propietarios, algunas actuaciones (como la modificación de distribución que afecte a la estructura del edificio) pueden requerir el consentimiento de la comunidad. La normativa varía por municipio. Nos encargamos de informarte y de gestionar el trámite que corresponda en tu caso.
       </p>
-      <div class="bg-[#F9F7F4] border-l-4 border-amber-400 p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-2">Derribo de tabiques en pisos de los años 60–80</p>
-        <p class="text-sm text-gray-600 leading-relaxed">
+      <div class="empresa-callout">
+        <p class="empresa-callout__title">Derribo de tabiques en pisos de los años 60–80</p>
+        <p class="empresa-callout__body">
           En edificios de esa época, algunos tabiques que aparentemente son de separación pueden ser elementos resistentes o tener funciones de arriostramiento. Antes de decidir qué se derriba, hacemos una valoración técnica del elemento para confirmar que puede eliminarse sin proyecto de refuerzo. Este paso va incluido en la visita técnica gratuita.
         </p>
       </div>
@@ -541,9 +541,9 @@ const zones = [
         ))}
       </dl>
 
-      <div class="mt-8 bg-white border-l-4 border-[#A85535] p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-3">Precio cerrado e imprevistos en la reforma de vivienda</p>
-        <p class="text-sm text-gray-700 leading-relaxed">
+      <div class="empresa-callout mt-8">
+        <p class="empresa-callout__title">Precio cerrado e imprevistos en la reforma de vivienda</p>
+        <p class="empresa-callout__body">
           El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma de pisos o viviendas, eso incluye el estado observable de las instalaciones, las dimensiones reales de cada zona y los materiales especificados antes de empezar. Si al levantar suelos o abrir paredes aparece algo que no era accesible antes (humedad en el soporte, tuberías en peor estado del visible, una viga que no estaba en los planos) lo comunicamos antes de tocar nada y lo valoramos por separado. En la mayoría de reformas de vivienda del Corredor, el precio cierra sin desviaciones. Cuando aparece algo nuevo, hay una persona que llama, explica y espera tu decisión antes de actuar.
         </p>
       </div>
@@ -656,24 +656,36 @@ const zones = [
       <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
         Hacemos reformas de viviendas en los ocho municipios del Corredor del Henares sin coste adicional de desplazamiento. Selecciona tu municipio para ver información sobre el mercado y los plazos habituales en tu zona.
       </p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="zonas-grid">
         {zones.map(z => (
-          <article class="group relative p-5 bg-[#F9F7F4] hover:bg-[#111827] transition-colors duration-200">
-            <h3 class="text-sm font-bold text-gray-900 group-hover:text-white transition-colors duration-200 m-0">
+          <article class="zona-card group relative">
+            <h3 class="zona-card__title">
               <a href={`/reforma-pisos/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
                 Reforma de pisos en {z.name}
               </a>
             </h3>
-            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 group-hover:text-gray-300 transition-colors duration-200 block">Ver precios y plazos →</span>
+            <span aria-hidden="true" class="zona-card__sub">Ver precios y plazos →</span>
           </article>
         ))}
       </div>
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si tu reforma necesita un alcance diferente:</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="/servicios/reformas-integrales/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reformas integrales (instalaciones incluidas)</a>
-          <a href="/servicios/reforma-banos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de baños</a>
-          <a href="/servicios/reforma-cocinas/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de cocinas</a>
+        <div class="flex flex-wrap gap-2">
+          <a href="/servicios/reformas-integrales/" class="price-guide-chip">
+            <span class="price-guide-chip__label">Servicio</span>
+            <span class="price-guide-chip__text">Reformas integrales (instalaciones incluidas)</span>
+            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/servicios/reforma-banos/" class="price-guide-chip">
+            <span class="price-guide-chip__label">Servicio</span>
+            <span class="price-guide-chip__text">Reforma de baños</span>
+            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/servicios/reforma-cocinas/" class="price-guide-chip">
+            <span class="price-guide-chip__label">Servicio</span>
+            <span class="price-guide-chip__text">Reforma de cocinas</span>
+            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -688,15 +700,16 @@ const zones = [
           Todo lo que necesitas saber sobre reforma de vivienda
         </h2>
       </div>
-      <div class="divide-y divide-gray-200">
+      <div class="faq-list">
         {faqs.map(faq => (
-          <details class="group py-5">
-            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
-              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
-              <span class="text-gray-400 text-xl leading-none select-none font-normal block group-open:hidden" aria-hidden="true">+</span>
-              <span class="text-gray-400 text-xl leading-none select-none font-normal hidden group-open:block" aria-hidden="true">−</span>
+          <details class="faq-item group">
+            <summary class="faq-summary">
+              <h3 class="faq-q">{faq.q}</h3>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </summary>
-            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
+            <div class="faq-body"><p class="faq-a">{faq.a}</p></div>
           </details>
         ))}
       </div>
@@ -728,4 +741,40 @@ const zones = [
   .hero-img-overlay { position:absolute; inset:0; background:rgba(17,24,39,.65); }
   .compromisos-apertura-grid { display:grid; gap:2rem; }
   @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
+
+  /* ── Lab design system ── */
+  .zonas-grid { display:grid; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
+  @media(min-width:480px){ .zonas-grid { grid-template-columns:repeat(2,1fr); } }
+  @media(min-width:768px){ .zonas-grid { grid-template-columns:repeat(4,1fr); } }
+  .zona-card { background:#F9F7F4; padding:1.25rem 1.25rem 1rem; position:relative; transition:background 0.2s; }
+  .zona-card:hover { background:#111827; }
+  .zona-card__title { font-size:.875rem; font-weight:700; color:#111827; margin:0 0 .25rem; transition:color 0.2s; }
+  .zona-card:hover .zona-card__title { color:#fff; }
+  .zona-card__title a::after { content:''; position:absolute; inset:0; }
+  .zona-card__sub { display:block; font-size:.75rem; color:#9CA3AF; transition:color 0.2s; }
+  .zona-card:hover .zona-card__sub { color:#6B7280; }
+  .price-guide-chip { display:inline-flex; align-items:center; gap:.5rem; padding:.375rem .75rem; background:#F3F4F6; border:1px solid #E5E7EB; font-size:.8125rem; color:#374151; text-decoration:none; transition:background 0.15s,color 0.15s,border-color 0.15s; }
+  .price-guide-chip:hover { background:#111827; color:#fff; border-color:#111827; }
+  .price-guide-chip__label { font-size:.5625rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-family:'Courier New',monospace; color:#A85535; transition:color 0.15s; }
+  .price-guide-chip:hover .price-guide-chip__label { color:rgba(255,255,255,.55); }
+  .price-guide-chip__text { font-weight:600; }
+  .price-guide-chip__arrow { opacity:.4; flex-shrink:0; }
+  .price-guide-chip:hover .price-guide-chip__arrow { opacity:.7; }
+  .empresa-callout { border-top:2px solid #111827; background:#fff; display:grid; grid-template-columns:1fr; gap:.75rem; padding:1.25rem 1.5rem; }
+  @media(min-width:640px){ .empresa-callout { grid-template-columns:14rem 1fr; gap:1.5rem; padding:1.5rem 2rem; } }
+  .empresa-callout__title { font-size:.6875rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-family:'Courier New',monospace; color:#A85535; line-height:1.5; padding-top:.125rem; }
+  .empresa-callout__body { font-size:.875rem; color:#4B5563; line-height:1.7; max-width:60ch; margin:0; }
+  .faq-list { border-top:2px solid #111827; }
+  .faq-item { border-bottom:1px solid #E5E7EB; }
+  .faq-summary { display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; padding:1.25rem 0; cursor:pointer; list-style:none; transition:padding-left 0.2s; }
+  .faq-summary::-webkit-details-marker { display:none; }
+  .faq-item[open] .faq-summary, .faq-summary:hover { padding-left:.5rem; }
+  .faq-q { font-size:.9375rem; font-weight:600; color:#111827; margin:0; line-height:1.45; }
+  .faq-chevron { flex-shrink:0; color:#A85535; transition:transform 0.25s; margin-top:.125rem; }
+  .faq-item[open] .faq-chevron { transform:rotate(180deg); }
+  .faq-body { padding-bottom:1.25rem; }
+  .faq-a { font-size:.875rem; color:#6B7280; line-height:1.7; max-width:60ch; margin:0; }
+  @media(prefers-reduced-motion:reduce){
+    .zona-card,.zona-card__title,.zona-card__sub,.price-guide-chip,.price-guide-chip__label,.price-guide-chip__arrow,.faq-summary,.faq-chevron { transition:none; }
+  }
 </style>

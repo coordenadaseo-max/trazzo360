@@ -99,6 +99,13 @@ const zones = [
 
 <Layout title={title} description={description} schema={[serviceSchema, breadcrumbSchema, faqSchema]}>
 
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
+  </Fragment>
+
   <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
@@ -120,107 +127,108 @@ const zones = [
       <div class="hero-img-overlay"></div>
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
-      <p class="font-black uppercase text-[#A85535] mb-6" style="font-size:10px;letter-spacing:.15em">Reformas integrales · Corredor del Henares</p>
-      <h1 id="h-hero" class="font-black text-white"
-          style="font-size:clamp(2.5rem,9.5vw,8.5rem);letter-spacing:-0.04em;line-height:0.88;text-wrap:balance;margin-bottom:0">
-        Reformas integrales<br>en el Corredor del Henares
+      <h1 id="h-hero" class="font-display text-white"
+          style="font-size:clamp(3.5rem,11vw,10rem);letter-spacing:-0.02em;line-height:0.85;margin-bottom:0;font-weight:900">
+        <span class="hero-line"><span>Reformas integrales</span></span>
+        <span class="hero-line"><span>en el Corredor</span></span>
+        <span class="hero-line"><span>del Henares</span></span>
       </h1>
     </div>
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1">
+    <div class="hero-sub max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1">
       <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
         <div class="hero-c-grid">
-          <p class="text-gray-400 leading-relaxed" style="font-size:clamp(0.875rem,1vw,0.95rem);max-width:50ch">
-            Un único interlocutor coordina todos los gremios: electricistas, fontaneros, alicatadores, carpinteros y pintores. Precio cerrado por contrato. Plazo garantizado antes de empezar.
-          </p>
-          <div class="flex flex-col gap-3">
-            <a href="/contacto/" class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-              Solicitar presupuesto gratis
-            </a>
-            <a href={`tel:${SITE.phone}`} class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white border border-white/25 hover:border-white/60 transition-colors">
-              {SITE.phoneDisplay}
-            </a>
-          </div>
-          <div class="hidden lg:block text-right">
-            <div class="mb-5">
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">26.000€</p>
-              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Desde · 40&nbsp;m² esencial</p>
-            </div>
-            <div class="mb-5">
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">10–14</p>
-              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Semanas · reforma completa</p>
-            </div>
-            <div>
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.02em">40/40/20</p>
-              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Fases de pago</p>
-            </div>
-          </div>
-        </div>
-        <div class="flex gap-8 mt-6 pt-5 lg:hidden" style="border-top:1px solid rgba(255,255,255,.08)">
           <div>
-            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">26.000€</p>
-            <p class="text-xs mt-1" style="color:#9CA3AF">reforma completa</p>
+            <p class="leading-relaxed mb-5" style="font-size:clamp(0.875rem,1.05vw,1rem);max-width:46ch;color:rgba(255,255,255,.72)">
+              Un único interlocutor coordina todos los gremios: electricistas, fontaneros, alicatadores, carpinteros y pintores. Precio cerrado por contrato. Plazo garantizado antes de empezar.
+            </p>
+            <div class="hero-cta-group">
+              <a href="/contacto/" class="hero-cta-primary">
+                Solicitar presupuesto gratis
+              </a>
+              <a href={`tel:${SITE.phone}`} class="hero-cta-secondary">
+                {SITE.phoneDisplay}
+              </a>
+            </div>
           </div>
-          <div>
-            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">10–14</p>
-            <p class="text-xs mt-1" style="color:#9CA3AF">semanas</p>
+          <div class="hero-metrics">
+            <div class="hero-metric">
+              <p class="hero-metric__val font-display">26.000€</p>
+              <p class="hero-metric__label">Desde · 40&nbsp;m² esencial</p>
+            </div>
+            <div class="hero-metric">
+              <p class="hero-metric__val font-display">10–14</p>
+              <p class="hero-metric__label">Semanas · reforma completa</p>
+            </div>
+            <div class="hero-metric">
+              <p class="hero-metric__val font-display">2 años</p>
+              <p class="hero-metric__label">Garantía de obra</p>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <!-- Scroll indicator -->
+    <div class="hero-scroll" aria-hidden="true">
+      <svg width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="22" height="36" rx="11" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <rect class="hero-scroll__dot" x="10.5" y="7" width="3" height="7" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+      </svg>
     </div>
   </section>
 
   <!-- M2: Diagnóstico del parque residencial -->
   <section class="py-20 lg:py-28 bg-white" aria-labelledby="h-parque">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de vivienda del Corredor</p>
-        <h2 id="h-parque" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="parque-header mb-14 reveal">
+        <h2 id="h-parque" class="text-4xl lg:text-5xl font-black text-gray-900 mb-5" style="letter-spacing:-0.03em;text-wrap:balance">
           Qué reformas integrales vemos habitualmente en el Corredor
         </h2>
+        <p class="text-gray-600" style="font-size:1.0625rem;line-height:1.75;max-width:60ch">
+          Una reforma integral no empieza por los azulejos. Empieza por una pregunta: ¿qué estado tienen las instalaciones? La respuesta depende, sobre todo, de cuándo se construyó el edificio.
+        </p>
       </div>
 
-      <p class="text-gray-700 leading-relaxed mb-8">
-        Una reforma integral no empieza por los azulejos. Empieza por una pregunta: ¿qué estado tienen las instalaciones? La respuesta cambia radicalmente el alcance y el presupuesto. Y esa respuesta depende, sobre todo, de cuándo se construyó el edificio.
-      </p>
+      <div class="era-timeline">
+        <div class="era-col">
+          <p class="era-tag">Instalaciones obsoletas</p>
+          <h3 class="era-col__title">Pisos de los años 70–80 (bloques de Coslada, San Fernando, Torrejón y Alcalá)</h3>
+          <p class="era-col__body">Los candidatos más habituales. Instalaciones con décadas de uso sin intervención: cuadros con fusibles de cerámica, tuberías de plomo o acero galvanizado. Muchos no han tenido ninguna reforma desde la construcción.</p>
+          <ul class="era-list">
+            <li>Cuadro eléctrico sin capacidad para vitrocerámica, secadora o aire acondicionado</li>
+            <li>Fontanería de plomo o acero galvanizado: fuera de norma, con riesgo de rotura interna</li>
+            <li>Distribución diseñada para los años 70: pasillos largos, habitaciones pequeñas, cocinas sin conexión visual al salón</li>
+            <li>Aislamiento acústico y térmico por debajo de las exigencias actuales</li>
+            <li>Humedades por capilaridad en plantas bajas o filtraciones en cubiertas planas</li>
+          </ul>
+        </div>
 
-      <h3 class="text-lg font-bold text-gray-900 mb-3">Pisos de los años 70–80 (bloques de Coslada, San Fernando, Torrejón y Alcalá)</h3>
-      <p class="text-gray-700 leading-relaxed mb-3">
-        Son los candidatos más habituales a la reforma integral. En estos edificios, las instalaciones tienen décadas de uso: cuadros eléctricos con fusibles de cerámica o magnetotérmicos de baja capacidad, tuberías de plomo o acero galvanizado en los más antiguos, de cobre con juntas de latón en los de los 80. Muchos no han tenido ninguna intervención desde la construcción.
-      </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
-        <li>Cuadro eléctrico sin capacidad para la carga actual (vitrocerámica, secadora, aire acondicionado)</li>
-        <li>Fontanería de plomo o acero galvanizado: ya fuera de norma, con riesgo de rotura interna</li>
-        <li>Distribución diseñada para los años 70: pasillos largos, habitaciones pequeñas, cocinas sin conexión visual al salón</li>
-        <li>Aislamiento acústico y térmico por debajo de las exigencias actuales</li>
-        <li>Humedades por capilaridad en plantas bajas o filtraciones en cubiertas planas</li>
-      </ul>
+        <div class="era-col">
+          <p class="era-tag">Distribución y acabados envejecidos</p>
+          <h3 class="era-col__title">Viviendas de los años 90–2000 (Alcalá, Azuqueca, Guadalajara y municipios en expansión)</h3>
+          <p class="era-col__body">Los pisos construidos entre 1990 y 2005 tienen instalaciones en mejor estado, pero pueden necesitar una reforma integral por razones de distribución o de acabados envejecidos. El cuadro eléctrico suele tener más capacidad, pero los materiales acumulan 20–30 años de uso.</p>
+          <ul class="era-list">
+            <li>Instalación eléctrica con diferencial y magnetotérmicos, pero sin circuitos independientes para cada electrodoméstico</li>
+            <li>Fontanería de cobre o multicapa en buen estado en la mayoría de los casos</li>
+            <li>Acabados de la época: baldosa hidráulica, gres de pequeño formato, puertas de DM con molduras</li>
+            <li>Distribución funcional pero mejorable con la apertura de la cocina al salón</li>
+            <li>Ventanas de aluminio sin rotura de puente térmico: condensaciones en marcos en invierno</li>
+          </ul>
+        </div>
 
-      <h3 class="text-lg font-bold text-gray-900 mb-3">Viviendas de los años 90–2000 (Alcalá, Azuqueca, Guadalajara y municipios en expansión)</h3>
-      <p class="text-gray-700 leading-relaxed mb-3">
-        Los pisos construidos entre 1990 y 2005 tienen instalaciones en mejor estado, pero pueden necesitar una reforma integral por razones de distribución o de acabados envejecidos. El cuadro eléctrico suele tener más capacidad, pero los materiales (alicatados, pavimentos, carpintería) acumulan 20–30 años de uso.
-      </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
-        <li>Instalación eléctrica con diferencial y magnetotérmicos, pero sin circuitos independientes para cada electrodoméstico</li>
-        <li>Fontanería de cobre o multicapa en buen estado en la mayoría de los casos</li>
-        <li>Acabados de la época: baldosa hidráulica, gres de pequeño formato, puertas de DM con molduras</li>
-        <li>Distribución funcional pero mejorable con la apertura de la cocina al salón</li>
-      </ul>
-      <p class="text-gray-700 leading-relaxed mt-4 mb-8">
-        Las ventanas de aluminio instaladas en edificios anteriores a 2006 no tienen rotura de puente térmico: el frío exterior llega directamente al interior y genera condensaciones en los marcos en invierno. En una reforma integral, cambiarlas en la misma obra tiene un coste marginal frente al sobrecoste de organizar una obra de carpintería independiente más adelante. La visita técnica evalúa el estado del marco: si está en buen estado, puede bastar con cambiar solo el vidrio por uno de baja emisividad.
-      </p>
+        <div class="era-col">
+          <p class="era-tag">Coordinación y secuencia de gremios</p>
+          <h3 class="era-col__title">Chalets y adosados (Meco, Camarma, San Fernando y urbanizaciones periféricas)</h3>
+          <p class="era-col__body">En viviendas unifamiliares, la reforma integral tiene más superficie y más zonas que coordinar: varios baños, cocina grande, posiblemente garaje o sótano con humedad. El mayor reto aquí no es el alcance sino la secuencia.</p>
+          <ul class="era-list">
+            <li>Mayor superficie = más materiales, más tiempo, más gremios en paralelo</li>
+            <li>Instalaciones de calefacción por radiadores que conviene revisar durante la obra</li>
+            <li>Cubiertas inclinadas con posibles filtraciones no visibles en el interior</li>
+            <li>Jardín y zonas exteriores que pueden requerir intervención adicional</li>
+          </ul>
+        </div>
+      </div>
 
-      <h3 class="text-lg font-bold text-gray-900 mb-3">Chalets y adosados (Meco, Camarma, San Fernando y urbanizaciones periféricas)</h3>
-      <p class="text-gray-700 leading-relaxed mb-3">
-        En viviendas unifamiliares, la reforma integral tiene más superficie y más zonas que coordinar: varios baños, cocina grande, posiblemente garaje o sótano con humedad. El mayor reto aquí no es el alcance sino la secuencia: qué se abre primero, cómo se coordina sin que el acceso al chalet quede bloqueado.
-      </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-6 space-y-1.5 pl-5 list-disc">
-        <li>Mayor superficie = más materiales, más tiempo, más gremios en paralelo</li>
-        <li>Instalaciones de calefacción por radiadores que conviene revisar durante la obra</li>
-        <li>Cubiertas inclinadas con posibles filtraciones no visibles en el interior</li>
-        <li>Jardín y zonas exteriores que pueden requerir intervención adicional</li>
-      </ul>
-
-      <p class="text-gray-700 leading-relaxed">
+      <p class="text-gray-700 leading-relaxed" style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E5E7EB;max-width:64ch">
         En la visita técnica gratuita evaluamos el estado de las instalaciones, la estructura y el alcance real antes de dar ningún precio. Lo que encontramos en esa visita determina si estás ante una reforma de pisos (acabados y baño+cocina sin tocar instalaciones) o ante una reforma integral. La diferencia de presupuesto puede ser de 10.000€ para arriba.
       </p>
     </div>
@@ -230,42 +238,45 @@ const zones = [
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-decision">
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La pregunta que define el presupuesto</p>
-        <h2 id="h-decision" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-decision" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
           Reforma parcial o integral: dónde está el umbral
         </h2>
       </div>
 
-      <p class="text-gray-700 leading-relaxed mb-6">
+      <p class="text-gray-700 leading-relaxed mb-6" style="font-size:1.0625rem;line-height:1.75">
         La pregunta que separa una reforma parcial (baño + cocina + suelos) de una integral es el estado de las instalaciones. No es una cuestión de presupuesto ni de ambición: es una cuestión técnica. Si el cuadro eléctrico no puede asumir la carga actual o la fontanería lleva décadas sin intervención, renovar solo los acabados es posponer el problema, no resolverlo.
       </p>
 
-      <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white p-7 border-t-4 border-[#A85535]">
-          <h3 class="text-lg font-bold text-gray-900 mb-3">Reforma parcial tiene sentido cuando…</h3>
-          <ul class="list-marca">
-            <li><span>El cuadro eléctrico tiene capacidad suficiente para los electrodomésticos actuales</span></li>
-            <li><span>La fontanería no ha dado problemas y está en buen estado a la inspección visual</span></li>
-            <li><span>Solo quieres renovar acabados, baño, cocina y suelos</span></li>
-            <li><span>El presupuesto máximo disponible no permite abordar instalaciones nuevas</span></li>
+      <div class="decision-grid mb-8">
+        <!-- Parcial — secundaria -->
+        <div class="decision-card decision-card--light">
+          <p class="decision-card__eyebrow">Reforma parcial</p>
+          <h3 class="decision-card__title">Tiene sentido cuando…</h3>
+          <ul class="decision-list">
+            <li>El cuadro eléctrico tiene capacidad suficiente para los electrodomésticos actuales</li>
+            <li>La fontanería no ha dado problemas y está en buen estado a la inspección visual</li>
+            <li>Solo quieres renovar acabados, baño, cocina y suelos</li>
+            <li>El presupuesto máximo disponible no permite abordar instalaciones nuevas</li>
           </ul>
-          <p class="text-sm font-semibold text-[#A85535] mt-4">300–500 €/m² · ejemplo: 18.000–40.000€ para un piso de 60–80 m² (sin IVA)</p>
+          <p class="decision-card__price">300–500 €/m² · ejemplo: 18.000–40.000€ para un piso de 60–80 m² (sin IVA)</p>
         </div>
-        <div class="bg-white p-7 border-t-4 border-gray-200">
-          <h3 class="text-lg font-bold text-gray-900 mb-3">Reforma integral tiene sentido cuando…</h3>
-          <ul class="list-marca">
-            <li><span>El cuadro eléctrico es de los años 70–80 o no cumple la normativa actual</span></li>
-            <li><span>La fontanería es de plomo, acero galvanizado o cobre con problemas</span></li>
-            <li><span>Quieres cambiar la distribución (derribar o levantar tabiques)</span></li>
-            <li><span>La vivienda no ha tenido ninguna reforma desde la construcción</span></li>
+        <!-- Integral — protagonista -->
+        <div class="decision-card decision-card--dark">
+          <p class="decision-card__eyebrow" style="color:#D97B58">Reforma integral</p>
+          <h3 class="decision-card__title" style="color:#fff">Tiene sentido cuando…</h3>
+          <ul class="decision-list decision-list--dark">
+            <li>El cuadro eléctrico es de los años 70–80 o no cumple la normativa actual</li>
+            <li>La fontanería es de plomo, acero galvanizado o cobre con problemas</li>
+            <li>Quieres cambiar la distribución (derribar o levantar tabiques)</li>
+            <li>La vivienda no ha tenido ninguna reforma desde la construcción</li>
           </ul>
-          <p class="text-sm font-semibold text-gray-500 mt-4">650–1.400 €/m² · ejemplo: desde 32.500€ para un piso de 50 m² (sin IVA)</p>
+          <p class="decision-card__price" style="color:#D97B58">650–1.400 €/m² · ejemplo: desde 32.500€ para un piso de 50 m² (sin IVA)</p>
         </div>
       </div>
 
-      <div class="bg-white border-l-4 border-[#A85535] p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-2">El coste real de posponer las instalaciones</p>
-        <p class="text-sm text-gray-600 leading-relaxed">
+      <div class="empresa-callout">
+        <p class="empresa-callout__title">El coste real de posponer las instalaciones</p>
+        <p class="empresa-callout__body">
           Si haces una reforma parcial hoy y en tres años el cuadro eléctrico o la fontanería necesitan intervención, tendrás que volver a abrir suelos, paredes y posiblemente desmontar parte de lo que acabas de reformar. El sobrecoste de hacer dos obras en lugar de una es sistemáticamente mayor que el de hacer la integral desde el principio. La visita técnica lo cuantifica antes de que tomes ninguna decisión.
         </p>
       </div>
@@ -282,28 +293,31 @@ const zones = [
              loading="lazy" />
       </figure>
 
-      <div class="max-w-3xl mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Alcance completo</p>
-        <h2 id="h-que-incluye" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+      <div class="max-w-3xl mb-14 reveal">
+        <h2 id="h-que-incluye" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
           Qué incluye una reforma integral
         </h2>
-        <p class="text-gray-600 leading-relaxed">
+        <p class="text-gray-600 leading-relaxed" style="max-width:58ch">
           Una reforma integral cubre todo el proceso de principio a fin. Lo que dice el presupuesto es lo que se ejecuta: no hay partidas que se descubran durante la obra que no estuvieran ya contempladas en la inspección previa.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="incluye-list reveal-stagger">
         {[
-          { title: 'Demolición y redistribución', desc: 'Derribo de tabiques existentes, apertura de huecos y redistribución de la distribución según el proyecto. Gestión de escombros a contenedor.' },
-          { title: 'Instalación eléctrica', desc: 'Cuadro nuevo con magnetotérmicos y diferencial, circuitos independientes para electrodomésticos de alta potencia, tomas de corriente y puntos de luz según el diseño.' },
-          { title: 'Fontanería completa', desc: 'Renovación de tuberías de suministro y desagüe, acometidas a baño y cocina, revisión de la caldera y adaptación a los nuevos puntos de consumo.' },
-          { title: 'Tabiquería y acabados base', desc: 'Levantamiento de nuevas particiones de pladur o ladrillo, enlucido, revestimientos de paredes y techos. Falso techo donde aplique.' },
-          { title: 'Baño y cocina coordinados', desc: 'Reforma completa de baño y cocina en la misma obra: sin costes de movilización dobles, sin solapamientos de gremios, con los materiales elegidos antes de empezar.' },
-          { title: 'Suelos, carpintería y entrega', desc: 'Tarima o porcelánico en toda la vivienda, puertas interiores nuevas, armarios si aplica, pintura final y limpieza de obra. Entrega con garantía de 2 años.' },
+          { n:'01', title: 'Demolición y redistribución', desc: 'Derribo de tabiques existentes, apertura de huecos y redistribución según el proyecto. Gestión de escombros a contenedor.' },
+          { n:'02', title: 'Instalación eléctrica', desc: 'Cuadro nuevo con magnetotérmicos y diferencial, circuitos independientes para electrodomésticos de alta potencia, tomas y puntos de luz.' },
+          { n:'03', title: 'Fontanería completa', desc: 'Renovación de tuberías de suministro y desagüe, acometidas a baño y cocina, revisión de caldera y adaptación a nuevos puntos.' },
+          { n:'04', title: 'Tabiquería y acabados base', desc: 'Nuevas particiones de pladur o ladrillo, enlucido, revestimientos de paredes y techos. Falso techo donde aplique.' },
+          { n:'05', title: 'Baño y cocina coordinados', desc: 'Reforma completa en la misma obra: sin costes de movilización dobles, sin solapamientos de gremios, materiales elegidos antes de empezar.' },
+          { n:'06', title: 'Suelos, carpintería y entrega', desc: 'Tarima o porcelánico en toda la vivienda, puertas interiores nuevas, armarios si aplica, pintura final y limpieza. Garantía de 2 años.' },
         ].map(item => (
-          <div class="bg-[#F9F7F4] p-7">
-            <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+          <div class="incluye-row">
+            <span class="incluye-n" aria-hidden="true">{item.n}</span>
+            <div class="incluye-body">
+              <h3 class="incluye-title">{item.title}</h3>
+              <p class="incluye-desc">{item.desc}</p>
+            </div>
+            <span class="incluye-arrow" aria-hidden="true">→</span>
           </div>
         ))}
       </div>
@@ -314,8 +328,7 @@ const zones = [
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-coordinacion">
     <div class="max-w-5xl mx-auto px-4">
       <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Por qué la coordinación es la obra</p>
-        <h2 id="h-coordinacion" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-coordinacion" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
           Seis equipos distintos. Una secuencia sin holgura.
         </h2>
         <p class="text-gray-600 max-w-2xl leading-relaxed">
@@ -323,118 +336,162 @@ const zones = [
         </p>
       </div>
 
-      <!-- Diagrama de fases -->
-      <div class="overflow-x-auto mb-10">
-        <div class="min-w-[640px]">
-          <div class="grid grid-cols-6 gap-px bg-gray-200">
+      <!-- Diagrama de fases dinámico -->
+      <div class="mb-10">
+        <div class="fase-grid-wrap" style="position:relative">
+          <span id="fase-live" aria-live="polite" class="fase-sr-only"></span>
+          <button id="fase-pause-btn" class="fase-pause-btn" type="button" aria-label="Pausar animación de fases" aria-pressed="false">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="3" height="8"/><rect x="6" y="1" width="3" height="8"/></svg>
+          </button>
+          <div class="fase-grid" id="fase-grid">
             {[
-              { n: '01', fase: 'Demolición', dep: 'Revela el estado real de instalaciones', accent: false },
-              { n: '02', fase: 'Instalaciones', dep: 'Electricidad + fontanería en toda la vivienda', accent: true },
-              { n: '03', fase: 'Albañilería', dep: 'Cierre de paramentos y tabiquería', accent: false },
-              { n: '04', fase: 'Revestimientos', dep: 'Baño, cocina y suelos coordinados', accent: false },
-              { n: '05', fase: 'Carpintería', dep: 'Puertas, armarios y marcos', accent: false },
-              { n: '06', fase: 'Entrega', dep: 'Pintura, limpieza y revisión final', accent: false },
-            ].map(f => (
-              <div class={`bg-white p-5 border-t-4 ${f.accent ? 'border-[#A85535]' : 'border-gray-100'}`}>
-                <div class="text-xs font-bold text-gray-300 mb-2">{f.n}</div>
-                <div class="text-sm font-bold text-gray-900 mb-1">{f.fase}</div>
-                <div class="text-xs text-gray-500 leading-snug">{f.dep}</div>
+              { n: '01', fase: 'Demolición', dep: 'Revela el estado real de instalaciones' },
+              { n: '02', fase: 'Instalaciones', dep: 'Electricidad + fontanería en toda la vivienda' },
+              { n: '03', fase: 'Albañilería', dep: 'Cierre de paramentos y tabiquería' },
+              { n: '04', fase: 'Revestimientos', dep: 'Baño, cocina y suelos coordinados' },
+              { n: '05', fase: 'Carpintería', dep: 'Puertas, armarios y marcos' },
+              { n: '06', fase: 'Entrega', dep: 'Pintura, limpieza y revisión final' },
+            ].map((f, i) => (
+              <div class="fase-card" data-phase-idx={i}>
+                <div class="fase-progress-top">
+                  <div class="fase-bar"></div>
+                </div>
+                <div class="fase-n">{f.n}</div>
+                <div class="fase-label">{f.fase}</div>
+                <div class="fase-dep">{f.dep}</div>
               </div>
             ))}
           </div>
-          <div class="bg-[#A85535] h-1 w-full mt-0"></div>
-          <p class="text-xs text-gray-400 mt-2">Un único responsable de obra coordina la entrada y salida de cada equipo a lo largo de toda la secuencia.</p>
+          <p class="text-xs text-gray-400 mt-3">Un único responsable de obra coordina la entrada y salida de cada equipo a lo largo de toda la secuencia.</p>
         </div>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 border-l-4 border-[#A85535]">
-          <h3 class="text-sm font-bold text-gray-900 mb-2">Sin tiempos muertos entre gremios</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Cada equipo entra cuando el anterior ha terminado lo que le corresponde, no antes ni después. No hay semanas de espera entre fases porque no hay nadie que las coordine.</p>
-        </div>
-        <div class="bg-white p-6 border-l-4 border-gray-200">
-          <h3 class="text-sm font-bold text-gray-900 mb-2">Un interlocutor en todo momento</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">No hablas con el electricista un día y con el fontanero otro. Hay una persona responsable de toda la obra que coordina los equipos y que responde ante cualquier incidencia.</p>
-        </div>
-        <div class="bg-white p-6 border-l-4 border-gray-200">
-          <h3 class="text-sm font-bold text-gray-900 mb-2">La secuencia no es flexible</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Las instalaciones van antes del cierre de paramentos. Los revestimientos van sobre paramentos terminados. Saltarse pasos genera defectos que se detectan meses después de la entrega, no en la revisión final.</p>
-        </div>
+      <div class="coord-pills">
+        {[
+          { title: 'Sin tiempos muertos entre gremios', body: 'Cada equipo entra cuando el anterior ha terminado lo que le corresponde, no antes ni después. No hay semanas de espera entre fases porque no hay nadie que las coordine.' },
+          { title: 'Un interlocutor en todo momento', body: 'No hablas con el electricista un día y con el fontanero otro. Hay una persona responsable de toda la obra que coordina los equipos y que responde ante cualquier incidencia.' },
+          { title: 'La secuencia no es flexible', body: 'Las instalaciones van antes del cierre de paramentos. Los revestimientos van sobre paramentos terminados. Saltarse pasos genera defectos que se detectan meses después de la entrega, no en la revisión final.' },
+        ].map((item, i) => (
+          <div class="coord-pill">
+            <span class="coord-pill__n">{String(i+1).padStart(2,'0')}</span>
+            <div>
+              <h3 class="coord-pill__title">{item.title}</h3>
+              <p class="coord-pill__body">{item.body}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- Vida durante la obra -->
-  <section class="py-20 bg-[#111827]" aria-labelledby="h-vida-obra">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la obra</p>
-        <h2 id="h-vida-obra" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
-          Cómo organizamos la obra cuando la vivienda no puede utilizarse con normalidad
-        </h2>
+  <section class="py-20 lg:py-28 bg-[#111827]" aria-labelledby="h-vida-obra">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="vida-grid">
+        <div class="vida-left">
+          <h2 id="h-vida-obra" class="font-display text-white mb-6" style="font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-0.02em;line-height:0.9;font-weight:900;text-wrap:balance">
+            Cómo organizamos la obra cuando la vivienda no puede utilizarse con normalidad
+          </h2>
+          <p class="text-gray-400 leading-relaxed mb-8" style="font-size:1rem;max-width:38ch">
+            El primer paso no es el cronograma de obra: es saber cuándo puedes irte y cuándo necesitas volver.
+          </p>
+          <p class="text-sm" style="border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;max-width:34ch;color:rgba(255,255,255,.65)">
+            Todo esto no está en el presupuesto porque no tiene precio. Está en cómo trabajamos.
+          </p>
+        </div>
+        <div class="vida-right">
+          <ul class="vida-list">
+            {[
+              { n: '01', title: 'Cronograma con fecha de vuelta comprometida', desc: 'No un plazo genérico de "8 a 14 semanas". Una fecha concreta en el contrato, con penalizaciones si nos retrasamos por causas propias.' },
+              { n: '02', title: 'Comunicación semanal del avance', desc: 'Cada semana recibes un resumen del estado de la obra con fotos. Sabes en qué fase está tu piso sin tener que llamar.' },
+              { n: '03', title: 'Sin sorpresas de alcance', desc: 'Si aparece algo inesperado al abrir paredes o suelos, lo comunicamos antes de actuar y esperamos tu decisión.' },
+              { n: '04', title: 'Un solo interlocutor durante toda la obra', desc: 'Hay una persona responsable que coordina todos los gremios y es tu contacto directo en todo momento.' },
+              { n: '05', title: 'El piso al entrar: limpio, no "casi terminado"', desc: 'La limpieza final es parte del proceso. Cuando te lo entregamos, está en condiciones de empezar a vivir.' },
+            ].map(item => (
+              <li class="vida-item">
+                <span class="vida-item__n" aria-hidden="true">{item.n}</span>
+                <div>
+                  <p class="vida-item__title">{item.title}</p>
+                  <p class="vida-item__desc">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <p class="text-gray-300 leading-relaxed mb-8">
-        Una reforma integral requiere que abandones el piso durante semanas. Es incómodo, tiene un coste de alojamiento real y condiciona tu vida durante ese tiempo. Por eso el primer paso de la planificación no es el cronograma de obra: es saber cuándo puedes irte, cuánto tiempo puedes estar fuera y cuándo necesitas volver.
-      </p>
-      <ul class="space-y-6">
-        {[
-          { title: 'Cronograma con fecha de vuelta comprometida', desc: 'No te damos un plazo genérico de "8 a 14 semanas". Te damos una fecha de entrega concreta que queda en el contrato. Si nos retrasamos por causas propias, aplicamos las penalizaciones acordadas.' },
-          { title: 'Comunicación semanal del avance', desc: 'Cada semana recibes un resumen del estado de la obra con fotos. Sabes exactamente en qué fase está tu piso sin tener que llamar para preguntarlo.' },
-          { title: 'Sin sorpresas de alcance', desc: 'Si al abrir paredes o suelos aparece algo que no era visible en la inspección, lo comunicamos antes de actuar. Te decimos qué encontramos, cuánto cuesta resolverlo y esperamos tu decisión.' },
-          { title: 'Un solo interlocutor durante toda la obra', desc: 'No hablas con el electricista un día y con el fontanero otro. Hay una persona responsable de toda la obra que coordina los gremios y que es tu contacto directo en todo momento.' },
-          { title: 'El piso al entrar: limpio, no "casi terminado"', desc: 'La limpieza final de la obra es parte del proceso, no un extra. Cuando te entregamos el piso, está en condiciones de empezar a vivir, no en condiciones de terminar de limpiar.' },
-        ].map(item => (
-          <li class="flex gap-5">
-            <div class="w-1 flex-shrink-0 bg-[#A85535] mt-1" style="min-height:1.25rem"></div>
-            <div>
-              <p class="font-semibold text-white mb-1">{item.title}</p>
-              <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <p class="text-gray-500 text-sm mt-10">
-        Todo esto no está en el presupuesto porque no tiene precio. Está en cómo trabajamos.
-      </p>
     </div>
   </section>
 
   <!-- M5: Comparativa -->
   <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-comparativa">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-comparativa" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-comparativa" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
         Opciones y precios orientativos
       </h2>
-      <p class="text-gray-600 leading-relaxed mb-6">
-        El precio de una reforma integral depende del estado de las instalaciones, del alcance de la redistribución y de los materiales elegidos. Los siguientes rangos son orientativos para el Corredor del Henares; el presupuesto exacto se cierra tras la visita técnica gratuita. Puedes obtener una estimación inicial ajustada a tu superficie y calidad en la <a href="/calculadora-precio-reforma/" class="text-[#A85535] hover:underline font-medium">calculadora de precios de reforma</a>. Si tu reforma no incluye renovación de instalaciones, consulta también las guías de precios: <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="text-[#A85535] hover:underline font-medium">reforma de baño</a>, <a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="text-[#A85535] hover:underline font-medium">reforma de cocina</a> y <a href="/guias/cuanto-cuesta-reformar-un-piso/" class="text-[#A85535] hover:underline font-medium">reforma de piso</a>.
+      <p class="text-gray-600 leading-relaxed mb-4">
+        El precio de una reforma integral depende del estado de las instalaciones, del alcance de la redistribución y de los materiales elegidos. Los siguientes rangos son orientativos para el Corredor del Henares; el presupuesto exacto se cierra tras la visita técnica gratuita. Puedes obtener una estimación inicial ajustada a tu superficie y calidad en la <a href="/calculadora-precio-reforma/" class="text-[#A85535] hover:underline font-medium">calculadora de precios de reforma</a>. Si tu reforma no incluye renovación de instalaciones, consulta también las guías de precios de reforma parcial:
       </p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-white">
-          <p class="text-left text-xs text-gray-400 mb-3 block">
-            Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato tras la visita.
-          </p>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Alcance</th>
-              <th class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo</th>
-              <th class="text-right py-3 px-5 font-bold text-gray-900">Plazo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Reforma de acabados (sin renovar instalaciones)', price: '300–500 €/m²', days: '5–8 sem.' },
-              { label: 'Reforma integral esencial (instalaciones nuevas)', price: '650–800 €/m²', days: '10–14 sem.' },
-              { label: 'Reforma integral media', price: '800–1.000 €/m²', days: '12–16 sem.' },
-              { label: 'Reforma integral alta', price: '1.000–1.400 €/m²', days: '14–20 sem.' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.label}</td>
-                <td class="py-3 px-5 text-right font-semibold text-gray-900">{row.price}</td>
-                <td class="py-3 px-5 text-right text-gray-500">{row.days}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div class="price-guides mb-8">
+        <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="price-guide-chip">
+          <span class="price-guide-chip__label">Guía</span>
+          <span class="price-guide-chip__text">¿Cuánto cuesta reformar un baño?</span>
+          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="price-guide-chip">
+          <span class="price-guide-chip__label">Guía</span>
+          <span class="price-guide-chip__text">¿Cuánto cuesta reformar una cocina?</span>
+          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/guias/cuanto-cuesta-reformar-un-piso/" class="price-guide-chip">
+          <span class="price-guide-chip__label">Guía</span>
+          <span class="price-guide-chip__text">¿Cuánto cuesta reformar un piso?</span>
+          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="price-ledger">
+        <!-- Cabecera -->
+        <div class="price-header">
+          <span>Tipo de reforma</span>
+          <span class="text-right">€/m² orientativo</span>
+          <span class="text-right hidden sm:block">Plazo</span>
+        </div>
+
+        <!-- Fila de referencia: no integral -->
+        <div class="price-row price-row--ref">
+          <div class="price-row__label">
+            <span class="price-row__name">Reforma de acabados</span>
+            <span class="price-row__sub">Sin renovar instalaciones · para comparar</span>
+          </div>
+          <div class="price-row__value">
+            <span class="price-row__num price-row__num--muted">300–500</span>
+            <span class="price-row__unit"> €/m²</span>
+          </div>
+          <div class="price-row__plazo">5–8 sem.</div>
+        </div>
+
+        <!-- Filas integrales -->
+        {[
+          { label: 'Reforma integral esencial', sub: 'Instalaciones nuevas incluidas', price: '650–800', plazo: '10–14 sem.' },
+          { label: 'Reforma integral media', sub: 'Materiales de gama media', price: '800–1.000', plazo: '12–16 sem.', highlight: true },
+          { label: 'Reforma integral alta', sub: 'Materiales sin compromiso', price: '1.000–1.400', plazo: '14–20 sem.' },
+        ].map((row) => (
+          <div class={`price-row price-row--integral ${row.highlight ? 'price-row--highlight' : ''}`}>
+            <div class="price-row__label">
+              <span class="price-row__name">{row.label}</span>
+              <span class="price-row__sub">
+                {row.sub}
+                {row.highlight && <span class="price-row__badge">La más habitual</span>}
+              </span>
+            </div>
+            <div class="price-row__value">
+              <span class="price-row__num">{row.price}</span>
+              <span class="price-row__unit"> €/m²</span>
+            </div>
+            <div class="price-row__plazo">{row.plazo}</div>
+          </div>
+        ))}
+
+        <p class="price-footer">Precios orientativos · IVA no incluido · precio cerrado en contrato tras visita técnica gratuita</p>
       </div>
     </div>
   </section>
@@ -443,77 +500,56 @@ const zones = [
   <section class="py-16 bg-white" aria-labelledby="h-que-encarece">
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-8">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La información que nadie publica</p>
-        <h2 id="h-que-encarece" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-que-encarece" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
           Qué encarece una reforma integral y qué puede ajustarse
         </h2>
       </div>
       <p class="text-gray-600 leading-relaxed mb-8">
         El presupuesto de una reforma integral no es un número redondo ni un precio por metro cuadrado. Está compuesto por partidas con pesos muy distintos. Conocer cuánto representa cada una permite saber dónde hay margen de ajuste real y dónde no lo hay.
       </p>
-      <div class="overflow-x-auto mb-10">
-        <table class="w-full text-sm border-collapse bg-white">
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Partida</th>
-              <th class="text-right py-3 px-5 font-bold text-gray-900">Peso sobre el total</th>
-              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Margen de ajuste</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-gray-100">
-              <td class="py-3 px-5 text-gray-700">Cocina (muebles, encimera, instalación)</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">20–30%</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Alto: el material de muebles y encimera varía mucho de precio sin afectar a la funcionalidad</td>
-            </tr>
-            <tr class="border-b border-gray-100 bg-gray-50">
-              <td class="py-3 px-5 text-gray-700">Baño (sanitarios, revestimiento, instalación)</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">15–25%</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Alto: el formato del revestimiento y la gama de los sanitarios tienen rangos de precio muy amplios</td>
-            </tr>
-            <tr class="border-b border-gray-100">
-              <td class="py-3 px-5 text-gray-700">Instalación eléctrica completa</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">10–15%</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Bajo: el trabajo es similar independientemente del acabado final elegido</td>
-            </tr>
-            <tr class="border-b border-gray-100 bg-gray-50">
-              <td class="py-3 px-5 text-gray-700">Fontanería completa</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">8–12%</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Bajo: coste de materiales y mano de obra bastante fijo según el número de puntos</td>
-            </tr>
-            <tr class="border-b border-gray-100">
-              <td class="py-3 px-5 text-gray-700">Suelos (tarima, porcelánico o microcemento)</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">10–18%</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Medio: el material puede variar bastante; la mano de obra de colocación es fija</td>
-            </tr>
-            <tr class="border-b border-gray-100 bg-gray-50">
-              <td class="py-3 px-5 text-gray-700">Tabiquería, demolición y redistribución</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">8–12%</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Depende del alcance: sin redistribuir tabiques, el peso de esta partida cae significativamente</td>
-            </tr>
-            <tr class="border-b border-gray-100">
-              <td class="py-3 px-5 text-gray-700">Pintura, carpintería interior y entrega</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">8–12%</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Medio: la carpintería interior es donde hay más diferencia de calidad visible en el resultado</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="partida-list mb-10">
+        {[
+          { label: 'Cocina', sub: 'muebles, encimera, instalación', pctMax: 30, pct: '20–30%', ajuste: 'Alto', nota: 'Material y muebles varían mucho de precio sin afectar funcionalidad' },
+          { label: 'Baño', sub: 'sanitarios, revestimiento, instalación', pctMax: 25, pct: '15–25%', ajuste: 'Alto', nota: 'Formato del revestimiento y gama de sanitarios: rango de precio muy amplio' },
+          { label: 'Suelos', sub: 'tarima, porcelánico o microcemento', pctMax: 18, pct: '10–18%', ajuste: 'Medio', nota: 'El material varía bastante; la mano de obra de colocación es fija' },
+          { label: 'Instalación eléctrica', sub: 'completa, cuadro nuevo', pctMax: 15, pct: '10–15%', ajuste: 'Bajo', nota: 'Trabajo similar independientemente del acabado elegido' },
+          { label: 'Fontanería', sub: 'suministro y desagüe completo', pctMax: 12, pct: '8–12%', ajuste: 'Bajo', nota: 'Coste fijo según número de puntos; poca variación posible' },
+          { label: 'Tabiquería y demolición', sub: 'redistribución, gestión de escombros', pctMax: 12, pct: '8–12%', ajuste: 'Variable', nota: 'Sin redistribución de tabiques, el peso de esta partida cae significativamente' },
+          { label: 'Carpintería y entrega', sub: 'puertas, pintura, limpieza final', pctMax: 12, pct: '8–12%', ajuste: 'Medio', nota: 'La carpintería interior es donde hay más diferencia de calidad visible' },
+        ].map(p => (
+          <div class="partida-row">
+            <div class="partida-info">
+              <span class="partida-name">{p.label}</span>
+              <span class="partida-sub">{p.sub}</span>
+            </div>
+            <div class="partida-bar-col">
+              <div class="partida-bar-track">
+                <div class="partida-bar-fill" style={`width:${p.pctMax}%`}></div>
+              </div>
+              <div class="partida-bar-meta">
+                <span class="partida-pct">{p.pct}</span>
+                <span class={`partida-ajuste-badge ajuste-${p.ajuste.toLowerCase()}`}>{p.ajuste}</span>
+              </div>
+              <span class="partida-nota">{p.nota}</span>
+            </div>
+          </div>
+        ))}
       </div>
-      <div class="grid md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-[#F9F7F4] p-7">
-          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Gama entrada</p>
-          <p class="text-sm font-bold text-gray-900 mb-2">Funcional y duradero</p>
-          <p class="text-sm text-gray-600 leading-relaxed">Porcelánico de 45×45, muebles de cocina de catálogo estándar, sanitarios blancos de marca de referencia, pintura plástica. El resultado es limpio y funcional durante 15–20 años con mantenimiento mínimo.</p>
+      <div class="gama-grid mb-6">
+        <div class="gama-card">
+          <p class="gama-card__tag">Gama entrada</p>
+          <p class="gama-card__title">Funcional y duradero</p>
+          <p class="gama-card__body">Porcelánico de 45×45, muebles de cocina de catálogo estándar, sanitarios blancos de marca de referencia, pintura plástica. El resultado es limpio y funcional durante 15–20 años con mantenimiento mínimo.</p>
         </div>
-        <div class="bg-[#F9F7F4] p-7 border-t-4 border-[#A85535]">
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-2">Gama media</p>
-          <p class="text-sm font-bold text-gray-900 mb-2">La elección más habitual</p>
-          <p class="text-sm text-gray-600 leading-relaxed">Porcelánico de gran formato, muebles de cocina a medida en melamina de calidad, encimera de cuarzo, griferías de marca reconocida, tarima o vinílico técnico. El estándar que se pide con más frecuencia.</p>
+        <div class="gama-card gama-card--highlight">
+          <p class="gama-card__tag gama-card__tag--accent">Gama media</p>
+          <p class="gama-card__title">La elección más habitual</p>
+          <p class="gama-card__body">Porcelánico de gran formato, muebles de cocina a medida en melamina de calidad, encimera de cuarzo, griferías de marca reconocida, tarima o vinílico técnico. El estándar que se pide con más frecuencia.</p>
         </div>
-        <div class="bg-[#F9F7F4] p-7">
-          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Gama alta</p>
-          <p class="text-sm font-bold text-gray-900 mb-2">Materiales sin compromiso</p>
-          <p class="text-sm text-gray-600 leading-relaxed">Madera maciza o microcemento en suelos, cocina lacada, encimera de dekton o porcelánico de gran formato, griferías de diseño, ducha de obra con revestimiento continuo.</p>
+        <div class="gama-card">
+          <p class="gama-card__tag">Gama alta</p>
+          <p class="gama-card__title">Materiales sin compromiso</p>
+          <p class="gama-card__body">Madera maciza o microcemento en suelos, cocina lacada, encimera de dekton o porcelánico de gran formato, griferías de diseño, ducha de obra con revestimiento continuo.</p>
         </div>
       </div>
       <p class="text-sm text-gray-500">En todos los casos, el precio cerrado en el contrato es el precio final: no hay suplementos por materiales ni por trabajo que "no se había previsto".</p>
@@ -524,35 +560,32 @@ const zones = [
   <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-elegir-empresa">
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-8">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar nada</p>
-        <h2 id="h-elegir-empresa" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+        <h2 id="h-elegir-empresa" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
           Cómo elegir una empresa de reformas integrales
         </h2>
       </div>
-      <p class="text-gray-600 leading-relaxed mb-8">
+      <p class="text-gray-600 leading-relaxed mb-8" style="font-size:1.0625rem;line-height:1.75">
         Una reforma integral es probablemente la compra más cara que harás en tu vivienda. La empresa de reformas integrales que elijas determina si el resultado es el que esperabas o si aparecen problemas meses después de la entrega. Estos son los criterios que importan, en el orden en que importan.
       </p>
-      <div class="space-y-4 mb-8">
-        <div class="bg-white p-7 border-l-4 border-[#A85535]">
-          <h3 class="text-base font-bold text-gray-900 mb-2">1. Precio cerrado en el contrato, no presupuesto orientativo</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">El presupuesto que firmas tiene que ser el precio final. Cualquier empresa que ofrezca un presupuesto "orientativo sujeto a confirmación durante la obra" está trasladándote el riesgo a ti. Una empresa de reformas integrales que trabaja con precio cerrado ha inspeccionado el piso antes de presupuestar, ha documentado el estado de las instalaciones y se hace responsable de lo que firma.</p>
-        </div>
-        <div class="bg-white p-7 border-l-4 border-[#A85535]">
-          <h3 class="text-base font-bold text-gray-900 mb-2">2. Un interlocutor durante toda la obra, no un gremio distinto cada semana</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">La coordinación entre gremios es el punto de fallo más frecuente en las reformas integrales. Si el electricista termina y el fontanero no puede empezar porque el primero no dejó las canalizaciones donde correspondía, quien pierde tiempo eres tú. Un responsable de obra único que coordina a todos los gremios y responde ante cualquier incidencia es la diferencia entre una reforma que avanza y una que se para.</p>
-        </div>
-        <div class="bg-white p-7 border-l-4 border-[#A85535]">
-          <h3 class="text-base font-bold text-gray-900 mb-2">3. Plazo comprometido con penalizaciones, no "aproximadamente"</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Si el plazo no está en el contrato con consecuencias claras en caso de incumplimiento, no existe. Pregunta directamente: "¿qué pasa si la obra se retrasa por causas propias?" Si la respuesta no incluye una penalización concreta, el plazo es aspiracional.</p>
-        </div>
-        <div class="bg-white p-7 border-l-4 border-[#A85535]">
-          <h3 class="text-base font-bold text-gray-900 mb-2">4. Obra propia en el área donde vives</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Una empresa de reformas integrales que trabaja en el Corredor del Henares conoce los plazos reales de las licencias en cada municipio, los proveedores de materiales de la zona y las particularidades del parque de edificios local. La cercanía no es solo logística: es conocimiento del contexto en el que va a ejecutarse la obra.</p>
-        </div>
+      <div class="criterios-list mb-8">
+        {[
+          { n: '1', title: 'Precio cerrado en el contrato, no presupuesto orientativo', desc: 'El presupuesto que firmas tiene que ser el precio final. Una empresa que trabaja con precio cerrado ha inspeccionado el piso antes de presupuestar y se hace responsable de lo que firma.' },
+          { n: '2', title: 'Un interlocutor durante toda la obra, no un gremio distinto cada semana', desc: 'La coordinación entre gremios es el punto de fallo más frecuente. Un responsable de obra único es la diferencia entre una reforma que avanza y una que se para.' },
+          { n: '3', title: 'Plazo comprometido con penalizaciones, no "aproximadamente"', desc: 'Si el plazo no está en el contrato con consecuencias claras en caso de incumplimiento, no existe. Pregunta qué pasa si la obra se retrasa. Si no hay penalización, el plazo es aspiracional.' },
+          { n: '4', title: 'Obra propia en el área donde vives', desc: 'Una empresa que trabaja en el Corredor conoce los plazos reales de licencias en cada municipio y las particularidades del parque de edificios local. La cercanía es conocimiento.' },
+        ].map(c => (
+          <div class="criterio-row">
+            <span class="criterio-n">{c.n}</span>
+            <div class="criterio-body">
+              <h3 class="criterio-title">{c.title}</h3>
+              <p class="criterio-desc">{c.desc}</p>
+            </div>
+          </div>
+        ))}
       </div>
-      <div class="bg-white border-l-4 border-[#A85535] p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-2">La visita técnica gratuita es el primer criterio de selección</p>
-        <p class="text-sm text-gray-600 leading-relaxed">Una empresa de reformas integrales que presupuesta sin visitar el piso no puede darte un precio cerrado. La visita previa al presupuesto no es una formalidad: es la fase en la que se inspeccionan las instalaciones, se identifica qué puede aparecer al abrir y se determina si el alcance pedido es ejecutable con el presupuesto disponible. Si alguien te da un precio integral por teléfono o por m², ese precio no es el precio final.</p>
+      <div class="empresa-callout">
+        <p class="empresa-callout__title">La visita técnica gratuita es el primer criterio de selección</p>
+        <p class="empresa-callout__body">Una empresa de reformas integrales que presupuesta sin visitar el piso no puede darte un precio cerrado. La visita previa al presupuesto no es una formalidad: es la fase en la que se inspeccionan las instalaciones, se identifica qué puede aparecer al abrir y se determina si el alcance pedido es ejecutable con el presupuesto disponible. Si alguien te da un precio integral por teléfono o por m², ese precio no es el precio final.</p>
       </div>
     </div>
   </section>
@@ -560,20 +593,31 @@ const zones = [
   <!-- M3: Licencias -->
   <section class="py-16 bg-white" aria-labelledby="h-licencias">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-licencias" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-licencias" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
         ¿Qué licencia necesitas para una reforma integral?
       </h2>
-      <p class="text-gray-700 leading-relaxed mb-4">
+      <p class="text-gray-700 leading-relaxed mb-6">
         Depende del alcance. Una reforma interior que no afecta a elementos estructurales ni fachada puede tramitarse como comunicación previa o licencia de obra menor en la mayoría de los municipios del Corredor del Henares. El derribo de muros de carga o la modificación de la estructura del edificio requiere proyecto de arquitecto técnico y licencia de obra mayor.
       </p>
+
+      <!-- Dos tipos de licencia -->
+      <div class="licencia-grid mb-6">
+        <div class="licencia-card">
+          <p class="licencia-card__tag">Comunicación previa · Obra menor</p>
+          <p class="licencia-card__body">Reforma interior sin afectar estructura ni fachada. Instalaciones, tabiquería interior, baño, cocina y acabados. La mayoría de las reformas integrales residenciales entran en esta categoría.</p>
+        </div>
+        <div class="licencia-card licencia-card--mayor">
+          <p class="licencia-card__tag licencia-card__tag--dark">Licencia de obra mayor</p>
+          <p class="licencia-card__body">Derribo de muros de carga o modificación estructural del edificio. Requiere proyecto de arquitecto técnico y visado previo al inicio de la obra.</p>
+        </div>
+      </div>
+
       <p class="text-gray-700 leading-relaxed mb-6">
         Iniciamos el trámite en paralelo con la fase de proyecto para que la licencia esté disponible cuando la obra esté lista para empezar. Los plazos de resolución varían por municipio y por carga administrativa del ayuntamiento en cada momento; en la visita técnica te informamos de los pasos que corresponden a tu caso.
       </p>
-      <div class="bg-[#F9F7F4] border-l-4 border-amber-400 p-6 mb-6">
-        <p class="text-sm font-semibold text-gray-900 mb-2">Comunidades de propietarios en bloques</p>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Si el piso está en un edificio con comunidad de propietarios, algunos estatutos exigen notificación previa para obras que generen ruido en horario de convivencia o que afecten a zonas comunes. Te informamos del procedimiento antes de empezar. El horario de obra está sujeto a la normativa municipal de ruido de cada municipio.
-        </p>
+      <div class="empresa-callout mb-6">
+        <p class="empresa-callout__title">Comunidades de propietarios en bloques</p>
+        <p class="empresa-callout__body">Si el piso está en un edificio con comunidad de propietarios, algunos estatutos exigen notificación previa para obras que generen ruido en horario de convivencia o que afecten a zonas comunes. Te informamos del procedimiento antes de empezar. El horario de obra está sujeto a la normativa municipal de ruido de cada municipio.</p>
       </div>
       <p class="text-gray-700 leading-relaxed">
         Nos encargamos de toda la gestión documental: informe de estado previo, memoria descriptiva, proyecto técnico si aplica y gestión de la licencia. El tiempo de tramitación queda reflejado en el cronograma de la obra y no penaliza el plazo de entrega comprometido.
@@ -584,13 +628,13 @@ const zones = [
   <!-- M6: Cómo comparar presupuestos -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-comparar">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-comparar" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-comparar" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
         Cómo leer un presupuesto de reforma integral
       </h2>
       <p class="text-gray-600 leading-relaxed mb-8">
         Dos presupuestos con el mismo importe total pueden cubrir alcances completamente distintos. Estas son las partidas que hay que revisar en cualquier propuesta que recibas.
       </p>
-      <dl class="divide-y divide-gray-200 bg-white p-6">
+      <dl class="presupuesto-dl">
         {[
           { term: 'Alcance de las instalaciones', def: 'El presupuesto debe especificar si la instalación eléctrica y la fontanería se renuevan o solo se adaptan. "Reforma integral" que mantiene las instalaciones existentes es, en realidad, una reforma parcial.' },
           { term: 'Gestión de escombros', def: 'En una reforma integral, la demolición genera varios metros cúbicos de escombro. El coste del contenedor o del transporte a punto limpio debe estar incluido en el presupuesto, no aparecer como extra al final.' },
@@ -598,19 +642,18 @@ const zones = [
           { term: 'Materiales especificados', def: 'El presupuesto debe indicar la calidad de los materiales (tarima maciza vs. laminada, porcelánico rectificado vs. baldosa estándar, marca de sanitarios). Si dice "mueble de baño según selección", pide que aclaren el rango de precio.' },
           { term: 'Coordinación de gremios', def: 'Pregunta quién coordina la entrada y salida de cada gremio. Un presupuesto que suma trabajos por separado no tiene por qué incluir la coordinación entre ellos: puede haber tiempos muertos que alargan el plazo y los costes de varios meses de obra.' },
           { term: 'Garantía de ejecución', def: 'La garantía sobre la obra debe cubrir al menos 2 años desde la entrega. Es diferente de la garantía de los materiales, que la da el fabricante. Si el presupuesto no la menciona, pregunta qué pasa si hay problemas al año siguiente.' },
-        ].map(({ term, def }) => (
-          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
-            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
-            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
+        ].map(({ term, def }, i) => (
+          <div class="presupuesto-row">
+            <span class="presupuesto-n">{String(i + 1).padStart(2, '0')}</span>
+            <dt class="presupuesto-term">{term}</dt>
+            <dd class="presupuesto-def">{def}</dd>
           </div>
         ))}
       </dl>
 
-      <div class="mt-8 bg-white border-l-4 border-[#A85535] p-6">
-        <p class="text-sm font-semibold text-gray-900 mb-3">Precio cerrado e imprevistos en una reforma integral</p>
-        <p class="text-sm text-gray-700 leading-relaxed">
-          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma integral, eso incluye el estado de las instalaciones accesibles, la estructura observable y los elementos que se pueden medir antes de abrir. Si al derribar un tabique aparece un problema estructural no previsto o al abrir el suelo encontramos tuberías en peor estado del visible, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas integrales del Corredor, el precio cierra sin desviaciones. Cuando hay imprevistos, hay una persona que llama, explica y espera antes de actuar.
-        </p>
+      <div class="mt-8 empresa-callout">
+        <p class="empresa-callout__title">Precio cerrado e imprevistos en una reforma integral</p>
+        <p class="empresa-callout__body">El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma integral, eso incluye el estado de las instalaciones accesibles, la estructura observable y los elementos que se pueden medir antes de abrir. Si al derribar un tabique aparece un problema estructural no previsto o al abrir el suelo encontramos tuberías en peor estado del visible, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas integrales del Corredor, el precio cierra sin desviaciones. Cuando hay imprevistos, hay una persona que llama, explica y espera antes de actuar.</p>
       </div>
     </div>
   </section>
@@ -618,22 +661,20 @@ const zones = [
   <!-- M7: Plazos -->
   <section class="py-16 bg-white" aria-labelledby="h-plazos">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-plazos" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-plazos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
         Plazos reales de una reforma integral
       </h2>
       <p class="text-gray-700 leading-relaxed mb-6">
         La secuencia de fases en una reforma integral no es flexible: las instalaciones van antes de los acabados, y los acabados van en un orden específico. Saltarse pasos o solapar fases incompatibles genera problemas que se notan al cabo de meses o años.
       </p>
+      <p class="plazos-caption">Peso orientativo de cada fase sobre el total de la obra. El plazo absoluto depende del alcance y la superficie; la fecha de entrega queda fijada en el contrato.</p>
       <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <p class="text-left text-xs text-gray-400 mb-3 block">
-            Peso orientativo de cada fase sobre el total de la obra. El plazo absoluto depende del alcance y la superficie; la fecha de entrega queda fijada en el contrato.
-          </p>
+        <table class="plazos-table">
           <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Fase</th>
-              <th class="text-right py-3 px-4 font-bold text-gray-900">Peso sobre el total</th>
-              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Qué condiciona la siguiente fase</th>
+            <tr>
+              <th class="plazos-th text-left">Fase</th>
+              <th class="plazos-th text-right">Peso</th>
+              <th class="plazos-th text-left hidden md:table-cell">Qué condiciona la siguiente fase</th>
             </tr>
           </thead>
           <tbody>
@@ -644,11 +685,11 @@ const zones = [
               { fase: 'Revestimientos (solados y alicatados)', pct: '25%', nota: 'Incluye baño y cocina; determina los plazos de carpintería' },
               { fase: 'Carpintería interior', pct: '12%', nota: 'Se instala sobre solados terminados; puertas, armarios, premarcos' },
               { fase: 'Pintura, limpieza y entrega', pct: '8%', nota: 'Fase final; incluye revisión y acta de entrega' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.fase}</td>
-                <td class="py-3 px-4 text-right font-semibold text-gray-900" style="font-variant-numeric:tabular-nums">{row.pct}</td>
-                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.nota}</td>
+            ].map((row) => (
+              <tr class="plazos-tr">
+                <td class="plazos-td plazos-td--fase">{row.fase}</td>
+                <td class="plazos-td plazos-td--pct">{row.pct}</td>
+                <td class="plazos-td plazos-td--nota hidden md:table-cell">{row.nota}</td>
               </tr>
             ))}
           </tbody>
@@ -663,20 +704,19 @@ const zones = [
   <!-- M8: Compromisos -->
   <section class="py-20 bg-white" aria-labelledby="h-compromisos">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="compromisos-apertura-grid mb-14 pb-14" style="border-bottom:1px solid #D1C9BD">
-        <div>
-          <p class="font-black text-gray-900 leading-none" style="font-size:clamp(5rem,14vw,10rem);letter-spacing:-0.055em;line-height:1">2</p>
-          <p class="text-sm font-bold text-gray-900 mt-3">años de garantía</p>
-          <p class="text-xs text-gray-500">sobre la ejecución</p>
-        </div>
-        <div class="lg:pt-4">
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
-          <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-5" style="letter-spacing:-0.02em;text-wrap:balance">
-            Nuestros compromisos en la reforma integral
-          </h2>
+      <div class="mb-14 pb-14" style="border-bottom:1px solid #E5E7EB">
+        <h2 id="h-compromisos" class="text-4xl lg:text-5xl font-black text-gray-900 mb-5 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
+          Nuestros compromisos en la reforma integral
+        </h2>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
           <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
             Estos compromisos quedan recogidos en el contrato que firmamos antes de empezar la obra. No son promesas: son las condiciones del acuerdo.
           </p>
+          <div class="compromisos-apertura__dato flex-shrink-0">
+            <span class="compromisos-apertura__tag">Garantía</span>
+            <p class="compromisos-apertura__valor">2 años</p>
+            <p class="compromisos-apertura__sub">sobre la ejecución</p>
+          </div>
         </div>
       </div>
       <Compromisos variant="full" />
@@ -686,13 +726,12 @@ const zones = [
   <!-- Proceso -->
   <section class="py-20 bg-white" aria-labelledby="h-proceso">
     <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
-        <h2 id="h-proceso" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+      <div class="mb-12 reveal">
+        <h2 id="h-proceso" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
           Del primer contacto a la entrega llave en mano
         </h2>
       </div>
-      <div class="space-y-8" style="max-width:44rem">
+      <div class="proceso-steps" style="max-width:44rem">
         {[
           { n: '01', title: 'Visita técnica gratuita', desc: 'Visitamos el piso, evaluamos instalaciones, tomamos medidas y escuchamos qué quieres. Sin compromiso ni coste.' },
           { n: '02', title: 'Presupuesto cerrado por escrito', desc: 'Presupuesto detallado por partidas. Materiales especificados. Precio que no cambia una vez firmado.' },
@@ -701,11 +740,11 @@ const zones = [
           { n: '05', title: 'Acabados coordinados', desc: 'Solados, baño, cocina, carpintería y pintura. Un único equipo coordinado, sin esperas entre gremios.' },
           { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo, limpieza de obra y entrega con garantía de 2 años sobre la ejecución.' },
         ].map(step => (
-          <div class="grid items-start" style="grid-template-columns:3rem 1fr;gap:1.25rem">
-            <p class="text-4xl font-black text-gray-200 leading-none pt-0.5" aria-hidden="true">{step.n}</p>
-            <div>
-              <p class="font-bold text-gray-900 mb-1">{step.title}</p>
-              <p class="text-sm text-gray-600 leading-relaxed" style="max-width:48ch">{step.desc}</p>
+          <div class="proceso-step">
+            <span class="proceso-step__n" aria-hidden="true">{step.n}</span>
+            <div class="proceso-step__body">
+              <p class="proceso-step__title">{step.title}</p>
+              <p class="proceso-step__desc">{step.desc}</p>
             </div>
           </div>
         ))}
@@ -714,51 +753,64 @@ const zones = [
   </section>
 
   <!-- Resultado cotidiano -->
-  <div class="bg-white py-10">
-    <div class="max-w-4xl mx-auto px-4">
-      <p class="text-base text-gray-600 leading-relaxed" style="max-width:58ch">
-        Al mes de vivir en el piso reformado, la referencia del anterior desaparece. Lo que queda es la instalación eléctrica que aguanta el aire acondicionado sin disparar el diferencial, el agua caliente que llega sin esperar, la cocina donde cabe más de una persona, el suelo que no cruje. La reforma integral no cambia solo lo que se ve: cambia lo que se vive cada día.
-      </p>
+  <div class="resultado-wrap">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="resultado-tag">Resultado</p>
+      <div class="resultado-body">
+        <p class="resultado-lead">Al mes de vivir en el piso reformado, la referencia del anterior desaparece.</p>
+        <p class="resultado-detail">Lo que queda es la instalación eléctrica que aguanta el aire acondicionado sin disparar el diferencial, el agua caliente que llega sin esperar, la cocina donde cabe más de una persona, el suelo que no cruje.</p>
+        <p class="resultado-kicker">La reforma integral no cambia solo lo que se ve: cambia lo que se vive cada día.</p>
+      </div>
     </div>
   </div>
 
   <!-- Dónde hacemos reformas integrales -->
   <section class="py-16 bg-white" aria-labelledby="h-zonas">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 id="h-zonas" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-zonas" class="text-3xl lg:text-4xl font-black text-gray-900 mb-4" style="letter-spacing:-0.03em;text-wrap:balance">
         Reformas integrales en el Corredor del Henares: todos los municipios
       </h2>
       <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
         Hacemos reformas integrales en los ocho municipios del Corredor del Henares sin coste adicional de desplazamiento. Selecciona tu municipio para ver precios orientativos y los plazos habituales en tu zona.
       </p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="zonas-grid">
         {zones.map(z => (
-          <article class="group relative p-5 bg-[#F9F7F4] hover:bg-[#111827] transition-colors duration-200">
-            <h3 class="text-sm font-bold text-gray-900 group-hover:text-white transition-colors duration-200 m-0">
+          <article class="zona-card group relative">
+            <h3 class="zona-card__title">
               <a href={`/reformas-integrales/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
                 Reformas integrales en {z.name}
               </a>
             </h3>
-            <span aria-hidden="true" class="text-xs text-gray-400 mt-1 group-hover:text-gray-300 transition-colors duration-200 block">Ver precios y plazos →</span>
+            <span aria-hidden="true" class="zona-card__sub">Ver precios y plazos →</span>
           </article>
         ))}
       </div>
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si solo necesitas reformar una zona de la vivienda:</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="/servicios/reforma-banos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de baños</a>
-          <a href="/servicios/reforma-cocinas/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de cocinas</a>
-          <a href="/servicios/reforma-pisos/" class="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-[#A85535] hover:text-white transition-colors">Reforma de pisos</a>
+        <div class="flex flex-wrap gap-2 mb-8">
+          <a href="/servicios/reforma-banos/" class="price-guide-chip">
+            <span class="price-guide-chip__label">Servicio</span>
+            <span class="price-guide-chip__text">Reforma de baños</span>
+            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/servicios/reforma-cocinas/" class="price-guide-chip">
+            <span class="price-guide-chip__label">Servicio</span>
+            <span class="price-guide-chip__text">Reforma de cocinas</span>
+            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/servicios/reforma-pisos/" class="price-guide-chip">
+            <span class="price-guide-chip__label">Servicio</span>
+            <span class="price-guide-chip__text">Reforma de pisos</span>
+            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
-        <div class="mt-6">
-          <p class="text-sm text-gray-500 mb-3">Información sobre el parque de vivienda y las reformas más habituales en cada municipio:</p>
-          <div class="flex flex-wrap gap-2">
-            {zones.map(z => (
-              <a href={`/zonas/${z.slug}/`} class="inline-block px-3 py-1.5 text-xs font-medium text-gray-600 bg-gray-50 border border-gray-200 hover:border-[#A85535] hover:text-[#A85535] transition-colors">
-                Obras en {z.name}
-              </a>
-            ))}
-          </div>
+        <p class="text-sm text-gray-500 mb-3">Información sobre el parque de vivienda y las reformas más habituales en cada municipio:</p>
+        <div class="flex flex-wrap gap-2">
+          {zones.map(z => (
+            <a href={`/zonas/${z.slug}/`} class="zona-pill">
+              Obras en {z.name}
+            </a>
+          ))}
         </div>
       </div>
     </div>
@@ -768,20 +820,22 @@ const zones = [
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 id="h-faq" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-faq" class="text-4xl lg:text-5xl font-black text-gray-900 mb-4 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
           Todo lo que necesitas saber antes de una reforma integral
         </h2>
       </div>
-      <div class="divide-y divide-gray-200">
+      <div class="faq-list">
         {faqs.map(faq => (
-          <details class="group py-5">
-            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
-              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
-              <span class="text-gray-400 text-xl leading-none select-none font-normal block group-open:hidden" aria-hidden="true">+</span>
-              <span class="text-gray-400 text-xl leading-none select-none font-normal hidden group-open:block" aria-hidden="true">−</span>
+          <details class="faq-item group">
+            <summary class="faq-summary">
+              <h3 class="faq-q">{faq.q}</h3>
+              <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </summary>
-            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
+            <div class="faq-body">
+              <p class="faq-a">{faq.a}</p>
+            </div>
           </details>
         ))}
       </div>
@@ -792,16 +846,31 @@ const zones = [
   <!-- TODO: activar cuando haya fotografías reales de reformas integrales en el Corredor -->
 
   <!-- CTA Final -->
-  <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 id="h-cta-final" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em">
-        ¿Cuánto cuesta reformar tu piso de manera integral?
+  <section class="py-28 bg-[#111827]" aria-labelledby="h-cta-final">
+    <div class="max-w-4xl mx-auto px-4 text-center reveal">
+      <h2 id="h-cta-final" class="font-black text-white mb-5" style="font-size:clamp(2.25rem,6vw,4rem);letter-spacing:-0.04em;line-height:0.92;text-wrap:balance">
+        ¿Cuánto cuesta reformar<br>tu piso integralmente?
       </h2>
-      <p class="text-gray-400 mb-2">Visita técnica gratuita. Presupuesto cerrado por escrito.</p>
-      <p class="text-gray-600 text-sm mb-10">Sin compromiso. El precio que firmamos es el precio que pagas.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar presupuesto</a>
-        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">{SITE.phoneDisplay}</a>
+      <p class="text-gray-400 mb-10 text-lg">Visita técnica gratuita. Presupuesto cerrado por escrito.</p>
+      <div class="cta-strip">
+        <div class="cta-strip__item">
+          <span class="cta-strip__val">Gratis</span>
+          <span class="cta-strip__label">Visita técnica</span>
+        </div>
+        <div class="cta-strip__sep" aria-hidden="true"></div>
+        <div class="cta-strip__item">
+          <span class="cta-strip__val">Precio cerrado</span>
+          <span class="cta-strip__label">En el contrato</span>
+        </div>
+        <div class="cta-strip__sep" aria-hidden="true"></div>
+        <div class="cta-strip__item">
+          <span class="cta-strip__val">2 años</span>
+          <span class="cta-strip__label">Garantía de ejecución</span>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+        <a href="/contacto/" class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar presupuesto</a>
+        <a href={`tel:${SITE.phone}`} class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">{SITE.phoneDisplay}</a>
       </div>
     </div>
   </section>
@@ -809,11 +878,839 @@ const zones = [
 </Layout>
 
 <style>
-  .hero-c-grid { display:grid; gap:1.5rem; }
-  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
+  /* Design tokens */
+  :root {
+    --color-brand: #A85535;
+    --color-brand-dark: #8A4229;
+    --color-dark: #111827;
+    --color-cream: #F9F7F4;
+    --color-border: #E5E7EB;
+    --color-border-light: #F3F4F6;
+    --color-muted: #6B7280;
+  }
+
+  /* Display font */
+  .font-display { font-family: 'Barlow Condensed', system-ui, sans-serif; }
+
+  /* Layout */
   .hero-img-wrap { position:absolute; inset:0; overflow:hidden; }
   .hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .hero-img-overlay { position:absolute; inset:0; background:rgba(17,24,39,.65); }
-  .compromisos-apertura-grid { display:grid; gap:2rem; }
-  @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
+  .hero-img-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(
+      to bottom,
+      rgba(17,24,39,.52) 0%,
+      rgba(17,24,39,.62) 60%,
+      rgba(17,24,39,.82) 100%
+    );
+  }
+
+  /* Hero grid */
+  .hero-c-grid { display:grid; gap:2rem; }
+  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:1fr auto; gap:4rem; align-items:end; } }
+
+  /* CTAs */
+  .hero-cta-group { display:flex; flex-direction:column; gap:0.75rem; }
+  @media(min-width:480px){ .hero-cta-group { flex-direction:row; flex-wrap:wrap; } }
+  .hero-cta-primary {
+    display:inline-block; text-align:center;
+    padding:1rem 1.75rem;
+    font-weight:700; font-size:0.8125rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:#fff; background:#A85535;
+    transition:opacity .2s;
+    white-space:nowrap;
+  }
+  .hero-cta-primary:hover { opacity:0.88; }
+  .hero-cta-secondary {
+    display:inline-block; text-align:center;
+    padding:1rem 1.75rem;
+    font-weight:700; font-size:0.8125rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:#fff; border:1.5px solid rgba(255,255,255,.45);
+    transition:border-color .2s;
+    white-space:nowrap;
+  }
+  .hero-cta-secondary:hover { border-color:rgba(255,255,255,.85); }
+
+  /* Metrics */
+  .hero-metrics {
+    display:flex; flex-direction:row; gap:2rem; flex-wrap:wrap;
+  }
+  @media(min-width:1024px){ .hero-metrics { flex-direction:column; gap:1.5rem; text-align:right; flex-wrap:nowrap; } }
+  .hero-metric__val {
+    font-size:clamp(1.5rem,3.2vw,2.5rem);
+    font-weight:900; letter-spacing:-0.04em; line-height:1;
+    color:#fff;
+  }
+  .hero-metric__label {
+    font-size:0.625rem; color:rgba(255,255,255,.65);
+    margin-top:0.3rem; letter-spacing:0.12em; text-transform:uppercase;
+  }
+
+  /* Scroll indicator */
+  .hero-scroll {
+    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+    z-index:1; opacity:0;
+    animation:heroFade 0.7s ease 1.4s forwards;
+  }
+  .hero-scroll__dot {
+    animation:scrollDot 2s cubic-bezier(0.45,0,0.55,1) 1.8s infinite;
+  }
+  @keyframes scrollDot {
+    0%   { transform:translateY(0);    opacity:.7; }
+    50%  { transform:translateY(10px); opacity:.2; }
+    100% { transform:translateY(0);    opacity:.7; }
+  }
+  .compromisos-apertura__dato { border-left:2px solid #E5E7EB; padding-left:1.5rem; }
+  .compromisos-apertura__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; display:block; margin-bottom:0.25rem; }
+  .compromisos-apertura__valor { font-size:1.25rem; font-weight:800; color:#111827; letter-spacing:-0.02em; margin:0; }
+  .compromisos-apertura__sub { font-size:0.6875rem; color:#9CA3AF; margin-top:0.125rem; }
+
+  /* Hero line animation */
+  .hero-line { overflow:hidden; display:block; padding-bottom:0.18em; margin-bottom:-0.18em; }
+  .hero-line > span { display:block; transform:translateY(110%); animation:heroSlideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .hero-line:nth-child(1) > span { animation-delay:0.05s; }
+  .hero-line:nth-child(2) > span { animation-delay:0.18s; }
+  .hero-line:nth-child(3) > span { animation-delay:0.31s; }
+  @keyframes heroSlideUp { to { transform:translateY(0); } }
+
+  /* Sub-hero content fade in */
+  .hero-sub { opacity:0; animation:heroFade 0.7s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; }
+  @keyframes heroFade { to { opacity:1; } }
+
+  /* Scroll reveals */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.visible { opacity:1; transform:none; }
+
+  /* Stagger grid reveal */
+  .reveal-stagger > * { opacity:0; transform:translateY(18px); transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+  .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.07s; }
+  .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.14s; }
+  .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.21s; }
+  .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.28s; }
+  .reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.35s; }
+
+  /* Proceso connector line */
+  .proceso-steps { position:relative; }
+  .proceso-steps::before {
+    content:''; position:absolute;
+    left:0.875rem; top:2rem; bottom:0;
+    width:1px;
+    background:linear-gradient(to bottom, #A85535 0%, #E5E7EB 60%, transparent 100%);
+  }
+  .proceso-step { display:grid; grid-template-columns:2rem 1fr; gap:0 1.5rem; padding:1.375rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s, padding-left 0.2s; position:relative; }
+  .proceso-step:hover { background:#F9F7F4; padding-left:0.875rem; }
+  .proceso-step__n { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.3rem; z-index:1; position:relative; }
+  .proceso-step__title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.375rem; }
+  .proceso-step__desc { font-size:0.875rem; color:#4B5563; line-height:1.65; max-width:48ch; }
+
+  /* Resultado cotidiano */
+  .resultado-wrap { background:#111827; padding:clamp(4rem,8vw,7rem) 0; border-top:2px solid #A85535; }
+  .resultado-tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; margin-bottom:2rem; }
+  .resultado-body { margin:0; padding:0; border:none; }
+  .resultado-lead { font-size:clamp(1.375rem,3vw,2.25rem); color:rgba(255,255,255,.9); line-height:1.25; font-weight:700; letter-spacing:-0.02em; max-width:22ch; margin-bottom:1.75rem; }
+  .resultado-detail { font-size:clamp(1rem,2vw,1.375rem); color:rgba(255,255,255,.72); line-height:1.55; max-width:36ch; margin-bottom:2rem; font-weight:400; }
+  .resultado-kicker { font-size:clamp(1rem,1.75vw,1.25rem); color:rgba(255,255,255,.75); line-height:1.4; max-width:32ch; font-weight:600; letter-spacing:-0.01em; padding-top:2rem; border-top:1px solid rgba(255,255,255,.08); }
+
+  /* Grid de municipios */
+  .zonas-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
+  @media(min-width:768px){ .zonas-grid { grid-template-columns:repeat(4,1fr); } }
+  .zona-card { background:#F9F7F4; padding:1.25rem 1.25rem 1rem; position:relative; transition:background 0.2s; }
+  .zona-card:hover { background:#111827; }
+  .zona-card__title { font-size:0.875rem; font-weight:700; color:#111827; margin:0 0 0.25rem; line-height:1.3; transition:color 0.2s; }
+  .zona-card:hover .zona-card__title { color:#fff; }
+  .zona-card__sub { font-size:0.6875rem; color:#9CA3AF; display:block; transition:color 0.2s; }
+  .zona-card:hover .zona-card__sub { color:rgba(255,255,255,.45); }
+
+  /* Pills de zona */
+  .zona-pill { display:inline-flex; align-items:center; min-height:2.75rem; padding:0.625rem 0.875rem; font-size:0.75rem; font-weight:500; color:#4B5563; border:1px solid #D1D5DB; background:#fff; text-decoration:none; transition:border-color 0.2s, color 0.2s; }
+  .zona-pill:hover { border-color:#A85535; color:#A85535; }
+
+  /* FAQ accordion */
+  .faq-list { border-top:2px solid #111827; }
+  .faq-item { border-bottom:1px solid #E5E7EB; }
+  .faq-summary { display:flex; justify-content:space-between; align-items:start; gap:1.25rem; padding:1.25rem 0.5rem; cursor:pointer; list-style:none; transition:background 0.2s, padding-left 0.2s; }
+  .faq-summary::-webkit-details-marker { display:none; }
+  .faq-summary:hover { background:#fff; padding-left:0.75rem; }
+  .faq-q { font-size:0.9375rem; font-weight:700; color:#111827; line-height:1.4; margin:0; flex:1; }
+  .faq-chevron { flex-shrink:0; color:#A85535; margin-top:0.25rem; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+  .faq-item[open] .faq-chevron { transform:rotate(180deg); }
+  .faq-body { overflow:hidden; }
+  .faq-a { font-size:0.875rem; color:#4B5563; line-height:1.7; padding:0 0.5rem 1.25rem; margin:0; }
+
+  /* CTA Final strip */
+  .cta-strip { display:flex; flex-direction:column; align-items:center; gap:1.25rem; }
+  @media(min-width:640px){ .cta-strip { flex-direction:row; justify-content:center; gap:0; } }
+  .cta-strip__item { display:flex; flex-direction:column; gap:0.25rem; }
+  @media(min-width:640px){ .cta-strip__item { padding:0 2.5rem; } }
+  .cta-strip__val { font-size:1rem; font-weight:800; color:#fff; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; }
+  .cta-strip__label { font-size:0.625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:rgba(255,255,255,.65); }
+  .cta-strip__sep { display:none; }
+  @media(min-width:640px){ .cta-strip__sep { display:block; width:1px; height:2.5rem; background:rgba(255,255,255,.1); align-self:center; } }
+
+  /* Metric count-up */
+  .metric-value { font-variant-numeric:tabular-nums; }
+
+  /* Browser surfaces */
+  ::selection { background:#A85535; color:#fff; }
+  :focus-visible { outline:2px solid #A85535; outline-offset:3px; }
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#D1C9BD; }
+  ::-webkit-scrollbar-thumb:hover { background:#A85535; }
+
+  /* Era timeline - parque section */
+  .parque-header { max-width:52rem; }
+  /* Qué incluye — spec list */
+  .incluye-list { border-top:1px solid #E5E7EB; }
+  .incluye-row {
+    display:grid;
+    grid-template-columns:2.5rem 1fr auto;
+    gap:0 1.5rem;
+    align-items:center;
+    padding:1.25rem 0.5rem;
+    border-bottom:1px solid #E5E7EB;
+    transition:background 0.2s ease, padding-left 0.2s ease;
+    cursor:default;
+  }
+  .incluye-row:hover {
+    background:#FAFAF8;
+    padding-left:1rem;
+  }
+  .incluye-n {
+    font-size:0.6875rem;
+    font-weight:700;
+    color:#A85535;
+    letter-spacing:0.1em;
+    font-family:'Courier New', monospace;
+    line-height:1;
+    padding-top:0.1rem;
+  }
+  .incluye-body { min-width:0; }
+  .incluye-title {
+    font-size:0.9375rem;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:0.2rem;
+    line-height:1.3;
+  }
+  .incluye-desc {
+    font-size:0.8125rem;
+    color:#6B7280;
+    line-height:1.6;
+  }
+  .incluye-arrow {
+    font-size:1rem;
+    color:#D1D5DB;
+    flex-shrink:0;
+    transition:color 0.2s ease, transform 0.2s ease;
+    display:none;
+  }
+  @media(min-width:768px){ .incluye-arrow { display:block; } }
+  .incluye-row:hover .incluye-arrow {
+    color:#A85535;
+    transform:translateX(4px);
+  }
+
+  /* Decision section — parcial vs integral */
+  .decision-grid {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+  }
+  @media(min-width:768px){ .decision-grid { grid-template-columns:1fr 1fr; } }
+
+  .decision-card {
+    padding:2rem;
+  }
+  @media(min-width:768px){ .decision-card { padding:2.5rem; } }
+
+  .decision-card--light {
+    background:#fff;
+    border:1px solid #E5E7EB;
+  }
+  .decision-card--dark {
+    background:#111827;
+    border:1px solid #111827;
+  }
+
+  .decision-card__eyebrow {
+    font-size:0.625rem;
+    font-weight:700;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:#9CA3AF;
+    margin-bottom:0.5rem;
+    font-family:'Courier New', monospace;
+  }
+  .decision-card__title {
+    font-size:1.0625rem;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:1.25rem;
+    line-height:1.3;
+  }
+  .decision-card__price {
+    font-size:0.75rem;
+    font-weight:600;
+    color:#9CA3AF;
+    margin-top:1.25rem;
+    padding-top:1.25rem;
+    border-top:1px solid #E5E7EB;
+    line-height:1.5;
+  }
+  .decision-card--dark .decision-card__price {
+    border-top-color:rgba(255,255,255,.1);
+  }
+
+  .decision-list {
+    list-style:none;
+    padding:0; margin:0;
+    display:flex; flex-direction:column; gap:0;
+  }
+  .decision-list li {
+    font-size:0.8375rem;
+    color:#374151;
+    padding:0.6rem 0;
+    border-bottom:1px solid #F3F4F6;
+    display:grid;
+    grid-template-columns:1rem 1fr;
+    gap:0.5rem;
+    line-height:1.5;
+    align-items:baseline;
+  }
+  .decision-list li:last-child { border-bottom:none; }
+  .decision-list li::before {
+    content:'✓';
+    font-size:0.6875rem;
+    font-weight:700;
+    color:#9CA3AF;
+    line-height:1.5;
+  }
+  .decision-list--dark li {
+    color:rgba(255,255,255,.75);
+    border-bottom-color:rgba(255,255,255,.08);
+  }
+  .decision-list--dark li::before { color:#A85535; }
+
+
+  /* Era Timeline — precisión técnica */
+  .era-timeline {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    border-top:3px solid #111827;
+  }
+  @media(min-width:768px){
+    .era-timeline { grid-template-columns:repeat(3,1fr); }
+  }
+
+  .era-col {
+    padding:1.75rem 0 2rem 0;
+    border-bottom:1px solid #E5E7EB;
+    transition:background 0.25s ease;
+    cursor:default;
+  }
+  @media(min-width:768px){
+    .era-col {
+      padding:2rem 2rem 2rem 0;
+      border-bottom:none;
+      border-right:1px solid #D1D5DB;
+      position:relative;
+    }
+    .era-col:last-child { border-right:none; }
+    .era-col:not(:first-child){ padding-left:2rem; }
+  }
+  @media(max-width:767px){ .era-col:last-child { border-bottom:none; } }
+
+  /* Top accent — terracota on hover */
+  .era-col::before {
+    content:'';
+    position:absolute;
+    top:-3px; left:0;
+    width:0; height:3px;
+    background:#A85535;
+    transition:width 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  @media(min-width:768px){
+    .era-col:hover::before { width:100%; }
+    .era-col:hover { background:#FAFAF8; }
+  }
+
+  /* Pill eyebrow */
+  .era-tag {
+    display:inline-flex;
+    align-items:center;
+    gap:0.35rem;
+    font-size:0.625rem;
+    font-weight:700;
+    color:#A85535;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:0.75rem;
+    font-family:'Courier New', monospace;
+  }
+  .era-tag::before {
+    content:'';
+    width:4px; height:4px;
+    border-radius:50%;
+    background:currentColor;
+    flex-shrink:0;
+  }
+
+  /* H3 — protagonista */
+  .era-col__title {
+    font-size:clamp(1.0625rem,1.5vw,1.25rem);
+    font-weight:800;
+    color:#111827;
+    line-height:1.35;
+    letter-spacing:-0.02em;
+    margin-bottom:1rem;
+    padding-bottom:1rem;
+    border-bottom:1px solid #F3F4F6;
+  }
+
+  /* Body */
+  .era-col__body {
+    font-size:0.8125rem;
+    color:#6B7280;
+    line-height:1.7;
+    margin-bottom:1rem;
+  }
+
+  /* Issue list */
+  .era-list { list-style:none; padding:0; margin:0; border-top:1px solid #F3F4F6; }
+  .era-list li {
+    font-size:0.8125rem;
+    color:#374151;
+    line-height:1.5;
+    padding:0.5rem 0;
+    border-bottom:1px solid #F3F4F6;
+    display:grid;
+    grid-template-columns:0.875rem 1fr;
+    gap:0.5rem;
+    align-items:baseline;
+  }
+  .era-list li:last-child { border-bottom:none; }
+  .era-list li::before {
+    content:'–';
+    color:#A85535;
+    font-weight:900;
+    font-size:0.75rem;
+    line-height:1.5;
+  }
+
+  /* Vida-obra 2-col dark */
+  .vida-grid { display:grid; grid-template-columns:1fr; gap:3rem; }
+  @media(min-width:900px){ .vida-grid { grid-template-columns:42% 1fr; gap:5rem; align-items:start; } }
+  .vida-list { list-style:none; padding:0; margin:0; }
+  .vida-item {
+    display:grid;
+    grid-template-columns:2rem 1fr;
+    gap:0 1rem;
+    padding:1.125rem 0.75rem 1.125rem 0.75rem;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    align-items:start;
+    margin:0 -0.75rem;
+    border-left:2px solid transparent;
+    transition:background 0.2s ease, border-left-color 0.2s ease;
+  }
+  .vida-item:first-child { border-top:1px solid rgba(255,255,255,.07); }
+  .vida-item:hover {
+    background:rgba(255,255,255,.04);
+    border-left-color:#A85535;
+  }
+  .vida-item__n {
+    font-size:0.625rem;
+    font-weight:700;
+    letter-spacing:0.12em;
+    color:#A85535;
+    line-height:1.9;
+    font-family:'Courier New', monospace;
+  }
+  .vida-item__title {
+    font-size:0.9375rem;
+    font-weight:600;
+    color:#F9F7F4;
+    margin-bottom:0.3rem;
+    line-height:1.35;
+  }
+  .vida-item__desc {
+    font-size:0.8125rem;
+    color:rgba(255,255,255,.65);
+    line-height:1.65;
+  }
+
+  /* Criterios elegir empresa */
+  .criterio-row { display:grid; grid-template-columns:2rem 1fr; gap:0 1.25rem; padding:1.25rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s, padding-left 0.2s; }
+  .criterio-row:first-child { border-top:1px solid #F3F4F6; }
+  .criterio-row:hover { background:#FAFAF8; padding-left:0.75rem; }
+  .criterio-n { font-size:0.625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.25rem; }
+  .criterio-title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.35rem; line-height:1.35; }
+  .criterio-desc { font-size:0.875rem; color:#4B5563; line-height:1.65; }
+  .empresa-callout { display:grid; grid-template-columns:1fr; gap:0.5rem; padding:1.5rem; background:#fff; border-top:2px solid #111827; }
+  @media(min-width:640px){ .empresa-callout { grid-template-columns:14rem 1fr; gap:0 2rem; align-items:start; } }
+  .empresa-callout__title { font-size:0.875rem; font-weight:700; color:#111827; line-height:1.35; }
+  .empresa-callout__body { font-size:0.8125rem; color:#6B7280; line-height:1.65; }
+
+  /* Tarjetas tipo de licencia */
+  .licencia-grid { display:grid; grid-template-columns:1fr; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
+  @media(min-width:640px){ .licencia-grid { grid-template-columns:1fr 1fr; } }
+  .licencia-card { background:#F9F7F4; padding:1.5rem; }
+  .licencia-card--mayor { background:#fff; }
+  .licencia-card__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; margin-bottom:0.625rem; }
+  .licencia-card__tag--dark { color:#111827; }
+  .licencia-card__body { font-size:0.8125rem; color:#4B5563; line-height:1.6; }
+
+  /* Presupuesto checklist */
+  .presupuesto-dl { border-top:2px solid #111827; }
+  .presupuesto-row { display:grid; grid-template-columns:2rem 1fr; grid-template-rows:auto auto; gap:0.125rem 1rem; padding:1.125rem 0.5rem; border-bottom:1px solid #E5E7EB; transition:background 0.2s, padding-left 0.2s; }
+  .presupuesto-row:hover { background:#F9F7F4; padding-left:0.875rem; }
+  @media(min-width:640px){ .presupuesto-row { grid-template-columns:2rem 14rem 1fr; grid-template-rows:auto; align-items:baseline; } }
+  .presupuesto-n { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.25rem; grid-row:1; }
+  .presupuesto-term { font-size:0.9375rem; font-weight:700; color:#111827; line-height:1.35; grid-column:2; }
+  .presupuesto-def { font-size:0.875rem; color:#4B5563; line-height:1.65; grid-column:2; }
+  @media(min-width:640px){ .presupuesto-def { grid-column:3; grid-row:1; } }
+
+  /* Tabla de plazos */
+  .plazos-caption { font-size:0.6875rem; color:#9CA3AF; letter-spacing:0.02em; display:block; margin-bottom:0.75rem; }
+  .plazos-table { width:100%; border-collapse:collapse; border-top:2px solid #111827; }
+  .plazos-th { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; padding:0.625rem 0.75rem; border-bottom:1px solid #E5E7EB; }
+  .plazos-tr { border-bottom:1px solid #F3F4F6; transition:background 0.2s; }
+  .plazos-tr:hover { background:#F9F7F4; }
+  .plazos-td { padding:0.875rem 0.75rem; vertical-align:top; }
+  .plazos-td--fase { font-size:0.9375rem; font-weight:600; color:#111827; }
+  .plazos-td--pct { font-size:1rem; font-weight:800; color:#A85535; font-family:'Courier New', monospace; font-variant-numeric:tabular-nums; white-space:nowrap; text-align:right; }
+  .plazos-td--nota { font-size:0.8125rem; color:#6B7280; line-height:1.5; }
+
+  /* Fase cards - dynamic */
+  /* Fase grid — responsive */
+  .fase-grid-wrap { }
+  .fase-grid {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1px;
+    background:#D1D5DB;
+  }
+  @media(min-width:640px){
+    .fase-grid { grid-template-columns:repeat(3,1fr); }
+  }
+  @media(min-width:1024px){
+    .fase-grid { grid-template-columns:repeat(6,1fr); }
+  }
+
+  /* Fase carousel */
+  .fase-card {
+    background:#F9F7F4;
+    padding:1.25rem 1rem;
+    position:relative;
+    overflow:hidden;
+    transition:background 0.45s ease;
+    cursor:default;
+  }
+  .fase-card.is-active { background:#111827; }
+
+  .fase-progress-top {
+    position:absolute;
+    top:0; left:0; right:0;
+    height:2px;
+    background:transparent;
+    overflow:hidden;
+  }
+  .fase-bar {
+    height:100%;
+    width:0;
+    background:#A85535;
+  }
+
+  .fase-n {
+    font-size:0.625rem;
+    font-weight:700;
+    letter-spacing:0.12em;
+    color:#9CA3AF;
+    margin-bottom:0.625rem;
+    font-family:'Courier New', monospace;
+    transition:color 0.45s ease;
+  }
+  .fase-card.is-active .fase-n { color:#A85535; }
+
+  .fase-label {
+    font-size:0.875rem;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:0.375rem;
+    line-height:1.3;
+    transition:color 0.45s ease;
+  }
+  .fase-card.is-active .fase-label { color:#fff; }
+
+  .fase-dep {
+    font-size:0.6875rem;
+    color:#6B7280;
+    line-height:1.45;
+    transition:color 0.45s ease;
+  }
+  .fase-card.is-active .fase-dep { color:rgba(255,255,255,.5); }
+
+  /* Coord pills — bottom 3 */
+  .coord-pills {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    border-top:1px solid #E5E7EB;
+  }
+  @media(min-width:768px){ .coord-pills { grid-template-columns:repeat(3,1fr); } }
+
+  .coord-pill {
+    display:grid;
+    grid-template-columns:2rem 1fr;
+    gap:0 1rem;
+    padding:1.5rem 0;
+    border-bottom:1px solid #E5E7EB;
+    align-items:start;
+  }
+  @media(min-width:768px){
+    .coord-pill {
+      padding:1.5rem 1.5rem 1.5rem 0;
+      border-bottom:none;
+      border-right:1px solid #E5E7EB;
+    }
+    .coord-pill:last-child { border-right:none; }
+    .coord-pill:not(:first-child){ padding-left:1.5rem; }
+  }
+  @media(max-width:767px){ .coord-pill:last-child { border-bottom:none; } }
+
+  .coord-pill__n {
+    font-size:0.6875rem;
+    font-weight:700;
+    color:#A85535;
+    letter-spacing:0.08em;
+    font-family:'Courier New', monospace;
+    padding-top:0.125rem;
+  }
+  .coord-pill__title {
+    font-size:0.875rem;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:0.5rem;
+    line-height:1.35;
+  }
+  .coord-pill__body {
+    font-size:0.8125rem;
+    color:#6B7280;
+    line-height:1.65;
+  }
+  .fase-card.is-active .fase-bar { width:100%; }
+
+  /* Price ledger */
+  .price-ledger { border-top:2px solid #A85535; }
+
+  /* Cabecera de columnas */
+  .price-header { display:grid; grid-template-columns:1fr auto auto; gap:1rem 2rem; padding:0.5rem 0 0.5rem; border-bottom:1px solid #E5E7EB; }
+  .price-header span { font-size:0.625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#9CA3AF; font-family:'Courier New', monospace; }
+  .price-header span:nth-child(2) { white-space:nowrap; min-width:7rem; text-align:right; }
+  .price-header span:nth-child(3) { min-width:5rem; text-align:right; }
+  @media(max-width:600px){ .price-header { grid-template-columns:1fr auto; } .price-header span:nth-child(3) { display:none; } }
+
+  /* Fila base */
+  .price-row { display:grid; grid-template-columns:1fr auto auto; gap:1rem 2rem; align-items:center; padding:1rem 0.5rem; border-bottom:1px solid #E5E7EB; transition:background 0.2s, padding-left 0.2s; }
+  @media(max-width:600px){ .price-row { grid-template-columns:1fr auto; } .price-row__plazo { display:none; } }
+
+  /* Fila de referencia (acabados — no integral) */
+  .price-row--ref { background:#FAFAF8; }
+  .price-row--ref .price-row__name { color:#6B7280; }
+  .price-row--ref .price-row__sub { display:flex; align-items:center; gap:0.375rem; }
+  .price-row--ref .price-row__sub::before { content:''; display:inline-block; width:0.5rem; height:1px; background:#D1D5DB; }
+
+  /* Filas integrales */
+  .price-row--integral { cursor:default; }
+  .price-row--integral:hover { background:#FAFAF8; padding-left:0.75rem; }
+
+  /* Fila destacada */
+  .price-row--highlight { background:#FFF9F6; border-left:2px solid #A85535; padding-left:0.75rem; }
+  .price-row--highlight:hover { background:#FFF3EE; }
+
+  .price-row__label { display:flex; flex-direction:column; gap:0.125rem; }
+  .price-row__name { font-size:0.9375rem; font-weight:600; color:#111827; }
+  .price-row__sub { font-size:0.75rem; color:#9CA3AF; display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; }
+  .price-row__badge { font-size:0.5625rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; border:1px solid #A85535; padding:0.125rem 0.375rem; white-space:nowrap; }
+  .price-row__value { white-space:nowrap; text-align:right; min-width:7rem; }
+  .price-row__num { font-size:1.125rem; font-weight:800; color:#A85535; letter-spacing:-0.03em; font-variant-numeric:tabular-nums; }
+  .price-row__num--muted { color:#C4C9D4; }
+  .price-row__unit { font-size:0.75rem; color:#6B7280; font-weight:400; }
+  .price-row__plazo { font-size:0.8125rem; color:#9CA3AF; white-space:nowrap; font-variant-numeric:tabular-nums; min-width:5rem; text-align:right; }
+
+  /* Pie del ledger */
+  .price-footer { font-size:0.6875rem; color:#9CA3AF; padding-top:0.875rem; letter-spacing:0.02em; }
+
+  /* Cluster de guías */
+  .price-guides { display:flex; flex-direction:column; gap:0.5rem; }
+  @media(min-width:640px){ .price-guides { flex-direction:row; flex-wrap:wrap; gap:0.5rem; } }
+  .price-guide-chip { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 0.875rem; min-height:2.75rem; border:1px solid #D1D5DB; background:#fff; color:#374151; text-decoration:none; transition:border-color 0.2s, color 0.2s, background 0.2s; }
+  .price-guide-chip:hover { border-color:#A85535; color:#A85535; background:#FFF9F6; }
+  .price-guide-chip__label { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; flex-shrink:0; }
+  .price-guide-chip__text { font-size:0.8125rem; font-weight:500; }
+  .price-guide-chip__arrow { flex-shrink:0; opacity:0; transform:translateX(-4px); transition:opacity 0.2s, transform 0.2s; }
+  .price-guide-chip:hover .price-guide-chip__arrow { opacity:1; transform:translateX(0); }
+
+  /* Partida bars */
+  /* Partida list */
+  .partida-row { display:grid; grid-template-columns:10rem 1fr; gap:0.75rem 1.5rem; padding:1rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s; }
+  .partida-row:hover { background:#FAFAF8; }
+  @media(min-width:768px){ .partida-row { grid-template-columns:12rem 1fr; } }
+  .partida-info { display:flex; flex-direction:column; gap:0.15rem; padding-top:0.125rem; }
+  .partida-name { font-size:0.875rem; font-weight:600; color:#111827; }
+  .partida-sub { font-size:0.6875rem; color:#9CA3AF; }
+  .partida-bar-col { display:flex; flex-direction:column; gap:0.375rem; }
+  .partida-bar-track { position:relative; height:6px; background:#F3F4F6; width:100%; }
+  .partida-bar-fill { position:absolute; inset:0 auto 0 0; background:#A85535; height:100%; }
+  .partida-bar-meta { display:flex; align-items:center; gap:0.625rem; }
+  .partida-pct { font-size:0.8125rem; font-weight:700; color:#111827; font-variant-numeric:tabular-nums; font-family:'Courier New', monospace; }
+  .partida-ajuste-badge { font-size:0.5625rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-family:'Courier New', monospace; padding:0.15rem 0.4rem; white-space:nowrap; }
+  .ajuste-alto { background:#FDEEE8; color:#A85535; border:1px solid rgba(168,85,53,.25); }
+  .ajuste-medio { background:#F3F4F6; color:#6B7280; border:1px solid #E5E7EB; }
+  .ajuste-bajo { background:#F3F4F6; color:#9CA3AF; border:1px solid #E5E7EB; }
+  .ajuste-variable { background:#fff; color:#6B7280; border:1px solid #D1D5DB; }
+  .partida-nota { font-size:0.6875rem; color:#9CA3AF; line-height:1.5; }
+
+  /* Tarjetas de gama */
+  .gama-grid { display:grid; grid-template-columns:1fr; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
+  @media(min-width:768px){ .gama-grid { grid-template-columns:repeat(3,1fr); } }
+  .gama-card { background:#F9F7F4; padding:1.5rem; transition:background 0.2s; }
+  .gama-card:hover { background:#FAFAF8; }
+  .gama-card--highlight { background:#fff; position:relative; }
+  .gama-card--highlight::before { content:''; position:absolute; top:-2px; left:0; right:0; height:2px; background:#A85535; }
+  .gama-card--highlight:hover { background:#FFF9F6; }
+  .gama-card__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; margin-bottom:0.5rem; }
+  .gama-card__tag--accent { color:#A85535; }
+  .gama-card__title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.625rem; }
+  .gama-card__body { font-size:0.8125rem; color:#6B7280; line-height:1.6; }
+
+  /* CTA hover lift */
+  a[style*="background:#A85535"],
+  a[style*="background: #A85535"] {
+    transition: transform 0.18s ease, opacity 0.18s ease;
+  }
+  a[style*="background:#A85535"]:hover,
+  a[style*="background: #A85535"]:hover {
+    transform: translateY(-2px);
+    opacity: 0.93;
+  }
+
+  /* Reduced motion */
+  @media(prefers-reduced-motion:reduce) {
+    .hero-line > span, .hero-sub { animation:none; opacity:1; transform:none; }
+    .reveal, .reveal-stagger > * { opacity:1; transform:none; transition:none; }
+    a[style*="background:#A85535"]:hover { transform: none; }
+    .hero-scroll { display:none; }
+    .fase-bar { transition:none !important; }
+  }
+
+  /* Pause button + sr-only for fase carousel */
+  .fase-sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+  .fase-pause-btn { position:absolute; top:0; right:0; z-index:2; display:flex; align-items:center; justify-content:center; width:2rem; height:2rem; color:#9CA3AF; background:#fff; border:1px solid #D1D5DB; cursor:pointer; transition:border-color 0.2s, color 0.2s; }
+  .fase-pause-btn:hover { border-color:#A85535; color:#A85535; }
+  .fase-pause-btn[aria-pressed="true"] { color:#A85535; border-color:#A85535; background:#FFF9F6; }
 </style>
+
+<script>
+  // Hero parallax
+  const heroImgEl = document.querySelector('.hero-img') as HTMLElement;
+  if (heroImgEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroImgEl.style.willChange = 'transform';
+    window.addEventListener('scroll', () => {
+      heroImgEl.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+    }, { passive: true });
+  }
+
+  // Scroll reveals
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+  // Count-up for [data-count]
+  function countUp(el: HTMLElement) {
+    const target = parseFloat((el as HTMLElement & { dataset: { count: string; suffix?: string } }).dataset.count);
+    const suffix = (el as HTMLElement & { dataset: { suffix?: string } }).dataset.suffix || '';
+    const dur = 1100;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toLocaleString('es-ES') + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  const cio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { countUp(e.target as HTMLElement); cio.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+  // Dynamic phase carousel
+  const faseCards = document.querySelectorAll('.fase-card');
+  if (faseCards.length) {
+    let current = 0;
+    let isPaused = false;
+    const PHASE_DURATION = 3500;
+    const liveRegion = document.getElementById('fase-live') as HTMLElement;
+    const pauseBtn = document.getElementById('fase-pause-btn') as HTMLButtonElement;
+
+    function activateFase(idx: number) {
+      faseCards.forEach(c => {
+        c.classList.remove('is-active');
+        const bar = c.querySelector('.fase-bar') as HTMLElement;
+        if (bar) { bar.style.transition = 'none'; bar.style.width = '0'; }
+      });
+      const card = faseCards[idx];
+      card.classList.add('is-active');
+      const bar = card.querySelector('.fase-bar') as HTMLElement;
+      if (bar) {
+        requestAnimationFrame(() => {
+          bar.style.transition = `width ${PHASE_DURATION}ms linear`;
+          bar.style.width = '100%';
+        });
+      }
+      if (liveRegion) {
+        const label = card.querySelector('.fase-label');
+        if (label) liveRegion.textContent = `Fase activa: ${label.textContent}`;
+      }
+    }
+
+    function startTimer() {
+      return setInterval(() => {
+        current = (current + 1) % faseCards.length;
+        activateFase(current);
+      }, PHASE_DURATION);
+    }
+
+    activateFase(0);
+    let timer = startTimer();
+
+    // Pause button toggle
+    if (pauseBtn) {
+      pauseBtn.addEventListener('click', () => {
+        isPaused = !isPaused;
+        pauseBtn.setAttribute('aria-pressed', String(isPaused));
+        pauseBtn.setAttribute('aria-label', isPaused ? 'Reanudar animación de fases' : 'Pausar animación de fases');
+        if (isPaused) {
+          clearInterval(timer);
+        } else {
+          timer = startTimer();
+        }
+      });
+    }
+
+    // Pause on hover
+    const faseGrid = document.getElementById('fase-grid');
+    if (faseGrid) {
+      faseGrid.addEventListener('mouseenter', () => { if (!isPaused) clearInterval(timer); });
+      faseGrid.addEventListener('mouseleave', () => { if (!isPaused) timer = startTimer(); });
+    }
+  }
+</script>

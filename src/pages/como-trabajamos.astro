@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Compromisos from '../components/Compromisos.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
 import { SITE, AUTHOR } from '../data/site';
 
 const breadcrumbSchema = {
@@ -19,16 +20,7 @@ const breadcrumbSchema = {
   schema={[breadcrumbSchema]}
 >
 
-  <!-- Breadcrumb -->
-  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 py-3">
-      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
-        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li class="text-gray-800 font-medium" aria-current="page">Cómo trabajamos</li>
-      </ol>
-    </div>
-  </nav>
+  <Breadcrumb items={[{ label: 'Cómo trabajamos' }]} />
 
   <!-- Hero -->
   <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">

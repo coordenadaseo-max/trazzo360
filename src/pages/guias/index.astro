@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE } from '../../data/site';
 
 const title = 'Guías de precios de obra: baño, cocina y piso | Trazzo360';
@@ -41,15 +42,7 @@ const guides = [
 
 <Layout title={title} description={description} schema={[breadcrumbSchema]}>
 
-  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
-    <div class="max-w-4xl mx-auto px-4 py-3">
-      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
-        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li class="text-gray-800 font-medium" aria-current="page">Guías</li>
-      </ol>
-    </div>
-  </nav>
+  <Breadcrumb items={[{ label: 'Guías' }]} />
 
   <section class="bg-[#111827] py-16 lg:py-20" aria-labelledby="h-guias-hero">
     <div class="max-w-4xl mx-auto px-4">

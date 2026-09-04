@@ -19,7 +19,9 @@ const { items } = Astro.props;
           <li>
             {i === items.length - 1
               ? <span class="text-gray-800 font-medium" aria-current="page">{item.label}</span>
-              : <a href={item.href} class="hover:text-brand transition-colors">{item.label}</a>
+              : item.href
+                ? <a href={item.href} class="hover:text-brand transition-colors">{item.label}</a>
+                : <span>{item.label}</span>
             }
           </li>
         </>

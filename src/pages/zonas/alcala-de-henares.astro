@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Compromisos from '../../components/Compromisos.astro';
+import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE, ZONES, ZONE_FAQS, RELATED_ZONES } from '../../data/site';
 
 const zone = ZONES.find(z => z.slug === 'alcala-de-henares')!;
@@ -125,17 +126,7 @@ const faqSchema = {
 >
 
   <!-- Breadcrumb -->
-  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
-      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
-        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li>Zonas</li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li class="text-gray-800 font-medium" aria-current="page">{zone.name}</li>
-      </ol>
-    </div>
-  </nav>
+  <Breadcrumb items={[{ label: 'Zonas' }, { label: zone.name }]} />
 
   <!-- ── Hero A: dos columnas ── -->
   <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">

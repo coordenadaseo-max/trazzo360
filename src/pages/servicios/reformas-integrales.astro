@@ -1,6 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Compromisos from '../../components/Compromisos.astro';
+import Breadcrumb from '../../components/ui/Breadcrumb.astro';
+import FaqAccordion from '../../components/ui/FaqAccordion.astro';
+import ZonasGrid from '../../components/ui/ZonasGrid.astro';
+import ProcesoSteps from '../../components/ui/ProcesoSteps.astro';
 import { SITE } from '../../data/site';
 
 const title = 'Reformas Integrales en el Corredor del Henares | Trazzo360';
@@ -106,17 +110,7 @@ const zones = [
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
   </Fragment>
 
-  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 py-3">
-      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
-        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li>Servicios</li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li class="text-gray-800 font-medium" aria-current="page">Reformas Integrales</li>
-      </ol>
-    </div>
-  </nav>
+  <Breadcrumb items={[{ label: 'Servicios', href: '/servicios/' }, { label: 'Reformas Integrales' }]} />
 
   <!-- Hero -->
   <section class="bg-[#111827] flex flex-col justify-center lg:justify-end"
@@ -731,24 +725,14 @@ const zones = [
           Del primer contacto a la entrega llave en mano
         </h2>
       </div>
-      <div class="proceso-steps" style="max-width:44rem">
-        {[
-          { n: '01', title: 'Visita técnica gratuita', desc: 'Visitamos el piso, evaluamos instalaciones, tomamos medidas y escuchamos qué quieres. Sin compromiso ni coste.' },
-          { n: '02', title: 'Presupuesto cerrado por escrito', desc: 'Presupuesto detallado por partidas. Materiales especificados. Precio que no cambia una vez firmado.' },
-          { n: '03', title: 'Proyecto y licencia', desc: 'Redactamos el proyecto técnico y tramitamos la licencia de obra en el ayuntamiento en paralelo con la preparación.' },
-          { n: '04', title: 'Demolición e instalaciones', desc: 'Vaciado, derribo de tabiques y ejecución de instalaciones nuevas de electricidad y fontanería.' },
-          { n: '05', title: 'Acabados coordinados', desc: 'Solados, baño, cocina, carpintería y pintura. Un único equipo coordinado, sin esperas entre gremios.' },
-          { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo, limpieza de obra y entrega con garantía de 2 años sobre la ejecución.' },
-        ].map(step => (
-          <div class="proceso-step">
-            <span class="proceso-step__n" aria-hidden="true">{step.n}</span>
-            <div class="proceso-step__body">
-              <p class="proceso-step__title">{step.title}</p>
-              <p class="proceso-step__desc">{step.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <ProcesoSteps steps={[
+        { n: '01', title: 'Visita técnica gratuita', desc: 'Visitamos el piso, evaluamos instalaciones, tomamos medidas y escuchamos qué quieres. Sin compromiso ni coste.' },
+        { n: '02', title: 'Presupuesto cerrado por escrito', desc: 'Presupuesto detallado por partidas. Materiales especificados. Precio que no cambia una vez firmado.' },
+        { n: '03', title: 'Proyecto y licencia', desc: 'Redactamos el proyecto técnico y tramitamos la licencia de obra en el ayuntamiento en paralelo con la preparación.' },
+        { n: '04', title: 'Demolición e instalaciones', desc: 'Vaciado, derribo de tabiques y ejecución de instalaciones nuevas de electricidad y fontanería.' },
+        { n: '05', title: 'Acabados coordinados', desc: 'Solados, baño, cocina, carpintería y pintura. Un único equipo coordinado, sin esperas entre gremios.' },
+        { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo, limpieza de obra y entrega con garantía de 2 años sobre la ejecución.' },
+      ]} />
     </div>
   </section>
 
@@ -773,18 +757,7 @@ const zones = [
       <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
         Hacemos reformas integrales en los ocho municipios del Corredor del Henares sin coste adicional de desplazamiento. Selecciona tu municipio para ver precios orientativos y los plazos habituales en tu zona.
       </p>
-      <div class="zonas-grid">
-        {zones.map(z => (
-          <article class="zona-card group relative">
-            <h3 class="zona-card__title">
-              <a href={`/reformas-integrales/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
-                Reformas integrales en {z.name}
-              </a>
-            </h3>
-            <span aria-hidden="true" class="zona-card__sub">Ver precios y plazos →</span>
-          </article>
-        ))}
-      </div>
+      <ZonasGrid serviceSlug="reformas-integrales" serviceLabel="Reformas integrales" />
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si solo necesitas reformar una zona de la vivienda:</p>
         <div class="flex flex-wrap gap-2 mb-8">
@@ -824,21 +797,7 @@ const zones = [
           Todo lo que necesitas saber antes de una reforma integral
         </h2>
       </div>
-      <div class="faq-list">
-        {faqs.map(faq => (
-          <details class="faq-item group">
-            <summary class="faq-summary">
-              <h3 class="faq-q">{faq.q}</h3>
-              <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </summary>
-            <div class="faq-body">
-              <p class="faq-a">{faq.a}</p>
-            </div>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion faqs={faqs} />
     </div>
   </section>
 
@@ -878,510 +837,16 @@ const zones = [
 </Layout>
 
 <style>
-  /* Design tokens */
-  :root {
-    --color-brand: #A85535;
-    --color-brand-dark: #8A4229;
-    --color-dark: #111827;
-    --color-cream: #F9F7F4;
-    --color-border: #E5E7EB;
-    --color-border-light: #F3F4F6;
-    --color-muted: #6B7280;
-  }
-
-  /* Display font */
-  .font-display { font-family: 'Barlow Condensed', system-ui, sans-serif; }
-
-  /* Layout */
-  .hero-img-wrap { position:absolute; inset:0; overflow:hidden; }
-  .hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .hero-img-overlay {
-    position:absolute; inset:0;
-    background:linear-gradient(
-      to bottom,
-      rgba(17,24,39,.52) 0%,
-      rgba(17,24,39,.62) 60%,
-      rgba(17,24,39,.82) 100%
-    );
-  }
-
-  /* Hero grid */
+  /* Hero: layout 2 cols texto + métricas */
   .hero-c-grid { display:grid; gap:2rem; }
   @media(min-width:1024px){ .hero-c-grid { grid-template-columns:1fr auto; gap:4rem; align-items:end; } }
 
-  /* CTAs */
+  /* Flex group para CTAs del hero */
   .hero-cta-group { display:flex; flex-direction:column; gap:0.75rem; }
   @media(min-width:480px){ .hero-cta-group { flex-direction:row; flex-wrap:wrap; } }
-  .hero-cta-primary {
-    display:inline-block; text-align:center;
-    padding:1rem 1.75rem;
-    font-weight:700; font-size:0.8125rem; letter-spacing:0.08em; text-transform:uppercase;
-    color:#fff; background:#A85535;
-    transition:opacity .2s;
-    white-space:nowrap;
-  }
-  .hero-cta-primary:hover { opacity:0.88; }
-  .hero-cta-secondary {
-    display:inline-block; text-align:center;
-    padding:1rem 1.75rem;
-    font-weight:700; font-size:0.8125rem; letter-spacing:0.08em; text-transform:uppercase;
-    color:#fff; border:1.5px solid rgba(255,255,255,.45);
-    transition:border-color .2s;
-    white-space:nowrap;
-  }
-  .hero-cta-secondary:hover { border-color:rgba(255,255,255,.85); }
-
-  /* Metrics */
-  .hero-metrics {
-    display:flex; flex-direction:row; gap:2rem; flex-wrap:wrap;
-  }
-  @media(min-width:1024px){ .hero-metrics { flex-direction:column; gap:1.5rem; text-align:right; flex-wrap:nowrap; } }
-  .hero-metric__val {
-    font-size:clamp(1.5rem,3.2vw,2.5rem);
-    font-weight:900; letter-spacing:-0.04em; line-height:1;
-    color:#fff;
-  }
-  .hero-metric__label {
-    font-size:0.625rem; color:rgba(255,255,255,.65);
-    margin-top:0.3rem; letter-spacing:0.12em; text-transform:uppercase;
-  }
-
-  /* Scroll indicator */
-  .hero-scroll {
-    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
-    z-index:1; opacity:0;
-    animation:heroFade 0.7s ease 1.4s forwards;
-  }
-  .hero-scroll__dot {
-    animation:scrollDot 2s cubic-bezier(0.45,0,0.55,1) 1.8s infinite;
-  }
-  @keyframes scrollDot {
-    0%   { transform:translateY(0);    opacity:.7; }
-    50%  { transform:translateY(10px); opacity:.2; }
-    100% { transform:translateY(0);    opacity:.7; }
-  }
-  .compromisos-apertura__dato { border-left:2px solid #E5E7EB; padding-left:1.5rem; }
-  .compromisos-apertura__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; display:block; margin-bottom:0.25rem; }
-  .compromisos-apertura__valor { font-size:1.25rem; font-weight:800; color:#111827; letter-spacing:-0.02em; margin:0; }
-  .compromisos-apertura__sub { font-size:0.6875rem; color:#9CA3AF; margin-top:0.125rem; }
-
-  /* Hero line animation */
-  .hero-line { overflow:hidden; display:block; padding-bottom:0.18em; margin-bottom:-0.18em; }
-  .hero-line > span { display:block; transform:translateY(110%); animation:heroSlideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
-  .hero-line:nth-child(1) > span { animation-delay:0.05s; }
-  .hero-line:nth-child(2) > span { animation-delay:0.18s; }
-  .hero-line:nth-child(3) > span { animation-delay:0.31s; }
-  @keyframes heroSlideUp { to { transform:translateY(0); } }
-
-  /* Sub-hero content fade in */
-  .hero-sub { opacity:0; animation:heroFade 0.7s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; }
-  @keyframes heroFade { to { opacity:1; } }
-
-  /* Scroll reveals */
-  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
-  .reveal.visible { opacity:1; transform:none; }
-
-  /* Stagger grid reveal */
-  .reveal-stagger > * { opacity:0; transform:translateY(18px); transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
-  .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
-  .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.07s; }
-  .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.14s; }
-  .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.21s; }
-  .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.28s; }
-  .reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.35s; }
-
-  /* Proceso connector line */
-  .proceso-steps { position:relative; }
-  .proceso-steps::before {
-    content:''; position:absolute;
-    left:0.875rem; top:2rem; bottom:0;
-    width:1px;
-    background:linear-gradient(to bottom, #A85535 0%, #E5E7EB 60%, transparent 100%);
-  }
-  .proceso-step { display:grid; grid-template-columns:2rem 1fr; gap:0 1.5rem; padding:1.375rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s, padding-left 0.2s; position:relative; }
-  .proceso-step:hover { background:#F9F7F4; padding-left:0.875rem; }
-  .proceso-step__n { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.3rem; z-index:1; position:relative; }
-  .proceso-step__title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.375rem; }
-  .proceso-step__desc { font-size:0.875rem; color:#4B5563; line-height:1.65; max-width:48ch; }
-
-  /* Resultado cotidiano */
-  .resultado-wrap { background:#111827; padding:clamp(4rem,8vw,7rem) 0; border-top:2px solid #A85535; }
-  .resultado-tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; margin-bottom:2rem; }
-  .resultado-body { margin:0; padding:0; border:none; }
-  .resultado-lead { font-size:clamp(1.375rem,3vw,2.25rem); color:rgba(255,255,255,.9); line-height:1.25; font-weight:700; letter-spacing:-0.02em; max-width:22ch; margin-bottom:1.75rem; }
-  .resultado-detail { font-size:clamp(1rem,2vw,1.375rem); color:rgba(255,255,255,.72); line-height:1.55; max-width:36ch; margin-bottom:2rem; font-weight:400; }
-  .resultado-kicker { font-size:clamp(1rem,1.75vw,1.25rem); color:rgba(255,255,255,.75); line-height:1.4; max-width:32ch; font-weight:600; letter-spacing:-0.01em; padding-top:2rem; border-top:1px solid rgba(255,255,255,.08); }
-
-  /* Grid de municipios */
-  .zonas-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
-  @media(min-width:768px){ .zonas-grid { grid-template-columns:repeat(4,1fr); } }
-  .zona-card { background:#F9F7F4; padding:1.25rem 1.25rem 1rem; position:relative; transition:background 0.2s; }
-  .zona-card:hover { background:#111827; }
-  .zona-card__title { font-size:0.875rem; font-weight:700; color:#111827; margin:0 0 0.25rem; line-height:1.3; transition:color 0.2s; }
-  .zona-card:hover .zona-card__title { color:#fff; }
-  .zona-card__sub { font-size:0.6875rem; color:#9CA3AF; display:block; transition:color 0.2s; }
-  .zona-card:hover .zona-card__sub { color:rgba(255,255,255,.45); }
-
-  /* Pills de zona */
-  .zona-pill { display:inline-flex; align-items:center; min-height:2.75rem; padding:0.625rem 0.875rem; font-size:0.75rem; font-weight:500; color:#4B5563; border:1px solid #D1D5DB; background:#fff; text-decoration:none; transition:border-color 0.2s, color 0.2s; }
-  .zona-pill:hover { border-color:#A85535; color:#A85535; }
-
-  /* FAQ accordion */
-  .faq-list { border-top:2px solid #111827; }
-  .faq-item { border-bottom:1px solid #E5E7EB; }
-  .faq-summary { display:flex; justify-content:space-between; align-items:start; gap:1.25rem; padding:1.25rem 0.5rem; cursor:pointer; list-style:none; transition:background 0.2s, padding-left 0.2s; }
-  .faq-summary::-webkit-details-marker { display:none; }
-  .faq-summary:hover { background:#fff; padding-left:0.75rem; }
-  .faq-q { font-size:0.9375rem; font-weight:700; color:#111827; line-height:1.4; margin:0; flex:1; }
-  .faq-chevron { flex-shrink:0; color:#A85535; margin-top:0.25rem; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1); }
-  .faq-item[open] .faq-chevron { transform:rotate(180deg); }
-  .faq-body { overflow:hidden; }
-  .faq-a { font-size:0.875rem; color:#4B5563; line-height:1.7; padding:0 0.5rem 1.25rem; margin:0; }
-
-  /* CTA Final strip */
-  .cta-strip { display:flex; flex-direction:column; align-items:center; gap:1.25rem; }
-  @media(min-width:640px){ .cta-strip { flex-direction:row; justify-content:center; gap:0; } }
-  .cta-strip__item { display:flex; flex-direction:column; gap:0.25rem; }
-  @media(min-width:640px){ .cta-strip__item { padding:0 2.5rem; } }
-  .cta-strip__val { font-size:1rem; font-weight:800; color:#fff; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; }
-  .cta-strip__label { font-size:0.625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:rgba(255,255,255,.65); }
-  .cta-strip__sep { display:none; }
-  @media(min-width:640px){ .cta-strip__sep { display:block; width:1px; height:2.5rem; background:rgba(255,255,255,.1); align-self:center; } }
-
-  /* Metric count-up */
+  /* Tabular nums para métricas */
   .metric-value { font-variant-numeric:tabular-nums; }
 
-  /* Browser surfaces */
-  ::selection { background:#A85535; color:#fff; }
-  :focus-visible { outline:2px solid #A85535; outline-offset:3px; }
-  ::-webkit-scrollbar { width:6px; }
-  ::-webkit-scrollbar-track { background:transparent; }
-  ::-webkit-scrollbar-thumb { background:#D1C9BD; }
-  ::-webkit-scrollbar-thumb:hover { background:#A85535; }
-
-  /* Era timeline - parque section */
-  .parque-header { max-width:52rem; }
-  /* Qué incluye — spec list */
-  .incluye-list { border-top:1px solid #E5E7EB; }
-  .incluye-row {
-    display:grid;
-    grid-template-columns:2.5rem 1fr auto;
-    gap:0 1.5rem;
-    align-items:center;
-    padding:1.25rem 0.5rem;
-    border-bottom:1px solid #E5E7EB;
-    transition:background 0.2s ease, padding-left 0.2s ease;
-    cursor:default;
-  }
-  .incluye-row:hover {
-    background:#FAFAF8;
-    padding-left:1rem;
-  }
-  .incluye-n {
-    font-size:0.6875rem;
-    font-weight:700;
-    color:#A85535;
-    letter-spacing:0.1em;
-    font-family:'Courier New', monospace;
-    line-height:1;
-    padding-top:0.1rem;
-  }
-  .incluye-body { min-width:0; }
-  .incluye-title {
-    font-size:0.9375rem;
-    font-weight:700;
-    color:#111827;
-    margin-bottom:0.2rem;
-    line-height:1.3;
-  }
-  .incluye-desc {
-    font-size:0.8125rem;
-    color:#6B7280;
-    line-height:1.6;
-  }
-  .incluye-arrow {
-    font-size:1rem;
-    color:#D1D5DB;
-    flex-shrink:0;
-    transition:color 0.2s ease, transform 0.2s ease;
-    display:none;
-  }
-  @media(min-width:768px){ .incluye-arrow { display:block; } }
-  .incluye-row:hover .incluye-arrow {
-    color:#A85535;
-    transform:translateX(4px);
-  }
-
-  /* Decision section — parcial vs integral */
-  .decision-grid {
-    display:grid;
-    grid-template-columns:1fr;
-    gap:0;
-  }
-  @media(min-width:768px){ .decision-grid { grid-template-columns:1fr 1fr; } }
-
-  .decision-card {
-    padding:2rem;
-  }
-  @media(min-width:768px){ .decision-card { padding:2.5rem; } }
-
-  .decision-card--light {
-    background:#fff;
-    border:1px solid #E5E7EB;
-  }
-  .decision-card--dark {
-    background:#111827;
-    border:1px solid #111827;
-  }
-
-  .decision-card__eyebrow {
-    font-size:0.625rem;
-    font-weight:700;
-    letter-spacing:0.15em;
-    text-transform:uppercase;
-    color:#9CA3AF;
-    margin-bottom:0.5rem;
-    font-family:'Courier New', monospace;
-  }
-  .decision-card__title {
-    font-size:1.0625rem;
-    font-weight:700;
-    color:#111827;
-    margin-bottom:1.25rem;
-    line-height:1.3;
-  }
-  .decision-card__price {
-    font-size:0.75rem;
-    font-weight:600;
-    color:#9CA3AF;
-    margin-top:1.25rem;
-    padding-top:1.25rem;
-    border-top:1px solid #E5E7EB;
-    line-height:1.5;
-  }
-  .decision-card--dark .decision-card__price {
-    border-top-color:rgba(255,255,255,.1);
-  }
-
-  .decision-list {
-    list-style:none;
-    padding:0; margin:0;
-    display:flex; flex-direction:column; gap:0;
-  }
-  .decision-list li {
-    font-size:0.8375rem;
-    color:#374151;
-    padding:0.6rem 0;
-    border-bottom:1px solid #F3F4F6;
-    display:grid;
-    grid-template-columns:1rem 1fr;
-    gap:0.5rem;
-    line-height:1.5;
-    align-items:baseline;
-  }
-  .decision-list li:last-child { border-bottom:none; }
-  .decision-list li::before {
-    content:'✓';
-    font-size:0.6875rem;
-    font-weight:700;
-    color:#9CA3AF;
-    line-height:1.5;
-  }
-  .decision-list--dark li {
-    color:rgba(255,255,255,.75);
-    border-bottom-color:rgba(255,255,255,.08);
-  }
-  .decision-list--dark li::before { color:#A85535; }
-
-
-  /* Era Timeline — precisión técnica */
-  .era-timeline {
-    display:grid;
-    grid-template-columns:1fr;
-    gap:0;
-    border-top:3px solid #111827;
-  }
-  @media(min-width:768px){
-    .era-timeline { grid-template-columns:repeat(3,1fr); }
-  }
-
-  .era-col {
-    padding:1.75rem 0 2rem 0;
-    border-bottom:1px solid #E5E7EB;
-    transition:background 0.25s ease;
-    cursor:default;
-  }
-  @media(min-width:768px){
-    .era-col {
-      padding:2rem 2rem 2rem 0;
-      border-bottom:none;
-      border-right:1px solid #D1D5DB;
-      position:relative;
-    }
-    .era-col:last-child { border-right:none; }
-    .era-col:not(:first-child){ padding-left:2rem; }
-  }
-  @media(max-width:767px){ .era-col:last-child { border-bottom:none; } }
-
-  /* Top accent — terracota on hover */
-  .era-col::before {
-    content:'';
-    position:absolute;
-    top:-3px; left:0;
-    width:0; height:3px;
-    background:#A85535;
-    transition:width 0.35s cubic-bezier(0.16,1,0.3,1);
-  }
-  @media(min-width:768px){
-    .era-col:hover::before { width:100%; }
-    .era-col:hover { background:#FAFAF8; }
-  }
-
-  /* Pill eyebrow */
-  .era-tag {
-    display:inline-flex;
-    align-items:center;
-    gap:0.35rem;
-    font-size:0.625rem;
-    font-weight:700;
-    color:#A85535;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    margin-bottom:0.75rem;
-    font-family:'Courier New', monospace;
-  }
-  .era-tag::before {
-    content:'';
-    width:4px; height:4px;
-    border-radius:50%;
-    background:currentColor;
-    flex-shrink:0;
-  }
-
-  /* H3 — protagonista */
-  .era-col__title {
-    font-size:clamp(1.0625rem,1.5vw,1.25rem);
-    font-weight:800;
-    color:#111827;
-    line-height:1.35;
-    letter-spacing:-0.02em;
-    margin-bottom:1rem;
-    padding-bottom:1rem;
-    border-bottom:1px solid #F3F4F6;
-  }
-
-  /* Body */
-  .era-col__body {
-    font-size:0.8125rem;
-    color:#6B7280;
-    line-height:1.7;
-    margin-bottom:1rem;
-  }
-
-  /* Issue list */
-  .era-list { list-style:none; padding:0; margin:0; border-top:1px solid #F3F4F6; }
-  .era-list li {
-    font-size:0.8125rem;
-    color:#374151;
-    line-height:1.5;
-    padding:0.5rem 0;
-    border-bottom:1px solid #F3F4F6;
-    display:grid;
-    grid-template-columns:0.875rem 1fr;
-    gap:0.5rem;
-    align-items:baseline;
-  }
-  .era-list li:last-child { border-bottom:none; }
-  .era-list li::before {
-    content:'–';
-    color:#A85535;
-    font-weight:900;
-    font-size:0.75rem;
-    line-height:1.5;
-  }
-
-  /* Vida-obra 2-col dark */
-  .vida-grid { display:grid; grid-template-columns:1fr; gap:3rem; }
-  @media(min-width:900px){ .vida-grid { grid-template-columns:42% 1fr; gap:5rem; align-items:start; } }
-  .vida-list { list-style:none; padding:0; margin:0; }
-  .vida-item {
-    display:grid;
-    grid-template-columns:2rem 1fr;
-    gap:0 1rem;
-    padding:1.125rem 0.75rem 1.125rem 0.75rem;
-    border-bottom:1px solid rgba(255,255,255,.07);
-    align-items:start;
-    margin:0 -0.75rem;
-    border-left:2px solid transparent;
-    transition:background 0.2s ease, border-left-color 0.2s ease;
-  }
-  .vida-item:first-child { border-top:1px solid rgba(255,255,255,.07); }
-  .vida-item:hover {
-    background:rgba(255,255,255,.04);
-    border-left-color:#A85535;
-  }
-  .vida-item__n {
-    font-size:0.625rem;
-    font-weight:700;
-    letter-spacing:0.12em;
-    color:#A85535;
-    line-height:1.9;
-    font-family:'Courier New', monospace;
-  }
-  .vida-item__title {
-    font-size:0.9375rem;
-    font-weight:600;
-    color:#F9F7F4;
-    margin-bottom:0.3rem;
-    line-height:1.35;
-  }
-  .vida-item__desc {
-    font-size:0.8125rem;
-    color:rgba(255,255,255,.65);
-    line-height:1.65;
-  }
-
-  /* Criterios elegir empresa */
-  .criterio-row { display:grid; grid-template-columns:2rem 1fr; gap:0 1.25rem; padding:1.25rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s, padding-left 0.2s; }
-  .criterio-row:first-child { border-top:1px solid #F3F4F6; }
-  .criterio-row:hover { background:#FAFAF8; padding-left:0.75rem; }
-  .criterio-n { font-size:0.625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.25rem; }
-  .criterio-title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.35rem; line-height:1.35; }
-  .criterio-desc { font-size:0.875rem; color:#4B5563; line-height:1.65; }
-  .empresa-callout { display:grid; grid-template-columns:1fr; gap:0.5rem; padding:1.5rem; background:#fff; border-top:2px solid #111827; }
-  @media(min-width:640px){ .empresa-callout { grid-template-columns:14rem 1fr; gap:0 2rem; align-items:start; } }
-  .empresa-callout__title { font-size:0.875rem; font-weight:700; color:#111827; line-height:1.35; }
-  .empresa-callout__body { font-size:0.8125rem; color:#6B7280; line-height:1.65; }
-
-  /* Tarjetas tipo de licencia */
-  .licencia-grid { display:grid; grid-template-columns:1fr; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
-  @media(min-width:640px){ .licencia-grid { grid-template-columns:1fr 1fr; } }
-  .licencia-card { background:#F9F7F4; padding:1.5rem; }
-  .licencia-card--mayor { background:#fff; }
-  .licencia-card__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; margin-bottom:0.625rem; }
-  .licencia-card__tag--dark { color:#111827; }
-  .licencia-card__body { font-size:0.8125rem; color:#4B5563; line-height:1.6; }
-
-  /* Presupuesto checklist */
-  .presupuesto-dl { border-top:2px solid #111827; }
-  .presupuesto-row { display:grid; grid-template-columns:2rem 1fr; grid-template-rows:auto auto; gap:0.125rem 1rem; padding:1.125rem 0.5rem; border-bottom:1px solid #E5E7EB; transition:background 0.2s, padding-left 0.2s; }
-  .presupuesto-row:hover { background:#F9F7F4; padding-left:0.875rem; }
-  @media(min-width:640px){ .presupuesto-row { grid-template-columns:2rem 14rem 1fr; grid-template-rows:auto; align-items:baseline; } }
-  .presupuesto-n { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.25rem; grid-row:1; }
-  .presupuesto-term { font-size:0.9375rem; font-weight:700; color:#111827; line-height:1.35; grid-column:2; }
-  .presupuesto-def { font-size:0.875rem; color:#4B5563; line-height:1.65; grid-column:2; }
-  @media(min-width:640px){ .presupuesto-def { grid-column:3; grid-row:1; } }
-
-  /* Tabla de plazos */
-  .plazos-caption { font-size:0.6875rem; color:#9CA3AF; letter-spacing:0.02em; display:block; margin-bottom:0.75rem; }
-  .plazos-table { width:100%; border-collapse:collapse; border-top:2px solid #111827; }
-  .plazos-th { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; padding:0.625rem 0.75rem; border-bottom:1px solid #E5E7EB; }
-  .plazos-tr { border-bottom:1px solid #F3F4F6; transition:background 0.2s; }
-  .plazos-tr:hover { background:#F9F7F4; }
-  .plazos-td { padding:0.875rem 0.75rem; vertical-align:top; }
-  .plazos-td--fase { font-size:0.9375rem; font-weight:600; color:#111827; }
-  .plazos-td--pct { font-size:1rem; font-weight:800; color:#A85535; font-family:'Courier New', monospace; font-variant-numeric:tabular-nums; white-space:nowrap; text-align:right; }
-  .plazos-td--nota { font-size:0.8125rem; color:#6B7280; line-height:1.5; }
 
   /* Fase cards - dynamic */
   /* Fase grid — responsive */
@@ -1502,89 +967,12 @@ const zones = [
   }
   .fase-card.is-active .fase-bar { width:100%; }
 
-  /* Price ledger */
-  .price-ledger { border-top:2px solid #A85535; }
-
-  /* Cabecera de columnas */
-  .price-header { display:grid; grid-template-columns:1fr auto auto; gap:1rem 2rem; padding:0.5rem 0 0.5rem; border-bottom:1px solid #E5E7EB; }
-  .price-header span { font-size:0.625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#9CA3AF; font-family:'Courier New', monospace; }
-  .price-header span:nth-child(2) { white-space:nowrap; min-width:7rem; text-align:right; }
-  .price-header span:nth-child(3) { min-width:5rem; text-align:right; }
-  @media(max-width:600px){ .price-header { grid-template-columns:1fr auto; } .price-header span:nth-child(3) { display:none; } }
-
-  /* Fila base */
-  .price-row { display:grid; grid-template-columns:1fr auto auto; gap:1rem 2rem; align-items:center; padding:1rem 0.5rem; border-bottom:1px solid #E5E7EB; transition:background 0.2s, padding-left 0.2s; }
-  @media(max-width:600px){ .price-row { grid-template-columns:1fr auto; } .price-row__plazo { display:none; } }
-
-  /* Fila de referencia (acabados — no integral) */
+  /* Variantes únicas de fila de precio en esta tabla */
   .price-row--ref { background:#FAFAF8; }
   .price-row--ref .price-row__name { color:#6B7280; }
   .price-row--ref .price-row__sub { display:flex; align-items:center; gap:0.375rem; }
   .price-row--ref .price-row__sub::before { content:''; display:inline-block; width:0.5rem; height:1px; background:#D1D5DB; }
-
-  /* Filas integrales */
-  .price-row--integral { cursor:default; }
-  .price-row--integral:hover { background:#FAFAF8; padding-left:0.75rem; }
-
-  /* Fila destacada */
-  .price-row--highlight { background:#FFF9F6; border-left:2px solid #A85535; padding-left:0.75rem; }
-  .price-row--highlight:hover { background:#FFF3EE; }
-
-  .price-row__label { display:flex; flex-direction:column; gap:0.125rem; }
-  .price-row__name { font-size:0.9375rem; font-weight:600; color:#111827; }
-  .price-row__sub { font-size:0.75rem; color:#9CA3AF; display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; }
-  .price-row__badge { font-size:0.5625rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; border:1px solid #A85535; padding:0.125rem 0.375rem; white-space:nowrap; }
-  .price-row__value { white-space:nowrap; text-align:right; min-width:7rem; }
-  .price-row__num { font-size:1.125rem; font-weight:800; color:#A85535; letter-spacing:-0.03em; font-variant-numeric:tabular-nums; }
   .price-row__num--muted { color:#C4C9D4; }
-  .price-row__unit { font-size:0.75rem; color:#6B7280; font-weight:400; }
-  .price-row__plazo { font-size:0.8125rem; color:#9CA3AF; white-space:nowrap; font-variant-numeric:tabular-nums; min-width:5rem; text-align:right; }
-
-  /* Pie del ledger */
-  .price-footer { font-size:0.6875rem; color:#9CA3AF; padding-top:0.875rem; letter-spacing:0.02em; }
-
-  /* Cluster de guías */
-  .price-guides { display:flex; flex-direction:column; gap:0.5rem; }
-  @media(min-width:640px){ .price-guides { flex-direction:row; flex-wrap:wrap; gap:0.5rem; } }
-  .price-guide-chip { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 0.875rem; min-height:2.75rem; border:1px solid #D1D5DB; background:#fff; color:#374151; text-decoration:none; transition:border-color 0.2s, color 0.2s, background 0.2s; }
-  .price-guide-chip:hover { border-color:#A85535; color:#A85535; background:#FFF9F6; }
-  .price-guide-chip__label { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; flex-shrink:0; }
-  .price-guide-chip__text { font-size:0.8125rem; font-weight:500; }
-  .price-guide-chip__arrow { flex-shrink:0; opacity:0; transform:translateX(-4px); transition:opacity 0.2s, transform 0.2s; }
-  .price-guide-chip:hover .price-guide-chip__arrow { opacity:1; transform:translateX(0); }
-
-  /* Partida bars */
-  /* Partida list */
-  .partida-row { display:grid; grid-template-columns:10rem 1fr; gap:0.75rem 1.5rem; padding:1rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s; }
-  .partida-row:hover { background:#FAFAF8; }
-  @media(min-width:768px){ .partida-row { grid-template-columns:12rem 1fr; } }
-  .partida-info { display:flex; flex-direction:column; gap:0.15rem; padding-top:0.125rem; }
-  .partida-name { font-size:0.875rem; font-weight:600; color:#111827; }
-  .partida-sub { font-size:0.6875rem; color:#9CA3AF; }
-  .partida-bar-col { display:flex; flex-direction:column; gap:0.375rem; }
-  .partida-bar-track { position:relative; height:6px; background:#F3F4F6; width:100%; }
-  .partida-bar-fill { position:absolute; inset:0 auto 0 0; background:#A85535; height:100%; }
-  .partida-bar-meta { display:flex; align-items:center; gap:0.625rem; }
-  .partida-pct { font-size:0.8125rem; font-weight:700; color:#111827; font-variant-numeric:tabular-nums; font-family:'Courier New', monospace; }
-  .partida-ajuste-badge { font-size:0.5625rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-family:'Courier New', monospace; padding:0.15rem 0.4rem; white-space:nowrap; }
-  .ajuste-alto { background:#FDEEE8; color:#A85535; border:1px solid rgba(168,85,53,.25); }
-  .ajuste-medio { background:#F3F4F6; color:#6B7280; border:1px solid #E5E7EB; }
-  .ajuste-bajo { background:#F3F4F6; color:#9CA3AF; border:1px solid #E5E7EB; }
-  .ajuste-variable { background:#fff; color:#6B7280; border:1px solid #D1D5DB; }
-  .partida-nota { font-size:0.6875rem; color:#9CA3AF; line-height:1.5; }
-
-  /* Tarjetas de gama */
-  .gama-grid { display:grid; grid-template-columns:1fr; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
-  @media(min-width:768px){ .gama-grid { grid-template-columns:repeat(3,1fr); } }
-  .gama-card { background:#F9F7F4; padding:1.5rem; transition:background 0.2s; }
-  .gama-card:hover { background:#FAFAF8; }
-  .gama-card--highlight { background:#fff; position:relative; }
-  .gama-card--highlight::before { content:''; position:absolute; top:-2px; left:0; right:0; height:2px; background:#A85535; }
-  .gama-card--highlight:hover { background:#FFF9F6; }
-  .gama-card__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; margin-bottom:0.5rem; }
-  .gama-card__tag--accent { color:#A85535; }
-  .gama-card__title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.625rem; }
-  .gama-card__body { font-size:0.8125rem; color:#6B7280; line-height:1.6; }
 
   /* CTA hover lift */
   a[style*="background:#A85535"],
@@ -1597,12 +985,8 @@ const zones = [
     opacity: 0.93;
   }
 
-  /* Reduced motion */
+  /* Reduced motion: fase-bar */
   @media(prefers-reduced-motion:reduce) {
-    .hero-line > span, .hero-sub { animation:none; opacity:1; transform:none; }
-    .reveal, .reveal-stagger > * { opacity:1; transform:none; transition:none; }
-    a[style*="background:#A85535"]:hover { transform: none; }
-    .hero-scroll { display:none; }
     .fase-bar { transition:none !important; }
   }
 

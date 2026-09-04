@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE } from '../../data/site';
 
 const title = 'Cuánto cuesta reformar un baño en 2025 | Trazzo360';
@@ -71,17 +72,7 @@ const faqSchema = {
 
 <Layout title={title} description={description} schema={[breadcrumbSchema, faqSchema]}>
 
-  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
-    <div class="max-w-4xl mx-auto px-4 py-3">
-      <ol class="text-sm text-gray-500 flex items-center gap-2 flex-wrap" style="list-style:none;padding:0;margin:0">
-        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li><a href="/guias/" class="hover:text-[#A85535] transition-colors">Guías</a></li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li class="text-gray-800 font-medium" aria-current="page">Cuánto cuesta reformar un baño</li>
-      </ol>
-    </div>
-  </nav>
+  <Breadcrumb items={[{ label: 'Guías', href: '/guias/' }, { label: 'Cuánto cuesta reformar un baño' }]} />
 
   <article class="max-w-4xl mx-auto px-4 py-12">
 

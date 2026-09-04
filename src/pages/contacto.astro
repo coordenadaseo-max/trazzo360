@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
 import { SITE, SERVICES, ZONES } from '../data/site';
 ---
 
@@ -8,16 +9,7 @@ import { SITE, SERVICES, ZONES } from '../data/site';
   description={`Solicita tu presupuesto gratuito para reformas en Alcalá de Henares y el Corredor del Henares. Visita técnica gratuita. Precio cerrado garantizado.`}
 >
 
-  <!-- Breadcrumb -->
-  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 py-3">
-      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
-        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li class="text-gray-800 font-medium" aria-current="page">Contacto</li>
-      </ol>
-    </div>
-  </nav>
+  <Breadcrumb items={[{ label: 'Contacto' }]} />
 
   <!-- Hero -->
   <section class="bg-[#111827] py-16 lg:py-24" aria-labelledby="h-hero">

@@ -188,6 +188,29 @@
 
 /* ── 5. HERO — COMPONENTES COMPARTIDOS ────────────────────── */
 
+/* Fuente display (Barlow Condensed) — cargar por página via Fragment slot="head" */
+.font-display { font-family: 'Barlow Condensed', system-ui, sans-serif; }
+
+/* Hero image background */
+.hero-img-wrap { position: absolute; inset: 0; overflow: hidden; }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(17,24,39,.52) 0%,
+    rgba(17,24,39,.62) 60%,
+    rgba(17,24,39,.82) 100%
+  );
+}
+
+/* Hero content grid — texto + métricas */
+.hero-c-grid { display: grid; gap: 2rem; }
+@media(min-width:1024px){ .hero-c-grid { grid-template-columns: 1fr auto; gap: 4rem; align-items: end; } }
+
+/* Encabezado de sección parque */
+.parque-header { max-width: 52rem; }
+
 /* CTAs del hero */
 .hero-cta-primary {
   display: inline-block; text-align: center;

@@ -1,0 +1,24 @@
+---
+interface Step {
+  n: string;
+  title: string;
+  desc: string;
+}
+interface Props {
+  steps: Step[];
+  maxWidth?: string;
+}
+const { steps, maxWidth = '44rem' } = Astro.props;
+---
+
+<div class="proceso-steps" style={`max-width:${maxWidth}`}>
+  {steps.map(step => (
+    <div class="proceso-step">
+      <span class="proceso-step__n">{step.n}</span>
+      <div>
+        <p class="proceso-step__title">{step.title}</p>
+        <p class="proceso-step__desc">{step.desc}</p>
+      </div>
+    </div>
+  ))}
+</div>

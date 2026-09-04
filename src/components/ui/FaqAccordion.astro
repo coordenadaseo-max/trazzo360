@@ -1,0 +1,26 @@
+---
+interface FAQ {
+  q: string;
+  a: string;
+}
+interface Props {
+  faqs: FAQ[];
+}
+const { faqs } = Astro.props;
+---
+
+<div class="faq-list">
+  {faqs.map(faq => (
+    <details class="faq-item">
+      <summary class="faq-summary">
+        <h3 class="faq-q">{faq.q}</h3>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </summary>
+      <div class="faq-body">
+        <p class="faq-a">{faq.a}</p>
+      </div>
+    </details>
+  ))}
+</div>

@@ -174,7 +174,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de edificios del Corredor</p>
-        <h2 id="h-parque" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-parque" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué edificios necesitan rehabilitación en el Corredor del Henares
         </h2>
       </div>
@@ -223,7 +223,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Qué cubre una rehabilitación completa</p>
-        <h2 id="h-rehab-edificios" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-rehab-edificios" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Rehabilitación de edificios: envolvente, cubierta, fachada e instalaciones
         </h2>
       </div>
@@ -268,7 +268,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La intervención más visible del edificio</p>
-        <h2 id="h-reforma-fachadas" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-reforma-fachadas" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Reforma de fachadas: opciones técnicas y coste orientativo
         </h2>
       </div>
@@ -276,10 +276,8 @@ const zones = [
         La reforma de fachadas es la intervención que más varía en coste según la solución técnica elegida. El punto de partida no es la estética sino el diagnóstico: qué problema tiene la fachada actual y cuál es la solución más duradera para ese problema concreto. Aplicar el sistema equivocado al problema equivocado es la causa principal de fachadas que necesitan una segunda intervención en menos tiempo del esperado. Estima el coste por elemento (portal, escalera, fachada, cubierta) en la <a href="/calculadora-precio-reforma/?servicio=comunidades-vecinos" class="text-[#A85535] hover:underline font-medium">calculadora de precios para comunidades</a>.
       </p>
       <div class="overflow-x-auto mb-8">
+        <p class="text-left text-xs text-gray-400 mb-3">Coste orientativo por m² de fachada, IVA no incluido. El precio exacto depende de la altura, el acceso y el estado de la fachada.</p>
         <table class="w-full text-sm border-collapse bg-white">
-          <p class="text-left text-xs text-gray-400 mb-3 block">
-            Coste orientativo por m² de fachada, IVA no incluido. El precio exacto depende de la altura, el acceso y el estado de la fachada.
-          </p>
           <thead>
             <tr class="border-b-2 border-[#A85535]">
               <th class="text-left py-3 px-5 font-bold text-gray-900">Sistema</th>
@@ -370,7 +368,7 @@ const zones = [
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-3xl mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Alcance completo</p>
-        <h2 id="h-que-incluye" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-que-incluye" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué obras hacemos en comunidades de propietarios
         </h2>
       </div>
@@ -442,10 +440,8 @@ const zones = [
         Precios orientativos. El presupuesto exacto se emite tras la visita técnica gratuita y la elaboración del informe del estado previo.
       </p>
       <div class="overflow-x-auto">
+        <p class="text-left text-xs text-gray-400 mb-3">Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato.</p>
         <table class="w-full text-sm border-collapse bg-white">
-          <p class="text-left text-xs text-gray-400 mb-3 block">
-            Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato.
-          </p>
           <thead>
             <tr class="border-b-2 border-[#A85535]">
               <th class="text-left py-3 px-5 font-bold text-gray-900">Tipo de obra</th>
@@ -598,7 +594,7 @@ const zones = [
           De la visita técnica a la entrega con certificado
         </h2>
       </div>
-      <div class="space-y-8" style="max-width:44rem">
+      <ol class="proceso-steps reveal" style="max-width:44rem;list-style:none;padding:0;margin:0">
         {[
           { n: '01', title: 'Visita técnica gratuita', desc: 'Inspeccionamos las zonas comunes y elaboramos un informe del estado previo con fotografías para la documentación de junta.' },
           { n: '02', title: 'Presupuesto para junta', desc: 'Presupuesto desglosado con memoria descriptiva, fotografías del estado previo y cronograma. Listo para presentar en la reunión de propietarios.' },
@@ -607,15 +603,15 @@ const zones = [
           { n: '05', title: 'Ejecución con mínimas molestias', desc: 'Horarios adaptados a los vecinos. Accesos siempre operativos. Protección de zonas no afectadas. Informe semanal al administrador.' },
           { n: '06', title: 'Entrega con documentación', desc: 'Certificado de obra, documentación para el seguro del edificio, garantías por escrito y certificados de instalaciones intervenidas.' },
         ].map(step => (
-          <div class="grid items-start" style="grid-template-columns:3rem 1fr;gap:1.25rem">
-            <p class="text-4xl font-black text-gray-200 leading-none pt-0.5" aria-hidden="true">{step.n}</p>
+          <li class="proceso-step">
+            <span class="proceso-step__n" aria-hidden="true">{step.n}</span>
             <div>
-              <p class="font-bold text-gray-900 mb-1">{step.title}</p>
-              <p class="text-sm text-gray-600 leading-relaxed" style="max-width:48ch">{step.desc}</p>
+              <p class="proceso-step__title">{step.title}</p>
+              <p class="proceso-step__desc">{step.desc}</p>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
@@ -667,7 +663,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 id="h-faq" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-faq" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Todo lo que necesitas saber sobre obras en comunidades
         </h2>
       </div>
@@ -705,47 +701,125 @@ const zones = [
 </Layout>
 
 <style>
-  .hero-c-grid { display:grid; gap:1.5rem; }
-  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
+  /* ── Design tokens ── */
+  :root {
+    --color-brand: #A85535;
+    --color-brand-dark: #8A4229;
+    --color-dark: #111827;
+    --color-cream: #F9F7F4;
+    --color-border: #E5E7EB;
+    --color-muted: #6B7280;
+  }
+
+  /* ── Layout helpers ── */
   .hero-img-wrap { position:absolute; inset:0; overflow:hidden; }
   .hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .hero-img-overlay { position:absolute; inset:0; background:rgba(17,24,39,.65); }
+  .hero-img-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, rgba(17,24,39,.52) 0%, rgba(17,24,39,.62) 60%, rgba(17,24,39,.82) 100%);
+  }
+
+  /* ── Hero 3-column grid ── */
+  .hero-c-grid { display:grid; gap:1.5rem; }
+  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; align-items:end; } }
+
+  /* ── Compromisos grid ── */
   .compromisos-apertura-grid { display:grid; gap:2rem; }
   @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
 
-  /* ── Lab design system ── */
-  .zonas-grid { display:grid; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
-  @media(min-width:480px){ .zonas-grid { grid-template-columns:repeat(2,1fr); } }
+  /* ── Scroll reveals ── */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.visible { opacity:1; transform:none; }
+  .reveal-stagger > * { opacity:0; transform:translateY(18px); transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+  .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.07s; }
+  .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.14s; }
+  .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.21s; }
+  .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.28s; }
+  .reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.35s; }
+
+  /* ── Proceso steps ── */
+  .proceso-steps { position:relative; }
+  .proceso-steps::before {
+    content:''; position:absolute;
+    left:0.875rem; top:2rem; bottom:0;
+    width:1px;
+    background:linear-gradient(to bottom, #A85535 0%, #E5E7EB 60%, transparent 100%);
+  }
+  .proceso-step { display:grid; grid-template-columns:2rem 1fr; gap:0 1.5rem; padding:1.375rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s, padding-left 0.2s; position:relative; }
+  .proceso-step:hover { background:#F9F7F4; padding-left:0.875rem; }
+  .proceso-step__n { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.3rem; z-index:1; position:relative; }
+  .proceso-step__title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.375rem; }
+  .proceso-step__desc { font-size:0.875rem; color:#4B5563; line-height:1.65; max-width:48ch; }
+
+  /* ── Zonas grid ── */
+  .zonas-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
   @media(min-width:768px){ .zonas-grid { grid-template-columns:repeat(4,1fr); } }
   .zona-card { background:#F9F7F4; padding:1.25rem 1.25rem 1rem; position:relative; transition:background 0.2s; }
   .zona-card:hover { background:#111827; }
-  .zona-card__title { font-size:.875rem; font-weight:700; color:#111827; margin:0 0 .25rem; transition:color 0.2s; }
+  .zona-card__title { font-size:0.875rem; font-weight:700; color:#111827; margin:0 0 0.25rem; line-height:1.3; transition:color 0.2s; }
   .zona-card:hover .zona-card__title { color:#fff; }
   .zona-card__title a::after { content:''; position:absolute; inset:0; }
-  .zona-card__sub { display:block; font-size:.75rem; color:#9CA3AF; transition:color 0.2s; }
-  .zona-card:hover .zona-card__sub { color:#6B7280; }
-  .price-guide-chip { display:inline-flex; align-items:center; gap:.5rem; padding:.375rem .75rem; background:#F3F4F6; border:1px solid #E5E7EB; font-size:.8125rem; color:#374151; text-decoration:none; transition:background 0.15s,color 0.15s,border-color 0.15s; }
-  .price-guide-chip:hover { background:#111827; color:#fff; border-color:#111827; }
-  .price-guide-chip__label { font-size:.5625rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-family:'Courier New',monospace; color:#A85535; transition:color 0.15s; }
-  .price-guide-chip:hover .price-guide-chip__label { color:rgba(255,255,255,.55); }
-  .price-guide-chip__text { font-weight:600; }
-  .price-guide-chip__arrow { opacity:.4; flex-shrink:0; }
-  .price-guide-chip:hover .price-guide-chip__arrow { opacity:.7; }
-  .empresa-callout { border-top:2px solid #111827; background:#fff; display:grid; grid-template-columns:1fr; gap:.75rem; padding:1.25rem 1.5rem; }
-  @media(min-width:640px){ .empresa-callout { grid-template-columns:14rem 1fr; gap:1.5rem; padding:1.5rem 2rem; } }
-  .empresa-callout__title { font-size:.6875rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-family:'Courier New',monospace; color:#A85535; line-height:1.5; padding-top:.125rem; }
-  .empresa-callout__body { font-size:.875rem; color:#4B5563; line-height:1.7; max-width:60ch; margin:0; }
+  .zona-card__sub { font-size:0.6875rem; color:#9CA3AF; display:block; transition:color 0.2s; }
+  .zona-card:hover .zona-card__sub { color:rgba(255,255,255,.45); }
+
+  /* ── FAQ accordion ── */
   .faq-list { border-top:2px solid #111827; }
   .faq-item { border-bottom:1px solid #E5E7EB; }
-  .faq-summary { display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; padding:1.25rem 0; cursor:pointer; list-style:none; transition:padding-left 0.2s; }
+  .faq-summary { display:flex; justify-content:space-between; align-items:start; gap:1.25rem; padding:1.25rem 0.5rem; cursor:pointer; list-style:none; transition:background 0.2s, padding-left 0.2s; }
   .faq-summary::-webkit-details-marker { display:none; }
-  .faq-item[open] .faq-summary, .faq-summary:hover { padding-left:.5rem; }
-  .faq-q { font-size:.9375rem; font-weight:600; color:#111827; margin:0; line-height:1.45; }
-  .faq-chevron { flex-shrink:0; color:#A85535; transition:transform 0.25s; margin-top:.125rem; }
+  .faq-summary:hover { background:#fff; padding-left:0.75rem; }
+  .faq-q { font-size:0.9375rem; font-weight:700; color:#111827; line-height:1.4; margin:0; flex:1; }
+  .faq-chevron { flex-shrink:0; color:#A85535; margin-top:0.25rem; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1); }
   .faq-item[open] .faq-chevron { transform:rotate(180deg); }
-  .faq-body { padding-bottom:1.25rem; }
-  .faq-a { font-size:.875rem; color:#6B7280; line-height:1.7; max-width:60ch; margin:0; }
-  @media(prefers-reduced-motion:reduce){
-    .zona-card,.zona-card__title,.zona-card__sub,.price-guide-chip,.price-guide-chip__label,.price-guide-chip__arrow,.faq-summary,.faq-chevron { transition:none; }
+  .faq-body { overflow:hidden; }
+  .faq-a { font-size:0.875rem; color:#4B5563; line-height:1.7; padding:0 0.5rem 1.25rem; margin:0; }
+
+  /* ── Empresa callout ── */
+  .empresa-callout { display:grid; grid-template-columns:1fr; gap:0.5rem; padding:1.5rem; background:#fff; border-top:2px solid #111827; }
+  @media(min-width:640px){ .empresa-callout { grid-template-columns:14rem 1fr; gap:0 2rem; align-items:start; } }
+  .empresa-callout__title { font-size:0.875rem; font-weight:700; color:#111827; line-height:1.35; }
+  .empresa-callout__body { font-size:0.8125rem; color:#6B7280; line-height:1.65; }
+
+  /* ── Price guide chips ── */
+  .price-guide-chip { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 0.875rem; min-height:2.75rem; border:1px solid #D1D5DB; background:#fff; color:#374151; text-decoration:none; transition:border-color 0.2s, color 0.2s, background 0.2s; }
+  .price-guide-chip:hover { border-color:#A85535; color:#A85535; background:#FFF9F6; }
+  .price-guide-chip__label { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; flex-shrink:0; }
+  .price-guide-chip__text { font-size:0.8125rem; font-weight:500; }
+  .price-guide-chip__arrow { flex-shrink:0; opacity:0; transform:translateX(-4px); transition:opacity 0.2s, transform 0.2s; }
+  .price-guide-chip:hover .price-guide-chip__arrow { opacity:1; transform:translateX(0); }
+
+  /* ── Browser surfaces ── */
+  ::selection { background:#A85535; color:#fff; }
+  :focus-visible { outline:2px solid #A85535; outline-offset:3px; }
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#D1C9BD; }
+  ::-webkit-scrollbar-thumb:hover { background:#A85535; }
+
+  /* ── Reduced motion ── */
+  @media(prefers-reduced-motion:reduce) {
+    .reveal, .reveal-stagger > * { opacity:1; transform:none; transition:none; }
+    .faq-chevron, .proceso-step, .zona-card, .zona-card__title, .zona-card__sub,
+    .price-guide-chip, .price-guide-chip__arrow, .faq-summary { transition:none; }
   }
 </style>
+
+<script>
+  // Hero parallax
+  const heroImgEl = document.querySelector('.hero-img') as HTMLElement;
+  if (heroImgEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroImgEl.style.willChange = 'transform';
+    window.addEventListener('scroll', () => {
+      heroImgEl.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+    }, { passive: true });
+  }
+
+  // Scroll reveals
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+</script>

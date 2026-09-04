@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Compromisos from '../../components/Compromisos.astro';
+import Breadcrumb from '../../components/ui/Breadcrumb.astro';
+import FaqAccordion from '../../components/ui/FaqAccordion.astro';
+import ZonasGrid from '../../components/ui/ZonasGrid.astro';
 import { SITE } from '../../data/site';
 
 const title = 'Reforma de Pisos y Viviendas en el Corredor | Trazzo360';
@@ -85,31 +88,11 @@ const faqSchema = {
   })),
 };
 
-const zones = [
-  { name: 'Torrejón de Ardoz',       slug: 'torrejon-de-ardoz' },
-  { name: 'Alcalá de Henares',       slug: 'alcala-de-henares' },
-  { name: 'Coslada',                 slug: 'coslada' },
-  { name: 'San Fernando de Henares', slug: 'san-fernando-de-henares' },
-  { name: 'Guadalajara',             slug: 'guadalajara' },
-  { name: 'Azuqueca de Henares',     slug: 'azuqueca-de-henares' },
-  { name: 'Meco',                    slug: 'meco' },
-  { name: 'Camarma de Esteruelas',   slug: 'camarma-de-esteruelas' },
-];
 ---
 
 <Layout title={title} description={description} schema={[serviceSchema, breadcrumbSchema, faqSchema]}>
 
-  <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 py-3">
-      <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
-        <li><a href="/" class="hover:text-[#A85535] transition-colors">Inicio</a></li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li>Servicios</li>
-        <li aria-hidden="true" class="text-gray-300">/</li>
-        <li class="text-gray-800 font-medium" aria-current="page">Reforma de Pisos y Viviendas</li>
-      </ol>
-    </div>
-  </nav>
+  <Breadcrumb items={[{ label: 'Servicios', href: '/servicios/' }, { label: 'Reforma de Pisos y Viviendas' }]} />
 
   <!-- Hero -->
   <section class="bg-[#111827] flex flex-col justify-center lg:justify-end"
@@ -654,18 +637,7 @@ const zones = [
       <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
         Hacemos reformas de viviendas en los ocho municipios del Corredor del Henares sin coste adicional de desplazamiento. Selecciona tu municipio para ver información sobre el mercado y los plazos habituales en tu zona.
       </p>
-      <div class="zonas-grid">
-        {zones.map(z => (
-          <article class="zona-card group relative">
-            <h3 class="zona-card__title">
-              <a href={`/reforma-pisos/${z.slug}/`} class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85535]">
-                Reforma de pisos en {z.name}
-              </a>
-            </h3>
-            <span aria-hidden="true" class="zona-card__sub">Ver precios y plazos →</span>
-          </article>
-        ))}
-      </div>
+      <ZonasGrid serviceSlug="reforma-pisos" serviceLabel="Reforma de pisos" />
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si tu reforma necesita un alcance diferente:</p>
         <div class="flex flex-wrap gap-2">
@@ -698,19 +670,7 @@ const zones = [
           Todo lo que necesitas saber sobre reforma de vivienda
         </h2>
       </div>
-      <div class="faq-list">
-        {faqs.map(faq => (
-          <details class="faq-item group">
-            <summary class="faq-summary">
-              <h3 class="faq-q">{faq.q}</h3>
-              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </summary>
-            <div class="faq-body"><p class="faq-a">{faq.a}</p></div>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion {faqs} />
     </div>
   </section>
 
@@ -732,100 +692,19 @@ const zones = [
 </Layout>
 
 <style>
-  /* ── Design tokens ── */
-  :root {
-    --color-brand:      #A85535;
-    --color-brand-dark: #8A4229;
-    --color-dark:       #111827;
-    --color-cream:      #F9F7F4;
-    --color-border:     #E5E7EB;
-    --color-muted:      #6B7280;
-  }
+  /* Grid 3 columnas del hero (específico de esta página) */
+  .hero-c-grid { display: grid; gap: 1.5rem; }
+  @media(min-width:1024px){ .hero-c-grid { grid-template-columns: 55fr 22fr 23fr; gap: 3rem; } }
 
-  /* ── Hero ── */
-  .hero-c-grid { display:grid; gap:1.5rem; }
-  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
-  .hero-img-wrap { position:absolute; inset:0; overflow:hidden; }
-  .hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .hero-img-overlay {
-    position:absolute; inset:0;
-    background:linear-gradient(to bottom, rgba(17,24,39,.52) 0%, rgba(17,24,39,.65) 60%, rgba(17,24,39,.85) 100%);
-  }
+  /* Grid de compromisos apertura */
+  .compromisos-apertura-grid { display: grid; gap: 2rem; }
+  @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns: auto 1fr; gap: 4rem; align-items: start; } }
 
-  /* ── Compromisos apertura ── */
-  .compromisos-apertura-grid { display:grid; gap:2rem; }
-  @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
-
-  /* ── Scroll reveals ── */
-  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
-  .reveal.visible { opacity:1; transform:none; }
-  .reveal-stagger > * { opacity:0; transform:translateY(18px); transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
-  .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
-  .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.07s; }
-  .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.14s; }
-  .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.21s; }
-  .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.28s; }
-  .reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.35s; }
-
-  /* ── Zona grid (municipios) ── */
-  .zonas-grid { display:grid; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
-  @media(min-width:480px){ .zonas-grid { grid-template-columns:repeat(2,1fr); } }
-  @media(min-width:768px){ .zonas-grid { grid-template-columns:repeat(4,1fr); } }
-  .zona-card { background:#F9F7F4; padding:1.25rem 1.25rem 1rem; position:relative; transition:background 0.2s; }
-  .zona-card:hover { background:#111827; }
-  .zona-card__title { font-size:.875rem; font-weight:700; color:#111827; margin:0 0 .25rem; line-height:1.3; transition:color 0.2s; }
-  .zona-card:hover .zona-card__title { color:#fff; }
-  .zona-card__title a::after { content:''; position:absolute; inset:0; }
-  .zona-card__sub { display:block; font-size:.6875rem; color:#9CA3AF; transition:color 0.2s; }
-  .zona-card:hover .zona-card__sub { color:rgba(255,255,255,.45); }
-
-  /* ── Zona pills ── */
-  .zona-pill { display:inline-flex; align-items:center; min-height:2.75rem; padding:0.625rem 0.875rem; font-size:0.75rem; font-weight:500; color:#4B5563; border:1px solid #D1D5DB; background:#fff; text-decoration:none; transition:border-color 0.2s, color 0.2s; }
-  .zona-pill:hover { border-color:#A85535; color:#A85535; }
-
-  /* ── Price guide chips ── */
-  .price-guide-chip { display:inline-flex; align-items:center; gap:.5rem; padding:.75rem .875rem; min-height:2.75rem; border:1px solid #D1D5DB; background:#fff; color:#374151; text-decoration:none; transition:border-color 0.2s, color 0.2s, background 0.2s; }
-  .price-guide-chip:hover { border-color:#A85535; color:#A85535; background:#FFF9F6; }
-  .price-guide-chip__label { font-size:.5625rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-family:'Courier New',monospace; color:#A85535; flex-shrink:0; }
-  .price-guide-chip__text { font-size:.8125rem; font-weight:500; }
-  .price-guide-chip__arrow { flex-shrink:0; opacity:0; transform:translateX(-4px); transition:opacity 0.2s, transform 0.2s; }
-  .price-guide-chip:hover .price-guide-chip__arrow { opacity:1; transform:translateX(0); }
-
-  /* ── Empresa callout ── */
-  .empresa-callout { border-top:2px solid #111827; background:#fff; display:grid; grid-template-columns:1fr; gap:.75rem; padding:1.25rem 1.5rem; }
-  @media(min-width:640px){ .empresa-callout { grid-template-columns:14rem 1fr; gap:0 2rem; align-items:start; padding:1.5rem 2rem; } }
-  .empresa-callout__title { font-size:.875rem; font-weight:700; color:#111827; line-height:1.35; }
-  .empresa-callout__body { font-size:.8125rem; color:#6B7280; line-height:1.65; }
-
-  /* ── FAQ accordion ── */
-  .faq-list { border-top:2px solid #111827; }
-  .faq-item { border-bottom:1px solid #E5E7EB; }
-  .faq-summary { display:flex; justify-content:space-between; align-items:start; gap:1.25rem; padding:1.25rem 0.5rem; cursor:pointer; list-style:none; transition:background 0.2s, padding-left 0.2s; }
-  .faq-summary::-webkit-details-marker { display:none; }
-  .faq-summary:hover { background:#fff; padding-left:0.75rem; }
-  .faq-q { font-size:.9375rem; font-weight:700; color:#111827; line-height:1.4; margin:0; flex:1; }
-  .faq-chevron { flex-shrink:0; color:#A85535; margin-top:.25rem; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1); }
-  .faq-item[open] .faq-chevron { transform:rotate(180deg); }
-  .faq-body { overflow:hidden; }
-  .faq-a { font-size:.875rem; color:#4B5563; line-height:1.7; padding:0 0.5rem 1.25rem; margin:0; max-width:60ch; }
-
-  /* ── List-marca (checklist bullet) ── */
-  .list-marca { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; }
-  .list-marca li { display:grid; grid-template-columns:1rem 1fr; gap:0.5rem; align-items:baseline; font-size:0.8375rem; color:#374151; padding:0.5rem 0; border-bottom:1px solid #F3F4F6; line-height:1.5; }
-  .list-marca li:last-child { border-bottom:none; }
-  .list-marca li::before { content:'✓'; font-size:0.6875rem; font-weight:700; color:#A85535; }
-
-  /* ── Browser surfaces ── */
-  ::selection { background:#A85535; color:#fff; }
-  :focus-visible { outline:2px solid #A85535; outline-offset:3px; }
-
-  /* ── Reduced motion ── */
-  @media(prefers-reduced-motion:reduce) {
-    .reveal, .reveal-stagger > * { opacity:1; transform:none; transition:none; }
-    .zona-card, .zona-card__title, .zona-card__sub,
-    .price-guide-chip, .price-guide-chip__arrow,
-    .faq-summary, .faq-chevron, .zona-pill { transition:none; }
-  }
+  /* Checklist con marca propia de pisos */
+  .list-marca { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+  .list-marca li { display: grid; grid-template-columns: 1rem 1fr; gap: 0.5rem; align-items: baseline; font-size: 0.8375rem; color: #374151; padding: 0.5rem 0; border-bottom: 1px solid #F3F4F6; line-height: 1.5; }
+  .list-marca li:last-child { border-bottom: none; }
+  .list-marca li::before { content: '✓'; font-size: 0.6875rem; font-weight: 700; color: #A85535; }
 </style>
 
 <script>

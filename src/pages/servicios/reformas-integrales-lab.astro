@@ -99,6 +99,13 @@ const zones = [
 
 <Layout title={title} description={description} schema={[serviceSchema, breadcrumbSchema, faqSchema]}>
 
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
+  </Fragment>
+
   <nav aria-label="Migas de pan" class="bg-gray-50 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="text-sm text-gray-500 flex items-center gap-2" style="list-style:none;padding:0;margin:0">
@@ -113,10 +120,10 @@ const zones = [
 
   <!-- Hero -->
   <section class="bg-[#111827] flex flex-col justify-center lg:justify-end"
-           style="min-height:100vh;padding-bottom:3.5rem;position:relative"
+           style="min-height:100vh;min-height:100dvh;padding-bottom:3.5rem;position:relative"
            aria-labelledby="h-hero">
     <div class="hero-img-wrap" aria-hidden="true">
-      <img src="/img/hero-reformas-integrales-corredor-henares.webp" alt="" class="hero-img" loading="eager" />
+      <img src="/img/hero-reformas-integrales-corredor-henares.webp" alt="" class="hero-img" loading="eager" fetchpriority="high" />
       <div class="hero-img-overlay"></div>
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
@@ -267,9 +274,9 @@ const zones = [
         </div>
       </div>
 
-      <div class="decision-callout">
-        <p class="decision-callout__title">El coste real de posponer las instalaciones</p>
-        <p class="decision-callout__body">
+      <div class="empresa-callout">
+        <p class="empresa-callout__title">El coste real de posponer las instalaciones</p>
+        <p class="empresa-callout__body">
           Si haces una reforma parcial hoy y en tres años el cuadro eléctrico o la fontanería necesitan intervención, tendrás que volver a abrir suelos, paredes y posiblemente desmontar parte de lo que acabas de reformar. El sobrecoste de hacer dos obras en lugar de una es sistemáticamente mayor que el de hacer la integral desde el principio. La visita técnica lo cuantifica antes de que tomes ninguna decisión.
         </p>
       </div>
@@ -331,7 +338,11 @@ const zones = [
 
       <!-- Diagrama de fases dinámico -->
       <div class="mb-10">
-        <div class="fase-grid-wrap">
+        <div class="fase-grid-wrap" style="position:relative">
+          <span id="fase-live" aria-live="polite" class="fase-sr-only"></span>
+          <button id="fase-pause-btn" class="fase-pause-btn" type="button" aria-label="Pausar animación de fases" aria-pressed="false">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="3" height="8"/><rect x="6" y="1" width="3" height="8"/></svg>
+          </button>
           <div class="fase-grid" id="fase-grid">
             {[
               { n: '01', fase: 'Demolición', dep: 'Revela el estado real de instalaciones' },
@@ -384,7 +395,7 @@ const zones = [
           <p class="text-gray-400 leading-relaxed mb-8" style="font-size:1rem;max-width:38ch">
             El primer paso no es el cronograma de obra: es saber cuándo puedes irte y cuándo necesitas volver.
           </p>
-          <p class="text-sm" style="border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;max-width:34ch;color:rgba(255,255,255,.35)">
+          <p class="text-sm" style="border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;max-width:34ch;color:rgba(255,255,255,.65)">
             Todo esto no está en el presupuesto porque no tiene precio. Está en cómo trabajamos.
           </p>
         </div>
@@ -564,7 +575,7 @@ const zones = [
           { n: '4', title: 'Obra propia en el área donde vives', desc: 'Una empresa que trabaja en el Corredor conoce los plazos reales de licencias en cada municipio y las particularidades del parque de edificios local. La cercanía es conocimiento.' },
         ].map(c => (
           <div class="criterio-row">
-            <span class="criterio-n font-display">{c.n}</span>
+            <span class="criterio-n">{c.n}</span>
             <div class="criterio-body">
               <h3 class="criterio-title">{c.title}</h3>
               <p class="criterio-desc">{c.desc}</p>
@@ -656,7 +667,7 @@ const zones = [
       <p class="text-gray-700 leading-relaxed mb-6">
         La secuencia de fases en una reforma integral no es flexible: las instalaciones van antes de los acabados, y los acabados van en un orden específico. Saltarse pasos o solapar fases incompatibles genera problemas que se notan al cabo de meses o años.
       </p>
-      <caption class="plazos-caption">Peso orientativo de cada fase sobre el total de la obra. El plazo absoluto depende del alcance y la superficie; la fecha de entrega queda fijada en el contrato.</caption>
+      <p class="plazos-caption">Peso orientativo de cada fase sobre el total de la obra. El plazo absoluto depende del alcance y la superficie; la fecha de entrega queda fijada en el contrato.</p>
       <div class="overflow-x-auto">
         <table class="plazos-table">
           <thead>
@@ -745,11 +756,11 @@ const zones = [
   <div class="resultado-wrap">
     <div class="max-w-5xl mx-auto px-4">
       <p class="resultado-tag">Resultado</p>
-      <blockquote class="resultado-body">
+      <div class="resultado-body">
         <p class="resultado-lead">Al mes de vivir en el piso reformado, la referencia del anterior desaparece.</p>
         <p class="resultado-detail">Lo que queda es la instalación eléctrica que aguanta el aire acondicionado sin disparar el diferencial, el agua caliente que llega sin esperar, la cocina donde cabe más de una persona, el suelo que no cruje.</p>
         <p class="resultado-kicker">La reforma integral no cambia solo lo que se ve: cambia lo que se vive cada día.</p>
-      </blockquote>
+      </div>
     </div>
   </div>
 
@@ -867,7 +878,16 @@ const zones = [
 </Layout>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap');
+  /* Design tokens */
+  :root {
+    --color-brand: #A85535;
+    --color-brand-dark: #8A4229;
+    --color-dark: #111827;
+    --color-cream: #F9F7F4;
+    --color-border: #E5E7EB;
+    --color-border-light: #F3F4F6;
+    --color-muted: #6B7280;
+  }
 
   /* Display font */
   .font-display { font-family: 'Barlow Condensed', system-ui, sans-serif; }
@@ -922,7 +942,7 @@ const zones = [
     color:#fff;
   }
   .hero-metric__label {
-    font-size:0.625rem; color:rgba(255,255,255,.45);
+    font-size:0.625rem; color:rgba(255,255,255,.65);
     margin-top:0.3rem; letter-spacing:0.12em; text-transform:uppercase;
   }
 
@@ -989,7 +1009,7 @@ const zones = [
   .resultado-tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; margin-bottom:2rem; }
   .resultado-body { margin:0; padding:0; border:none; }
   .resultado-lead { font-size:clamp(1.375rem,3vw,2.25rem); color:rgba(255,255,255,.9); line-height:1.25; font-weight:700; letter-spacing:-0.02em; max-width:22ch; margin-bottom:1.75rem; }
-  .resultado-detail { font-size:clamp(1rem,2vw,1.375rem); color:rgba(255,255,255,.55); line-height:1.55; max-width:36ch; margin-bottom:2rem; font-weight:400; }
+  .resultado-detail { font-size:clamp(1rem,2vw,1.375rem); color:rgba(255,255,255,.72); line-height:1.55; max-width:36ch; margin-bottom:2rem; font-weight:400; }
   .resultado-kicker { font-size:clamp(1rem,1.75vw,1.25rem); color:rgba(255,255,255,.75); line-height:1.4; max-width:32ch; font-weight:600; letter-spacing:-0.01em; padding-top:2rem; border-top:1px solid rgba(255,255,255,.08); }
 
   /* Grid de municipios */
@@ -1003,7 +1023,7 @@ const zones = [
   .zona-card:hover .zona-card__sub { color:rgba(255,255,255,.45); }
 
   /* Pills de zona */
-  .zona-pill { display:inline-block; padding:0.3rem 0.75rem; font-size:0.75rem; font-weight:500; color:#4B5563; border:1px solid #D1D5DB; background:#fff; text-decoration:none; transition:border-color 0.2s, color 0.2s; }
+  .zona-pill { display:inline-flex; align-items:center; min-height:2.75rem; padding:0.625rem 0.875rem; font-size:0.75rem; font-weight:500; color:#4B5563; border:1px solid #D1D5DB; background:#fff; text-decoration:none; transition:border-color 0.2s, color 0.2s; }
   .zona-pill:hover { border-color:#A85535; color:#A85535; }
 
   /* FAQ accordion */
@@ -1024,7 +1044,7 @@ const zones = [
   .cta-strip__item { display:flex; flex-direction:column; gap:0.25rem; }
   @media(min-width:640px){ .cta-strip__item { padding:0 2.5rem; } }
   .cta-strip__val { font-size:1rem; font-weight:800; color:#fff; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; }
-  .cta-strip__label { font-size:0.625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:rgba(255,255,255,.35); }
+  .cta-strip__label { font-size:0.625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:rgba(255,255,255,.65); }
   .cta-strip__sep { display:none; }
   @media(min-width:640px){ .cta-strip__sep { display:block; width:1px; height:2.5rem; background:rgba(255,255,255,.1); align-self:center; } }
 
@@ -1173,32 +1193,6 @@ const zones = [
   }
   .decision-list--dark li::before { color:#A85535; }
 
-  .decision-callout {
-    background:#F9F7F4;
-    padding:1.75rem 2rem;
-    border-radius:2px;
-    display:grid;
-    gap:0.75rem;
-  }
-  @media(min-width:768px){
-    .decision-callout {
-      grid-template-columns:auto 1fr;
-      gap:2rem;
-      align-items:start;
-    }
-  }
-  .decision-callout__title {
-    font-size:0.875rem;
-    font-weight:700;
-    color:#111827;
-    white-space:nowrap;
-    padding-top:0.1rem;
-  }
-  .decision-callout__body {
-    font-size:0.875rem;
-    color:#6B7280;
-    line-height:1.7;
-  }
 
   /* Era Timeline — precisión técnica */
   .era-timeline {
@@ -1343,7 +1337,7 @@ const zones = [
   }
   .vida-item__desc {
     font-size:0.8125rem;
-    color:rgba(255,255,255,.48);
+    color:rgba(255,255,255,.65);
     line-height:1.65;
   }
 
@@ -1506,7 +1500,6 @@ const zones = [
     color:#6B7280;
     line-height:1.65;
   }
-  .fase-bar { transition: width 0s linear; }
   .fase-card.is-active .fase-bar { width:100%; }
 
   /* Price ledger */
@@ -1553,7 +1546,7 @@ const zones = [
   /* Cluster de guías */
   .price-guides { display:flex; flex-direction:column; gap:0.5rem; }
   @media(min-width:640px){ .price-guides { flex-direction:row; flex-wrap:wrap; gap:0.5rem; } }
-  .price-guide-chip { display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 0.875rem; border:1px solid #D1D5DB; background:#fff; color:#374151; text-decoration:none; transition:border-color 0.2s, color 0.2s, background 0.2s; }
+  .price-guide-chip { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 0.875rem; min-height:2.75rem; border:1px solid #D1D5DB; background:#fff; color:#374151; text-decoration:none; transition:border-color 0.2s, color 0.2s, background 0.2s; }
   .price-guide-chip:hover { border-color:#A85535; color:#A85535; background:#FFF9F6; }
   .price-guide-chip__label { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; flex-shrink:0; }
   .price-guide-chip__text { font-size:0.8125rem; font-weight:500; }
@@ -1609,7 +1602,15 @@ const zones = [
     .hero-line > span, .hero-sub { animation:none; opacity:1; transform:none; }
     .reveal, .reveal-stagger > * { opacity:1; transform:none; transition:none; }
     a[style*="background:#A85535"]:hover { transform: none; }
+    .hero-scroll { display:none; }
+    .fase-bar { transition:none !important; }
   }
+
+  /* Pause button + sr-only for fase carousel */
+  .fase-sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+  .fase-pause-btn { position:absolute; top:0; right:0; z-index:2; display:flex; align-items:center; justify-content:center; width:2rem; height:2rem; color:#9CA3AF; background:#fff; border:1px solid #D1D5DB; cursor:pointer; transition:border-color 0.2s, color 0.2s; }
+  .fase-pause-btn:hover { border-color:#A85535; color:#A85535; }
+  .fase-pause-btn[aria-pressed="true"] { color:#A85535; border-color:#A85535; background:#FFF9F6; }
 </style>
 
 <script>
@@ -1655,7 +1656,11 @@ const zones = [
   const faseCards = document.querySelectorAll('.fase-card');
   if (faseCards.length) {
     let current = 0;
+    let isPaused = false;
     const PHASE_DURATION = 3500;
+    const liveRegion = document.getElementById('fase-live') as HTMLElement;
+    const pauseBtn = document.getElementById('fase-pause-btn') as HTMLButtonElement;
+
     function activateFase(idx: number) {
       faseCards.forEach(c => {
         c.classList.remove('is-active');
@@ -1671,23 +1676,41 @@ const zones = [
           bar.style.width = '100%';
         });
       }
+      if (liveRegion) {
+        const label = card.querySelector('.fase-label');
+        if (label) liveRegion.textContent = `Fase activa: ${label.textContent}`;
+      }
     }
+
+    function startTimer() {
+      return setInterval(() => {
+        current = (current + 1) % faseCards.length;
+        activateFase(current);
+      }, PHASE_DURATION);
+    }
+
     activateFase(0);
-    let timer = setInterval(() => {
-      current = (current + 1) % faseCards.length;
-      activateFase(current);
-    }, PHASE_DURATION);
+    let timer = startTimer();
+
+    // Pause button toggle
+    if (pauseBtn) {
+      pauseBtn.addEventListener('click', () => {
+        isPaused = !isPaused;
+        pauseBtn.setAttribute('aria-pressed', String(isPaused));
+        pauseBtn.setAttribute('aria-label', isPaused ? 'Reanudar animación de fases' : 'Pausar animación de fases');
+        if (isPaused) {
+          clearInterval(timer);
+        } else {
+          timer = startTimer();
+        }
+      });
+    }
 
     // Pause on hover
     const faseGrid = document.getElementById('fase-grid');
     if (faseGrid) {
-      faseGrid.addEventListener('mouseenter', () => clearInterval(timer));
-      faseGrid.addEventListener('mouseleave', () => {
-        timer = setInterval(() => {
-          current = (current + 1) % faseCards.length;
-          activateFase(current);
-        }, PHASE_DURATION);
-      });
+      faseGrid.addEventListener('mouseenter', () => { if (!isPaused) clearInterval(timer); });
+      faseGrid.addEventListener('mouseleave', () => { if (!isPaused) timer = startTimer(); });
     }
   }
 </script>

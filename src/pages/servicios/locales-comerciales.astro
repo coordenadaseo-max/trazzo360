@@ -174,7 +174,7 @@ const zones = [
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-2xl mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Qué revisamos según tu uso</p>
-        <h2 id="h-actividades" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-actividades" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           La actividad condiciona la reforma
         </h2>
         <p class="text-gray-600 leading-relaxed">
@@ -233,7 +233,7 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El primer paso</p>
-        <h2 id="h-decision" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-decision" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           La actividad define el alcance. Siempre
         </h2>
       </div>
@@ -373,7 +373,7 @@ const zones = [
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-3xl mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Del local vacío al espacio listo para operar</p>
-        <h2 id="h-que-incluye" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-que-incluye" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué incluye la reforma completa de un local comercial
         </h2>
       </div>
@@ -385,7 +385,7 @@ const zones = [
              loading="lazy" />
       </figure>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <ol class="incluye-list reveal">
         {[
           { title: 'Vaciado y desescombro', desc: 'Retirada de todos los elementos existentes, demolición de particiones que no se conservan, gestión de escombros y preparación del espacio.' },
           { title: 'Instalación eléctrica completa', desc: 'Cuadro nuevo, circuitos independientes según actividad, alumbrado de emergencia reglamentario, señalética de evacuación y tomas de corriente.' },
@@ -393,13 +393,17 @@ const zones = [
           { title: 'Particiones de pladur y techo técnico', desc: 'Divisiones de pladur con distintos grados de aislamiento acústico según el uso. Techo técnico registrable para acceso a instalaciones.' },
           { title: 'Suelos, pintura y carpintería', desc: 'Pavimento según actividad: baldosa antideslizante, tarima técnica, resina. Pintura de paredes y techo. Carpintería interior y acceso.' },
           { title: 'Proyecto técnico y tramitación (cuando aplica)', desc: 'Si tu actividad lo requiere, redactamos el proyecto técnico y gestionamos la tramitación ante el ayuntamiento. La visita técnica determina qué documentación corresponde a tu uso concreto.' },
-        ].map(item => (
-          <div class="bg-[#F9F7F4] p-7">
-            <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
-          </div>
+        ].map((item, i) => (
+          <li class="incluye-row">
+            <span class="incluye-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div class="incluye-body">
+              <p class="incluye-title">{item.title}</p>
+              <p class="incluye-desc">{item.desc}</p>
+            </div>
+            <span class="incluye-arrow" aria-hidden="true">→</span>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
@@ -459,11 +463,9 @@ const zones = [
       <p class="text-gray-600 leading-relaxed mb-6">
         El precio de la reforma de un local depende de la superficie, del tipo de actividad y del alcance de las instalaciones. El presupuesto exacto se emite tras la visita técnica gratuita. Obtén una estimación desglosada en la <a href="/calculadora-precio-reforma/?servicio=locales-comerciales" class="text-[#A85535] hover:underline font-medium">calculadora de precios para locales comerciales</a>.
       </p>
+      <p class="text-xs text-gray-400 mb-3">Precios orientativos sin IVA (21 % en locales comerciales). Sujeto a visita técnica. El precio cerrado se fija en el contrato.</p>
       <div class="overflow-x-auto mb-6">
         <table class="w-full text-sm border-collapse bg-white">
-          <p class="text-left text-xs text-gray-400 mb-3 block">
-            Precios orientativos sin IVA (21 % en locales comerciales). Sujeto a visita técnica. El precio cerrado se fija en el contrato.
-          </p>
           <thead>
             <tr class="border-b-2 border-[#A85535]">
               <th class="text-left py-3 px-5 font-bold text-gray-900">Calidad de acabado</th>
@@ -654,11 +656,11 @@ const zones = [
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
-        <h2 id="h-proceso" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-proceso" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Del local vacío al espacio listo para operar
         </h2>
       </div>
-      <div class="space-y-8" style="max-width:44rem">
+      <div class="proceso-steps reveal">
         {[
           { n: '01', title: 'Actividad y visita técnica', desc: 'Antes de la visita, definimos el tipo de actividad previsto. Eso permite revisar el local con los condicionantes técnicos específicos ya sobre la mesa: instalaciones, ventilación, documentación.' },
           { n: '02', title: 'Proyecto y presupuesto cerrado', desc: 'Redactamos el proyecto técnico si aplica, cerramos el presupuesto de obra por escrito y definimos el cronograma hasta la entrega.' },
@@ -667,11 +669,11 @@ const zones = [
           { n: '05', title: 'Acabados y equipamiento', desc: 'Suelos, pintura, carpintería, climatización y cualquier equipamiento previsto. Sin esperas entre gremios.' },
           { n: '06', title: 'Entrega y documentación', desc: 'Entrega de la obra conforme al alcance y plazo del contrato. Documentación técnica completa. Garantía de 2 años sobre la ejecución.' },
         ].map(step => (
-          <div class="grid items-start" style="grid-template-columns:3rem 1fr;gap:1.25rem">
-            <p class="text-4xl font-black text-gray-200 leading-none pt-0.5" aria-hidden="true">{step.n}</p>
+          <div class="proceso-step">
+            <span class="proceso-step__n" aria-hidden="true">{step.n}</span>
             <div>
-              <p class="font-bold text-gray-900 mb-1">{step.title}</p>
-              <p class="text-sm text-gray-600 leading-relaxed" style="max-width:48ch">{step.desc}</p>
+              <p class="proceso-step__title">{step.title}</p>
+              <p class="proceso-step__desc">{step.desc}</p>
             </div>
           </div>
         ))}
@@ -688,7 +690,7 @@ const zones = [
       <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
         Reformamos locales comerciales y oficinas en los ocho municipios del Corredor del Henares sin coste adicional de desplazamiento. Selecciona tu municipio para ver información específica sobre licencias y plazos en tu zona.
       </p>
-      <div class="zonas-grid">
+      <div class="zonas-grid reveal-stagger">
         {zones.map(z => (
           <article class="zona-card group relative">
             <h3 class="zona-card__title">
@@ -756,11 +758,28 @@ const zones = [
 </Layout>
 
 <style>
-  .hero-c-grid { display:grid; gap:1.5rem; }
-  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
+  /* ── Design tokens ── */
+  :root {
+    --color-brand: #A85535;
+    --color-brand-dark: #8A4229;
+    --color-dark: #111827;
+    --color-cream: #F9F7F4;
+    --color-border: #E5E7EB;
+    --color-border-light: #F3F4F6;
+    --color-muted: #6B7280;
+  }
+
+  /* ── Hero layout ── */
   .hero-img-wrap { position:absolute; inset:0; overflow:hidden; }
   .hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .hero-img-overlay { position:absolute; inset:0; background:rgba(17,24,39,.65); }
+  .hero-img-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, rgba(17,24,39,.52) 0%, rgba(17,24,39,.62) 60%, rgba(17,24,39,.82) 100%);
+  }
+  .hero-c-grid { display:grid; gap:1.5rem; }
+  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:55fr 22fr 23fr; gap:3rem; } }
+
+  /* ── Compromisos grid ── */
   .compromisos-apertura-grid { display:grid; gap:2rem; }
   @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
 
@@ -769,39 +788,119 @@ const zones = [
   @media(min-width:640px){ .actividades-grid { grid-template-columns:repeat(2,1fr); } }
   @media(min-width:1024px){ .actividades-grid { grid-template-columns:repeat(4,1fr); } }
 
-  /* ── Lab design system ── */
-  .zonas-grid { display:grid; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
-  @media(min-width:480px){ .zonas-grid { grid-template-columns:repeat(2,1fr); } }
+  /* ── Scroll reveals ── */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.visible { opacity:1; transform:none; }
+  .reveal-stagger > * { opacity:0; transform:translateY(18px); transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+  .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.07s; }
+  .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.14s; }
+  .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.21s; }
+  .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.28s; }
+  .reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.35s; }
+  .reveal-stagger.visible > *:nth-child(7) { opacity:1; transform:none; transition-delay:0.42s; }
+  .reveal-stagger.visible > *:nth-child(8) { opacity:1; transform:none; transition-delay:0.49s; }
+
+  /* ── Grid de municipios ── */
+  .zonas-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
   @media(min-width:768px){ .zonas-grid { grid-template-columns:repeat(4,1fr); } }
   .zona-card { background:#F9F7F4; padding:1.25rem 1.25rem 1rem; position:relative; transition:background 0.2s; }
   .zona-card:hover { background:#111827; }
-  .zona-card__title { font-size:.875rem; font-weight:700; color:#111827; margin:0 0 .25rem; transition:color 0.2s; }
+  .zona-card__title { font-size:0.875rem; font-weight:700; color:#111827; margin:0 0 0.25rem; line-height:1.3; transition:color 0.2s; }
   .zona-card:hover .zona-card__title { color:#fff; }
   .zona-card__title a::after { content:''; position:absolute; inset:0; }
-  .zona-card__sub { display:block; font-size:.75rem; color:#9CA3AF; transition:color 0.2s; }
-  .zona-card:hover .zona-card__sub { color:#6B7280; }
-  .price-guide-chip { display:inline-flex; align-items:center; gap:.5rem; padding:.375rem .75rem; background:#F3F4F6; border:1px solid #E5E7EB; font-size:.8125rem; color:#374151; text-decoration:none; transition:background 0.15s,color 0.15s,border-color 0.15s; }
-  .price-guide-chip:hover { background:#111827; color:#fff; border-color:#111827; }
-  .price-guide-chip__label { font-size:.5625rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-family:'Courier New',monospace; color:#A85535; transition:color 0.15s; }
-  .price-guide-chip:hover .price-guide-chip__label { color:rgba(255,255,255,.55); }
-  .price-guide-chip__text { font-weight:600; }
-  .price-guide-chip__arrow { opacity:.4; flex-shrink:0; }
-  .price-guide-chip:hover .price-guide-chip__arrow { opacity:.7; }
-  .empresa-callout { border-top:2px solid #111827; background:#fff; display:grid; grid-template-columns:1fr; gap:.75rem; padding:1.25rem 1.5rem; }
-  @media(min-width:640px){ .empresa-callout { grid-template-columns:14rem 1fr; gap:1.5rem; padding:1.5rem 2rem; } }
-  .empresa-callout__title { font-size:.6875rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-family:'Courier New',monospace; color:#A85535; line-height:1.5; padding-top:.125rem; }
-  .empresa-callout__body { font-size:.875rem; color:#4B5563; line-height:1.7; max-width:60ch; margin:0; }
+  .zona-card__sub { font-size:0.6875rem; color:#9CA3AF; display:block; transition:color 0.2s; }
+  .zona-card:hover .zona-card__sub { color:rgba(255,255,255,.45); }
+
+  /* ── Pills de zona ── */
+  .zona-pill { display:inline-flex; align-items:center; min-height:2.75rem; padding:0.625rem 0.875rem; font-size:0.75rem; font-weight:500; color:#4B5563; border:1px solid #D1D5DB; background:#fff; text-decoration:none; transition:border-color 0.2s, color 0.2s; }
+  .zona-pill:hover { border-color:#A85535; color:#A85535; }
+
+  /* ── FAQ accordion ── */
   .faq-list { border-top:2px solid #111827; }
   .faq-item { border-bottom:1px solid #E5E7EB; }
-  .faq-summary { display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; padding:1.25rem 0; cursor:pointer; list-style:none; transition:padding-left 0.2s; }
+  .faq-summary { display:flex; justify-content:space-between; align-items:start; gap:1.25rem; padding:1.25rem 0.5rem; cursor:pointer; list-style:none; transition:background 0.2s, padding-left 0.2s; }
   .faq-summary::-webkit-details-marker { display:none; }
-  .faq-item[open] .faq-summary, .faq-summary:hover { padding-left:.5rem; }
-  .faq-q { font-size:.9375rem; font-weight:600; color:#111827; margin:0; line-height:1.45; }
-  .faq-chevron { flex-shrink:0; color:#A85535; transition:transform 0.25s; margin-top:.125rem; }
+  .faq-summary:hover { background:#fff; padding-left:0.75rem; }
+  .faq-q { font-size:0.9375rem; font-weight:700; color:#111827; line-height:1.4; margin:0; flex:1; }
+  .faq-chevron { flex-shrink:0; color:#A85535; margin-top:0.25rem; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1); }
   .faq-item[open] .faq-chevron { transform:rotate(180deg); }
-  .faq-body { padding-bottom:1.25rem; }
-  .faq-a { font-size:.875rem; color:#6B7280; line-height:1.7; max-width:60ch; margin:0; }
-  @media(prefers-reduced-motion:reduce){
-    .zona-card,.zona-card__title,.zona-card__sub,.price-guide-chip,.price-guide-chip__label,.price-guide-chip__arrow,.faq-summary,.faq-chevron { transition:none; }
+  .faq-body { overflow:hidden; }
+  .faq-a { font-size:0.875rem; color:#4B5563; line-height:1.7; padding:0 0.5rem 1.25rem; margin:0; }
+
+  /* ── Empresa callout ── */
+  .empresa-callout { display:grid; grid-template-columns:1fr; gap:0.5rem; padding:1.5rem; background:#fff; border-top:2px solid #111827; }
+  @media(min-width:640px){ .empresa-callout { grid-template-columns:14rem 1fr; gap:0 2rem; align-items:start; } }
+  .empresa-callout__title { font-size:0.875rem; font-weight:700; color:#111827; line-height:1.35; }
+  .empresa-callout__body { font-size:0.8125rem; color:#6B7280; line-height:1.65; }
+
+  /* ── Price guide chips ── */
+  .price-guide-chip { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 0.875rem; min-height:2.75rem; border:1px solid #D1D5DB; background:#fff; color:#374151; text-decoration:none; transition:border-color 0.2s, color 0.2s, background 0.2s; }
+  .price-guide-chip:hover { border-color:#A85535; color:#A85535; background:#FFF9F6; }
+  .price-guide-chip__label { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; flex-shrink:0; }
+  .price-guide-chip__text { font-size:0.8125rem; font-weight:500; }
+  .price-guide-chip__arrow { flex-shrink:0; opacity:0; transform:translateX(-4px); transition:opacity 0.2s, transform 0.2s; }
+  .price-guide-chip:hover .price-guide-chip__arrow { opacity:1; transform:translateX(0); }
+
+  /* ── Proceso steps ── */
+  .proceso-steps { position:relative; }
+  .proceso-steps::before {
+    content:''; position:absolute;
+    left:0.875rem; top:2rem; bottom:0;
+    width:1px;
+    background:linear-gradient(to bottom, #A85535 0%, #E5E7EB 60%, transparent 100%);
+  }
+  .proceso-step { display:grid; grid-template-columns:2rem 1fr; gap:0 1.5rem; padding:1.375rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s, padding-left 0.2s; position:relative; }
+  .proceso-step:hover { background:#F9F7F4; padding-left:0.875rem; }
+  .proceso-step__n { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.3rem; z-index:1; position:relative; }
+  .proceso-step__title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.375rem; }
+  .proceso-step__desc { font-size:0.875rem; color:#4B5563; line-height:1.65; max-width:48ch; }
+
+  /* ── Incluye list ── */
+  .incluye-list { border-top:1px solid #E5E7EB; list-style:none; padding:0; margin:0; }
+  .incluye-row {
+    display:grid;
+    grid-template-columns:2.5rem 1fr auto;
+    gap:0 1.5rem;
+    align-items:center;
+    padding:1.25rem 0.5rem;
+    border-bottom:1px solid #E5E7EB;
+    transition:background 0.2s ease, padding-left 0.2s ease;
+    cursor:default;
+  }
+  .incluye-row:hover { background:#FAFAF8; padding-left:1rem; }
+  .incluye-n { font-size:0.6875rem; font-weight:700; color:#A85535; letter-spacing:0.1em; font-family:'Courier New', monospace; line-height:1; padding-top:0.1rem; }
+  .incluye-body { min-width:0; }
+  .incluye-title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.2rem; line-height:1.3; }
+  .incluye-desc { font-size:0.8125rem; color:#6B7280; line-height:1.6; }
+  .incluye-arrow { font-size:1rem; color:#D1D5DB; flex-shrink:0; transition:color 0.2s ease, transform 0.2s ease; display:none; }
+  @media(min-width:768px){ .incluye-arrow { display:block; } }
+  .incluye-row:hover .incluye-arrow { color:#A85535; transform:translateX(4px); }
+
+  /* ── Browser surfaces ── */
+  ::selection { background:#A85535; color:#fff; }
+  :focus-visible { outline:2px solid #A85535; outline-offset:3px; }
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#D1C9BD; }
+  ::-webkit-scrollbar-thumb:hover { background:#A85535; }
+
+  /* ── Reduced motion ── */
+  @media(prefers-reduced-motion:reduce) {
+    .reveal, .reveal-stagger > * { opacity:1; transform:none; transition:none; }
+    .zona-card, .zona-card__title, .zona-card__sub,
+    .price-guide-chip, .price-guide-chip__arrow,
+    .faq-summary, .faq-chevron,
+    .proceso-step, .incluye-row, .incluye-arrow { transition:none; }
   }
 </style>
+
+<script>
+  // Scroll reveals
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+</script>

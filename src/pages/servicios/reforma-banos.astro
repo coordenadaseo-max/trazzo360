@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Compromisos from '../../components/Compromisos.astro';
 import { SITE } from '../../data/site';
-import { COMPROMISOS } from '../../data/trust';
 
 const title = 'Reforma de Baños en el Corredor del Henares | Trazzo360';
 const description = 'Reforma de baños en el Corredor del Henares: cambio de bañera por ducha, alicatado, fontanería y sanitarios. Precio cerrado, presupuesto gratuito.';
@@ -484,32 +484,48 @@ const zones = [
         </p>
       </div>
 
-      <p class="text-sm text-gray-500 mb-4">Precios orientativos. El precio final se fija en el contrato tras la visita técnica gratuita. IVA no incluido.</p>
-      <div class="overflow-x-auto mb-10">
-        <table class="w-full text-sm border-collapse bg-white">
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Alcance de la reforma</th>
-              <th class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo</th>
-              <th class="text-right py-3 px-5 font-bold text-gray-900">Plazo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Cambio de bañera por ducha (sin cambio de alicatado)', price: 'Desde 1.800€', days: '3–5 días' },
-              { label: 'Reforma completa baño pequeño hasta 4 m²', price: 'Desde 2.800€', days: '2–3 semanas' },
-              { label: 'Reforma completa baño 4–6 m²', price: 'Desde 3.500€', days: '2–3 semanas' },
-              { label: 'Reforma completa baño 6–9 m²', price: 'Desde 4.500€', days: '2–3 semanas' },
-              { label: 'Reforma con cambio de distribución o fontanería completa', price: 'Desde 5.500€', days: '3–5 semanas' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.label}</td>
-                <td class="py-3 px-5 text-right font-semibold text-gray-900">{row.price}</td>
-                <td class="py-3 px-5 text-right text-gray-500">{row.days}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div class="price-guides mb-6">
+        <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="price-guide-chip">
+          <span class="price-guide-chip__label">Guía</span>
+          <span class="price-guide-chip__text">¿Cuánto cuesta reformar un baño?</span>
+          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/calculadora-precio-reforma/?servicio=reforma-banos" class="price-guide-chip">
+          <span class="price-guide-chip__label">Herramienta</span>
+          <span class="price-guide-chip__text">Calculadora de reforma de baño</span>
+          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="price-ledger mb-10">
+        <div class="price-header">
+          <span>Alcance de la reforma</span>
+          <span class="text-right">Precio orientativo</span>
+          <span class="text-right hidden sm:block">Plazo</span>
+        </div>
+        {[
+          { label: 'Cambio de bañera por ducha', sub: 'Sin cambio de alicatado existente', price: '1.800', plazo: '3–5 días' },
+          { label: 'Reforma completa baño hasta 4 m²', sub: 'Instalaciones + revestimiento completo', price: '2.800', plazo: '2–3 sem.' },
+          { label: 'Reforma completa baño 4–6 m²', sub: 'El tamaño más habitual en el Corredor', price: '3.500', plazo: '2–3 sem.', highlight: true },
+          { label: 'Reforma completa baño 6–9 m²', sub: 'Baños de chalet o adosado', price: '4.500', plazo: '2–3 sem.' },
+          { label: 'Reforma con cambio de distribución', sub: 'O fontanería completa renovada', price: '5.500', plazo: '3–5 sem.' },
+        ].map((row) => (
+          <div class={`price-row price-row--integral ${row.highlight ? 'price-row--highlight' : ''}`}>
+            <div class="price-row__label">
+              <span class="price-row__name">{row.label}</span>
+              <span class="price-row__sub">
+                {row.sub}
+                {row.highlight && <span class="price-row__badge">La más habitual</span>}
+              </span>
+            </div>
+            <div class="price-row__value">
+              <span class="price-row__num">Desde {row.price}</span>
+              <span class="price-row__unit"> €</span>
+            </div>
+            <div class="price-row__plazo">{row.plazo}</div>
+          </div>
+        ))}
+        <p class="price-footer">Precios orientativos · IVA no incluido · precio cerrado en contrato tras visita técnica gratuita</p>
       </div>
 
       <!-- Payment strip: pago en tres fases -->
@@ -540,50 +556,27 @@ const zones = [
           </p>
         </div>
 
-        <!-- Disclosure: cómo leer un presupuesto (detalle técnico/SEO) -->
-        <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer list-none [&::-webkit-details-marker]:hidden [&::marker]:hidden text-sm font-semibold text-gray-900 pb-4 border-b border-gray-200 hover:text-[#A85535] transition-colors">
-            <span>Antes de comparar presupuestos: 6 partidas que revisar</span>
-            <span class="text-gray-400 text-xl leading-none select-none font-normal block group-open:hidden" aria-hidden="true">+</span>
-            <span class="text-gray-400 text-xl leading-none select-none font-normal hidden group-open:block" aria-hidden="true">−</span>
-          </summary>
-          <div class="pt-4">
-            <p class="text-sm text-gray-500 mb-5">Dos presupuestos con el mismo importe total pueden cubrir alcances muy distintos. Comprueba estas partidas en cada propuesta antes de decidir.</p>
-            <dl class="divide-y divide-gray-100">
-              {[
-                {
-                  term: 'Impermeabilización',
-                  def: 'Debe aparecer como partida explícita con la especificación del material y la superficie cubierta (suelo + primer metro de pared en zona de ducha o bañera). Un presupuesto que no la menciona no la incluye o la ejecuta de forma insuficiente.',
-                },
-                {
-                  term: 'Gestión de escombros',
-                  def: 'Incluye el alquiler del contenedor o el transporte a punto limpio. Un presupuesto que la excluye traslada ese coste al cliente al final de la obra, generalmente en un momento en que no hay margen para negociar.',
-                },
-                {
-                  term: 'Fontanería: qué se renueva y qué se conserva',
-                  def: 'El presupuesto debe especificar si se renuevan las tuberías de acometida o solo se adaptan las conexiones existentes. Si el presupuesto dice "fontanería incluida" sin especificar el alcance, pide que lo aclaren.',
-                },
-                {
-                  term: 'Materiales: calidad y formato especificado',
-                  def: 'Un alicatado de 20×20 cm en gres de baja absorción no tiene el mismo precio ni la misma durabilidad que un porcelánico rectificado de 60×60 cm. El presupuesto debe especificar el material o incluir una selección de catálogo.',
-                },
-                {
-                  term: 'Precio cerrado o precio estimado',
-                  def: 'Un precio cerrado no cambia aunque aparezcan imprevistos menores. Un precio estimado puede ampliarse durante la obra. Pregunta siempre cuál es el mecanismo para gestionar los imprevistos antes de firmar.',
-                },
-                {
-                  term: 'Garantía de ejecución',
-                  def: 'La garantía debe cubrir la ejecución (humedades, desprendimientos, funcionamiento de las instalaciones) durante al menos 2 años. La garantía de los materiales la da el fabricante; la garantía de la obra la da quien ejecuta.',
-                },
-              ].map(({ term, def }) => (
-                <div class="py-4 grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-6">
-                  <dt class="text-sm font-semibold text-gray-900 md:col-span-1">{term}</dt>
-                  <dd class="text-sm text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </details>
+        <!-- Cómo leer un presupuesto — presupuesto-dl pattern -->
+        <div>
+          <h3 class="text-xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">Antes de comparar presupuestos: 6 partidas que revisar</h3>
+          <p class="text-sm text-gray-500 mb-6">Dos presupuestos con el mismo importe total pueden cubrir alcances muy distintos. Comprueba estas partidas en cada propuesta antes de decidir.</p>
+          <dl class="presupuesto-dl">
+            {[
+              { term: 'Impermeabilización', def: 'Debe aparecer como partida explícita con la especificación del material y la superficie cubierta (suelo + primer metro de pared en zona de ducha o bañera). Un presupuesto que no la menciona no la incluye o la ejecuta de forma insuficiente.' },
+              { term: 'Gestión de escombros', def: 'Incluye el alquiler del contenedor o el transporte a punto limpio. Un presupuesto que la excluye traslada ese coste al cliente al final de la obra, generalmente en un momento en que no hay margen para negociar.' },
+              { term: 'Fontanería: qué se renueva y qué se conserva', def: 'El presupuesto debe especificar si se renuevan las tuberías de acometida o solo se adaptan las conexiones existentes. Si dice "fontanería incluida" sin especificar el alcance, pide que lo aclaren.' },
+              { term: 'Materiales: calidad y formato especificado', def: 'Un alicatado de 20×20 cm en gres de baja absorción no tiene el mismo precio ni la misma durabilidad que un porcelánico rectificado de 60×60 cm. El presupuesto debe especificar el material o incluir una selección de catálogo.' },
+              { term: 'Precio cerrado o precio estimado', def: 'Un precio cerrado no cambia aunque aparezcan imprevistos menores. Un precio estimado puede ampliarse durante la obra. Pregunta siempre cuál es el mecanismo para gestionar los imprevistos antes de firmar.' },
+              { term: 'Garantía de ejecución', def: 'La garantía debe cubrir la ejecución (humedades, desprendimientos, funcionamiento de las instalaciones) durante al menos 2 años. La garantía de los materiales la da el fabricante; la garantía de la obra la da quien ejecuta.' },
+            ].map(({ term, def }, i) => (
+              <div class="presupuesto-row">
+                <span class="presupuesto-n">{String(i + 1).padStart(2, '0')}</span>
+                <dt class="presupuesto-term">{term}</dt>
+                <dd class="presupuesto-def">{def}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
 
         <!-- Callout empresa -->
         <div class="empresa-callout">
@@ -610,14 +603,21 @@ const zones = [
           </a>
         </div>
 
-        <!-- Licencias: nota breve integrada -->
-        <div class="pt-4 border-t border-gray-200">
-          <h3 class="text-base font-bold text-gray-900 mb-3">¿Necesitas licencia para reformar el baño?</h3>
-          <p class="text-sm text-gray-700 leading-relaxed mb-3" style="max-width:65ch">
-            La mayoría de las reformas de baño (cambio de alicatados, sustitución de sanitarios, cambio de bañera por ducha) son obras interiores que en los municipios del Corredor del Henares suelen tramitarse como comunicación previa o declaración responsable ante el ayuntamiento, con plazos de respuesta menores que una licencia de obra mayor. La licencia de obra mayor es necesaria cuando la reforma afecta a elementos estructurales o cuando se modifica la distribución de la vivienda de manera que requiere proyecto técnico.
-          </p>
+        <!-- Licencias -->
+        <div>
+          <h3 class="text-xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">¿Necesitas licencia para reformar el baño?</h3>
+          <div class="licencia-grid mb-5">
+            <div class="licencia-card">
+              <p class="licencia-card__tag">Comunicación previa · Obra menor</p>
+              <p class="licencia-card__body">La mayoría de reformas de baño (cambio de alicatados, sanitarios, bañera por ducha) se tramitan como comunicación previa o declaración responsable. Plazos de respuesta menores que una licencia de obra mayor.</p>
+            </div>
+            <div class="licencia-card licencia-card--mayor">
+              <p class="licencia-card__tag licencia-card__tag--dark">Licencia de obra mayor</p>
+              <p class="licencia-card__body">Necesaria cuando la reforma afecta a elementos estructurales o modifica la distribución de la vivienda de forma que requiere proyecto técnico.</p>
+            </div>
+          </div>
           <p class="text-sm text-gray-700 leading-relaxed" style="max-width:65ch">
-            Nos encargamos de gestionar el trámite que corresponda en cada caso. Si necesitas licencia, la tramitamos antes de empezar la obra. El tiempo de tramitación queda reflejado en el contrato y no penaliza el plazo de entrega comprometido. Algunas comunidades de propietarios también exigen notificación previa para obras que generen ruido; si tu edificio tiene normativa interna al respecto, te informamos del procedimiento antes de empezar.
+            Nos encargamos de gestionar el trámite que corresponda. Si necesitas licencia, la tramitamos antes de empezar. Algunas comunidades de propietarios también exigen notificación previa; te informamos del procedimiento antes de iniciar la obra.
           </p>
         </div>
       </div>
@@ -627,45 +627,33 @@ const zones = [
   <!-- ── 7. COMPROMISOS Y GARANTÍAS (white) ─────────────────── -->
   <section class="py-20 bg-white" aria-labelledby="h-compromisos">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="compromisos-apertura-grid mb-14 pb-14" style="border-bottom:1px solid #D1C9BD">
-        <!-- "2" editorial: único número de máxima escala en esta página -->
-        <div>
-          <p class="font-black text-gray-900 leading-none" style="font-size:clamp(5rem,14vw,10rem);letter-spacing:-0.055em;line-height:1">2</p>
-          <p class="text-sm font-bold text-gray-900 mt-3">años de garantía</p>
-          <p class="text-xs text-gray-500">sobre la ejecución</p>
-        </div>
-        <!-- Contexto -->
-        <div class="lg:pt-4">
-          <h2 id="h-compromisos" class="reveal text-3xl lg:text-4xl font-black text-gray-900 mb-5" style="letter-spacing:-0.02em; text-wrap:balance">
-            Lo que se recoge en el contrato antes de empezar
-          </h2>
-          <p class="text-gray-600 leading-relaxed" style="max-width:55ch">
+      <div class="mb-14 pb-14" style="border-bottom:1px solid #E5E7EB">
+        <h2 id="h-compromisos" class="text-4xl lg:text-5xl font-black text-gray-900 mb-5 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
+          Lo que se recoge en el contrato antes de empezar
+        </h2>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+          <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
             Estos compromisos no son cláusulas en letra pequeña. Son el núcleo del acuerdo que firmamos antes del primer día de obra. Están por escrito y son exigibles.
           </p>
+          <div class="compromisos-apertura__dato flex-shrink-0">
+            <span class="compromisos-apertura__tag">Garantía</span>
+            <p class="compromisos-apertura__valor">2 años</p>
+            <p class="compromisos-apertura__sub">sobre la ejecución</p>
+          </div>
         </div>
       </div>
-
-      <!-- Lista editorial de compromisos -->
-      <dl class="grid md:grid-cols-2 gap-x-12 gap-y-8">
-        {COMPROMISOS.map(c => (
-          <div>
-            <dt class="font-bold text-gray-900 mb-1.5">{c.title}</dt>
-            <dd class="text-sm text-gray-600 leading-relaxed" style="max-width:42ch">{c.body}</dd>
-          </div>
-        ))}
-      </dl>
+      <Compromisos variant="full" />
     </div>
   </section>
 
   <!-- ── 8. EL PROCESO (cream) ───────────────────────────────── -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-proceso">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-proceso" class="reveal text-3xl lg:text-4xl font-black text-gray-900 mb-10" style="letter-spacing:-0.02em; text-wrap:balance">
+      <h2 id="h-proceso" class="reveal text-4xl lg:text-5xl font-black text-gray-900 mb-10" style="letter-spacing:-0.03em; text-wrap:balance">
         De la visita a la entrega: cómo es el proceso
       </h2>
 
-      <!-- Lista numerada editorial en lugar de 6 cards -->
-      <div class="space-y-8">
+      <div class="proceso-steps" style="max-width:44rem">
         {[
           { n: '01', title: 'Visita técnica gratuita', desc: 'Medimos el baño, evaluamos el estado de instalaciones y escuchamos qué quieres cambiar. Sin compromiso ni coste.' },
           { n: '02', title: 'Presupuesto cerrado por escrito', desc: 'Presupuesto detallado con todas las partidas. Materiales especificados. Precio que no cambia una vez firmado.' },
@@ -674,11 +662,11 @@ const zones = [
           { n: '05', title: 'Alicatado, instalación y acabados', desc: 'Revestimiento de paredes y suelo, instalación de ducha o bañera, sanitarios, mampara, mueble e iluminación. Todo coordinado en un único equipo.' },
           { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo. Limpieza de obra. Entrega con garantía de 2 años sobre la ejecución y garantía de fabricante en materiales.' },
         ].map(step => (
-          <div class="grid grid-cols-[3rem_1fr] gap-5 items-start">
-            <p class="text-4xl font-black text-gray-200 leading-none pt-0.5" aria-hidden="true">{step.n}</p>
-            <div>
-              <p class="font-bold text-gray-900 mb-1">{step.title}</p>
-              <p class="text-sm text-gray-600 leading-relaxed" style="max-width:48ch">{step.desc}</p>
+          <div class="proceso-step">
+            <span class="proceso-step__n">{step.n}</span>
+            <div class="proceso-step__body">
+              <p class="proceso-step__title">{step.title}</p>
+              <p class="proceso-step__desc">{step.desc}</p>
             </div>
           </div>
         ))}
@@ -760,7 +748,7 @@ const zones = [
   <!-- ── 10. FAQ (cream) ────────────────────────────────────── -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-faq" class="reveal text-3xl font-black text-gray-900 mb-10" style="letter-spacing:-0.02em">
+      <h2 id="h-faq" class="reveal text-4xl lg:text-5xl font-black text-gray-900 mb-10" style="letter-spacing:-0.03em; text-wrap:balance">
         Todo lo que necesitas saber antes de reformar el baño
       </h2>
       <div class="faq-list">
@@ -1004,9 +992,66 @@ const zones = [
   .precio-apertura-grid { display:grid; gap:1.5rem; }
   @media(min-width:768px){ .precio-apertura-grid { grid-template-columns:auto 1fr; gap:3rem; align-items:end; } }
 
-  /* ── Compromisos apertura grid ── */
-  .compromisos-apertura-grid { display:grid; gap:2rem; }
-  @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns:auto 1fr; gap:4rem; align-items:start; } }
+  /* ── Compromisos apertura ── */
+  .compromisos-apertura__dato { border-left:2px solid #E5E7EB; padding-left:1.5rem; }
+  .compromisos-apertura__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; display:block; margin-bottom:0.25rem; }
+  .compromisos-apertura__valor { font-size:1.25rem; font-weight:800; color:#111827; letter-spacing:-0.02em; margin:0; }
+  .compromisos-apertura__sub { font-size:0.6875rem; color:#9CA3AF; margin-top:0.125rem; }
+
+  /* ── Price guides wrapper ── */
+  .price-guides { display:flex; flex-direction:column; gap:0.5rem; }
+  @media(min-width:640px){ .price-guides { flex-direction:row; flex-wrap:wrap; gap:0.5rem; } }
+
+  /* ── Price ledger ── */
+  .price-ledger { border-top:2px solid #A85535; }
+  .price-header { display:grid; grid-template-columns:1fr auto auto; gap:1rem 2rem; padding:0.5rem 0; border-bottom:1px solid #E5E7EB; }
+  .price-header span { font-size:0.625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#9CA3AF; font-family:'Courier New', monospace; }
+  .price-header span:nth-child(2) { white-space:nowrap; min-width:7rem; text-align:right; }
+  .price-header span:nth-child(3) { min-width:5rem; text-align:right; }
+  @media(max-width:600px){ .price-header { grid-template-columns:1fr auto; } .price-header span:nth-child(3) { display:none; } }
+  .price-row { display:grid; grid-template-columns:1fr auto auto; gap:1rem 2rem; align-items:center; padding:1rem 0.5rem; border-bottom:1px solid #E5E7EB; transition:background 0.2s, padding-left 0.2s; }
+  @media(max-width:600px){ .price-row { grid-template-columns:1fr auto; } .price-row__plazo { display:none; } }
+  .price-row--integral { cursor:default; }
+  .price-row--integral:hover { background:#FAFAF8; padding-left:0.75rem; }
+  .price-row--highlight { background:#FFF9F6; border-left:2px solid #A85535; padding-left:0.75rem; }
+  .price-row--highlight:hover { background:#FFF3EE; }
+  .price-row__label { display:flex; flex-direction:column; gap:0.125rem; }
+  .price-row__name { font-size:0.9375rem; font-weight:600; color:#111827; }
+  .price-row__sub { font-size:0.75rem; color:#9CA3AF; display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; }
+  .price-row__badge { font-size:0.5625rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-family:'Courier New', monospace; color:#A85535; border:1px solid #A85535; padding:0.125rem 0.375rem; white-space:nowrap; }
+  .price-row__value { white-space:nowrap; text-align:right; min-width:7rem; }
+  .price-row__num { font-size:1.125rem; font-weight:800; color:#A85535; letter-spacing:-0.03em; font-variant-numeric:tabular-nums; }
+  .price-row__unit { font-size:0.75rem; color:#6B7280; font-weight:400; }
+  .price-row__plazo { font-size:0.8125rem; color:#9CA3AF; white-space:nowrap; font-variant-numeric:tabular-nums; min-width:5rem; text-align:right; }
+  .price-footer { font-size:0.6875rem; color:#9CA3AF; padding-top:0.875rem; letter-spacing:0.02em; }
+
+  /* ── Presupuesto DL ── */
+  .presupuesto-dl { border-top:2px solid #111827; }
+  .presupuesto-row { display:grid; grid-template-columns:2rem 1fr; grid-template-rows:auto auto; gap:0.125rem 1rem; padding:1.125rem 0.5rem; border-bottom:1px solid #E5E7EB; transition:background 0.2s, padding-left 0.2s; }
+  .presupuesto-row:hover { background:#F9F7F4; padding-left:0.875rem; }
+  @media(min-width:640px){ .presupuesto-row { grid-template-columns:2rem 14rem 1fr; grid-template-rows:auto; align-items:baseline; } }
+  .presupuesto-n { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; grid-row:span 2; padding-top:0.3rem; }
+  @media(min-width:640px){ .presupuesto-n { grid-row:auto; } }
+  .presupuesto-term { font-size:0.9375rem; font-weight:700; color:#111827; line-height:1.35; }
+  .presupuesto-def { font-size:0.8125rem; color:#4B5563; line-height:1.6; }
+
+  /* ── Licencia grid ── */
+  .licencia-grid { display:grid; grid-template-columns:1fr; gap:1px; background:#E5E7EB; border-top:2px solid #111827; }
+  @media(min-width:640px){ .licencia-grid { grid-template-columns:1fr 1fr; } }
+  .licencia-card { background:#F9F7F4; padding:1.5rem; }
+  .licencia-card--mayor { background:#fff; }
+  .licencia-card__tag { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-family:'Courier New', monospace; color:#9CA3AF; margin-bottom:0.625rem; }
+  .licencia-card__tag--dark { color:#111827; }
+  .licencia-card__body { font-size:0.8125rem; color:#4B5563; line-height:1.6; }
+
+  /* ── Proceso steps ── */
+  .proceso-steps { position:relative; border-top:2px solid #111827; }
+  .proceso-steps::before { content:''; position:absolute; left:0.875rem; top:2rem; bottom:0; width:1px; background:linear-gradient(to bottom, #A85535 0%, #E5E7EB 60%, transparent 100%); }
+  .proceso-step { display:grid; grid-template-columns:2rem 1fr; gap:0 1.5rem; padding:1.375rem 0.5rem; border-bottom:1px solid #F3F4F6; align-items:start; transition:background 0.2s, padding-left 0.2s; position:relative; }
+  .proceso-step:hover { background:#F9F7F4; padding-left:0.875rem; }
+  .proceso-step__n { font-size:0.5625rem; font-weight:700; letter-spacing:0.1em; font-family:'Courier New', monospace; color:#A85535; padding-top:0.3rem; z-index:1; position:relative; }
+  .proceso-step__title { font-size:0.9375rem; font-weight:700; color:#111827; margin-bottom:0.375rem; }
+  .proceso-step__desc { font-size:0.875rem; color:#4B5563; line-height:1.65; max-width:48ch; }
 
   /* ── Resultado cotidiano ── */
   .resultado-wrap { background:#111827; padding:clamp(4rem,8vw,7rem) 0; border-top:2px solid #A85535; }
@@ -1042,7 +1087,10 @@ const zones = [
     .hero-sub { animation:none; opacity:1; }
     .zona-card, .zona-card__title, .zona-card__sub,
     .zona-pill, .price-guide-chip, .price-guide-chip__arrow,
-    .faq-summary, .faq-chevron { transition:none; }
+    .faq-summary, .faq-chevron,
+    .price-row, .price-row--integral, .price-row--highlight,
+    .presupuesto-row, .incluye-row, .proceso-step,
+    .era-col, .vida-item { transition:none; }
   }
 </style>
 

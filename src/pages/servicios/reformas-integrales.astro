@@ -698,19 +698,20 @@ const zones = [
   <!-- M8: Compromisos -->
   <section class="py-20 bg-white" aria-labelledby="h-compromisos">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="mb-14 pb-14" style="border-bottom:1px solid #E5E7EB">
-        <h2 id="h-compromisos" class="text-4xl lg:text-5xl font-black text-gray-900 mb-5 reveal" style="letter-spacing:-0.03em;text-wrap:balance">
-          Nuestros compromisos en la reforma integral
-        </h2>
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+      <div class="compromisos-apertura-grid mb-14 pb-14" style="border-bottom:1px solid #D1C9BD">
+        <div>
+          <p class="font-black text-gray-900 leading-none" style="font-size:clamp(5rem,14vw,10rem);letter-spacing:-0.055em;line-height:1">2</p>
+          <p class="text-sm font-bold text-gray-900 mt-3">años de garantía</p>
+          <p class="text-xs text-gray-500">sobre la ejecución</p>
+        </div>
+        <div class="lg:pt-4">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
+          <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-5 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+            Nuestros compromisos en la reforma integral
+          </h2>
           <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
             Estos compromisos quedan recogidos en el contrato que firmamos antes de empezar la obra. No son promesas: son las condiciones del acuerdo.
           </p>
-          <div class="compromisos-apertura__dato flex-shrink-0">
-            <span class="compromisos-apertura__tag">Garantía</span>
-            <p class="compromisos-apertura__valor">2 años</p>
-            <p class="compromisos-apertura__sub">sobre la ejecución</p>
-          </div>
         </div>
       </div>
       <Compromisos variant="full" />
@@ -984,6 +985,9 @@ const zones = [
     transform: translateY(-2px);
     opacity: 0.93;
   }
+
+  .compromisos-apertura-grid { display: grid; gap: 2rem; }
+  @media(min-width:768px){ .compromisos-apertura-grid { grid-template-columns: auto 1fr; gap: 4rem; align-items: start; } }
 
   /* Reduced motion: fase-bar */
   @media(prefers-reduced-motion:reduce) {

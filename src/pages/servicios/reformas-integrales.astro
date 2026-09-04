@@ -113,10 +113,10 @@ const zones = [
 
   <!-- Hero -->
   <section class="bg-[#111827] flex flex-col justify-center lg:justify-end"
-           style="min-height:100vh;padding-bottom:3.5rem;position:relative"
+           style="min-height:100vh;min-height:100dvh;padding-bottom:3.5rem;position:relative"
            aria-labelledby="h-hero">
     <div class="hero-img-wrap" aria-hidden="true">
-      <img src="/img/hero-reformas-integrales-corredor-henares.webp" alt="" class="hero-img" loading="eager" />
+      <img src="/img/hero-reformas-integrales-corredor-henares.webp" alt="" class="hero-img" loading="eager" fetchpriority="high" />
       <div class="hero-img-overlay"></div>
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
@@ -410,9 +410,9 @@ const zones = [
       </p>
       <div class="overflow-x-auto">
         <table class="w-full text-sm border-collapse bg-white">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
+          <p class="text-left text-xs text-gray-400 mb-3 block">
             Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato tras la visita.
-          </caption>
+          </p>
           <thead>
             <tr class="border-b-2 border-[#A85535]">
               <th class="text-left py-3 px-5 font-bold text-gray-900">Alcance</th>
@@ -626,9 +626,9 @@ const zones = [
       </p>
       <div class="overflow-x-auto">
         <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
+          <p class="text-left text-xs text-gray-400 mb-3 block">
             Peso orientativo de cada fase sobre el total de la obra. El plazo absoluto depende del alcance y la superficie; la fecha de entrega queda fijada en el contrato.
-          </caption>
+          </p>
           <thead>
             <tr class="border-b-2 border-[#A85535]">
               <th class="text-left py-3 px-5 font-bold text-gray-900">Fase</th>

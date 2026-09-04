@@ -243,9 +243,9 @@ const tranches = [
        tesis (declaración dominante). Semántica intacta.
        Sin trazo decorativo. Distribución integrada.
   ═══════════════════════════════════════════════════════ -->
-  <section class="bg-[#111827] flex flex-col justify-end" style="min-height:100vh;padding-top:2.5rem;padding-bottom:4rem;position:relative" aria-labelledby="h-hero">
+  <section class="bg-[#111827] flex flex-col justify-end" style="min-height:100vh;min-height:100dvh;padding-top:2.5rem;padding-bottom:4rem;position:relative" aria-labelledby="h-hero">
     <div class="hero-img-wrap" aria-hidden="true">
-      <img src="/img/hero-reforma-cocinas-corredor-henares.webp" alt="" class="hero-img" loading="eager" />
+      <img src="/img/hero-reforma-cocinas-corredor-henares.webp" alt="" class="hero-img" loading="eager" fetchpriority="high" />
       <div class="hero-img-overlay"></div>
     </div>
 
@@ -442,7 +442,7 @@ const tranches = [
         <div class="bg-[#111827]" style="padding:clamp(2rem,4vw,3.5rem) clamp(1rem,4vw,2.5rem)">
 
           <div style="max-width:80rem;margin:0 auto">
-            <p class="font-black uppercase mb-3" style="font-size:10px;letter-spacing:.15em;color:rgba(255,255,255,.3)">Cómo se distribuye una cocina</p>
+            <p class="font-black uppercase mb-3" style="font-size:10px;letter-spacing:.15em;color:rgba(255,255,255,.65)">Cómo se distribuye una cocina</p>
             <h3 class="font-black text-white mb-3" style="font-size:clamp(1.25rem,2.5vw,1.75rem);letter-spacing:-0.02em">
               Cocina en línea, en L o con isla: qué condiciona cada esquema
             </h3>
@@ -528,7 +528,7 @@ const tranches = [
             <!-- Lo que no cambia una vez empezada la obra -->
             <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:grid;gap:1px;background:rgba(255,255,255,.07)" class="md:grid-cols-2">
               <div style="background:#111827;padding:1.5rem">
-                <p style="font-size:.625rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">
+                <p style="font-size:.625rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:.75rem">
                   Lo que no puede cambiar con la obra empezada
                 </p>
                 <p style="font-size:.875rem;color:#9CA3AF;line-height:1.65">
@@ -536,7 +536,7 @@ const tranches = [
                 </p>
               </div>
               <div style="background:#111827;padding:1.5rem;display:grid;gap:.625rem">
-                <p style="font-size:.625rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.125rem">
+                <p style="font-size:.625rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:.125rem">
                   Cuándo conservar · cuándo cambiar
                 </p>
                 {[
@@ -672,9 +672,9 @@ const tranches = [
       <!-- Tabla 4×3 — datos autorizados -->
       <div style="overflow-x:auto;max-width:60rem;margin-bottom:2rem">
         <table class="w-full text-sm border-collapse bg-white">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
+          <p class="text-left text-xs text-gray-400 mb-3 block">
             Precios orientativos. IVA (10 % en vivienda habitual) no incluido. Electrodomésticos de superficie libre no incluidos.
-          </caption>
+          </p>
           <thead>
             <tr class="bg-[#111827]">
               <th class="text-left py-3 px-5 text-white font-bold" style="font-size:.75rem;letter-spacing:.05em">Superficie</th>

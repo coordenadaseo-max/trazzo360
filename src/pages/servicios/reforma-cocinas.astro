@@ -144,6 +144,13 @@ const tranches = [
 
 <Layout title={title} description={description} schema={[serviceSchema, breadcrumbSchema, faqSchema]}>
 
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
+  </Fragment>
+
   <Breadcrumb items={[{ label: 'Servicios', href: '/servicios/' }, { label: 'Reforma de Cocinas' }]} />
 
 

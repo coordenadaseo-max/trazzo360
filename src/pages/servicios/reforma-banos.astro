@@ -141,7 +141,7 @@ const zones = [
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
       <p class="font-black uppercase text-[#A85535] mb-6" style="font-size:10px;letter-spacing:.15em">Reforma de baños · Corredor del Henares</p>
       <h1 id="h-hero" class="font-display text-white"
-          style="font-size:clamp(3rem,9.5vw,9rem);letter-spacing:-0.02em;line-height:0.85;margin-bottom:0;font-weight:900">
+          style="font-size:clamp(3.5rem,11vw,10rem);letter-spacing:-0.02em;line-height:0.85;margin-bottom:0;font-weight:900">
         <span class="hero-line"><span>Reforma de baños</span></span>
         <span class="hero-line"><span>en el Corredor</span></span>
         <span class="hero-line"><span>del Henares</span></span>
@@ -150,20 +150,19 @@ const zones = [
     <div class="hero-sub max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1">
       <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
         <div class="hero-c-grid">
-          <!-- Párrafo principal -->
-          <p class="text-gray-400 leading-relaxed" style="font-size:clamp(0.875rem,1vw,0.95rem);max-width:50ch">
-            Precio cerrado por contrato. Cambio de bañera por ducha, alicatado completo, fontanería y sanitarios. El plazo habitual es de 10 a 15 días laborables para un baño de 5&nbsp;m². El presupuesto no varía una vez firmado.
-          </p>
-          <!-- CTAs -->
-          <div class="flex flex-col gap-3">
-            <a href="/contacto/" class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white hover:bg-brand-dark transition-colors" style="background:#A85535">
-              Solicitar presupuesto gratis
-            </a>
-            <a href={`tel:${SITE.phone}`} class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white border border-white/25 hover:border-white/60 transition-colors">
-              {SITE.phoneDisplay}
-            </a>
+          <div>
+            <p class="leading-relaxed mb-5" style="font-size:clamp(0.875rem,1.05vw,1rem);max-width:46ch;color:rgba(255,255,255,.72)">
+              Precio cerrado por contrato. Cambio de bañera por ducha, alicatado completo, fontanería y sanitarios. El plazo habitual es de 10 a 15 días laborables para un baño de 5&nbsp;m². El presupuesto no varía una vez firmado.
+            </p>
+            <div class="hero-cta-group">
+              <a href="/contacto/" class="hero-cta-primary">
+                Solicitar presupuesto gratis
+              </a>
+              <a href={`tel:${SITE.phone}`} class="hero-cta-secondary">
+                {SITE.phoneDisplay}
+              </a>
+            </div>
           </div>
-          <!-- Stats desktop -->
           <div class="hero-metrics">
             <div class="hero-metric">
               <p class="hero-metric__val font-display">2.800€</p>
@@ -177,17 +176,6 @@ const zones = [
               <p class="hero-metric__val font-display">2 años</p>
               <p class="hero-metric__label">Garantía de obra</p>
             </div>
-          </div>
-        </div>
-        <!-- Stats mobile -->
-        <div class="flex gap-8 mt-6 pt-5 lg:hidden" style="border-top:1px solid rgba(255,255,255,.08)">
-          <div>
-            <p class="font-display text-white leading-none" style="font-size:1.5rem;letter-spacing:-0.03em;font-weight:900">2.800€</p>
-            <p class="text-xs mt-1" style="color:#9CA3AF">reforma completa</p>
-          </div>
-          <div>
-            <p class="font-display text-white leading-none" style="font-size:1.5rem;letter-spacing:-0.03em;font-weight:900">2–3</p>
-            <p class="text-xs mt-1" style="color:#9CA3AF">semanas</p>
           </div>
         </div>
       </div>
@@ -759,10 +747,6 @@ const zones = [
   </section>
 
 <style>
-  /* Métricas del hero: ocultas en móvil (esta página tiene bloque mobile separado) */
-  .hero-metrics { display: none; }
-  @media(min-width:1024px){ .hero-metrics { display: flex; flex-direction: column; gap: 1.5rem; text-align: right; } }
-
   /* Grid de apertura de precios */
   .precio-apertura-grid { display: grid; gap: 1.5rem; }
   @media(min-width:768px){ .precio-apertura-grid { grid-template-columns: auto 1fr; gap: 3rem; align-items: end; } }

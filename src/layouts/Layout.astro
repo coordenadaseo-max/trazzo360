@@ -70,6 +70,16 @@ const schemas = [baseSchema, ...(schema ? (Array.isArray(schema) ? schema : [sch
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
 
+    <!-- Barlow Condensed: fuente display del sistema.
+         Va aquí y no en cada página a propósito. Cuando la carga dependía de
+         que cada página recordara incluirla, reforma-cocinas se quedó sin ella
+         y su H1 renderizó en la fuente del sistema. El fallo era invisible en
+         local porque el navegador la tenía cacheada de otra página. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
+
     {robotsMeta && <meta name="robots" content={robotsMeta} />}
 
     <!-- Open Graph -->

@@ -8,7 +8,10 @@
 
 /* ── 1. TOKENS DE DISEÑO ──────────────────────────────────── */
 
-@theme {
+/* `static` obliga a emitir todas las variables aunque todavía no las use nadie.
+   Sin él, Tailwind v4 hace tree-shaking del bloque @theme y un `var(--dur-fast)`
+   escrito en el <style> de una página se resuelve a vacío sin dar ningún error. */
+@theme static {
   /* Paleta de color */
   --color-brand:          #A85535;   /* terracota principal */
   --color-brand-dark:     #8A4229;   /* terracota dark hover */
@@ -26,8 +29,11 @@
   --color-border:         #E5E7EB;   /* borde estándar */
   --color-border-light:   #F3F4F6;   /* borde ultra sutil */
   --color-border-medium:  #D1D5DB;   /* borde medio, pills */
+  --color-scroll-thumb:   #D1C9BD;   /* piedra cálida, scrollbar */
 
-  /* No hay border-radius — el sistema usa esquinas rectas intencionadamente */
+  /* ADN del lab: CERO border-radius y CERO sombras.
+     El sistema separa superficies con bordes de 1px y contraste de fondo,
+     nunca con elevación. Añadir una sombra rompe el lenguaje visual. */
   --radius: 0px;
 
   /* Tipografía */
@@ -46,7 +52,169 @@
   --text-17px:  1.0625rem;   /* decision-card title */
   --text-18px:  1.125rem;    /* price num */
   --text-20px:  1.25rem;     /* compromisos valor */
+
+  /* Escala display fluida — extraída del lab.
+     Genera utilidades Tailwind: text-display-hero, text-stat-editorial, etc.
+     Preferir las clases de rol de la sección 1b antes que estas utilidades
+     sueltas: las clases llevan además peso, tracking e interlineado. */
+  --text-display-hero:      clamp(3.5rem, 11vw, 10rem);      /* H1 de hero */
+  --text-display-vida:      clamp(2.5rem, 6vw, 5rem);        /* H2 sección oscura */
+  --text-display-cta:       clamp(2.25rem, 6vw, 4rem);       /* H2 del CTA final */
+  --text-stat-editorial:    clamp(5rem, 14vw, 10rem);        /* número grande editorial */
+  --text-stat-hero:         clamp(1.5rem, 3.2vw, 2.5rem);    /* métrica de hero */
+  --text-lead-hero:         clamp(0.875rem, 1.05vw, 1rem);   /* entradilla de hero */
+  --text-lead-resultado:    clamp(1.375rem, 3vw, 2.25rem);   /* lead sección resultado */
+  --text-era-title:         clamp(1.0625rem, 1.5vw, 1.25rem);/* título de columna era */
+
+  /* Tracking por rol — el valor depende del tamaño, no del gusto.
+     Cuanto mayor el tipo, más negativo el tracking. */
+  --tracking-display:  -0.02em;   /* H1 hero */
+  --tracking-section:  -0.03em;   /* H2 y H3 de sección */
+  --tracking-stat:     -0.055em;  /* número editorial grande */
+  --tracking-metric:   -0.04em;   /* métrica de hero */
+  --tracking-eyebrow:   0.15em;   /* eyebrow en versalitas */
+  --tracking-mono:      0.1em;    /* labels monoespaciados */
+  --tracking-cta:       0.08em;   /* texto de botón */
+
+  /* Movimiento — un solo easing domina el sistema (8 usos en el lab).
+     Genera utilidades Tailwind: ease-expo, ease-inout-soft. */
+  --ease-expo:        cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout-soft:  cubic-bezier(0.45, 0, 0.55, 1);
+
+  /* Duraciones — variables CSS, se consumen con var() */
+  --dur-fast:    0.2s;   /* hover de fila, color */
+  --dur-base:    0.25s;  /* transición de fondo */
+  --dur-accent:  0.35s;  /* barra de acento era-col */
+  --dur-reveal:  0.65s;  /* scroll reveal */
+  --dur-hero:    0.8s;   /* entrada de línea del hero */
+
+  /* Medida de lectura — el lab nunca deja una línea correr libre */
+  --measure-tight:   22ch;  /* lead de gran tamaño */
+  --measure-lead:    36ch;  /* entradilla oscura */
+  --measure-hero:    46ch;  /* párrafo de hero */
+  --measure-body:    58ch;  /* cuerpo estándar */
+  --measure-wide:    64ch;  /* cuerpo largo */
 }
+
+/* ── 1b. TIPOGRAFÍA POR ROL ───────────────────────────────────
+   Clases canónicas para los encabezados. Cada una encapsula el
+   conjunto completo (familia, peso, tamaño, tracking, interlineado)
+   a propósito: aplicar sólo una parte fue la causa real de que un
+   H1 acabara renderizando en la fuente del sistema a peso 400.
+
+   Consumir SIEMPRE estas clases en vez de repetir estilos inline.
+   El canon lo verifica `npm run audit:design`.
+   ───────────────────────────────────────────────────────────── */
+
+/* H1 de hero — una sola línea de texto */
+.h1-hero {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--text-display-hero);
+  letter-spacing: var(--tracking-display);
+  line-height: 0.85;
+  color: #fff;
+  margin-bottom: 0;
+  text-wrap: balance;
+}
+
+/* H1 de hero a dos niveles: eyebrow con la keyword + tesis.
+   El eyebrow es texto pequeño y lleva su propio tracking; el canon
+   de tamaño y tracking display aplica sólo a la tesis. */
+.h1-hero--stacked {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+  text-wrap: balance;
+}
+.h1-hero__eyebrow {
+  display: block;
+  font-size: clamp(0.875rem, 1.6vw, 1.125rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, .5);
+  margin-bottom: 1rem;
+}
+.h1-hero__thesis {
+  display: block;
+  font-size: clamp(3rem, 9vw, 8rem);
+  letter-spacing: var(--tracking-display);
+  line-height: 0.85;
+}
+
+/* H2 de sección — principal */
+.h2-section {
+  font-size: 2.25rem;              /* text-4xl */
+  font-weight: 900;
+  letter-spacing: var(--tracking-section);
+  line-height: 1.1;
+  color: #111827;
+  text-wrap: balance;
+}
+@media (min-width: 1024px) { .h2-section { font-size: 3rem; } }  /* lg:text-5xl */
+
+/* H2 secundario y H3 de subsección */
+.h3-sub {
+  font-size: 1.875rem;             /* text-3xl */
+  font-weight: 900;
+  letter-spacing: var(--tracking-section);
+  line-height: 1.15;
+  color: #111827;
+  text-wrap: balance;
+}
+@media (min-width: 1024px) { .h3-sub { font-size: 2.25rem; } }   /* lg:text-4xl */
+
+/* Variantes sobre fondo oscuro */
+.h2-section--dark,
+.h3-sub--dark { color: #fff; }
+.h2-section--dark { font-family: var(--font-display); }
+
+/* Entradilla del hero */
+.lead-hero {
+  font-size: var(--text-lead-hero);
+  line-height: 1.625;
+  max-width: var(--measure-hero);
+  color: rgba(255, 255, 255, .72);
+  margin-bottom: 1.25rem;
+}
+
+/* Número editorial grande (garantía, años, precio de apertura) */
+.stat-editorial {
+  font-size: var(--text-stat-editorial);
+  font-weight: 900;
+  letter-spacing: var(--tracking-stat);
+  line-height: 1;
+  color: #111827;
+}
+.stat-editorial--dark { color: #fff; }
+
+/* Eyebrow en versalitas sobre un encabezado */
+.eyebrow {
+  font-size: var(--text-10px);
+  font-weight: 900;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.75rem;
+}
+.eyebrow--dark { color: rgba(255, 255, 255, .65); }
+
+/* ── 1c. LAYOUT — RITMO VERTICAL Y MEDIDA ─────────────────── */
+
+/* Padding de sección principal (py-20 lg:py-28 en el lab) */
+.section-py { padding-top: 5rem; padding-bottom: 5rem; }
+@media (min-width: 1024px) { .section-py { padding-top: 7rem; padding-bottom: 7rem; } }
+
+/* Sección menor */
+.section-py-sm { padding-top: 4rem; padding-bottom: 4rem; }
+
+/* Medida de lectura */
+.measure-tight { max-width: var(--measure-tight); }
+.measure-lead  { max-width: var(--measure-lead); }
+.measure-hero  { max-width: var(--measure-hero); }
+.measure-body  { max-width: var(--measure-body); }
+.measure-wide  { max-width: var(--measure-wide); }
 
 /* ── 2. BASE ──────────────────────────────────────────────── */
 

@@ -19,70 +19,82 @@ y el resto del sitio se migra detrás. Nunca al revés.
 
 Cada valor está tomado de las dos páginas aprobadas, donde coinciden exactamente.
 
-### H1 hero
+**Consumir siempre la clase, nunca repetir los valores inline.** Cada clase
+encapsula el conjunto completo (familia, peso, tamaño, tracking, interlineado)
+a propósito: aplicar sólo una parte fue la causa real de que un H1 acabara
+renderizando en la fuente del sistema a peso 400.
 
-```
-font-size:     clamp(3.5rem, 11vw, 10rem)
-letter-spacing: -0.02em
-line-height:   0.85
-font-weight:   900
-font-family:   .font-display  (Barlow Condensed)
-```
+| Rol | Clase | Equivale a |
+|---|---|---|
+| H1 hero | `.h1-hero` | `clamp(3.5rem,11vw,10rem)` · `-0.02em` · `0.85` · `900` · display |
+| H1 hero a dos niveles | `.h1-hero--stacked` + `.h1-hero__eyebrow` + `.h1-hero__thesis` | la tesis lleva el canon; el eyebrow su propio tracking |
+| H2 principal | `.h2-section` | `text-4xl lg:text-5xl` · `-0.03em` |
+| H2 / H3 secundario | `.h3-sub` | `text-3xl lg:text-4xl` · `-0.03em` |
+| Sobre fondo oscuro | `.h2-section--dark` · `.h3-sub--dark` | lo anterior en blanco |
+| Entradilla de hero | `.lead-hero` | `clamp(0.875rem,1.05vw,1rem)` · `46ch` · blanco 72% |
+| Número editorial | `.stat-editorial` | `clamp(5rem,14vw,10rem)` · `-0.055em` |
+| Eyebrow versalitas | `.eyebrow` · `.eyebrow--dark` | `0.625rem` · `0.15em` · terracota |
+| Métrica de hero | `.hero-metric__val` | `clamp(1.5rem,3.2vw,2.5rem)` · `-0.04em` |
 
-**Requisito no negociable:** la página debe cargar el webfont en su `<head>`.
-Sin esto, `.font-display` cae silenciosamente a `system-ui` y el fallo **no se
-ve** si el navegador tiene la fuente cacheada de otra página:
+Ejemplo de H1 a dos niveles:
 
 ```astro
-<Fragment slot="head">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap" />
-</Fragment>
+<h1 id="h-hero" class="h1-hero--stacked">
+  <span class="h1-hero__eyebrow">Reforma de cocinas en el Corredor del Henares</span>
+  <span class="h1-hero__thesis">La distribución se decide antes de elegir los muebles.</span>
+</h1>
 ```
 
-Comprobación correcta en el navegador — `getComputedStyle` **no sirve**, porque
-devuelve lo declarado, no lo renderizado:
+### El webfont es global, no por página
+
+Barlow Condensed se carga en `src/layouts/Layout.astro`, no en cada página.
+Cuando dependía de que cada página lo recordara, `reforma-cocinas` se quedó sin
+él y su H1 renderizó en `system-ui`. **El fallo era invisible en local** porque
+el navegador tenía la fuente cacheada de haber visitado otra página.
+
+`getComputedStyle` **no detecta este fallo**: devuelve lo declarado, no lo
+renderizado. La comprobación correcta es:
 
 ```js
 document.fonts.check('900 3rem "Barlow Condensed"')  // debe ser true
 ```
 
-#### H1 a dos niveles
+Nota: si una página no usa ningún elemento con la fuente display, el navegador
+no la descarga y ese `check()` devuelve `false` legítimamente. Eso no es un
+fallo, es carga perezosa correcta.
 
-Cuando el H1 lleva eyebrow + tesis (caso de `reforma-cocinas`), el eyebrow es
-texto pequeño y mantiene su propio tracking. El canon aplica **sólo al span de
-la tesis**:
+### Ritmo vertical y medida
 
-```astro
-<h1 id="h-hero" class="font-display text-white" style="line-height:1;text-wrap:balance;font-weight:900">
-  <span class="block text-white/50 font-bold" style="font-size:clamp(.875rem,1.6vw,1.125rem);letter-spacing:.01em">
-    Eyebrow con la keyword
-  </span>
-  <span class="block" style="font-size:clamp(3rem,9vw,8rem);letter-spacing:-0.02em;line-height:0.85">
-    Tesis
-  </span>
-</h1>
-```
-
-### Encabezados de sección
-
-| Rol | Clases | letter-spacing |
-|---|---|---|
-| H2 principal | `text-4xl lg:text-5xl font-black text-gray-900` | `-0.03em` |
-| H2 secundario / H3 | `text-3xl lg:text-4xl font-black text-gray-900` | `-0.03em` |
-
-Siempre con `text-wrap:balance`.
-
-### Otros roles
-
-| Rol | Valor |
+| Clase | Valor |
 |---|---|
-| Número editorial grande | `clamp(5rem,14vw,10rem)` · `-0.055em` |
-| Métrica de hero | `.hero-metric__val` (`clamp(1.5rem,3.2vw,2.5rem)` · `-0.04em`) |
-| Eyebrow uppercase | `0.15em` |
-| CTA (botón) | `0.08em` |
+| `.section-py` | `5rem` · `7rem` en ≥1024 (el `py-20 lg:py-28` del lab) |
+| `.section-py-sm` | `4rem` |
+| `.measure-tight` · `.measure-lead` · `.measure-hero` · `.measure-body` · `.measure-wide` | `22ch` · `36ch` · `46ch` · `58ch` · `64ch` |
+
+### Dos reglas que definen el sistema
+
+Del ADN del lab, medido: **cero `box-shadow` y cero `border-radius`** en toda la
+página (salvo el punto decorativo de `.era-tag`).
+
+El sistema separa superficies con **bordes de 1px y contraste de fondo, nunca
+con elevación**. Añadir una sombra o redondear una esquina rompe el lenguaje
+visual aunque el resto de valores sea correcto. `--radius: 0px` es una decisión,
+no un descuido.
+
+### Movimiento
+
+Un solo easing domina el sistema (8 de 9 usos en el lab):
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--ease-expo` | `cubic-bezier(0.16, 1, 0.3, 1)` | todo: reveals, hover, entradas |
+| `--ease-inout-soft` | `cubic-bezier(0.45, 0, 0.55, 1)` | sólo el punto del indicador de scroll |
+| `--dur-fast` / `--dur-base` / `--dur-accent` / `--dur-reveal` / `--dur-hero` | `0.2s` / `0.25s` / `0.35s` / `0.65s` / `0.8s` | |
+
+El bloque `@theme` usa `@theme static` a propósito: sin él Tailwind v4 hace
+tree-shaking de las variables que todavía no consume nadie, y un
+`var(--dur-fast)` escrito en el `<style>` de una página se resolvería a vacío
+sin dar ningún error.
 
 ### Notación
 

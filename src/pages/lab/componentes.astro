@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PriceGuideChip from '../../components/ui/PriceGuideChip.astro';
+import Callout from '../../components/ui/Callout.astro';
+import HeroMetrics from '../../components/ui/HeroMetrics.astro';
+import HeroCtaGroup from '../../components/ui/HeroCtaGroup.astro';
+import EraTimeline from '../../components/ui/EraTimeline.astro';
+import CtaStrip from '../../components/ui/CtaStrip.astro';
+
+const title = 'Catálogo de componentes UI | Trazzo360 lab';
+const description = 'Página de verificación de los componentes extraídos del lab de reformas integrales. No es una página de producción.';
+
+const chips = [
+  { href: '/guias/cuanto-cuesta-reformar-un-bano/',   label: 'Guía',     text: '¿Cuánto cuesta reformar un baño?' },
+  { href: '/servicios/reforma-cocinas/',              label: 'Servicio', text: 'Reforma de cocinas' },
+];
+
+const metrics = [
+  { value: '26.000€',  label: 'Desde · 40 m² esencial' },
+  { value: '10–14',    label: 'Semanas · reforma completa' },
+  { value: '2 años',   label: 'Garantía de obra' },
+];
+
+const eras = [
+  {
+    tag: 'Coslada, San Fernando, Torrejón',
+    title: 'Pisos de los años 70–80',
+    body: 'Instalaciones con décadas de uso sin intervención. Muchos no han tenido ninguna reforma desde la construcción.',
+    items: [
+      'Cuadro eléctrico sin capacidad para vitrocerámica o secadora',
+      'Fontanería de plomo o acero galvanizado, fuera de norma',
+    ],
+  },
+  {
+    tag: 'Alcalá, Azuqueca, Guadalajara',
+    title: 'Viviendas de los años 90–2000',
+    body: 'Instalaciones en mejor estado, pero acabados que acumulan entre 20 y 30 años de uso.',
+    items: [
+      'Instalación con diferencial pero sin circuitos independientes',
+      'Ventanas de aluminio sin rotura de puente térmico',
+    ],
+  },
+  {
+    tag: 'Meco, Camarma, urbanizaciones',
+    title: 'Chalets y adosados',
+    body: 'Más superficie y más zonas que coordinar. El reto no es el alcance sino la secuencia.',
+    items: [
+      'Más materiales, más tiempo, más gremios en paralelo',
+      'Cubiertas inclinadas con filtraciones no visibles',
+    ],
+  },
+];
+
+const ctaItems = [
+  { value: 'Gratis',         label: 'Visita técnica' },
+  { value: 'Precio cerrado', label: 'En el contrato' },
+  { value: '2 años',         label: 'Garantía de ejecución' },
+];
+---
+
+<Layout title={title} description={description} noindex>
+
+  <section class="section-py-sm bg-[#111827]">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="eyebrow eyebrow--dark">Lab · verificación</p>
+      <h1 class="h1-hero" style="font-size:clamp(2.5rem,7vw,5rem)">Catálogo de componentes</h1>
+      <p class="lead-hero mt-6">
+        Cada bloque de abajo se renderiza desde su componente en <code>src/components/ui/</code>.
+        Esta página existe para verificarlos, no para publicarse.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-py bg-white">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col gap-16">
+
+      <div>
+        <h2 class="h3-sub mb-6">PriceGuideChip</h2>
+        <div class="flex flex-wrap gap-2">
+          {chips.map(chip => <PriceGuideChip {...chip} />)}
+        </div>
+      </div>
+
+      <div>
+        <h2 class="h3-sub mb-6">Callout</h2>
+        <Callout title="Precio cerrado e imprevistos">
+          El precio cerrado cubre todo lo inspeccionable en la visita técnica. Si al abrir
+          aparece algo no visible antes, lo comunicamos antes de tocar nada.
+          Consulta la <a href="/contacto/" class="text-[#A85535] hover:underline font-medium">visita técnica gratuita</a>.
+        </Callout>
+      </div>
+
+      <div>
+        <h2 class="h3-sub mb-6">EraTimeline</h2>
+        <EraTimeline columns={eras} />
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section-py bg-[#111827]">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col gap-16">
+
+      <div>
+        <h2 class="h3-sub h3-sub--dark mb-6">HeroMetrics</h2>
+        <HeroMetrics {metrics} />
+      </div>
+
+      <div>
+        <h2 class="h3-sub h3-sub--dark mb-6">HeroCtaGroup</h2>
+        <HeroCtaGroup label="Solicitar presupuesto gratis" note="Sin compromiso · Visita técnica gratuita" />
+      </div>
+
+      <div>
+        <h2 class="h3-sub h3-sub--dark mb-6">CtaStrip</h2>
+        <CtaStrip items={ctaItems} />
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

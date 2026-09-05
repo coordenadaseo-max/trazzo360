@@ -1,0 +1,20 @@
+---
+/**
+ * Aviso destacado con título y cuerpo. 54 usos en el sitio.
+ *
+ * El cuerpo va por slot para admitir enlaces y énfasis inline.
+ * Estilos en global.css (.empresa-callout).
+ */
+interface Props {
+  title: string;
+  /** Clases extra para el contenedor, p. ej. márgenes de la sección */
+  class?: string;
+}
+
+const { title, class: className } = Astro.props;
+---
+
+<div class:list={['empresa-callout', className]}>
+  <p class="empresa-callout__title">{title}</p>
+  <p class="empresa-callout__body"><slot /></p>
+</div>

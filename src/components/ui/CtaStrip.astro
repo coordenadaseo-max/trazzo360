@@ -1,0 +1,31 @@
+---
+/**
+ * Franja de garantías del CTA final: dato + etiqueta, con separadores
+ * verticales entre ellos en ≥640. 12 usos.
+ *
+ * Los separadores se intercalan aquí en vez de escribirlos a mano, que es
+ * donde se colaban de más o de menos. Estilos en global.css (.cta-strip).
+ */
+interface Item {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="cta-strip">
+  {items.map(({ value, label }, i) => (
+    <>
+      {i > 0 && <div class="cta-strip__sep" aria-hidden="true" />}
+      <div class="cta-strip__item">
+        <span class="cta-strip__val">{value}</span>
+        <span class="cta-strip__label">{label}</span>
+      </div>
+    </>
+  ))}
+</div>

@@ -1,0 +1,41 @@
+---
+/**
+ * Franja de tres columnas para tipologías por época o por tipo de vivienda.
+ * 36 usos. En reforma-cocinas las tres columnas estaban escritas a mano.
+ *
+ * Estilos en global.css (.era-timeline, .era-col, .era-tag, .era-list).
+ */
+interface Column {
+  /** Eyebrow de la columna: municipios, época, categoría */
+  tag: string;
+  title: string;
+  body: string;
+  /** Puntos de la lista con guion terracota */
+  items: string[];
+}
+
+interface Props {
+  columns: Column[];
+  /**
+   * Elemento del título de columna. Por defecto 'p' para no alterar el outline
+   * de encabezados: el layout no debe decidir la jerarquía semántica.
+   */
+  titleAs?: 'p' | 'h3' | 'h4';
+  class?: string;
+}
+
+const { columns, titleAs: Title = 'p', class: className } = Astro.props;
+---
+
+<div class:list={['era-timeline', className]}>
+  {columns.map(({ tag, title, body, items }) => (
+    <div class="era-col">
+      <p class="era-tag">{tag}</p>
+      <Title class="era-col__title">{title}</Title>
+      <p class="era-col__body">{body}</p>
+      <ul class="era-list">
+        {items.map(item => <li>{item}</li>)}
+      </ul>
+    </div>
+  ))}
+</div>

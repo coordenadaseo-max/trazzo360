@@ -1,0 +1,27 @@
+---
+import { SITE } from '../../data/site';
+
+/**
+ * Par de CTAs del hero: acción principal y teléfono.
+ *
+ * El teléfono sale de SITE aquí dentro para que ninguna página tenga que
+ * recordar el formato del `tel:`. Estilos en global.css (.hero-cta-*).
+ */
+interface Props {
+  /** Texto del botón principal */
+  label: string;
+  href?: string;
+  /** Línea pequeña bajo los botones, p. ej. "Sin compromiso" */
+  note?: string;
+}
+
+const { label, href = '/contacto/', note } = Astro.props;
+---
+
+<div class="hero-cta-group">
+  <a href={href} class="hero-cta-primary">{label}</a>
+  <a href={`tel:${SITE.phone}`} class="hero-cta-secondary">{SITE.phoneDisplay}</a>
+  {note && (
+    <p class="text-white/65 uppercase" style="font-size:.625rem;letter-spacing:var(--tracking-mono)">{note}</p>
+  )}
+</div>

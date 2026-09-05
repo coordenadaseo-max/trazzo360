@@ -1,0 +1,31 @@
+---
+/**
+ * Métricas del hero. 37 usos.
+ *
+ * Existe sobre todo para fijar la estructura: cuando cada página la escribía a
+ * mano, una acabó con bloques separados para móvil y escritorio y un
+ * `display:none` local que anulaba la regla global y ocultaba las métricas en
+ * móvil. global.css ya resuelve el responsive (fila en móvil, columna a la
+ * derecha en ≥1024); este componente impide volver a duplicarlo.
+ */
+interface Metric {
+  /** Cifra o dato corto. Admite <br> para partir en dos líneas. */
+  value: string;
+  label: string;
+}
+
+interface Props {
+  metrics: Metric[];
+}
+
+const { metrics } = Astro.props;
+---
+
+<div class="hero-metrics">
+  {metrics.map(({ value, label }) => (
+    <div class="hero-metric">
+      <p class="hero-metric__val font-display" set:html={value} />
+      <p class="hero-metric__label">{label}</p>
+    </div>
+  ))}
+</div>

@@ -5,6 +5,12 @@ import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
 import ZonasGrid from '../../components/ui/ZonasGrid.astro';
 import ProcesoSteps from '../../components/ui/ProcesoSteps.astro';
+import PriceGuideChip from '../../components/ui/PriceGuideChip.astro';
+import Callout from '../../components/ui/Callout.astro';
+import HeroMetrics from '../../components/ui/HeroMetrics.astro';
+import HeroCtaGroup from '../../components/ui/HeroCtaGroup.astro';
+import EraTimeline from '../../components/ui/EraTimeline.astro';
+import CtaStrip from '../../components/ui/CtaStrip.astro';
 import { SITE } from '../../data/site';
 
 const title = 'Reforma de Baños en el Corredor del Henares | Trazzo360';
@@ -154,29 +160,13 @@ const zones = [
             <p class="leading-relaxed mb-5" style="font-size:clamp(0.875rem,1.05vw,1rem);max-width:46ch;color:rgba(255,255,255,.72)">
               Precio cerrado por contrato. Cambio de bañera por ducha, alicatado completo, fontanería y sanitarios. El plazo habitual es de 10 a 15 días laborables para un baño de 5&nbsp;m². El presupuesto no varía una vez firmado.
             </p>
-            <div class="hero-cta-group">
-              <a href="/contacto/" class="hero-cta-primary">
-                Solicitar presupuesto gratis
-              </a>
-              <a href={`tel:${SITE.phone}`} class="hero-cta-secondary">
-                {SITE.phoneDisplay}
-              </a>
-            </div>
+            <HeroCtaGroup label="Solicitar presupuesto gratis" />
           </div>
-          <div class="hero-metrics">
-            <div class="hero-metric">
-              <p class="hero-metric__val font-display">2.800€</p>
-              <p class="hero-metric__label">Desde · baño ≤4&nbsp;m²</p>
-            </div>
-            <div class="hero-metric">
-              <p class="hero-metric__val font-display">2–3</p>
-              <p class="hero-metric__label">Semanas · reforma completa</p>
-            </div>
-            <div class="hero-metric">
-              <p class="hero-metric__val font-display">2 años</p>
-              <p class="hero-metric__label">Garantía de obra</p>
-            </div>
-          </div>
+          <HeroMetrics metrics={[
+            { value: '2.800€', label: 'Desde · baño ≤4 m²' },
+            { value: '2–3',    label: 'Semanas · reforma completa' },
+            { value: '2 años', label: 'Garantía de obra' },
+          ]} />
         </div>
       </div>
     </div>
@@ -201,51 +191,46 @@ const zones = [
         </p>
       </div>
 
-      <div class="era-timeline">
-        <div class="era-col">
-          <p class="era-tag">Bloques años 70–90</p>
-          <h3 class="era-col__title">Bloques de piso: Coslada, San Fernando, Torrejón y Alcalá</h3>
-          <p class="era-col__body">En Coslada, San Fernando y Torrejón abundan los bloques de los años 70. En Alcalá el crecimiento continuó durante los 80 y 90. Baños de 3 a 5&nbsp;m², bañera empotrada, alicatado completo hasta el techo. La diferencia está en las tuberías: plomo o acero galvanizado en los más antiguos, cobre en los de los 80.</p>
-          <ul class="era-list">
-            <li>Bañera empotrada de hierro fundido o acrílico, usualmente 1,50–1,60 m</li>
-            <li>Alicatado hasta media altura o completo, con juntas envejecidas</li>
-            <li>Fontanería de plomo, acero galvanizado o cobre según la década</li>
-            <li>Ventilación por conducto comunitario al patio interior</li>
-            <li>Sanitarios de primera o segunda generación, de difícil repuesto</li>
-          </ul>
-        </div>
+      <EraTimeline titleAs="h3" columns={[
+        {
+          "tag": "Bloques años 70–90",
+          "title": "Bloques de piso: Coslada, San Fernando, Torrejón y Alcalá",
+          "body": "En Coslada, San Fernando y Torrejón abundan los bloques de los años 70. En Alcalá el crecimiento continuó durante los 80 y 90. Baños de 3 a 5 m², bañera empotrada, alicatado completo hasta el techo. La diferencia está en las tuberías: plomo o acero galvanizado en los más antiguos, cobre en los de los 80.",
+          "items": [
+            "Bañera empotrada de hierro fundido o acrílico, usualmente 1,50–1,60 m",
+            "Alicatado hasta media altura o completo, con juntas envejecidas",
+            "Fontanería de plomo, acero galvanizado o cobre según la década",
+            "Ventilación por conducto comunitario al patio interior",
+            "Sanitarios de primera o segunda generación, de difícil repuesto"
+          ]
+        },
+        {
+          "tag": "Unifamiliares y adosados",
+          "title": "Unifamiliares y adosados: Meco, Camarma, Azuqueca",
+          "body": "En los municipios más pequeños predominan viviendas unifamiliares y adosados, muchos con baño principal y aseo secundario sin reformar desde la construcción. Más metros cuadrados, más superficie de alicatado, y frecuentemente una instalación de agua caliente que también necesita actualización.",
+          "items": [
+            "Baño principal de 5–8 m² y aseo de 2–3 m²",
+            "Materiales de los 90–2000: mayólica o gres de formato pequeño",
+            "Ventana al exterior en la mayoría de los casos",
+            "Instalación de PVC en viviendas posteriores a 2000"
+          ]
+        },
+        {
+          "tag": "El problema más infravalurado",
+          "title": "Ventilación: el problema que más se infravalora",
+          "body": "La mayoría de los baños del Corredor construidos antes de los 90 no tienen ventana al exterior. Con el tiempo, los conductos de ventilación se obstruyen y el extractor pierde eficacia. El resultado es humedad ambiental crónica, manchas negras en las juntas y condensaciones en el espejo.",
+          "items": [
+            "Conductos de ventilación forzada al patio interior o comunitario",
+            "Obstrucción progresiva que reduce la eficacia del extractor",
+            "Humedad ambiental crónica y manchas en juntas del alicatado",
+            "Revisamos el conducto y el extractor en la visita técnica"
+          ]
+        }
+      ]} />
 
-        <div class="era-col">
-          <p class="era-tag">Unifamiliares y adosados</p>
-          <h3 class="era-col__title">Unifamiliares y adosados: Meco, Camarma, Azuqueca</h3>
-          <p class="era-col__body">En los municipios más pequeños predominan viviendas unifamiliares y adosados, muchos con baño principal y aseo secundario sin reformar desde la construcción. Más metros cuadrados, más superficie de alicatado, y frecuentemente una instalación de agua caliente que también necesita actualización.</p>
-          <ul class="era-list">
-            <li>Baño principal de 5–8 m² y aseo de 2–3 m²</li>
-            <li>Materiales de los 90–2000: mayólica o gres de formato pequeño</li>
-            <li>Ventana al exterior en la mayoría de los casos</li>
-            <li>Instalación de PVC en viviendas posteriores a 2000</li>
-          </ul>
-        </div>
-
-        <div class="era-col">
-          <p class="era-tag">El problema más infravalurado</p>
-          <h3 class="era-col__title">Ventilación: el problema que más se infravalora</h3>
-          <p class="era-col__body">La mayoría de los baños del Corredor construidos antes de los 90 no tienen ventana al exterior. Con el tiempo, los conductos de ventilación se obstruyen y el extractor pierde eficacia. El resultado es humedad ambiental crónica, manchas negras en las juntas y condensaciones en el espejo.</p>
-          <ul class="era-list">
-            <li>Conductos de ventilación forzada al patio interior o comunitario</li>
-            <li>Obstrucción progresiva que reduce la eficacia del extractor</li>
-            <li>Humedad ambiental crónica y manchas en juntas del alicatado</li>
-            <li>Revisamos el conducto y el extractor en la visita técnica</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="empresa-callout mt-8">
-        <p class="empresa-callout__title">Antes de la visita técnica</p>
-        <p class="empresa-callout__body">
-          Evaluamos el estado real de las instalaciones antes de dar precio: qué puede aprovecharse, qué hay que renovar y qué conviene resolver en la misma obra para no volver a abrir en pocos años. El presupuesto solo cierra después de la visita, nunca antes.
-        </p>
-      </div>
+      <Callout title="Antes de la visita técnica" class="mt-8">
+        Evaluamos el estado real de las instalaciones antes de dar precio: qué puede aprovecharse, qué hay que renovar y qué conviene resolver en la misma obra para no volver a abrir en pocos años. El presupuesto solo cierra después de la visita, nunca antes.
+      </Callout>
     </div>
   </section>
 
@@ -466,16 +451,8 @@ const zones = [
       </div>
 
       <div class="price-guides mb-6">
-        <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="price-guide-chip">
-          <span class="price-guide-chip__label">Guía</span>
-          <span class="price-guide-chip__text">¿Cuánto cuesta reformar un baño?</span>
-          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="/calculadora-precio-reforma/?servicio=reforma-banos" class="price-guide-chip">
-          <span class="price-guide-chip__label">Herramienta</span>
-          <span class="price-guide-chip__text">Calculadora de reforma de baño</span>
-          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <PriceGuideChip href="/guias/cuanto-cuesta-reformar-un-bano/" label="Guía" text="¿Cuánto cuesta reformar un baño?" />
+        <PriceGuideChip href="/calculadora-precio-reforma/?servicio=reforma-banos" label="Herramienta" text="Calculadora de reforma de baño" />
       </div>
 
       <div class="price-ledger mb-10">
@@ -560,18 +537,15 @@ const zones = [
         </div>
 
         <!-- Callout empresa -->
-        <div class="empresa-callout">
-          <p class="empresa-callout__title">Precio cerrado e imprevistos: cómo se combinan</p>
-          <p class="empresa-callout__body">
-            El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica.
+        <Callout title="Precio cerrado e imprevistos: cómo se combinan">
+        El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica.
             Si al abrir el baño aparece algo que no era accesible antes —una tubería deteriorada
             detrás del alicatado, humedad estructural en el soporte— lo comunicamos antes de
             tocar nada y decidimos contigo si se incorpora a esta obra o se deja para una
             intervención posterior. Nunca actuamos sin tu autorización. En la mayoría de reformas
             de baño del Corredor, esto no ocurre. Cuando ocurre, hay una persona que llama,
             explica con detalle y espera tu decisión.
-          </p>
-        </div>
+      </Callout>
 
         <!-- CTA de conversión al final de precios -->
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
@@ -675,21 +649,9 @@ const zones = [
         <div>
           <p class="text-sm text-gray-500 mb-3">Si estás valorando reformar más zonas de la vivienda a la vez:</p>
           <div class="flex flex-wrap gap-2">
-            <a href="/servicios/reformas-integrales/" class="price-guide-chip">
-              <span class="price-guide-chip__label">Servicio</span>
-              <span class="price-guide-chip__text">Reformas integrales</span>
-              <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="/servicios/reforma-cocinas/" class="price-guide-chip">
-              <span class="price-guide-chip__label">Servicio</span>
-              <span class="price-guide-chip__text">Reforma de cocinas</span>
-              <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="/servicios/reforma-pisos/" class="price-guide-chip">
-              <span class="price-guide-chip__label">Servicio</span>
-              <span class="price-guide-chip__text">Reforma de pisos</span>
-              <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <PriceGuideChip href="/servicios/reformas-integrales/" label="Servicio" text="Reformas integrales" />
+            <PriceGuideChip href="/servicios/reforma-cocinas/" label="Servicio" text="Reforma de cocinas" />
+            <PriceGuideChip href="/servicios/reforma-pisos/" label="Servicio" text="Reforma de pisos" />
           </div>
         </div>
         <div>
@@ -723,22 +685,11 @@ const zones = [
         ¿Cuánto cuesta reformar<br>tu baño?
       </h2>
       <p class="text-gray-400 mb-10 text-lg">Visita técnica gratuita. Presupuesto cerrado por escrito.</p>
-      <div class="cta-strip">
-        <div class="cta-strip__item">
-          <span class="cta-strip__val">Gratis</span>
-          <span class="cta-strip__label">Visita técnica</span>
-        </div>
-        <div class="cta-strip__sep" aria-hidden="true"></div>
-        <div class="cta-strip__item">
-          <span class="cta-strip__val">Precio cerrado</span>
-          <span class="cta-strip__label">En el contrato</span>
-        </div>
-        <div class="cta-strip__sep" aria-hidden="true"></div>
-        <div class="cta-strip__item">
-          <span class="cta-strip__val">2 años</span>
-          <span class="cta-strip__label">Garantía de ejecución</span>
-        </div>
-      </div>
+      <CtaStrip items={[
+        { value: 'Gratis', label: 'Visita técnica' },
+        { value: 'Precio cerrado', label: 'En el contrato' },
+        { value: '2 años', label: 'Garantía de ejecución' },
+      ]} />
       <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
         <a href="/contacto/" class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar presupuesto</a>
         <a href={`tel:${SITE.phone}`} class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">{SITE.phoneDisplay}</a>

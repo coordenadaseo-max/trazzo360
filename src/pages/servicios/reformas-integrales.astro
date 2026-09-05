@@ -127,8 +127,7 @@ const zones = [
       <div class="hero-img-overlay"></div>
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
-      <h1 id="h-hero" class="font-display text-white"
-          style="font-size:clamp(3.5rem,11vw,10rem);letter-spacing:-0.02em;line-height:0.85;margin-bottom:0;font-weight:900">
+      <h1 id="h-hero" class="h1-hero">
         <span class="hero-line"><span>Reformas integrales</span></span>
         <span class="hero-line"><span>en el Corredor</span></span>
         <span class="hero-line"><span>del Henares</span></span>
@@ -911,11 +910,6 @@ const zones = [
   .fase-card.is-active .fase-bar { width:100%; }
 
   /* Variantes únicas de fila de precio en esta tabla */
-  .price-row--ref { background:#FAFAF8; }
-  .price-row--ref .price-row__name { color:#6B7280; }
-  .price-row--ref .price-row__sub { display:flex; align-items:center; gap:0.375rem; }
-  .price-row--ref .price-row__sub::before { content:''; display:inline-block; width:0.5rem; height:1px; background:#D1D5DB; }
-  .price-row__num--muted { color:#C4C9D4; }
 
   /* CTA hover lift */
   a[style*="background:#A85535"],
@@ -944,14 +938,6 @@ const zones = [
 </style>
 
 <script>
-  // Hero parallax
-  const heroImgEl = document.querySelector('.hero-img') as HTMLElement;
-  if (heroImgEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    heroImgEl.style.willChange = 'transform';
-    window.addEventListener('scroll', () => {
-      heroImgEl.style.transform = `translateY(${window.scrollY * 0.28}px)`;
-    }, { passive: true });
-  }
 
   // Count-up for [data-count]
   function countUp(el: HTMLElement) {

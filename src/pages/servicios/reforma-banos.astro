@@ -146,8 +146,7 @@ const zones = [
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
       <p class="font-black uppercase text-[#A85535] mb-6" style="font-size:10px;letter-spacing:0.15em">Reforma de baños · Corredor del Henares</p>
-      <h1 id="h-hero" class="font-display text-white"
-          style="font-size:clamp(3.5rem,11vw,10rem);letter-spacing:-0.02em;line-height:0.85;margin-bottom:0;font-weight:900">
+      <h1 id="h-hero" class="h1-hero">
         <span class="hero-line"><span>Reforma de baños</span></span>
         <span class="hero-line"><span>en el Corredor</span></span>
         <span class="hero-line"><span>del Henares</span></span>
@@ -717,16 +716,4 @@ const zones = [
     .obra-timeline-grid > .obra-timeline-cell:nth-child(2) { border-right: 1px solid rgba(255,255,255,.12); }
   }
 </style>
-
-<script>
-  // Hero parallax
-  const heroImgEl = document.querySelector('.hero-img') as HTMLElement;
-  if (heroImgEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    heroImgEl.style.willChange = 'transform';
-    window.addEventListener('scroll', () => {
-      heroImgEl.style.transform = `translateY(${window.scrollY * 0.28}px)`;
-    }, { passive: true });
-  }
-</script>
-
 </Layout>

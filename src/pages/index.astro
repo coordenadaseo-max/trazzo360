@@ -1,13 +1,9 @@
 ---
-import { existsSync } from 'node:fs';
-import { join } from 'node:path';
 import Layout from '../layouts/Layout.astro';
-import { SITE, SERVICES, ZONES, AUTHOR, COMPROMISOS } from '../data/site';
-import { SERVICE_ICONS } from '../data/site';
+import { SITE, SERVICES, ZONES, AUTHOR, COMPROMISOS, SERVICE_ICONS } from '../data/site';
 import FaqAccordion from '../components/ui/FaqAccordion.astro';
 import HeroTitle from '../components/ui/HeroTitle.astro';
 
-const publicDir = join(process.cwd(), 'public');
 const hasRealProjectImages = true;
 
 const primaryZoneDescs: Record<string, string> = {
@@ -72,8 +68,8 @@ const trustCompromisos = COMPROMISOS.filter(c =>
   <section class="bg-[#111827] hero-root flex flex-col justify-end" aria-labelledby="h-hero" style="position:relative">
     <!-- Imagen de fondo: cubre la mitad derecha en desktop, fondo completo en mobile -->
     <div class="hero-img-wrap" aria-hidden="true">
-      <img src="/img/hero-reforma-salon-corredor-henares.webp" alt="" class="hero-img" />
-      <div class="hero-img-overlay"></div>
+      <img src="/img/hero-reforma-salon-corredor-henares.webp" alt="" class="hero-img hero-img--split" />
+      <div class="hero-img-overlay hero-img-overlay--split"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
@@ -555,19 +551,22 @@ const trustCompromisos = COMPROMISOS.filter(c =>
     padding-bottom: 4rem;
   }
 
-  /* Mobile: overlay oscuro casi total */
-  .hero-img-overlay {
-    position: absolute;
-    inset: 0;
+  /* Mobile: overlay plano, más oscuro que el gradiente del sistema, porque
+     aquí el texto cae sobre la imagen completa. Modificador propio, no
+     redefinición de .hero-img-overlay. */
+  .hero-img-overlay--split {
     background: rgba(17, 24, 39, 0.82);
   }
   /* Desktop: imagen en mitad derecha, texto en mitad izquierda limpia */
   @media (min-width: 1024px) {
-    .hero-img {
+    /* Modificadores propios en vez de redefinir .hero-img/.hero-img-overlay:
+       un override con la misma especificidad depende del orden de carga, que
+       es como .hero-metrics acabó oculta en móvil en reforma-banos. */
+    .hero-img--split {
       left: 40%;
       width: 60%;
     }
-    .hero-img-overlay {
+    .hero-img-overlay--split {
       background: linear-gradient(
         to right,
         #111827 35%,

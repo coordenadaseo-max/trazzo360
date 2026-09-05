@@ -186,6 +186,22 @@
   .h4-block { font-size: 1.875rem; line-height: 2.25rem; }  /* lg:text-3xl */
 }
 
+/* H1 de página sin hero: legales, guías, contacto, calculadora, 404.
+   Tenían seis escalas distintas entre ellas (text-3xl, text-4xl,
+   text-3xl md:text-4xl, text-4xl lg:text-6xl, text-3xl lg:text-5xl,
+   text-4xl lg:text-5xl). Esta es la del sistema. */
+.h1-page {
+  font-size: 2.25rem; line-height: 2.5rem;      /* text-4xl */
+  font-weight: 900;
+  letter-spacing: var(--tracking-display);
+  color: #111827;
+  text-wrap: balance;
+}
+@media (min-width: 1024px) {
+  .h1-page { font-size: 3rem; line-height: 1; }  /* lg:text-5xl */
+}
+.h1-page--dark { color: #fff; }
+
 /* Titular del CTA final. Tenía tres escalas distintas repartidas por el sitio
    (clamp 2/5vw/3.5rem, 2.25/6vw/4rem y varias sueltas); esta es la del lab. */
 .h2-cta {
@@ -273,6 +289,7 @@
   .price-row__num,
   .price-row__plazo,
   .plazos-td--pct,
+  .partida-pct,
   .cta-strip__val { font-variant-numeric: tabular-nums; }
 }
 
@@ -718,6 +735,7 @@
 .incluye-n {
   font-size: 0.6875rem; font-weight: 700; color: #A85535;
   letter-spacing: 0.1em; font-family: 'Courier New', monospace; line-height: 1;
+  padding-top: 0.1rem;  /* alinea el número con la primera línea del título */
 }
 .incluye-body { min-width: 0; }
 .incluye-title { font-size: 0.9375rem; font-weight: 700; color: #111827; margin-bottom: 0.2rem; line-height: 1.3; }

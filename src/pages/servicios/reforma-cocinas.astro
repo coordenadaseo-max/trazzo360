@@ -830,14 +830,3 @@ const tranches = [
   </section>
 
 </Layout>
-
-<script>
-  // Hero parallax
-  const heroImgEl = document.querySelector('.hero-img') as HTMLElement;
-  if (heroImgEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    heroImgEl.style.willChange = 'transform';
-    window.addEventListener('scroll', () => {
-      heroImgEl.style.transform = `translateY(${window.scrollY * 0.28}px)`;
-    }, { passive: true });
-  }
-</script>

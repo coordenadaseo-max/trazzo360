@@ -121,6 +121,27 @@ const schemas = [baseSchema, ...(schema ? (Array.isArray(schema) ? schema : [sch
          o tardara, el contenido marcado con .reveal se quedaría invisible. Aquí
          se ejecuta sí o sí, y si el navegador no soporta IntersectionObserver
          se retira la marca .js y todo se ve sin animación. -->
+    <!-- Parallax del hero. Estaba copiado literalmente en 5 páginas y faltaba
+         en otras 3 que sí tienen imagen de hero, así que unas se movían y
+         otras no. La escritura del transform va dentro de requestAnimationFrame:
+         la versión anterior escribía estilos en cada evento de scroll. -->
+    <script is:inline>
+      (function () {
+        var img = document.querySelector('.hero-img');
+        if (!img || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        img.style.willChange = 'transform';
+        var pendiente = false;
+        window.addEventListener('scroll', function () {
+          if (pendiente) return;
+          pendiente = true;
+          requestAnimationFrame(function () {
+            img.style.transform = 'translateY(' + (window.scrollY * 0.28) + 'px)';
+            pendiente = false;
+          });
+        }, { passive: true });
+      })();
+    </script>
+
     <script is:inline>
       (function () {
         if (!('IntersectionObserver' in window)) {

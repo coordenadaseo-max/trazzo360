@@ -8,6 +8,8 @@ import { SITE } from '../../data/site';
 import PriceGuideChip from '../../components/ui/PriceGuideChip.astro';
 import Callout from '../../components/ui/Callout.astro';
 import HeroTitle from '../../components/ui/HeroTitle.astro';
+import HeroCtaGroup from '../../components/ui/HeroCtaGroup.astro';
+import HeroMetrics from '../../components/ui/HeroMetrics.astro';
 
 const title = 'Reforma de Locales Comerciales en el Corredor | Trazzo360';
 const description = 'Reforma de locales comerciales en el Corredor del Henares. La actividad determina el alcance y las instalaciones necesarias. Presupuesto orientativo tras visita técnica gratuita.';
@@ -112,41 +114,17 @@ const faqSchema = {
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1">
       <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
         <div class="hero-c-grid">
-          <p class="text-gray-400 leading-relaxed" style="font-size:clamp(0.875rem,1vw,0.95rem);max-width:50ch">
-            Hostelería, comercio, oficinas y actividades profesionales. La visita técnica identifica los condicionantes antes de cerrar el alcance. Precio cerrado por contrato antes de la primera palada.
-          </p>
-          <div class="flex flex-col gap-3">
-            <a href="/contacto/" class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
-              Solicitar visita gratuita
-            </a>
-            <a href={`tel:${SITE.phone}`} class="inline-block text-center px-6 py-3.5 font-bold text-xs tracking-[0.1em] uppercase text-white border border-white/25 hover:border-white/60 transition-colors">
-              {SITE.phoneDisplay}
-            </a>
-          </div>
-          <div class="hidden lg:block text-right">
-            <div class="mb-5">
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">400 €/m²</p>
-              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:0.1em;text-transform:uppercase">Desde · acondicionamiento</p>
-            </div>
-            <div class="mb-5">
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">4–8</p>
-              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:0.1em;text-transform:uppercase">Semanas · obra estándar</p>
-            </div>
-            <div>
-              <p class="text-white font-black leading-none" style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.02em">40/40/20</p>
-              <p style="font-size:0.6875rem;color:#9CA3AF;margin-top:4px;letter-spacing:0.1em;text-transform:uppercase">Fases de pago</p>
-            </div>
-          </div>
-        </div>
-        <div class="flex gap-8 mt-6 pt-5 lg:hidden" style="border-top:1px solid rgba(255,255,255,.08)">
           <div>
-            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">400 €/m²</p>
-            <p class="text-xs mt-1" style="color:#9CA3AF">acondicionamiento</p>
+            <p class="lead-hero">
+              Hostelería, comercio, oficinas y actividades profesionales. La visita técnica identifica los condicionantes antes de cerrar el alcance. Precio cerrado por contrato antes de la primera palada.
+            </p>
+            <HeroCtaGroup label="Solicitar visita gratuita" />
           </div>
-          <div>
-            <p class="text-white font-black leading-none" style="font-size:1.375rem;letter-spacing:-0.03em">4–8</p>
-            <p class="text-xs mt-1" style="color:#9CA3AF">semanas</p>
-          </div>
+          <HeroMetrics metrics={[
+            { value: '400 €/m²', label: 'Desde · acondicionamiento' },
+            { value: '4–8', label: 'Semanas · obra estándar' },
+            { value: '40/40/20', label: 'Fases de pago' },
+          ]} />
         </div>
       </div>
     </div>
@@ -709,8 +687,6 @@ const faqSchema = {
 
 <style>
   /* Grid 3-col del hero */
-  .hero-c-grid { display: grid; gap: 1.5rem; }
-  @media(min-width:1024px){ .hero-c-grid { grid-template-columns: 55fr 22fr 23fr; gap: 3rem; } }
 
   /* Grid de compromisos */
   .compromisos-apertura-grid { display: grid; gap: 2rem; }

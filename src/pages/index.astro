@@ -99,12 +99,12 @@ const trustCompromisos = COMPROMISOS.filter(c =>
           <div class="flex flex-col gap-3">
             <a href="/contacto/"
                class="inline-block text-center text-white font-black text-xs uppercase"
-               style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:.1em">
+               style="padding:.9rem 1.5rem;background:#A85535;letter-spacing:0.1em">
               Solicitar valoración gratuita
             </a>
             <a href={`tel:${SITE.phone}`}
                class="inline-block text-center font-black text-xs uppercase text-white"
-               style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);letter-spacing:.1em">
+               style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);letter-spacing:0.1em">
               {SITE.phoneDisplay}
             </a>
             <p class="text-[10px] text-white/50 uppercase tracking-wider">Sin compromiso · Visita técnica gratuita</p>
@@ -115,17 +115,17 @@ const trustCompromisos = COMPROMISOS.filter(c =>
             <div>
               <p class="text-white font-black leading-none"
                  style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2 años</p>
-              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Garantía sobre la ejecución</p>
+              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:0.1em;text-transform:uppercase">Garantía sobre la ejecución</p>
             </div>
             <div>
               <p class="text-white font-black leading-none"
                  style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">1</p>
-              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Responsable de obra</p>
+              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:0.1em;text-transform:uppercase">Responsable de obra</p>
             </div>
             <div>
               <p class="text-white font-black leading-none"
                  style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">Precio cerrado</p>
-              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:.1em;text-transform:uppercase">Por contrato desde el inicio</p>
+              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:0.1em;text-transform:uppercase">Por contrato desde el inicio</p>
             </div>
           </div>
 
@@ -135,15 +135,15 @@ const trustCompromisos = COMPROMISOS.filter(c =>
         <div class="flex gap-5 mt-8 lg:hidden">
           <div>
             <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">2 años</p>
-            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Garantía</p>
+            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:0.1em;text-transform:uppercase">Garantía</p>
           </div>
           <div>
             <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">1</p>
-            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Responsable</p>
+            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:0.1em;text-transform:uppercase">Responsable</p>
           </div>
           <div>
             <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">Precio cerrado</p>
-            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:.1em;text-transform:uppercase">Por contrato</p>
+            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:0.1em;text-transform:uppercase">Por contrato</p>
           </div>
         </div>
       </div>
@@ -242,7 +242,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
         <!-- Compromisos -->
         <div>
           <p class="font-black uppercase text-white/30 mb-5"
-             style="font-size:10px;letter-spacing:.15em">Lo que queda fijado en el contrato</p>
+             style="font-size:10px;letter-spacing:0.15em">Lo que queda fijado en el contrato</p>
           <ul style="list-style:none;padding:0;margin:0">
             {trustCompromisos.map((c, i) => (
               <li style={`padding:1.25rem 0;${i < trustCompromisos.length - 1 ? 'border-bottom:1px solid rgba(255,255,255,.07)' : ''}`}>
@@ -254,12 +254,12 @@ const trustCompromisos = COMPROMISOS.filter(c =>
           <div class="mt-8 flex gap-4 flex-wrap">
             <a href="/como-trabajamos/"
                class="inline-block text-white font-black text-xs uppercase"
-               style="padding:.75rem 1.5rem;border:1px solid rgba(255,255,255,.2);letter-spacing:.1em">
+               style="padding:.75rem 1.5rem;border:1px solid rgba(255,255,255,.2);letter-spacing:0.1em">
               Ver todos los compromisos →
             </a>
             <a href="/calculadora-precio-reforma/"
                class="inline-block text-white/50 font-black text-xs uppercase hover:text-white transition-colors"
-               style="padding:.75rem 1.5rem;letter-spacing:.1em">
+               style="padding:.75rem 1.5rem;letter-spacing:0.1em">
               Calcular precio de mi reforma →
             </a>
           </div>
@@ -268,7 +268,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
         <!-- Cómo coordinamos — preparado para mostrar nombre cuando AUTHOR.name exista -->
         <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2rem">
           <p class="font-black uppercase text-white/30 mb-5"
-             style="font-size:10px;letter-spacing:.15em">Cómo coordinamos tu reforma</p>
+             style="font-size:10px;letter-spacing:0.15em">Cómo coordinamos tu reforma</p>
 
           {AUTHOR.name ? (
             <p class="font-bold text-white text-sm mb-1">{AUTHOR.name}</p>
@@ -345,7 +345,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
       <p class="text-xs text-gray-400 mb-6">Precios orientativos sin IVA. El presupuesto personalizado y gratuito es siempre más preciso.</p>
       <a href="/contacto/"
          class="inline-block text-white font-black text-xs uppercase"
-         style="padding:1rem 2rem;background:#A85535;letter-spacing:.12em">
+         style="padding:1rem 2rem;background:#A85535;letter-spacing:0.12em">
         Solicitar presupuesto cerrado
       </a>
     </div>
@@ -481,7 +481,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
 
       <!-- Zonas secundarias -->
       <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:1.75rem;margin-bottom:3rem">
-        <p style="font-size:10px;color:#9CA3AF;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.875rem">
+        <p style="font-size:10px;color:#9CA3AF;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:.875rem">
           También operamos en
         </p>
         <div class="flex flex-wrap gap-2">
@@ -498,7 +498,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
       <!-- CTA -->
       <a href="/contacto/"
          class="inline-block text-white font-black text-xs uppercase"
-         style="padding:1rem 2rem;background:#A85535;letter-spacing:.12em">
+         style="padding:1rem 2rem;background:#A85535;letter-spacing:0.12em">
         Pedir presupuesto en tu zona
       </a>
       <p class="text-gray-500 mt-3" style="font-size:0.8125rem">
@@ -548,12 +548,12 @@ const trustCompromisos = COMPROMISOS.filter(c =>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/contacto/"
            class="inline-block text-white font-black text-xs uppercase"
-           style="padding:1.1rem 2.5rem;background:#A85535;letter-spacing:.12em">
+           style="padding:1.1rem 2.5rem;background:#A85535;letter-spacing:0.12em">
           Solicitar valoración gratuita
         </a>
         <a href={`tel:${SITE.phone}`}
            class="inline-block text-white font-black text-xs uppercase"
-           style="padding:1.1rem 2.5rem;border:1px solid rgba(255,255,255,.25);letter-spacing:.12em">
+           style="padding:1.1rem 2.5rem;border:1px solid rgba(255,255,255,.25);letter-spacing:0.12em">
           {SITE.phoneDisplay}
         </a>
       </div>

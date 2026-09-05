@@ -8,20 +8,15 @@ interface Props {
   mb?: string;
 }
 const { id, title, subtitle, eyebrow, size = 'lg', mb = 'mb-10' } = Astro.props;
-const headingClass = size === 'md'
-  ? 'text-3xl lg:text-4xl font-black text-gray-900'
-  : 'text-4xl lg:text-5xl font-black text-gray-900';
+// Clases de rol de global.css, no estilos inline repetidos.
+const headingClass = size === 'md' ? 'h3-sub' : 'h2-section';
 ---
 
 <div class:list={['reveal', mb]}>
-  {eyebrow && (
-    <p class="text-xs font-bold uppercase tracking-widest text-brand mb-4">{eyebrow}</p>
-  )}
-  <h2 id={id} class:list={[headingClass, 'mb-5']} style="letter-spacing:-0.03em;text-wrap:balance">
-    {title}
-  </h2>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2 id={id} class:list={[headingClass, 'mb-5']}>{title}</h2>
   {subtitle && (
-    <p class="text-gray-600 leading-relaxed" style="font-size:1.0625rem;line-height:1.75;max-width:60ch">
+    <p class="text-gray-600 leading-relaxed measure-wide" style="font-size:1.0625rem;line-height:1.75">
       {subtitle}
     </p>
   )}

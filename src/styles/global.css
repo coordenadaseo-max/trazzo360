@@ -143,27 +143,33 @@
   line-height: 0.85;
 }
 
-/* H2 de sección — principal */
+/* H2 de sección — principal.
+   Replica exactamente `text-4xl lg:text-5xl` de Tailwind, interlineado
+   incluido: en Tailwind cada text-* acopla su propio line-height, y text-5xl
+   usa 1. Fijar aquí un 1.1 "razonable" habría cambiado el interlineado de
+   todos los H2 del sitio al migrar. */
 .h2-section {
-  font-size: 2.25rem;              /* text-4xl */
+  font-size: 2.25rem; line-height: 2.5rem;      /* text-4xl */
   font-weight: 900;
   letter-spacing: var(--tracking-section);
-  line-height: 1.1;
   color: #111827;
   text-wrap: balance;
 }
-@media (min-width: 1024px) { .h2-section { font-size: 3rem; } }  /* lg:text-5xl */
+@media (min-width: 1024px) {
+  .h2-section { font-size: 3rem; line-height: 1; }  /* lg:text-5xl */
+}
 
-/* H2 secundario y H3 de subsección */
+/* H2 secundario y H3 de subsección — `text-3xl lg:text-4xl` */
 .h3-sub {
-  font-size: 1.875rem;             /* text-3xl */
+  font-size: 1.875rem; line-height: 2.25rem;    /* text-3xl */
   font-weight: 900;
   letter-spacing: var(--tracking-section);
-  line-height: 1.15;
   color: #111827;
   text-wrap: balance;
 }
-@media (min-width: 1024px) { .h3-sub { font-size: 2.25rem; } }   /* lg:text-4xl */
+@media (min-width: 1024px) {
+  .h3-sub { font-size: 2.25rem; line-height: 2.5rem; }  /* lg:text-4xl */
+}
 
 /* Variantes sobre fondo oscuro */
 .h2-section--dark,

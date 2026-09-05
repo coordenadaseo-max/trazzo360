@@ -135,7 +135,7 @@ const faqSchema = {
 
         <!-- Columna izquierda: H1 + tesis + CTAs -->
         <div>
-          <p class="font-bold block leading-snug mb-5" style="font-size:clamp(.75rem,1.35vw,.9375rem);letter-spacing:.02em;color:rgba(255,255,255,.38)">
+          <p class="font-bold block leading-snug mb-5" style="font-size:clamp(.75rem,1.35vw,.9375rem);letter-spacing:0.02em;color:rgba(255,255,255,.38)">
             Empresa de reformas en {zone.name}
           </p>
           <h1 id="h-hero" class="h1-hero" style="font-size:clamp(2.25rem,5.5vw,4.5rem)">
@@ -173,7 +173,7 @@ const faqSchema = {
           {typoIndex.map(item => (
             <div class="py-5" style="border-bottom:1px solid rgba(255,255,255,.08)">
               <p class="font-bold text-white mb-1" style="font-size:.9375rem">{item.barrios}</p>
-              <p class="font-bold uppercase mb-2" style="font-size:.625rem;letter-spacing:.07em;color:#A85535">{item.epoca}</p>
+              <p class="font-bold uppercase mb-2" style="font-size:.625rem;letter-spacing:0.07em;color:#A85535">{item.epoca}</p>
               <p style="font-size:.8125rem;color:rgba(255,255,255,.45);line-height:1.6">{item.note}</p>
             </div>
           ))}
@@ -197,12 +197,12 @@ const faqSchema = {
       <div class="matriz-grid mb-8">
         {matrizData.map(cell => (
           <div class="bg-[#111827] p-7">
-            <p class="mb-3" style="font-size:.5rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.22)">{cell.label}</p>
+            <p class="mb-3" style="font-size:.5rem;font-weight:900;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,.22)">{cell.label}</p>
             <p class="font-bold text-white mb-1" style="font-size:1.0625rem;line-height:1.25">{cell.barrios}</p>
-            <p class="font-bold uppercase mb-4" style="font-size:.625rem;letter-spacing:.07em;color:#A85535">{cell.epoca}</p>
+            <p class="font-bold uppercase mb-4" style="font-size:.625rem;letter-spacing:0.07em;color:#A85535">{cell.epoca}</p>
             <p class="mb-5" style="font-size:.8125rem;color:rgba(255,255,255,.48);line-height:1.65">{cell.note}</p>
             <div style="padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.07)">
-              <p class="mb-2" style="font-size:.4375rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.2)">Implicación para el alcance</p>
+              <p class="mb-2" style="font-size:.4375rem;font-weight:900;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,.2)">Implicación para el alcance</p>
               <p class="font-semibold" style="font-size:.875rem;color:rgba(255,255,255,.75);line-height:1.5">{cell.implication}</p>
             </div>
           </div>
@@ -235,7 +235,7 @@ const faqSchema = {
               <p class="srv-caso">{srv.caso}</p>
             </div>
             <div>
-              <p class="font-bold text-gray-900 mb-2" style="font-size:1.125rem;letter-spacing:-.01em">{srv.nombre}</p>
+              <p class="font-bold text-gray-900 mb-2" style="font-size:1.125rem;letter-spacing:-0.01em">{srv.nombre}</p>
               <p class="text-gray-500 leading-relaxed mb-4" style="font-size:.9375rem">{srv.desc}</p>
               <div class="flex flex-wrap gap-5">
                 {srv.links.map(l => (

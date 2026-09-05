@@ -5,6 +5,12 @@ import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
 import ZonasGrid from '../../components/ui/ZonasGrid.astro';
 import ProcesoSteps from '../../components/ui/ProcesoSteps.astro';
+import PriceGuideChip from '../../components/ui/PriceGuideChip.astro';
+import Callout from '../../components/ui/Callout.astro';
+import HeroMetrics from '../../components/ui/HeroMetrics.astro';
+import HeroCtaGroup from '../../components/ui/HeroCtaGroup.astro';
+import EraTimeline from '../../components/ui/EraTimeline.astro';
+import CtaStrip from '../../components/ui/CtaStrip.astro';
 import { SITE } from '../../data/site';
 
 const title = 'Reformas Integrales en el Corredor del Henares | Trazzo360';
@@ -135,29 +141,13 @@ const zones = [
             <p class="leading-relaxed mb-5" style="font-size:clamp(0.875rem,1.05vw,1rem);max-width:46ch;color:rgba(255,255,255,.72)">
               Un único interlocutor coordina todos los gremios: electricistas, fontaneros, alicatadores, carpinteros y pintores. Precio cerrado por contrato. Plazo garantizado antes de empezar.
             </p>
-            <div class="hero-cta-group">
-              <a href="/contacto/" class="hero-cta-primary">
-                Solicitar presupuesto gratis
-              </a>
-              <a href={`tel:${SITE.phone}`} class="hero-cta-secondary">
-                {SITE.phoneDisplay}
-              </a>
-            </div>
+            <HeroCtaGroup label="Solicitar presupuesto gratis" />
           </div>
-          <div class="hero-metrics">
-            <div class="hero-metric">
-              <p class="hero-metric__val font-display">26.000€</p>
-              <p class="hero-metric__label">Desde · 40&nbsp;m² esencial</p>
-            </div>
-            <div class="hero-metric">
-              <p class="hero-metric__val font-display">10–14</p>
-              <p class="hero-metric__label">Semanas · reforma completa</p>
-            </div>
-            <div class="hero-metric">
-              <p class="hero-metric__val font-display">2 años</p>
-              <p class="hero-metric__label">Garantía de obra</p>
-            </div>
-          </div>
+          <HeroMetrics metrics={[
+            { value: '26.000€', label: 'Desde · 40 m² esencial' },
+            { value: '10–14',   label: 'Semanas · reforma completa' },
+            { value: '2 años',  label: 'Garantía de obra' },
+          ]} />
         </div>
       </div>
     </div>
@@ -182,45 +172,43 @@ const zones = [
         </p>
       </div>
 
-      <div class="era-timeline">
-        <div class="era-col">
-          <p class="era-tag">Instalaciones obsoletas</p>
-          <h3 class="era-col__title">Pisos de los años 70–80 (bloques de Coslada, San Fernando, Torrejón y Alcalá)</h3>
-          <p class="era-col__body">Los candidatos más habituales. Instalaciones con décadas de uso sin intervención: cuadros con fusibles de cerámica, tuberías de plomo o acero galvanizado. Muchos no han tenido ninguna reforma desde la construcción.</p>
-          <ul class="era-list">
-            <li>Cuadro eléctrico sin capacidad para vitrocerámica, secadora o aire acondicionado</li>
-            <li>Fontanería de plomo o acero galvanizado: fuera de norma, con riesgo de rotura interna</li>
-            <li>Distribución diseñada para los años 70: pasillos largos, habitaciones pequeñas, cocinas sin conexión visual al salón</li>
-            <li>Aislamiento acústico y térmico por debajo de las exigencias actuales</li>
-            <li>Humedades por capilaridad en plantas bajas o filtraciones en cubiertas planas</li>
-          </ul>
-        </div>
-
-        <div class="era-col">
-          <p class="era-tag">Distribución y acabados envejecidos</p>
-          <h3 class="era-col__title">Viviendas de los años 90–2000 (Alcalá, Azuqueca, Guadalajara y municipios en expansión)</h3>
-          <p class="era-col__body">Los pisos construidos entre 1990 y 2005 tienen instalaciones en mejor estado, pero pueden necesitar una reforma integral por razones de distribución o de acabados envejecidos. El cuadro eléctrico suele tener más capacidad, pero los materiales acumulan 20–30 años de uso.</p>
-          <ul class="era-list">
-            <li>Instalación eléctrica con diferencial y magnetotérmicos, pero sin circuitos independientes para cada electrodoméstico</li>
-            <li>Fontanería de cobre o multicapa en buen estado en la mayoría de los casos</li>
-            <li>Acabados de la época: baldosa hidráulica, gres de pequeño formato, puertas de DM con molduras</li>
-            <li>Distribución funcional pero mejorable con la apertura de la cocina al salón</li>
-            <li>Ventanas de aluminio sin rotura de puente térmico: condensaciones en marcos en invierno</li>
-          </ul>
-        </div>
-
-        <div class="era-col">
-          <p class="era-tag">Coordinación y secuencia de gremios</p>
-          <h3 class="era-col__title">Chalets y adosados (Meco, Camarma, San Fernando y urbanizaciones periféricas)</h3>
-          <p class="era-col__body">En viviendas unifamiliares, la reforma integral tiene más superficie y más zonas que coordinar: varios baños, cocina grande, posiblemente garaje o sótano con humedad. El mayor reto aquí no es el alcance sino la secuencia.</p>
-          <ul class="era-list">
-            <li>Mayor superficie = más materiales, más tiempo, más gremios en paralelo</li>
-            <li>Instalaciones de calefacción por radiadores que conviene revisar durante la obra</li>
-            <li>Cubiertas inclinadas con posibles filtraciones no visibles en el interior</li>
-            <li>Jardín y zonas exteriores que pueden requerir intervención adicional</li>
-          </ul>
-        </div>
-      </div>
+      <EraTimeline titleAs="h3" columns={[
+        {
+          tag: 'Instalaciones obsoletas',
+          title: 'Pisos de los años 70–80 (bloques de Coslada, San Fernando, Torrejón y Alcalá)',
+          body: 'Los candidatos más habituales. Instalaciones con décadas de uso sin intervención: cuadros con fusibles de cerámica, tuberías de plomo o acero galvanizado. Muchos no han tenido ninguna reforma desde la construcción.',
+          items: [
+            'Cuadro eléctrico sin capacidad para vitrocerámica, secadora o aire acondicionado',
+            'Fontanería de plomo o acero galvanizado: fuera de norma, con riesgo de rotura interna',
+            'Distribución diseñada para los años 70: pasillos largos, habitaciones pequeñas, cocinas sin conexión visual al salón',
+            'Aislamiento acústico y térmico por debajo de las exigencias actuales',
+            'Humedades por capilaridad en plantas bajas o filtraciones en cubiertas planas',
+          ],
+        },
+        {
+          tag: 'Distribución y acabados envejecidos',
+          title: 'Viviendas de los años 90–2000 (Alcalá, Azuqueca, Guadalajara y municipios en expansión)',
+          body: 'Los pisos construidos entre 1990 y 2005 tienen instalaciones en mejor estado, pero pueden necesitar una reforma integral por razones de distribución o de acabados envejecidos. El cuadro eléctrico suele tener más capacidad, pero los materiales acumulan 20–30 años de uso.',
+          items: [
+            'Instalación eléctrica con diferencial y magnetotérmicos, pero sin circuitos independientes para cada electrodoméstico',
+            'Fontanería de cobre o multicapa en buen estado en la mayoría de los casos',
+            'Acabados de la época: baldosa hidráulica, gres de pequeño formato, puertas de DM con molduras',
+            'Distribución funcional pero mejorable con la apertura de la cocina al salón',
+            'Ventanas de aluminio sin rotura de puente térmico: condensaciones en marcos en invierno',
+          ],
+        },
+        {
+          tag: 'Coordinación y secuencia de gremios',
+          title: 'Chalets y adosados (Meco, Camarma, San Fernando y urbanizaciones periféricas)',
+          body: 'En viviendas unifamiliares, la reforma integral tiene más superficie y más zonas que coordinar: varios baños, cocina grande, posiblemente garaje o sótano con humedad. El mayor reto aquí no es el alcance sino la secuencia.',
+          items: [
+            'Mayor superficie = más materiales, más tiempo, más gremios en paralelo',
+            'Instalaciones de calefacción por radiadores que conviene revisar durante la obra',
+            'Cubiertas inclinadas con posibles filtraciones no visibles en el interior',
+            'Jardín y zonas exteriores que pueden requerir intervención adicional',
+          ],
+        },
+      ]} />
 
       <p class="text-gray-700 leading-relaxed" style="margin-top:3rem;padding-top:2rem;border-top:1px solid #E5E7EB;max-width:64ch">
         En la visita técnica gratuita evaluamos el estado de las instalaciones, la estructura y el alcance real antes de dar ningún precio. Lo que encontramos en esa visita determina si estás ante una reforma de pisos (acabados y baño+cocina sin tocar instalaciones) o ante una reforma integral. La diferencia de presupuesto puede ser de 10.000€ para arriba.
@@ -268,12 +256,9 @@ const zones = [
         </div>
       </div>
 
-      <div class="empresa-callout">
-        <p class="empresa-callout__title">El coste real de posponer las instalaciones</p>
-        <p class="empresa-callout__body">
-          Si haces una reforma parcial hoy y en tres años el cuadro eléctrico o la fontanería necesitan intervención, tendrás que volver a abrir suelos, paredes y posiblemente desmontar parte de lo que acabas de reformar. El sobrecoste de hacer dos obras en lugar de una es sistemáticamente mayor que el de hacer la integral desde el principio. La visita técnica lo cuantifica antes de que tomes ninguna decisión.
-        </p>
-      </div>
+      <Callout title="El coste real de posponer las instalaciones">
+        Si haces una reforma parcial hoy y en tres años el cuadro eléctrico o la fontanería necesitan intervención, tendrás que volver a abrir suelos, paredes y posiblemente desmontar parte de lo que acabas de reformar. El sobrecoste de hacer dos obras en lugar de una es sistemáticamente mayor que el de hacer la integral desde el principio. La visita técnica lo cuantifica antes de que tomes ninguna decisión.
+      </Callout>
     </div>
   </section>
 
@@ -426,21 +411,9 @@ const zones = [
         El precio de una reforma integral depende del estado de las instalaciones, del alcance de la redistribución y de los materiales elegidos. Los siguientes rangos son orientativos para el Corredor del Henares; el presupuesto exacto se cierra tras la visita técnica gratuita. Puedes obtener una estimación inicial ajustada a tu superficie y calidad en la <a href="/calculadora-precio-reforma/" class="text-[#A85535] hover:underline font-medium">calculadora de precios de reforma</a>. Si tu reforma no incluye renovación de instalaciones, consulta también las guías de precios de reforma parcial:
       </p>
       <div class="price-guides mb-8">
-        <a href="/guias/cuanto-cuesta-reformar-un-bano/" class="price-guide-chip">
-          <span class="price-guide-chip__label">Guía</span>
-          <span class="price-guide-chip__text">¿Cuánto cuesta reformar un baño?</span>
-          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="/guias/cuanto-cuesta-reformar-una-cocina/" class="price-guide-chip">
-          <span class="price-guide-chip__label">Guía</span>
-          <span class="price-guide-chip__text">¿Cuánto cuesta reformar una cocina?</span>
-          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="/guias/cuanto-cuesta-reformar-un-piso/" class="price-guide-chip">
-          <span class="price-guide-chip__label">Guía</span>
-          <span class="price-guide-chip__text">¿Cuánto cuesta reformar un piso?</span>
-          <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <PriceGuideChip href="/guias/cuanto-cuesta-reformar-un-bano/" label="Guía" text="¿Cuánto cuesta reformar un baño?" />
+        <PriceGuideChip href="/guias/cuanto-cuesta-reformar-una-cocina/" label="Guía" text="¿Cuánto cuesta reformar una cocina?" />
+        <PriceGuideChip href="/guias/cuanto-cuesta-reformar-un-piso/" label="Guía" text="¿Cuánto cuesta reformar un piso?" />
       </div>
       <div class="price-ledger">
         <!-- Cabecera -->
@@ -577,10 +550,9 @@ const zones = [
           </div>
         ))}
       </div>
-      <div class="empresa-callout">
-        <p class="empresa-callout__title">La visita técnica gratuita es el primer criterio de selección</p>
-        <p class="empresa-callout__body">Una empresa de reformas integrales que presupuesta sin visitar el piso no puede darte un precio cerrado. La visita previa al presupuesto no es una formalidad: es la fase en la que se inspeccionan las instalaciones, se identifica qué puede aparecer al abrir y se determina si el alcance pedido es ejecutable con el presupuesto disponible. Si alguien te da un precio integral por teléfono o por m², ese precio no es el precio final.</p>
-      </div>
+      <Callout title="La visita técnica gratuita es el primer criterio de selección">
+        Una empresa de reformas integrales que presupuesta sin visitar el piso no puede darte un precio cerrado. La visita previa al presupuesto no es una formalidad: es la fase en la que se inspeccionan las instalaciones, se identifica qué puede aparecer al abrir y se determina si el alcance pedido es ejecutable con el presupuesto disponible. Si alguien te da un precio integral por teléfono o por m², ese precio no es el precio final.
+      </Callout>
     </div>
   </section>
 
@@ -609,10 +581,9 @@ const zones = [
       <p class="text-gray-700 leading-relaxed mb-6">
         Iniciamos el trámite en paralelo con la fase de proyecto para que la licencia esté disponible cuando la obra esté lista para empezar. Los plazos de resolución varían por municipio y por carga administrativa del ayuntamiento en cada momento; en la visita técnica te informamos de los pasos que corresponden a tu caso.
       </p>
-      <div class="empresa-callout mb-6">
-        <p class="empresa-callout__title">Comunidades de propietarios en bloques</p>
-        <p class="empresa-callout__body">Si el piso está en un edificio con comunidad de propietarios, algunos estatutos exigen notificación previa para obras que generen ruido en horario de convivencia o que afecten a zonas comunes. Te informamos del procedimiento antes de empezar. El horario de obra está sujeto a la normativa municipal de ruido de cada municipio.</p>
-      </div>
+      <Callout title="Comunidades de propietarios en bloques" class="mb-6">
+        Si el piso está en un edificio con comunidad de propietarios, algunos estatutos exigen notificación previa para obras que generen ruido en horario de convivencia o que afecten a zonas comunes. Te informamos del procedimiento antes de empezar. El horario de obra está sujeto a la normativa municipal de ruido de cada municipio.
+      </Callout>
       <p class="text-gray-700 leading-relaxed">
         Nos encargamos de toda la gestión documental: informe de estado previo, memoria descriptiva, proyecto técnico si aplica y gestión de la licencia. El tiempo de tramitación queda reflejado en el cronograma de la obra y no penaliza el plazo de entrega comprometido.
       </p>
@@ -645,10 +616,9 @@ const zones = [
         ))}
       </dl>
 
-      <div class="mt-8 empresa-callout">
-        <p class="empresa-callout__title">Precio cerrado e imprevistos en una reforma integral</p>
-        <p class="empresa-callout__body">El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma integral, eso incluye el estado de las instalaciones accesibles, la estructura observable y los elementos que se pueden medir antes de abrir. Si al derribar un tabique aparece un problema estructural no previsto o al abrir el suelo encontramos tuberías en peor estado del visible, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas integrales del Corredor, el precio cierra sin desviaciones. Cuando hay imprevistos, hay una persona que llama, explica y espera antes de actuar.</p>
-      </div>
+      <Callout title="Precio cerrado e imprevistos en una reforma integral" class="mt-8">
+        El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma integral, eso incluye el estado de las instalaciones accesibles, la estructura observable y los elementos que se pueden medir antes de abrir. Si al derribar un tabique aparece un problema estructural no previsto o al abrir el suelo encontramos tuberías en peor estado del visible, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas integrales del Corredor, el precio cierra sin desviaciones. Cuando hay imprevistos, hay una persona que llama, explica y espera antes de actuar.
+      </Callout>
     </div>
   </section>
 
@@ -762,21 +732,9 @@ const zones = [
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si solo necesitas reformar una zona de la vivienda:</p>
         <div class="flex flex-wrap gap-2 mb-8">
-          <a href="/servicios/reforma-banos/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Reforma de baños</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="/servicios/reforma-cocinas/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Reforma de cocinas</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="/servicios/reforma-pisos/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Reforma de pisos</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <PriceGuideChip href="/servicios/reforma-banos/" label="Servicio" text="Reforma de baños" />
+          <PriceGuideChip href="/servicios/reforma-cocinas/" label="Servicio" text="Reforma de cocinas" />
+          <PriceGuideChip href="/servicios/reforma-pisos/" label="Servicio" text="Reforma de pisos" />
         </div>
         <p class="text-sm text-gray-500 mb-3">Información sobre el parque de vivienda y las reformas más habituales en cada municipio:</p>
         <div class="flex flex-wrap gap-2">
@@ -812,22 +770,11 @@ const zones = [
         ¿Cuánto cuesta reformar<br>tu piso integralmente?
       </h2>
       <p class="text-gray-400 mb-10 text-lg">Visita técnica gratuita. Presupuesto cerrado por escrito.</p>
-      <div class="cta-strip">
-        <div class="cta-strip__item">
-          <span class="cta-strip__val">Gratis</span>
-          <span class="cta-strip__label">Visita técnica</span>
-        </div>
-        <div class="cta-strip__sep" aria-hidden="true"></div>
-        <div class="cta-strip__item">
-          <span class="cta-strip__val">Precio cerrado</span>
-          <span class="cta-strip__label">En el contrato</span>
-        </div>
-        <div class="cta-strip__sep" aria-hidden="true"></div>
-        <div class="cta-strip__item">
-          <span class="cta-strip__val">2 años</span>
-          <span class="cta-strip__label">Garantía de ejecución</span>
-        </div>
-      </div>
+      <CtaStrip items={[
+        { value: 'Gratis',         label: 'Visita técnica' },
+        { value: 'Precio cerrado', label: 'En el contrato' },
+        { value: '2 años',         label: 'Garantía de ejecución' },
+      ]} />
       <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
         <a href="/contacto/" class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar presupuesto</a>
         <a href={`tel:${SITE.phone}`} class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">{SITE.phoneDisplay}</a>
@@ -838,15 +785,10 @@ const zones = [
 </Layout>
 
 <style>
-  /* Hero: layout 2 cols texto + métricas */
-  .hero-c-grid { display:grid; gap:2rem; }
-  @media(min-width:1024px){ .hero-c-grid { grid-template-columns:1fr auto; gap:4rem; align-items:end; } }
-
-  /* Flex group para CTAs del hero */
-  .hero-cta-group { display:flex; flex-direction:column; gap:0.75rem; }
-  @media(min-width:480px){ .hero-cta-group { flex-direction:row; flex-wrap:wrap; } }
-  /* Tabular nums para métricas */
-  .metric-value { font-variant-numeric:tabular-nums; }
+  /* .hero-c-grid, .hero-cta-group y .metric-value vivían aquí duplicando
+     literalmente lo que ya define global.css. Eliminados: un override local
+     con la misma especificidad gana por orden de carga y es como se rompió
+     el responsive de .hero-metrics en reforma-banos. */
 
 
   /* Fase cards - dynamic */

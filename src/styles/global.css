@@ -206,16 +206,13 @@
 }
 .eyebrow--dark { color: rgba(255, 255, 255, .65); }
 
-/* ── 1c. LAYOUT — RITMO VERTICAL Y MEDIDA ─────────────────── */
+/* ── 1c. LAYOUT — MEDIDA DE LECTURA ───────────────────────── */
 
-/* Padding de sección principal (py-20 lg:py-28 en el lab) */
-.section-py { padding-top: 5rem; padding-bottom: 5rem; }
-@media (min-width: 1024px) { .section-py { padding-top: 7rem; padding-bottom: 7rem; } }
+/* El ritmo vertical de sección NO tiene clase propia: `py-20 lg:py-28` de
+   Tailwind ya lo expresa, es idiomático en este proyecto y evita una capa de
+   indirección. Una .section-py duplicándolo sería código muerto. */
 
-/* Sección menor */
-.section-py-sm { padding-top: 4rem; padding-bottom: 4rem; }
-
-/* Medida de lectura */
+/* Medida de lectura: estas sí, porque sustituyen max-width:XXch inline */
 .measure-tight { max-width: var(--measure-tight); }
 .measure-lead  { max-width: var(--measure-lead); }
 .measure-hero  { max-width: var(--measure-hero); }

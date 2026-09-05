@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import { SITE, SERVICES, ZONES, RELATED_ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, SERVICE_ZONE_FAQS, SERVICE_ZONE_LEVEL } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
+import FaqAccordion from '../../components/ui/FaqAccordion.astro';
+import HeroTitle from '../../components/ui/HeroTitle.astro';
 
 export const getStaticPaths: GetStaticPaths = () => {
   const staticOverrides = new Set(['reforma-cocinas/alcala-de-henares']);
@@ -142,9 +144,7 @@ const breadcrumbSchema = {
       <p class="font-bold block leading-snug mb-5" style="font-size:clamp(.75rem,1.35vw,.9375rem);letter-spacing:0.02em;color:rgba(255,255,255,.38)">
         {service.title} en {zone.name}
       </p>
-      <h1 id="h-hero" class="h1-hero" style="font-size:clamp(2.25rem,5.5vw,4.25rem)">
-        {titlePart} en {zone.name}
-      </h1>
+      <HeroTitle lines={[`${titlePart} en ${zone.name}`]} size="clamp(2.25rem,5.5vw,4.25rem)" />
 
       <p class="leading-relaxed mt-7 max-w-2xl" style="font-size:1rem;color:rgba(255,255,255,.6)">
         {szc?.intro ?? service.headline}
@@ -186,7 +186,7 @@ const breadcrumbSchema = {
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
 
         <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Antes de presupuestar</p>
-        <h2 id="h-contenido" class="text-2xl lg:text-3xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+        <h2 id="h-contenido" class="h4-block mb-6 reveal" style="letter-spacing:-0.02em">
           {service.title} en {zone.name}: qué se evalúa antes de cerrar el precio
         </h2>
 
@@ -214,7 +214,7 @@ const breadcrumbSchema = {
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
 
         <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Precio orientativo</p>
-        <h2 id="h-precio" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+        <h2 id="h-precio" class="h4-block mb-2 reveal" style="letter-spacing:-0.02em">
           ¿Cuánto cuesta {costar} en {zone.name}?
         </h2>
         <p class="text-gray-500 leading-relaxed mb-8" style="font-size:.9375rem">
@@ -283,24 +283,14 @@ const breadcrumbSchema = {
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
 
       <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Preguntas frecuentes</p>
-      <h2 id="h-faq" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+      <h2 id="h-faq" class="h4-block mb-2 reveal" style="letter-spacing:-0.02em">
         Dudas habituales sobre {costar} en {zone.name}
       </h2>
       <p class="text-gray-500 leading-relaxed mb-8" style="font-size:.9375rem">
         Si no encuentras tu duda aquí, escríbenos o llámanos. Respondemos el mismo día.
       </p>
 
-      <div class="divide-y divide-gray-200">
-        {faqs.map(faq => (
-          <details class="group py-5">
-            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
-              <h3 class="font-semibold text-gray-900 leading-snug m-0" style="font-size:.9375rem">{faq.q}</h3>
-              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion faqs={faqs} />
     </div>
   </section>
 
@@ -331,7 +321,7 @@ const breadcrumbSchema = {
   <section class="py-16 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
       <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Visita técnica gratuita</p>
-      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-cta-final" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em">
         ¿{service.title} en {zone.name}?
       </h2>
       <p class="leading-relaxed mb-8" style="color:rgba(255,255,255,.6)">

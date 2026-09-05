@@ -7,6 +7,7 @@ import ZonasGrid from '../../components/ui/ZonasGrid.astro';
 import { SITE } from '../../data/site';
 import PriceGuideChip from '../../components/ui/PriceGuideChip.astro';
 import Callout from '../../components/ui/Callout.astro';
+import HeroTitle from '../../components/ui/HeroTitle.astro';
 
 const title = 'Reforma de Locales Comerciales en el Corredor | Trazzo360';
 const description = 'Reforma de locales comerciales en el Corredor del Henares. La actividad determina el alcance y las instalaciones necesarias. Presupuesto orientativo tras visita técnica gratuita.';
@@ -106,9 +107,7 @@ const faqSchema = {
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
       <p class="font-black uppercase text-[#A85535] mb-6" style="font-size:10px;letter-spacing:0.15em">Locales comerciales · Corredor del Henares</p>
-      <h1 id="h-hero" class="h1-hero">
-        Reforma de locales<br>comerciales en el Corredor
-      </h1>
+      <HeroTitle lines={["Reforma de locales", "comerciales en el Corredor"]} />
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1">
       <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
@@ -158,7 +157,7 @@ const faqSchema = {
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-2xl mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Qué revisamos según tu uso</p>
-        <h2 id="h-actividades" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-actividades" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           La actividad condiciona la reforma
         </h2>
         <p class="text-gray-600 leading-relaxed">
@@ -217,7 +216,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El primer paso</p>
-        <h2 id="h-decision" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-decision" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           La actividad define el alcance. Siempre
         </h2>
       </div>
@@ -260,7 +259,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Espacios de trabajo en el Corredor</p>
-        <h2 id="h-reforma-oficinas" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-reforma-oficinas" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Reforma de oficinas: puestos de trabajo, acústica y climatización por zonas
         </h2>
       </div>
@@ -306,7 +305,7 @@ const faqSchema = {
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-2xl mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El mercado comercial del Corredor</p>
-        <h2 id="h-parque" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-parque" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué tipos de locales reformamos
         </h2>
         <p class="text-gray-600 leading-relaxed">
@@ -354,7 +353,7 @@ const faqSchema = {
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-3xl mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Del local vacío al espacio listo para operar</p>
-        <h2 id="h-que-incluye" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-que-incluye" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué incluye la reforma completa de un local comercial
         </h2>
       </div>
@@ -393,7 +392,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo coordinamos la obra</p>
-        <h2 id="h-proceso-apertura" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-proceso-apertura" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           De la actividad a la entrega
         </h2>
       </div>
@@ -438,7 +437,7 @@ const faqSchema = {
   <!-- 8. Precios -->
   <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-precios">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-precios" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-precios" class="h4-block mb-3 reveal" style="letter-spacing:-0.02em">
         Precios orientativos de reforma de local comercial
       </h2>
       <p class="text-gray-600 leading-relaxed mb-6">
@@ -512,7 +511,7 @@ const faqSchema = {
   <!-- 9. Licencias -->
   <section class="py-16 bg-white" aria-labelledby="h-licencias">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-licencias" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-licencias" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Licencia de actividad en el Corredor del Henares
       </h2>
       <p class="text-gray-700 leading-relaxed mb-4">
@@ -541,7 +540,7 @@ const faqSchema = {
   <!-- 10. Cómo comparar presupuestos -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-comparar">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-comparar" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-comparar" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Cómo leer un presupuesto de reforma de local
       </h2>
       <dl class="divide-y divide-gray-200 bg-white p-6">
@@ -569,7 +568,7 @@ const faqSchema = {
   <!-- 11. Plazos -->
   <section class="py-16 bg-white" aria-labelledby="h-plazos">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-plazos" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-plazos" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Plazos de obra orientativos
       </h2>
       <div class="overflow-x-auto">
@@ -617,7 +616,7 @@ const faqSchema = {
         </div>
         <div class="lg:pt-4">
           <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de firmar</p>
-          <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-5" style="letter-spacing:-0.02em;text-wrap:balance">
+          <h2 id="h-compromisos" class="h3-sub mb-5 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
             Nuestros compromisos en la reforma de tu local
           </h2>
           <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
@@ -634,7 +633,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
-        <h2 id="h-proceso" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-proceso" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Del local vacío al espacio listo para operar
         </h2>
       </div>
@@ -662,7 +661,7 @@ const faqSchema = {
   <!-- 14. Zonas -->
   <section class="py-16 bg-white" aria-labelledby="h-zonas">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 id="h-zonas" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-zonas" class="h4-block mb-3 reveal" style="letter-spacing:-0.02em">
         Reforma de locales comerciales en el Corredor: todos los municipios
       </h2>
       <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
@@ -683,7 +682,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 id="h-faq" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-faq" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Todo lo que necesitas saber sobre reforma de local comercial
         </h2>
       </div>
@@ -694,7 +693,7 @@ const faqSchema = {
   <!-- 16. CTA Final -->
   <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 id="h-cta-final" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-cta-final" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em">
         Cuéntanos qué actividad va al local
       </h2>
       <p class="text-gray-400 mb-2">Visita técnica gratuita. Presupuesto orientativo por escrito.</p>
@@ -722,13 +721,3 @@ const faqSchema = {
   @media(min-width:640px){ .actividades-grid { grid-template-columns: repeat(2,1fr); } }
   @media(min-width:1024px){ .actividades-grid { grid-template-columns: repeat(4,1fr); } }
 </style>
-
-<script>
-  // Scroll reveals
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
-</script>

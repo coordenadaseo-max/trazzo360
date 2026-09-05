@@ -1623,14 +1623,6 @@ const zones = [
     }, { passive: true });
   }
 
-  // Scroll reveals
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
-
   // Count-up for [data-count]
   function countUp(el: HTMLElement) {
     const target = parseFloat((el as HTMLElement & { dataset: { count: string; suffix?: string } }).dataset.count);

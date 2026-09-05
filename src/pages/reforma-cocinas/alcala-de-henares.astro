@@ -8,6 +8,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE, ZONES } from '../../data/site';
+import FaqAccordion from '../../components/ui/FaqAccordion.astro';
+import HeroTitle from '../../components/ui/HeroTitle.astro';
 
 const zone = ZONES.find(z => z.slug === 'alcala-de-henares')!;
 
@@ -82,14 +84,7 @@ const faqSchema = {
   <section class="bg-[#111827] py-20 lg:py-28" aria-labelledby="h-hero">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
 
-      <h1 id="h-hero" class="h1-hero--stacked">
-          <span class="h1-hero__eyebrow" style="font-size:clamp(.75rem,1.35vw,.9375rem);letter-spacing:0.02em;color:rgba(255,255,255,.38);margin-bottom:1.25rem">
-            Reforma de cocinas en {zone.name}
-          </span>
-          <span class="h1-hero__thesis" style="font-size:clamp(2.25rem,5.5vw,4.25rem)">
-            En pisos anteriores<br>a los años 80, la extracción<br>y el circuito eléctrico<br>se confirman antes<br>de elegir muebles.
-          </span>
-        </h1>
+      <HeroTitle eyebrow={`Reforma de cocinas en ${zone.name}`} lines={[`En pisos anteriores`, `a los años 80, la extracción`, `y el circuito eléctrico`, `se confirman antes`, `de elegir muebles.`]} size="clamp(2.25rem,5.5vw,4.25rem)" />
 
       <p class="leading-relaxed mt-7 max-w-2xl" style="font-size:1rem;color:rgba(255,255,255,.6)">
         En viviendas de esa antigüedad, la salida de extracción de la cocina y la potencia del circuito eléctrico son los dos puntos que determinan el alcance antes de definir distribución o acabados. La visita técnica gratuita los evalúa y entrega presupuesto cerrado por escrito.
@@ -130,7 +125,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
 
       <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Antes de elegir muebles</p>
-      <h2 id="h-condicionantes" class="text-2xl lg:text-3xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+      <h2 id="h-condicionantes" class="h4-block mb-6 reveal" style="letter-spacing:-0.02em">
         Lo que se comprueba antes de cerrar el presupuesto
       </h2>
 
@@ -189,7 +184,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
 
       <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Precio orientativo</p>
-      <h2 id="h-precio" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+      <h2 id="h-precio" class="h4-block mb-2 reveal" style="letter-spacing:-0.02em">
         ¿Cuánto cuesta reformar una cocina en {zone.name}?
       </h2>
       <p class="text-gray-500 leading-relaxed mb-8" style="font-size:.9375rem">
@@ -242,24 +237,14 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
 
       <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Preguntas frecuentes</p>
-      <h2 id="h-faq" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+      <h2 id="h-faq" class="h4-block mb-2 reveal" style="letter-spacing:-0.02em">
         Dudas habituales sobre reforma de cocina en {zone.name}
       </h2>
       <p class="text-gray-500 leading-relaxed mb-8" style="font-size:.9375rem">
         Si no encuentras tu duda aquí, escríbenos o llámanos. Respondemos el mismo día.
       </p>
 
-      <div class="divide-y divide-gray-200">
-        {faqs.map(faq => (
-          <details class="group py-5">
-            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
-              <h3 class="font-semibold text-gray-900 leading-snug m-0" style="font-size:.9375rem">{faq.q}</h3>
-              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion faqs={faqs} />
     </div>
   </section>
 
@@ -283,7 +268,7 @@ const faqSchema = {
   <section class="py-16 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
       <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Visita técnica gratuita</p>
-      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-cta-final" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em">
         ¿Reformas la cocina en {zone.name}?
       </h2>
       <p class="leading-relaxed mb-8" style="color:rgba(255,255,255,.6)">

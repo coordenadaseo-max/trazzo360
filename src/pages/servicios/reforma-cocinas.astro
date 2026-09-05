@@ -11,6 +11,7 @@ import HeroCtaGroup from '../../components/ui/HeroCtaGroup.astro';
 import EraTimeline from '../../components/ui/EraTimeline.astro';
 import CtaStrip from '../../components/ui/CtaStrip.astro';
 import { SITE } from '../../data/site';
+import HeroTitle from '../../components/ui/HeroTitle.astro';
 
 const title = 'Reforma de Cocinas en el Corredor del Henares | Trazzo360';
 const description = 'Reforma de cocinas en el Corredor del Henares con distribución planificada antes de la obra, precio cerrado por escrito y plazo fijado en el contrato. Desde 5.000€.';
@@ -174,14 +175,10 @@ const tranches = [
 
     <!-- H1 con dos niveles visuales en un único elemento semántico -->
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
-      <h1 id="h-hero" class="font-display text-white" style="line-height:1;text-wrap:balance;font-weight:900">
-        <span class="block text-white/50 font-bold" style="font-size:clamp(.875rem,1.6vw,1.125rem);letter-spacing:0.01em;margin-bottom:1rem">
-          Reforma de cocinas en el Corredor del Henares
-        </span>
-        <span class="block" style="font-size:clamp(3rem,9vw,8rem);letter-spacing:-0.02em;line-height:0.85">
-          La distribución<br>se decide antes<br>de elegir los muebles.
-        </span>
-      </h1>
+      <HeroTitle
+        eyebrow="Reforma de cocinas en el Corredor del Henares"
+        lines={['La distribución', 'se decide antes', 'de elegir los muebles.']}
+      />
     </div>
 
     <!-- Separador + soporte -->
@@ -236,7 +233,7 @@ const tranches = [
       <!-- Alcance completo -->
       <div class="max-w-3xl mb-14 reveal">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Alcance completo</p>
-        <h2 id="h-incluye-diagnostico" class="h2-section mb-4">
+        <h2 id="h-incluye-diagnostico" class="h2-section mb-4 reveal">
           Qué incluye la reforma de cocina de principio a fin
         </h2>
         <p class="text-gray-600 leading-relaxed measure-body">
@@ -843,12 +840,4 @@ const tranches = [
       heroImgEl.style.transform = `translateY(${window.scrollY * 0.28}px)`;
     }, { passive: true });
   }
-
-  // Scroll reveals
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
 </script>

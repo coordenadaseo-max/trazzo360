@@ -171,9 +171,36 @@
   .h3-sub { font-size: 2.25rem; line-height: 2.5rem; }  /* lg:text-4xl */
 }
 
+/* Encabezado de bloque — `text-2xl lg:text-3xl`.
+   Tercer escalón del sistema. Las páginas de municipio, guía y calculadora son
+   más densas que las de servicio y usaban text-xl/2xl/3xl cada una por su
+   cuenta; este es el escalón que les corresponde. */
+.h4-block {
+  font-size: 1.5rem; line-height: 2rem;         /* text-2xl */
+  font-weight: 900;
+  letter-spacing: var(--tracking-section);
+  color: #111827;
+  text-wrap: balance;
+}
+@media (min-width: 1024px) {
+  .h4-block { font-size: 1.875rem; line-height: 2.25rem; }  /* lg:text-3xl */
+}
+
+/* Titular del CTA final. Tenía tres escalas distintas repartidas por el sitio
+   (clamp 2/5vw/3.5rem, 2.25/6vw/4rem y varias sueltas); esta es la del lab. */
+.h2-cta {
+  font-size: var(--text-display-cta);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: #fff;
+  text-wrap: balance;
+}
+
 /* Variantes sobre fondo oscuro */
 .h2-section--dark,
-.h3-sub--dark { color: #fff; }
+.h3-sub--dark,
+.h4-block--dark { color: #fff; }
 .h2-section--dark { font-family: var(--font-display); }
 
 /* Entradilla del hero */
@@ -327,9 +354,16 @@
 /* Líneas del hero con animación de entrada */
 .hero-line { overflow: hidden; display: block; padding-bottom: 0.18em; margin-bottom: -0.18em; }
 .hero-line > span { display: block; transform: translateY(110%); animation: heroSlideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
-.hero-line:nth-child(1) > span { animation-delay: 0.05s; }
-.hero-line:nth-child(2) > span { animation-delay: 0.18s; }
-.hero-line:nth-child(3) > span { animation-delay: 0.31s; }
+/* Desfase por línea. Se calcula en vez de listarse: con la lista fija de 3 que
+   había antes, un titular de 4 o 5 líneas animaba las sobrantes sin retardo,
+   a la vez que la primera. */
+.hero-line > span { animation-delay: calc(0.05s + (var(--line-i, 0) * 0.13s)); }
+.hero-line:nth-child(1) { --line-i: 0; }
+.hero-line:nth-child(2) { --line-i: 1; }
+.hero-line:nth-child(3) { --line-i: 2; }
+.hero-line:nth-child(4) { --line-i: 3; }
+.hero-line:nth-child(5) { --line-i: 4; }
+.hero-line:nth-child(6) { --line-i: 5; }
 
 /* Fade de entrada para contenido sub-hero */
 .hero-sub { opacity: 0; animation: heroFade 0.7s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; }
@@ -345,17 +379,20 @@
 }
 
 /* Reveal al scroll — IntersectionObserver activa .visible */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
-.reveal.visible { opacity: 1; transform: none; }
+/* El contenido NUNCA depende de JS para ser visible: sólo se oculta si el
+   script de reveals llegó a ejecutarse (marca .js en <html>). Si falla, no
+   carga o el navegador no soporta IntersectionObserver, todo se ve. */
+.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+.js .reveal.visible { opacity: 1; transform: none; }
 
 /* Reveal con stagger para grids */
-.reveal-stagger > * { opacity: 0; transform: translateY(18px); transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
-.reveal-stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
-.reveal-stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.07s; }
-.reveal-stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.14s; }
-.reveal-stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.21s; }
-.reveal-stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.28s; }
-.reveal-stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.35s; }
+.js .reveal-stagger > * { opacity: 0; transform: translateY(18px); transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+.js .reveal-stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+.js .reveal-stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.07s; }
+.js .reveal-stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.14s; }
+.js .reveal-stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.21s; }
+.js .reveal-stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.28s; }
+.js .reveal-stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.35s; }
 
 /* ── 5. HERO — COMPONENTES COMPARTIDOS ────────────────────── */
 

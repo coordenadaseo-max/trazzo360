@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE, ZONES, ZONE_FAQS, RELATED_ZONES } from '../../data/site';
+import FaqAccordion from '../../components/ui/FaqAccordion.astro';
+import HeroTitle from '../../components/ui/HeroTitle.astro';
 
 const zone = ZONES.find(z => z.slug === 'alcala-de-henares')!;
 const faqs  = ZONE_FAQS['alcala-de-henares'] ?? [];
@@ -138,9 +140,7 @@ const faqSchema = {
           <p class="font-bold block leading-snug mb-5" style="font-size:clamp(.75rem,1.35vw,.9375rem);letter-spacing:0.02em;color:rgba(255,255,255,.38)">
             Empresa de reformas en {zone.name}
           </p>
-          <h1 id="h-hero" class="h1-hero" style="font-size:clamp(2.25rem,5.5vw,4.5rem)">
-            Reformas en {zone.name}
-          </h1>
+          <HeroTitle lines={[`Reformas en ${zone.name}`]} size="clamp(2.25rem,5.5vw,4.5rem)" />
 
           <p class="leading-relaxed mt-7 max-w-prose" style="font-size:1rem;color:rgba(255,255,255,.6)">
             El parque residencial de Alcalá no es homogéneo. Los bloques de los años 70 y 80 en El Val y Barrio del Pilar tienen instalaciones que condicionan el alcance antes de elegir materiales. Las zonas de crecimiento más reciente permiten centrarse directamente en los acabados.
@@ -187,7 +187,7 @@ const faqSchema = {
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-parque">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">El parque residencial</p>
-      <h2 id="h-parque" class="text-2xl lg:text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-parque" class="h4-block mb-3 reveal" style="letter-spacing:-0.02em">
         Alcalá de Henares — tres perfiles de barrio
       </h2>
       <p class="text-gray-500 leading-relaxed mb-10 max-w-2xl" style="font-size:.9375rem">
@@ -221,7 +221,7 @@ const faqSchema = {
   <section class="py-20 bg-white" aria-labelledby="h-servicios">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Reformas en {zone.name}</p>
-      <h2 id="h-servicios" class="text-2xl lg:text-3xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-servicios" class="h4-block mb-3 reveal" style="letter-spacing:-0.02em">
         Cubrimos todas las obras con precio cerrado
       </h2>
       <p class="text-gray-500 leading-relaxed mb-12 max-w-2xl" style="font-size:.9375rem">
@@ -253,7 +253,7 @@ const faqSchema = {
   <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-compromisos">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 id="h-compromisos" class="text-2xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+        <h2 id="h-compromisos" class="h4-block mb-6 reveal" style="letter-spacing:-0.02em">
           Lo que asumimos antes de empezar en {zone.name}
         </h2>
         <Compromisos variant="condensed" />
@@ -317,23 +317,13 @@ const faqSchema = {
   <!-- ── FAQ ── -->
   <section class="py-20 bg-white" aria-labelledby="h-faq">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <h2 id="h-faq" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-faq" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Preguntas frecuentes sobre obras en {zone.name}
       </h2>
       <p class="text-gray-600 leading-relaxed mb-8">
         Si tienes dudas sobre plazos, precios o qué incluye cada servicio en {zone.name}, aquí respondemos las más habituales. Si no encuentras la tuya, escríbenos o llámanos y te respondemos el mismo día.
       </p>
-      <div class="divide-y divide-gray-200">
-        {faqs.map(faq => (
-          <details class="group py-5">
-            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
-              <h3 class="font-semibold text-gray-900 text-base leading-snug m-0">{faq.q}</h3>
-              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion faqs={faqs} />
     </div>
   </section>
 
@@ -341,7 +331,7 @@ const faqSchema = {
   <section class="py-16 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Visita gratuita sin compromiso</p>
-      <h2 id="h-cta-final" class="text-3xl font-black text-white mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-cta-final" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em">
         ¿Necesitas presupuesto de obra en {zone.name}?
       </h2>
       <p class="mb-8 leading-relaxed" style="color:rgba(255,255,255,.6)">

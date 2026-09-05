@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/ui/Breadcrumb.astro';
 import { CALC_SERVICES, MODIFIERS } from '../data/calculator';
 import { SITE } from '../data/site';
+import FaqAccordion from '../components/ui/FaqAccordion.astro';
 
 const pageTitle = 'Calculadora de Reforma: Baño, Cocina y Piso | Trazzo360';
 const pageDesc = 'Calcula el coste orientativo de tu reforma en el Corredor del Henares sin IVA. Integral, baño, cocina, local y comunidad. Sin registro, resultado inmediato.';
@@ -123,7 +124,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   <!-- M2 — De qué depende el precio -->
   <section class="bg-gray-50 py-14">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-2xl font-black text-gray-900 mb-2">De qué depende el precio de una reforma</h2>
+      <h2 class="h4-block mb-2 reveal">De qué depende el precio de una reforma</h2>
       <div class="w-10 h-1 bg-[#A85535] mb-8"></div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="bg-white border border-gray-200 rounded-xl p-6">
@@ -162,7 +163,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
 
   <!-- Tabla de referencia estática (noscript fallback + SEO) -->
   <section class="py-14 max-w-5xl mx-auto px-4">
-    <h2 class="text-2xl font-black text-gray-900 mb-2">Tabla de precios de referencia orientativos</h2>
+    <h2 class="h4-block mb-2 reveal">Tabla de precios de referencia orientativos</h2>
     <div class="w-10 h-1 bg-[#A85535] mb-4"></div>
     <p class="text-sm text-gray-500 mb-8">Todos los precios son sin IVA y sin incluir licencias, honorarios técnicos ni tasas municipales, salvo que se indique. Son orientativos: el precio real se fija tras la visita técnica gratuita.</p>
 
@@ -318,7 +319,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   <!-- M3 — Por qué dos presupuestos no son comparables -->
   <section class="bg-[#F9F7F4] py-14">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-2xl font-black text-gray-900 mb-2">Por qué dos presupuestos con el mismo total no son comparables</h2>
+      <h2 class="h4-block mb-2 reveal">Por qué dos presupuestos con el mismo total no son comparables</h2>
       <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
       <p class="text-gray-700 leading-relaxed mb-4">Un presupuesto de 40.000 € puede significar cosas muy distintas. Uno puede incluir cuadro eléctrico nuevo, fontanería completa y redistribución de tabiques; el otro puede omitirlos y añadirlos como "extras de obra" cuando ya empezó la reforma. El número final es el mismo, el alcance real no.</p>
       <p class="text-gray-700 leading-relaxed mb-4">Los cuatro puntos que hay que revisar antes de comparar: <strong>qué instalaciones están incluidas</strong> (electricidad, fontanería, saneamiento), <strong>si hay proyecto técnico</strong> o solo albaranes, <strong>cómo se gestionan los imprevistos</strong> (precio cerrado o por administración) y <strong>si el plazo lleva penalización</strong> por retraso. Un presupuesto que no responde estas cuatro preguntas en el papel no es un presupuesto: es una estimación.</p>
@@ -336,7 +337,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
 
   <!-- M4 — Qué NO suele estar incluido -->
   <section class="py-14 max-w-5xl mx-auto px-4">
-    <h2 class="text-2xl font-black text-gray-900 mb-2">Qué NO suele estar incluido en un presupuesto de reforma</h2>
+    <h2 class="h4-block mb-2 reveal">Qué NO suele estar incluido en un presupuesto de reforma</h2>
     <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
     <p class="text-gray-700 leading-relaxed mb-6">Esta sección es la más ignorada y la que más conflictos genera durante la obra. Léela antes de firmar cualquier contrato.</p>
     <div class="grid md:grid-cols-2 gap-6">
@@ -407,25 +408,15 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   <!-- FAQ -->
   <section class="bg-gray-50 py-14">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-2xl font-black text-gray-900 mb-2">Preguntas frecuentes sobre precios de reforma</h2>
+      <h2 class="h4-block mb-2 reveal">Preguntas frecuentes sobre precios de reforma</h2>
       <div class="w-10 h-1 bg-[#A85535] mb-8"></div>
-      <div class="space-y-3">
-        {faqSchema.mainEntity.map(item => (
-          <details class="border border-gray-200 rounded-xl bg-white group">
-            <summary class="font-semibold text-gray-800 cursor-pointer px-6 py-4 list-none flex justify-between items-center text-sm">
-              <span>{item.name}</span>
-              <span class="text-gray-400 text-xs ml-4 shrink-0 group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <p class="px-6 pb-5 text-gray-600 text-sm leading-relaxed">{item.acceptedAnswer.text}</p>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion faqs={faqSchema.mainEntity.map(item => ({ q: item.name, a: item.acceptedAnswer.text }))} />
     </div>
   </section>
 
   <!-- Enlazado a los 6 servicios (Paso 5 saliente) -->
   <section class="py-14 max-w-5xl mx-auto px-4">
-    <h2 class="text-2xl font-black text-gray-900 mb-2">Precios detallados por tipo de reforma</h2>
+    <h2 class="h4-block mb-2 reveal">Precios detallados por tipo de reforma</h2>
     <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
     <p class="text-sm text-gray-600 mb-6">Cada página incluye tabla de precios, qué está incluido en cada nivel, plazos y cómo funciona el proceso. Consulta la del servicio que necesitas para afinar la estimación de la calculadora.</p>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -449,7 +440,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   <!-- CTA strip -->
   <section class="bg-[#111827] py-14">
     <div class="max-w-5xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-black text-white mb-3">¿Quieres un presupuesto real con precio cerrado?</h2>
+      <h2 class="h4-block h4-block--dark mb-3 reveal">¿Quieres un presupuesto real con precio cerrado?</h2>
       <p class="text-gray-400 mb-6">La calculadora orienta. El precio cerrado se firma en el contrato tras la visita técnica gratuita, sin compromiso.</p>
       <a href="/contacto/" class="inline-block bg-[#A85535] text-white font-bold px-8 py-4 hover:opacity-90 transition-opacity text-sm tracking-wide uppercase">
         Solicitar visita técnica gratuita

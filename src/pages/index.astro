@@ -4,6 +4,8 @@ import { join } from 'node:path';
 import Layout from '../layouts/Layout.astro';
 import { SITE, SERVICES, ZONES, AUTHOR, COMPROMISOS } from '../data/site';
 import { SERVICE_ICONS } from '../data/site';
+import FaqAccordion from '../components/ui/FaqAccordion.astro';
+import HeroTitle from '../components/ui/HeroTitle.astro';
 
 const publicDir = join(process.cwd(), 'public');
 const hasRealProjectImages = true;
@@ -78,9 +80,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
       <!-- Sigilo: border-left terracota 4px mobile / 5px desktop.
            Único uso de acento lineal en esta sección. -->
       <div class="hero-sigil">
-        <h1 id="h-hero" class="h1-hero">
-          Empresa de Reformas<br>en el Corredor<br>del Henares
-        </h1>
+        <HeroTitle lines={["Empresa de Reformas", "en el Corredor", "del Henares"]} />
       </div>
     </div>
 
@@ -157,7 +157,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-12">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Nuestros servicios</p>
-        <h2 id="h-servicios" class="text-4xl lg:text-5xl font-black text-gray-900 mb-5" style="letter-spacing:-0.02em">
+        <h2 id="h-servicios" class="h2-section mb-5 reveal" style="letter-spacing:-0.02em">
           ¿Qué quieres reformar?
         </h2>
         <p class="text-lg text-gray-500 max-w-xl">Reformas integrales y parciales en Alcalá de Henares, Torrejón de Ardoz, Coslada y toda la zona del Corredor del Henares.</p>
@@ -303,8 +303,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
     <div class="max-w-7xl mx-auto px-4">
 
       <div class="mb-10">
-        <h2 id="h-precios" class="font-black text-gray-900 mb-4"
-            style="font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.025em;line-height:1.1;max-width:22ch;text-wrap:balance">
+        <h2 id="h-precios" class="h2-section mb-4 reveal" style="max-width:22ch">
           ¿Cuánto cuesta una reforma en el Corredor del Henares?
         </h2>
         <p class="text-gray-600 max-w-prose" style="font-size:0.9375rem;line-height:1.7">
@@ -359,8 +358,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
-        <h2 id="h-proceso" class="font-black text-gray-900"
-            style="font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.02em;max-width:22ch;text-wrap:balance">
+        <h2 id="h-proceso" class="h2-section  reveal" style="max-width:22ch">
           Tu reforma en el Corredor, paso a paso
         </h2>
       </div>
@@ -391,8 +389,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Proyectos reales</p>
-        <h2 id="h-proyectos" class="font-black text-gray-900"
-            style="font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.02em;max-width:22ch;text-wrap:balance">
+        <h2 id="h-proyectos" class="h2-section  reveal" style="max-width:22ch">
           Antes y después de la reforma
         </h2>
       </div>
@@ -514,22 +511,11 @@ const trustCompromisos = COMPROMISOS.filter(c =>
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 id="h-faq" class="font-black text-gray-900"
-            style="font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.025em;max-width:24ch;text-wrap:balance">
+        <h2 id="h-faq" class="h2-section  reveal" style="max-width:24ch">
           Precios y dudas sobre reformas en el Corredor del Henares
         </h2>
       </div>
-      <div class="divide-y divide-gray-100">
-        {faqs.map(faq => (
-          <details class="group py-5">
-            <summary class="flex justify-between items-start gap-4 cursor-pointer list-none font-semibold text-gray-900">
-              {faq.q}
-              <span class="text-[#A85535] text-2xl leading-none flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-gray-500 leading-relaxed text-sm">{faq.a}</p>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion faqs={faqs} />
     </div>
   </section>
 
@@ -538,8 +524,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
   ══════════════════════════════════════ -->
   <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 id="h-cta-final" class="font-black text-white mb-4"
-          style="font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-0.03em">
+      <h2 id="h-cta-final" class="h2-cta mb-4">
         ¿Listo para reformar?
       </h2>
       <p class="text-gray-400 mb-8" style="font-size:1.0625rem">

@@ -7,6 +7,7 @@ import ZonasGrid from '../../components/ui/ZonasGrid.astro';
 import { SITE } from '../../data/site';
 import PriceGuideChip from '../../components/ui/PriceGuideChip.astro';
 import Callout from '../../components/ui/Callout.astro';
+import HeroTitle from '../../components/ui/HeroTitle.astro';
 
 const title = 'Rehabilitación de Edificios y Comunidades | Trazzo360';
 const description = 'Rehabilitación de edificios, fachadas y comunidades de propietarios en el Corredor. Proyecto técnico incluido, gestión de licencias, precio cerrado.';
@@ -106,9 +107,7 @@ const faqSchema = {
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="position:relative;z-index:1">
       <p class="font-black uppercase text-[#A85535] mb-6" style="font-size:10px;letter-spacing:0.15em">Comunidades de propietarios · Corredor del Henares</p>
-      <h1 id="h-hero" class="h1-hero">
-        Comunidades de propietarios<br>en el Corredor del Henares
-      </h1>
+      <HeroTitle lines={["Comunidades de propietarios", "en el Corredor del Henares"]} />
     </div>
     <div class="max-w-7xl mx-auto px-4 lg:px-8 w-full" style="margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1">
       <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:clamp(1.5rem,2.5vw,2.5rem)">
@@ -158,7 +157,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de edificios del Corredor</p>
-        <h2 id="h-parque" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-parque" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué edificios necesitan rehabilitación en el Corredor del Henares
         </h2>
       </div>
@@ -207,7 +206,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Qué cubre una rehabilitación completa</p>
-        <h2 id="h-rehab-edificios" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-rehab-edificios" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Rehabilitación de edificios: envolvente, cubierta, fachada e instalaciones
         </h2>
       </div>
@@ -252,7 +251,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La intervención más visible del edificio</p>
-        <h2 id="h-reforma-fachadas" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-reforma-fachadas" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Reforma de fachadas: opciones técnicas y coste orientativo
         </h2>
       </div>
@@ -304,7 +303,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de la junta</p>
-        <h2 id="h-decision" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-decision" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Cómo presentar una obra de comunidad para que se apruebe
         </h2>
       </div>
@@ -352,7 +351,7 @@ const faqSchema = {
     <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-3xl mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Alcance completo</p>
-        <h2 id="h-que-incluye" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-que-incluye" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Qué obras hacemos en comunidades de propietarios
         </h2>
       </div>
@@ -387,7 +386,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la obra en zonas comunes</p>
-        <h2 id="h-vecinos-obra" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-vecinos-obra" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Trabajar en un edificio habitado: cómo lo gestionamos
         </h2>
       </div>
@@ -417,7 +416,7 @@ const faqSchema = {
   <!-- M5: Comparativa -->
   <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-comparativa">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-comparativa" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-comparativa" class="h4-block mb-3 reveal" style="letter-spacing:-0.02em">
         Precios orientativos de obras en comunidades
       </h2>
       <p class="text-gray-600 leading-relaxed mb-6">
@@ -455,7 +454,7 @@ const faqSchema = {
   <!-- M3: Licencias y normativa -->
   <section class="py-16 bg-white" aria-labelledby="h-licencias">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-licencias" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-licencias" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Normativa y trámites en obras de comunidades de propietarios
       </h2>
       <p class="text-gray-700 leading-relaxed mb-4">
@@ -476,7 +475,7 @@ const faqSchema = {
   <!-- M6: Cómo comparar presupuestos -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-comparar">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-comparar" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-comparar" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Cómo comparar presupuestos de obras en comunidades
       </h2>
       <p class="text-gray-600 leading-relaxed mb-8">
@@ -507,7 +506,7 @@ const faqSchema = {
   <!-- M7: Plazos -->
   <section class="py-16 bg-white" aria-labelledby="h-plazos">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-plazos" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-plazos" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Plazos de obras en comunidades de propietarios
       </h2>
       <div class="overflow-x-auto">
@@ -551,7 +550,7 @@ const faqSchema = {
         </div>
         <div class="lg:pt-4">
           <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de votar en junta</p>
-          <h2 id="h-compromisos" class="text-3xl lg:text-4xl font-black text-gray-900 mb-5" style="letter-spacing:-0.02em;text-wrap:balance">
+          <h2 id="h-compromisos" class="h3-sub mb-5 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
             Lo que comprometemos antes de empezar la obra de comunidad
           </h2>
           <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
@@ -568,7 +567,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
-        <h2 id="h-proceso" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-proceso" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           De la visita técnica a la entrega con certificado
         </h2>
       </div>
@@ -605,7 +604,7 @@ const faqSchema = {
   <!-- Dónde hacemos rehabilitación de edificios -->
   <section class="py-16 bg-white" aria-labelledby="h-zonas">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 id="h-zonas" class="text-2xl font-black text-gray-900 mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-zonas" class="h4-block mb-3 reveal" style="letter-spacing:-0.02em">
         Rehabilitación de edificios en el Corredor: todos los municipios
       </h2>
       <p class="text-gray-600 leading-relaxed mb-8 max-w-2xl">
@@ -626,7 +625,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-10">
         <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 id="h-faq" class="text-3xl lg:text-4xl font-black text-gray-900 mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+        <h2 id="h-faq" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
           Todo lo que necesitas saber sobre obras en comunidades
         </h2>
       </div>
@@ -637,7 +636,7 @@ const faqSchema = {
   <!-- CTA Final -->
   <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 id="h-cta-final" class="text-3xl lg:text-4xl font-black text-white mb-3" style="letter-spacing:-0.02em">
+      <h2 id="h-cta-final" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em">
         ¿Cuánto cuesta la rehabilitación del edificio?
       </h2>
       <p class="text-gray-400 mb-2">Visita técnica gratuita. Presupuesto desglosado listo para junta.</p>
@@ -670,12 +669,4 @@ const faqSchema = {
       heroImgEl.style.transform = `translateY(${window.scrollY * 0.28}px)`;
     }, { passive: true });
   }
-
-  // Scroll reveals
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
 </script>

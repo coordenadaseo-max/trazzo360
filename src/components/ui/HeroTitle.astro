@@ -1,0 +1,37 @@
+---
+/**
+ * H1 de hero con la entrada animada del lab.
+ *
+ * Cada línea sube desde abajo con un desfase (.hero-line + heroSlideUp en
+ * global.css). Antes solo lo tenían reformas-integrales y reforma-banos porque
+ * había que copiar el markup a mano; el resto de heros aparecían de golpe.
+ *
+ * La animación respeta prefers-reduced-motion vía global.css.
+ */
+interface Props {
+  id?: string;
+  /** Una entrada por línea visual del titular */
+  lines: string[];
+  /** Eyebrow opcional sobre el titular, para los H1 a dos niveles */
+  eyebrow?: string;
+  /** Override del tamaño cuando la página no usa la escala de servicio */
+  size?: string;
+  class?: string;
+}
+
+const { id = 'h-hero', lines, eyebrow, size, class: className } = Astro.props;
+const stacked = Boolean(eyebrow);
+---
+
+<h1
+  id={id}
+  class:list={[stacked ? 'h1-hero--stacked' : 'h1-hero', className]}
+  style={size ? `font-size:${size}` : undefined}
+>
+  {eyebrow && <span class="h1-hero__eyebrow">{eyebrow}</span>}
+  {lines.map(line => (
+    // Con eyebrow el H1 no lleva tamaño propio, así que cada línea toma el de
+    // la tesis; sin él, hereda del propio h1.
+    <span class:list={['hero-line', stacked && 'h1-hero__thesis']}><span>{line}</span></span>
+  ))}
+</h1>

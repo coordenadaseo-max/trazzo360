@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE } from '../../data/site';
+import FaqAccordion from '../../components/ui/FaqAccordion.astro';
 
 const title = 'Cuánto cuesta reformar una cocina en 2025 | Trazzo360';
 const description = 'Cuánto cuesta reformar una cocina en el Corredor del Henares: tabla de precios por m², desglose por partidas y cómo leer un presupuesto antes de decidir.';
@@ -94,7 +95,7 @@ const faqSchema = {
 
     <!-- M2: Tabla de precios -->
     <section aria-labelledby="h-precios-cocina" class="mb-12">
-      <h2 id="h-precios-cocina" class="text-2xl font-black text-gray-900 mb-2" style="letter-spacing:-0.02em">
+      <h2 id="h-precios-cocina" class="h4-block mb-2 reveal" style="letter-spacing:-0.02em">
         Precio de reforma de cocina según superficie y alcance
       </h2>
       <p class="text-gray-600 leading-relaxed mb-6">
@@ -164,7 +165,7 @@ const faqSchema = {
 
     <!-- M3: Desglose por partidas -->
     <section aria-labelledby="h-partidas-cocina" class="mb-12">
-      <h2 id="h-partidas-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-partidas-cocina" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Desglose por partidas: cómo se distribuye el coste de una cocina
       </h2>
       <p class="text-gray-700 leading-relaxed mb-6">
@@ -206,7 +207,7 @@ const faqSchema = {
 
     <!-- M4: Qué encarece / abarata -->
     <section aria-labelledby="h-encarece-cocina" class="mb-12">
-      <h2 id="h-encarece-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-encarece-cocina" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Qué encarece y qué abarata una reforma de cocina
       </h2>
 
@@ -233,7 +234,7 @@ const faqSchema = {
 
     <!-- M5: Qué no incluye -->
     <section aria-labelledby="h-no-incluye-cocina" class="mb-12 bg-[#F9F7F4] p-7">
-      <h2 id="h-no-incluye-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-no-incluye-cocina" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Qué no incluye el precio de reforma de cocina
       </h2>
       <p class="text-gray-700 leading-relaxed mb-4">
@@ -251,7 +252,7 @@ const faqSchema = {
 
     <!-- M6: Cómo comparar presupuestos -->
     <section aria-labelledby="h-comparar-cocina" class="mb-12">
-      <h2 id="h-comparar-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-comparar-cocina" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Cómo leer y comparar presupuestos de reforma de cocina
       </h2>
       <p class="text-gray-600 leading-relaxed mb-6">
@@ -301,7 +302,7 @@ const faqSchema = {
 
     <!-- M7: Plazos -->
     <section aria-labelledby="h-plazos-cocina" class="mb-12">
-      <h2 id="h-plazos-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-plazos-cocina" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Plazos reales de una reforma de cocina
       </h2>
       <p class="text-gray-700 leading-relaxed mb-6">
@@ -340,7 +341,7 @@ const faqSchema = {
 
     <!-- M8: Errores caros -->
     <section aria-labelledby="h-errores-cocina" class="mb-12">
-      <h2 id="h-errores-cocina" class="text-2xl font-black text-gray-900 mb-4" style="letter-spacing:-0.02em">
+      <h2 id="h-errores-cocina" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Errores caros al reformar una cocina
       </h2>
       <p class="text-gray-700 leading-relaxed mb-6">
@@ -408,22 +409,10 @@ const faqSchema = {
 
     <!-- M9: FAQs -->
     <section aria-labelledby="h-faq-cocina" class="mb-12">
-      <h2 id="h-faq-cocina" class="text-2xl font-black text-gray-900 mb-6" style="letter-spacing:-0.02em">
+      <h2 id="h-faq-cocina" class="h4-block mb-6 reveal" style="letter-spacing:-0.02em">
         Preguntas frecuentes sobre el coste de una reforma de cocina
       </h2>
-      <div class="space-y-3">
-        {faqs.map(faq => (
-          <details class="border border-gray-200 bg-white">
-            <summary class="flex justify-between items-center py-4 px-5 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50 transition-colors list-none">
-              <span>{faq.q}</span>
-              <span class="text-[#A85535] ml-4 flex-shrink-0" aria-hidden="true">+</span>
-            </summary>
-            <div class="px-5 pb-5 pt-2 text-gray-700 leading-relaxed text-sm border-t border-gray-100">
-              {faq.a}
-            </div>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion faqs={faqs} />
     </section>
 
     <!-- Otras guías -->

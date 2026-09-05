@@ -64,6 +64,11 @@ const schemas = [baseSchema, ...(schema ? (Array.isArray(schema) ? schema : [sch
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Marca .js antes de pintar: los reveals sólo ocultan contenido si este
+         script corrió. Va inline y sin type=module a propósito, para que se
+         ejecute de forma síncrona y no haya parpadeo. -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
@@ -107,5 +112,36 @@ const schemas = [baseSchema, ...(schema ? (Array.isArray(schema) ? schema : [sch
     </main>
     <Footer />
     {SITE.whatsapp !== 'TU_TELEFONO' && <WhatsAppBtn />}
+
+    <!-- Reveals al hacer scroll. Va aquí y no en cada página: estaba duplicado
+         en las 6 de servicios y ausente en las otras 68, que por eso mostraban
+         todo el contenido de golpe.
+
+         is:inline a propósito: si dependiera del bundle de Astro y este fallara
+         o tardara, el contenido marcado con .reveal se quedaría invisible. Aquí
+         se ejecuta sí o sí, y si el navegador no soporta IntersectionObserver
+         se retira la marca .js y todo se ve sin animación. -->
+    <script is:inline>
+      (function () {
+        if (!('IntersectionObserver' in window)) {
+          document.documentElement.classList.remove('js');
+          return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal, .reveal-stagger').forEach(function (el) {
+          // Lo que ya está en pantalla al cargar se muestra sin esperar al
+          // observer: no debe animarse con retraso, y así el contenido visible
+          // nunca queda a merced de que el observer dispare.
+          var r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) { el.classList.add('visible'); return; }
+          io.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -5,6 +5,8 @@ import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
 import ZonasGrid from '../../components/ui/ZonasGrid.astro';
 import { SITE } from '../../data/site';
+import PriceGuideChip from '../../components/ui/PriceGuideChip.astro';
+import Callout from '../../components/ui/Callout.astro';
 
 const title = 'Rehabilitación de Edificios y Comunidades | Trazzo360';
 const description = 'Rehabilitación de edificios, fachadas y comunidades de propietarios en el Corredor. Proyecto técnico incluido, gestión de licencias, precio cerrado.';
@@ -463,12 +465,9 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-6">
         En los ayuntamientos del Corredor (Torrejón de Ardoz, Alcalá de Henares, Coslada, San Fernando de Henares, Guadalajara, Azuqueca de Henares), los trámites de obras menores en zonas comunes suelen resolverse con comunicación previa. Las rehabilitaciones de fachada con SATE o con andamiaje de envergadura pueden requerir licencia de obra.
       </p>
-      <div class="empresa-callout mb-6">
-        <p class="empresa-callout__title">Inspección Técnica de Edificios (ITE) en el Corredor</p>
-        <p class="empresa-callout__body">
-          Los edificios de más de 50 años de antigüedad en la Comunidad de Madrid están sujetos a la Inspección Técnica de Edificios. Si la comunidad no ha pasado la ITE o hay deficiencias detectadas en la última inspección, la rehabilitación puede ser el momento de resolver esas deficiencias y obtener el certificado favorable.
-        </p>
-      </div>
+      <Callout title="Inspección Técnica de Edificios (ITE) en el Corredor" class="mb-6">
+        Los edificios de más de 50 años de antigüedad en la Comunidad de Madrid están sujetos a la Inspección Técnica de Edificios. Si la comunidad no ha pasado la ITE o hay deficiencias detectadas en la última inspección, la rehabilitación puede ser el momento de resolver esas deficiencias y obtener el certificado favorable.
+      </Callout>
       <p class="text-gray-700 leading-relaxed">
         Nos encargamos de la gestión completa de los trámites necesarios: permiso de ocupación de vía pública para andamiaje, comunicación a los ayuntamientos, documentación técnica y certificados de fin de obra. Todo esto forma parte del proceso, no es un extra.
       </p>
@@ -500,12 +499,9 @@ const faqSchema = {
         ))}
       </dl>
 
-      <div class="empresa-callout mt-8">
-        <p class="empresa-callout__title">Precio cerrado e imprevistos en obras de comunidad</p>
-        <p class="empresa-callout__body">
-          El precio cerrado en obras de comunidad cubre todo lo que es visible e inspeccionable en la visita técnica: el estado del soporte de fachada, la superficie de cubierta, las zonas comunes a intervenir. Si al iniciar la obra aparece algo que no era accesible en la inspección (una viga con deterioro oculto bajo el enfoscado, una capa de impermeabilización anterior que no se podía ver desde el exterior) lo comunicamos antes de tocar nada, lo presupuestamos por separado y esperamos la autorización del interlocutor designado por la junta. Ningún imprevisto se ejecuta sin validación previa.
-        </p>
-      </div>
+      <Callout title="Precio cerrado e imprevistos en obras de comunidad" class="mt-8">
+        El precio cerrado en obras de comunidad cubre todo lo que es visible e inspeccionable en la visita técnica: el estado del soporte de fachada, la superficie de cubierta, las zonas comunes a intervenir. Si al iniciar la obra aparece algo que no era accesible en la inspección (una viga con deterioro oculto bajo el enfoscado, una capa de impermeabilización anterior que no se podía ver desde el exterior) lo comunicamos antes de tocar nada, lo presupuestamos por separado y esperamos la autorización del interlocutor designado por la junta. Ningún imprevisto se ejecuta sin validación previa.
+      </Callout>
     </div>
   </section>
 
@@ -620,11 +616,7 @@ const faqSchema = {
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si también estás pensando en reformar el local comercial del edificio:</p>
         <div class="flex flex-wrap gap-2">
-          <a href="/servicios/locales-comerciales/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Reforma de locales y oficinas</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <PriceGuideChip href="/servicios/locales-comerciales/" label="Servicio" text="Reforma de locales y oficinas" />
         </div>
       </div>
     </div>

@@ -5,6 +5,8 @@ import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
 import ZonasGrid from '../../components/ui/ZonasGrid.astro';
 import { SITE } from '../../data/site';
+import PriceGuideChip from '../../components/ui/PriceGuideChip.astro';
+import Callout from '../../components/ui/Callout.astro';
 
 const title = 'Reforma de Locales Comerciales en el Corredor | Trazzo360';
 const description = 'Reforma de locales comerciales en el Corredor del Henares. La actividad determina el alcance y las instalaciones necesarias. Presupuesto orientativo tras visita técnica gratuita.';
@@ -248,12 +250,9 @@ const faqSchema = {
         </div>
       </div>
 
-      <div class="empresa-callout">
-        <p class="empresa-callout__title">El error que más retrasa aperturas en el Corredor</p>
-        <p class="empresa-callout__body">
-          Iniciar la tramitación de la licencia cuando la obra ya está terminada. En actividades que requieren inspección técnica (hostelería, clínicas, actividades clasificadas), la cadena es: proyecto, visado, tramitación, inspección, licencia. Todo eso puede tardar entre 4 y 12 semanas según el municipio y la actividad. Si se empieza después de que acaba la obra, se suman esas semanas al plazo de apertura. La documentación técnica puede empezar en cuanto se define el alcance, sin esperar a que finalice la obra.
-        </p>
-      </div>
+      <Callout title="El error que más retrasa aperturas en el Corredor">
+        Iniciar la tramitación de la licencia cuando la obra ya está terminada. En actividades que requieren inspección técnica (hostelería, clínicas, actividades clasificadas), la cadena es: proyecto, visado, tramitación, inspección, licencia. Todo eso puede tardar entre 4 y 12 semanas según el municipio y la actividad. Si se empieza después de que acaba la obra, se suman esas semanas al plazo de apertura. La documentación técnica puede empezar en cuanto se define el alcance, sin esperar a que finalice la obra.
+      </Callout>
     </div>
   </section>
 
@@ -562,12 +561,9 @@ const faqSchema = {
         ))}
       </dl>
 
-      <div class="empresa-callout mt-8">
-        <p class="empresa-callout__title">Precio cerrado e imprevistos en la reforma de un local</p>
-        <p class="empresa-callout__body">
-          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica: las instalaciones accesibles, la estructura observable y el alcance definido en el proyecto. Si al vaciar el local aparece algo que no era visible en la inspección (una instalación eléctrica en peor estado del esperado, humedad en el forjado, un conducto de extracción inaccesible), lo comunicamos antes de actuar. Lo valoramos por separado y esperamos tu autorización. En la reforma de locales, los imprevistos más frecuentes son los relacionados con las instalaciones originales del edificio.
-        </p>
-      </div>
+      <Callout title="Precio cerrado e imprevistos en la reforma de un local" class="mt-8">
+        El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica: las instalaciones accesibles, la estructura observable y el alcance definido en el proyecto. Si al vaciar el local aparece algo que no era visible en la inspección (una instalación eléctrica en peor estado del esperado, humedad en el forjado, un conducto de extracción inaccesible), lo comunicamos antes de actuar. Lo valoramos por separado y esperamos tu autorización. En la reforma de locales, los imprevistos más frecuentes son los relacionados con las instalaciones originales del edificio.
+      </Callout>
     </div>
   </section>
 
@@ -677,11 +673,7 @@ const faqSchema = {
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si la obra afecta a zonas comunes del edificio:</p>
         <div class="flex flex-wrap gap-2">
-          <a href="/servicios/comunidades-vecinos/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Obras en comunidades de propietarios</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <PriceGuideChip href="/servicios/comunidades-vecinos/" label="Servicio" text="Obras en comunidades de propietarios" />
         </div>
       </div>
     </div>

@@ -5,6 +5,8 @@ import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
 import ZonasGrid from '../../components/ui/ZonasGrid.astro';
 import { SITE } from '../../data/site';
+import PriceGuideChip from '../../components/ui/PriceGuideChip.astro';
+import Callout from '../../components/ui/Callout.astro';
 
 const title = 'Reforma de Pisos y Viviendas en el Corredor | Trazzo360';
 const description = 'Reforma de pisos en el Corredor del Henares: suelos, baño, cocina, carpintería y pintura. Presupuesto cerrado tras visita técnica gratuita. Desde 14.000€.';
@@ -488,12 +490,9 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-6">
         En bloques de pisos con comunidad de propietarios, algunas actuaciones (como la modificación de distribución que afecte a la estructura del edificio) pueden requerir el consentimiento de la comunidad. La normativa varía por municipio. Nos encargamos de informarte y de gestionar el trámite que corresponda en tu caso.
       </p>
-      <div class="empresa-callout">
-        <p class="empresa-callout__title">Derribo de tabiques en pisos de los años 60–80</p>
-        <p class="empresa-callout__body">
-          En edificios de esa época, algunos tabiques que aparentemente son de separación pueden ser elementos resistentes o tener funciones de arriostramiento. Antes de decidir qué se derriba, hacemos una valoración técnica del elemento para confirmar que puede eliminarse sin proyecto de refuerzo. Este paso va incluido en la visita técnica gratuita.
-        </p>
-      </div>
+      <Callout title="Derribo de tabiques en pisos de los años 60–80">
+        En edificios de esa época, algunos tabiques que aparentemente son de separación pueden ser elementos resistentes o tener funciones de arriostramiento. Antes de decidir qué se derriba, hacemos una valoración técnica del elemento para confirmar que puede eliminarse sin proyecto de refuerzo. Este paso va incluido en la visita técnica gratuita.
+      </Callout>
     </div>
   </section>
 
@@ -522,12 +521,9 @@ const faqSchema = {
         ))}
       </dl>
 
-      <div class="empresa-callout mt-8">
-        <p class="empresa-callout__title">Precio cerrado e imprevistos en la reforma de vivienda</p>
-        <p class="empresa-callout__body">
-          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma de pisos o viviendas, eso incluye el estado observable de las instalaciones, las dimensiones reales de cada zona y los materiales especificados antes de empezar. Si al levantar suelos o abrir paredes aparece algo que no era accesible antes (humedad en el soporte, tuberías en peor estado del visible, una viga que no estaba en los planos) lo comunicamos antes de tocar nada y lo valoramos por separado. En la mayoría de reformas de vivienda del Corredor, el precio cierra sin desviaciones. Cuando aparece algo nuevo, hay una persona que llama, explica y espera tu decisión antes de actuar.
-        </p>
-      </div>
+      <Callout title="Precio cerrado e imprevistos en la reforma de vivienda" class="mt-8">
+        El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma de pisos o viviendas, eso incluye el estado observable de las instalaciones, las dimensiones reales de cada zona y los materiales especificados antes de empezar. Si al levantar suelos o abrir paredes aparece algo que no era accesible antes (humedad en el soporte, tuberías en peor estado del visible, una viga que no estaba en los planos) lo comunicamos antes de tocar nada y lo valoramos por separado. En la mayoría de reformas de vivienda del Corredor, el precio cierra sin desviaciones. Cuando aparece algo nuevo, hay una persona que llama, explica y espera tu decisión antes de actuar.
+      </Callout>
     </div>
   </section>
 
@@ -641,21 +637,9 @@ const faqSchema = {
       <div class="mt-10 pt-8 border-t border-gray-100">
         <p class="text-sm text-gray-500 mb-4">Si tu reforma necesita un alcance diferente:</p>
         <div class="flex flex-wrap gap-2">
-          <a href="/servicios/reformas-integrales/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Reformas integrales (instalaciones incluidas)</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="/servicios/reforma-banos/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Reforma de baños</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="/servicios/reforma-cocinas/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Reforma de cocinas</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <PriceGuideChip href="/servicios/reformas-integrales/" label="Servicio" text="Reformas integrales (instalaciones incluidas)" />
+          <PriceGuideChip href="/servicios/reforma-banos/" label="Servicio" text="Reforma de baños" />
+          <PriceGuideChip href="/servicios/reforma-cocinas/" label="Servicio" text="Reforma de cocinas" />
         </div>
       </div>
     </div>

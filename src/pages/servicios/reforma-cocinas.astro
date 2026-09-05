@@ -4,6 +4,12 @@ import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
 import ZonasGrid from '../../components/ui/ZonasGrid.astro';
+import PriceGuideChip from '../../components/ui/PriceGuideChip.astro';
+import Callout from '../../components/ui/Callout.astro';
+import HeroMetrics from '../../components/ui/HeroMetrics.astro';
+import HeroCtaGroup from '../../components/ui/HeroCtaGroup.astro';
+import EraTimeline from '../../components/ui/EraTimeline.astro';
+import CtaStrip from '../../components/ui/CtaStrip.astro';
 import { SITE } from '../../data/site';
 
 const title = 'Reforma de Cocinas en el Corredor del Henares | Trazzo360';
@@ -187,31 +193,14 @@ const tranches = [
             <p class="leading-relaxed mb-5" style="font-size:clamp(0.875rem,1.05vw,1rem);max-width:46ch;color:rgba(255,255,255,.72)">
               Lo que no se decide antes de la obra es lo que la alarga. En la visita técnica cerramos distribución, instalaciones y materiales. El presupuesto cerrado llega por escrito. El plazo queda fijado en el contrato.
             </p>
-            <div class="hero-cta-group">
-              <a href="/contacto/" class="hero-cta-primary">
-                Pedir valoración gratuita
-              </a>
-              <a href={`tel:${SITE.phone}`} class="hero-cta-secondary">
-                {SITE.phoneDisplay}
-              </a>
-              <p class="text-white/65 uppercase" style="font-size:.625rem;letter-spacing:.1em">Sin compromiso · Visita técnica gratuita</p>
-            </div>
+            <HeroCtaGroup label="Pedir valoración gratuita" note="Sin compromiso · Visita técnica gratuita" />
           </div>
 
-          <div class="hero-metrics">
-            <div>
-              <p class="hero-metric__val">Precio<br>cerrado</p>
-              <p class="hero-metric__label">por contrato</p>
-            </div>
-            <div>
-              <p class="hero-metric__val">2 años</p>
-              <p class="hero-metric__label">garantía</p>
-            </div>
-            <div>
-              <p class="hero-metric__val">40/40/20</p>
-              <p class="hero-metric__label">pago fases</p>
-            </div>
-          </div>
+          <HeroMetrics metrics={[
+            { value: 'Precio<br>cerrado', label: 'por contrato' },
+            { value: '2 años',            label: 'garantía' },
+            { value: '40/40/20',          label: 'pago fases' },
+          ]} />
 
         </div>
 
@@ -293,51 +282,41 @@ const tranches = [
         </p>
       </div>
 
-      <div class="era-timeline mb-16">
-
-        <div class="era-col">
-          <p class="era-tag">Coslada, San Fernando, Torrejón, Alcalá</p>
-          <p class="era-col__title">Cocina galería (años 70–80)</p>
-          <p class="era-col__body">
-            Formato estrecho con muebles a ambos lados. Espacio de trabajo limitado y circulación incómoda cuando hay más de una persona. La ventilación suele ser el punto más crítico a resolver antes de elegir distribución.
-          </p>
-          <ul class="era-list">
-            <li>Conducto de extracción que puede ser compartido con otros pisos del bloque</li>
-            <li>Fontanería antigua que conviene revisar con la cocina ya abierta</li>
-            <li>Instalación eléctrica sin circuito dedicado para vitrocerámica ni lavavajillas</li>
-            <li>Apertura al salón condicionada por la estructura del tabique</li>
-          </ul>
-        </div>
-
-        <div class="era-col">
-          <p class="era-tag">Alcalá, Azuqueca, Guadalajara</p>
-          <p class="era-col__title">Cocina con paso (años 90–2000)</p>
-          <p class="era-col__body">
-            Más amplitud y un pasillo de tránsito hacia las habitaciones. La distribución es más funcional, pero los acabados de la época acumulan entre 20 y 30 años de desgaste. La apertura al salón es posible en muchos casos.
-          </p>
-          <ul class="era-list">
-            <li>Azulejo de pequeño formato con rejuntas que ya no admiten limpieza efectiva</li>
-            <li>Encimera de laminado con bordes levantados o deterioro en la zona del fregadero</li>
-            <li>Muebles en buen estado estructural pero con estética desfasada</li>
-            <li>Tabique interior habitualmente de pladur o ladrillo hueco</li>
-          </ul>
-        </div>
-
-        <div class="era-col">
-          <p class="era-tag">Meco, Camarma, urbanizaciones de San Fernando</p>
-          <p class="era-col__title">Cocina de chalet o adosado</p>
-          <p class="era-col__body">
-            Mayor superficie media y acceso a terraza o jardín. El reto no suele ser el espacio sino aprovechar bien la distribución y el triángulo de trabajo entre nevera, fregadero y fuegos.
-          </p>
-          <ul class="era-list">
-            <li>Espacio para isla o barra americana si la distribución actual no la aprovecha</li>
-            <li>Extracción directa al exterior más sencilla gracias a la estructura</li>
-            <li>Posibilidad de integrar cocina con comedor si hay conexión visual directa</li>
-            <li>Circulación entre los tres focos a menudo mejorable con redistribución</li>
-          </ul>
-        </div>
-
-      </div>
+      <EraTimeline class="mb-16" columns={[
+        {
+          "tag": "Coslada, San Fernando, Torrejón, Alcalá",
+          "title": "Cocina galería (años 70–80)",
+          "body": "Formato estrecho con muebles a ambos lados. Espacio de trabajo limitado y circulación incómoda cuando hay más de una persona. La ventilación suele ser el punto más crítico a resolver antes de elegir distribución.",
+          "items": [
+            "Conducto de extracción que puede ser compartido con otros pisos del bloque",
+            "Fontanería antigua que conviene revisar con la cocina ya abierta",
+            "Instalación eléctrica sin circuito dedicado para vitrocerámica ni lavavajillas",
+            "Apertura al salón condicionada por la estructura del tabique"
+          ]
+        },
+        {
+          "tag": "Alcalá, Azuqueca, Guadalajara",
+          "title": "Cocina con paso (años 90–2000)",
+          "body": "Más amplitud y un pasillo de tránsito hacia las habitaciones. La distribución es más funcional, pero los acabados de la época acumulan entre 20 y 30 años de desgaste. La apertura al salón es posible en muchos casos.",
+          "items": [
+            "Azulejo de pequeño formato con rejuntas que ya no admiten limpieza efectiva",
+            "Encimera de laminado con bordes levantados o deterioro en la zona del fregadero",
+            "Muebles en buen estado estructural pero con estética desfasada",
+            "Tabique interior habitualmente de pladur o ladrillo hueco"
+          ]
+        },
+        {
+          "tag": "Meco, Camarma, urbanizaciones de San Fernando",
+          "title": "Cocina de chalet o adosado",
+          "body": "Mayor superficie media y acceso a terraza o jardín. El reto no suele ser el espacio sino aprovechar bien la distribución y el triángulo de trabajo entre nevera, fregadero y fuegos.",
+          "items": [
+            "Espacio para isla o barra americana si la distribución actual no la aprovecha",
+            "Extracción directa al exterior más sencilla gracias a la estructura",
+            "Posibilidad de integrar cocina con comedor si hay conexión visual directa",
+            "Circulación entre los tres focos a menudo mejorable con redistribución"
+          ]
+        }
+      ]} />
 
       <!-- MV1: Diagramas de distribución — bloque editorial oscuro dentro de sección clara -->
       <div style="margin-left:calc(-1 * var(--px, 1rem));margin-right:calc(-1 * var(--px, 1rem))">
@@ -642,12 +621,9 @@ const tranches = [
       </div>
 
       <!-- Precio cerrado e imprevistos -->
-      <div class="empresa-callout">
-        <p class="empresa-callout__title">Precio cerrado e imprevistos</p>
-        <p class="empresa-callout__body">
-          El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. Si al desmontar los muebles o al abrir las paredes aparece algo no visible antes, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas de cocina del Corredor, el precio cierra sin desviaciones.
-        </p>
-      </div>
+      <Callout title="Precio cerrado e imprevistos">
+        El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. Si al desmontar los muebles o al abrir las paredes aparece algo no visible antes, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas de cocina del Corredor, el precio cierra sin desviaciones.
+      </Callout>
 
       <!-- CTA de precios -->
       <div style="display:flex;flex-direction:column;gap:.75rem;align-items:flex-start">
@@ -796,21 +772,9 @@ const tranches = [
       <div style="border-top:1px solid #E5E7EB;padding-top:1.5rem">
         <p class="text-sm text-gray-500 mb-4">Si tu reforma de cocina va unida a otras zonas de la vivienda:</p>
         <div class="flex flex-wrap gap-2">
-          <a href="/servicios/reforma-banos/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Reforma de baños</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="/servicios/reforma-pisos/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Reforma de pisos</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="/servicios/reformas-integrales/" class="price-guide-chip">
-            <span class="price-guide-chip__label">Servicio</span>
-            <span class="price-guide-chip__text">Reformas integrales</span>
-            <svg class="price-guide-chip__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <PriceGuideChip href="/servicios/reforma-banos/" label="Servicio" text="Reforma de baños" />
+          <PriceGuideChip href="/servicios/reforma-pisos/" label="Servicio" text="Reforma de pisos" />
+          <PriceGuideChip href="/servicios/reformas-integrales/" label="Servicio" text="Reformas integrales" />
         </div>
 
         <p class="text-sm text-gray-500 mb-3 mt-8">Información sobre el parque de vivienda y las reformas más habituales en cada municipio:</p>
@@ -856,22 +820,11 @@ const tranches = [
           ¿Cuánto cuesta reformar<br>tu cocina?
         </p>
         <p class="text-gray-400 mb-10 text-lg">Visita técnica gratuita. Diseño y presupuesto cerrado por escrito. Desde 5.000€.</p>
-        <div class="cta-strip">
-          <div class="cta-strip__item">
-            <span class="cta-strip__val">Gratis</span>
-            <span class="cta-strip__label">Visita técnica</span>
-          </div>
-          <div class="cta-strip__sep" aria-hidden="true"></div>
-          <div class="cta-strip__item">
-            <span class="cta-strip__val">Precio cerrado</span>
-            <span class="cta-strip__label">En el contrato</span>
-          </div>
-          <div class="cta-strip__sep" aria-hidden="true"></div>
-          <div class="cta-strip__item">
-            <span class="cta-strip__val">40 / 40 / 20</span>
-            <span class="cta-strip__label">Pago por fases</span>
-          </div>
-        </div>
+      <CtaStrip items={[
+        { value: 'Gratis', label: 'Visita técnica' },
+        { value: 'Precio cerrado', label: 'En el contrato' },
+        { value: '40 / 40 / 20', label: 'Pago por fases' },
+      ]} />
         <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
           <a href="/contacto/" class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar presupuesto</a>
           <a href={`tel:${SITE.phone}`} class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">{SITE.phoneDisplay}</a>

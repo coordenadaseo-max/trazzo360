@@ -219,8 +219,6 @@ const tranches = [
       </div>
     </div>
   </section>
-
-
   <!-- ══════════════════════════════════════════════════
        ACTO 2 · QUÉ INCLUYE + DIAGNÓSTICO + DISTRIBUCIÓN
        Fusión temática: el "qué incluye" responde a
@@ -436,99 +434,6 @@ const tranches = [
 
     </div>
   </section>
-
-
-  <!-- ══════════════════════════════════════════════════
-       ACTO 3 · CONVIVENCIA DURANTE LA OBRA
-       Estados editoriales — sin cronología inventada.
-       Fuente: copy documentado de la página anterior
-       + directrices de CLAUDE.md sobre vida durante obra.
-  ═══════════════════════════════════════════════════════ -->
-  <section class="py-20 lg:py-28 bg-[#111827]" aria-labelledby="h-convivencia">
-    <div class="max-w-7xl mx-auto px-4">
-
-      <div class="max-w-2xl mb-10">
-        <p class="font-black uppercase text-white/65 mb-3" style="font-size:10px;letter-spacing:0.15em">Durante la obra</p>
-        <h2 id="h-convivencia" class="h2-section h2-section--dark reveal">
-          Semanas sin cocina. Las gestionamos desde el primer día.
-        </h2>
-      </div>
-
-      <div class="estados-grid mb-8" style="max-width:72rem">
-
-        <!-- Estado 1 -->
-        <div style="background:#0f172a;padding:2rem 1.5rem">
-          <p style="font-size:.625rem;font-weight:900;letter-spacing:0.15em;text-transform:uppercase;color:#ef4444;margin-bottom:.75rem">
-            Fase de obra civil
-          </p>
-          <p class="font-bold text-white text-sm mb-3">Sin acceso a la cocina</p>
-          <ul class="list-convivencia">
-            {[
-              'Protección de suelos y zonas comunes antes de empezar',
-              'Los materiales pedidos antes de la primera jornada: muebles, encimera y electrodomésticos confirmados antes del desescombro',
-              'Los primeros días son los más ruidosos; desde entonces el ritmo es más llevadero',
-              'El responsable avisa el horario de inicio cada mañana',
-            ].map(p => (
-              <li>
-                <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Estado 2 -->
-        <div style="background:#111827;padding:2rem 1.5rem">
-          <p style="font-size:.625rem;font-weight:900;letter-spacing:0.15em;text-transform:uppercase;color:#f59e0b;margin-bottom:.75rem">
-            Instalaciones y muebles
-          </p>
-          <p class="font-bold text-white text-sm mb-3">La cocina recupera funcionalidad progresivamente</p>
-          <ul class="list-convivencia">
-            {[
-              'Con las instalaciones terminadas el espacio empieza a tener forma',
-              'Conforme avanza el montaje de muebles, el acceso a la cocina se va ampliando',
-              'Si el plazo sin cocina es crítico, lo planificamos desde el inicio para reducir los días de inactividad total',
-              'Limpieza al terminar cada jornada',
-            ].map(p => (
-              <li>
-                <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Estado 3 -->
-        <div style="background:#1e293b;padding:2rem 1.5rem">
-          <p style="font-size:.625rem;font-weight:900;letter-spacing:0.15em;text-transform:uppercase;color:#22c55e;margin-bottom:.75rem">
-            Entrega
-          </p>
-          <p class="font-bold text-white text-sm mb-3">Cocina completamente operativa</p>
-          <ul class="list-convivencia">
-            {[
-              'Electrodomésticos instalados y comprobados',
-              'Fregadero en marcha, muebles nivelados, encimera sin marcas',
-              'Limpieza final incluida en la reforma',
-              '2 años de garantía sobre la ejecución desde la fecha de entrega',
-            ].map(p => (
-              <li>
-                <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-      </div>
-
-      <div style="border-left:3px solid rgba(255,255,255,.12);padding-left:1.5rem;max-width:56ch">
-        <p class="font-bold text-white text-sm mb-1">Si tienes un único acceso a la cocina</p>
-        <p style="font-size:.875rem;color:#9CA3AF;line-height:1.65">
-          En viviendas con una sola cocina, planificamos desde el principio qué días son los más restrictivos y cómo adaptar la obra para que la interrupción sea lo más corta posible. Esa conversación empieza en la visita técnica, no cuando la obra ya está en marcha.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-
   <!-- ══════════════════════════════════════════════════
        ACTO 4 · PRECIOS + MODIFICADORES + QUÉ NO INCLUYE
        Datos exclusivamente de calculator.ts.
@@ -635,8 +540,95 @@ const tranches = [
 
     </div>
   </section>
+  <!-- ══════════════════════════════════════════════════
+       ACTO 3 · CONVIVENCIA DURANTE LA OBRA
+       Estados editoriales — sin cronología inventada.
+       Fuente: copy documentado de la página anterior
+       + directrices de CLAUDE.md sobre vida durante obra.
+  ═══════════════════════════════════════════════════════ -->
+  <section class="py-20 lg:py-28 bg-[#111827]" aria-labelledby="h-convivencia">
+    <div class="max-w-7xl mx-auto px-4">
 
+      <div class="max-w-2xl mb-10">
+        <p class="font-black uppercase text-white/65 mb-3" style="font-size:10px;letter-spacing:0.15em">Durante la obra</p>
+        <h2 id="h-convivencia" class="h2-section h2-section--dark reveal">
+          Semanas sin cocina. Las gestionamos desde el primer día.
+        </h2>
+      </div>
 
+      <div class="estados-grid mb-8" style="max-width:72rem">
+
+        <!-- Estado 1 -->
+        <div style="background:#0f172a;padding:2rem 1.5rem">
+          <p style="font-size:.625rem;font-weight:900;letter-spacing:0.15em;text-transform:uppercase;color:#ef4444;margin-bottom:.75rem">
+            Fase de obra civil
+          </p>
+          <p class="font-bold text-white text-sm mb-3">Sin acceso a la cocina</p>
+          <ul class="list-convivencia">
+            {[
+              'Protección de suelos y zonas comunes antes de empezar',
+              'Los materiales pedidos antes de la primera jornada: muebles, encimera y electrodomésticos confirmados antes del desescombro',
+              'Los primeros días son los más ruidosos; desde entonces el ritmo es más llevadero',
+              'El responsable avisa el horario de inicio cada mañana',
+            ].map(p => (
+              <li>
+                <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Estado 2 -->
+        <div style="background:#111827;padding:2rem 1.5rem">
+          <p style="font-size:.625rem;font-weight:900;letter-spacing:0.15em;text-transform:uppercase;color:#f59e0b;margin-bottom:.75rem">
+            Instalaciones y muebles
+          </p>
+          <p class="font-bold text-white text-sm mb-3">La cocina recupera funcionalidad progresivamente</p>
+          <ul class="list-convivencia">
+            {[
+              'Con las instalaciones terminadas el espacio empieza a tener forma',
+              'Conforme avanza el montaje de muebles, el acceso a la cocina se va ampliando',
+              'Si el plazo sin cocina es crítico, lo planificamos desde el inicio para reducir los días de inactividad total',
+              'Limpieza al terminar cada jornada',
+            ].map(p => (
+              <li>
+                <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Estado 3 -->
+        <div style="background:#1e293b;padding:2rem 1.5rem">
+          <p style="font-size:.625rem;font-weight:900;letter-spacing:0.15em;text-transform:uppercase;color:#22c55e;margin-bottom:.75rem">
+            Entrega
+          </p>
+          <p class="font-bold text-white text-sm mb-3">Cocina completamente operativa</p>
+          <ul class="list-convivencia">
+            {[
+              'Electrodomésticos instalados y comprobados',
+              'Fregadero en marcha, muebles nivelados, encimera sin marcas',
+              'Limpieza final incluida en la reforma',
+              '2 años de garantía sobre la ejecución desde la fecha de entrega',
+            ].map(p => (
+              <li>
+                <span style="font-size:.8125rem;color:#9CA3AF;line-height:1.5">{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+      <div style="border-left:3px solid rgba(255,255,255,.12);padding-left:1.5rem;max-width:56ch">
+        <p class="font-bold text-white text-sm mb-1">Si tienes un único acceso a la cocina</p>
+        <p style="font-size:.875rem;color:#9CA3AF;line-height:1.65">
+          En viviendas con una sola cocina, planificamos desde el principio qué días son los más restrictivos y cómo adaptar la obra para que la interrupción sea lo más corta posible. Esa conversación empieza en la visita técnica, no cuando la obra ya está en marcha.
+        </p>
+      </div>
+
+    </div>
+  </section>
   <!-- ══════════════════════════════════════════════════
        ACTO 5 · ELECTRODOMÉSTICOS Y MATERIALES
        Sin €/ml (no autorizado). Sin especificaciones
@@ -728,28 +720,6 @@ const tranches = [
 
     </div>
   </section>
-
-
-  <!-- ══════════════════════════════════════════════════
-       ACTO 6 · FAQs
-       9 preguntas — plazos corregidos a fuente autorizada
-  ═══════════════════════════════════════════════════════ -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
-    <div class="max-w-4xl mx-auto px-4">
-
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
-        <h2 id="h-faq" class="h2-section mb-3 reveal">
-          Todo lo que necesitas saber antes de reformar la cocina
-        </h2>
-      </div>
-
-      <FaqAccordion {faqs} />
-
-    </div>
-  </section>
-
-
   <!-- ══════════════════════════════════════════════════
        ACTO 7a · ZONAS
   ═══════════════════════════════════════════════════════ -->
@@ -792,7 +762,24 @@ const tranches = [
       </div>
     </div>
   </section>
+  <!-- ══════════════════════════════════════════════════
+       ACTO 6 · FAQs
+       9 preguntas — plazos corregidos a fuente autorizada
+  ═══════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
+    <div class="max-w-4xl mx-auto px-4">
 
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
+        <h2 id="h-faq" class="h2-section mb-3 reveal">
+          Todo lo que necesitas saber antes de reformar la cocina
+        </h2>
+      </div>
+
+      <FaqAccordion {faqs} />
+
+    </div>
+  </section>
   <!-- ══════════════════════════════════════════════════
        ACTO 7b · COMPROMISOS + CTA FINAL
        Último bloque persuasivo. Fondo dark.

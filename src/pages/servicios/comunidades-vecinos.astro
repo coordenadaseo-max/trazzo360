@@ -130,56 +130,124 @@ const faqSchema = {
       </div>
     </div>
   </section>
-
-  <!-- M2: Diagnóstico local del parque de edificios -->
-  <section class="py-20 lg:py-28 bg-white" aria-labelledby="h-parque">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de edificios del Corredor</p>
-        <h2 id="h-parque" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
-          Qué edificios necesitan rehabilitación en el Corredor del Henares
+  <!-- Qué incluye -->
+  <section class="py-20 bg-white" aria-labelledby="h-que-incluye">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Alcance completo</p>
+        <h2 id="h-que-incluye" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+          Qué obras hacemos en comunidades de propietarios
         </h2>
       </div>
 
-      <p class="text-gray-700 leading-relaxed mb-8">
-        La rehabilitación de edificios en el Corredor del Henares se concentra en el parque residencial construido entre 1960 y 1985, que representa una parte muy significativa de los bloques de Coslada, San Fernando de Henares, la zona norte de Torrejón de Ardoz y los barrios históricos de Alcalá de Henares y Guadalajara. Estos edificios están llegando a la madurez de sus elementos constructivos.
-      </p>
+      <figure style="margin-bottom:3rem;overflow:hidden;aspect-ratio:16/7;background:#f0ede8">
+        <img src="/img/servicios/portal-comunidad-reformado.webp"
+             alt="Portal de comunidad de propietarios reformado con nuevo pavimento e iluminación renovada"
+             style="width:100%;height:100%;object-fit:cover;display:block"
+             loading="lazy" />
+      </figure>
 
-      <h3 class="text-lg font-bold text-gray-900 mb-3">Bloques de los años 60–75 (Coslada, San Fernando, norte de Torrejón)</h3>
-      <p class="text-gray-700 leading-relaxed mb-3">
-        Son los edificios con mayor necesidad de rehabilitación. En muchos casos, la fachada no ha recibido ninguna intervención desde la construcción: el enfoscado original presenta fisuras, manchas de humedad por filtración y eflorescencias en el ladrillo. Las cubiertas planas tienen impermeabilizaciones que llevan décadas sin renovarse, lo que genera filtraciones en las últimas plantas.
-      </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
-        <li>Fachadas con enfoscado o ladrillo cara vista sin tratamiento de protección reciente</li>
-        <li>Cubiertas planas con impermeabilización deteriorada: filtraciones en los últimos pisos</li>
-        <li>Portales con revestimientos de los años 70–80: terrazo, azulejo de pequeño formato, pintura con humedades</li>
-        <li>Instalaciones comunes de electricidad y fontanería con muchas décadas de uso sin intervención</li>
-        <li>Ascensores que ya no cumplen la normativa de seguridad actual o que no existen</li>
-      </ul>
-
-      <h3 class="text-lg font-bold text-gray-900 mb-3">Bloques de los años 75–90 (Alcalá, Torrejón, Azuqueca, Guadalajara)</h3>
-      <p class="text-gray-700 leading-relaxed mb-3">
-        Los edificios de esta época tienen menos urgencia en la estructura, pero acumulan necesidades de mantenimiento que no siempre se han gestionado de forma sistemática: zonas comunes con acabados desgastados, patios de luces con problemas de drenaje, ascensores que necesitan actualización y rampas de acceso que no cumplen la normativa de accesibilidad actual.
-      </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
-        <li>Portales con revestimientos de los años 80 que necesitan renovación estética y funcional</li>
-        <li>Patios interiores con pavimento deteriorado y problemas de recogida de agua</li>
-        <li>Sótanos y garajes con humedades por capilaridad o filtraciones de la superficie</li>
-        <li>Accesibilidad en accesos: sin rampa o con rampa que no cumple la normativa vigente</li>
-      </ul>
-
-      <h3 class="text-lg font-bold text-gray-900 mb-3">Rehabilitación energética: SATE y mejora de fachada</h3>
-      <p class="text-gray-700 leading-relaxed mb-3">
-        El sistema de aislamiento térmico por el exterior (SATE) es la intervención de rehabilitación con mayor impacto energético para los edificios de los años 60–90: añade un nuevo aislamiento sobre la fachada existente sin necesidad de obra interior en los pisos, y mejora la calificación energética del edificio de forma significativa. En el Corredor, muchos de estos edificios tienen calificación energética E o F, lo que implica una demanda de calefacción muy elevada en invierno.
-      </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-6 space-y-1.5 pl-5 list-disc">
-        <li>SATE: aislamiento de poliestireno expandido o lana mineral sobre la fachada existente, acabado exterior nuevo</li>
-        <li>Mejora de la calificación energética: posible acceso a ayudas de rehabilitación energética (Next Generation EU)</li>
-        <li>Reducción de la demanda energética: menos consumo de calefacción en invierno, más confort en verano</li>
-      </ul>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { title: 'Portales y escaleras', desc: 'Renovación de revestimientos, cambio de pavimento, pintura, mejora de iluminación LED con sensor y adaptación de accesos para cumplir normativa de accesibilidad.' },
+          { title: 'Fachadas y rehabilitación exterior', desc: 'Saneado del soporte, aplicación de sistema de impermeabilización, instalación de SATE para aislamiento por el exterior o renovación del acabado de fachada.' },
+          { title: 'Cubiertas e impermeabilización', desc: 'Renovación de la impermeabilización de cubiertas planas con garantía de 10 años. Reparación de puntos singulares: sumideros, juntas de dilatación, petos.' },
+          { title: 'Patios y zonas exteriores', desc: 'Renovación de pavimento en patios interiores, mejora del sistema de drenaje, pintura de paramentos de patio y mejora de iluminación.' },
+          { title: 'Instalaciones comunitarias', desc: 'Revisión y renovación de la red de fontanería comunitaria, cuadro eléctrico de zonas comunes, sistema de intercomunicadores y videoportero.' },
+          { title: 'Documentación para junta y administrador', desc: 'Presupuesto desglosado con memoria descriptiva y fotografías. Informe técnico del estado previo. Documentación de fin de obra con certificados de instalaciones.' },
+        ].map(item => (
+          <div class="bg-[#F9F7F4] p-7">
+            <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
+  <!-- M5: Comparativa -->
+  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-comparativa">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-comparativa" class="h4-block mb-3 reveal" style="letter-spacing:-0.02em">
+        Precios orientativos de obras en comunidades
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Precios orientativos. El presupuesto exacto se emite tras la visita técnica gratuita y la elaboración del informe del estado previo.
+      </p>
+      <div class="overflow-x-auto">
+        <p class="text-left text-xs text-gray-400 mb-3">Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato.</p>
+        <table class="w-full text-sm border-collapse bg-white">
+          <thead>
+            <tr class="border-b-2 border-[#A85535]">
+              <th class="text-left py-3 px-5 font-bold text-gray-900">Tipo de obra</th>
+              <th class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo</th>
+              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Nota</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: 'Escalera y rellanos · esencial', price: 'Desde 6.000€', note: 'Revestimientos y pintura sin IVA' },
+              { label: 'Portal y vestíbulo · esencial', price: 'Desde 8.000€', note: 'Revestimientos, iluminación sin IVA' },
+              { label: 'Cubierta / tejado · esencial', price: 'Desde 15.000€', note: 'Impermeabilización sin IVA' },
+              { label: 'Fachada exterior · esencial', price: 'Desde 25.000€', note: 'Saneado y acabado sin IVA' },
+            ].map((row, i) => (
+              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
+                <td class="py-3 px-5 text-gray-700">{row.label}</td>
+                <td class="py-3 px-5 text-right font-semibold text-gray-900">{row.price}</td>
+                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <!-- M4: Decisión clave -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-decision">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de la junta</p>
+        <h2 id="h-decision" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+          Cómo presentar una obra de comunidad para que se apruebe
+        </h2>
+      </div>
 
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Una obra de rehabilitación de edificio necesita aprobarse en junta antes de ejecutarse. La calidad del presupuesto que se presenta determina, en gran medida, que la propuesta salga adelante o genere debate por falta de información. Un presupuesto bien estructurado reduce las objeciones porque los propietarios tienen todo lo que necesitan para decidir.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-7" style="border-top:2px solid #111827">
+          <h3 class="text-base font-bold text-gray-900 mb-3">Lo que un buen presupuesto para junta incluye</h3>
+          <ul class="list-marca">
+            <li><span>Descripción del alcance en lenguaje comprensible para los propietarios, no solo técnico</span></li>
+            <li><span>Fotografías del estado previo de las zonas que se van a intervenir</span></li>
+            <li><span>Partidas desglosadas por capítulo (no un solo total)</span></li>
+            <li><span>Cronograma estimado: cuándo empieza, cuánto dura, cuándo termina</span></li>
+            <li><span>Precio total cerrado, sin "a determinar" ni "según materiales finales"</span></li>
+          </ul>
+        </div>
+        <div class="bg-white p-7" style="border-top:2px solid #E5E7EB">
+          <h3 class="text-base font-bold text-gray-900 mb-3">Lo que genera debate en junta y retrasa la decisión</h3>
+          <ul class="list-marca">
+            <li><span>Presupuesto sin fotografías ni diagnóstico previo</span></li>
+            <li><span>Precio total sin desglose de partidas: los propietarios no pueden comparar</span></li>
+            <li><span>Alcance vago: "rehabilitación de fachada" sin especificar qué sistema, qué superficie, qué grosor de aislamiento</span></li>
+            <li><span>Plazos sin compromiso contractual</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed mb-6">
+        La visita técnica gratuita produce un presupuesto con todos los elementos necesarios para presentarlo en junta. Si el administrador o el presidente necesita que expliquemos el presupuesto en la reunión, podemos asistir si así se decide.
+      </p>
+
+      <div class="bg-[#111827] p-7">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La junta como hito de la obra</p>
+        <p class="text-white font-semibold mb-3">La aprobación en junta no es un trámite previo. Es el punto de partida de todo lo que viene después.</p>
+        <p class="text-gray-400 text-sm leading-relaxed">La propuesta que lleva el administrador a la junta define el alcance, el precio y el plazo. Una vez aprobada, la coordinación con la empresa puede empezar: permisos, inicio de obra, gestión de vecinos e informe de avance semanal. La junta da la autorización; nosotros ejecutamos lo que se autorizó, exactamente en los términos del presupuesto aprobado.</p>
+      </div>
+    </div>
+  </section>
   <!-- Rehabilitación de edificios -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-rehab-edificios">
     <div class="max-w-4xl mx-auto px-4">
@@ -224,7 +292,6 @@ const faqSchema = {
       </div>
     </div>
   </section>
-
   <!-- Reforma de fachadas -->
   <section class="py-20 bg-white" aria-labelledby="h-reforma-fachadas">
     <div class="max-w-4xl mx-auto px-4">
@@ -276,90 +343,6 @@ const faqSchema = {
       </p>
     </div>
   </section>
-
-  <!-- M4: Decisión clave -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-decision">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de la junta</p>
-        <h2 id="h-decision" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
-          Cómo presentar una obra de comunidad para que se apruebe
-        </h2>
-      </div>
-
-      <p class="text-gray-700 leading-relaxed mb-6">
-        Una obra de rehabilitación de edificio necesita aprobarse en junta antes de ejecutarse. La calidad del presupuesto que se presenta determina, en gran medida, que la propuesta salga adelante o genere debate por falta de información. Un presupuesto bien estructurado reduce las objeciones porque los propietarios tienen todo lo que necesitan para decidir.
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white p-7" style="border-top:2px solid #111827">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Lo que un buen presupuesto para junta incluye</h3>
-          <ul class="list-marca">
-            <li><span>Descripción del alcance en lenguaje comprensible para los propietarios, no solo técnico</span></li>
-            <li><span>Fotografías del estado previo de las zonas que se van a intervenir</span></li>
-            <li><span>Partidas desglosadas por capítulo (no un solo total)</span></li>
-            <li><span>Cronograma estimado: cuándo empieza, cuánto dura, cuándo termina</span></li>
-            <li><span>Precio total cerrado, sin "a determinar" ni "según materiales finales"</span></li>
-          </ul>
-        </div>
-        <div class="bg-white p-7" style="border-top:2px solid #E5E7EB">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Lo que genera debate en junta y retrasa la decisión</h3>
-          <ul class="list-marca">
-            <li><span>Presupuesto sin fotografías ni diagnóstico previo</span></li>
-            <li><span>Precio total sin desglose de partidas: los propietarios no pueden comparar</span></li>
-            <li><span>Alcance vago: "rehabilitación de fachada" sin especificar qué sistema, qué superficie, qué grosor de aislamiento</span></li>
-            <li><span>Plazos sin compromiso contractual</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="text-gray-700 leading-relaxed mb-6">
-        La visita técnica gratuita produce un presupuesto con todos los elementos necesarios para presentarlo en junta. Si el administrador o el presidente necesita que expliquemos el presupuesto en la reunión, podemos asistir si así se decide.
-      </p>
-
-      <div class="bg-[#111827] p-7">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">La junta como hito de la obra</p>
-        <p class="text-white font-semibold mb-3">La aprobación en junta no es un trámite previo. Es el punto de partida de todo lo que viene después.</p>
-        <p class="text-gray-400 text-sm leading-relaxed">La propuesta que lleva el administrador a la junta define el alcance, el precio y el plazo. Una vez aprobada, la coordinación con la empresa puede empezar: permisos, inicio de obra, gestión de vecinos e informe de avance semanal. La junta da la autorización; nosotros ejecutamos lo que se autorizó, exactamente en los términos del presupuesto aprobado.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Qué incluye -->
-  <section class="py-20 bg-white" aria-labelledby="h-que-incluye">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="max-w-3xl mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Alcance completo</p>
-        <h2 id="h-que-incluye" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
-          Qué obras hacemos en comunidades de propietarios
-        </h2>
-      </div>
-
-      <figure style="margin-bottom:3rem;overflow:hidden;aspect-ratio:16/7;background:#f0ede8">
-        <img src="/img/servicios/portal-comunidad-reformado.webp"
-             alt="Portal de comunidad de propietarios reformado con nuevo pavimento e iluminación renovada"
-             style="width:100%;height:100%;object-fit:cover;display:block"
-             loading="lazy" />
-      </figure>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          { title: 'Portales y escaleras', desc: 'Renovación de revestimientos, cambio de pavimento, pintura, mejora de iluminación LED con sensor y adaptación de accesos para cumplir normativa de accesibilidad.' },
-          { title: 'Fachadas y rehabilitación exterior', desc: 'Saneado del soporte, aplicación de sistema de impermeabilización, instalación de SATE para aislamiento por el exterior o renovación del acabado de fachada.' },
-          { title: 'Cubiertas e impermeabilización', desc: 'Renovación de la impermeabilización de cubiertas planas con garantía de 10 años. Reparación de puntos singulares: sumideros, juntas de dilatación, petos.' },
-          { title: 'Patios y zonas exteriores', desc: 'Renovación de pavimento en patios interiores, mejora del sistema de drenaje, pintura de paramentos de patio y mejora de iluminación.' },
-          { title: 'Instalaciones comunitarias', desc: 'Revisión y renovación de la red de fontanería comunitaria, cuadro eléctrico de zonas comunes, sistema de intercomunicadores y videoportero.' },
-          { title: 'Documentación para junta y administrador', desc: 'Presupuesto desglosado con memoria descriptiva y fotografías. Informe técnico del estado previo. Documentación de fin de obra con certificados de instalaciones.' },
-        ].map(item => (
-          <div class="bg-[#F9F7F4] p-7">
-            <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- Vida durante la obra en comunidad -->
   <section class="py-20 bg-[#111827]" aria-labelledby="h-vecinos-obra">
     <div class="max-w-4xl mx-auto px-4">
@@ -391,97 +374,28 @@ const faqSchema = {
       </ul>
     </div>
   </section>
-
-  <!-- M5: Comparativa -->
-  <section class="py-16 bg-[#F9F7F4]" aria-labelledby="h-comparativa">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-comparativa" class="h4-block mb-3 reveal" style="letter-spacing:-0.02em">
-        Precios orientativos de obras en comunidades
-      </h2>
-      <p class="text-gray-600 leading-relaxed mb-6">
-        Precios orientativos. El presupuesto exacto se emite tras la visita técnica gratuita y la elaboración del informe del estado previo.
-      </p>
-      <div class="overflow-x-auto">
-        <p class="text-left text-xs text-gray-400 mb-3">Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato.</p>
-        <table class="w-full text-sm border-collapse bg-white">
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Tipo de obra</th>
-              <th class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo</th>
-              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Nota</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Escalera y rellanos · esencial', price: 'Desde 6.000€', note: 'Revestimientos y pintura sin IVA' },
-              { label: 'Portal y vestíbulo · esencial', price: 'Desde 8.000€', note: 'Revestimientos, iluminación sin IVA' },
-              { label: 'Cubierta / tejado · esencial', price: 'Desde 15.000€', note: 'Impermeabilización sin IVA' },
-              { label: 'Fachada exterior · esencial', price: 'Desde 25.000€', note: 'Saneado y acabado sin IVA' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.label}</td>
-                <td class="py-3 px-5 text-right font-semibold text-gray-900">{row.price}</td>
-                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.note}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+  <!-- M8: Compromisos -->
+  <section class="py-20 bg-white" aria-labelledby="h-compromisos">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="compromisos-apertura-grid mb-14 pb-14" style="border-bottom:1px solid #D1C9BD">
+        <div>
+          <p class="stat-editorial">2</p>
+          <p class="text-sm font-bold text-gray-900 mt-3">años de garantía</p>
+          <p class="text-xs text-gray-500">sobre la ejecución</p>
+        </div>
+        <div class="lg:pt-4">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de votar en junta</p>
+          <h2 id="h-compromisos" class="h3-sub mb-5 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+            Lo que comprometemos antes de empezar la obra de comunidad
+          </h2>
+          <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
+            Presupuesto desglosado listo para junta. Precio cerrado antes de la derrama. Las condiciones del acuerdo por escrito antes de la primera palada.
+          </p>
+        </div>
       </div>
+      <Compromisos variant="full" />
     </div>
   </section>
-
-  <!-- M3: Licencias y normativa -->
-  <section class="py-16 bg-white" aria-labelledby="h-licencias">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-licencias" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
-        Normativa y trámites en obras de comunidades de propietarios
-      </h2>
-      <p class="text-gray-700 leading-relaxed mb-4">
-        Las obras en zonas comunes de edificios residenciales pueden requerir distintos tipos de trámites según el alcance de la intervención y el municipio. La rehabilitación de fachada de más de cierta altura requiere andamiaje con permiso de ocupación de vía pública. Las obras en cubiertas y elementos estructurales pueden necesitar proyecto técnico.
-      </p>
-      <p class="text-gray-700 leading-relaxed mb-6">
-        En los ayuntamientos del Corredor (Torrejón de Ardoz, Alcalá de Henares, Coslada, San Fernando de Henares, Guadalajara, Azuqueca de Henares), los trámites de obras menores en zonas comunes suelen resolverse con comunicación previa. Las rehabilitaciones de fachada con SATE o con andamiaje de envergadura pueden requerir licencia de obra.
-      </p>
-      <Callout title="Inspección Técnica de Edificios (ITE) en el Corredor" class="mb-6">
-        Los edificios de más de 50 años de antigüedad en la Comunidad de Madrid están sujetos a la Inspección Técnica de Edificios. Si la comunidad no ha pasado la ITE o hay deficiencias detectadas en la última inspección, la rehabilitación puede ser el momento de resolver esas deficiencias y obtener el certificado favorable.
-      </Callout>
-      <p class="text-gray-700 leading-relaxed">
-        Nos encargamos de la gestión completa de los trámites necesarios: permiso de ocupación de vía pública para andamiaje, comunicación a los ayuntamientos, documentación técnica y certificados de fin de obra. Todo esto forma parte del proceso, no es un extra.
-      </p>
-    </div>
-  </section>
-
-  <!-- M6: Cómo comparar presupuestos -->
-  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-comparar">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 id="h-comparar" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
-        Cómo comparar presupuestos de obras en comunidades
-      </h2>
-      <p class="text-gray-600 leading-relaxed mb-8">
-        Cuando la comunidad recibe varios presupuestos para votar en junta, comparar solo el total total total es insuficiente. Estas son las partidas que marcan la diferencia real entre propuestas.
-      </p>
-      <dl class="divide-y divide-gray-200 bg-white p-6">
-        {[
-          { term: 'Sistema de impermeabilización de cubierta', def: 'No todos los sistemas de impermeabilización tienen la misma durabilidad ni la misma garantía. Un sistema con garantía de 10 años es muy distinto a uno con garantía de 5 años, aunque el precio inicial sea similar. Pide que especifiquen el sistema, el fabricante y el plazo de garantía del material.' },
-          { term: 'Sistema de rehabilitación de fachada', def: 'Si la obra incluye SATE, pide que especifiquen el grosor del aislante, el tipo de mortero base y el acabado exterior. Un SATE de 4 cm de EPS no tiene el mismo comportamiento que uno de 8 cm de lana de roca. La diferencia en el resultado energético es significativa y el coste diferencial es relativamente pequeño.' },
-          { term: 'Andamiaje incluido o no', def: 'En rehabilitaciones de fachada de cierta altura, el andamiaje es la partida más cara después del material. Algunos presupuestos no lo incluyen o lo incluyen solo "a determinar". Pide que esté desglosado como partida en el presupuesto.' },
-          { term: 'Gestión del permiso de vía pública', def: 'El andamiaje que ocupa la acera requiere un permiso del ayuntamiento y, en algunos municipios, el pago de una tasa. Comprueba que el presupuesto incluye la gestión de ese permiso y el coste de la tasa si aplica.' },
-          { term: 'Documentación de fin de obra', def: 'Al terminar la obra, la comunidad necesita el certificado de las instalaciones intervenidas, el informe de fin de obra y, si hubo ITE deficiente, el documento que acredita la corrección de las deficiencias. Comprueba que el presupuesto incluye esta documentación.' },
-          { term: 'Coordinación con el administrador', def: 'Algunas empresas ejecutan la obra y facturan; el administrador tiene que perseguirlas para obtener los partes e informes. Esto tiene un coste de tiempo para la comunidad. Pide que el presupuesto especifique con qué frecuencia se reporta y quién es el interlocutor de obra.' },
-        ].map(({ term, def }) => (
-          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
-            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
-            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <Callout title="Precio cerrado e imprevistos en obras de comunidad" class="mt-8">
-        El precio cerrado en obras de comunidad cubre todo lo que es visible e inspeccionable en la visita técnica: el estado del soporte de fachada, la superficie de cubierta, las zonas comunes a intervenir. Si al iniciar la obra aparece algo que no era accesible en la inspección (una viga con deterioro oculto bajo el enfoscado, una capa de impermeabilización anterior que no se podía ver desde el exterior) lo comunicamos antes de tocar nada, lo presupuestamos por separado y esperamos la autorización del interlocutor designado por la junta. Ningún imprevisto se ejecuta sin validación previa.
-      </Callout>
-    </div>
-  </section>
-
   <!-- M7: Plazos -->
   <section class="py-16 bg-white" aria-labelledby="h-plazos">
     <div class="max-w-4xl mx-auto px-4">
@@ -517,30 +431,6 @@ const faqSchema = {
       <p class="text-xs text-gray-400 mt-4">Plazos orientativos. La fecha de entrega queda fijada en el contrato. Los plazos incluyen el tiempo de instalación y desmontaje del andamiaje.</p>
     </div>
   </section>
-
-  <!-- M8: Compromisos -->
-  <section class="py-20 bg-white" aria-labelledby="h-compromisos">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="compromisos-apertura-grid mb-14 pb-14" style="border-bottom:1px solid #D1C9BD">
-        <div>
-          <p class="stat-editorial">2</p>
-          <p class="text-sm font-bold text-gray-900 mt-3">años de garantía</p>
-          <p class="text-xs text-gray-500">sobre la ejecución</p>
-        </div>
-        <div class="lg:pt-4">
-          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Antes de votar en junta</p>
-          <h2 id="h-compromisos" class="h3-sub mb-5 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
-            Lo que comprometemos antes de empezar la obra de comunidad
-          </h2>
-          <p class="text-gray-600 leading-relaxed" style="max-width:50ch">
-            Presupuesto desglosado listo para junta. Precio cerrado antes de la derrama. Las condiciones del acuerdo por escrito antes de la primera palada.
-          </p>
-        </div>
-      </div>
-      <Compromisos variant="full" />
-    </div>
-  </section>
-
   <!-- Proceso -->
   <section class="py-20 bg-white" aria-labelledby="h-proceso">
     <div class="max-w-4xl mx-auto px-4">
@@ -570,7 +460,104 @@ const faqSchema = {
       </ol>
     </div>
   </section>
+  <!-- M3: Licencias y normativa -->
+  <section class="py-16 bg-white" aria-labelledby="h-licencias">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-licencias" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
+        Normativa y trámites en obras de comunidades de propietarios
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Las obras en zonas comunes de edificios residenciales pueden requerir distintos tipos de trámites según el alcance de la intervención y el municipio. La rehabilitación de fachada de más de cierta altura requiere andamiaje con permiso de ocupación de vía pública. Las obras en cubiertas y elementos estructurales pueden necesitar proyecto técnico.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        En los ayuntamientos del Corredor (Torrejón de Ardoz, Alcalá de Henares, Coslada, San Fernando de Henares, Guadalajara, Azuqueca de Henares), los trámites de obras menores en zonas comunes suelen resolverse con comunicación previa. Las rehabilitaciones de fachada con SATE o con andamiaje de envergadura pueden requerir licencia de obra.
+      </p>
+      <Callout title="Inspección Técnica de Edificios (ITE) en el Corredor" class="mb-6">
+        Los edificios de más de 50 años de antigüedad en la Comunidad de Madrid están sujetos a la Inspección Técnica de Edificios. Si la comunidad no ha pasado la ITE o hay deficiencias detectadas en la última inspección, la rehabilitación puede ser el momento de resolver esas deficiencias y obtener el certificado favorable.
+      </Callout>
+      <p class="text-gray-700 leading-relaxed">
+        Nos encargamos de la gestión completa de los trámites necesarios: permiso de ocupación de vía pública para andamiaje, comunicación a los ayuntamientos, documentación técnica y certificados de fin de obra. Todo esto forma parte del proceso, no es un extra.
+      </p>
+    </div>
+  </section>
+  <!-- M6: Cómo comparar presupuestos -->
+  <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-comparar">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="h-comparar" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
+        Cómo comparar presupuestos de obras en comunidades
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        Cuando la comunidad recibe varios presupuestos para votar en junta, comparar solo el total total total es insuficiente. Estas son las partidas que marcan la diferencia real entre propuestas.
+      </p>
+      <dl class="divide-y divide-gray-200 bg-white p-6">
+        {[
+          { term: 'Sistema de impermeabilización de cubierta', def: 'No todos los sistemas de impermeabilización tienen la misma durabilidad ni la misma garantía. Un sistema con garantía de 10 años es muy distinto a uno con garantía de 5 años, aunque el precio inicial sea similar. Pide que especifiquen el sistema, el fabricante y el plazo de garantía del material.' },
+          { term: 'Sistema de rehabilitación de fachada', def: 'Si la obra incluye SATE, pide que especifiquen el grosor del aislante, el tipo de mortero base y el acabado exterior. Un SATE de 4 cm de EPS no tiene el mismo comportamiento que uno de 8 cm de lana de roca. La diferencia en el resultado energético es significativa y el coste diferencial es relativamente pequeño.' },
+          { term: 'Andamiaje incluido o no', def: 'En rehabilitaciones de fachada de cierta altura, el andamiaje es la partida más cara después del material. Algunos presupuestos no lo incluyen o lo incluyen solo "a determinar". Pide que esté desglosado como partida en el presupuesto.' },
+          { term: 'Gestión del permiso de vía pública', def: 'El andamiaje que ocupa la acera requiere un permiso del ayuntamiento y, en algunos municipios, el pago de una tasa. Comprueba que el presupuesto incluye la gestión de ese permiso y el coste de la tasa si aplica.' },
+          { term: 'Documentación de fin de obra', def: 'Al terminar la obra, la comunidad necesita el certificado de las instalaciones intervenidas, el informe de fin de obra y, si hubo ITE deficiente, el documento que acredita la corrección de las deficiencias. Comprueba que el presupuesto incluye esta documentación.' },
+          { term: 'Coordinación con el administrador', def: 'Algunas empresas ejecutan la obra y facturan; el administrador tiene que perseguirlas para obtener los partes e informes. Esto tiene un coste de tiempo para la comunidad. Pide que el presupuesto especifique con qué frecuencia se reporta y quién es el interlocutor de obra.' },
+        ].map(({ term, def }) => (
+          <div class="py-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6">
+            <dt class="font-semibold text-gray-900 md:col-span-1 pt-0.5">{term}</dt>
+            <dd class="text-gray-600 leading-relaxed md:col-span-2">{def}</dd>
+          </div>
+        ))}
+      </dl>
 
+      <Callout title="Precio cerrado e imprevistos en obras de comunidad" class="mt-8">
+        El precio cerrado en obras de comunidad cubre todo lo que es visible e inspeccionable en la visita técnica: el estado del soporte de fachada, la superficie de cubierta, las zonas comunes a intervenir. Si al iniciar la obra aparece algo que no era accesible en la inspección (una viga con deterioro oculto bajo el enfoscado, una capa de impermeabilización anterior que no se podía ver desde el exterior) lo comunicamos antes de tocar nada, lo presupuestamos por separado y esperamos la autorización del interlocutor designado por la junta. Ningún imprevisto se ejecuta sin validación previa.
+      </Callout>
+    </div>
+  </section>
+  <!-- M2: Diagnóstico local del parque de edificios -->
+  <section class="py-20 lg:py-28 bg-white" aria-labelledby="h-parque">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">El parque de edificios del Corredor</p>
+        <h2 id="h-parque" class="h3-sub mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
+          Qué edificios necesitan rehabilitación en el Corredor del Henares
+        </h2>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed mb-8">
+        La rehabilitación de edificios en el Corredor del Henares se concentra en el parque residencial construido entre 1960 y 1985, que representa una parte muy significativa de los bloques de Coslada, San Fernando de Henares, la zona norte de Torrejón de Ardoz y los barrios históricos de Alcalá de Henares y Guadalajara. Estos edificios están llegando a la madurez de sus elementos constructivos.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Bloques de los años 60–75 (Coslada, San Fernando, norte de Torrejón)</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        Son los edificios con mayor necesidad de rehabilitación. En muchos casos, la fachada no ha recibido ninguna intervención desde la construcción: el enfoscado original presenta fisuras, manchas de humedad por filtración y eflorescencias en el ladrillo. Las cubiertas planas tienen impermeabilizaciones que llevan décadas sin renovarse, lo que genera filtraciones en las últimas plantas.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
+        <li>Fachadas con enfoscado o ladrillo cara vista sin tratamiento de protección reciente</li>
+        <li>Cubiertas planas con impermeabilización deteriorada: filtraciones en los últimos pisos</li>
+        <li>Portales con revestimientos de los años 70–80: terrazo, azulejo de pequeño formato, pintura con humedades</li>
+        <li>Instalaciones comunes de electricidad y fontanería con muchas décadas de uso sin intervención</li>
+        <li>Ascensores que ya no cumplen la normativa de seguridad actual o que no existen</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Bloques de los años 75–90 (Alcalá, Torrejón, Azuqueca, Guadalajara)</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        Los edificios de esta época tienen menos urgencia en la estructura, pero acumulan necesidades de mantenimiento que no siempre se han gestionado de forma sistemática: zonas comunes con acabados desgastados, patios de luces con problemas de drenaje, ascensores que necesitan actualización y rampas de acceso que no cumplen la normativa de accesibilidad actual.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
+        <li>Portales con revestimientos de los años 80 que necesitan renovación estética y funcional</li>
+        <li>Patios interiores con pavimento deteriorado y problemas de recogida de agua</li>
+        <li>Sótanos y garajes con humedades por capilaridad o filtraciones de la superficie</li>
+        <li>Accesibilidad en accesos: sin rampa o con rampa que no cumple la normativa vigente</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-gray-900 mb-3">Rehabilitación energética: SATE y mejora de fachada</h3>
+      <p class="text-gray-700 leading-relaxed mb-3">
+        El sistema de aislamiento térmico por el exterior (SATE) es la intervención de rehabilitación con mayor impacto energético para los edificios de los años 60–90: añade un nuevo aislamiento sobre la fachada existente sin necesidad de obra interior en los pisos, y mejora la calificación energética del edificio de forma significativa. En el Corredor, muchos de estos edificios tienen calificación energética E o F, lo que implica una demanda de calefacción muy elevada en invierno.
+      </p>
+      <ul class="text-sm text-gray-600 leading-relaxed mb-6 space-y-1.5 pl-5 list-disc">
+        <li>SATE: aislamiento de poliestireno expandido o lana mineral sobre la fachada existente, acabado exterior nuevo</li>
+        <li>Mejora de la calificación energética: posible acceso a ayudas de rehabilitación energética (Next Generation EU)</li>
+        <li>Reducción de la demanda energética: menos consumo de calefacción en invierno, más confort en verano</li>
+      </ul>
+    </div>
+  </section>
   <!-- Resultado cotidiano -->
   <div class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-4">
@@ -579,7 +566,6 @@ const faqSchema = {
       </p>
     </div>
   </div>
-
   <!-- Dónde hacemos rehabilitación de edificios -->
   <section class="py-16 bg-white" aria-labelledby="h-zonas">
     <div class="max-w-7xl mx-auto px-4">
@@ -598,7 +584,6 @@ const faqSchema = {
       </div>
     </div>
   </section>
-
   <!-- FAQ -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-faq">
     <div class="max-w-4xl mx-auto px-4">
@@ -611,7 +596,6 @@ const faqSchema = {
       <FaqAccordion {faqs} />
     </div>
   </section>
-
   <!-- CTA Final -->
   <section class="py-20 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 text-center">

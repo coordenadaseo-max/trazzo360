@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { SITE, SERVICES, ZONES, AUTHOR, COMPROMISOS, SERVICE_ICONS } from '../data/site';
 import FaqAccordion from '../components/ui/FaqAccordion.astro';
 import HeroTitle from '../components/ui/HeroTitle.astro';
+import HeroMetrics from '../components/ui/HeroMetrics.astro';
 
 const hasRealProjectImages = true;
 
@@ -106,42 +107,15 @@ const trustCompromisos = COMPROMISOS.filter(c =>
             <p class="text-[10px] text-white/50 uppercase tracking-wider">Sin compromiso · Visita técnica gratuita</p>
           </div>
 
-          <!-- Stats desktop -->
-          <div class="text-right hidden lg:flex flex-col justify-end gap-5">
-            <div>
-              <p class="text-white font-black leading-none"
-                 style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">2 años</p>
-              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:0.1em;text-transform:uppercase">Garantía sobre la ejecución</p>
-            </div>
-            <div>
-              <p class="text-white font-black leading-none"
-                 style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">1</p>
-              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:0.1em;text-transform:uppercase">Responsable de obra</p>
-            </div>
-            <div>
-              <p class="text-white font-black leading-none"
-                 style="font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-0.03em">Precio cerrado</p>
-              <p style="font-size:10px;color:#9CA3AF;margin-top:4px;letter-spacing:0.1em;text-transform:uppercase">Por contrato desde el inicio</p>
-            </div>
-          </div>
+            <HeroMetrics metrics={[
+              { value: '2 años',            label: 'Garantía sobre la ejecución' },
+              { value: '1',                 label: 'Responsable de obra, de principio a fin' },
+              { value: '15+',               label: 'Años en obra del responsable' },
+              { value: 'Precio<br>cerrado', label: 'Por contrato desde el inicio' },
+            ]} />
 
         </div>
 
-        <!-- Stats mobile -->
-        <div class="flex gap-5 mt-8 lg:hidden">
-          <div>
-            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">2 años</p>
-            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:0.1em;text-transform:uppercase">Garantía</p>
-          </div>
-          <div>
-            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">1</p>
-            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:0.1em;text-transform:uppercase">Responsable</p>
-          </div>
-          <div>
-            <p class="text-white font-black" style="font-size:1.125rem;letter-spacing:-0.02em">Precio cerrado</p>
-            <p style="font-size:10px;color:#9CA3AF;margin-top:2px;letter-spacing:0.1em;text-transform:uppercase">Por contrato</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -285,7 +259,6 @@ const trustCompromisos = COMPROMISOS.filter(c =>
             ))}
           </ul>
 
-          {/* PRE-LAUNCH BLOCKER: cifra de años pendiente confirmación titular */}
         </div>
 
       </div>

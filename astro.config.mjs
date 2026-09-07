@@ -1,9 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { loadEnv } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
-const isIndexingEnabled = process.env.PUBLIC_SITE_INDEXING === 'true';
+const { PUBLIC_SITE_INDEXING } = loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), '');
+const isIndexingEnabled = PUBLIC_SITE_INDEXING === 'true';
 
 export default defineConfig({
   site: 'https://trazzo360.es',

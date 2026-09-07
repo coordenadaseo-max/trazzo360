@@ -27,8 +27,7 @@ pnpm-debug.log*
 # tooling local de agentes (no necesario para clon limpio ni para build)
 .mcp.json
 skills-lock.json
-.claude/agents/
-.claude/skills/
+.claude/
 .codex/
 .agents/
 .impeccable/

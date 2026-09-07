@@ -338,14 +338,14 @@ Estas dos páginas NO usan sus templates genéricos. Son referencias canónicas 
 - Nunca el mismo anchor exacto dos veces hacia la misma URL en la misma página
 - Tarjetas clicables: enlace expandido por CSS en el título, no `<a>` envolviendo todo el contenido
 
-### 8.4 Mínimos de Contenido (medidos con `scripts/audit-content.mjs`)
+### 8.4 Extensión de contenido
 
-| Tipo | Palabras | Boilerplate máx | Verificación |
-|---|---|---|---|
-| Hubs de servicio | 2.800-3.200 | <25% | `npm run audit-links && npm run audit-content` |
-| Hubs de zona | 1.700-1.900 | <30% | Idem |
-| Combinadas S×Z | 1.500-1.700 | <35% | Idem |
-| Guías | 1.800-2.500 | <15% | Idem |
+Los rangos de palabras son **orientación editorial**, no una puerta de publicación, y viven
+enunciados una sola vez en `CLAUDE.md` §3. Ningún script los mide: `audit-content.mjs`
+imprime el recuento sin compararlo con nada, y el porcentaje de boilerplate no tiene
+implementación. Ver DEC-C07.
+
+Para cerrar una tarea que toque la web: `npm run build && npm run audit`. Ver `CLAUDE.md` §9.
 
 ---
 

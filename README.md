@@ -1,48 +1,51 @@
-# Astro Starter Kit: Minimal
+# Trazzo360
+
+Sitio estático en Astro para una empresa de reformas del Corredor del Henares.
+SEO local: home, 6 hubs de servicio, 8 hubs de zona, 48 combinadas `/{servicio}/{zona}/`,
+calculadora de precios, guías y páginas de utilidad.
+
+## Arranque
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev        # http://localhost:4321
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Requiere Node `>=22.12.0` (declarado en `engines.node`). Con `nvm`, basta `nvm use 22`.
+No hay `.nvmrc`: la versión mínima vive en `package.json`.
 
-## 🚀 Project Structure
+## Scripts
 
-Inside of your Astro project, you'll see the following folders and files:
+| Script | Qué hace |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Genera el sitio en `dist/` |
+| `npm run preview` | Sirve el `dist/` ya construido |
+| `npm run check` | Busca placeholders bloqueantes en `dist/` y avisa de em-dash usado como marcador de lista |
+| `npm run audit:content` | Longitud de `<title>` y `<meta description>`, y un solo `<h1>` por página |
+| `npm run audit:schema` | JSON-LD parseable, `name` en entidades y breadcrumbs |
+| `npm run audit:links` | Enlaces internos rotos, páginas huérfanas, mínimo de enlaces entrantes |
+| `npm run audit:design` | Canon tipográfico del H1 de hero y radios fuera del sistema |
+| `npm run audit` | Encadena las cuatro auditorías anteriores |
+| `npm run preflight` | `build` + `check` + `audit`. Puerta de publicación |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Una tarea de desarrollo se cierra con `npm run build && npm run audit`.
+`npm run check` falla hoy a propósito: quedan placeholders de lanzamiento sin resolver
+(teléfono real y ID de Formspree). Eso bloquea la publicación comercial, no el desarrollo.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Indexación
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+`PUBLIC_SITE_INDEXING` controla si el sitio es indexable, y se lee en un único sitio
+(`loadEnv` de Vite en `astro.config.mjs`) para que la configuración y `robots.txt` no puedan
+discrepar.
 
-Any static assets, like images, can be placed in the `public/` directory.
+- **Sin definir o `false`** — `robots.txt` emite `Disallow: /`, todas las páginas llevan
+  `noindex, nofollow` y no se genera el sitemap. Es el estado de desarrollo.
+- **`true`** — `robots.txt` emite `Allow: /` y se genera `sitemap-index.xml`.
 
-## Requisitos de entorno
+Actívala en las variables de entorno del servidor de producción, no en el `.env` del repo.
 
-El proyecto declara `engines.node: ">=22.12.0"` en `package.json`. Usa esa versión o superior;
-con `nvm`, basta `nvm use 22`. No hay `.nvmrc`: la versión mínima vive en `package.json`.
+## Documentación
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+[`CLAUDE.md`](./CLAUDE.md) es el punto de entrada: reglas de trabajo, copy, SEO, enlazado,
+la jerarquía de precedencia entre documentos y qué documento manda en cada materia.

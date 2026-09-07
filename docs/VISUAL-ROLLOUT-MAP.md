@@ -197,15 +197,21 @@ Elementos que deben permanecer como variantes por tipo de página:
 
 ### 7.1 Matriz de Cobertura
 
-| Página / Template | Estado | Notas |
+> **Esta tabla mide composición, no tipografía.** Son dos ejes independientes y cada uno
+> tiene su propia autoridad: el canon tipográfico y de componentes lo define `CANON_SOURCES`
+> en `scripts/audit-design.mjs`; la composición la definen las Golden References de §8.
+> Una página puede tener el canon tipográfico exacto y una composición vieja: `V2` significa
+> «composición legacy», nunca que el ADN tipográfico esté mal.
+
+| Página / Template | Estado de composición | Notas |
 |---|---|---|
 | **Home** (`index.astro`) | ✅ **V1** | Hero A2 (borde editorial), trust "1 responsable", zonas editoriales |
 | **Baños** hub (`servicios/reforma-banos`) | ✅ **V1** | Hero C con timeline + precio editorial + vida durante obra |
 | **Cocinas** hub (`servicios/reforma-cocinas`) | ✅ **V1** | Ángulo A1, precio por tramo, plazos 3-5 sem |
-| **Integrales** hub (`servicios/reformas-integrales`) | ⚠ **V2** | ADN correcto, composición legacy, ángulo A2 |
-| **Pisos** hub (`servicios/reforma-pisos`) | ⚠ **V2** | ADN correcto, composición legacy, ángulo A2 |
-| **Locales** hub (`servicios/locales-comerciales`) | ⚠ **V2** | ADN correcto, composición legacy, ángulo A2 |
-| **Comunidades** hub (`servicios/comunidades-vecinos`) | ⚠ **V2** | ADN correcto, composición legacy, ángulo A2 |
+| **Integrales** hub (`servicios/reformas-integrales`) | ⚠ **V2** | Composición legacy, ángulo A2 |
+| **Pisos** hub (`servicios/reforma-pisos`) | ⚠ **V2** | Composición legacy, ángulo A2 |
+| **Locales** hub (`servicios/locales-comerciales`) | ⚠ **V2** | Composición legacy, ángulo A2 |
+| **Comunidades** hub (`servicios/comunidades-vecinos`) | ⚠ **V2** | Composición legacy, ángulo A2 |
 | **Zona Alcalá** (`zonas/alcala-de-henares.astro`) | ✅ **V1** | Standalone golden reference para zonas |
 | **Zonas template** (`zonas/[slug].astro`) | ⚠ **V2** | Template con datos locales pero composición legacy |
 | **Cocinas×Alcalá** (`reforma-cocinas/alcala-de-henares.astro`) | ✅ **V1** | Standalone golden reference para S1 |
@@ -232,6 +238,11 @@ Elementos que deben permanecer como variantes por tipo de página:
 ## 8. Golden References (Páginas de Referencia Canónica)
 
 Las siguientes páginas son la referencia de calidad para nuevos desarrollos. **Antes de construir una composición nueva, verificar que sigue el patrón de la golden reference correspondiente.**
+
+> **Esta lista manda en composición.** No es la lista del canon tipográfico: esa es
+> `CANON_SOURCES` en `scripts/audit-design.mjs` y hoy contiene `servicios/reformas-integrales.astro`
+> y `servicios/reforma-banos.astro`. Las dos listas pueden no coincidir sin que eso sea un
+> error: miden cosas distintas.
 
 | Referencia | Ruta | Para qué sirve |
 |---|---|---|

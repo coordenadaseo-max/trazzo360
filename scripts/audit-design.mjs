@@ -59,6 +59,14 @@ const NOTATION = [
   { bad: /letter-spacing:\.(\d+)em/g,  good: 'letter-spacing:0.$1em' },
 ];
 
+/**
+ * DEC-D01 — radio cero en todo el sistema. Excepción única y nominal: el botón
+ * flotante de WhatsApp, que usa `rounded-full` por convención de plataforma.
+ * Cualquier otro `rounded-` es una divergencia; así la excepción no se extiende.
+ */
+const RADIUS_EXEMPT = ['src/components/WhatsAppBtn.astro'];
+const RADIUS_RE = /\brounded-[a-z0-9-]+/g;
+
 /** Rutas excluidas: prototipos que no llegan a producción. */
 const EXCLUDE = [];
 
@@ -71,7 +79,9 @@ function walk(dir) {
   });
 }
 
-const files = walk(PAGES);
+// Las reglas tipográficas se miden en páginas; la de radios (DEC-D01) debe cubrir
+// también los componentes, porque ahí viven el header, el CTA y el propio botón exento.
+const files = [...walk(PAGES), ...walk(join(ROOT, 'src/components'))];
 const findings = [];
 
 for (const file of files) {
@@ -92,6 +102,15 @@ for (const file of files) {
           expect: rule.expect, canon: isCanon,
         });
       }
+    }
+  }
+
+  if (!RADIUS_EXEMPT.some(e => rel.endsWith(e))) {
+    for (const m of src.match(RADIUS_RE) ?? []) {
+      findings.push({
+        file: rel, role: 'Radio fuera del sistema (DEC-D01)',
+        found: m, expect: 'sin border-radius', canon: isCanon,
+      });
     }
   }
 

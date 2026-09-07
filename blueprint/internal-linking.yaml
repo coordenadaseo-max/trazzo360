@@ -77,7 +77,7 @@ anti_cannibalization:
 
 # ── Páginas de precio (nuevas, pendientes de crear) ──────────────────────────
 price_cluster:
-  - url:  /calculadora-presupuesto-reforma/
+  - url:  /calculadora-precio-reforma/
     type: tool
     links_from:
       - /servicios/reforma-banos/
@@ -95,6 +95,6 @@ price_cluster:
     type: guide
     canonical_for: ["precio reforma cocina", "cuanto cuesta reformar cocina"]
 
-  - url:  /guias/cuanto-cuesta-una-reforma-integral/
+  - url:  "PENDIENTE: /guias/cuanto-cuesta-una-reforma-integral/"   # no existe todavía; no enlazar
     type: guide
     canonical_for: ["precio reforma integral", "cuanto cuesta reforma integral"]

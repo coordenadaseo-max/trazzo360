@@ -12,7 +12,12 @@ El canon **no se inventa**: lo definen las páginas aprobadas por el cliente.
 | `/servicios/reforma-banos/` | ✅ aprobada |
 | `/servicios/reforma-cocinas/` | ✅ migrada al canon |
 
-Si una página aprobada cambia, se actualiza `CANON` en `scripts/audit-design.mjs`
+Si una página aprobada cambia, se actualiza `CANON_SOURCES` en `scripts/audit-design.mjs`
+(la constante `CANON` de ese mismo fichero guarda los valores por rol, no las páginas).
+
+**Esta lista manda en tipografía y componentes.** La composición la mandan las Golden
+References de `docs/VISUAL-ROLLOUT-MAP.md` §8. Son ejes independientes y sus listas pueden
+no coincidir sin que eso sea un error
 y el resto del sitio se migra detrás. Nunca al revés.
 
 ## Canon tipográfico por rol
@@ -81,6 +86,39 @@ con elevación**. Añadir una sombra o redondear una esquina rompe el lenguaje
 visual aunque el resto de valores sea correcto. `--radius: 0px` es una decisión,
 no un descuido.
 
+**Excepción única y nominal (DEC-D01):** `src/components/WhatsAppBtn.astro` usa
+`rounded-full` por convención de plataforma. El botón flotante de WhatsApp no es un
+componente del sistema, y ya tiene otra excepción declarada por el mismo motivo: el verde
+`#25D366` está vetado en todo el sitio salvo ahí. Ninguna otra parte del sitio puede usar
+`rounded-*`; lo comprueba `npm run audit:design`.
+
+### Componentes de chrome
+
+Migrado desde `DESIGN.md` el 2026-09-07, al retirar ese documento. **Cada valor se verificó
+contra el código antes de escribirlo**: esta tabla documenta lo que hay, no lo que se dijo.
+Tres valores de la versión anterior no coincidían y se corrigen aquí; están marcados.
+
+| Elemento | Valor real | Fichero |
+|---|---|---|
+| Top bar | `bg-[#111827] text-white text-sm py-2 text-center`, enlaces `hover:text-orange-300` | `Header.astro` |
+| Header sticky | `bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm` ⚠ la versión anterior omitía `sticky top-0` | `Header.astro` |
+| Altura del header | `h-18 py-3` dentro de `max-w-7xl mx-auto px-4` | `Header.astro` |
+| Logo | `text-2xl font-black tracking-tight`; «Trazzo» en `#A85535`, «360» en `text-gray-900` | `Header.astro` |
+| Nav links | contenedor `text-sm font-semibold uppercase tracking-wider`; enlace `text-gray-800 hover:text-[#A85535]` | `Header.astro` |
+| Dropdown de nav | panel `bg-white border border-gray-100 shadow-xl w-56`; items `px-5 py-3 text-gray-700 hover:bg-orange-50 hover:text-[#A85535] border-b border-gray-50 text-sm` | `Header.astro` |
+| CTA del header | `px-5 py-2.5 text-sm font-bold tracking-wider uppercase text-white`, `transition-opacity hover:opacity-90` | `Header.astro` |
+| CTA de hero | `padding: 1rem 1.75rem`, `font-weight: 700`, `font-size: .8125rem`, `letter-spacing: .08em`, uppercase, fondo `#A85535`, `hover: opacity .88` ⚠ es un botón distinto del anterior; la versión de `DESIGN.md` los confundía en uno solo | `.hero-cta-primary` en `global.css` |
+| CTA final de hub | `px-10 py-4` a `px-12 py-5`, `bg-[#A85535] hover:bg-[#8A4229] transition-colors` | hubs de servicio |
+
+**Dos convenciones de hover conviven, y las dos son intencionadas:** el CTA de hero baja la
+opacidad; el CTA final de hub cambia el fondo a `#8A4229`. La versión anterior afirmaba que
+todos los primarios cambiaban de fondo ⚠, lo cual sólo es cierto para el segundo.
+
+**El «patrón de card» de la versión anterior no existe.** Describía `border border-gray-100`
+con `p-6`–`p-8` como contenedor estándar; en el código, `border-gray-100` aparece como
+separador (`border-t`, `border-b`) y en el panel del dropdown, no como tarjeta. No se
+documenta un patrón que no está implementado.
+
 ### Movimiento
 
 Un solo easing domina el sistema (8 de 9 usos en el lab):
@@ -142,7 +180,7 @@ URL y un cambio masivo no se puede revisar ni aprobar.
 
 1. `npm run audit:design` — ver qué diverge en el lote.
 2. Aplicar el canon fichero a fichero.
-3. `npm run build` — deben salir **87 páginas**.
+3. `npm run build` — el recuento se obtiene con `find dist -name 'index.html' | wc -l`, no se fija aquí para que no caduque.
 4. `npm run audit:design` — el lote debe quedar limpio.
 5. Verificar el webfont con `document.fonts.check(...)`, no a ojo.
 6. Commit por lote, para poder revertir uno sin tocar los demás.
@@ -162,8 +200,8 @@ Pendientes de migrar al canon del H1 (a fecha de la última auditoría):
 | `[servicio]/[barrio].astro` *(plantilla)* | `-0.035em` · `.95` |
 | `reforma-cocinas/alcala-de-henares.astro` | `-0.035em` · `.95` |
 
-Las dos plantillas `[slug]` cubren la mayor parte de las 87 páginas generadas:
+Las dos plantillas `[slug]` cubren la mayor parte de las páginas generadas:
 migrarlas es el cambio de mayor alcance por fichero tocado.
 
-Las páginas bajo `src/pages/lab/` quedan excluidas del auditor: son prototipos
-que no llegan a producción.
+Las páginas de laboratorio se eliminaron el 2026-09-07 (DEC-C11): ya no hay
+prototipos que excluir y `EXCLUDE` en `audit-design.mjs` está vacío.

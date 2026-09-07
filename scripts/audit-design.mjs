@@ -12,6 +12,7 @@
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { isLabSource } from './lib/scope.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const PAGES = join(ROOT, 'src/pages');

@@ -36,7 +36,7 @@ El diferenciador central es la combinación de tres compromisos que ningún comp
 - **Servicios:** reformas integrales, reforma de pisos, reforma de baños, reforma de cocinas, comunidades de vecinos, locales comerciales.
 - **Zona de actuación:** exclusivamente el Corredor del Henares (los 8 municipios del ring).
 - **Fuente de precios:** `src/data/calculator.ts` es la única fuente de verdad. Ningún precio en el sitio puede diferir de los rangos allí definidos.
-- **Sin guiones largos (em dash "—"):** norma permanente de copy en todo el sitio.
+- **Em-dash (`—`):** la regla vigente está en `CLAUDE.md` §8.2. No se repite aquí.
 - **Títulos:** 50-60 caracteres. Metas: máximo 160 caracteres.
 - **Datos inventados prohibidos:** reviewCount y ratingValue solo se activan con reseñas reales verificadas.
 - **Telèfono, fotos y reseñas:** placeholders pendientes de configurar al lanzar el sitio.

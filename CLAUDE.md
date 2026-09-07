@@ -464,10 +464,18 @@ Esta regla prevalece sobre cualquier otra consideración de SEO o cobertura de U
 
 ### 8.2 Reglas de uso
 
-- **PROHIBIDO** usar `—` (guion largo) como marcador visual de listas en cualquier página.
+**Regla del em-dash — enunciado único del proyecto.** Esta es la única redacción vigente.
+Ningún otro documento la repite: `PRODUCT.md` y `docs/TRAZZO360-SYSTEM.md` apuntan aquí.
+
+> El em-dash (`—`) está prohibido como marcador visual de lista y en cualquier elemento de
+> interfaz: botones, labels, CTAs, navegación y eyebrows. El marcador de lista es siempre el
+> `::before` de `.list-marca`.
+>
+> Dentro de prosa corrida el `—` es tipografía legítima y no se toca.
+
 - El marcador es siempre CSS `::before`, nunca un carácter tipográfico ni un emoji.
 - `compromisos` solo cuando la lista sea una garantía contractual de máximo peso; no para listas normales.
-- El `—` tipográfico DENTRO del texto de prosa (no como marcador) está permitido y no se toca.
+- Lo verifica `npm run check` como advertencia, no como bloqueante. Decisión vigente: DEC-B02.
 
 ### 8.3 Estructura HTML obligatoria
 

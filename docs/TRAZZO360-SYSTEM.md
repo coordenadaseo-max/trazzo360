@@ -125,7 +125,7 @@ No competir en precio bajo. No competir en diseño. Competir en predictibilidad 
 |---|---|---|
 | "equipo propio" | Afirmación societaria no verificada | "mismos equipos, único interlocutor" |
 | "sin subcontratas" | Idem | "un solo responsable, siempre accesible" |
-| em-dash (—) en interfaz | ADN de contrato, no prosa literaria | punto y aparte, o dos frases |
+| em-dash (—) como marcador de lista o en interfaz | Ver `CLAUDE.md` §8.2, enunciado único | `::before` de `.list-marca`; en interfaz, punto y aparte o dos frases |
 | "respondemos en 24h" | Contradice el modelo de interlocutor único | "disponible durante toda la obra" |
 | Superlativos sin datos | Promocional sin respaldo | Dato concreto o nada |
 | Obras, reseñas, años empresa | No existen todavía | Omitir o reformular con la persona |
@@ -167,7 +167,7 @@ No competir en precio bajo. No competir en diseño. Competir en predictibilidad 
 - Timeline con semanas concretas (de calculator.ts)
 - Enlace a zonas donde opera
 - Enlace al hub de zona del municipio principal (Torrejón)
-- FAQ con `<details>`/`<summary>`, em-dash solo en prosa si titular aprueba (ver DEC-B03)
+- FAQ con `<details>`/`<summary>`. Para el em-dash, ver `CLAUDE.md` §8.2
 
 **Hubs de zona** (mínimo 1700w):
 - Contexto territorial específico: tipología de vivienda, décadas, barrios, patologías locales

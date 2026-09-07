@@ -27,6 +27,23 @@ const WARNINGS = [
   'presupuesto en 24',
 ];
 
+// Em-dash usado como marcador de ítem — CLAUDE.md §8.2, decisión vigente DEC-B02.
+// Dentro de prosa corrida el `—` es tipografía legítima y NO se señala. Sólo se busca
+// el uso como marcador de lista, que es lo que la regla prohíbe.
+const EM_DASH_MARKERS = [
+  // <li> cuyo primer contenido visible es un em-dash, saltando etiquetas intermedias.
+  { re: /<li\b[^>]*>\s*(?:<[^>]+>\s*)*—[\s\u00A0]/g, what: 'em-dash al inicio de un <li>' },
+  // Em-dash que abre una línea y va seguido de espacio: marcador en texto plano.
+  { re: /\n[ \t]*—[ \t]/g,                              what: 'em-dash abriendo línea como marcador' },
+];
+
+// El texto dentro de <script> y <style> no es prosa ni interfaz: no se inspecciona.
+function stripCode(html) {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ');
+}
+
 let errors = 0;
 let warnings = 0;
 let files = 0;
@@ -51,6 +68,15 @@ function walk(dir) {
       if (html.toLowerCase().includes(w.toLowerCase())) {
         console.warn(`⚠️  ${rel}  →  "${w}" (revisar antes de publicar)`);
         warnings++;
+      }
+    }
+
+    const prose = stripCode(html);
+    for (const { re, what } of EM_DASH_MARKERS) {
+      const hits = prose.match(re);
+      if (hits) {
+        console.warn(`⚠️  ${rel}  →  ${hits.length} × ${what} (CLAUDE.md §8.2: usar ::before de .list-marca)`);
+        warnings += hits.length;
       }
     }
   }

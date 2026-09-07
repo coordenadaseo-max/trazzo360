@@ -1,6 +1,9 @@
-# Arquitectura de contenido — Módulos M1–M9
+> ESTADO: INVESTIGACIÓN · NO NORMATIVO
+> Origen: sesión de trabajo — origen exacto no declarado · Fecha: 2026-08-22
+> No es regla del proyecto. Para aplicarse debe promoverse a una decisión en
+> docs/DECISION-REGISTER.md.
 
-> **Documento operativo.** Debe contrastarse con TRAZZO360-SYSTEM.md, DECISION-REGISTER.md y la implementación vigente antes de aplicar cambios.
+# Arquitectura de contenido — Módulos M1–M9
 
 > Sistema de 9 módulos reutilizables para las páginas hub de servicio.
 > Cada módulo tiene un tipo que indica qué parte del contenido es única (LOCAL/SERVICIO) o reutilizable (PARAM/BOILERPLATE).

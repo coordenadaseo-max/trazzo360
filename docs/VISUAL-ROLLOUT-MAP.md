@@ -1,6 +1,7 @@
 # VISUAL-ROLLOUT-MAP — Mapa Visual de Despliegue · Trazzo360
 
-> **Fuente de verdad operativa para diseño visual, composición y estado de rollout.**
+> **Paleta, reglas visuales globales, composición y estado de rollout.**
+> Su lugar en la jerarquía lo fija `CLAUDE.md`.
 >
 > Leer siempre junto a `DESIGN-BLUEPRINT.md` (canon tipográfico y de motion, verificado por `npm run audit:design`) y `docs/DECISION-REGISTER.md` (decisiones §D).
 >

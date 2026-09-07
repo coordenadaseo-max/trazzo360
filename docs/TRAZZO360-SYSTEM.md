@@ -1,6 +1,7 @@
 # TRAZZO360-SYSTEM — Sistema Operativo Canónico
 
-> **Fuente de verdad operativa para producto, copy, SEO, datos y conversión.**
+> **Desarrollo del sistema de producto y contenido: copy, SEO, datos y conversión.**
+> Su lugar en la jerarquía lo fija `CLAUDE.md`.
 >
 > Ver la jerarquía única en `CLAUDE.md`, sección «Jerarquía de precedencia».
 > Este documento no define su propio orden.

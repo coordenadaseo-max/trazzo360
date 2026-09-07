@@ -67,13 +67,12 @@ const NOTATION = [
 const RADIUS_EXEMPT = ['src/components/WhatsAppBtn.astro'];
 const RADIUS_RE = /\brounded-[a-z0-9-]+/g;
 
-/** Rutas excluidas: prototipos que no llegan a producción. */
-const EXCLUDE = [];
+// Prototipos excluidos: la definición vive en scripts/lib/scope.mjs.
 
 function walk(dir) {
   return readdirSync(dir).flatMap(name => {
     const full = join(dir, name);
-    if (EXCLUDE.some(re => re.test(full))) return [];
+    if (isLabSource(full)) return [];   // laboratorio: fuera del canon
     return statSync(full).isDirectory() ? walk(full)
       : full.endsWith('.astro') ? [full] : [];
   });

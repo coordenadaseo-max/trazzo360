@@ -1,6 +1,7 @@
 # Blueprint de diseño · Trazzo360
 
-Fuente de verdad tipográfica del sitio. Lo verifica `npm run audit:design`.
+Canon tipográfico y de componentes, verificado por `npm run audit:design`.
+Su lugar en la jerarquía lo fija `CLAUDE.md`.
 
 ## Cómo se define el canon
 

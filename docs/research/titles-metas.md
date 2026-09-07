@@ -1,6 +1,9 @@
-# Propuestas de title y meta — 69 páginas
+> ESTADO: INVESTIGACIÓN · NO NORMATIVO
+> Origen: sesión de trabajo SEO — origen exacto no declarado · Fecha: 2026-08-22
+> No es regla del proyecto. Para aplicarse debe promoverse a una decisión en
+> docs/DECISION-REGISTER.md.
 
-> **Documento operativo.** Debe contrastarse con TRAZZO360-SYSTEM.md, DECISION-REGISTER.md y la implementación vigente antes de aplicar cambios.
+# Propuestas de title y meta — 69 páginas
 
 > **Las propuestas de title/meta son un snapshot de trabajo y pueden haber sido sustituidas posteriormente. No sobrescribir metadata vigente únicamente porque aparezca aquí.**
 

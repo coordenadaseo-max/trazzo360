@@ -15,7 +15,8 @@
     "audit:schema": "node scripts/audit-schema.mjs",
     "audit:links": "node scripts/audit-links.mjs",
     "audit:design": "node scripts/audit-design.mjs",
-    "audit": "npm run audit:content && npm run audit:schema && npm run audit:links && npm run audit:design",
+    "audit:docs": "node scripts/audit-docs.mjs",
+    "audit": "npm run audit:content && npm run audit:schema && npm run audit:links && npm run audit:design && npm run audit:docs",
     "preflight": "npm run build && npm run check && npm run audit"
   },
   "dependencies": {

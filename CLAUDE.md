@@ -526,10 +526,18 @@ Ningún otro documento la repite: `PRODUCT.md` y `docs/TRAZZO360-SYSTEM.md` apun
 | Preparar una publicación | `npm run preflight` |
 
 Los nombres de los auditores llevan dos puntos, no guion: `audit:links`, no `audit-links`.
-`npm run audit` encadena `audit:content`, `audit:schema`, `audit:links` y `audit:design`.
+`npm run audit` encadena `audit:content`, `audit:schema`, `audit:links`, `audit:design` y `audit:docs`.
 `npm run preflight` equivale a `build` + `check` + `audit`.
 
 Al terminar una tarea que toque la web, reporta páginas generadas, errores y `TODO:` nuevos.
+
+### Diseñar en laboratorio y propagar
+
+Para diseñar una página en aislamiento y propagar después ese diseño al resto del sitio, el
+procedimiento está en [`docs/PROTOCOLO-LAB.md`](./docs/PROTOCOLO-LAB.md). Dos reglas de ahí
+que conviene tener presentes sin abrir el documento: **el lab nunca es la fuente del canon**
+—los valores aprobados se extraen a `src/styles/global.css`, no se copian de página a
+página— y **un auditor en verde sobre un scope vacío no significa nada**.
 
 ### Qué comprueba cada auditor
 
@@ -541,7 +549,8 @@ Cobertura leída del código fuente de cada script. No es un resultado de ejecuc
 | `audit:content` | Longitud de `<title>`, longitud de `<meta description>`, exactamente un `<h1>` por página | Los rangos de §3: imprime el recuento de palabras sin compararlo con nada. Boilerplate: sin implementar |
 | `audit:links` | Enlaces internos rotos, páginas huérfanas, mínimo de enlaces entrantes | Calidad del anchor text (§7) |
 | `audit:schema` | Que el JSON-LD sea parseable, que las entidades de negocio y los breadcrumbs lleven `name`, literales `"undefined"` | La entidad única `#business` de §4: sin implementar |
-| `audit:design` | Tres propiedades tipográficas: tracking y line-height del H1 de hero, y tracking del stat editorial | Radios, sombras, paleta, espaciado, composición, uso de componentes |
+| `audit:design` | Tres propiedades tipográficas del H1 de hero y del stat editorial, más los `rounded-` fuera de la excepción de DEC-D01 | Sombras, paleta, espaciado, composición |
+| `audit:docs` | Que los artefactos externos vivan en `docs/research/` con su cabecera de estado, y que ningún documento salvo este declare autoridad (§11) | El contenido de esos documentos |
 
 **`audit:design` en verde significa que esas tres propiedades coinciden con el canon. No
 significa que la web sea visualmente consistente.** Ninguna comprobación automática cubre
@@ -581,3 +590,40 @@ Enunciados únicos ya establecidos, para que no se vuelvan a duplicar:
 | Canon tipográfico | `DESIGN-BLUEPRINT.md` + `scripts/audit-design.mjs` |
 | Ring de zonas y umbrales de enlazado | `CLAUDE.md` §7.9–§7.10 + `blueprint/internal-linking.yaml` |
 | Rangos de title y meta | `CLAUDE.md` §4 |
+
+---
+
+## 11. Contrato de artefactos externos
+
+El origen de casi todas las contradicciones que este proyecto ha tenido que desmontar es el
+mismo: una herramienta externa escribió un fichero en el repositorio y ese fichero quedó
+indistinguible de una regla del proyecto. Ninguno mentía sobre su origen; simplemente no lo
+declaraba. Declararlo es ahora obligatorio y lo verifica `npm run audit:docs`.
+
+- **Todo fichero producido por una skill, un agente o una herramienta externa es NO
+  NORMATIVO por defecto**, sea cual sea su contenido o su tono. Que esté bien escrito, que
+  suene canónico o que afirme ser operativo no lo convierte en regla.
+- **Su sitio es `docs/research/`.** Nunca la raíz, nunca `docs/` a secas, nunca `blueprint/`.
+- **Debe abrir con la cabecera de estado obligatoria:**
+
+```
+> ESTADO: INVESTIGACIÓN · NO NORMATIVO
+> Origen: <skill o herramienta> · Fecha: <YYYY-MM-DD>
+> No es regla del proyecto. Para aplicarse debe promoverse a una decisión en
+> docs/DECISION-REGISTER.md.
+```
+
+- **Una recomendación solo se convierte en regla cuando se registra como DEC** en
+  `docs/DECISION-REGISTER.md`, con su verificación contra el código. Antes de eso, no existe.
+- **Ficheros protegidos. Ninguna skill los edita:** `CLAUDE.md`,
+  `docs/DECISION-REGISTER.md`, `DESIGN-BLUEPRINT.md`, `src/data/calculator.ts`, `scripts/*`,
+  `astro.config.mjs`. Si una skill propone cambiarlos, escribe la propuesta en
+  `docs/research/` y se decide aparte.
+- **Ningún documento salvo `CLAUDE.md` puede declarar una jerarquía de precedencia, una
+  «fuente de la verdad» o una autoridad.** Si un fichero nuevo lo hace, es un error, no una
+  aportación.
+
+Casos que motivaron esta sección, todos verificados en el historial:
+`hypotheses.md` lo escribió una skill de SERP y su hipótesis 1 contradecía §4;
+`DESIGN.md` lo generaba `impeccable` y acabó siendo autoridad tipográfica contra el código;
+`blueprint/trazzo360/*.yaml` describía un enlazado contrario a R6 y R7.

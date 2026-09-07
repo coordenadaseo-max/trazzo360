@@ -31,10 +31,23 @@
 - `address: 'Corredor del Henares, Madrid'` → dirección postal real del titular
 - Se usa en aviso-legal y privacidad
 
-### 5. Años de experiencia (opcional, pero aprobado como vacío)
-- **Archivo**: `src/data/site.ts` → `AUTHOR.yearsInTrade = 15`
-- El número NO se renderiza en producción (bloqueado en `index.astro` y `como-trabajamos.astro`)
-- Cuando el titular confirme la cifra: descomentar los bloques marcados con `PRE-LAUNCH BLOCKER: cifra de años`
+### 5. ~~Años de experiencia~~ — NO es bloqueante
+- **Archivo**: `src/data/trust.ts` → `AUTHOR.yearsInTrade = 15`
+- **Ya se publica** en 8 páginas como «más de 15 años en obra». CLAUDE.md §0 lo autoriza
+  expresamente: es experiencia de la persona, no antigüedad de la marca.
+- La versión anterior de esta entrada decía que el número no se renderizaba y mandaba
+  descomentar bloques que no existen. Corregido junto a DEC-A09 el 2026-09-07.
+
+### 6. `PUBLIC_SITE_INDEXING` en las variables de entorno del deploy
+- **Dónde**: panel de Vercel → Settings → Environment Variables del proyecto. **No en el repo.**
+- `PUBLIC_SITE_INDEXING=true` en el entorno de Production.
+- **Por qué es bloqueante:** `.env` está en `.gitignore`, así que la variable **no viaja al
+  deploy**. Si no se declara en Vercel, el build de producción publica un `robots.txt` con
+  `Disallow: /`, mete `noindex, nofollow` en todas las páginas y **no genera el sitemap**.
+  El sitio quedaría online y completamente invisible para Google, sin ningún error visible que lo delate.
+- **Cómo verificarlo tras el deploy:** abrir `https://trazzo360.es/robots.txt` — debe decir
+  `Allow: /` y anunciar el sitemap — y `https://trazzo360.es/sitemap-index.xml`, que debe
+  existir y no dar 404.
 
 ---
 
@@ -72,7 +85,7 @@
 | wa.me condicional (0 renders con placeholder) | ✅ OK — Layout, Header, contacto |
 | openingHoursSpecification condicional | ✅ OK — Layout.astro |
 | SITE.hours condicional | ✅ OK — Header, Footer, contacto |
-| noindex global (staging/dev) | ✅ OK — controlado por PUBLIC_SITE_INDEXING=false en .env. Activar con PUBLIC_SITE_INDEXING=true en servidor de producción |
+| noindex global (staging/dev) | ✅ OK en local — controlado por `PUBLIC_SITE_INDEXING`. **En producción depende del bloqueante 6**: la variable no viaja en el repo |
 | Sitemap: 71 URLs (excluye noindex) | ✅ OK — 71 sobre el build del 2026-09-07, calculado aplicando el filtro de `astro.config.mjs` al listado de 74 páginas. Falta confirmarlo leyendo el `sitemap-index.xml` real con `PUBLIC_SITE_INDEXING=true` |
 | robots.txt (Disallow: /gracias/) | ✅ OK — `Disallow: /lab/` retirado al eliminarse las páginas de laboratorio. En staging emite `Disallow: /` |
 | Formulario: labels, required, privacidad, redirect /gracias/ | ✅ OK (pendiente ID real) |

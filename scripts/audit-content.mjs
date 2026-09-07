@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isLabUrl } from './lib/scope.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
@@ -27,6 +28,7 @@ function walk(dir) {
     const p = join(dir, name);
     if (statSync(p).isDirectory()) { walk(p); continue; }
     if (extname(name) !== '.html') continue;
+    if (isLabUrl(p)) continue;   // laboratorio: fuera de auditoría (scripts/lib/scope.mjs)
 
     const html = readFileSync(p, 'utf8');
     const rawRel = p.slice(DIST.length + 1).replace(/\/?index\.html$/, '');

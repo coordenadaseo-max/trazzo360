@@ -26,7 +26,8 @@ No hay `.nvmrc`: la versión mínima vive en `package.json`.
 | `npm run audit:schema` | JSON-LD parseable, `name` en entidades y breadcrumbs |
 | `npm run audit:links` | Enlaces internos rotos, páginas huérfanas, mínimo de enlaces entrantes |
 | `npm run audit:design` | Canon tipográfico del H1 de hero y radios fuera del sistema |
-| `npm run audit` | Encadena las cuatro auditorías anteriores |
+| `npm run audit:docs` | Contrato de artefactos externos: dónde vive cada documento y si declara su origen |
+| `npm run audit` | Encadena las cinco auditorías anteriores |
 | `npm run preflight` | `build` + `check` + `audit`. Puerta de publicación |
 
 Una tarea de desarrollo se cierra con `npm run build && npm run audit`.

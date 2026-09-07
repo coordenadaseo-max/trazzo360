@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isLabUrl } from './lib/scope.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
@@ -43,6 +44,7 @@ function walk(dir) {
     const p = join(dir, name);
     if (statSync(p).isDirectory()) { walk(p); continue; }
     if (extname(name) !== '.html') continue;
+    if (isLabUrl(p)) continue;   // laboratorio: fuera de auditoría (scripts/lib/scope.mjs)
     const url = distToUrl(p);
     pages.set(url, readFileSync(p, 'utf8'));
     if (!inboundAll.has(url))  inboundAll.set(url, new Set());
@@ -53,6 +55,7 @@ function walk(dir) {
 walk(DIST);
 
 let broken = 0;
+let labLinks = 0;
 
 for (const [pageUrl, html] of pages) {
   // All hrefs (for broken-link detection)
@@ -61,6 +64,14 @@ for (const [pageUrl, html] of pages) {
     const canonical = href.endsWith('/') ? href : href + '/';
     if (inboundAll.has(canonical)) inboundAll.get(canonical).add(pageUrl);
     else if (inboundAll.has(href)) inboundAll.get(href).add(pageUrl);
+
+    // R12 de CLAUDE.md: una página de producción nunca enlaza al laboratorio.
+    // Las páginas de lab ya no están en `pages`, así que cualquier acierto aquí
+    // viene de producción y rompe el build.
+    if (isLabUrl(href)) {
+      console.error(`❌  [${pageUrl}]  →  ${href}  (enlace al laboratorio; R12)`);
+      labLinks++;
+    }
 
     if (!linkExists(href)) {
       console.error(`❌  [${pageUrl}]  →  ${href}`);
@@ -101,7 +112,11 @@ if (lowInbound.length > 0) {
 }
 
 console.log(`\nEnlaces verificados en ${pages.size} páginas.`);
-if (broken > 0) {
+if (labLinks > 0) {
+  console.error(`\n❌  ${labLinks} enlace(s) de producción hacia /lab/. R12: el laboratorio no recibe enlaces.\n`);
+}
+
+if (broken > 0 || labLinks > 0) {
   console.error(`\n❌  ${broken} enlace(s) roto(s). Corrige antes de publicar.\n`);
   process.exit(1);
 } else {

@@ -1,3 +1,8 @@
+> ESTADO: INVESTIGACIÓN · NO NORMATIVO
+> Origen: sesión de trabajo SEO — origen exacto no declarado · Fecha: 2026-08-16
+> No es regla del proyecto. Para aplicarse debe promoverse a una decisión en
+> docs/DECISION-REGISTER.md.
+
 # SEO Gaps — Oportunidades pendientes
 
 > Oportunidades identificadas pero **no ejecutadas aún**. Cada bloque indica si requiere decisión previa, presupuesto o contenido nuevo.

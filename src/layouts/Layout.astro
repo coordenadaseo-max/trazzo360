@@ -21,7 +21,15 @@ const ogImageUrl = ogImage ?? `${SITE.url}/favicon.svg`;
 // Noindex global mientras PUBLIC_SITE_INDEXING no esté activo en el entorno de producción.
 // Para habilitar la indexación: establecer PUBLIC_SITE_INDEXING=true en el servidor de deploy.
 const isIndexingEnabled = import.meta.env.PUBLIC_SITE_INDEXING === 'true';
-const robotsMeta = robots ?? (!isIndexingEnabled ? 'noindex, nofollow' : undefined);
+
+// El laboratorio nunca se indexa, se pase o no la prop `robots`. Se deriva de la
+// ruta y no de que alguien se acuerde de pasarla: olvidarla fue lo que publicó
+// /servicios/reformas-integrales-lab/. Ver docs/PROTOCOLO-LAB.md.
+const isLabRoute = /(^|\/)lab\//.test(Astro.url.pathname);
+
+const robotsMeta = isLabRoute
+  ? 'noindex, nofollow'
+  : (robots ?? (!isIndexingEnabled ? 'noindex, nofollow' : undefined));
 
 const baseSchema: Record<string, unknown> = {
   '@context': 'https://schema.org',

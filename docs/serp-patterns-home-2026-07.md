@@ -1,3 +1,11 @@
+> **DOCUMENTO DE INVESTIGACIÓN, NO NORMATIVO.** Las hipótesis de este archivo no son reglas
+> del proyecto. Antes de implementar cualquiera de ellas hay que contrastarla con `CLAUDE.md`.
+> En particular, la hipótesis 1 (teléfono en el title tag) es incompatible con la estructura
+> de title de `CLAUDE.md` §4 y con el límite de 50–60 caracteres: requiere decisión explícita.
+>
+> Procedencia: `blueprint/trazzo360/data/patterns/home/2026-07-03/hypotheses.md`,
+> movido aquí el 2026-09-07 al desmontar `blueprint/trazzo360/`.
+
 # Hipótesis priorizadas — Home Trazzo360
 **Keyword:** Empresa de reformas en el corredor del henares
 **Fecha SERP:** 2026-07-01 · Geo: Province of Madrid, ES · Device: desktop

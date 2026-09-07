@@ -25,6 +25,11 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory.
 
+## Requisitos de entorno
+
+El proyecto declara `engines.node: ">=22.12.0"` en `package.json`. Usa esa versión o superior;
+con `nvm`, basta `nvm use 22`. No hay `.nvmrc`: la versión mínima vive en `package.json`.
+
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:

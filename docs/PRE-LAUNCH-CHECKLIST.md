@@ -17,13 +17,13 @@
 - **Efecto**: desbloquea teléfono en header/footer/contacto, WhatsApp en header/flotante, horario visible, `openingHoursSpecification` en schema JSON-LD
 
 ### 2. Formspree (formulario de contacto)
-- **Archivo**: `src/pages/contacto.astro`, línea 45
+- **Archivo**: `src/pages/contacto.astro` — buscar `YOUR_FORM_ID` en el `action` del `<form>`
 - `action="https://formspree.io/f/YOUR_FORM_ID"` → reemplaza `YOUR_FORM_ID` con tu ID real
 - Crear cuenta en https://formspree.io, crear formulario, copiar ID (ej: `xpzgkwqr`)
 
 ### 3. CIF/NIF (páginas legales)
-- **Archivo**: `src/pages/aviso-legal.astro`, línea 32
-- **Archivo**: `src/pages/privacidad.astro`, línea 31
+- **Archivo**: `src/pages/aviso-legal.astro` — buscar `[Completar con tu CIF/NIF]`
+- **Archivo**: `src/pages/privacidad.astro` — buscar `[Completar con tu CIF/NIF]`
 - Reemplaza `[Completar con tu CIF/NIF]` con el NIF/CIF real del titular
 
 ### 4. Domicilio social (páginas legales)
@@ -67,7 +67,7 @@
 | Área | Estado |
 |------|--------|
 | Build (86 páginas) | ✅ OK |
-| 0 claims 24h/48h | ⚠️ PENDIENTE — existen promesas de "48 horas" en index.astro:366 y zones-content.ts:14. Confirmar con titular si son realistas antes de publicar |
+| 0 claims 24h/48h | ⚠️ PENDIENTE — existen promesas de "48 horas" en `src/pages/index.astro` (paso «Presupuesto cerrado» del proceso) y en `src/data/zones-content.ts` (FAQ «cómo pedir presupuesto»); localizar con `grep -rn "48 horas" src/`. Confirmar con titular si son realistas antes de publicar |
 | yearsInTrade no renderizado | ✅ OK — bloqueado en index y como-trabajamos |
 | wa.me condicional (0 renders con placeholder) | ✅ OK — Layout, Header, contacto |
 | openingHoursSpecification condicional | ✅ OK — Layout.astro |
@@ -97,8 +97,8 @@
 3. Editar `src/data/site.ts` con datos reales
 4. Editar `src/pages/contacto.astro` con ID Formspree
 5. Editar `src/pages/aviso-legal.astro` y `privacidad.astro` con CIF/NIF
-6. Si se confirman años de experiencia: descomentar en `index.astro:287` y `como-trabajamos.astro:93`
-7. `npm run build` — verificar 86 páginas OK
+6. ~~Descomentar años de experiencia~~ — no aplica: «más de 15 años en obra» ya se publica como experiencia de la persona. Ver DEC-A09
+7. `npm run build` — verificar el recuento con `find dist -name 'index.html' | wc -l` (75 páginas: 74 + `404.html` en el build del 2026-09-07)
 8. Deploy a producción
 9. Submit sitemap en Google Search Console
 10. Verificar formulario enviando prueba real

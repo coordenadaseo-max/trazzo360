@@ -26,7 +26,8 @@ Arquitectura: home + 6 hubs de servicio + 8 hubs de zona + 48 combinadas `/{serv
 | Sistema visual: tokens, tipografía, color | `DESIGN-BLUEPRINT.md` + `src/styles/global.css` | — |
 | Estado de rollout V1/V2/V3 | `docs/VISUAL-ROLLOUT-MAP.md` | — |
 | Anatomía de página: hero, bloque de zonas, breadcrumb, herencia entre familias | `docs/ANATOMIAS-CANONICAS.md` | — |
-| Keywords y asignación keyword→URL | `docs/keyword-map.md` | `blueprint/*.yaml` — solapamiento sin resolver |
+| Keywords y asignación keyword→URL | `docs/keyword-map.md` | — |
+| Ring de zonas y umbrales de enlazado | `CLAUDE.md` §7.9–§7.10 + `blueprint/internal-linking.yaml` | — |
 | Rangos de title y meta | `CLAUDE.md` §4 | `docs/titles-metas.md` es inventario, no norma |
 | Decisiones estructurales | `docs/DECISION-REGISTER.md` | — |
 | Requisitos de lanzamiento | `docs/PRE-LAUNCH-CHECKLIST.md` | — |
@@ -73,11 +74,29 @@ Las reglas se interpretan por su intención, no se aplican como checklist mecán
 **Regla de parada obligatoria:**
 Si una modificación planificada contradice cualquiera de los 5 documentos anteriores, **DETENER** la implementación e informar al usuario antes de proceder. No implementar y luego avisar; avisar primero.
 
-**Precedencia de datos:**
-`src/data/calculator.ts` > `docs/TRAZZO360-SYSTEM.md` > `CLAUDE.md` > implementación actual en `src/`
+**Jerarquía de precedencia — enunciado único del proyecto.**
 
-**Fuentes de autoridad del proyecto:**
-`CLAUDE.md` + documentos canónicos (`docs/TRAZZO360-SYSTEM.md`, `docs/VISUAL-ROLLOUT-MAP.md`, `docs/DECISION-REGISTER.md`, `PRODUCT.md`, `DESIGN-BLUEPRINT.md`) = **autoridad del proyecto**.
+Esta tabla se escribe una sola vez, aquí. Ningún otro documento define su propio orden:
+`docs/TRAZZO360-SYSTEM.md` y `docs/archive/` remiten a esta. Cuando dos fuentes se
+contradicen, gana la de nivel más bajo.
+
+| Nivel | Fuente | Sobre qué manda |
+|---|---|---|
+| 1 | `src/data/calculator.ts` | precios y plazos |
+| 2 | `docs/DECISION-REGISTER.md` | decisiones estructurales aprobadas y su historial |
+| 3 | `CLAUDE.md` | reglas operativas de trabajo, copy, SEO y enlazado |
+| 4 | `docs/TRAZZO360-SYSTEM.md` | desarrollo del sistema de producto y contenido |
+| 5 | `DESIGN-BLUEPRINT.md` + `scripts/audit-design.mjs` | canon tipográfico y de componentes |
+| 6 | `docs/VISUAL-ROLLOUT-MAP.md` | paleta, reglas visuales globales, estado de rollout |
+| 7 | `PRODUCT.md` | definición de producto y usuarios |
+| — | `docs/archive/` | histórico, nunca operativo |
+
+La implementación en `src/` no es autoridad: representa el estado, no el estándar. La
+excepción es el nivel 1, donde el dato ejecutable manda sobre cualquier documento.
+
+Esta tabla resuelve **quién gana**. La tabla de «Autoridad por materia» de más arriba
+resuelve **quién manda en cada tema**. No se contradicen: la primera se consulta solo cuando
+dos fuentes chocan sobre lo mismo.
 Memoria de Claude (archivos `.claude/`) = contexto auxiliar de sesión. No sustituye a los documentos canónicos.
 
 **Contexto histórico:**
@@ -409,6 +428,11 @@ coslada → san-fernando → torrejon → alcala → camarma → meco → azuque
 
 Cada zona enlaza a sus ±2 vecinos inmediatos en el ring (4 enlaces). El ring es circular. Patrón HTML obligatorio: `<nav aria-label="Otras zonas">` con enlaces planos, `py-8 bg-[#F9F7F4]`, sin cards ni chips SEO.
 
+La definición formal del ring, los umbrales de enlazado y las reglas por tipo de página están
+en [`blueprint/internal-linking.yaml`](./blueprint/internal-linking.yaml), que es el único
+fichero de blueprint vigente y coincide con esta sección y con §7.10. Su umbral
+`min_inbound_from_main: 8` es el que aplica `scripts/audit-links.mjs`.
+
 ### 7.10 Arquitectura de enlazado por familia de página
 
 ```
@@ -533,3 +557,27 @@ hoy la coherencia visual entre páginas: eso es revisión humana.
   para captar clientes: no hay teléfono al que llamar ni formulario que entregue el aviso.
 - La señal roja no se silencia ni se elude para dar una tarea por cerrada. Se apaga
   sustituyendo los datos reales, y hasta entonces se acepta como estado conocido.
+
+---
+
+## 10. Regla de no duplicación
+
+**Ninguna regla se escribe dos veces.** Si una regla ya existe en otro documento, aquí solo
+va el puntero.
+
+**Si encuentras la misma regla enunciada de dos formas distintas, PÁRATE y avísame en vez de
+elegir una.** Elegir en silencio es lo que produjo las contradicciones que este proyecto ha
+tenido que desmontar: dos decisiones APPROVED e incompatibles sobre el em-dash, cuatro
+documentos declarándose autoridad tipográfica, y tres órdenes de precedencia distintos. En
+todos los casos la regla aplicada acababa dependiendo de qué documento leyera cada sesión.
+
+Enunciados únicos ya establecidos, para que no se vuelvan a duplicar:
+
+| Regla | Dónde vive |
+|---|---|
+| Jerarquía de precedencia | `CLAUDE.md`, sección inicial |
+| Autoridad por materia | `CLAUDE.md`, sección inicial |
+| Em-dash | `CLAUDE.md` §8.2 |
+| Canon tipográfico | `DESIGN-BLUEPRINT.md` + `scripts/audit-design.mjs` |
+| Ring de zonas y umbrales de enlazado | `CLAUDE.md` §7.9–§7.10 + `blueprint/internal-linking.yaml` |
+| Rangos de title y meta | `CLAUDE.md` §4 |

@@ -213,7 +213,6 @@ Elementos que deben permanecer como variantes por tipo de página:
 | **Como trabajamos** | ⚠ **V2** | ADN correcto, contenido editorial |
 | **Calculadora** | ⚠ **V2** | Funcional, sin revisión editorial |
 | **Guías** | ⚠ **V2** | Contenido largo, ADN correcto |
-| **Proyectos** | ❌ **V3** | Placeholder, sin fotos reales |
 | **Contacto** | ⚠ **V2** | Funcional, formulario sin Formspree real |
 | **404** | ❌ **V3** | Legacy, sin actualizar |
 | **Aviso legal / Privacidad** | ⚠ **V2** | Domicilio placeholder [NOT COMMITTED aún] |
@@ -290,7 +289,7 @@ El template S2 usa datos locales genéricos pero no debe pretender ser S1.
 |---|---|---|---|
 | PV-01 | Em-dash en prosa editorial: 28 ficheros con `—` son deuda de QA registrada en DECISION-REGISTER.md (DT-F01). Prohibición ya APPROVED en DEC-B03. No blocker de lanzamiento. | Guías + FAQs de hubs | **DEUDA TECNICA** (ver DECISION-REGISTER §F) |
 | PV-02 | Evolución de hubs V2 a V1: ¿cuándo y en qué orden? (Integrales, Pisos, Locales, Comunidades) | 4 hubs de servicio | **PENDIENTE priorización** |
-| PV-03 | Fotos reales de obra: cuando lleguen, definir composición del bloque de proyectos (ahora en V3) | Proyectos, hubs | **PENDIENTE titular** |
+| PV-03 | Fotos reales de obra: cuando lleguen, definir la composición del bloque que las muestre | Home, hubs | **PENDIENTE titular** |
 | PV-04 | AUTHOR.name: cuando la empresa se registre, sustituir null por nombre real en trust.ts | Como trabajamos, footer | **PENDIENTE titular** |
 | PV-05 | yearsInTrade: cuando el titular confirme la cifra, descomentar bloques en index.astro:287 y como-trabajamos.astro:93 | Home, Como trabajamos | **PENDIENTE titular** |
 

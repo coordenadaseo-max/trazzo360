@@ -4,16 +4,10 @@
 > No es fuente operativa de verdad. Contiene razonamiento y análisis de sesiones anteriores,
 > parte del cual ha sido superado por decisiones posteriores o por la implementación real.
 >
-> Fuentes operativas vigentes (por orden de precedencia):
-> 1. `src/data/calculator.ts` — precios y plazos
-> 2. `PRODUCT.md` — definición de producto
-> 3. `DESIGN.md` — sistema visual
-> 4. `CLAUDE.md` — reglas de proyecto
-> 5. `docs/TRAZZO360-SYSTEM.md` — sistema operativo canónico
-> 6. `docs/VISUAL-ROLLOUT-MAP.md` — mapa visual de despliegue
-> 7. `docs/DECISION-REGISTER.md` — registro de decisiones
+> Ver la jerarquía única en `CLAUDE.md`, sección «Jerarquía de precedencia».
+> Este archivo no define su propio orden y su nivel es «histórico, nunca operativo».
 >
-> Ante cualquier contradicción entre este archivo y las fuentes anteriores: **las fuentes anteriores ganan siempre.**
+> Ante cualquier contradicción entre este archivo y las fuentes vigentes: **las fuentes vigentes ganan siempre.**
 
 ---
 

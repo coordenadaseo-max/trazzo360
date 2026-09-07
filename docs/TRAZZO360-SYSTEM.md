@@ -2,11 +2,8 @@
 
 > **Fuente de verdad operativa para producto, copy, SEO, datos y conversión.**
 >
-> Orden de precedencia cuando hay contradicción:
-> 1. `src/data/calculator.ts` — precios y plazos (autoridad máxima)
-> 2. Este documento + `docs/DECISION-REGISTER.md` — decisiones aprobadas
-> 3. `CLAUDE.md` — reglas de proyecto
-> 4. Implementación actual en `src/`
+> Ver la jerarquía única en `CLAUDE.md`, sección «Jerarquía de precedencia».
+> Este documento no define su propio orden.
 >
 > Antes de cualquier modificación de producción: leer §1 (Producto), §9 (Datos) y el DECISION-REGISTER.
 

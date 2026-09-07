@@ -17,30 +17,10 @@ export default defineConfig({
         if (!isIndexingEnabled) return false;
         return (
           !page.includes('/gracias/') &&
-          !page.includes('/lab/') &&
           !page.includes('/aviso-legal/') &&
           !page.includes('/privacidad/')
         );
       },
     }),
-    {
-      // Elimina /lab/ del output en builds de producción.
-      // En desarrollo las páginas se sirven normalmente para uso interno.
-      name: 'exclude-lab-in-production',
-      hooks: {
-        'astro:build:done': async () => {
-          if (isIndexingEnabled) {
-            const { rm } = await import('node:fs/promises');
-            const { join } = await import('node:path');
-            try {
-              await rm(join(process.cwd(), 'dist', 'lab'), { recursive: true, force: true });
-              console.log('[build] ✓ /lab/ eliminado del output de producción');
-            } catch {
-              // directorio no existe, no hay nada que hacer
-            }
-          }
-        },
-      },
-    },
   ],
 });

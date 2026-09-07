@@ -226,10 +226,14 @@ No competir en precio bajo. No competir en diseño. Competir en predictibilidad 
 | Aviso legal | 1 | `src/pages/aviso-legal.astro` | noindex |
 | Privacidad | 1 | `src/pages/privacidad.astro` | noindex |
 | Cookies | 1 | `src/pages/cookies.astro` | noindex |
-| Lab (varios) | 10 | `src/pages/lab/*.astro` | noindex |
-| **Total noindex** | **14** | | |
+| **Total noindex** | **4** | | |
 | 404 | 1 | `src/pages/404.html` | noindex, fuera del sitemap |
-| **TOTAL** | **86** | | |
+| **TOTAL** | **76** | | |
+
+> Las páginas de laboratorio (`src/pages/lab/` y `servicios/reformas-integrales-lab.astro`)
+> se eliminaron el 2026-09-07: se construían y publicaban, y eran el origen de los errores
+> críticos de auditoría. Los totales de esta tabla quedan pendientes de comprobar contra un
+> build actualizado.
 
 ### 6.2 Páginas Standalone Reference (No Template)
 
@@ -316,8 +320,8 @@ Estas dos páginas NO usan sus templates genéricos. Son referencias canónicas 
 - `<meta description>`: única, 140-155 caracteres, no concatenar headlines (produce ~250 chars)
 - Un solo `<h1>` por página, jerarquía sin saltos (h1 > h2 > h3, nunca h3 sin h2)
 - Canonical autorreferenciado en todas las páginas
-- Sitemap: 71 URLs (excluye noindex + lab)
-- robots.txt: Disallow /lab/, /gracias/
+- Sitemap: excluye las páginas noindex. Recuento pendiente de comprobar con un build actualizado
+- robots.txt: Disallow /gracias/
 - Schema JSON-LD: una sola entidad `@id: https://trazzo360.es/#business`
 
 ### 8.2 Schema JSON-LD — Reglas

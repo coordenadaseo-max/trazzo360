@@ -73,8 +73,8 @@
 | openingHoursSpecification condicional | ✅ OK — Layout.astro |
 | SITE.hours condicional | ✅ OK — Header, Footer, contacto |
 | noindex global (staging/dev) | ✅ OK — controlado por PUBLIC_SITE_INDEXING=false en .env. Activar con PUBLIC_SITE_INDEXING=true en servidor de producción |
-| Sitemap: 71 URLs (excluye noindex + lab) | ✅ OK |
-| robots.txt (Disallow: /lab/, /gracias/) | ✅ OK |
+| Sitemap: 71 URLs (excluye noindex) | ✅ OK — 71 sobre el build del 2026-09-07, calculado aplicando el filtro de `astro.config.mjs` al listado de 74 páginas. Falta confirmarlo leyendo el `sitemap-index.xml` real con `PUBLIC_SITE_INDEXING=true` |
+| robots.txt (Disallow: /gracias/) | ✅ OK — `Disallow: /lab/` retirado al eliminarse las páginas de laboratorio. En staging emite `Disallow: /` |
 | Formulario: labels, required, privacidad, redirect /gracias/ | ✅ OK (pendiente ID real) |
 | Tablas con overflow-x wrapper | ✅ OK |
 | 0 KB JavaScript cliente | ✅ OK |

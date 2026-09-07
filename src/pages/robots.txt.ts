@@ -7,7 +7,6 @@ export const GET: APIRoute = () => {
     ? [
         'User-agent: *',
         'Allow: /',
-        'Disallow: /lab/',
         'Disallow: /gracias/',
         '',
         'Sitemap: https://trazzo360.es/sitemap-index.xml',

@@ -60,7 +60,7 @@ const NOTATION = [
 ];
 
 /** Rutas excluidas: prototipos que no llegan a producción. */
-const EXCLUDE = [/\/pages\/lab\//, /-lab\.astro$/];
+const EXCLUDE = [];
 
 function walk(dir) {
   return readdirSync(dir).flatMap(name => {

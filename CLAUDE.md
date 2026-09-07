@@ -15,6 +15,39 @@ Arquitectura: home + 6 hubs de servicio + 8 hubs de zona + 48 combinadas `/{serv
 4. [`docs/VISUAL-ROLLOUT-MAP.md`](./docs/VISUAL-ROLLOUT-MAP.md) — reglas visuales globales, estado de rollout V1/V2/V3, patrones prohibidos
 5. [`docs/DECISION-REGISTER.md`](./docs/DECISION-REGISTER.md) — registro de decisiones estructurales aprobadas
 
+**Autoridad por materia — manda un solo documento en cada una:**
+
+| Materia | Manda | No es autoridad en esta materia |
+|---|---|---|
+| Hechos de negocio, prohibiciones de copy, integridad de datos | `CLAUDE.md` §0–§1 | — |
+| Producto, usuarios, compromisos de marca | `PRODUCT.md` | — |
+| Datos, precios, SEO on-page, copy, arquitectura de contenido | `docs/TRAZZO360-SYSTEM.md` | `docs/arquitectura-contenido.md`, `docs/seo-gaps.md` (histórico) |
+| Precios y partidas como dato ejecutable | `src/data/calculator.ts` | cualquier documento |
+| Sistema visual: tokens, tipografía, color | `DESIGN.md` + `src/styles/global.css` | `DESIGN-BLUEPRINT.md` |
+| Estado de rollout V1/V2/V3 | `docs/VISUAL-ROLLOUT-MAP.md` | — |
+| Anatomía de página: hero, bloque de zonas, breadcrumb, herencia entre familias | `docs/ANATOMIAS-CANONICAS.md` | — |
+| Keywords y asignación keyword→URL | `docs/keyword-map.md` | `blueprint/*.yaml` — solapamiento sin resolver |
+| Rangos de title y meta | `CLAUDE.md` §4 | `docs/titles-metas.md` es inventario, no norma |
+| Decisiones estructurales | `docs/DECISION-REGISTER.md` | — |
+| Requisitos de lanzamiento | `docs/PRE-LAUNCH-CHECKLIST.md` | — |
+
+**Materias en disputa — sin autoridad asignada:**
+
+Dos materias tienen instrucciones incompatibles repartidas entre varios documentos.
+Hasta que se resuelvan, **se conserva la implementación actual del código tal como está**
+y **ninguna de las instrucciones en conflicto se aplica automáticamente**. Que una
+excepción exista hoy en el código no la convierte en aprobada: se conserva porque
+cambiarla sin decisión sería peor, no porque sea correcta.
+
+| Materia en disputa | Documentos que se contradicen | Regla mientras dure |
+|---|---|---|
+| Radios y sombras | `DESIGN-BLUEPRINT.md` (cero absoluto) · `docs/VISUAL-ROLLOUT-MAP.md` (excepciones en WhatsApp y header) · `docs/ANATOMIAS-CANONICAS.md` (cero) | No tocar radios ni sombras existentes. No usar ninguno de los tres como argumento para cambiarlos. Ver DT-F06 |
+| Orden de secciones del body en hubs de servicio | `docs/ANATOMIAS-CANONICAS.md` § «orden canónico» · disposición implementada hoy en los 6 hubs | No reordenar en ninguna de las dos direcciones sin instrucción explícita. Ver DEC-C10 |
+
+`DESIGN-BLUEPRINT.md` no es autoridad: su regla de radios contradice a
+`VISUAL-ROLLOUT-MAP.md` y al código. Queda como material de trabajo hasta que la
+contradicción se resuelva y su contenido se absorba en `DESIGN.md`.
+
 **Protocolo de contraste obligatorio antes de implementar:**
 
 1. Documentos canónicos (orden de lectura arriba)
@@ -72,7 +105,8 @@ Hechos que **no** existen todavía y que no se pueden mencionar bajo ninguna for
 - `aggregateRating` y `Review` en JSON-LD solo se emiten si `SITE.reviewCount > 0` con reseñas reales. Conserva la lógica condicional; no la elimines ni la puentees.
 - `telephone` en JSON-LD solo se emite si no es placeholder. Conserva esa lógica.
 - Ninguna cifra comercial (obras, años, clientes) puede aparecer sin que yo la haya confirmado.
-- Antes de dar por terminada cualquier tarea, ejecuta `npm run build` y verifica que no hay placeholders sin marcar en `dist/`.
+- Los placeholders de lanzamiento ya identificados y aceptados (`TU_TELEFONO`, `YOUR_FORM_ID`, `TODO_CIF`, `TODO_RAZON_SOCIAL`, `TODO_DOMICILIO_FISCAL`) **no bloquean las tareas de desarrollo**. Están registrados y se resuelven antes del lanzamiento comercial, no antes de cada tarea. Ver §9.
+- Un placeholder **nuevo**, distinto de esa lista, sí es un fallo: márcalo como `TODO:` visible y avísame de forma destacada.
 
 ## 2. Imágenes: ilustrativas y de obra propia nunca se mezclan
 
@@ -87,16 +121,18 @@ Cualquier componente que renderice metadatos de obra (ubicación, m², plazo) de
 
 - Todo bloque que describa una zona (tipología de vivienda, década, barrios, patologías, normativa municipal) debe ser único para esa zona. Nunca reutilices literalmente el mismo párrafo entre dos municipios.
 - Los bloques de alcance de servicio objetivo (fases, qué incluye, materiales) sí pueden compartirse entre páginas del mismo servicio.
-- **Umbrales operativos**, medidos con `scripts/audit-content.mjs`:
+- **Rangos editoriales de referencia.** Orientan la extensión al redactar. No son una puerta de publicación, ningún script los verifica y no hay que medirlos ni reportarlos para cerrar una tanda:
 
-| Tipo | Palabras | Boilerplate (texto en ≥5 páginas) |
-|---|---|---|
-| Hubs de servicio | 2.800 – 3.200 | < 25 % |
-| Hubs de zona | 1.700 – 1.900 | < 30 % |
-| Combinadas servicio×zona | 1.500 – 1.700 | < 35 % |
-| Guías | 1.800 – 2.500 | < 15 % |
+| Tipo | Palabras |
+|---|---|
+| Hubs de servicio | 2.800 – 3.200 |
+| Hubs de zona | 1.700 – 1.900 |
+| Combinadas servicio×zona | 1.500 – 1.700 |
+| Guías | 1.800 – 2.500 |
 
-- Antes de dar por buena una tanda, mide y repórtame el resultado en tabla.
+- Quedar fuera de rango no bloquea nada: es una señal para releer la página y decidir si le falta sustancia o le sobra relleno.
+- **Ningún contenido se recorta ni se alarga para entrar en rango.** La regla «cero relleno para alcanzar recuento» de §6.9 prevalece sobre esta tabla.
+- La no duplicación entre zonas es una regla cualitativa: se juzga leyendo, no con un porcentaje. No existe métrica implementada de boilerplate.
 
 ## 4. SEO técnico y on-page
 
@@ -360,7 +396,7 @@ Las 12 reglas acordadas con el equipo de contenido. Aplican a toda modificación
 
 **R11 — Breadcrumbs ≠ relaciones de contenido.** Breadcrumbs expresan `Inicio → Servicio → Municipio` (jerarquía estructural). Los enlaces dentro del contenido expresan relaciones semánticas entre páginas. No confundir ambas funciones.
 
-**R12 — Nunca enlazar a páginas inexistentes.** Ni `/lab/`, ni placeholders, ni futuras URLs. Si una página no existe o no está en producción, no recibe enlaces. `audit-links` debe quedar limpio.
+**R12 — Nunca enlazar a páginas inexistentes.** Ni `/lab/`, ni placeholders, ni futuras URLs. Si una página no existe o no está en producción, no recibe enlaces. `npm run audit:links` debe quedar limpio.
 
 ### 7.9 Ring de zonas — orden canónico
 
@@ -442,9 +478,47 @@ Esta regla prevalece sobre cualquier otra consideración de SEO o cobertura de U
 
 ## 9. Proceso de trabajo
 
-- Antes de escalar a más páginas, verifica que las existentes cumplen los umbrales de la sección 3 y no tienen placeholders.
 - Cualquier cambio de arquitectura se explica en una frase y espera confirmación.
 - Los hallazgos de SEO se guardan en `docs/`, no se pierden en el chat.
 - Antes de cualquier tarea de producción: leer los 5 documentos del "Contexto de proyecto obligatorio" en la sección inicial de este archivo.
-- Flujo obligatorio para cerrar cualquier tarea: `npm run build` → `npm run audit-links` → `npm run audit-content`. Reportar resultados en tabla.
-- Al terminar cualquier tarea: `npm run build` y reporta páginas generadas, errores y `TODO:` pendientes.
+
+### Qué exige cerrar cada tipo de tarea
+
+| Tipo de tarea | Qué hay que ejecutar |
+|---|---|
+| Sólo documentación (`.md`, este archivo, `docs/`) | **Nada.** Ni build ni auditorías: no tocan la web |
+| Cambios en `src/`, datos, componentes o páginas | `npm run build && npm run audit`, y reportar el resultado |
+| Preparar una publicación | `npm run preflight` |
+
+Los nombres de los auditores llevan dos puntos, no guion: `audit:links`, no `audit-links`.
+`npm run audit` encadena `audit:content`, `audit:schema`, `audit:links` y `audit:design`.
+`npm run preflight` equivale a `build` + `check` + `audit`.
+
+Al terminar una tarea que toque la web, reporta páginas generadas, errores y `TODO:` nuevos.
+
+### Qué comprueba cada auditor
+
+Cobertura leída del código fuente de cada script. No es un resultado de ejecución.
+
+| Script | Comprueba | No comprueba |
+|---|---|---|
+| `check` | Que los placeholders bloqueantes no estén en `dist/` | Otros `TODO:` en prosa |
+| `audit:content` | Longitud de `<title>`, longitud de `<meta description>`, exactamente un `<h1>` por página | Los rangos de §3: imprime el recuento de palabras sin compararlo con nada. Boilerplate: sin implementar |
+| `audit:links` | Enlaces internos rotos, páginas huérfanas, mínimo de enlaces entrantes | Calidad del anchor text (§7) |
+| `audit:schema` | Que el JSON-LD sea parseable, que las entidades de negocio y los breadcrumbs lleven `name`, literales `"undefined"` | La entidad única `#business` de §4: sin implementar |
+| `audit:design` | Tres propiedades tipográficas: tracking y line-height del H1 de hero, y tracking del stat editorial | Radios, sombras, paleta, espaciado, composición, uso de componentes |
+
+**`audit:design` en verde significa que esas tres propiedades coinciden con el canon. No
+significa que la web sea visualmente consistente.** Ninguna comprobación automática cubre
+hoy la coherencia visual entre páginas: eso es revisión humana.
+
+### Placeholders: desarrollo frente a lanzamiento
+
+`npm run check` falla hoy, y debe fallar: detecta `TU_TELEFONO` y `YOUR_FORM_ID` en `dist/`.
+
+- **No bloquea el desarrollo.** Son placeholders identificados y aceptados. Una tarea de
+  desarrollo se cierra con `build` + `audit`, que no los miran.
+- **Sí bloquea el lanzamiento comercial.** Mientras `check` falle, el sitio no se publica
+  para captar clientes: no hay teléfono al que llamar ni formulario que entregue el aviso.
+- La señal roja no se silencia ni se elude para dar una tarea por cerrada. Se apaga
+  sustituyendo los datos reales, y hasta entonces se acepta como estado conocido.

@@ -2,7 +2,8 @@
 
 /* ============================================================
    TRAZZO360 DESIGN SYSTEM — Fuente de la Verdad
-   Extrae el ADN visual del lab (reformas-integrales-lab.astro)
+   El canon lo definen las páginas aprobadas en scripts/audit-design.mjs
+   (CANON_SOURCES) y está documentado en DESIGN-BLUEPRINT.md.
    Todas las páginas de servicio consumen estas clases globales.
    ============================================================ */
 

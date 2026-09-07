@@ -2,7 +2,7 @@
 
 > **Fuente de verdad operativa para diseño visual, composición y estado de rollout.**
 >
-> Leer siempre junto a `DESIGN.md` (sistema de tokens) y `docs/DECISION-REGISTER.md` (decisiones §D).
+> Leer siempre junto a `DESIGN-BLUEPRINT.md` (canon tipográfico y de motion, verificado por `npm run audit:design`) y `docs/DECISION-REGISTER.md` (decisiones §D).
 >
 > Antes de cualquier trabajo visual: verificar el estado V1/V2/V3 de la página objetivo en §7.
 
@@ -37,13 +37,11 @@ Si un elemento no transmite información, no existe.
 
 ### 1.3 Tipografía
 
-| Rol | Tamaño | Peso | Tracking | Uso |
-|---|---|---|---|---|
-| Display | 3–4.5rem (clamp) | 900 | -0.02em | Solo H1 del hero. Una vez por página. |
-| H2 | 1.875rem / 2.25rem | 800 | -0.02em | Títulos de sección |
-| H3 | 1.25rem / 1.5rem | 700 | Normal | Subsecciones, títulos de tarjetas |
-| Body | 1rem / 1.0625rem | 400 | Normal | Texto de párrafo |
-| Small | 0.875rem | 400/500 | Normal | Etiquetas, captions, texto de apoyo |
+**El canon tipográfico vive en [`DESIGN-BLUEPRINT.md`](../DESIGN-BLUEPRINT.md) y lo verifica
+`npm run audit:design`.** Este documento no lo duplica: la tabla que había aquí describía
+tipografía de sistema y un display de 3–4.5rem que el código dejó atrás. La implementación
+real usa Barlow Condensed cargada en `Layout.astro` y las clases de rol de
+`src/styles/global.css`.
 
 **Reglas absolutas:**
 - No italic/cursiva en ningún contexto (La Regla del Cero Italic)
@@ -69,7 +67,7 @@ Estas reglas aplican a TODAS las páginas sin excepción. No pueden sobreescribi
 |---|---|---|
 | **La Regla del Acento Escaso** | Terracota < 10% de cualquier viewport en cualquier estado | Grep `bg-[#A85535]` + inspeccion visual |
 | **La Regla del Verde Cerrado** | #25D366 solo en elementos de WhatsApp | Grep `#25D366` o `whatsapp` en clases |
-| **La Regla del Único Display** | Solo H1 del hero usa tamaño 3–4.5rem | Una sola instancia de `clamp(3rem` o `text-5xl/6xl` en hero |
+| **La Regla del Único Display** | Solo el H1 del hero usa el tamaño display | Una sola instancia de `.h1-hero` / `--text-display-hero` por página. Lo verifica `npm run audit:design` |
 | **La Regla del Cero Italic** | No italic/cursiva en ningún elemento | Grep `italic\|font-italic\|font-style` |
 | **La Regla del Plano por Defecto** | No shadow en elementos no flotantes | Grep `shadow-md\|shadow-sm` excepto header y nav dropdown |
 | **La Regla del Rectángulo Comprometido** | border-radius: 0 en CTA primarios | `rounded-` solo en WhatsApp button (`rounded-sm`) |

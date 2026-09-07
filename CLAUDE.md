@@ -10,7 +10,7 @@ Arquitectura: home + 6 hubs de servicio + 8 hubs de zona + 48 combinadas `/{serv
 **Antes de modificar cualquier página, template, dato o componente, leer en este orden:**
 
 1. [`PRODUCT.md`](./PRODUCT.md) — definición de producto, usuarios, compromisos de marca
-2. [`DESIGN.md`](./DESIGN.md) — sistema de tokens, tipografía, color, componentes
+2. [`DESIGN-BLUEPRINT.md`](./DESIGN-BLUEPRINT.md) — canon tipográfico, de forma y de motion. Es el único documento alineado con `src/styles/global.css`, y `npm run audit:design` lo verifica
 3. [`docs/TRAZZO360-SYSTEM.md`](./docs/TRAZZO360-SYSTEM.md) — sistema operativo completo: datos, precios, SEO, copy, arquitectura
 4. [`docs/VISUAL-ROLLOUT-MAP.md`](./docs/VISUAL-ROLLOUT-MAP.md) — reglas visuales globales, estado de rollout V1/V2/V3, patrones prohibidos
 5. [`docs/DECISION-REGISTER.md`](./docs/DECISION-REGISTER.md) — registro de decisiones estructurales aprobadas
@@ -23,7 +23,7 @@ Arquitectura: home + 6 hubs de servicio + 8 hubs de zona + 48 combinadas `/{serv
 | Producto, usuarios, compromisos de marca | `PRODUCT.md` | — |
 | Datos, precios, SEO on-page, copy, arquitectura de contenido | `docs/TRAZZO360-SYSTEM.md` | `docs/arquitectura-contenido.md`, `docs/seo-gaps.md` (histórico) |
 | Precios y partidas como dato ejecutable | `src/data/calculator.ts` | cualquier documento |
-| Sistema visual: tokens, tipografía, color | `DESIGN.md` + `src/styles/global.css` | `DESIGN-BLUEPRINT.md` |
+| Sistema visual: tokens, tipografía, color | `DESIGN-BLUEPRINT.md` + `src/styles/global.css` | — |
 | Estado de rollout V1/V2/V3 | `docs/VISUAL-ROLLOUT-MAP.md` | — |
 | Anatomía de página: hero, bloque de zonas, breadcrumb, herencia entre familias | `docs/ANATOMIAS-CANONICAS.md` | — |
 | Keywords y asignación keyword→URL | `docs/keyword-map.md` | `blueprint/*.yaml` — solapamiento sin resolver |
@@ -44,9 +44,12 @@ cambiarla sin decisión sería peor, no porque sea correcta.
 | Radios y sombras | `DESIGN-BLUEPRINT.md` (cero absoluto) · `docs/VISUAL-ROLLOUT-MAP.md` (excepciones en WhatsApp y header) · `docs/ANATOMIAS-CANONICAS.md` (cero) | No tocar radios ni sombras existentes. No usar ninguno de los tres como argumento para cambiarlos. Ver DT-F06 |
 | Orden de secciones del body en hubs de servicio | `docs/ANATOMIAS-CANONICAS.md` § «orden canónico» · disposición implementada hoy en los 6 hubs | No reordenar en ninguna de las dos direcciones sin instrucción explícita. Ver DEC-C10 |
 
-`DESIGN-BLUEPRINT.md` no es autoridad: su regla de radios contradice a
-`VISUAL-ROLLOUT-MAP.md` y al código. Queda como material de trabajo hasta que la
-contradicción se resuelva y su contenido se absorba en `DESIGN.md`.
+El canon tipográfico es `DESIGN-BLUEPRINT.md`, no `DESIGN.md`: es el único documento
+que coincide con `src/styles/global.css` (Barlow Condensed, `.h1-hero` en
+`clamp(3.5rem, 11vw, 10rem)`, peso 900, tracking -0.02em, line-height 0.85) y el único
+cuyo cumplimiento se comprueba, con `npm run audit:design`. Las descripciones de
+tipografía de sistema y display de 3–4.5rem que circulaban en otros documentos son
+deuda: describen un estado anterior del código y no deben aplicarse.
 
 **Protocolo de contraste obligatorio antes de implementar:**
 
@@ -74,7 +77,7 @@ Si una modificación planificada contradice cualquiera de los 5 documentos anter
 `src/data/calculator.ts` > `docs/TRAZZO360-SYSTEM.md` > `CLAUDE.md` > implementación actual en `src/`
 
 **Fuentes de autoridad del proyecto:**
-`CLAUDE.md` + documentos canónicos (`docs/TRAZZO360-SYSTEM.md`, `docs/VISUAL-ROLLOUT-MAP.md`, `docs/DECISION-REGISTER.md`, `PRODUCT.md`, `DESIGN.md`) = **autoridad del proyecto**.
+`CLAUDE.md` + documentos canónicos (`docs/TRAZZO360-SYSTEM.md`, `docs/VISUAL-ROLLOUT-MAP.md`, `docs/DECISION-REGISTER.md`, `PRODUCT.md`, `DESIGN-BLUEPRINT.md`) = **autoridad del proyecto**.
 Memoria de Claude (archivos `.claude/`) = contexto auxiliar de sesión. No sustituye a los documentos canónicos.
 
 **Contexto histórico:**

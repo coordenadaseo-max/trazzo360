@@ -95,6 +95,9 @@ price_cluster:
     type: guide
     canonical_for: ["precio reforma cocina", "cuanto cuesta reformar cocina"]
 
-  - url:  "PENDIENTE: /guias/cuanto-cuesta-una-reforma-integral/"   # no existe todavía; no enlazar
+  # PENDIENTE de crear. Demanda documentada en docs/keyword-map.md:106 —
+  # "cuánto cuesta reformar una casa", 590 búsquedas/mes, KD 6, CPC 3,52 €.
+  # Hasta que exista, no recibe enlaces (R12).
+  - url:  "PENDIENTE: /guias/cuanto-cuesta-una-reforma-integral/"
     type: guide
     canonical_for: ["precio reforma integral", "cuanto cuesta reforma integral"]

@@ -40,6 +40,7 @@
 
 ### 6. `PUBLIC_SITE_INDEXING` en las variables de entorno del deploy
 - **Dónde**: panel de Vercel → Settings → Environment Variables del proyecto. **No en el repo.**
+- **Referencia**: [`.env.example`](../.env.example) documenta la variable y el efecto de cada valor.
 - `PUBLIC_SITE_INDEXING=true` en el entorno de Production.
 - **Por qué es bloqueante:** `.env` está en `.gitignore`, así que la variable **no viaja al
   deploy**. Si no se declara en Vercel, el build de producción publica un `robots.txt` con

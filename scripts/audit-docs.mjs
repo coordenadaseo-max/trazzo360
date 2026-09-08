@@ -6,6 +6,7 @@
  * declarar el origen sea obligatorio y verificable.
  */
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join, relative, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { reportScope } from './lib/report.mjs';
@@ -43,6 +44,18 @@ function pointsElsewhere(line) {
       || /\b(?:es|son)\s+la\s+(?:única\s+)?fuente/i.test(line) && /`[^`]+`/.test(line);
 }
 
+/**
+ * PRODUCT.md lo genera `impeccable` (lleva `<!-- impeccable:product-schema -->`).
+ * Está en la lista blanca de la raíz, así que una regeneración con reglas dentro
+ * pasaría sin avisar. Se vigila por hash del fichero completo, no por el bloque
+ * marcado: depender del marcador es la misma fragilidad que descartamos al elegir
+ * el hash frente a una heurística de lenguaje normativo.
+ *
+ * Cuando salte: revisa el diff. Si el contenido es correcto, actualiza esta
+ * constante y la nota de DEC-E10. Es advertencia, no error: no rompe el build.
+ */
+const PRODUCT_APPROVED_SHA256 = '383f6de9e2f22359';
+
 const errors = [];
 const warnings = [];
 let inspectedFiles = 0;
@@ -72,6 +85,20 @@ for (const name of readdirSync(ROOT)) {
     msg: `.md no permitido en la raíz (lista blanca: ${ROOT_ALLOWLIST.join(', ')})`,
     fix: 'Muévelo a docs/research/ con la cabecera de estado de CLAUDE.md §11, o justifícalo como documento de proyecto y añádelo a la lista blanca de este script.',
   });
+}
+
+// PRODUCT.md — ¿lo ha regenerado impeccable?
+const productPath = join(ROOT, 'PRODUCT.md');
+if (existsSync(productPath)) {
+  inspectedFiles++;
+  const actual = createHash('sha256').update(readFileSync(productPath)).digest('hex').slice(0, 16);
+  if (actual !== PRODUCT_APPROVED_SHA256) {
+    warnings.push({
+      file: 'PRODUCT.md',
+      msg: 'PRODUCT.md regenerado: verifica que no ha reintroducido reglas. Ver §11.',
+      fix: `Revisa el diff. Si el contenido es correcto, actualiza PRODUCT_APPROVED_SHA256 en este script (actual: ${actual}) y la nota de DEC-E10.`,
+    });
+  }
 }
 
 // 2 — cabecera de estado en docs/research/

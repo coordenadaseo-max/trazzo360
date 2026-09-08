@@ -33,6 +33,9 @@ renderizando en la fuente del sistema a peso 400.
 | Rol | Clase | Equivale a |
 |---|---|---|
 | H1 hero | `.h1-hero` | `clamp(3.5rem,11vw,10rem)` · `-0.02em` · `0.85` · `900` · display |
+| H1 hero · hub de servicio, home y ancla | `.h1-hero` | `clamp(3.5rem, 11vw, 10rem)` vía `--text-display-hero` |
+| H1 hero · hub de zona | `.h1-hero` + `.h1-hero--zona` | `clamp(2.25rem, 5.5vw, 4.5rem)` vía `--text-display-zona` |
+| H1 hero · combinada servicio×zona | `.h1-hero` + `.h1-hero--combinada` | `clamp(2.25rem, 5.5vw, 4.25rem)` vía `--text-display-combinada` |
 | H1 hero a dos niveles | `.h1-hero--stacked` + `.h1-hero__eyebrow` + `.h1-hero__thesis` | la tesis lleva el canon; el eyebrow su propio tracking |
 | H2 principal | `.h2-section` | `text-4xl lg:text-5xl` · `-0.03em` |
 | H2 / H3 secundario | `.h3-sub` | `text-3xl lg:text-4xl` · `-0.03em` |
@@ -191,21 +194,25 @@ URL y un cambio masivo no se puede revisar ni aprobar.
 
 ## Estado de migración
 
-Pendientes de migrar al canon del H1 (a fecha de la última auditoría):
+**No hay tabla aquí, y es deliberado.** El estado se obtiene ejecutando:
 
-| Fichero | Diverge en |
-|---|---|
-| `index.astro` | `-0.04em` · `0.88` |
-| `servicios/reforma-pisos.astro` | `-0.04em` · `0.88` |
-| `servicios/comunidades-vecinos.astro` | `-0.04em` · `0.88` |
-| `servicios/locales-comerciales.astro` | `-0.04em` · `0.88` |
-| `zonas/[slug].astro` *(plantilla)* | `-0.035em` · `.95` |
-| `zonas/alcala-de-henares.astro` | `-0.035em` · `.95` |
-| `[servicio]/[barrio].astro` *(plantilla)* | `-0.035em` · `.95` |
-| `reforma-cocinas/alcala-de-henares.astro` | `-0.035em` · `.95` |
+```sh
+npm run build && npm run audit:design
+```
 
-Las dos plantillas `[slug]` cubren la mayor parte de las páginas generadas:
-migrarlas es el cambio de mayor alcance por fichero tocado.
+Una tabla de estado mantenida a mano siempre acaba mintiendo. La que había en este sitio
+atribuía divergencias de `-0.035em` · `.95` a páginas donde ese valor ya no existía
+—`grep -rn '0.035em' src/` sale vacío— y listaba cuatro hubs con cero divergencias reales de
+tracking. El auditor no puede desactualizarse: lee el código en cada ejecución.
 
-Las páginas de laboratorio se eliminaron el 2026-09-07 (DEC-C11): ya no hay
-prototipos que excluir y `EXCLUDE` en `audit-design.mjs` está vacío.
+### Cómo leer su salida
+
+- **Lista de divergencias.** Es el backlog de migración, no una advertencia. Cada línea dice
+  fichero, rol, valor encontrado y valor esperado.
+- **Denominador.** `Inspeccionadas: N ficheros` con su suelo mínimo. Si N es 0 o cae bajo el
+  suelo, el auditor aborta: no encontrar nada que mirar es estar roto, no estar satisfecho.
+- **Cobertura por regla.** `regla «X»: aplica en N/M ficheros`. Una regla con cobertura baja
+  no está vigilando lo que crees. Hoy las reglas del H1 aplican al 10% de los ficheros y la
+  del número editorial al 0%: el scope del auditor es deuda conocida, no un sitio limpio.
+
+Ver la regla de parada en [`docs/PROTOCOLO-LAB.md`](./docs/PROTOCOLO-LAB.md).

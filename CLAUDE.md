@@ -26,6 +26,7 @@ Arquitectura: home + 6 hubs de servicio + 8 hubs de zona + 48 combinadas `/{serv
 | Sistema visual: tokens, tipografía, color | `DESIGN-BLUEPRINT.md` + `src/styles/global.css` | — |
 | Estado de rollout V1/V2/V3 | `docs/VISUAL-ROLLOUT-MAP.md` | — |
 | Anatomía de página: hero, bloque de zonas, breadcrumb, herencia entre familias | `docs/ANATOMIAS-CANONICAS.md` | — |
+| Inventario de imágenes y contrato ilustrativa / obra-propia | `docs/imagenes.md` + `src/data/images.ts` | — |
 | Keywords y asignación keyword→URL | `docs/keyword-map.md` | — |
 | Ring de zonas y umbrales de enlazado | `CLAUDE.md` §7.9–§7.10 + `blueprint/internal-linking.yaml` | — |
 | Rangos de title y meta | `CLAUDE.md` §4 | `docs/titles-metas.md` es inventario, no norma |
@@ -131,6 +132,9 @@ Hechos que **no** existen todavía y que no se pueden mencionar bajo ninguna for
 - Un placeholder **nuevo**, distinto de esa lista, sí es un fallo: márcalo como `TODO:` visible y avísame de forma destacada.
 
 ## 2. Imágenes: ilustrativas y de obra propia nunca se mezclan
+
+El inventario de slots, los formatos y el contrato completo están en
+[`docs/imagenes.md`](./docs/imagenes.md), que es la autoridad de esta materia.
 
 Habrá dos categorías y el sistema debe impedir que se confundan:
 

@@ -59,6 +59,8 @@
      Preferir las clases de rol de la sección 1b antes que estas utilidades
      sueltas: las clases llevan además peso, tracking e interlineado. */
   --text-display-hero:      clamp(3.5rem, 11vw, 10rem);      /* H1 de hero */
+  --text-display-zona:      clamp(2.25rem, 5.5vw, 4.5rem);   /* H1 de hub de zona */
+  --text-display-combinada: clamp(2.25rem, 5.5vw, 4.25rem);  /* H1 de combinada servicio×zona */
   --text-display-vida:      clamp(2.5rem, 6vw, 5rem);        /* H2 sección oscura */
   --text-display-cta:       clamp(2.25rem, 6vw, 4rem);       /* H2 del CTA final */
   --text-stat-editorial:    clamp(5rem, 14vw, 10rem);        /* número grande editorial */
@@ -122,6 +124,14 @@
 /* H1 de hero a dos niveles: eyebrow con la keyword + tesis.
    El eyebrow es texto pequeño y lleva su propio tracking; el canon
    de tamaño y tracking display aplica sólo a la tesis. */
+/* Escala del H1 de hero por familia de página. No es deriva: los 8 hubs de zona y
+   las 48 combinadas usaban ya estos valores sin una sola excepción, sueltos en la
+   prop `size` de HeroTitle. Aquí sólo reciben nombre. La jerarquía es deliberada:
+   el hub de servicio pesa más que la combinada, como su papel en la arquitectura.
+   Ver DEC-D20. */
+.h1-hero--zona      { font-size: var(--text-display-zona); }
+.h1-hero--combinada { font-size: var(--text-display-combinada); }
+
 .h1-hero--stacked {
   font-family: var(--font-display);
   font-weight: 900;

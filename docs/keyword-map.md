@@ -1,5 +1,10 @@
 # Mapa de Keywords — Trazzo360
 
+> **Tres de las 21 URLs citadas no existen todavía** y están marcadas en línea:
+> `/guias/cuanto-cuesta-una-reforma-integral/` (pendiente de crear, 590 búsquedas/mes) y
+> `/proyectos/` (pendiente de decisión, sin volumen medido). Verificar con:
+> `npm run build` y contrastar las URLs de este fichero contra `dist/`.
+
 > **Origen de los datos:** DataForSEO (research real). No inventar ni estimar ningún volumen.
 > Los campos marcados con `TODO:` necesitan completarse con los datos del research original.
 > Regla de integridad (CLAUDE.md): una keyword por URL; nunca fabricar volúmenes.
@@ -88,7 +93,7 @@ Formato de keyword principal: `{servicio} en {ciudad}`
 | / (home) | empresa de reformas Corredor del Henares | Captura branded + zona geográfica amplia |
 | /como-trabajamos/ | precio cerrado reforma / garantía reformas | Captura intención de confianza |
 | /contacto/ | presupuesto reforma gratis | CTA transaccional |
-| /proyectos/ | reformas antes y después / ejemplos reforma | Evidencia social |
+| ~~/proyectos/~~ **PENDIENTE de decisión** | reformas antes y después / ejemplos reforma | Evidencia social. **La página no existe.** Sin volumen medido: esta tabla no lleva columna de demanda y las keywords no aparecen con volumen en ninguna otra. Bloqueada además por falta de fotos de obra propia (ver PV-03 en VISUAL-ROLLOUT-MAP). No asignar encabezados ni titles a esta URL mientras no exista |
 | Legales | — | No SEO |
 
 ---
@@ -100,10 +105,10 @@ porque las keywords de precio tienen alto volumen y baja dificultad en mercados 
 
 | URL propuesta | Keyword objetivo | Vol/mes | KD | CPC | Tipo |
 |---|---|---|---|---|---|
-| /calculadora-presupuesto-reforma/ | calculadora presupuesto reforma | TODO: | TODO: | — | Herramienta |
+| /calculadora-precio-reforma/ | calculadora presupuesto reforma | TODO: | TODO: | — | Herramienta |
 | /guias/cuanto-cuesta-reformar-un-bano/ | cuánto cuesta reformar un baño | 1.900 | — | 2,00€ | Guía |
 | /guias/cuanto-cuesta-reformar-una-cocina/ | cuánto cuesta reformar una cocina | 1.300 | 1 | 1,31€ | Guía |
-| /guias/cuanto-cuesta-una-reforma-integral/ | cuánto cuesta reformar una casa | 590 | 6 | 3,52€ | Guía |
+| /guias/cuanto-cuesta-una-reforma-integral/ **PENDIENTE de crear** | cuánto cuesta reformar una casa | 590 | 6 | 3,52€ | Guía |
 
 > **Volumen total del cluster de precios: ~10.000 búsquedas/mes** (incluyendo variantes de cada keyword). KD rango: 1–7. Es el cluster más fácil de posicionar de todo el research.
 > El KD de "cuánto cuesta reformar un baño" no está disponible en el research; el de la variante "reformar un baño cuánto cuesta" es KD:7.

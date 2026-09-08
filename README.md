@@ -45,6 +45,8 @@ discrepar.
 - **`true`** — `robots.txt` emite `Allow: /` y se genera `sitemap-index.xml`.
 
 Actívala en las variables de entorno del servidor de producción, no en el `.env` del repo.
+Las variables y sus efectos están documentados en [`.env.example`](./.env.example); cópialo a
+`.env` para desarrollo local.
 
 ## Documentación
 

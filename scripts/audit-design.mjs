@@ -13,6 +13,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { isLabSource } from './lib/scope.mjs';
+import { reportScope } from './lib/report.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const PAGES = join(ROOT, 'src/pages');
@@ -61,11 +62,15 @@ const NOTATION = [
 ];
 
 /**
- * DEC-D01 — radio cero en todo el sistema. Excepción única y nominal: el botón
- * flotante de WhatsApp, que usa `rounded-full` por convención de plataforma.
- * Cualquier otro `rounded-` es una divergencia; así la excepción no se extiende.
+ * DEC-D01 — radio cero en todo el sistema. Excepción nominal: los dos botones de
+ * WhatsApp, por convención de plataforma. Cualquier otro `rounded-` es una
+ * divergencia. La lista es de ficheros concretos, no de patrones: una excepción
+ * por página se propaga, una nominal no.
  */
-const RADIUS_EXEMPT = ['src/components/WhatsAppBtn.astro'];
+const RADIUS_EXEMPT = [
+  { file: 'src/components/WhatsAppBtn.astro', allow: 'rounded-full' }, // FAB flotante
+  { file: 'src/components/Header.astro',      allow: 'rounded-sm'   }, // botón de la barra
+];
 const RADIUS_RE = /\brounded-[a-z0-9-]+/g;
 
 // Prototipos excluidos: la definición vive en scripts/lib/scope.mjs.
@@ -83,6 +88,7 @@ function walk(dir) {
 // también los componentes, porque ahí viven el header, el CTA y el propio botón exento.
 const files = [...walk(PAGES), ...walk(join(ROOT, 'src/components'))];
 const findings = [];
+const ruleCoverage = new Map();
 
 for (const file of files) {
   const rel = relative(ROOT, file);
@@ -90,7 +96,9 @@ for (const file of files) {
   const isCanon = CANON_SOURCES.some(c => rel.endsWith(c));
 
   for (const rule of CANON) {
-    for (const outer of src.match(rule.scope) ?? []) {
+    const hits = src.match(rule.scope) ?? [];
+    if (hits.length) ruleCoverage.set(rule.role, (ruleCoverage.get(rule.role) ?? 0) + 1);
+    for (const outer of hits) {
       // `within` acota aún más dentro del bloque; sin él se usa el bloque entero.
       const blocks = rule.within ? (outer.match(rule.within) ?? []) : [outer];
       for (const block of blocks)
@@ -105,13 +113,16 @@ for (const file of files) {
     }
   }
 
-  if (!RADIUS_EXEMPT.some(e => rel.endsWith(e))) {
-    for (const m of src.match(RADIUS_RE) ?? []) {
-      findings.push({
-        file: rel, role: 'Radio fuera del sistema (DEC-D01)',
-        found: m, expect: 'sin border-radius', canon: isCanon,
-      });
-    }
+  // La exención es por fichero Y valor: un radio distinto en un fichero exento
+  // sigue siendo divergencia, para que la excepción no crezca por dentro.
+  const allowed = RADIUS_EXEMPT.find(e => rel.endsWith(e.file))?.allow;
+  for (const m of src.match(RADIUS_RE) ?? []) {
+    if (m === allowed) continue;
+    findings.push({
+      file: rel, role: 'Radio fuera del sistema (DEC-D01)',
+      found: m, expect: allowed ? `sólo ${allowed} en este fichero` : 'sin border-radius',
+      canon: isCanon,
+    });
   }
 
   for (const { bad, good } of NOTATION) {
@@ -124,8 +135,16 @@ for (const file of files) {
   }
 }
 
+const coverageNotes = CANON.map(r => {
+  const n = ruleCoverage.get(r.role) ?? 0;
+  const pct = files.length ? Math.round((n / files.length) * 100) : 0;
+  const warn = pct < 50 ? '  ⚠ el canon no vigila la mayoría de los ficheros' : '';
+  return `regla «${r.role}»: aplica en ${n}/${files.length} ficheros (${pct}%)${warn}`;
+});
+
 if (findings.length === 0) {
   console.log('audit-design: sin divergencias contra el canon.');
+  reportScope({ inspected: files.length, unit: 'ficheros .astro', floor: 15, notes: coverageNotes });
   process.exit(0);
 }
 

@@ -1,10 +1,12 @@
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isLabUrl } from './lib/scope.mjs';
+import { reportScope, requireDist } from './lib/report.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
+requireDist(existsSync(DIST));
 
 function countWords(html) {
   return html
@@ -101,6 +103,8 @@ for (const r of rows) {
     `${flag} ${notes.join(' · ')}`,
   ].join('  '));
 }
+
+reportScope({ inspected: rows.length, unit: 'páginas', floor: 40 });
 
 console.log('\nTitle: 50-60c ideal (warn <45 o >65, crítico <30 o >70). Desc: 140-155c ideal (warn <120 o >165, crítico <80 o >175). H1: exactamente 1 por página.');
 

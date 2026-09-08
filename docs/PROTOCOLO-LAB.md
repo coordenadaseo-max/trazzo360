@@ -52,6 +52,29 @@ sólo inspeccionaba 4 de 23 ficheros: sus reglas del H1 buscan `<h1 id="h-hero">
 script que lee el fuente. Un auditor en verde sobre un scope vacío es indistinguible de un
 sitio consistente, y es más peligroso que no tener auditor.
 
+### El corolario: un cero sin denominador no es información
+
+La regla de parada mira el caso «el auditor no ve las divergencias». Este es el mismo fallo
+desde el otro lado: **no puedes distinguir un auditor que pasa de uno que no miró nada.**
+
+Ha ocurrido dos veces en este proyecto. `audit:design` decía «sin divergencias contra el
+canon» mientras inspeccionaba 4 de 74 páginas. Y un script al que le faltaba un `import`
+crasheaba con `ReferenceError` produciendo exactamente el mismo silencio que uno limpio: la
+verificación contaba menciones en la salida, y la salida estaba vacía porque el proceso
+moría, no porque no hubiera nada que decir.
+
+Por eso los seis auditores **imprimen siempre cuántas unidades han inspeccionado**, incluso
+en verde, y **fallan con exit 1 si ese número es cero o cae por debajo de un suelo**.
+`audit:design` informa además de la cobertura de cada regla del canon: si una regla aplica a
+4 de 40 ficheros, se ve en la salida sin tener que investigarlo.
+
+Dos consecuencias prácticas al escribir o revisar un auditor:
+
+- `node --check` valida sintaxis pero **no resuelve imports**. Un script puede pasar el
+  `--check` y morir al ejecutarse. Ejecútalo de verdad.
+- Antes de fiarte de un verde, mira el denominador. Si no hay denominador, añádelo antes de
+  seguir.
+
 ## Qué garantiza el aislamiento
 
 Cuatro cosas, todas verificables:

@@ -8,6 +8,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { reportScope } from './lib/report.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -44,6 +45,7 @@ function pointsElsewhere(line) {
 
 const errors = [];
 const warnings = [];
+let inspectedFiles = 0;
 
 function walk(dir) {
   if (!existsSync(dir)) return [];
@@ -75,6 +77,7 @@ for (const name of readdirSync(ROOT)) {
 // 2 — cabecera de estado en docs/research/
 for (const file of walk(join(ROOT, 'docs/research'))) {
   const rel = relative(ROOT, file);
+  inspectedFiles++;
   if (!STATUS_HEADER.test(readFileSync(file, 'utf8'))) {
     errors.push({
       file: rel,
@@ -88,6 +91,7 @@ for (const file of walk(join(ROOT, 'docs/research'))) {
 for (const file of [...walk(join(ROOT, 'docs')), ...walk(ROOT).filter(f => dirname(f) === ROOT)]) {
   const rel = relative(ROOT, file);
   if (rel === 'CLAUDE.md' || rel.startsWith('docs/archive/')) continue;
+  inspectedFiles++;
   // La autodeclaración vive en la cabecera; más abajo la frase suele señalar a otro fichero.
   const head = readFileSync(file, 'utf8').split('\n').slice(0, HEADER_LINES);
   for (const { re, what } of AUTHORITY_CLAIMS) {
@@ -119,6 +123,7 @@ for (const e of dedupe(errors)) {
 }
 
 console.log(`\nContrato de artefactos externos (CLAUDE.md §11) verificado.`);
+reportScope({ inspected: inspectedFiles, unit: 'ficheros .md', floor: 4 });
 
 if (errors.length) {
   console.error(`\n${errors.length} incumplimiento(s). Cada uno indica arriba qué hacer.\n`);

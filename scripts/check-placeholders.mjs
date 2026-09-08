@@ -1,10 +1,12 @@
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isLabUrl } from './lib/scope.mjs';
+import { reportScope, requireDist } from './lib/report.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
+requireDist(existsSync(DIST));
 
 // Bloqueantes — la presencia de cualquiera de estos strings en el HTML de producción impide el lanzamiento.
 const BLOCKERS = [
@@ -85,7 +87,7 @@ function walk(dir) {
 }
 
 walk(DIST);
-console.log(`\nVerificados ${files} archivos HTML.`);
+reportScope({ inspected: files, unit: 'archivos HTML', floor: 40 });
 
 if (warnings > 0) {
   console.warn(`\n${warnings} advertencia(s) que requieren revisión manual antes del lanzamiento.`);

@@ -75,11 +75,11 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
     <form id="calc-form" novalidate class="space-y-5">
 
       <!-- Fieldset 1: Servicio -->
-      <fieldset class="border border-gray-200 rounded-xl p-6">
+      <fieldset class="border border-gray-200 p-6">
         <legend class="text-base font-bold text-gray-800 px-1">1. ¿Qué quieres reformar?</legend>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
           {CALC_SERVICES.map((svc, i) => (
-            <label class="service-card flex flex-col gap-1 cursor-pointer border-2 rounded-lg p-3 transition-colors border-gray-200 hover:border-gray-400" data-slug={svc.slug}>
+            <label class="service-card flex flex-col gap-1 cursor-pointer border-2 p-3 transition-colors border-gray-200 hover:border-gray-400" data-slug={svc.slug}>
               <input type="radio" name="servicio" value={svc.slug} checked={i === 0} class="sr-only" />
               <span class="font-semibold text-sm text-gray-900 leading-tight">{svc.label}</span>
               <span class="text-xs text-gray-500 leading-snug">{svc.hint}</span>
@@ -89,13 +89,13 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       </fieldset>
 
       <!-- Fieldset 2: Input (JS renders) -->
-      <fieldset id="fs-input" class="border border-gray-200 rounded-xl p-6">
+      <fieldset id="fs-input" class="border border-gray-200 p-6">
         <legend class="text-base font-bold text-gray-800 px-1" id="input-legend">2. Superficie o tramo</legend>
         <div id="input-area" class="mt-4"></div>
       </fieldset>
 
       <!-- Fieldset 3: Modificadores (collapsible) -->
-      <details id="fs-mods" class="border border-gray-200 rounded-xl">
+      <details id="fs-mods" class="border border-gray-200">
         <summary class="text-base font-bold text-gray-800 px-6 py-4 cursor-pointer list-none flex justify-between items-center">
           <span>3. Afinar la estimación <span class="text-xs font-normal text-gray-400 ml-2">(instalaciones, planta, distribución...)</span></span>
           <span class="text-gray-400 text-sm">▼</span>
@@ -115,7 +115,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
     <output id="calc-status" role="status" aria-live="polite" class="block mt-4 text-sm text-gray-500 min-h-[1.5rem]"></output>
 
     <noscript>
-      <div class="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
+      <div class="mt-4 p-4 bg-amber-50 border border-amber-200 text-sm text-amber-800">
         Activa JavaScript para usar la calculadora interactiva. A continuación encontrarás las tablas de precios de referencia.
       </div>
     </noscript>
@@ -127,32 +127,32 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       <h2 class="h4-block mb-2 reveal">De qué depende el precio de una reforma</h2>
       <div class="w-10 h-1 bg-[#A85535] mb-8"></div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white border border-gray-200 rounded-xl p-6">
+        <div class="bg-white border border-gray-200 p-6">
           <div class="text-2xl mb-3">⚡</div>
           <h3 class="font-bold text-gray-900 mb-2">Estado de las instalaciones</h3>
           <p class="text-sm text-gray-600 leading-relaxed">Un cuadro eléctrico anterior al REBT de 2002 o tuberías de plomo o hierro galvanizado obligan a renovarlos aunque el cliente no lo pida. Es el factor que más diferencia un presupuesto de acabados de uno integral. Puede suponer entre el 15 % y el 25 % del total.</p>
         </div>
-        <div class="bg-white border border-gray-200 rounded-xl p-6">
+        <div class="bg-white border border-gray-200 p-6">
           <div class="text-2xl mb-3">🏗️</div>
           <h3 class="font-bold text-gray-900 mb-2">Cambio de distribución</h3>
           <p class="text-sm text-gray-600 leading-relaxed">Cada tabique derribado implica permisos, gestión de escombros y reubicación de puntos de luz y fontanería. Una redistribución completa puede incrementar el presupuesto un 20–30 % sobre la misma reforma sin tocar tabiques.</p>
         </div>
-        <div class="bg-white border border-gray-200 rounded-xl p-6">
+        <div class="bg-white border border-gray-200 p-6">
           <div class="text-2xl mb-3">📅</div>
           <h3 class="font-bold text-gray-900 mb-2">Antigüedad del edificio</h3>
           <p class="text-sm text-gray-600 leading-relaxed">Los edificios anteriores a 1980 presentan mayor probabilidad de sorpresas al abrir: asbesto en pegamentos, tuberías empotradas en mal estado o cotas irregulares. Por eso se aplica un factor corrector sobre el precio base en viviendas muy antiguas.</p>
         </div>
-        <div class="bg-white border border-gray-200 rounded-xl p-6">
+        <div class="bg-white border border-gray-200 p-6">
           <div class="text-2xl mb-3">🪜</div>
           <h3 class="font-bold text-gray-900 mb-2">Planta y acceso a obra</h3>
           <p class="text-sm text-gray-600 leading-relaxed">Subir materiales y bajar escombros a pie por ocho plantas puede encarecer los portes un 8–10 % respecto a una planta baja. Cuando hay ascensor disponible el sobrecoste es menor pero existe, porque el acceso siempre es más lento que con montacargas.</p>
         </div>
-        <div class="bg-white border border-gray-200 rounded-xl p-6">
+        <div class="bg-white border border-gray-200 p-6">
           <div class="text-2xl mb-3">🧱</div>
           <h3 class="font-bold text-gray-900 mb-2">Calidad de los materiales</h3>
           <p class="text-sm text-gray-600 leading-relaxed">La diferencia entre un porcelánico estándar y uno de gama alta puede ser de 20–60 €/m² solo en material. En cocina, la encimera y los muebles representan hasta el 42 % del presupuesto total; elegir mármol natural frente a laminado puede doblar esa partida.</p>
         </div>
-        <div class="bg-white border border-gray-200 rounded-xl p-6">
+        <div class="bg-white border border-gray-200 p-6">
           <div class="text-2xl mb-3">📋</div>
           <h3 class="font-bold text-gray-900 mb-2">Licencias y proyecto técnico</h3>
           <p class="text-sm text-gray-600 leading-relaxed">Reformas con cambio de distribución o en locales comerciales requieren proyecto técnico firmado por arquitecto o aparejador y licencia municipal. Los honorarios técnicos oscilan entre 1.500 y 8.000 € según el tipo de obra, y las tasas municipales varían por municipio.</p>
@@ -174,7 +174,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       return (
         <div class="mb-10">
           <h3 class="text-lg font-bold text-gray-900 mb-3">{svc.label}</h3>
-          <div class="overflow-x-auto rounded-xl border border-gray-200">
+          <div class="overflow-x-auto border border-gray-200">
             <table class="w-full text-sm border-collapse">
               <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">{svc.surfaceLabel} · precios sin IVA · orientativos</caption>
               <thead class="bg-gray-50">
@@ -211,7 +211,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       return (
         <div class="mb-10">
           <h3 class="text-lg font-bold text-gray-900 mb-3">{svc.label}</h3>
-          <div class="overflow-x-auto rounded-xl border border-gray-200">
+          <div class="overflow-x-auto border border-gray-200">
             <table class="w-full text-sm border-collapse">
               <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">Precio total por {svc.slug.includes('bano') ? 'baño' : 'cocina'} · sin IVA · orientativo</caption>
               <thead class="bg-gray-50">
@@ -248,7 +248,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       return (
         <div class="mb-10">
           <h3 class="text-lg font-bold text-gray-900 mb-3">{svc.label} <span class="text-sm font-normal text-gray-500">· solo obra (sin proyecto ni licencia)</span></h3>
-          <div class="overflow-x-auto rounded-xl border border-gray-200">
+          <div class="overflow-x-auto border border-gray-200">
             <table class="w-full text-sm border-collapse">
               <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">Solo coste de obra · sin proyecto ni licencia · sin IVA</caption>
               <thead class="bg-gray-50">
@@ -285,7 +285,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       return (
         <div class="mb-10">
           <h3 class="text-lg font-bold text-gray-900 mb-3">{svc.label} <span class="text-sm font-normal text-gray-500">· edificio ~10 viviendas · sin IVA</span></h3>
-          <div class="overflow-x-auto rounded-xl border border-gray-200">
+          <div class="overflow-x-auto border border-gray-200">
             <table class="w-full text-sm border-collapse">
               <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">Orientativo para edificio de 8–12 viviendas · sin IVA</caption>
               <thead class="bg-gray-50">
@@ -326,7 +326,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       <p class="text-gray-700 leading-relaxed mb-4">Consulta la guía de precios de cada servicio para ver qué incluye cada nivel de calidad, qué documentación deberías pedir y cómo comparar presupuestos correctamente:</p>
       <div class="flex flex-wrap gap-3 mt-4">
         {CALC_SERVICES.filter(s => s.hubSlug).map(svc => (
-          <a href={`/servicios/${svc.hubSlug}/`} class="inline-block text-sm font-medium text-[#A85535] border border-[#A85535] rounded-lg px-4 py-2 hover:bg-[#A85535] hover:text-white transition-colors">
+          <a href={`/servicios/${svc.hubSlug}/`} class="inline-block text-sm font-medium text-[#A85535] border border-[#A85535] px-4 py-2 hover:bg-[#A85535] hover:text-white transition-colors">
             {svc.label} →
           </a>
         ))}
@@ -342,28 +342,28 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
     <p class="text-gray-700 leading-relaxed mb-6">Esta sección es la más ignorada y la que más conflictos genera durante la obra. Léela antes de firmar cualquier contrato.</p>
     <div class="grid md:grid-cols-2 gap-6">
       <div class="space-y-4">
-        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100">
           <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
           <div>
             <p class="font-semibold text-gray-900 text-sm">Electrodomésticos</p>
             <p class="text-xs text-gray-600 mt-1">La encimera de inducción, el horno, la campana, el frigorífico y el lavavajillas casi nunca están en el presupuesto de cocina, salvo que se especifique. Lo mismo con la lavadora y el secador.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100">
           <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
           <div>
             <p class="font-semibold text-gray-900 text-sm">Mobiliario no fijo</p>
             <p class="text-xs text-gray-600 mt-1">Mesas, sillas, sofás, camas y armarios con puertas correderas no empotradas. Los armarios a medida empotrados sí suelen incluirse en reformas de alta gama si se especifican.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100">
           <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
           <div>
             <p class="font-semibold text-gray-900 text-sm">Aire acondicionado y climatización</p>
             <p class="text-xs text-gray-600 mt-1">La preinstalación (tubería de cobre y eléctrico) puede estar incluida, pero las unidades interiores y exteriores raramente lo están. Confirma siempre si el presupuesto contempla solo preinstalación o el equipo completo.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100">
           <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
           <div>
             <p class="font-semibold text-gray-900 text-sm">IVA</p>
@@ -372,28 +372,28 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
         </div>
       </div>
       <div class="space-y-4">
-        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100">
           <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
           <div>
             <p class="font-semibold text-gray-900 text-sm">Desperfectos ocultos</p>
             <p class="text-xs text-gray-600 mt-1">Cuando se abren las paredes o el suelo pueden aparecer tuberías en peor estado del esperado, humedades ocultas o cotas irregulares. Son imprevistos genuinos: ningún presupuesto puede incluirlos sin haber visto la obra abierta.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100">
           <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
           <div>
             <p class="font-semibold text-gray-900 text-sm">Obras en elementos comunes</p>
             <p class="text-xs text-gray-600 mt-1">Cualquier intervención en fachada, portal, escalera o cubierta necesita aprobación en junta de propietarios. No puede incluirse en un presupuesto de reforma de piso.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100">
           <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
           <div>
             <p class="font-semibold text-gray-900 text-sm">Licencias y tasas municipales</p>
             <p class="text-xs text-gray-600 mt-1">Las tasas municipales varían por municipio y tipo de obra. La gestión de la licencia puede estar incluida en el presupuesto si se especifica, pero las tasas en sí las abona el propietario directamente al ayuntamiento.</p>
           </div>
         </div>
-        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+        <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100">
           <span class="text-red-500 font-bold shrink-0 mt-0.5">✗</span>
           <div>
             <p class="font-semibold text-gray-900 text-sm">Honorarios de proyecto técnico</p>
@@ -564,7 +564,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
               '<p class="text-sm font-semibold text-gray-800 mb-3">Uso previsto del local</p>' +
               '<div class="grid sm:grid-cols-3 gap-3">' +
                 svc.licenseByUso.options.map(function (opt) {
-                  return '<label class="uso-card border-2 rounded-lg p-3 cursor-pointer transition-colors ' +
+                  return '<label class="uso-card border-2 p-3 cursor-pointer transition-colors ' +
                     (state.uso === opt.key ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400') + '" data-uso="' + esc(opt.key) + '">' +
                     '<input type="radio" name="uso" value="' + esc(opt.key) + '"' + (state.uso === opt.key ? ' checked' : '') + ' class="sr-only">' +
                     '<span class="text-sm font-medium text-gray-900">' + esc(opt.label) + '</span>' +
@@ -606,7 +606,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
           '<div class="grid sm:grid-cols-2 gap-3">' +
             svc.tranches.map(function (tr) {
               var active = tr.key === state.tranche;
-              return '<label class="tranche-card border-2 rounded-lg p-4 cursor-pointer transition-colors ' +
+              return '<label class="tranche-card border-2 p-4 cursor-pointer transition-colors ' +
                 (active ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400') + '" data-key="' + esc(tr.key) + '">' +
                 '<input type="radio" name="tramo" value="' + esc(tr.key) + '"' + (active ? ' checked' : '') + ' class="sr-only">' +
                 '<span class="font-bold text-gray-900 block">' + esc(tr.label) + '</span>' +
@@ -634,7 +634,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
           '<div class="grid sm:grid-cols-2 gap-3">' +
             svc.elements.map(function (elem) {
               var active = state.elements.indexOf(elem.key) !== -1;
-              return '<label class="elem-card border-2 rounded-lg p-4 cursor-pointer transition-colors ' +
+              return '<label class="elem-card border-2 p-4 cursor-pointer transition-colors ' +
                 (active ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400') + '" data-key="' + esc(elem.key) + '">' +
                 '<input type="checkbox" name="elemento" value="' + esc(elem.key) + '"' + (active ? ' checked' : '') + ' class="sr-only">' +
                 '<span class="text-lg mr-2">' + esc(elem.icon) + '</span>' +
@@ -752,7 +752,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
               ? '<div class="text-xs text-gray-400 mt-0.5">Obra: ' + fmt(res.construction.min) + '–' + fmt(res.construction.max) + ' €' +
                 ' + Licencia: ' + fmt(res.license.min) + '–' + fmt(res.license.max) + ' €</div>'
               : '';
-            return '<div class="quality-col cursor-pointer border-2 rounded-xl p-4 transition-colors ' +
+            return '<div class="quality-col cursor-pointer border-2 p-4 transition-colors ' +
               (isActive ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400') +
               '" data-q="' + q + '">' +
               '<div class="text-xs font-bold uppercase tracking-wider mb-1 ' + (isActive ? 'text-gray-900' : 'text-gray-500') + '">' + labels[q] + '</div>' +
@@ -765,7 +765,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
                 }).join('') +
               '</ul>' +
               '<div class="text-xs text-gray-500 mb-3">⏱ ' + qd.timelineWeeks[0] + '–' + qd.timelineWeeks[1] + ' sem.</div>' +
-              '<button type="button" class="w-full py-1.5 text-xs font-semibold rounded-lg transition-colors ' +
+              '<button type="button" class="w-full py-1.5 text-xs font-semibold transition-colors ' +
                 (isActive ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200') + '">' +
                 (isActive ? '▼ Detalle activo' : 'Ver detalle') +
               '</button>' +
@@ -816,7 +816,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
         : esc(svc.label) + ' · ' + esc(qd.label) + ' · Detalle';
 
       detailEl.innerHTML =
-        '<div class="border-2 border-gray-900 rounded-xl p-6 mt-2">' +
+        '<div class="border-2 border-gray-900 p-6 mt-2">' +
           '<h3 class="font-black text-gray-900 mb-6 text-lg">' + detailTitle + '</h3>' +
 
           '<div class="grid md:grid-cols-2 gap-8 mb-8">' +
@@ -847,7 +847,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
             breakdownData.map(function (b) {
               return '<div class="flex items-center gap-3">' +
                 '<div class="text-xs text-gray-600 min-w-0 w-48 shrink-0 truncate">' + esc(b.label) + '</div>' +
-                '<div class="flex-1 bg-gray-100 rounded-full h-2"><div class="bg-[#A85535] h-2 rounded-full" style="width:' + b.pct + '%"></div></div>' +
+                '<div class="flex-1 bg-gray-100 h-2"><div class="bg-[#A85535] h-2" style="width:' + b.pct + '%"></div></div>' +
                 '<div class="text-xs text-gray-500 w-8 text-right shrink-0">' + b.pct + '%</div>' +
               '</div>';
             }).join('') +
@@ -855,7 +855,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
 
           // Plazo
           '<h4 class="font-bold text-gray-800 mb-3 text-sm">Plazo estimado: ' + qd.timelineWeeks[0] + '–' + qd.timelineWeeks[1] + ' semanas</h4>' +
-          '<div class="flex gap-0.5 rounded-lg overflow-hidden mb-2">' +
+          '<div class="flex gap-0.5 overflow-hidden mb-2">' +
             qd.phases.map(function (p, i) {
               var colors = ['bg-gray-800','bg-gray-600','bg-gray-500','bg-gray-400','bg-gray-300','bg-gray-200'];
               return '<div class="relative text-center overflow-hidden" style="width:' + p.pct + '%;flex-shrink:0" title="' + esc(p.name) + '">' +
@@ -871,12 +871,12 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
           '</ol>' +
 
           // Disclaimer
-          '<div class="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-800 mb-4">' +
+          '<div class="bg-amber-50 border border-amber-200 p-4 text-sm text-amber-800 mb-4">' +
             'Estimación orientativa sin IVA basada en precios de referencia del sector en el Corredor del Henares. No es un presupuesto ni una oferta vinculante. El precio real se fija por escrito tras la visita técnica gratuita.' +
           '</div>' +
 
           // CTA
-          '<a href="' + ctaHref + '" class="inline-block bg-gray-900 text-white font-bold px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors text-sm">' +
+          '<a href="' + ctaHref + '" class="inline-block bg-gray-900 text-white font-bold px-6 py-3 hover:bg-gray-700 transition-colors text-sm">' +
             'Solicitar visita técnica gratuita →' +
           '</a>' +
 

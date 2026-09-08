@@ -1,10 +1,12 @@
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isLabUrl } from './lib/scope.mjs';
+import { reportScope, requireDist } from './lib/report.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
+requireDist(existsSync(DIST));
 
 const LD_RE = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi;
 
@@ -71,7 +73,8 @@ function walk(dir) {
 
 walk(DIST);
 
-console.log(`\nJSON-LD: ${schemaCount} bloques en ${fileCount} páginas.`);
+reportScope({ inspected: fileCount, unit: 'páginas', floor: 40,
+  notes: [`bloques JSON-LD encontrados: ${schemaCount}`] });
 if (issues > 0) {
   console.warn(`⚠  ${issues} problema(s) en el schema.\n`);
 } else {

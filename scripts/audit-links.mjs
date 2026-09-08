@@ -2,9 +2,11 @@ import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isLabUrl } from './lib/scope.mjs';
+import { reportScope, requireDist } from './lib/report.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
+requireDist(existsSync(DIST));
 
 // Threshold: SEO pages should receive >= MIN_INBOUND links from <main> content
 const MIN_INBOUND = 8;
@@ -111,7 +113,7 @@ if (lowInbound.length > 0) {
   }
 }
 
-console.log(`\nEnlaces verificados en ${pages.size} páginas.`);
+reportScope({ inspected: pages.size, unit: 'páginas', floor: 40 });
 if (labLinks > 0) {
   console.error(`\n❌  ${labLinks} enlace(s) de producción hacia /lab/. R12: el laboratorio no recibe enlaces.\n`);
 }

@@ -87,11 +87,14 @@ con elevación**. Añadir una sombra o redondear una esquina rompe el lenguaje
 visual aunque el resto de valores sea correcto. `--radius: 0px` es una decisión,
 no un descuido.
 
-**Excepción única y nominal (DEC-D01):** `src/components/WhatsAppBtn.astro` usa
+**Excepción nominal (DEC-D01), dos ficheros y un valor cada uno:** `src/components/WhatsAppBtn.astro` usa
 `rounded-full` por convención de plataforma. El botón flotante de WhatsApp no es un
 componente del sistema, y ya tiene otra excepción declarada por el mismo motivo: el verde
-`#25D366` está vetado en todo el sitio salvo ahí. Ninguna otra parte del sitio puede usar
-`rounded-*`; lo comprueba `npm run audit:design`.
+`#25D366` está vetado en todo el sitio salvo ahí. `src/components/Header.astro` usa
+`rounded-sm` en el botón de WhatsApp de la barra, por el mismo motivo. No se alinean: el
+flotante es un FAB y el de la barra un botón inline, donde `rounded-full` sería una píldora.
+Ninguna otra parte del sitio puede usar `rounded-*`, ni un valor distinto dentro de esos dos
+ficheros; lo comprueba `npm run audit:design`.
 
 ### Componentes de chrome
 

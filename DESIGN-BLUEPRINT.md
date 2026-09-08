@@ -211,8 +211,19 @@ tracking. El auditor no puede desactualizarse: lee el código en cada ejecución
   fichero, rol, valor encontrado y valor esperado.
 - **Denominador.** `Inspeccionadas: N ficheros` con su suelo mínimo. Si N es 0 o cae bajo el
   suelo, el auditor aborta: no encontrar nada que mirar es estar roto, no estar satisfecho.
-- **Cobertura por regla.** `regla «X»: aplica en N/M ficheros`. Una regla con cobertura baja
-  no está vigilando lo que crees. Hoy las reglas del H1 aplican al 10% de los ficheros y la
-  del número editorial al 0%: el scope del auditor es deuda conocida, no un sitio limpio.
+- **Cobertura por regla.** `regla «X»: presente en N/M páginas`.
+
+  **El porcentaje no es una nota.** Mide en cuántas páginas *existe el patrón que la regla
+  vigila*, no cuántas lo cumplen. Una regla de rol solo puede aplicar donde ese rol está: la
+  de combinadas marca 63% porque las combinadas son 47 de 75, y eso es su techo, no un
+  suspenso. Cada rol vigila el 100% de su familia.
+
+  Lo que sí es una señal de alarma es una cobertura **cercana a cero** cuando el patrón
+  debería existir. La regla del número editorial marcó `0/40` durante meses: su selector
+  buscaba una forma inline que había dejado de existir al extraerse a `.stat-editorial`.
+
+  Para saber si el canon cubre el sitio, suma las reglas de un mismo eje. Hoy las de
+  `font-size` del H1 suman **73 de 75 páginas**; las 2 restantes usan `.h1-hero--stacked`,
+  cuyo tamaño lo llevan los spans `.h1-hero__thesis` y todavía no tiene regla propia.
 
 Ver la regla de parada en [`docs/PROTOCOLO-LAB.md`](./docs/PROTOCOLO-LAB.md).

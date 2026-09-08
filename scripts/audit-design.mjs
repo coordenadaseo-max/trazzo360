@@ -66,7 +66,7 @@ const CANON_DIST = [
     element: /<h1[^>]*class="[^"]*\bh1-hero\b[^"]*"[^>]*>/g,
     // `\bh1-hero\b` también casa dentro de `h1-hero--zona`, así que los
     // modificadores se descartan aquí y no con un lookahead ilegible.
-    exclude: /h1-hero--(?:zona|combinada)/,
+    exclude: /h1-hero--(?:zona|combinada|stacked)/,
     find: /font-size:\s*([^;"]+)/g,
     expect: 'var(--text-display-hero)',
   },
@@ -81,6 +81,14 @@ const CANON_DIST = [
     element: /<h1[^>]*class="[^"]*\bh1-hero--combinada\b[^"]*"[^>]*>/g,
     find: /font-size:\s*([^;"]+)/g,
     expect: 'var(--text-display-combinada)',
+  },
+  {
+    // Páginas sin hero: guías, legales, calculadora, contacto, gracias, 404.
+    // Rol distinto del hero, tamaño fijo, sin override en ninguna de las 12.
+    role: 'H1 de página · font-size',
+    element: /<h1[^>]*class="[^"]*\bh1-page\b[^"]*"[^>]*>/g,
+    find: /font-size:\s*([^;"]+)/g,
+    expect: '2.25rem',
   },
   {
     // El patrón se extrajo a la clase `.stat-editorial` (global.css), así que el

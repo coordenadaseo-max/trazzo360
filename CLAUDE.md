@@ -180,6 +180,7 @@ Cualquier componente que renderice metadatos de obra (ubicación, m², plazo) de
 - Tablas de datos en `<table>` con `<caption>`, `<thead>` y `<th scope>`. Nunca uses una rejilla de divs para datos tabulares.
 - Listas de pares término-definición (partidas, plazos, qué incluye) en `<dl>`.
 - Procesos ordenados en `<ol>`. Los pasos numerados a mano dentro de divs son incorrectos.
+- **Todo proceso numerado y ordenado usa `<ol>`/`<li>`. El título de cada item usa `<h3>` si el contenedor de la sección tiene `<h2>`, o `<h2>` si no lo tiene. Nunca `<p>` para títulos de items en una lista de proceso.** Para las listas de «Qué incluye» de los hubs existe `PasosIncluye.astro`, que además distingue por prop entre lista ordenada y catálogo sin orden. Ver DEC-D22.
 - FAQ con `<details>`/`<summary>`. El texto de la pregunta va en el `<summary>`.
 - Breadcrumbs en `<nav aria-label="Migas de pan">` con `<ol>`.
 - Estados de foco visibles en todos los CTA. Contraste AA en texto sobre `#A85535` y `#111827`.

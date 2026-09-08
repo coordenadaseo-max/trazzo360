@@ -117,6 +117,26 @@ Tres valores de la versión anterior no coincidían y se corrigen aquí; están 
 | CTA de hero | `padding: 1rem 1.75rem`, `font-weight: 700`, `font-size: .8125rem`, `letter-spacing: .08em`, uppercase, fondo `#A85535`, `hover: opacity .88` ⚠ es un botón distinto del anterior; la versión de `DESIGN.md` los confundía en uno solo | `.hero-cta-primary` en `global.css` |
 | CTA final de hub | `px-10 py-4` a `px-12 py-5`, `bg-[#A85535] hover:bg-[#8A4229] transition-colors` | hubs de servicio |
 
+**`PasosIncluye.astro` — lista de alcance de un servicio.** Vive en
+`src/components/`, con su CSS scoped: el estilo va con el markup, no suelto en
+`global.css`.
+
+| Prop | Tipo | Por defecto | Para qué |
+|---|---|---|---|
+| `items` | `{ titulo, descripcion }[]` | — | Los ítems de la lista |
+| `ariaLabel` | `string` | `"Qué incluye este servicio"` | Etiqueta accesible de la lista |
+| `ordenado` | `boolean` | `true` | `true` → `<ol>` numerado · `false` → `<ul>` sin números |
+| `class` | `string` | — | Utilidades de margen de la página que lo usa |
+
+**Cuándo usar cada variante, y no es estético:** `ordenado` afirma que la
+secuencia es información. Vale para un proceso cronológico real —no se alicata
+antes de demoler— y no vale para un catálogo de alcance donde los ítems son
+zonas o tipos de obra sin orden entre sí. Numerar algo que no tiene orden le
+dice a Google que sí lo tiene.
+
+**Regla semántica, siempre:** `<ol>`/`<li>` o `<ul>`/`<li>`, nunca `<div>`, y el
+título de cada ítem en `<h3>`, nunca en `<p>`. Ver `CLAUDE.md` §5 y DEC-D22.
+
 **Dos convenciones de hover conviven, y las dos son intencionadas:** el CTA de hero baja la
 opacidad; el CTA final de hub cambia el fondo a `#8A4229`. La versión anterior afirmaba que
 todos los primarios cambiaban de fondo ⚠, lo cual sólo es cierto para el segundo.

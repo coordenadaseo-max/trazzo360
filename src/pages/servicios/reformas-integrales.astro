@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
@@ -178,25 +179,17 @@ const zones = [
         </p>
       </div>
 
-      <div class="incluye-list reveal-stagger">
-        {[
-          { n:'01', title: 'Demolición y redistribución', desc: 'Derribo de tabiques existentes, apertura de huecos y redistribución según el proyecto. Gestión de escombros a contenedor.' },
-          { n:'02', title: 'Instalación eléctrica', desc: 'Cuadro nuevo con magnetotérmicos y diferencial, circuitos independientes para electrodomésticos de alta potencia, tomas y puntos de luz.' },
-          { n:'03', title: 'Fontanería completa', desc: 'Renovación de tuberías de suministro y desagüe, acometidas a baño y cocina, revisión de caldera y adaptación a nuevos puntos.' },
-          { n:'04', title: 'Tabiquería y acabados base', desc: 'Nuevas particiones de pladur o ladrillo, enlucido, revestimientos de paredes y techos. Falso techo donde aplique.' },
-          { n:'05', title: 'Baño y cocina coordinados', desc: 'Reforma completa en la misma obra: sin costes de movilización dobles, sin solapamientos de gremios, materiales elegidos antes de empezar.' },
-          { n:'06', title: 'Suelos, carpintería y entrega', desc: 'Tarima o porcelánico en toda la vivienda, puertas interiores nuevas, armarios si aplica, pintura final y limpieza. Garantía de 2 años.' },
-        ].map(item => (
-          <div class="incluye-row">
-            <span class="incluye-n" aria-hidden="true">{item.n}</span>
-            <div class="incluye-body">
-              <h3 class="incluye-title">{item.title}</h3>
-              <p class="incluye-desc">{item.desc}</p>
-            </div>
-            <span class="incluye-arrow" aria-hidden="true">→</span>
-          </div>
-        ))}
-      </div>
+      <PasosIncluye
+        ariaLabel="Qué incluye una reforma integral"
+        items={[
+          { titulo: 'Demolición y redistribución', descripcion: 'Derribo de tabiques existentes, apertura de huecos y redistribución según el proyecto. Gestión de escombros a contenedor.' },
+          { titulo: 'Instalación eléctrica', descripcion: 'Cuadro nuevo con magnetotérmicos y diferencial, circuitos independientes para electrodomésticos de alta potencia, tomas y puntos de luz.' },
+          { titulo: 'Fontanería completa', descripcion: 'Renovación de tuberías de suministro y desagüe, acometidas a baño y cocina, revisión de caldera y adaptación a nuevos puntos.' },
+          { titulo: 'Tabiquería y acabados base', descripcion: 'Nuevas particiones de pladur o ladrillo, enlucido, revestimientos de paredes y techos. Falso techo donde aplique.' },
+          { titulo: 'Baño y cocina coordinados', descripcion: 'Reforma completa en la misma obra: sin costes de movilización dobles, sin solapamientos de gremios, materiales elegidos antes de empezar.' },
+          { titulo: 'Suelos, carpintería y entrega', descripcion: 'Tarima o porcelánico en toda la vivienda, puertas interiores nuevas, armarios si aplica, pintura final y limpieza. Garantía de 2 años.' },
+        ]}
+      />
     </div>
   </section>
   <!-- M5: Comparativa -->
@@ -324,7 +317,7 @@ const zones = [
           <button id="fase-pause-btn" class="fase-pause-btn" type="button" aria-label="Pausar animación de fases" aria-pressed="false">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="3" height="8"/><rect x="6" y="1" width="3" height="8"/></svg>
           </button>
-          <div class="fase-grid" id="fase-grid">
+          <ol class="fase-grid" id="fase-grid">
             {[
               { n: '01', fase: 'Demolición', dep: 'Revela el estado real de instalaciones' },
               { n: '02', fase: 'Instalaciones', dep: 'Electricidad + fontanería en toda la vivienda' },
@@ -333,16 +326,16 @@ const zones = [
               { n: '05', fase: 'Carpintería', dep: 'Puertas, armarios y marcos' },
               { n: '06', fase: 'Entrega', dep: 'Pintura, limpieza y revisión final' },
             ].map((f, i) => (
-              <div class="fase-card" data-phase-idx={i}>
+              <li class="fase-card" data-phase-idx={i}>
                 <div class="fase-progress-top">
                   <div class="fase-bar"></div>
                 </div>
                 <div class="fase-n">{f.n}</div>
                 <div class="fase-label">{f.fase}</div>
                 <div class="fase-dep">{f.dep}</div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
           <p class="text-xs text-gray-400 mt-3">Un único responsable de obra coordina la entrada y salida de cada equipo a lo largo de toda la secuencia.</p>
         </div>
       </div>
@@ -779,6 +772,7 @@ const zones = [
     grid-template-columns:repeat(2,1fr);
     gap:1px;
     background:#D1D5DB;
+    list-style:none; margin:0; padding:0;   /* es <ol>: la secuencia es semántica */
   }
   @media(min-width:640px){
     .fase-grid { grid-template-columns:repeat(3,1fr); }

@@ -1,0 +1,115 @@
+---
+/**
+ * PasosIncluye — lista de alcance de un servicio.
+ *
+ * Dos variantes, y la diferencia no es estética sino semántica:
+ *
+ *   ordenado = true   <ol> numerado. Para un proceso cronológico real, donde
+ *                     el orden es información: no se alicata antes de demoler.
+ *   ordenado = false  <ul> sin números. Para un catálogo de alcance sin
+ *                     secuencia: zonas de la vivienda, tipos de obra.
+ *
+ * Numerar algo que no tiene orden le dice a Google que sí lo tiene. Ver DEC-D22
+ * y la regla de CLAUDE.md §5.
+ */
+interface Item {
+  titulo: string;
+  descripcion: string;
+}
+
+interface Props {
+  items: Item[];
+  /** Etiqueta accesible de la lista. */
+  ariaLabel?: string;
+  /** true → <ol> numerado; false → <ul> sin numerar. */
+  ordenado?: boolean;
+  /** Clases de utilidad del contenedor (márgenes de la página que lo usa). */
+  class?: string;
+}
+
+const {
+  items,
+  ariaLabel = 'Qué incluye este servicio',
+  ordenado = true,
+  class: className,
+} = Astro.props;
+
+const Lista = ordenado ? 'ol' : 'ul';
+---
+
+<Lista
+  class:list={['incluye-list', 'reveal-stagger', !ordenado && 'incluye-list--plana', className]}
+  aria-label={ariaLabel}
+>
+  {items.map((item, i) => (
+    <li class="incluye-row">
+      {ordenado && (
+        // El lector de pantalla ya anuncia la posición del <li> dentro del <ol>:
+        // el número es refuerzo visual, no información nueva.
+        <span class="incluye-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+      )}
+      <div class="incluye-body">
+        <h3 class="incluye-title">{item.titulo}</h3>
+        <p class="incluye-desc">{item.descripcion}</p>
+      </div>
+    </li>
+  ))}
+</Lista>
+
+<style>
+  .incluye-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #E5E7EB;
+  }
+
+  .incluye-row {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 0 1.5rem;
+    align-items: baseline;
+    padding: 1.5rem 0.5rem;
+    border-bottom: 1px solid #E5E7EB;
+    transition: background 0.2s ease, padding-left 0.2s ease;
+  }
+
+  .incluye-list--plana .incluye-row {
+    grid-template-columns: 1fr;
+  }
+
+  .incluye-row:hover {
+    background: #FAFAF8;
+    padding-left: 1rem;
+  }
+
+  /* El número es el protagonista visual de la fila, no un índice discreto. */
+  .incluye-n {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 900;
+    color: #A85535;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .incluye-body { min-width: 0; }
+
+  .incluye-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+
+  .incluye-desc {
+    font-size: 0.8125rem;
+    color: #6B7280;
+    line-height: 1.6;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .incluye-row { transition: none; }
+  }
+</style>

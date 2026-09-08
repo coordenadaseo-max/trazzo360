@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
@@ -147,21 +148,18 @@ const faqSchema = {
              loading="lazy" />
       </figure>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          { title: 'Suelos en toda la vivienda', desc: 'Levantamiento del pavimento existente, preparación de la base y colocación de tarima maciza, laminada o porcelánico en toda la superficie.' },
-          { title: 'Baño completo', desc: 'Demolición, impermeabilización, alicatado, suelo, sanitarios, mueble, ducha o bañera, mampara y accesorios. Con revisión de la fontanería cuando el estado lo requiere.' },
-          { title: 'Cocina completa', desc: 'Diseño de distribución, desescombro, alicatado, electricidad, fontanería, muebles, encimera y electrodomésticos integrados.' },
-          { title: 'Redistribución de tabiques', desc: 'Derribo de tabiques existentes o levantamiento de nuevos, replanteo de distribución y acabado de superficies resultantes. Con proyecto técnico si aplica.' },
-          { title: 'Carpintería interior', desc: 'Puertas interiores nuevas, armarios empotrados y marcos. La carpintería transforma la percepción de los espacios a un coste por zona contenido.' },
-          { title: 'Pintura y acabados finales', desc: 'Pintura de todas las estancias en el color elegido. Remates de escayola, rodapiés y transiciones entre pavimentos. Limpieza final de obra.' },
-        ].map(item => (
-          <div class="bg-[#F9F7F4] p-7">
-            <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
-          </div>
-        ))}
-      </div>
+      <PasosIncluye
+        ariaLabel="Qué incluye la reforma de cada zona de la vivienda"
+        ordenado={false}
+        items={[
+          { titulo: 'Suelos en toda la vivienda', descripcion: 'Levantamiento del pavimento existente, preparación de la base y colocación de tarima maciza, laminada o porcelánico en toda la superficie.' },
+          { titulo: 'Baño completo', descripcion: 'Demolición, impermeabilización, alicatado, suelo, sanitarios, mueble, ducha o bañera, mampara y accesorios. Con revisión de la fontanería cuando el estado lo requiere.' },
+          { titulo: 'Cocina completa', descripcion: 'Diseño de distribución, desescombro, alicatado, electricidad, fontanería, muebles, encimera y electrodomésticos integrados.' },
+          { titulo: 'Redistribución de tabiques', descripcion: 'Derribo de tabiques existentes o levantamiento de nuevos, replanteo de distribución y acabado de superficies resultantes. Con proyecto técnico si aplica.' },
+          { titulo: 'Carpintería interior', descripcion: 'Puertas interiores nuevas, armarios empotrados y marcos. La carpintería transforma la percepción de los espacios a un coste por zona contenido.' },
+          { titulo: 'Pintura y acabados finales', descripcion: 'Pintura de todas las estancias en el color elegido. Remates de escayola, rodapiés y transiciones entre pavimentos. Limpieza final de obra.' },
+        ]}
+      />
     </div>
   </section>
   <!-- M5: Comparativa -->

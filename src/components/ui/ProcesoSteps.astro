@@ -11,14 +11,15 @@ interface Props {
 const { steps, maxWidth = '44rem' } = Astro.props;
 ---
 
-<div class="proceso-steps" style={`max-width:${maxWidth}`}>
+<ol class="proceso-steps" style={`max-width:${maxWidth}`}>
   {steps.map(step => (
-    <div class="proceso-step">
-      <span class="proceso-step__n">{step.n}</span>
+    <li class="proceso-step">
+      {/* El <ol> ya anuncia la posición: el número es refuerzo visual. */}
+      <span class="proceso-step__n" aria-hidden="true">{step.n}</span>
       <div>
-        <p class="proceso-step__title">{step.title}</p>
+        <h3 class="proceso-step__title">{step.title}</h3>
         <p class="proceso-step__desc">{step.desc}</p>
       </div>
-    </div>
+    </li>
   ))}
-</div>
+</ol>

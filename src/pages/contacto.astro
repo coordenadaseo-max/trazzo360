@@ -37,6 +37,17 @@ import { SITE, SERVICES, ZONES } from '../data/site';
         <form class="space-y-5" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <input type="hidden" name="_subject" value="Nueva solicitud de presupuesto - Trazzo360" />
           <input type="hidden" name="_next" value="https://trazzo360.es/gracias/" />
+
+          <!--
+            Honeypot de Formspree. Un bot rellena todos los campos; una persona no
+            ve éste. No usa display:none a secas: eso lo dejaría fuera del orden de
+            foco pero algunos bots lo detectan. `aria-hidden` lo silencia para los
+            lectores de pantalla y `tabindex="-1"` evita que el teclado tropiece.
+          -->
+          <div class="honeypot" aria-hidden="true">
+            <label for="f-gotcha">No rellenes este campo</label>
+            <input id="f-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+          </div>
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label for="f-nombre" class="block text-sm font-semibold text-gray-700 mb-2">Nombre *</label>

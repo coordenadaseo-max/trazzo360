@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
@@ -147,21 +148,18 @@ const faqSchema = {
              loading="lazy" />
       </figure>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          { title: 'Portales y escaleras', desc: 'Renovación de revestimientos, cambio de pavimento, pintura, mejora de iluminación LED con sensor y adaptación de accesos para cumplir normativa de accesibilidad.' },
-          { title: 'Fachadas y rehabilitación exterior', desc: 'Saneado del soporte, aplicación de sistema de impermeabilización, instalación de SATE para aislamiento por el exterior o renovación del acabado de fachada.' },
-          { title: 'Cubiertas e impermeabilización', desc: 'Renovación de la impermeabilización de cubiertas planas con garantía de 10 años. Reparación de puntos singulares: sumideros, juntas de dilatación, petos.' },
-          { title: 'Patios y zonas exteriores', desc: 'Renovación de pavimento en patios interiores, mejora del sistema de drenaje, pintura de paramentos de patio y mejora de iluminación.' },
-          { title: 'Instalaciones comunitarias', desc: 'Revisión y renovación de la red de fontanería comunitaria, cuadro eléctrico de zonas comunes, sistema de intercomunicadores y videoportero.' },
-          { title: 'Documentación para junta y administrador', desc: 'Presupuesto desglosado con memoria descriptiva y fotografías. Informe técnico del estado previo. Documentación de fin de obra con certificados de instalaciones.' },
-        ].map(item => (
-          <div class="bg-[#F9F7F4] p-7">
-            <h3 class="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
-          </div>
-        ))}
-      </div>
+      <PasosIncluye
+        ariaLabel="Qué obras hacemos en comunidades de propietarios"
+        ordenado={false}
+        items={[
+          { titulo: 'Portales y escaleras', descripcion: 'Renovación de revestimientos, cambio de pavimento, pintura, mejora de iluminación LED con sensor y adaptación de accesos para cumplir normativa de accesibilidad.' },
+          { titulo: 'Fachadas y rehabilitación exterior', descripcion: 'Saneado del soporte, aplicación de sistema de impermeabilización, instalación de SATE para aislamiento por el exterior o renovación del acabado de fachada.' },
+          { titulo: 'Cubiertas e impermeabilización', descripcion: 'Renovación de la impermeabilización de cubiertas planas con garantía de 10 años. Reparación de puntos singulares: sumideros, juntas de dilatación, petos.' },
+          { titulo: 'Patios y zonas exteriores', descripcion: 'Renovación de pavimento en patios interiores, mejora del sistema de drenaje, pintura de paramentos de patio y mejora de iluminación.' },
+          { titulo: 'Instalaciones comunitarias', descripcion: 'Revisión y renovación de la red de fontanería comunitaria, cuadro eléctrico de zonas comunes, sistema de intercomunicadores y videoportero.' },
+          { titulo: 'Documentación para junta y administrador', descripcion: 'Presupuesto desglosado con memoria descriptiva y fotografías. Informe técnico del estado previo. Documentación de fin de obra con certificados de instalaciones.' },
+        ]}
+      />
     </div>
   </section>
   <!-- M5: Comparativa -->

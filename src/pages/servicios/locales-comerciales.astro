@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
@@ -147,25 +148,17 @@ const faqSchema = {
              loading="lazy" />
       </figure>
 
-      <ol class="incluye-list reveal">
-        {[
-          { title: 'Vaciado y desescombro', desc: 'Retirada de todos los elementos existentes, demolición de particiones que no se conservan, gestión de escombros y preparación del espacio.' },
-          { title: 'Instalación eléctrica completa', desc: 'Cuadro nuevo, circuitos independientes según actividad, alumbrado de emergencia reglamentario, señalética de evacuación y tomas de corriente.' },
-          { title: 'Fontanería y climatización', desc: 'Acometidas de agua según el uso: puntos de lavamanos, barra, cocina profesional. Instalación de climatización según superficie y normativa.' },
-          { title: 'Particiones de pladur y techo técnico', desc: 'Divisiones de pladur con distintos grados de aislamiento acústico según el uso. Techo técnico registrable para acceso a instalaciones.' },
-          { title: 'Suelos, pintura y carpintería', desc: 'Pavimento según actividad: baldosa antideslizante, tarima técnica, resina. Pintura de paredes y techo. Carpintería interior y acceso.' },
-          { title: 'Proyecto técnico y tramitación (cuando aplica)', desc: 'Si tu actividad lo requiere, redactamos el proyecto técnico y gestionamos la tramitación ante el ayuntamiento. La visita técnica determina qué documentación corresponde a tu uso concreto.' },
-        ].map((item, i) => (
-          <li class="incluye-row">
-            <span class="incluye-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-            <div class="incluye-body">
-              <p class="incluye-title">{item.title}</p>
-              <p class="incluye-desc">{item.desc}</p>
-            </div>
-            <span class="incluye-arrow" aria-hidden="true">→</span>
-          </li>
-        ))}
-      </ol>
+      <PasosIncluye
+        ariaLabel="Qué incluye la reforma completa de un local comercial"
+        items={[
+          { titulo: 'Vaciado y desescombro', descripcion: 'Retirada de todos los elementos existentes, demolición de particiones que no se conservan, gestión de escombros y preparación del espacio.' },
+          { titulo: 'Instalación eléctrica completa', descripcion: 'Cuadro nuevo, circuitos independientes según actividad, alumbrado de emergencia reglamentario, señalética de evacuación y tomas de corriente.' },
+          { titulo: 'Fontanería y climatización', descripcion: 'Acometidas de agua según el uso: puntos de lavamanos, barra, cocina profesional. Instalación de climatización según superficie y normativa.' },
+          { titulo: 'Particiones de pladur y techo técnico', descripcion: 'Divisiones de pladur con distintos grados de aislamiento acústico según el uso. Techo técnico registrable para acceso a instalaciones.' },
+          { titulo: 'Suelos, pintura y carpintería', descripcion: 'Pavimento según actividad: baldosa antideslizante, tarima técnica, resina. Pintura de paredes y techo. Carpintería interior y acceso.' },
+          { titulo: 'Proyecto técnico y tramitación (cuando aplica)', descripcion: 'Si tu actividad lo requiere, redactamos el proyecto técnico y gestionamos la tramitación ante el ayuntamiento. La visita técnica determina qué documentación corresponde a tu uso concreto.' },
+        ]}
+      />
     </div>
   </section>
   <!-- 8. Precios -->

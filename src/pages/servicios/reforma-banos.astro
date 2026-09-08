@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
@@ -198,25 +199,18 @@ const zones = [
       </figure>
 
       <!-- Lista tipo incluye-list del lab -->
-      <div class="incluye-list reveal-stagger mb-12">
-        {[
-          { n:'01', title: 'Demolición y desescombro', desc: 'Retirada de alicatados, solado, bañera o ducha anterior y sanitarios. Gestión de escombros a contenedor. El espacio queda limpio para empezar.' },
-          { n:'02', title: 'Impermeabilización', desc: 'Aplicación de impermeabilizante en suelo y primer metro de pared en toda la zona húmeda. Es la partida más importante para evitar filtraciones futuras.' },
-          { n:'03', title: 'Alicatado y solado', desc: 'Colocación de nuevo revestimiento cerámico en paredes y suelo. Rejuntado con material hidrófugo. Sellado de juntas de dilatación en los encuentros.' },
-          { n:'04', title: 'Plato de ducha o bañera', desc: 'Instalación del plato de ducha (extraplano o a ras de suelo) o nueva bañera según elección. Incluye la adaptación de la fontanería de acometida.' },
-          { n:'05', title: 'Mampara y sanitarios', desc: 'Montaje de mampara de vidrio templado, inodoro, lavabo y pedestal o mueble. Conexión de todos los puntos de agua y desagüe.' },
-          { n:'06', title: 'Mueble, espejo e iluminación', desc: 'Instalación de mueble de baño con lavabo integrado, espejo con o sin luz, y apliques de iluminación sobre espejo. Acabado completo.' },
-        ].map(item => (
-          <div class="incluye-row">
-            <span class="incluye-n" aria-hidden="true">{item.n}</span>
-            <div class="incluye-body">
-              <p class="incluye-title">{item.title}</p>
-              <p class="incluye-desc">{item.desc}</p>
-            </div>
-            <span class="incluye-arrow" aria-hidden="true">→</span>
-          </div>
-        ))}
-      </div>
+      <PasosIncluye
+        ariaLabel="Qué incluye la reforma completa de un baño"
+        class="mb-12"
+        items={[
+          { titulo: 'Demolición y desescombro', descripcion: 'Retirada de alicatados, solado, bañera o ducha anterior y sanitarios. Gestión de escombros a contenedor. El espacio queda limpio para empezar.' },
+          { titulo: 'Impermeabilización', descripcion: 'Aplicación de impermeabilizante en suelo y primer metro de pared en toda la zona húmeda. Es la partida más importante para evitar filtraciones futuras.' },
+          { titulo: 'Alicatado y solado', descripcion: 'Colocación de nuevo revestimiento cerámico en paredes y suelo. Rejuntado con material hidrófugo. Sellado de juntas de dilatación en los encuentros.' },
+          { titulo: 'Plato de ducha o bañera', descripcion: 'Instalación del plato de ducha (extraplano o a ras de suelo) o nueva bañera según elección. Incluye la adaptación de la fontanería de acometida.' },
+          { titulo: 'Mampara y sanitarios', descripcion: 'Montaje de mampara de vidrio templado, inodoro, lavabo y pedestal o mueble. Conexión de todos los puntos de agua y desagüe.' },
+          { titulo: 'Mueble, espejo e iluminación', descripcion: 'Instalación de mueble de baño con lavabo integrado, espejo con o sin luz, y apliques de iluminación sobre espejo. Acabado completo.' },
+        ]}
+      />
 
       <!-- Bloque específico "si solo tienes un baño" -->
       <div class="bg-[#111827] p-7 text-white max-w-2xl">
@@ -487,7 +481,7 @@ const zones = [
               <li class="vida-item">
                 <span class="vida-item__n" aria-hidden="true">{item.n}</span>
                 <div>
-                  <p class="vida-item__title">{item.title}</p>
+                  <h3 class="vida-item__title">{item.title}</h3>
                   <p class="vida-item__desc">{item.desc}</p>
                 </div>
               </li>

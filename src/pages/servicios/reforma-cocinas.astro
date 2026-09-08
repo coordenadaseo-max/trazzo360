@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
@@ -247,25 +248,18 @@ const tranches = [
              loading="lazy" />
       </figure>
 
-      <div class="incluye-list reveal-stagger mb-16">
-        {[
-          { n:'01', title: 'Diseño y planimetría',         desc: 'Diseñamos la distribución en 2D según el espacio, los electrodomésticos previstos y el uso real. El diseño va antes de cualquier presupuesto.' },
-          { n:'02', title: 'Desescombro y obra civil',      desc: 'Retirada de muebles y revestimientos anteriores. Albañilería, enlucido de paredes y preparación de la base para el alicatado nuevo.' },
-          { n:'03', title: 'Instalación eléctrica',         desc: 'Circuitos dedicados para vitrocerámica, horno, lavavajillas y frigorífico. La instalación se revisa y adapta a los electrodomésticos previstos.' },
-          { n:'04', title: 'Fontanería y desagüe',          desc: 'Acometida de agua fría y caliente al fregadero, conexión de lavavajillas. Si la distribución cambia, las tuberías van a su nueva posición antes del alicatado.' },
-          { n:'05', title: 'Muebles, encimera y campana',   desc: 'Muebles de catálogo o a medida. Encimera del material elegido. Campana extractora instalada y conectada al conducto.' },
-          { n:'06', title: 'Alicatado y entrega',           desc: 'Revestimiento de la zona de trabajo con el material elegido. Instalación de fregadero y grifo. Limpieza final y entrega con garantía de 2 años.' },
-        ].map(item => (
-          <div class="incluye-row">
-            <span class="incluye-n" aria-hidden="true">{item.n}</span>
-            <div class="incluye-body">
-              <p class="incluye-title">{item.title}</p>
-              <p class="incluye-desc">{item.desc}</p>
-            </div>
-            <span class="incluye-arrow" aria-hidden="true">→</span>
-          </div>
-        ))}
-      </div>
+      <PasosIncluye
+        ariaLabel="Qué incluye la reforma de cocina de principio a fin"
+        class="mb-16"
+        items={[
+          { titulo: 'Diseño y planimetría', descripcion: 'Diseñamos la distribución en 2D según el espacio, los electrodomésticos previstos y el uso real. El diseño va antes de cualquier presupuesto.' },
+          { titulo: 'Desescombro y obra civil', descripcion: 'Retirada de muebles y revestimientos anteriores. Albañilería, enlucido de paredes y preparación de la base para el alicatado nuevo.' },
+          { titulo: 'Instalación eléctrica', descripcion: 'Circuitos dedicados para vitrocerámica, horno, lavavajillas y frigorífico. La instalación se revisa y adapta a los electrodomésticos previstos.' },
+          { titulo: 'Fontanería y desagüe', descripcion: 'Acometida de agua fría y caliente al fregadero, conexión de lavavajillas. Si la distribución cambia, las tuberías van a su nueva posición antes del alicatado.' },
+          { titulo: 'Muebles, encimera y campana', descripcion: 'Muebles de catálogo o a medida. Encimera del material elegido. Campana extractora instalada y conectada al conducto.' },
+          { titulo: 'Alicatado y entrega', descripcion: 'Revestimiento de la zona de trabajo con el material elegido. Instalación de fregadero y grifo. Limpieza final y entrega con garantía de 2 años.' },
+        ]}
+      />
 
       <!-- El parque del Corredor: diagnóstico local -->
       <div class="max-w-3xl mb-8">

@@ -668,6 +668,15 @@
 /* ── 12. FAQ ACCORDION ────────────────────────────────────── */
 
 .faq-list { border-top: 2px solid #111827; }
+.faq-list + .faq-list { border-top: none; margin-top: 2.25rem; }
+/* Subtítulo de grupo. Sólo aparece en las FAQ largas: rompe el muro de títulos
+   seguidos y deja localizar el bloque de un vistazo. */
+.faq-grupo {
+  font-size: 0.6875rem; font-weight: 900; letter-spacing: var(--tracking-eyebrow, 0.15em);
+  text-transform: uppercase; color: var(--color-brand, #A85535);
+  margin: 0 0 0.25rem; padding-top: 1.25rem;
+}
+.faq-list:first-of-type .faq-grupo { padding-top: 0; }
 .faq-item { border-bottom: 1px solid #E5E7EB; }
 .faq-summary {
   display: flex; justify-content: space-between; align-items: start; gap: 1.25rem;

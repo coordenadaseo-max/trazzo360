@@ -99,11 +99,21 @@ const faqs = [
     a: 'El pago se hace en tres fases: una parte antes del inicio de obra (para reservar agenda y pedir materiales), otra a mitad de obra y el resto en la entrega. Los porcentajes exactos quedan recogidos en el contrato que se firma antes de empezar. No pedimos el pago completo por adelantado.',
   },
 ];
+// Las FAQ se agrupan por tema: doce títulos seguidos que empiezan igual son un
+// muro. El orden sigue el de una decisión de compra. Ver DEC-D25.
+const faqGrupos = [
+  { titulo: 'Alcance y decisiones previas', faqs: [faqs[0], faqs[3], faqs[4], faqs[5], faqs[2]] },
+  { titulo: 'Durante la obra',              faqs: [faqs[1], faqs[6]] },
+  { titulo: 'Materiales',                   faqs: [faqs[7], faqs[8]] },
+  { titulo: 'Garantía, zona y pago',        faqs: [faqs[9], faqs[10], faqs[11]] },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
+  // Aplanado desde los grupos para que el orden del schema sea el mismo que el
+  // visible: Google no lo exige, pero una discrepancia gratuita no aporta nada.
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -658,7 +668,7 @@ const zones = [
       <h2 id="h-faq" class="h2-section reveal mb-10" style="letter-spacing:-0.03em; text-wrap:balance">
         Todo lo que necesitas saber antes de reformar el baño
       </h2>
-      <FaqAccordion {faqs} />
+      <FaqAccordion grupos={faqGrupos} />
     </div>
   </section>
   <!-- ── 11. CTA FINAL (dark) ──────────────── -->

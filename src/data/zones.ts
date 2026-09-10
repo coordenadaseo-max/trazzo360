@@ -222,7 +222,7 @@ export const ZONES = [
     metaDesc: 'Reformas en Guadalajara capital. El clima también cuenta al decidir qué renovar. Precio cerrado y tramitación gestionada desde Guadalajara.',
     heroContext: {
       label: 'Contexto territorial',
-      text: 'Guadalajara es provincia propia con tramitación municipal independiente de los ayuntamientos madrileños del Corredor. El clima continental de la ciudad —con mayor amplitud térmica que en la zona madrileña del Corredor— puede hacer que la carpintería exterior forme parte del alcance cuando el confort térmico lo justifique.',
+      text: 'Guadalajara es provincia propia con tramitación municipal independiente de los ayuntamientos madrileños del Corredor. El clima continental de la ciudad (con mayor amplitud térmica que en la zona madrileña del Corredor) puede hacer que la carpintería exterior forme parte del alcance cuando el confort térmico lo justifique.',
     },
     primary: false,
     province: 'Guadalajara',

@@ -19,7 +19,7 @@ export const COMPROMISOS = [
     id: 'pago-fases',
     title: 'Pago en tres fases',
     body: '40 % a la firma del contrato, 40 % cuando la obra llega a la mitad y 20 % a la entrega conforme. El tramo final solo se abona cuando el cliente recibe la obra a su satisfacción. No se anticipa nada antes de tener contrato con precio y fecha cerrados.',
-    short: '40 / 40 / 20 — el último tramo solo al recibir la obra conforme',
+    short: '40 / 40 / 20: el último tramo solo al recibir la obra conforme',
   },
   {
     id: 'garantia-ejecucion',

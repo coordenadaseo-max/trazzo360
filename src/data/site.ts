@@ -17,7 +17,7 @@ export const SITE = {
                                   //   silencio. Ver docs/PRE-LAUNCH-CHECKLIST.md §2.
   address: 'Corredor del Henares, Madrid',
   hours: 'Lun-Vie 8:00-20:00 · Sáb 9:00-14:00',
-  mainCity: 'Torrejón de Ardoz',  // municipio principal — Torrejón, no Alcalá
+  mainCity: 'Torrejón de Ardoz',  // municipio principal ( Torrejón), no Alcalá
   zone: 'Corredor del Henares',
   // Reseñas Google — activar cuando haya valoraciones reales
   reviewCount: 0,       // ← número de reseñas. Aparece en el hero cuando > 0

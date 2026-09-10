@@ -13,7 +13,7 @@ export const GET: APIRoute = () => {
         '',
       ].join('\n')
     : [
-        '# STAGING/DESARROLLO — indexación desactivada',
+        '# STAGING/DESARROLLO: indexación desactivada',
         'User-agent: *',
         'Disallow: /',
         '',

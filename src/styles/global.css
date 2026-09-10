@@ -951,3 +951,38 @@ a[style*="background: #A85535"]:hover {
   white-space: nowrap;
   border: 0;
 }
+
+/* ── IMPRESIÓN ─────────────────────────────────────────────────────────────
+   La URL de la calculadora reproduce el cálculo completo, así que la propia
+   página es el documento: abrir el enlace e imprimir a PDF da el desglose sin
+   necesidad de backend. Esto deja en el papel sólo lo que importa. */
+@media print {
+  header, footer, nav, .no-print,
+  a[href^="https://wa.me/"] { display: none !important; }
+
+  body { background: #fff; color: #000; font-size: 11pt; }
+
+  /* Los reveals dejan contenido en opacity:0 si el observer no llegó a activarlos:
+     al imprimir se fuerza todo visible. */
+  .reveal, .reveal-stagger > *, .js .reveal, .js .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  main { padding: 0 !important; }
+  section { break-inside: avoid; padding-block: 0.75rem !important; }
+  table { break-inside: auto; font-size: 10pt; }
+  tr, li { break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; }
+
+  /* Un desglose impreso sin la dirección de origen no sirve como documento. */
+  main::after {
+    content: 'Trazzo360 · trazzo360.es · Estimación orientativa sin IVA, sujeta a visita técnica.';
+    display: block;
+    margin-top: 1.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #999;
+    font-size: 9pt;
+    color: #444;
+  }
+}

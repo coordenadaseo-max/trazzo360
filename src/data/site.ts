@@ -11,6 +11,10 @@ export const SITE = {
   phoneDisplay: '614 53 06 56',   // formato visible
   whatsapp: '34614530656',        // wa.me exige prefijo de país SIN '+' 
   email: 'info@trazzo360.es',
+  formspreeId: 'YOUR_FORM_ID',    // ← PRE-LANZAMIENTO. Mientras sea placeholder, los
+                                  //   formularios no se renderizan: un formulario que
+                                  //   apunta a un ID inexistente pierde cada lead en
+                                  //   silencio. Ver docs/PRE-LAUNCH-CHECKLIST.md §2.
   address: 'Corredor del Henares, Madrid',
   hours: 'Lun-Vie 8:00-20:00 · Sáb 9:00-14:00',
   mainCity: 'Torrejón de Ardoz',  // municipio principal — Torrejón, no Alcalá

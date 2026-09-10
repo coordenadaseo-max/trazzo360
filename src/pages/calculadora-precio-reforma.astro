@@ -112,6 +112,56 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       <div id="detail-panel" class="mt-4"></div>
     </div>
 
+    {/* Captura de lead. El resultado ya está visible arriba: pedir el correo no lo
+        desbloquea, sólo ofrece llevárselo. Y sólo se renderiza con un ID real de
+        Formspree: un formulario apuntando al placeholder perdería cada lead. */}
+    {SITE.formspreeId !== 'YOUR_FORM_ID' && (
+    <div id="calc-lead" class="mt-8 hidden border-t border-gray-200 pt-6 no-print">
+      <form id="calc-lead-form" method="POST"
+            action={`https://formspree.io/f/${SITE.formspreeId}`}
+            class="max-w-xl">
+        <input type="hidden" name="_subject" value="Desglose de calculadora solicitado - Trazzo360" />
+        <input type="hidden" name="_next" value="https://trazzo360.es/gracias/" />
+        <div class="honeypot" aria-hidden="true">
+          <label for="calc-gotcha">No rellenes este campo</label>
+          <input id="calc-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+        </div>
+
+        {/* Los rellena el JS al enviar: el desglose viaja con el correo, para que
+            el presupuesto se pueda preparar sin volver a calcular nada. */}
+        <input type="hidden" name="servicio" id="lead-servicio" />
+        <input type="hidden" name="superficie" id="lead-superficie" />
+        <input type="hidden" name="calidad" id="lead-calidad" />
+        <input type="hidden" name="estimacion" id="lead-estimacion" />
+        <input type="hidden" name="desglose" id="lead-desglose" />
+        <input type="hidden" name="enlace_al_calculo" id="lead-enlace" />
+
+        <h2 class="text-base font-bold text-gray-900 mb-1">¿Te enviamos este desglose por correo?</h2>
+        <p class="text-sm text-gray-600 mb-4 measure-body">
+          Te llega la estimación con las partidas que has seleccionado. Sin llamadas
+          automáticas: si quieres que lo revisemos juntos, lo pides tú.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <label for="lead-email" class="sr-only">Tu correo electrónico</label>
+          <input id="lead-email" type="email" name="email" required autocomplete="email"
+                 placeholder="tu@correo.com"
+                 class="flex-1 px-4 py-3 border border-gray-200 bg-gray-50 text-gray-900 focus:outline-none focus:border-[#A85535] transition-colors text-sm" />
+          <button type="submit"
+                  class="px-6 py-3 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity whitespace-nowrap"
+                  style="background:#A85535">Enviármelo</button>
+        </div>
+
+        <div class="flex items-start gap-2 mt-3">
+          <input type="checkbox" id="lead-privacidad" name="privacidad" required class="mt-1 accent-[#A85535]" />
+          <label for="lead-privacidad" class="text-xs text-gray-500">
+            He leído y acepto la <a href="/privacidad/" class="underline hover:text-[#A85535]">política de privacidad</a>. Mis datos serán usados exclusivamente para enviarte esta estimación.
+          </label>
+        </div>
+      </form>
+    </div>
+    )}
+
     <output id="calc-status" role="status" aria-live="polite" class="block mt-4 text-sm text-gray-500 min-h-[1.5rem]"></output>
 
     <noscript>
@@ -883,6 +933,41 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
         '</div>';
 
       scheduleGA(svc, q, res);
+      actualizarLead();
+    }
+
+    // ── Captura de lead ───────────────────────────────────────────────────────
+    // El desglose viaja en el propio correo, y con él la URL que reproduce el
+    // cálculo exacto. Así el presupuesto se prepara sin recalcular nada y sin
+    // depender de un backend que este sitio no tiene.
+    function textoDelResultado() {
+      var comp = document.getElementById('comparison-table');
+      var det  = document.getElementById('detail-panel');
+      var out = [];
+      [comp, det].forEach(function (el) {
+        if (!el) return;
+        out.push((el.innerText || el.textContent || '').replace(/\n{3,}/g, '\n\n').trim());
+      });
+      return out.filter(Boolean).join('\n\n');
+    }
+
+    function actualizarLead() {
+      var box = document.getElementById('calc-lead');
+      if (!box) return;                       // no renderizado: sin ID de Formspree
+      var res = document.getElementById('calc-result');
+      var hayResultado = res && !res.classList.contains('hidden');
+      box.classList.toggle('hidden', !hayResultado);
+      if (!hayResultado) return;
+
+      var svc = getService();
+      var set = function (id, v) { var e = document.getElementById(id); if (e) e.value = v; };
+      set('lead-servicio', svc ? svc.label || svc.slug : '');
+      set('lead-calidad', state.quality);
+      set('lead-superficie', svc && svc.inputType === 'superficie' ? state.m2 + ' m²' : '');
+      var comp = document.getElementById('comparison-table');
+      set('lead-estimacion', comp ? (comp.innerText || '').split('\n').slice(0, 6).join(' · ') : '');
+      set('lead-desglose', textoDelResultado());
+      set('lead-enlace', window.location.href);
     }
 
     // ── GA ────────────────────────────────────────────────────────────────────

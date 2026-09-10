@@ -17,7 +17,11 @@
 - **Efecto**: desbloquea teléfono en header/footer/contacto, WhatsApp en header/flotante, horario visible, `openingHoursSpecification` en schema JSON-LD
 
 ### 2. Formspree (formulario de contacto)
-- **Archivo**: `src/pages/contacto.astro` — buscar `YOUR_FORM_ID` en el `action` del `<form>`
+- **Archivo**: `src/data/site.ts` → `formspreeId`. Está centralizado: lo consumen el
+  formulario de contacto y el de captura de la calculadora.
+- **Efecto al ponerlo:** el bloque «¿Te enviamos este desglose por correo?» de la
+  calculadora **aparece solo**. Hoy no se renderiza, a propósito: un formulario que
+  apunta a un ID inexistente pierde cada lead sin avisar.
 - `action="https://formspree.io/f/YOUR_FORM_ID"` → reemplaza `YOUR_FORM_ID` con tu ID real
 - Crear cuenta en https://formspree.io, crear formulario, copiar ID (ej: `xpzgkwqr`)
 

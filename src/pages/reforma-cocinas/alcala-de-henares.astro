@@ -6,6 +6,7 @@
 // Claims técnicos: criterios de visita, no atributos de barrio.
 
 import Layout from '../../layouts/Layout.astro';
+import CtaInline from '../../components/ui/CtaInline.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE, ZONES } from '../../data/site';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
@@ -129,52 +130,58 @@ const faqSchema = {
         Lo que se comprueba antes de cerrar el presupuesto
       </h2>
 
-      <!-- Condicionante 1: extracción -->
-      <div class="cond-item">
-        <div class="num-paso cond-num">01</div>
-        <div>
-          <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Extracción: si la cocina no tiene salida directa al exterior</h3>
-          <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
-            Cuando la cocina no tiene ventana al exterior o la salida de extracción no da al aire libre, hay que resolver cómo se gestiona la ventilación antes de comprometer la distribución o los acabados. Las opciones (conducto por falso techo, extractor con recirculación, redistribución que acerque la zona de cocción) cambian el alcance y el presupuesto. Se evalúan en la visita técnica antes de comprometer ningún número.
-          </p>
-          <p class="text-gray-500 leading-relaxed mt-3" style="font-size:.9375rem">
-            En Alcalá, barrios como El Val y Barrio del Pilar cuentan con bloques construidos en los años 70-80. En viviendas de esa antigüedad es habitual revisar el estado de la ventilación existente antes de confirmar el tipo de extractor y su posición en la nueva cocina.
-          </p>
-        </div>
-      </div>
+      <ol class="cond-list">
+        <!-- Condicionante 1: extracción -->
+        <li class="cond-item">
+          <div class="num-paso cond-num">01</div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Extracción: si la cocina no tiene salida directa al exterior</h3>
+            <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
+              Cuando la cocina no tiene ventana al exterior o la salida de extracción no da al aire libre, hay que resolver cómo se gestiona la ventilación antes de comprometer la distribución o los acabados. Las opciones (conducto por falso techo, extractor con recirculación, redistribución que acerque la zona de cocción) cambian el alcance y el presupuesto. Se evalúan en la visita técnica antes de comprometer ningún número.
+            </p>
+            <p class="text-gray-500 leading-relaxed mt-3" style="font-size:.9375rem">
+              En Alcalá, barrios como El Val y Barrio del Pilar cuentan con bloques construidos en los años 70-80. En viviendas de esa antigüedad es habitual revisar el estado de la ventilación existente antes de confirmar el tipo de extractor y su posición en la nueva cocina.
+            </p>
+          </div>
+        </li>
 
-      <!-- Condicionante 2: circuito eléctrico -->
-      <div class="cond-item">
-        <div class="num-paso cond-num">02</div>
-        <div>
-          <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Circuito eléctrico: potencia para inducción y horno simultáneos</h3>
-          <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
-            Antes de definir los electrodomésticos, conviene revisar si el circuito de cocina tiene la potencia y los calibres adecuados para inducción y horno funcionando a la vez. En viviendas de más de 40 años es una comprobación habitual. Detectarlo en la visita permite incluirlo en el presupuesto cerrado desde el inicio, sin que aparezca como partida adicional cuando la obra ya está en marcha.
-          </p>
-        </div>
-      </div>
+        <!-- Condicionante 2: circuito eléctrico -->
+        <li class="cond-item">
+          <div class="num-paso cond-num">02</div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Circuito eléctrico: potencia para inducción y horno simultáneos</h3>
+            <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
+              Antes de definir los electrodomésticos, conviene revisar si el circuito de cocina tiene la potencia y los calibres adecuados para inducción y horno funcionando a la vez. En viviendas de más de 40 años es una comprobación habitual. Detectarlo en la visita permite incluirlo en el presupuesto cerrado desde el inicio, sin que aparezca como partida adicional cuando la obra ya está en marcha.
+            </p>
+          </div>
+        </li>
 
-      <!-- Condicionante 3: tabiques -->
-      <div class="cond-item">
-        <div class="num-paso cond-num">03</div>
-        <div>
-          <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Tabiques: confirmación técnica antes de derribar</h3>
-          <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
-            Si se plantea abrir la cocina al salón, hay que confirmar que el tabique no es de carga y no tiene instalaciones empotradas que condicionen el derribo. En pisos con más de 40 años de antigüedad, esta verificación es especialmente importante antes de comprometer un diseño de cocina abierta. La visita técnica lo comprueba antes de presentar ningún número.
-          </p>
-        </div>
-      </div>
+        <!-- Condicionante 3: tabiques -->
+        <li class="cond-item">
+          <div class="num-paso cond-num">03</div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Tabiques: confirmación técnica antes de derribar</h3>
+            <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
+              Si se plantea abrir la cocina al salón, hay que confirmar que el tabique no es de carga y no tiene instalaciones empotradas que condicionen el derribo. En pisos con más de 40 años de antigüedad, esta verificación es especialmente importante antes de comprometer un diseño de cocina abierta. La visita técnica lo comprueba antes de presentar ningún número.
+            </p>
+          </div>
+        </li>
 
-      <!-- Condicionante 4: permisos -->
-      <div class="cond-item" style="border-bottom:none;padding-bottom:0">
-        <div class="num-paso cond-num">04</div>
-        <div>
-          <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Tramitación municipal</h3>
-          <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
-            El trámite municipal para una reforma de cocina en Alcalá depende del alcance de la obra, de los elementos afectados y de si la vivienda se encuentra en un ámbito con protección específica. Lo revisamos antes de planificar el inicio para que la fecha de comienzo sea realista.
-          </p>
-        </div>
-      </div>
+        <!-- Condicionante 4: permisos -->
+        <li class="cond-item" style="border-bottom:none;padding-bottom:0">
+          <div class="num-paso cond-num">04</div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Tramitación municipal</h3>
+            <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
+              El trámite municipal para una reforma de cocina en Alcalá depende del alcance de la obra, de los elementos afectados y de si la vivienda se encuentra en un ámbito con protección específica. Lo revisamos antes de planificar el inicio para que la fecha de comienzo sea realista.
+            </p>
+          </div>
+        </li>
+      </ol>
+      <CtaInline
+        href="/calculadora-precio-reforma/"
+        texto="Estimar el precio de mi caso"
+        nota="Con estos condicionantes ya vistos, la estimación se ajusta bastante más." />
 
     </div>
   </section>
@@ -284,6 +291,7 @@ const faqSchema = {
 
 <style>
   /* Condicionantes — layout 2 columnas en desktop */
+  .cond-list { list-style: none; margin: 0; padding: 0; }   /* es <ol>: el bloque está numerado */
   .cond-item {
     display: grid;
     grid-template-columns: 1fr;

@@ -1042,3 +1042,20 @@ a[style*="background: #A85535"]:hover {
   line-height: 1;
 }
 .num-indice--tenue { color: #9CA3AF; }
+
+/* CTA de cierre de bloque. Discreto a propósito: acompaña al contenido que
+   acaba de leerse, no compite con el CTA final de la página. Ver DEC-D28. */
+.cta-inline {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem;
+  margin-top: 2rem; padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border, #E5E7EB);
+}
+.cta-inline__nota { font-size: 0.8125rem; color: #6B7280; margin: 0; flex: 1 1 16rem; }
+.cta-inline__link {
+  display: inline-block; flex-shrink: 0;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #fff; background: var(--color-brand, #A85535);
+  transition: opacity var(--dur-fast, 0.2s);
+}
+.cta-inline__link:hover { opacity: 0.88; }

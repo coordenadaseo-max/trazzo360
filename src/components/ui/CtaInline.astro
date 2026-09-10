@@ -1,0 +1,24 @@
+---
+/**
+ * CTA de cierre de bloque. Aparece donde el visitante acaba de leer algo que le
+ * deja en disposición de actuar: tras el proceso de obra, tras aprender a leer un
+ * presupuesto, tras ver qué condiciona el precio en su municipio.
+ *
+ * El anchor NO se repite entre bloques de la misma página: CLAUDE.md §4 prohíbe
+ * el mismo anchor dos veces hacia la misma URL, y estas páginas ya tenían tres
+ * «Solicitar visita técnica gratuita» idénticos. Cada uso pasa su propio texto.
+ */
+interface Props {
+  /** Texto del enlace. Descriptivo y distinto en cada bloque (§7.2). */
+  texto: string;
+  href: string;
+  /** Frase breve que justifica el paso. Opcional. */
+  nota?: string;
+}
+const { texto, href, nota } = Astro.props;
+---
+
+<div class="cta-inline">
+  {nota && <p class="cta-inline__nota">{nota}</p>}
+  <a href={href} class="cta-inline__link">{texto}</a>
+</div>

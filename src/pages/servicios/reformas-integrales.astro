@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CtaInline from '../../components/ui/CtaInline.astro';
 import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
@@ -541,6 +542,10 @@ const zones = [
         { n: '05', title: 'Acabados coordinados', desc: 'Solados, baño, cocina, carpintería y pintura. Un único equipo coordinado, sin esperas entre gremios.' },
         { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo, limpieza de obra y entrega con garantía de 2 años sobre la ejecución.' },
       ]} />
+      <CtaInline
+        href="/contacto/"
+        texto="Empezar por la visita"
+        nota="El paso 1 es gratuito y sin compromiso: vemos el estado real antes de dar precio." />
     </div>
   </section>
   <!-- Empresa de reformas integrales -->
@@ -633,6 +638,10 @@ const zones = [
           </div>
         ))}
       </dl>
+      <CtaInline
+        href="/calculadora-precio-reforma/"
+        texto="Ver el desglose por partidas"
+        nota="La calculadora reparte el precio entre las mismas partidas que acabas de leer." />
 
       <Callout title="Precio cerrado e imprevistos en una reforma integral" class="mt-8">
         El precio cerrado cubre todo lo que es visible e inspeccionable en la visita técnica. En una reforma integral, eso incluye el estado de las instalaciones accesibles, la estructura observable y los elementos que se pueden medir antes de abrir. Si al derribar un tabique aparece un problema estructural no previsto o al abrir el suelo encontramos tuberías en peor estado del visible, lo comunicamos antes de tocar nada, lo valoramos por separado y esperamos tu decisión. En la mayoría de reformas integrales del Corredor, el precio cierra sin desviaciones. Cuando hay imprevistos, hay una persona que llama, explica y espera antes de actuar.

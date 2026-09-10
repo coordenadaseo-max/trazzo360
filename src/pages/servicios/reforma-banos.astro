@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CtaInline from '../../components/ui/CtaInline.astro';
 import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
@@ -560,6 +561,10 @@ const zones = [
         { n: '05', title: 'Alicatado, instalación y acabados', desc: 'Revestimiento de paredes y suelo, instalación de ducha o bañera, sanitarios, mampara, mueble e iluminación. Todo coordinado en un único equipo.' },
         { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo. Limpieza de obra. Entrega con garantía de 2 años sobre la ejecución y garantía de fabricante en materiales.' },
       ]} />
+      <CtaInline
+        href="/contacto/"
+        texto="Empezar por la visita"
+        nota="El paso 1 es gratuito y sin compromiso: vemos el estado real antes de dar precio." />
 
     </div>
   </section>

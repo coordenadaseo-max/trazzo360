@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CtaInline from '../../components/ui/CtaInline.astro';
 import ProcesoSteps from '../../components/ui/ProcesoSteps.astro';
 import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
@@ -455,6 +456,10 @@ const faqSchema = {
         { n: '05', title: 'Ejecución con mínimas molestias', desc: 'Horarios adaptados a los vecinos. Accesos siempre operativos. Protección de zonas no afectadas. Informe semanal al administrador.' },
         { n: '06', title: 'Entrega con documentación', desc: 'Certificado de obra, documentación para el seguro del edificio, garantías por escrito y certificados de instalaciones intervenidas.' },
       ]} />
+      <CtaInline
+        href="/contacto/"
+        texto="Empezar por la visita"
+        nota="El paso 1 es gratuito y sin compromiso: vemos el estado real antes de dar precio." />
     </div>
   </section>
   <!-- M3: Licencias y normativa -->

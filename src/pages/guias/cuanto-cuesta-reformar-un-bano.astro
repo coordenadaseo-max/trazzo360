@@ -220,22 +220,22 @@ const faqSchema = {
       </h2>
 
       <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que suben el precio</h3>
-      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
-        <li>Redistribución de fontanería: mover el inodoro o la ducha implica replantear acometidas y desagüe</li>
-        <li>Estado de las instalaciones: tuberías o cuadro eléctrico que hay que renovar al abrir</li>
-        <li>Porcelánico de gran formato (60×60 o superior): más merma de corte y colocación más lenta</li>
-        <li>Sanitarios y griferías de marca de diseño (Duravit, Hansgrohe Axor, Villeroy &amp; Boch)</li>
-        <li>Ducha de obra con pavimento continuo: más tiempo de ejecución que plato prefabricado</li>
-        <li>Sin ascensor o planta alta: encarece la retirada de escombros y el acopio de material</li>
+      <ul class="list-marca mb-6">
+        <li><span>Redistribución de fontanería: mover el inodoro o la ducha implica replantear acometidas y desagüe</span></li>
+        <li><span>Estado de las instalaciones: tuberías o cuadro eléctrico que hay que renovar al abrir</span></li>
+        <li><span>Porcelánico de gran formato (60×60 o superior): más merma de corte y colocación más lenta</span></li>
+        <li><span>Sanitarios y griferías de marca de diseño (Duravit, Hansgrohe Axor, Villeroy &amp; Boch)</span></li>
+        <li><span>Ducha de obra con pavimento continuo: más tiempo de ejecución que plato prefabricado</span></li>
+        <li><span>Sin ascensor o planta alta: encarece la retirada de escombros y el acopio de material</span></li>
       </ul>
 
       <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que reducen el coste sin comprometer el resultado</h3>
-      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
-        <li>Mantener la posición de la fontanería actual: elimina la partida de replanteo</li>
-        <li>Porcelánico rectificado estándar en formato 30×60 o 60×60: buen resultado a precio contenido</li>
-        <li>Plato de ducha extraplano prefabricado en lugar de ducha de obra</li>
-        <li>Sanitarios de gama media reconocida (Roca, Duravit entrada) en lugar de marca premium</li>
-        <li>Reformar en período de baja temporada: mayor disponibilidad y plazos más ajustados</li>
+      <ul class="list-marca mb-6">
+        <li><span>Mantener la posición de la fontanería actual: elimina la partida de replanteo</span></li>
+        <li><span>Porcelánico rectificado estándar en formato 30×60 o 60×60: buen resultado a precio contenido</span></li>
+        <li><span>Plato de ducha extraplano prefabricado en lugar de ducha de obra</span></li>
+        <li><span>Sanitarios de gama media reconocida (Roca, Duravit entrada) en lugar de marca premium</span></li>
+        <li><span>Reformar en período de baja temporada: mayor disponibilidad y plazos más ajustados</span></li>
       </ul>
     </section>
 
@@ -247,13 +247,13 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-4">
         Estos conceptos quedan fuera del precio de una reforma de baño estándar, sea cual sea la calidad elegida. Si alguno es necesario en tu caso, se valora y presupuesta por separado.
       </p>
-      <ul class="text-gray-700 leading-relaxed space-y-2 pl-5 list-disc">
-        <li>Renovación de tuberías generales del edificio o colectores comunitarios</li>
-        <li>Cambio del cuadro eléctrico general de la vivienda</li>
-        <li>Obras en tabiques estructurales o portantes</li>
-        <li>Calentador, termo o sistema de agua caliente sanitaria</li>
-        <li>Suelo radiante eléctrico (partida aparte, sí puede incluirse en calidad alta)</li>
-        <li>IVA: 10 % en vivienda habitual, se añade al precio de la obra</li>
+      <ul class="list-marca">
+        <li><span>Renovación de tuberías generales del edificio o colectores comunitarios</span></li>
+        <li><span>Cambio del cuadro eléctrico general de la vivienda</span></li>
+        <li><span>Obras en tabiques estructurales o portantes</span></li>
+        <li><span>Calentador, termo o sistema de agua caliente sanitaria</span></li>
+        <li><span>Suelo radiante eléctrico (partida aparte, sí puede incluirse en calidad alta)</span></li>
+        <li><span>IVA: 10 % en vivienda habitual, se añade al precio de la obra</span></li>
       </ul>
     </section>
 
@@ -386,9 +386,9 @@ const faqSchema = {
           },
         ].map(item => (
           <li class="flex gap-4">
-            <span class="num-paso flex-shrink-0 w-16">{item.n}</span>
+            <span class="num-paso flex-shrink-0 w-16" aria-hidden="true">{item.n}</span>
             <div>
-              <p class="font-semibold text-gray-900 mb-1">{item.title}</p>
+              <h3 class="font-semibold text-gray-900 mb-1">{item.title}</h3>
               <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
             </div>
           </li>

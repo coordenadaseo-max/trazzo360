@@ -352,34 +352,38 @@ const faqSchema = {
     </div>
   </section>
   <!-- Vida durante la obra en comunidad -->
-  <section class="py-20 bg-[#111827]" aria-labelledby="h-vecinos-obra">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la obra en zonas comunes</p>
-        <h2 id="h-vecinos-obra" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
-          Trabajar en un edificio habitado: cómo lo gestionamos
-        </h2>
-      </div>
-      <p class="text-gray-300 leading-relaxed mb-8">
-        Una obra en zonas comunes de un edificio habitado tiene una restricción que no tiene ninguna otra: los vecinos necesitan acceder a sus casas todos los días mientras dura la obra. Eso no es un inconveniente: es el punto de partida de la planificación.
-      </p>
-      <ul class="space-y-6">
-        {[
-          { title: 'Accesos durante la obra', desc: 'Cuando técnicamente sea viable, organizamos los trabajos para mantener los accesos necesarios durante la obra. Si hay que intervenir en el hall de entrada, coordinamos con el administrador con antelación y señalizamos correctamente. No se cierra el portal ni se bloquea el ascensor sin aviso previo.' },
-          { title: 'Horario de obra adaptado a los vecinos', desc: 'El trabajo de mayor ruido e impacto se concentra en las horas centrales del día, fuera del horario de descanso establecido por la ordenanza municipal. Antes de empezar la obra, informamos al administrador y a los vecinos del horario previsto y de las fases con mayor impacto.' },
-          { title: 'Protección de acabados existentes', desc: 'Los suelos de escalera, las paredes del portal y los ascensores se protegen con láminas y mamparas antes de empezar. Al terminar cada jornada, se limpia la zona de trabajo. El resto del edificio no acumula polvo ni escombros de la obra.' },
-          { title: 'Comunicación proactiva al administrador', desc: 'El administrador de fincas recibe un informe de avance cada semana. Si surge algo no previsto, se comunica antes de actuar. No se amplía el alcance ni el precio sin validación previa. El administrador sabe en todo momento en qué punto está la obra.' },
-          { title: 'Los días más incómodos son los previstos', desc: 'La obra siempre tiene fases de mayor impacto: el vaciado del portal, el trabajo en la cubierta en días de viento, el andamiaje que ocupa la acera. Todos esos momentos se anticipan en la planificación, se comunican con tiempo y se limitan al período mínimo necesario para resolver esa fase.' },
+  <section class="py-20 lg:py-28 bg-[#111827]" aria-labelledby="h-vecinos-obra">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="vida-grid">
+        <div class="vida-left">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la obra en zonas comunes</p>
+          <h2 id="h-vecinos-obra" class="vida-title reveal">
+            Trabajar en un edificio habitado: cómo lo gestionamos
+          </h2>
+          <p class="vida-lead">
+            Una obra en zonas comunes de un edificio habitado tiene una restricción que no tiene ninguna otra: los vecinos necesitan acceder a sus casas todos los días mientras dura la obra. Eso no es un inconveniente: es el punto de partida de la planificación.
+          </p>
+        </div>
+        <div class="vida-right">
+          <ul class="vida-list">
+            {[
+          { n: '01', title: 'Accesos durante la obra', desc: 'Cuando técnicamente sea viable, organizamos los trabajos para mantener los accesos necesarios durante la obra. Si hay que intervenir en el hall de entrada, coordinamos con el administrador con antelación y señalizamos correctamente. No se cierra el portal ni se bloquea el ascensor sin aviso previo.' },
+          { n: '02', title: 'Horario de obra adaptado a los vecinos', desc: 'El trabajo de mayor ruido e impacto se concentra en las horas centrales del día, fuera del horario de descanso establecido por la ordenanza municipal. Antes de empezar la obra, informamos al administrador y a los vecinos del horario previsto y de las fases con mayor impacto.' },
+          { n: '03', title: 'Protección de acabados existentes', desc: 'Los suelos de escalera, las paredes del portal y los ascensores se protegen con láminas y mamparas antes de empezar. Al terminar cada jornada, se limpia la zona de trabajo. El resto del edificio no acumula polvo ni escombros de la obra.' },
+          { n: '04', title: 'Comunicación proactiva al administrador', desc: 'El administrador de fincas recibe un informe de avance cada semana. Si surge algo no previsto, se comunica antes de actuar. No se amplía el alcance ni el precio sin validación previa. El administrador sabe en todo momento en qué punto está la obra.' },
+          { n: '05', title: 'Los días más incómodos son los previstos', desc: 'La obra siempre tiene fases de mayor impacto: el vaciado del portal, el trabajo en la cubierta en días de viento, el andamiaje que ocupa la acera. Todos esos momentos se anticipan en la planificación, se comunican con tiempo y se limitan al período mínimo necesario para resolver esa fase.' },
         ].map(item => (
-          <li class="flex gap-5">
-            <div class="w-1 flex-shrink-0 bg-[#A85535] mt-1" style="min-height:1.25rem"></div>
-            <div>
-              <p class="font-semibold text-white mb-1">{item.title}</p>
-              <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+              <li class="vida-item">
+                <span class="num-paso vida-item__n" aria-hidden="true">{item.n}</span>
+                <div>
+                  <h3 class="vida-item__title">{item.title}</h3>
+                  <p class="vida-item__desc">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
   <!-- M8: Compromisos -->
@@ -530,33 +534,33 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-3">
         Son los edificios con mayor necesidad de rehabilitación. En muchos casos, la fachada no ha recibido ninguna intervención desde la construcción: el enfoscado original presenta fisuras, manchas de humedad por filtración y eflorescencias en el ladrillo. Las cubiertas planas tienen impermeabilizaciones que llevan décadas sin renovarse, lo que genera filtraciones en las últimas plantas.
       </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
-        <li>Fachadas con enfoscado o ladrillo cara vista sin tratamiento de protección reciente</li>
-        <li>Cubiertas planas con impermeabilización deteriorada: filtraciones en los últimos pisos</li>
-        <li>Portales con revestimientos de los años 70–80: terrazo, azulejo de pequeño formato, pintura con humedades</li>
-        <li>Instalaciones comunes de electricidad y fontanería con muchas décadas de uso sin intervención</li>
-        <li>Ascensores que ya no cumplen la normativa de seguridad actual o que no existen</li>
+      <ul class="list-marca mb-8">
+        <li><span>Fachadas con enfoscado o ladrillo cara vista sin tratamiento de protección reciente</span></li>
+        <li><span>Cubiertas planas con impermeabilización deteriorada: filtraciones en los últimos pisos</span></li>
+        <li><span>Portales con revestimientos de los años 70–80: terrazo, azulejo de pequeño formato, pintura con humedades</span></li>
+        <li><span>Instalaciones comunes de electricidad y fontanería con muchas décadas de uso sin intervención</span></li>
+        <li><span>Ascensores que ya no cumplen la normativa de seguridad actual o que no existen</span></li>
       </ul>
 
       <h3 class="text-lg font-bold text-gray-900 mb-3">Bloques de los años 75–90 (Alcalá, Torrejón, Azuqueca, Guadalajara)</h3>
       <p class="text-gray-700 leading-relaxed mb-3">
         Los edificios de esta época tienen menos urgencia en la estructura, pero acumulan necesidades de mantenimiento que no siempre se han gestionado de forma sistemática: zonas comunes con acabados desgastados, patios de luces con problemas de drenaje, ascensores que necesitan actualización y rampas de acceso que no cumplen la normativa de accesibilidad actual.
       </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
-        <li>Portales con revestimientos de los años 80 que necesitan renovación estética y funcional</li>
-        <li>Patios interiores con pavimento deteriorado y problemas de recogida de agua</li>
-        <li>Sótanos y garajes con humedades por capilaridad o filtraciones de la superficie</li>
-        <li>Accesibilidad en accesos: sin rampa o con rampa que no cumple la normativa vigente</li>
+      <ul class="list-marca mb-8">
+        <li><span>Portales con revestimientos de los años 80 que necesitan renovación estética y funcional</span></li>
+        <li><span>Patios interiores con pavimento deteriorado y problemas de recogida de agua</span></li>
+        <li><span>Sótanos y garajes con humedades por capilaridad o filtraciones de la superficie</span></li>
+        <li><span>Accesibilidad en accesos: sin rampa o con rampa que no cumple la normativa vigente</span></li>
       </ul>
 
       <h3 class="text-lg font-bold text-gray-900 mb-3">Rehabilitación energética: SATE y mejora de fachada</h3>
       <p class="text-gray-700 leading-relaxed mb-3">
         El sistema de aislamiento térmico por el exterior (SATE) es la intervención de rehabilitación con mayor impacto energético para los edificios de los años 60–90: añade un nuevo aislamiento sobre la fachada existente sin necesidad de obra interior en los pisos, y mejora la calificación energética del edificio de forma significativa. En el Corredor, muchos de estos edificios tienen calificación energética E o F, lo que implica una demanda de calefacción muy elevada en invierno.
       </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-6 space-y-1.5 pl-5 list-disc">
-        <li>SATE: aislamiento de poliestireno expandido o lana mineral sobre la fachada existente, acabado exterior nuevo</li>
-        <li>Mejora de la calificación energética: posible acceso a ayudas de rehabilitación energética (Next Generation EU)</li>
-        <li>Reducción de la demanda energética: menos consumo de calefacción en invierno, más confort en verano</li>
+      <ul class="list-marca mb-6">
+        <li><span>SATE: aislamiento de poliestireno expandido o lana mineral sobre la fachada existente, acabado exterior nuevo</span></li>
+        <li><span>Mejora de la calificación energética: posible acceso a ayudas de rehabilitación energética (Next Generation EU)</span></li>
+        <li><span>Reducción de la demanda energética: menos consumo de calefacción en invierno, más confort en verano</span></li>
       </ul>
     </div>
   </section>

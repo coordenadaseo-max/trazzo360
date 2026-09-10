@@ -182,26 +182,30 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-6">
         El precio de una reforma de piso cambia radicalmente según si las instalaciones se tocan o no. La pregunta de fondo es siempre la misma: ¿están el cuadro eléctrico y la fontanería en estado de aguantar 15–20 años más sin problemas?
       </p>
-      <div class="grid md:grid-cols-2 gap-6 mb-6">
-        <div class="bg-white p-6 border-t-4 border-[#A85535] border border-gray-100">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Reforma de acabados (sin tocar instalaciones)</h3>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 pl-4 list-disc">
+      <div class="decision-grid mb-6">
+        <!-- Acabados — secundaria -->
+        <div class="decision-card decision-card--light">
+          <p class="decision-card__eyebrow">Reforma por acabados</p>
+          <h3 class="decision-card__title">Tiene sentido cuando…</h3>
+          <ul class="decision-list">
             <li>El cuadro eléctrico tiene capacidad para los electrodomésticos actuales</li>
             <li>La fontanería no ha dado problemas en los últimos años</li>
             <li>El objetivo es mejorar el aspecto y la funcionalidad</li>
             <li>El edificio es posterior a 1990</li>
           </ul>
-          <p class="text-sm font-semibold text-[#A85535] mt-4">Desde 8.000€ (solo suelos y pintura) / Desde 21.000€ (acabados esencial: suelos, pintura y puertas · 60 m² · sin IVA)</p>
+          <p class="decision-card__price">Desde 8.000€ solo suelos y pintura · desde 21.000€ acabados esencial (suelos, pintura y puertas · 60 m² · sin IVA)</p>
         </div>
-        <div class="bg-white p-6 border-t-4 border-gray-300 border border-gray-100">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Reforma integral (instalaciones + acabados)</h3>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 pl-4 list-disc">
+        <!-- Integral — protagonista -->
+        <div class="decision-card decision-card--dark">
+          <p class="decision-card__eyebrow">Reforma integral</p>
+          <h3 class="decision-card__title">Tiene sentido cuando…</h3>
+          <ul class="decision-list decision-list--dark">
             <li>La instalación eléctrica es de los años 70–80 sin actualizar</li>
             <li>La fontanería ha dado problemas o lleva muchos años sin intervención</li>
             <li>Quieres cambiar la distribución de tabiques</li>
             <li>El piso no ha tenido ninguna reforma desde la construcción</li>
           </ul>
-          <p class="text-sm font-semibold text-gray-500 mt-4">Desde 650 €/m². <a href="/servicios/reformas-integrales/" class="text-[#A85535] hover:underline">ver reformas integrales</a></p>
+          <p class="decision-card__price">Desde 650 €/m². <a href="/servicios/reformas-integrales/" class="underline">Ver el servicio de reformas integrales</a></p>
         </div>
       </div>
       <p class="text-gray-700 leading-relaxed">
@@ -216,23 +220,23 @@ const faqSchema = {
       </h2>
 
       <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que suben el precio</h3>
-      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
-        <li>Estado de las instalaciones: cuadro eléctrico antiguo o fontanería que requiere renovación</li>
-        <li>Redistribución de tabiques: implica proyecto técnico, licencia y tiempos adicionales</li>
-        <li>Suelo de parquet de madera maciza frente a porcelánico: diferencia de 3.000–6.000€ en un piso de 70 m²</li>
-        <li>Baño de alta gama con ducha de obra y sanitarios de diseño</li>
-        <li>Carpintería de puertas lacadas en lugar de pintadas</li>
-        <li>Sin ascensor o planta alta: encarece la retirada de escombros y el acopio de material</li>
-        <li>Pisos anteriores a 1980 en Coslada, San Fernando o Torrejón: el estado de instalaciones es el principal imprevisible</li>
+      <ul class="list-marca mb-6">
+        <li><span>Estado de las instalaciones: cuadro eléctrico antiguo o fontanería que requiere renovación</span></li>
+        <li><span>Redistribución de tabiques: implica proyecto técnico, licencia y tiempos adicionales</span></li>
+        <li><span>Suelo de parquet de madera maciza frente a porcelánico: diferencia de 3.000–6.000€ en un piso de 70 m²</span></li>
+        <li><span>Baño de alta gama con ducha de obra y sanitarios de diseño</span></li>
+        <li><span>Carpintería de puertas lacadas en lugar de pintadas</span></li>
+        <li><span>Sin ascensor o planta alta: encarece la retirada de escombros y el acopio de material</span></li>
+        <li><span>Pisos anteriores a 1980 en Coslada, San Fernando o Torrejón: el estado de instalaciones es el principal imprevisible</span></li>
       </ul>
 
       <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que reducen el coste sin comprometer el resultado</h3>
-      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
-        <li>Mantener la distribución actual sin tocar tabiques</li>
-        <li>Porcelánico rectificado de calidad media en lugar de parquet: mismo mantenimiento, más resistente al agua</li>
-        <li>Reformar baño y cocina manteniendo la posición de fontanería</li>
-        <li>Carpintería pintada en blanco en lugar de lacada a medida</li>
-        <li>No cambiar la carpintería exterior si está en buen estado térmico</li>
+      <ul class="list-marca mb-6">
+        <li><span>Mantener la distribución actual sin tocar tabiques</span></li>
+        <li><span>Porcelánico rectificado de calidad media en lugar de parquet: mismo mantenimiento, más resistente al agua</span></li>
+        <li><span>Reformar baño y cocina manteniendo la posición de fontanería</span></li>
+        <li><span>Carpintería pintada en blanco en lugar de lacada a medida</span></li>
+        <li><span>No cambiar la carpintería exterior si está en buen estado térmico</span></li>
       </ul>
     </section>
 
@@ -244,15 +248,15 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-4">
         Estos conceptos quedan fuera del precio de una reforma de piso estándar, sea cual sea la calidad elegida.
       </p>
-      <ul class="text-gray-700 leading-relaxed space-y-2 pl-5 list-disc">
-        <li>Electrodomésticos (encimera, horno, lavavajillas, frigorífico)</li>
-        <li>Mobiliario no fijo (mesas, sillas, sofás, camas)</li>
-        <li>Aire acondicionado o sistema de climatización</li>
-        <li>Obras en elementos comunes del edificio o fachada</li>
-        <li>Renovación del cuadro eléctrico ni fontanería general (en reforma de acabados)</li>
-        <li>Desperfectos ocultos que afloran al abrir paredes o suelos (se valoran y comunican antes de actuar)</li>
-        <li>IVA: 10 % en vivienda habitual, se añade al precio de la obra</li>
-        <li>Tasas municipales ni honorarios de proyecto, salvo que se incluyan expresamente</li>
+      <ul class="list-marca">
+        <li><span>Electrodomésticos (encimera, horno, lavavajillas, frigorífico)</span></li>
+        <li><span>Mobiliario no fijo (mesas, sillas, sofás, camas)</span></li>
+        <li><span>Aire acondicionado o sistema de climatización</span></li>
+        <li><span>Obras en elementos comunes del edificio o fachada</span></li>
+        <li><span>Renovación del cuadro eléctrico ni fontanería general (en reforma de acabados)</span></li>
+        <li><span>Desperfectos ocultos que afloran al abrir paredes o suelos (se valoran y comunican antes de actuar)</span></li>
+        <li><span>IVA: 10 % en vivienda habitual, se añade al precio de la obra</span></li>
+        <li><span>Tasas municipales ni honorarios de proyecto, salvo que se incluyan expresamente</span></li>
       </ul>
     </section>
 
@@ -374,9 +378,9 @@ const faqSchema = {
           },
         ].map(item => (
           <li class="flex gap-4">
-            <span class="num-paso flex-shrink-0 w-16">{item.n}</span>
+            <span class="num-paso flex-shrink-0 w-16" aria-hidden="true">{item.n}</span>
             <div>
-              <p class="font-semibold text-gray-900 mb-1">{item.title}</p>
+              <h3 class="font-semibold text-gray-900 mb-1">{item.title}</h3>
               <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
             </div>
           </li>

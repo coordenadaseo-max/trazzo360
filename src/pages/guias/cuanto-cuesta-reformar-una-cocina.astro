@@ -220,23 +220,23 @@ const faqSchema = {
       </h2>
 
       <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que suben el precio</h3>
-      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
-        <li>Muebles lacados o de madera maciza a medida: la partida de mayor peso en alta gama</li>
-        <li>Encimera de piedra natural (granito, mármol, quartzite): precio alto y transporte delicado</li>
-        <li>Apertura al salón o cocina con isla: requiere derribo, refuerzo de hueco y replanteo de extracción</li>
-        <li>Renovación de instalaciones eléctricas: circuitos dedicados para horno, lavavajillas e inducción</li>
-        <li>Redistribución de fontanería: mover el fregadero o el lavavajillas implica replantear acometidas</li>
-        <li>Sin ascensor o planta alta: encarece el acopio de material y la retirada de muebles y escombros</li>
-        <li>Integración de electrodomésticos de alta gama: carpintería a medida con tiempos de fabricación mayores</li>
+      <ul class="list-marca mb-6">
+        <li><span>Muebles lacados o de madera maciza a medida: la partida de mayor peso en alta gama</span></li>
+        <li><span>Encimera de piedra natural (granito, mármol, quartzite): precio alto y transporte delicado</span></li>
+        <li><span>Apertura al salón o cocina con isla: requiere derribo, refuerzo de hueco y replanteo de extracción</span></li>
+        <li><span>Renovación de instalaciones eléctricas: circuitos dedicados para horno, lavavajillas e inducción</span></li>
+        <li><span>Redistribución de fontanería: mover el fregadero o el lavavajillas implica replantear acometidas</span></li>
+        <li><span>Sin ascensor o planta alta: encarece el acopio de material y la retirada de muebles y escombros</span></li>
+        <li><span>Integración de electrodomésticos de alta gama: carpintería a medida con tiempos de fabricación mayores</span></li>
       </ul>
 
       <h3 class="text-lg font-bold text-gray-900 mb-3">Factores que reducen el coste sin comprometer el resultado</h3>
-      <ul class="text-gray-700 leading-relaxed mb-6 space-y-2 pl-5 list-disc">
-        <li>Mantener la distribución actual de fontanería y electricidad: elimina el replanteo de instalaciones</li>
-        <li>Muebles en kit de gama media reconocida en lugar de fabricación a medida</li>
-        <li>Encimera de silestone o compacto fenólico en lugar de piedra natural: excelente relación calidad-precio</li>
-        <li>Alicatado de salpicadero en formato estándar en lugar de gran formato o material especial</li>
-        <li>Mantener la posición del fregadero y del lavavajillas</li>
+      <ul class="list-marca mb-6">
+        <li><span>Mantener la distribución actual de fontanería y electricidad: elimina el replanteo de instalaciones</span></li>
+        <li><span>Muebles en kit de gama media reconocida en lugar de fabricación a medida</span></li>
+        <li><span>Encimera de silestone o compacto fenólico en lugar de piedra natural: excelente relación calidad-precio</span></li>
+        <li><span>Alicatado de salpicadero en formato estándar en lugar de gran formato o material especial</span></li>
+        <li><span>Mantener la posición del fregadero y del lavavajillas</span></li>
       </ul>
     </section>
 
@@ -248,13 +248,13 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-4">
         Estos conceptos quedan siempre fuera del precio estándar de reforma de cocina. Si alguno es necesario en tu caso, se valora y presupuesta por separado.
       </p>
-      <ul class="text-gray-700 leading-relaxed space-y-2 pl-5 list-disc">
-        <li>Electrodomésticos de superficie libre: encimera, horno, campana, frigorífico, lavavajillas</li>
-        <li>Mobiliario no fijo (mesa, sillas, taburetes)</li>
-        <li>Renovación del cuadro eléctrico general de la vivienda</li>
-        <li>Cambio de tuberías generales del edificio o colectores</li>
-        <li>IVA: 10 % en vivienda habitual (21 % sobre materiales si se compran fuera de la obra)</li>
-        <li>Honorarios de proyecto técnico si se requiere licencia de obra (apertura de muros portantes)</li>
+      <ul class="list-marca">
+        <li><span>Electrodomésticos de superficie libre: encimera, horno, campana, frigorífico, lavavajillas</span></li>
+        <li><span>Mobiliario no fijo (mesa, sillas, taburetes)</span></li>
+        <li><span>Renovación del cuadro eléctrico general de la vivienda</span></li>
+        <li><span>Cambio de tuberías generales del edificio o colectores</span></li>
+        <li><span>IVA: 10 % en vivienda habitual (21 % sobre materiales si se compran fuera de la obra)</span></li>
+        <li><span>Honorarios de proyecto técnico si se requiere licencia de obra (apertura de muros portantes)</span></li>
       </ul>
     </section>
 
@@ -384,9 +384,9 @@ const faqSchema = {
           },
         ].map(item => (
           <li class="flex gap-4">
-            <span class="num-paso flex-shrink-0 w-16">{item.n}</span>
+            <span class="num-paso flex-shrink-0 w-16" aria-hidden="true">{item.n}</span>
             <div>
-              <p class="font-semibold text-gray-900 mb-1">{item.title}</p>
+              <h3 class="font-semibold text-gray-900 mb-1">{item.title}</h3>
               <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
             </div>
           </li>

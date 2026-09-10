@@ -44,6 +44,7 @@ renderizando en la fuente del sistema a peso 400.
 | H2 principal | `.h2-section` | `text-4xl lg:text-5xl` · `-0.03em` |
 | H2 / H3 secundario | `.h3-sub` | `text-3xl lg:text-4xl` · `-0.03em` |
 | Sobre fondo oscuro | `.h2-section--dark` · `.h3-sub--dark` | lo anterior en blanco |
+| H2 de declaración | `.vida-title` | `clamp(2.5rem, 6vw, 5rem)` · Barlow Condensed · 900 · `-0.02em` · `lh 0.9` · sólo en el bloque de vida durante la obra |
 | Entradilla de hero | `.lead-hero` | `clamp(0.875rem,1.05vw,1rem)` · `46ch` · blanco 72% |
 | Número editorial | `.stat-editorial` | `clamp(5rem,14vw,10rem)` · `-0.055em` |
 | Eyebrow versalitas | `.eyebrow` · `.eyebrow--dark` | `0.625rem` · `0.15em` · terracota |
@@ -251,3 +252,31 @@ tracking. El auditor no puede desactualizarse: lee el código en cada ejecución
   cuyo tamaño lo llevan los spans `.h1-hero__thesis` y todavía no tiene regla propia.
 
 Ver la regla de parada en [`docs/PROTOCOLO-LAB.md`](./docs/PROTOCOLO-LAB.md).
+
+---
+
+## Bloques compuestos
+
+Tres bloques dejaron de ser maquetación de una página para ser patrón del sitio. Cuando una
+página necesite plantear una de estas tres cosas, usa el patrón: **no** vuelvas a maquetarlo,
+y **no** copies sus valores de otra página a la nueva. Si un valor tiene que cambiar, cambia
+en `src/styles/global.css` y cambia en todas a la vez.
+
+| Bloque | Cuándo se usa | Clases | Decisión |
+|---|---|---|---|
+| Vida durante la obra | Una lista de 4–6 compromisos sobre cómo se gestiona la obra, sobre fondo oscuro | `.vida-grid` · `.vida-left` / `.vida-right` · `.vida-title` · `.vida-lead` · `.vida-note` · `.vida-list` / `.vida-item` | DEC-D33 |
+| Decisión A o B | El lector tiene que elegir entre dos alcances y necesita criterios para decidir | `.decision-grid` · `.decision-card--light` / `--dark` · `.decision-list` | DEC-D34 |
+| Proceso por pasos | Una secuencia ordenada con tiempos | `.proceso-steps` · `.proceso-step` | DEC-D32 |
+
+**Reglas comunes a los tres:**
+
+- El título de cada item es un encabezado real (`<h3>` bajo el `<h2>` de la sección), nunca
+  un `<p>` en negrita. Lo exige CLAUDE.md §5 y es lo que estaba mal en los tres bloques que
+  se propagaron en DEC-D33 y DEC-A17.
+- El numerador es decorativo: lleva `aria-hidden="true"`. El orden ya lo comunica el `<ol>`.
+- En «Decisión A o B», la tarjeta oscura es la protagonista. La misma disyuntiva se pinta
+  igual en todas las páginas donde aparezca.
+- Ninguno lleva estilos inline. Si te hace falta uno, es que el patrón necesita una variante
+  en `global.css`, no una excepción en la página.
+
+**Marcadores de lista:** la regla vive en `CLAUDE.md` §8.2. Ver DEC-D35.

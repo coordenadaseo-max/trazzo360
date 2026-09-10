@@ -221,59 +221,68 @@ const faqSchema = {
         La pregunta de fondo es siempre la misma: ¿están las instalaciones en estado de aguantar 15–20 años más sin problemas? Si la respuesta es sí, la reforma de vivienda centrada en acabados, baño, cocina y suelos tiene todo el sentido. Si la respuesta es dudosa o no, hacerlo todo a la vez es significativamente más eficiente que volver a abrir en cinco años.
       </p>
 
-      <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white p-7" style="border-top:2px solid #111827">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Reforma de vivienda por acabados (sin tocar instalaciones)</h3>
-          <ul class="list-marca">
-            <li><span>El cuadro eléctrico tiene capacidad suficiente para los electrodomésticos actuales</span></li>
-            <li><span>La fontanería no ha dado problemas en los últimos años y tiene buen aspecto</span></li>
-            <li><span>El objetivo es mejorar el aspecto y la funcionalidad sin obra pesada</span></li>
-            <li><span>La vivienda es de construcción posterior a 1990</span></li>
+      <div class="decision-grid mb-8">
+        <!-- Acabados — secundaria -->
+        <div class="decision-card decision-card--light">
+          <p class="decision-card__eyebrow">Reforma por acabados</p>
+          <h3 class="decision-card__title">Tiene sentido cuando…</h3>
+          <ul class="decision-list">
+            <li>El cuadro eléctrico tiene capacidad suficiente para los electrodomésticos actuales</li>
+            <li>La fontanería no ha dado problemas en los últimos años y tiene buen aspecto</li>
+            <li>El objetivo es mejorar el aspecto y la funcionalidad sin obra pesada</li>
+            <li>La vivienda es de construcción posterior a 1990</li>
           </ul>
-          <p class="text-sm font-semibold text-[#A85535] mt-4">Desde 14.000€ · 350–450 €/m² · piso 40 m² esencial sin IVA</p>
+          <p class="decision-card__price">Desde 14.000€ · 350–450 €/m² · piso 40 m² esencial sin IVA</p>
         </div>
-        <div class="bg-white p-7" style="border-top:2px solid #E5E7EB">
-          <h3 class="text-base font-bold text-gray-900 mb-3">Reforma integral (instalaciones + acabados)</h3>
-          <ul class="list-marca">
-            <li><span>La instalación eléctrica es de los años 70–80 sin actualizar</span></li>
-            <li><span>La fontanería tiene muchos años sin intervención o ya ha dado problemas</span></li>
-            <li><span>Quieres cambiar la distribución de tabiques</span></li>
-            <li><span>La vivienda no ha tenido ninguna reforma desde la construcción</span></li>
+        <!-- Integral — protagonista -->
+        <div class="decision-card decision-card--dark">
+          <p class="decision-card__eyebrow">Reforma integral</p>
+          <h3 class="decision-card__title">Tiene sentido cuando…</h3>
+          <ul class="decision-list decision-list--dark">
+            <li>La instalación eléctrica es de los años 70–80 sin actualizar</li>
+            <li>La fontanería tiene muchos años sin intervención o ya ha dado problemas</li>
+            <li>Quieres cambiar la distribución de tabiques</li>
+            <li>La vivienda no ha tenido ninguna reforma desde la construcción</li>
           </ul>
-          <p class="text-sm font-semibold text-gray-500 mt-4">Desde 26.000€ · 650 €/m² · 40 m² esencial. <a href="/servicios/reformas-integrales/" class="underline hover:text-[#A85535]">Ver reformas integrales</a></p>
+          <p class="decision-card__price">Desde 26.000€ · 650 €/m² · 40 m² esencial. <a href="/servicios/reformas-integrales/" class="underline">Ver el servicio de reformas integrales</a></p>
         </div>
       </div>
     </div>
   </section>
+
   <!-- Vida durante la obra -->
-  <section class="py-20 bg-[#111827]" aria-labelledby="h-vida-obra">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la reforma de vivienda</p>
-        <h2 id="h-vida-obra" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
-          Cómo se organiza una reforma cuando el piso no puede utilizarse con normalidad
-        </h2>
-      </div>
-      <p class="text-gray-300 leading-relaxed mb-8">
-        La reforma de una vivienda completa toca todos los espacios a la vez durante semanas. Lo que planificamos antes de empezar no es solo la obra: es dónde vas a estar mientras dura, cuándo puedes volver y qué encuentras cuando entras.
-      </p>
-      <ul class="space-y-6">
-        {[
-          { title: 'La fase de suelos: la semana más crítica', desc: 'Cuando se levanta el pavimento de toda la vivienda a la vez, el polvo llega a todos los rincones aunque estén protegidos. Es la semana con más ruido y más polvo de toda la obra. A partir de ahí, la situación mejora progresivamente conforme los gremios van terminando cada zona.' },
-          { title: 'Secuencia diseñada para minimizar el tiempo fuera', desc: 'La obra se organiza para que el plazo total sea el mínimo posible: los gremios trabajan en paralelo cuando la zona lo permite, y ninguno espera a otro sin tarea asignada. Si tienes una fecha límite para volver, la planificamos alrededor de esa fecha.' },
-          { title: 'Protección de lo que no se reforma', desc: 'Si tienes zonas que no entran en la reforma (una habitación, la terraza, muebles que conservas) se protegen antes de empezar. El polvo de obra no entiende de límites, pero la protección de suelos y superficies sí.' },
-          { title: 'Un interlocutor durante toda la obra', desc: 'No hablas con el fontanero un día y con el pintor otro. Hay una persona responsable de la obra que coordina todos los gremios y que es tu referencia en todo momento. Si tienes una pregunta o un cambio, hay una persona que responde.' },
-          { title: 'El piso al entrar: en condiciones de vivir, no de terminar', desc: 'La limpieza final de la obra es parte del proceso. El día que te entregamos el piso, puedes meter los muebles y empezar a vivir. No en condiciones de "casi terminado". En condiciones de vivir.' },
+  <section class="py-20 lg:py-28 bg-[#111827]" aria-labelledby="h-vida-obra">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="vida-grid">
+        <div class="vida-left">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Durante la reforma de vivienda</p>
+          <h2 id="h-vida-obra" class="vida-title reveal">
+            Cómo se organiza una reforma cuando el piso no puede utilizarse con normalidad
+          </h2>
+          <p class="vida-lead">
+            La reforma de una vivienda completa toca todos los espacios a la vez durante semanas. Lo que planificamos antes de empezar no es solo la obra: es dónde vas a estar mientras dura, cuándo puedes volver y qué encuentras cuando entras.
+          </p>
+        </div>
+        <div class="vida-right">
+          <ul class="vida-list">
+            {[
+          { n: '01', title: 'La fase de suelos: la semana más crítica', desc: 'Cuando se levanta el pavimento de toda la vivienda a la vez, el polvo llega a todos los rincones aunque estén protegidos. Es la semana con más ruido y más polvo de toda la obra. A partir de ahí, la situación mejora progresivamente conforme los gremios van terminando cada zona.' },
+          { n: '02', title: 'Secuencia diseñada para minimizar el tiempo fuera', desc: 'La obra se organiza para que el plazo total sea el mínimo posible: los gremios trabajan en paralelo cuando la zona lo permite, y ninguno espera a otro sin tarea asignada. Si tienes una fecha límite para volver, la planificamos alrededor de esa fecha.' },
+          { n: '03', title: 'Protección de lo que no se reforma', desc: 'Si tienes zonas que no entran en la reforma (una habitación, la terraza, muebles que conservas) se protegen antes de empezar. El polvo de obra no entiende de límites, pero la protección de suelos y superficies sí.' },
+          { n: '04', title: 'Un interlocutor durante toda la obra', desc: 'No hablas con el fontanero un día y con el pintor otro. Hay una persona responsable de la obra que coordina todos los gremios y que es tu referencia en todo momento. Si tienes una pregunta o un cambio, hay una persona que responde.' },
+          { n: '05', title: 'El piso al entrar: en condiciones de vivir, no de terminar', desc: 'La limpieza final de la obra es parte del proceso. El día que te entregamos el piso, puedes meter los muebles y empezar a vivir. No en condiciones de "casi terminado". En condiciones de vivir.' },
         ].map(item => (
-          <li class="flex gap-5">
-            <div class="w-1 flex-shrink-0 bg-[#A85535] mt-1" style="min-height:1.25rem"></div>
-            <div>
-              <p class="font-semibold text-white mb-1">{item.title}</p>
-              <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+              <li class="vida-item">
+                <span class="num-paso vida-item__n" aria-hidden="true">{item.n}</span>
+                <div>
+                  <h3 class="vida-item__title">{item.title}</h3>
+                  <p class="vida-item__desc">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
   <!-- M8: Compromisos -->
@@ -464,33 +473,33 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-3">
         Son los pisos que más reformas necesitan y donde el estado de las instalaciones es el factor determinante. Muchos llevan décadas sin ninguna intervención. El riesgo aquí es hacer una reforma de acabados (baño, cocina, suelos) y dejarse las instalaciones como están, para tener que volver a abrir en cinco o diez años cuando fallen.
       </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
-        <li>Cuadros eléctricos de fusibles o con magnetotérmicos de los años 80 sin capacidad para cargas actuales</li>
-        <li>Tuberías de plomo o acero galvanizado en las viviendas más antiguas: ya fuera de norma</li>
-        <li>Carpintería exterior de madera sin rotura de puente térmico: condensaciones en invierno y calor en verano</li>
-        <li>Distribuciones con pasillos largos, habitaciones pequeñas y cocinas sin acceso visual al salón</li>
-        <li>Solados de terrazo o gres hidráulico en buen estado estructural pero con estética desfasada</li>
+      <ul class="list-marca mb-8">
+        <li><span>Cuadros eléctricos de fusibles o con magnetotérmicos de los años 80 sin capacidad para cargas actuales</span></li>
+        <li><span>Tuberías de plomo o acero galvanizado en las viviendas más antiguas: ya fuera de norma</span></li>
+        <li><span>Carpintería exterior de madera sin rotura de puente térmico: condensaciones en invierno y calor en verano</span></li>
+        <li><span>Distribuciones con pasillos largos, habitaciones pequeñas y cocinas sin acceso visual al salón</span></li>
+        <li><span>Solados de terrazo o gres hidráulico en buen estado estructural pero con estética desfasada</span></li>
       </ul>
 
       <h3 class="text-lg font-bold text-gray-900 mb-3">Pisos y viviendas de los años 90–2005 (Alcalá de Henares, Azuqueca, Guadalajara y nuevos barrios de Torrejón)</h3>
       <p class="text-gray-700 leading-relaxed mb-3">
         El parque residencial de esta época tiene instalaciones en mejor estado, pero acumula 20–30 años de uso visible en los acabados. La reforma de vivienda aquí es más de estética y funcionalidad que de instalaciones: suelos, baños, cocinas y pintura son los protagonistas, y la redistribución es viable porque los tabiques suelen ser de pladur o ladrillo hueco.
       </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-8 space-y-1.5 pl-5 list-disc">
-        <li>Gres de pequeño formato en baños y cocinas con rejuntas ennegrecidas que ya no se limpian</li>
-        <li>Tarima flotante laminada de los años 90–2000 con hinchazones en zonas húmedas o zonas de paso</li>
-        <li>Muebles de cocina y baño de melamina blanca con bisagras desgastadas y frentes descascarillados</li>
-        <li>Instalación eléctrica funcional pero sin circuitos dedicados para los electrodomésticos actuales</li>
+      <ul class="list-marca mb-8">
+        <li><span>Gres de pequeño formato en baños y cocinas con rejuntas ennegrecidas que ya no se limpian</span></li>
+        <li><span>Tarima flotante laminada de los años 90–2000 con hinchazones en zonas húmedas o zonas de paso</span></li>
+        <li><span>Muebles de cocina y baño de melamina blanca con bisagras desgastadas y frentes descascarillados</span></li>
+        <li><span>Instalación eléctrica funcional pero sin circuitos dedicados para los electrodomésticos actuales</span></li>
       </ul>
 
       <h3 class="text-lg font-bold text-gray-900 mb-3">Chalets y viviendas unifamiliares (Meco, Camarma, San Fernando y Torrejón externo)</h3>
       <p class="text-gray-700 leading-relaxed mb-3">
         La reforma de vivienda unifamiliar tiene más variables: varios baños, cocina grande, posiblemente piscina o jardín, y más superficie de fachada. La coordiación de gremios es más compleja y la secuencia de la obra necesita más planificación. El resultado es también más completo: cuando se reforma bien una vivienda unifamiliar, la transformación es total.
       </p>
-      <ul class="text-sm text-gray-600 leading-relaxed mb-6 space-y-1.5 pl-5 list-disc">
-        <li>Posibilidad de mejorar el aislamiento térmico al hacer la reforma de fachada o cubierta</li>
-        <li>Calefacción por radiadores que conviene revisar: instalación de suelo radiante durante la reforma de suelos</li>
-        <li>Ventanas de aluminio sin rotura de puente térmico: condensaciones y pérdida energética notable</li>
+      <ul class="list-marca mb-6">
+        <li><span>Posibilidad de mejorar el aislamiento térmico al hacer la reforma de fachada o cubierta</span></li>
+        <li><span>Calefacción por radiadores que conviene revisar: instalación de suelo radiante durante la reforma de suelos</span></li>
+        <li><span>Ventanas de aluminio sin rotura de puente térmico: condensaciones y pérdida energética notable</span></li>
       </ul>
       <p class="text-gray-700 leading-relaxed mt-4">
         Las ventanas sin rotura de puente térmico son la norma en pisos anteriores a 2006: el aluminio conduce el frío directamente al interior y genera condensaciones en los marcos en invierno. En una reforma de vivienda es el momento más eficiente para sustituirlas, sin movilización adicional de un gremio. Si el marco está en buen estado estructural, cambiar solo el vidrio por uno de baja emisividad es suficiente y más económico que un cambio completo.

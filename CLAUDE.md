@@ -181,6 +181,7 @@ Cualquier componente que renderice metadatos de obra (ubicación, m², plazo) de
 - Listas de pares término-definición (partidas, plazos, qué incluye) en `<dl>`.
 - Procesos ordenados en `<ol>`. Los pasos numerados a mano dentro de divs son incorrectos.
 - **Todo proceso numerado y ordenado usa `<ol>`/`<li>`. El título de cada item usa `<h3>` si el contenedor de la sección tiene `<h2>`, o `<h2>` si no lo tiene. Nunca `<p>` para títulos de items en una lista de proceso.** Para las listas de «Qué incluye» de los hubs existe `PasosIncluye.astro`, que además distingue por prop entre lista ordenada y catálogo sin orden. Ver DEC-D22.
+- **Tres bloques ya tienen patrón propio y no se vuelven a maquetar: «vida durante la obra», «decisión A o B» y «proceso por pasos».** La especificación está en `DESIGN-BLUEPRINT.md` § «Bloques compuestos». Si una página necesita plantear una de esas tres cosas, usa el patrón; si un valor tiene que cambiar, cambia en `src/styles/global.css` y cambia en todas a la vez.
 - FAQ con `<details>`/`<summary>`. El texto de la pregunta va en el `<summary>`.
 - Breadcrumbs en `<nav aria-label="Migas de pan">` con `<ol>`.
 - Estados de foco visibles en todos los CTA. Contraste AA en texto sobre `#A85535` y `#111827`.
@@ -507,6 +508,10 @@ Ningún otro documento la repite: `PRODUCT.md` y `docs/TRAZZO360-SYSTEM.md` apun
 > Tampoco a los comentarios del código, que no se ven.
 
 - El marcador es siempre CSS `::before`, nunca un carácter tipográfico ni un emoji.
+- **Ni el marcador nativo del navegador: `list-disc` está prohibido.** Toda lista de contenido
+  usa `.list-marca` con la estructura de §8.3. `list-decimal` se admite sólo en listas
+  realmente ordenadas donde el número es contenido, como las fases que imprime la calculadora.
+  Ver DEC-D35.
 - `compromisos` solo cuando la lista sea una garantía contractual de máximo peso; no para listas normales.
 - Lo verifica `npm run check` como advertencia, no como bloqueante. Decisión vigente: DEC-B02.
 

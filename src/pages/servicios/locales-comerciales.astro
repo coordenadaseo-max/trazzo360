@@ -390,49 +390,53 @@ const faqSchema = {
     </div>
   </section>
   <!-- 7. De la actividad a la entrega (dark) -->
-  <section class="py-20 bg-[#111827]" aria-labelledby="h-proceso-apertura">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo coordinamos la obra</p>
-        <h2 id="h-proceso-apertura" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em;text-wrap:balance">
-          De la actividad a la entrega
-        </h2>
-      </div>
-      <p class="text-gray-300 leading-relaxed mb-8">
-        La diferencia entre una reforma de local y una reforma de vivienda es que aquí hay una fecha que cuesta dinero si no se cumple. Por eso la planificación empieza por los condicionantes de la actividad y por la fecha de entrega, no por el diseño.
-      </p>
-      <ul class="space-y-6">
-        {[
-          {
+  <section class="py-20 lg:py-28 bg-[#111827]" aria-labelledby="h-proceso-apertura">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="vida-grid">
+        <div class="vida-left">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo coordinamos la obra</p>
+          <h2 id="h-proceso-apertura" class="vida-title reveal">
+            De la actividad a la entrega
+          </h2>
+          <p class="vida-lead">
+            La diferencia entre una reforma de local y una reforma de vivienda es que aquí hay una fecha que cuesta dinero si no se cumple. Por eso la planificación empieza por los condicionantes de la actividad y por la fecha de entrega, no por el diseño.
+          </p>
+        </div>
+        <div class="vida-right">
+          <ul class="vida-list">
+            {[
+          { n: '01',
             title: 'La actividad determina el alcance antes de abrir la obra',
             desc: 'Antes de la visita técnica definimos el tipo de actividad previsto. Eso permite revisar el local con los condicionantes reales ya sobre la mesa: instalaciones necesarias, requisitos de ventilación, documentación técnica.',
           },
-          {
+          { n: '02',
             title: 'Tramitación y obra, sin solapamiento innecesario',
             desc: 'Cuando el procedimiento aplicable lo permite, la tramitación puede desarrollarse en paralelo a determinadas fases de la obra. La visita técnica determina el régimen aplicable y el momento adecuado para iniciar la documentación.',
           },
-          {
+          { n: '03',
             title: 'Sin esperas por materiales ni por instalaciones',
             desc: 'Todos los materiales de largo plazo de entrega (techo técnico, carpintería especial, climatización) se piden antes de que empiece la obra. Las instalaciones eléctricas y de fontanería se ejecutan en la secuencia correcta para no retrasar los acabados.',
           },
-          {
+          { n: '04',
             title: 'Coordinación con el administrador del edificio si aplica',
             desc: 'Si el local está en un edificio con comunidad de propietarios, gestionamos la comunicación con el administrador para el acceso durante la obra, el horario de carga y descarga, y cualquier requisito específico del edificio.',
           },
-          {
+          { n: '05',
             title: 'Entrega con documentación técnica completa',
             desc: 'Junto con la entrega de la obra te entregamos toda la documentación técnica generada: certificados de instalaciones, memoria descriptiva y planos as-built.',
           },
         ].map(item => (
-          <li class="flex gap-5">
-            <div class="w-1 flex-shrink-0 bg-[#A85535] mt-1" style="min-height:1.25rem"></div>
-            <div>
-              <p class="font-semibold text-white mb-1">{item.title}</p>
-              <p class="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+              <li class="vida-item">
+                <span class="num-paso vida-item__n" aria-hidden="true">{item.n}</span>
+                <div>
+                  <h3 class="vida-item__title">{item.title}</h3>
+                  <p class="vida-item__desc">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
   <!-- 12. Compromisos -->

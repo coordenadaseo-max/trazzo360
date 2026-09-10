@@ -17,6 +17,7 @@ const relatedZoneSlugs: string[] = RELATED_ZONES[zone.slug] ?? [];
 const relatedZones = ZONES.filter(z => relatedZoneSlugs.includes(z.slug));
 
 const hasBarrioNotes = Array.isArray(zone.m2BarrioNotes) && zone.m2BarrioNotes.length > 0;
+const hasTopWorks = Array.isArray(zone.topWorks) && zone.topWorks.length > 0;
 const hasNeighborhoods = Array.isArray(zone.neighborhoods) && zone.neighborhoods.length > 0;
 
 const breadcrumbSchema = {
@@ -141,6 +142,25 @@ const faqSchema = {
               <p style="font-size:.8125rem;color:rgba(255,255,255,.48);line-height:1.65">{note.text}</p>
             </div>
           ))}
+        </div>
+      )}
+
+      {hasTopWorks && (
+        <div class="mb-8">
+          <h3 class="font-bold text-gray-900 mb-1" style="font-size:1.25rem;letter-spacing:-0.01em">
+            Qué se reforma más en {zone.name}
+          </h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-5" style="max-width:60ch">
+            Lo que pide con más frecuencia este parque de vivienda, y qué conviene mirar en cada caso antes de presupuestar.
+          </p>
+          <dl style="margin:0">
+            {zone.topWorks.map((w: { title: string; desc: string }) => (
+              <div class="catalogo-row">
+                <dt>{w.title}</dt>
+                <dd>{w.desc}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       )}
 

@@ -820,7 +820,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
               : qd.includes;
             var priceHtml = res && res.total
               ? '<div class="text-lg md:text-xl font-black text-gray-900 leading-tight">' + fmt(res.total.min) + '–' + fmt(res.total.max) + ' €</div>'
-              : '<div class="text-lg font-black text-gray-400">—</div>';
+              : '<div class="text-lg font-black text-gray-400">–</div>';
             var licHtml = (res && res.license)
               ? '<div class="text-xs text-gray-400 mt-0.5">Obra: ' + fmt(res.construction.min) + '–' + fmt(res.construction.max) + ' €' +
                 ' + Licencia: ' + fmt(res.license.min) + '–' + fmt(res.license.max) + ' €</div>'

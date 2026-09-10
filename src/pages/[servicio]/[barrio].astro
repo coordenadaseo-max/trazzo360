@@ -191,6 +191,12 @@ const breadcrumbSchema = {
           {service.title} en {zone.name}: qué se evalúa antes de cerrar el precio
         </h2>
 
+        {zone.localAngle && (
+          <p class="text-gray-600 leading-relaxed mb-8" style="font-size:1rem;max-width:62ch">
+            {zone.name} {zone.localAngle}. Por eso la visita técnica empieza mirando el edificio, no el catálogo de materiales.
+          </p>
+        )}
+
         <ol class="cond-list">
             {bodyGroups.map((group, i) => (
               <li class={`cond-item${i === bodyGroups.length - 1 ? ' cond-item--last' : ''}`}>

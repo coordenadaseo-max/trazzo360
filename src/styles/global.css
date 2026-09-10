@@ -906,6 +906,17 @@
   border-left: 2px solid transparent;
   transition: background var(--dur-fast, 0.2s) var(--ease-expo, ease), border-left-color var(--dur-fast, 0.2s) var(--ease-expo, ease);
 }
+/* Catálogo término/definición sin orden. A diferencia de .criterio-row no lleva
+   numerador: numerar un catálogo sería estructura falsa. Ver DEC-D36. */
+.catalogo-row {
+  padding: 1.25rem 0.5rem; border-bottom: 1px solid #F3F4F6;
+  border-left: 2px solid transparent;
+  transition: background var(--dur-fast, 0.2s) var(--ease-expo, ease), border-left-color var(--dur-fast, 0.2s) var(--ease-expo, ease);
+}
+.catalogo-row:first-child { border-top: 1px solid #F3F4F6; }
+.catalogo-row:hover { background: #FAFAF8; border-left-color: #A85535; }
+.catalogo-row dt { font-size: 1.0625rem; font-weight: 700; color: #111827; margin: 0 0 0.35rem; line-height: 1.3; }
+.catalogo-row dd { font-size: 0.9375rem; color: #4B5563; line-height: 1.65; margin: 0; }
 .criterio-row:first-child { border-top: 1px solid #F3F4F6; }
 .criterio-row:hover { background: #FAFAF8; border-left-color: #A85535; }
 .criterio-n {

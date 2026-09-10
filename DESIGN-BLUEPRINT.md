@@ -267,6 +267,7 @@ en `src/styles/global.css` y cambia en todas a la vez.
 | Vida durante la obra | Una lista de 4–6 compromisos sobre cómo se gestiona la obra, sobre fondo oscuro | `.vida-grid` · `.vida-left` / `.vida-right` · `.vida-title` · `.vida-lead` · `.vida-note` · `.vida-list` / `.vida-item` | DEC-D33 |
 | Decisión A o B | El lector tiene que elegir entre dos alcances y necesita criterios para decidir | `.decision-grid` · `.decision-card--light` / `--dark` · `.decision-list` | DEC-D34 |
 | Proceso por pasos | Una secuencia ordenada con tiempos | `.proceso-steps` · `.proceso-step` | DEC-D32 |
+| Catálogo término/definición | Una lista sin orden de pares concepto + explicación (`<dl>`) | `.catalogo-row` con `<dt>`/`<dd>` | DEC-D36 |
 
 **Reglas comunes a los tres:**
 

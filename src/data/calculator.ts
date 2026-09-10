@@ -901,7 +901,7 @@ export const CALC_SERVICES: CalcService[] = [
           ],
         },
         qualityExcludes: [
-          'Renovación de carpintería (ventanas y balconeras) — partida independiente',
+          'Renovación de carpintería, ventanas y balconeras (partida independiente)',
           'Obras en cubierta (aunque se accede por el mismo andamio)',
           'Instalaciones eléctricas exteriores (alumbrado de fachada, etc.)',
           'IVA y tasas municipales de andamio y vía pública',

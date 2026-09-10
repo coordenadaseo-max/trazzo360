@@ -43,7 +43,7 @@
   descomentar bloques que no existen. Corregido junto a DEC-A09 el 2026-09-07.
 
 ### 6. `PUBLIC_SITE_INDEXING` en las variables de entorno del deploy
-- **Dónde**: panel de Vercel → Settings → Environment Variables del proyecto. **No en el repo.**
+- **Dónde**: en las variables de entorno del hosting donde se despliegue. **No en el repo.** El responsable desplegará en hosting propio (2026-09-10), no en Vercel: la variable debe declararse allí, en el entorno de producción.
 - **Referencia**: [`.env.example`](../.env.example) documenta la variable y el efecto de cada valor.
 - `PUBLIC_SITE_INDEXING=true` en el entorno de Production.
 - **Por qué es bloqueante:** `.env` está en `.gitignore`, así que la variable **no viaja al

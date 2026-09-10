@@ -628,6 +628,33 @@ declaraba. Declararlo es ahora obligatorio y lo verifica `npm run audit:docs`.
   «fuente de la verdad» o una autoridad.** Si un fichero nuevo lo hace, es un error, no una
   aportación.
 
+### Skills: qué se puede ejecutar y qué no
+
+**Ninguna skill se ejecuta por inferencia.** Sólo con subcomando explícito y ruta
+concreta, y sólo las de esta tabla. Las demás están instaladas pero **vetadas**.
+
+| Skill | Uso |
+|---|---|
+| `impeccable` | **Sólo lectura**: `audit` y `critique` sobre una ruta concreta. Nunca `craft`, `new-work`, `init`, `document` ni `extract`: regeneran `PRODUCT.md` y `DESIGN.md` |
+| `full-output-enforcement` | Neutra. Refuerza que no haya placeholders |
+
+**Vetadas — imponen su propio mundo visual y reemplazarían la identidad aprobada:**
+`gpt-taste` (impone GSAP y aleatoriza el layout, contra `.impeccable/direction.md`),
+`high-end-visual-design`, `redesign-existing-projects`, `image-to-code`,
+`stitch-design-taste`, `brandkit`, `industrial-brutalist-ui`, `minimalist-ui`,
+`apple-design`, `emil-design-eng`, `design-taste-frontend`, `imagegen-*`.
+
+**Hooks:** los de `impeccable` quedaron desactivados el 2026-09-10 en
+`.claude/settings.local.json`. Corrían en cada `Edit`/`Write` y en cada `Stop`, y
+escriben `.impeccable/hook.cache.json` y un bloque en `.git/info/exclude`. Su
+definición se conserva bajo `_hooks_desactivados`; para reactivarlos, renombrar esa
+clave a `hooks`.
+
+**Regla de oro para cambios de diseño:** se hacen por el procedimiento de
+[`docs/PROTOCOLO-LAB.md`](./docs/PROTOCOLO-LAB.md), no invocando una skill que
+reescriba el sitio. El canon se cambia editando `global.css` y `CANON_SOURCES`, y lo
+verifica `npm run audit:design`.
+
 Casos que motivaron esta sección, todos verificados en el historial:
 `hypotheses.md` lo escribió una skill de SERP y su hipótesis 1 contradecía §4;
 `DESIGN.md` lo generaba `impeccable` y acabó siendo autoridad tipográfica contra el código;

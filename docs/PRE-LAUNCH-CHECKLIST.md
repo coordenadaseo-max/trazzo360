@@ -9,11 +9,11 @@
 
 ## 🔴 BLOQUEANTES (obligatorios antes de publicar)
 
-### 1. Teléfono real
+### 1. ~~Teléfono real~~ ✅ COMPLETADO
 - **Archivo**: `src/data/site.ts`
-- `phone: 'TU_TELEFONO'` → número real sin espacios ni '+', ej: `'34912345678'`
-- `phoneDisplay: 'TU TELÉFONO'` → número formateado, ej: `'912 345 678'`
-- `whatsapp: 'TU_TELEFONO'` → mismo número que `phone`
+- ✅ **RESUELTO 2026-09-10.** `phone: '+34614530656'` (E.164: alimenta los `tel:` y el
+  `telephone` del schema) · `phoneDisplay: '614 53 06 56'` · `whatsapp: '34614530656'`
+  (wa.me exige el prefijo de país **sin** `+`; por eso los dos campos difieren).
 - **Efecto**: desbloquea teléfono en header/footer/contacto, WhatsApp en header/flotante, horario visible, `openingHoursSpecification` en schema JSON-LD
 
 ### 2. Formspree (formulario de contacto)

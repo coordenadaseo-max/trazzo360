@@ -7,9 +7,9 @@ export const SITE = {
   name: 'Trazzo360',
   tagline: 'Reformas Integrales en el Corredor del Henares',
   url: 'https://trazzo360.es',
-  phone: 'TU_TELEFONO',           // ← Reemplazar con número real, ej: '34912345678'
-  phoneDisplay: 'TU TELÉFONO',    // ← Reemplazar con número formateado, ej: '912 345 678'
-  whatsapp: 'TU_TELEFONO',        // ← Mismo número sin espacios ni '+', ej: '34912345678'
+  phone: '+34614530656',          // E.164: alimenta los enlaces tel: y el `telephone` del schema
+  phoneDisplay: '614 53 06 56',   // formato visible
+  whatsapp: '34614530656',        // wa.me exige prefijo de país SIN '+' 
   email: 'info@trazzo360.es',
   address: 'Corredor del Henares, Madrid',
   hours: 'Lun-Vie 8:00-20:00 · Sáb 9:00-14:00',

@@ -333,7 +333,7 @@ const zones = [
               { term: 'Garantía de ejecución', def: 'La garantía debe cubrir la ejecución (humedades, desprendimientos, funcionamiento de las instalaciones) durante al menos 2 años. La garantía de los materiales la da el fabricante; la garantía de la obra la da quien ejecuta.' },
             ].map(({ term, def }, i) => (
               <div class="presupuesto-row">
-                <span class="presupuesto-n">{String(i + 1).padStart(2, '0')}</span>
+                <span class="num-paso presupuesto-n">{String(i + 1).padStart(2, '0')}</span>
                 <dt class="presupuesto-term">{term}</dt>
                 <dd class="presupuesto-def">{def}</dd>
               </div>
@@ -489,7 +489,7 @@ const zones = [
               { n: '05', title: 'Los días más difíciles, anunciados', desc: 'Los primeros 3–4 días de demolición son los de más ruido y polvo. A partir del quinto día la obra entra en fase de construcción. Si solo tienes un baño, lo planificamos para que recuperes el acceso básico lo antes posible.' },
             ].map(item => (
               <li class="vida-item">
-                <span class="vida-item__n" aria-hidden="true">{item.n}</span>
+                <span class="num-paso vida-item__n" aria-hidden="true">{item.n}</span>
                 <div>
                   <h3 class="vida-item__title">{item.title}</h3>
                   <p class="vida-item__desc">{item.desc}</p>

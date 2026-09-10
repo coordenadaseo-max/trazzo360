@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ProcesoSteps from '../../components/ui/ProcesoSteps.astro';
 import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
@@ -446,24 +447,14 @@ const faqSchema = {
           De la visita técnica a la entrega con certificado
         </h2>
       </div>
-      <ol class="proceso-steps reveal" style="max-width:44rem;list-style:none;padding:0;margin:0">
-        {[
-          { n: '01', title: 'Visita técnica gratuita', desc: 'Inspeccionamos las zonas comunes y elaboramos un informe del estado previo con fotografías para la documentación de junta.' },
-          { n: '02', title: 'Presupuesto para junta', desc: 'Presupuesto desglosado con memoria descriptiva, fotografías del estado previo y cronograma. Listo para presentar en la reunión de propietarios.' },
-          { n: '03', title: 'Aprobación y contrato', desc: 'Una vez aprobado en junta, firmamos el contrato con la comunidad con precio y fecha de entrega cerrados.' },
-          { n: '04', title: 'Permisos y trámites', desc: 'Gestionamos el permiso de ocupación de vía pública para andamiaje y cualquier otro trámite necesario en el ayuntamiento.' },
-          { n: '05', title: 'Ejecución con mínimas molestias', desc: 'Horarios adaptados a los vecinos. Accesos siempre operativos. Protección de zonas no afectadas. Informe semanal al administrador.' },
-          { n: '06', title: 'Entrega con documentación', desc: 'Certificado de obra, documentación para el seguro del edificio, garantías por escrito y certificados de instalaciones intervenidas.' },
-        ].map(step => (
-          <li class="proceso-step">
-            <span class="proceso-step__n" aria-hidden="true">{step.n}</span>
-            <div>
-              <p class="proceso-step__title">{step.title}</p>
-              <p class="proceso-step__desc">{step.desc}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <ProcesoSteps class="reveal" steps={[
+        { n: '01', title: 'Visita técnica gratuita', desc: 'Inspeccionamos las zonas comunes y elaboramos un informe del estado previo con fotografías para la documentación de junta.' },
+        { n: '02', title: 'Presupuesto para junta', desc: 'Presupuesto desglosado con memoria descriptiva, fotografías del estado previo y cronograma. Listo para presentar en la reunión de propietarios.' },
+        { n: '03', title: 'Aprobación y contrato', desc: 'Una vez aprobado en junta, firmamos el contrato con la comunidad con precio y fecha de entrega cerrados.' },
+        { n: '04', title: 'Permisos y trámites', desc: 'Gestionamos el permiso de ocupación de vía pública para andamiaje y cualquier otro trámite necesario en el ayuntamiento.' },
+        { n: '05', title: 'Ejecución con mínimas molestias', desc: 'Horarios adaptados a los vecinos. Accesos siempre operativos. Protección de zonas no afectadas. Informe semanal al administrador.' },
+        { n: '06', title: 'Entrega con documentación', desc: 'Certificado de obra, documentación para el seguro del edificio, garantías por escrito y certificados de instalaciones intervenidas.' },
+      ]} />
     </div>
   </section>
   <!-- M3: Licencias y normativa -->

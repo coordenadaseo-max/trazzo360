@@ -131,7 +131,7 @@ const faqSchema = {
 
       <!-- Condicionante 1: extracción -->
       <div class="cond-item">
-        <div class="cond-num">01</div>
+        <div class="num-paso cond-num">01</div>
         <div>
           <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Extracción: si la cocina no tiene salida directa al exterior</h3>
           <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
@@ -145,7 +145,7 @@ const faqSchema = {
 
       <!-- Condicionante 2: circuito eléctrico -->
       <div class="cond-item">
-        <div class="cond-num">02</div>
+        <div class="num-paso cond-num">02</div>
         <div>
           <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Circuito eléctrico: potencia para inducción y horno simultáneos</h3>
           <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
@@ -156,7 +156,7 @@ const faqSchema = {
 
       <!-- Condicionante 3: tabiques -->
       <div class="cond-item">
-        <div class="cond-num">03</div>
+        <div class="num-paso cond-num">03</div>
         <div>
           <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Tabiques: confirmación técnica antes de derribar</h3>
           <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
@@ -167,7 +167,7 @@ const faqSchema = {
 
       <!-- Condicionante 4: permisos -->
       <div class="cond-item" style="border-bottom:none;padding-bottom:0">
-        <div class="cond-num">04</div>
+        <div class="num-paso cond-num">04</div>
         <div>
           <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">Tramitación municipal</h3>
           <p class="text-gray-500 leading-relaxed" style="font-size:.9375rem">
@@ -293,16 +293,12 @@ const faqSchema = {
   }
   @media (min-width: 768px) {
     .cond-item {
-      grid-template-columns: 3rem 1fr;
+      grid-template-columns: 4rem 1fr;
       gap: 2rem;
       align-items: start;
     }
   }
   .cond-num {
-    font-size: .625rem;
-    font-weight: 900;
-    letter-spacing: .12em;
-    color: #a85535;
     padding-top: .3rem;
   }
 </style>

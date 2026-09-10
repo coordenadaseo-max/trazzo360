@@ -351,7 +351,7 @@ const faqSchema = {
           { n: '06', title: 'Entrega y garantía', desc: 'Revisión final contigo, limpieza de obra y entrega con garantía de 2 años sobre la ejecución.' },
         ].map(step => (
           <div class="grid items-start" style="grid-template-columns:3rem 1fr;gap:1.25rem">
-            <p class="text-4xl font-black text-gray-200 leading-none pt-0.5" aria-hidden="true">{step.n}</p>
+            <p class="num-paso pt-0.5" aria-hidden="true">{step.n}</p>
             <div>
               <p class="font-bold text-gray-900 mb-1">{step.title}</p>
               <p class="text-sm text-gray-600 leading-relaxed" style="max-width:48ch">{step.desc}</p>

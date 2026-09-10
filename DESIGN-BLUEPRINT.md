@@ -37,6 +37,8 @@ renderizando en la fuente del sistema a peso 400.
 | H1 hero · hub de zona | `.h1-hero` + `.h1-hero--zona` | `clamp(2.25rem, 5.5vw, 4.5rem)` vía `--text-display-zona` |
 | H1 hero · combinada servicio×zona | `.h1-hero` + `.h1-hero--combinada` | `clamp(2.25rem, 5.5vw, 4.25rem)` vía `--text-display-combinada` |
 | H1 hero a dos niveles | `.h1-hero--stacked` + `.h1-hero__eyebrow` + `.h1-hero__thesis` | la tesis lleva el canon; el eyebrow su propio tracking |
+| Numerador de lista | `.num-paso` | `clamp(1.5rem, 4vw, 2.5rem)` · 900 · terracota · monoespaciada |
+| Numerador de apoyo | `.num-indice` · `--tenue` | `0.625rem` · 700 · terracota o gris |
 | H2 principal | `.h2-section` | `text-4xl lg:text-5xl` · `-0.03em` |
 | H2 / H3 secundario | `.h3-sub` | `text-3xl lg:text-4xl` · `-0.03em` |
 | Sobre fondo oscuro | `.h2-section--dark` · `.h3-sub--dark` | lo anterior en blanco |

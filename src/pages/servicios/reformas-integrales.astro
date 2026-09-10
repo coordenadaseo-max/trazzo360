@@ -338,7 +338,7 @@ const zones = [
                 <div class="fase-progress-top">
                   <div class="fase-bar"></div>
                 </div>
-                <div class="fase-n">{f.n}</div>
+                <div class="num-indice num-indice--tenue fase-n">{f.n}</div>
                 <div class="fase-label">{f.fase}</div>
                 <div class="fase-dep">{f.dep}</div>
               </li>
@@ -355,7 +355,7 @@ const zones = [
           { title: 'La secuencia no es flexible', body: 'Las instalaciones van antes del cierre de paramentos. Los revestimientos van sobre paramentos terminados. Saltarse pasos genera defectos que se detectan meses después de la entrega, no en la revisión final.' },
         ].map((item, i) => (
           <div class="coord-pill">
-            <span class="coord-pill__n">{String(i+1).padStart(2,'0')}</span>
+            <span class="num-indice coord-pill__n">{String(i+1).padStart(2,'0')}</span>
             <div>
               <h3 class="coord-pill__title">{item.title}</h3>
               <p class="coord-pill__body">{item.body}</p>
@@ -390,9 +390,9 @@ const zones = [
               { n: '05', title: 'El piso al entrar: limpio, no "casi terminado"', desc: 'La limpieza final es parte del proceso. Cuando te lo entregamos, está en condiciones de empezar a vivir.' },
             ].map(item => (
               <li class="vida-item">
-                <span class="vida-item__n" aria-hidden="true">{item.n}</span>
+                <span class="num-paso vida-item__n" aria-hidden="true">{item.n}</span>
                 <div>
-                  <p class="vida-item__title">{item.title}</p>
+                  <h3 class="vida-item__title">{item.title}</h3>
                   <p class="vida-item__desc">{item.desc}</p>
                 </div>
               </li>
@@ -554,22 +554,22 @@ const zones = [
       <p class="text-gray-600 leading-relaxed mb-8" style="font-size:1.0625rem;line-height:1.75">
         Una reforma integral es probablemente la compra más cara que harás en tu vivienda. La empresa de reformas integrales que elijas determina si el resultado es el que esperabas o si aparecen problemas meses después de la entrega. Estos son los criterios que importan, en el orden en que importan.
       </p>
-      <div class="criterios-list mb-8">
+      <ol class="criterios-list mb-8">
         {[
           { n: '1', title: 'Precio cerrado en el contrato, no presupuesto orientativo', desc: 'El presupuesto que firmas tiene que ser el precio final. Una empresa que trabaja con precio cerrado ha inspeccionado el piso antes de presupuestar y se hace responsable de lo que firma.' },
           { n: '2', title: 'Un interlocutor durante toda la obra, no un gremio distinto cada semana', desc: 'La coordinación entre gremios es el punto de fallo más frecuente. Un responsable de obra único es la diferencia entre una reforma que avanza y una que se para.' },
           { n: '3', title: 'Plazo comprometido con penalizaciones, no "aproximadamente"', desc: 'Si el plazo no está en el contrato con consecuencias claras en caso de incumplimiento, no existe. Pregunta qué pasa si la obra se retrasa. Si no hay penalización, el plazo es aspiracional.' },
           { n: '4', title: 'Obra propia en el área donde vives', desc: 'Una empresa que trabaja en el Corredor conoce los plazos reales de licencias en cada municipio y las particularidades del parque de edificios local. La cercanía es conocimiento.' },
         ].map(c => (
-          <div class="criterio-row">
-            <span class="criterio-n">{c.n}</span>
+          <li class="criterio-row">
+            <span class="num-paso criterio-n" aria-hidden="true">{c.n}</span>
             <div class="criterio-body">
               <h3 class="criterio-title">{c.title}</h3>
               <p class="criterio-desc">{c.desc}</p>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ol>
       <Callout title="La visita técnica gratuita es el primer criterio de selección">
         Una empresa de reformas integrales que presupuesta sin visitar el piso no puede darte un precio cerrado. La visita previa al presupuesto no es una formalidad: es la fase en la que se inspeccionan las instalaciones, se identifica qué puede aparecer al abrir y se determina si el alcance pedido es ejecutable con el presupuesto disponible. Si alguien te da un precio integral por teléfono o por m², ese precio no es el precio final.
       </Callout>
@@ -627,7 +627,7 @@ const zones = [
           { term: 'Garantía de ejecución', def: 'La garantía sobre la obra debe cubrir al menos 2 años desde la entrega. Es diferente de la garantía de los materiales, que la da el fabricante. Si el presupuesto no la menciona, pregunta qué pasa si hay problemas al año siguiente.' },
         ].map(({ term, def }, i) => (
           <div class="presupuesto-row">
-            <span class="presupuesto-n">{String(i + 1).padStart(2, '0')}</span>
+            <span class="num-paso presupuesto-n">{String(i + 1).padStart(2, '0')}</span>
             <dt class="presupuesto-term">{term}</dt>
             <dd class="presupuesto-def">{def}</dd>
           </div>
@@ -814,12 +814,7 @@ const zones = [
   }
 
   .fase-n {
-    font-size:0.625rem;
-    font-weight:700;
-    letter-spacing:0.12em;
-    color:#9CA3AF;
     margin-bottom:0.625rem;
-    font-family:'Courier New', monospace;
     transition:color 0.45s ease;
   }
   .fase-card.is-active .fase-n { color:#A85535; }
@@ -871,11 +866,6 @@ const zones = [
   @media(max-width:767px){ .coord-pill:last-child { border-bottom:none; } }
 
   .coord-pill__n {
-    font-size:0.6875rem;
-    font-weight:700;
-    color:#A85535;
-    letter-spacing:0.08em;
-    font-family:'Courier New', monospace;
     padding-top:0.125rem;
   }
   .coord-pill__title {

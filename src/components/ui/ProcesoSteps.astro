@@ -7,15 +7,17 @@ interface Step {
 interface Props {
   steps: Step[];
   maxWidth?: string;
+  /** Clases de utilidad de la página que lo usa (reveal, márgenes). */
+  class?: string;
 }
-const { steps, maxWidth = '44rem' } = Astro.props;
+const { steps, maxWidth = '44rem', class: className } = Astro.props;
 ---
 
-<ol class="proceso-steps" style={`max-width:${maxWidth}`}>
+<ol class:list={['proceso-steps', className]} style={`max-width:${maxWidth}`}>
   {steps.map(step => (
     <li class="proceso-step">
       {/* El <ol> ya anuncia la posición: el número es refuerzo visual. */}
-      <span class="proceso-step__n" aria-hidden="true">{step.n}</span>
+      <span class="num-paso proceso-step__n" aria-hidden="true">{step.n}</span>
       <div>
         <h3 class="proceso-step__title">{step.title}</h3>
         <p class="proceso-step__desc">{step.desc}</p>

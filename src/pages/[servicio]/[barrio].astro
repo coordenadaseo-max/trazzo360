@@ -192,7 +192,7 @@ const breadcrumbSchema = {
 
         {bodyGroups.map((group, i) => (
           <div class={`cond-item${i === bodyGroups.length - 1 ? ' cond-item--last' : ''}`}>
-            <div class="cond-num">{String(i + 1).padStart(2, '0')}</div>
+            <div class="num-paso cond-num">{String(i + 1).padStart(2, '0')}</div>
             <div>
               <h3 class="font-bold text-gray-900 mb-2" style="font-size:1.0625rem">{group.title}</h3>
               {group.paras.map(p => (
@@ -350,16 +350,12 @@ const breadcrumbSchema = {
   }
   @media (min-width: 768px) {
     .cond-item {
-      grid-template-columns: 3rem 1fr;
+      grid-template-columns: 4rem 1fr;
       gap: 2rem;
       align-items: start;
     }
   }
   .cond-num {
-    font-size: .625rem;
-    font-weight: 900;
-    letter-spacing: .12em;
-    color: #a85535;
     padding-top: .3rem;
   }
 </style>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ProcesoSteps from '../../components/ui/ProcesoSteps.astro';
 import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
@@ -503,24 +504,14 @@ const faqSchema = {
           Del local vacío al espacio listo para operar
         </h2>
       </div>
-      <div class="proceso-steps reveal">
-        {[
-          { n: '01', title: 'Actividad y visita técnica', desc: 'Antes de la visita, definimos el tipo de actividad previsto. Eso permite revisar el local con los condicionantes técnicos específicos ya sobre la mesa: instalaciones, ventilación, documentación.' },
-          { n: '02', title: 'Proyecto y presupuesto cerrado', desc: 'Redactamos el proyecto técnico si aplica, cerramos el presupuesto de obra por escrito y definimos el cronograma hasta la entrega.' },
-          { n: '03', title: 'Inicio de obra', desc: 'La obra empieza conforme al cronograma definido. Si el procedimiento aplicable lo permite, la documentación técnica puede gestionarse en paralelo a determinadas fases.' },
-          { n: '04', title: 'Instalaciones y obra civil', desc: 'Vaciado, electricidad con alumbrado de emergencia, fontanería, particiones y techo técnico.' },
-          { n: '05', title: 'Acabados y equipamiento', desc: 'Suelos, pintura, carpintería, climatización y cualquier equipamiento previsto. Sin esperas entre gremios.' },
-          { n: '06', title: 'Entrega y documentación', desc: 'Entrega de la obra conforme al alcance y plazo del contrato. Documentación técnica completa. Garantía de 2 años sobre la ejecución.' },
-        ].map(step => (
-          <div class="proceso-step">
-            <span class="proceso-step__n" aria-hidden="true">{step.n}</span>
-            <div>
-              <p class="proceso-step__title">{step.title}</p>
-              <p class="proceso-step__desc">{step.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <ProcesoSteps steps={[
+        { n: '01', title: 'Actividad y visita técnica', desc: 'Antes de la visita, definimos el tipo de actividad previsto. Eso permite revisar el local con los condicionantes técnicos específicos ya sobre la mesa: instalaciones, ventilación, documentación.' },
+        { n: '02', title: 'Proyecto y presupuesto cerrado', desc: 'Redactamos el proyecto técnico si aplica, cerramos el presupuesto de obra por escrito y definimos el cronograma hasta la entrega.' },
+        { n: '03', title: 'Inicio de obra', desc: 'La obra empieza conforme al cronograma definido. Si el procedimiento aplicable lo permite, la documentación técnica puede gestionarse en paralelo a determinadas fases.' },
+        { n: '04', title: 'Instalaciones y obra civil', desc: 'Vaciado, electricidad con alumbrado de emergencia, fontanería, particiones y techo técnico.' },
+        { n: '05', title: 'Acabados y equipamiento', desc: 'Suelos, pintura, carpintería, climatización y cualquier equipamiento previsto. Sin esperas entre gremios.' },
+        { n: '06', title: 'Entrega y documentación', desc: 'Entrega de la obra conforme al alcance y plazo del contrato. Documentación técnica completa. Garantía de 2 años sobre la ejecución.' },
+      ]} />
     </div>
   </section>
   <!-- 9. Licencias -->

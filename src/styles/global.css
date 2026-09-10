@@ -534,16 +534,16 @@
   background: linear-gradient(to bottom, #A85535 0%, #E5E7EB 60%, transparent 100%);
 }
 .proceso-step {
-  display: grid; grid-template-columns: 2rem 1fr; gap: 0 1.5rem;
+  display: grid; grid-template-columns: 4rem 1fr; gap: 0 1.5rem;
   padding: 1.375rem 0.5rem; border-bottom: 1px solid #F3F4F6;
   align-items: start; transition: background 0.2s, padding-left 0.2s;
   position: relative;
 }
 .proceso-step:hover { background: #F9F7F4; padding-left: 0.875rem; }
 .proceso-step__n {
-  font-size: 0.5625rem; font-weight: 700; letter-spacing: 0.1em;
-  font-family: 'Courier New', monospace; color: #A85535;
-  padding-top: 0.3rem; z-index: 1; position: relative;
+  padding-top: 0.3rem;
+  z-index: 1;
+  position: relative;
 }
 .proceso-step__title { font-size: 0.9375rem; font-weight: 700; color: #111827; margin: 0 0 0.375rem; }  /* <h3>: anula el margen del navegador */
 .proceso-step__desc { font-size: 0.875rem; color: #4B5563; line-height: 1.65; max-width: 48ch; }
@@ -628,7 +628,7 @@
 
 .presupuesto-dl { border-top: 2px solid #111827; }
 .presupuesto-row {
-  display: grid; grid-template-columns: 2rem 1fr; grid-template-rows: auto auto;
+  display: grid; grid-template-columns: 4rem 1fr; grid-template-rows: auto auto;
   gap: 0.125rem 1rem; padding: 1.125rem 0.5rem; border-bottom: 1px solid #E5E7EB;
   transition: background 0.2s, padding-left 0.2s;
 }
@@ -637,9 +637,8 @@
   .presupuesto-row { grid-template-columns: 2rem 14rem 1fr; grid-template-rows: auto; align-items: baseline; }
 }
 .presupuesto-n {
-  font-size: 0.5625rem; font-weight: 700; letter-spacing: 0.1em;
-  font-family: 'Courier New', monospace; color: #A85535;
-  padding-top: 0.25rem; grid-row: 1;
+  padding-top: 0.25rem;
+  grid-row: 1;
 }
 .presupuesto-term { font-size: 0.9375rem; font-weight: 700; color: #111827; line-height: 1.35; grid-column: 2; }
 .presupuesto-def { font-size: 0.875rem; color: #4B5563; line-height: 1.65; grid-column: 2; }
@@ -774,7 +773,7 @@
 @media(min-width:900px){ .vida-grid { grid-template-columns: 42% 1fr; gap: 5rem; align-items: start; } }
 .vida-list { list-style: none; padding: 0; margin: 0; }
 .vida-item {
-  display: grid; grid-template-columns: 2rem 1fr; gap: 0 1rem;
+  display: grid; grid-template-columns: 4rem 1fr; gap: 0 1rem;
   padding: 1.125rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,.07);
   align-items: start; margin: 0 -0.75rem;
   border-left: 2px solid transparent;
@@ -783,8 +782,6 @@
 .vida-item:first-child { border-top: 1px solid rgba(255,255,255,.07); }
 .vida-item:hover { background: rgba(255,255,255,.04); border-left-color: #A85535; }
 .vida-item__n {
-  font-size: 0.625rem; font-weight: 700; letter-spacing: 0.12em; color: #A85535;
-  line-height: 1.9; font-family: 'Courier New', monospace;
 }
 .vida-item__title { font-size: 0.9375rem; font-weight: 600; color: #F9F7F4; margin: 0 0 0.3rem; line-height: 1.35; }  /* <h3>: anula el margen del navegador */
 .vida-item__desc { font-size: 0.8125rem; color: rgba(255,255,255,.65); line-height: 1.65; }
@@ -871,7 +868,9 @@
 .criterio-row { display: grid; grid-template-columns: 2rem 1fr; gap: 0 1.25rem; padding: 1.25rem 0.5rem; border-bottom: 1px solid #F3F4F6; align-items: start; transition: background 0.2s, padding-left 0.2s; }
 .criterio-row:first-child { border-top: 1px solid #F3F4F6; }
 .criterio-row:hover { background: #FAFAF8; padding-left: 0.75rem; }
-.criterio-n { font-size: 0.625rem; font-weight: 700; letter-spacing: 0.1em; font-family: 'Courier New', monospace; color: #A85535; padding-top: 0.25rem; }
+.criterio-n {
+  padding-top: 0.25rem;
+}
 .criterio-title { font-size: 0.9375rem; font-weight: 700; color: #111827; margin-bottom: 0.35rem; line-height: 1.35; }
 .criterio-desc { font-size: 0.875rem; color: #4B5563; line-height: 1.65; }
 .empresa-callout { display: grid; grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem; background: #fff; border-top: 2px solid #111827; }
@@ -1015,3 +1014,31 @@ a[style*="background: #A85535"]:hover {
     color: #444;
   }
 }
+
+/* ── NUMERADORES ───────────────────────────────────────────────────────────
+   El sitio tenía trece tratamientos distintos para lo mismo: seis clases entre
+   9 y 11px, una a 40px y cuatro escritas con Tailwind suelto. Aquí quedan dos,
+   y la elección es por función, no por página. Ver DEC-D26.
+
+   .num-paso    El número es jerarquía visual: ordena una lista de contenido que
+                el visitante lee entera (proceso, qué incluye, condicionantes).
+   .num-indice  El número es referencia de apoyo dentro de un bloque denso donde
+                el protagonista es otra cosa (un diagrama, una píldora). Pequeño
+                por decisión, no por inercia. */
+.num-paso {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 900;
+  color: var(--color-brand, #A85535);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.num-indice {
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--color-brand, #A85535);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+.num-indice--tenue { color: #9CA3AF; }

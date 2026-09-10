@@ -340,7 +340,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
           { n: '04', title: 'Entrega con garantía', desc: 'Entregamos la obra limpia, revisada y en el plazo acordado. Recibes un certificado de garantía de 2 años sobre toda la ejecución. Si en ese periodo algo falla por nuestra parte, lo solucionamos sin coste adicional.' },
         ].map(step => (
           <li>
-            <p class="font-black text-gray-200 mb-4" style="font-size:3.5rem;letter-spacing:-0.04em;line-height:1"
+            <p class="num-paso mb-4"
                aria-hidden="true">{step.n}</p>
             <h3 class="text-base font-bold text-gray-900 mb-3">{step.title}</h3>
             <p class="text-sm text-gray-500 leading-relaxed">{step.desc}</p>

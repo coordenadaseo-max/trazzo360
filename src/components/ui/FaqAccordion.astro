@@ -5,13 +5,16 @@ interface FAQ {
 }
 interface Props {
   faqs: FAQ[];
+  /** Abre la primera por defecto: es la más buscada y evita que el bloque
+      se muestre como una lista de títulos sin una sola respuesta visible. */
+  abrirPrimera?: boolean;
 }
-const { faqs } = Astro.props;
+const { faqs, abrirPrimera = true } = Astro.props;
 ---
 
 <div class="faq-list">
-  {faqs.map(faq => (
-    <details class="faq-item">
+  {faqs.map((faq, i) => (
+    <details class="faq-item" open={abrirPrimera && i === 0}>
       <summary class="faq-summary">
         <h3 class="faq-q">{faq.q}</h3>
         <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">

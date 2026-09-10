@@ -680,7 +680,27 @@
 .faq-chevron { flex-shrink: 0; color: #A85535; margin-top: 0.25rem; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
 .faq-item[open] .faq-chevron { transform: rotate(180deg); }
 .faq-body { overflow: hidden; }
-.faq-a { font-size: 0.875rem; color: #4B5563; line-height: 1.7; padding: 0 0.5rem 1.25rem; margin: 0; }
+
+/* Apertura del acordeón. `<details>` no anima de forma nativa —el contenido pasa
+   de display:none a visible— así que se anima la entrada del cuerpo, que es donde
+   se notaba el salto brusco. No se anima el cierre: sin JS no hay forma fiable, y
+   un cierre instantáneo no molesta como sí lo hacía la apertura. */
+.faq-item[open] .faq-body {
+  animation: faq-abrir var(--dur-reveal, 0.35s) var(--ease-expo, cubic-bezier(0.16,1,0.3,1));
+}
+@keyframes faq-abrir {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-item[open] .faq-body { animation: none; }
+}
+.faq-a {
+  font-size: 0.875rem; color: #4B5563; line-height: 1.7;
+  padding: 0 0.5rem 1.25rem; margin: 0;
+  max-width: 62ch;   /* la mediana de respuesta son 310 caracteres: a ancho completo
+                        se pasaba de la medida de lectura cómoda */
+}
 
 /* ── 13. ZONAS / MUNICIPIOS ───────────────────────────────── */
 

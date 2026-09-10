@@ -83,11 +83,19 @@ const faqs = [
     a: 'Lo primero que cambia es lo que no se nota: no hay que doblar el tiempo de limpieza de las juntas del baño, no se dispara el diferencial cuando se pone el aire acondicionado, el suelo no cruje por la noche. Después viene lo que sí se nota: más luz con suelos claros, más espacio aparente con carpintería lacada, más calidad en el uso del baño y la cocina cada día. Al mes de vivir en el piso reformado, la referencia del anterior desaparece y solo queda la nueva normalidad.',
   },
 ];
+// Agrupadas por tema: una lista larga de títulos que empiezan igual es un muro.
+// El orden sigue el de una decisión de compra. Ver DEC-D25.
+const faqGrupos = [
+  { titulo: 'Alcance y decisiones previas', faqs: [faqs[0], faqs[1], faqs[2], faqs[3]] },
+  { titulo: 'Presupuesto y prioridades', faqs: [faqs[5], faqs[10], faqs[9]] },
+  { titulo: 'Durante la obra', faqs: [faqs[4], faqs[6], faqs[7]] },
+  { titulo: 'Materiales y resultado', faqs: [faqs[8], faqs[11]] },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -614,7 +622,7 @@ const faqSchema = {
           Todo lo que necesitas saber sobre reforma de vivienda
         </h2>
       </div>
-      <FaqAccordion {faqs} />
+      <FaqAccordion grupos={faqGrupos} />
     </div>
   </section>
   <!-- CTA Final -->

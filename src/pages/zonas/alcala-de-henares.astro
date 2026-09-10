@@ -8,6 +8,14 @@ import HeroTitle from '../../components/ui/HeroTitle.astro';
 
 const zone = ZONES.find(z => z.slug === 'alcala-de-henares')!;
 const faqs  = ZONE_FAQS['alcala-de-henares'] ?? [];
+
+// Agrupadas por tema: nueve títulos seguidos que empiezan igual son un muro.
+// Sólo esta zona lo necesita; las demás tienen 5 o 6 preguntas. Ver DEC-D25.
+const faqGrupos = [
+  { titulo: 'Qué hacemos en Alcalá', faqs: [faqs[0], faqs[7], faqs[8]] },
+  { titulo: 'Precio y plazos',       faqs: [faqs[5], faqs[6], faqs[4]] },
+  { titulo: 'Antes de empezar',      faqs: [faqs[2], faqs[3], faqs[1]] },
+].filter(g => g.faqs.every(Boolean));
 const relatedZoneSlugs = RELATED_ZONES['alcala-de-henares'] ?? [];
 const relatedZones = ZONES.filter(z => relatedZoneSlugs.includes(z.slug));
 
@@ -113,7 +121,7 @@ const zoneSchema = {
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -323,7 +331,7 @@ const faqSchema = {
       <p class="text-gray-600 leading-relaxed mb-8">
         Si tienes dudas sobre plazos, precios o qué incluye cada servicio en {zone.name}, aquí respondemos las más habituales. Si no encuentras la tuya, escríbenos o llámanos y te respondemos el mismo día.
       </p>
-      <FaqAccordion faqs={faqs} />
+      <FaqAccordion grupos={faqGrupos} />
     </div>
   </section>
 

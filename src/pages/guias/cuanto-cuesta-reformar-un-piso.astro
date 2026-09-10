@@ -59,11 +59,19 @@ const faqs = [
     a: 'La mayoría de reformas de pisos que no afectan a muros de carga ni fachadas se tramitan como obra menor o comunicación previa. Si la reforma incluye derribo de un tabique portante o modificación estructural, requiere proyecto firmado y licencia de obra mayor. En los ayuntamientos del Corredor del Henares, la obra menor tiene un trámite más ágil. En la visita técnica te decimos qué trámite corresponde a tu caso y lo gestionamos si es necesario.',
   },
 ];
+// Agrupadas por tema: una lista larga de títulos que empiezan igual es un muro.
+// El orden sigue el de una decisión de compra. Ver DEC-D25.
+const faqGrupos = [
+  { titulo: 'Cuánto cuesta', faqs: [faqs[0], faqs[4], faqs[5]] },
+  { titulo: 'Alcance y prioridades', faqs: [faqs[1], faqs[7], faqs[6]] },
+  { titulo: 'Plazos y convivencia', faqs: [faqs[2], faqs[3]] },
+  { titulo: 'Imprevistos y trámites', faqs: [faqs[8], faqs[9]] },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -402,7 +410,7 @@ const faqSchema = {
       <h2 id="h-faq-piso" class="h4-block mb-6 reveal" style="letter-spacing:-0.02em">
         Preguntas frecuentes sobre el coste de una reforma de piso
       </h2>
-      <FaqAccordion faqs={faqs} />
+      <FaqAccordion grupos={faqGrupos} />
     </section>
 
     <!-- Otras guías -->

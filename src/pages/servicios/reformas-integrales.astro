@@ -85,11 +85,19 @@ const faqs = [
     a: 'Lo que más se nota no es lo estético, sino lo funcional. Una instalación eléctrica nueva soporta los electrodomésticos actuales sin disparar el diferencial. Una fontanería renovada elimina las goteras y el ruido de tuberías por la noche. Los suelos nuevos y la pintura reciente cambian la percepción de limpieza y amplitud. Al cabo de un mes de vivir en el piso reformado, la referencia mental del anterior se borra completamente.',
   },
 ];
+// Agrupadas por tema: una lista larga de títulos que empiezan igual es un muro.
+// El orden sigue el de una decisión de compra. Ver DEC-D25.
+const faqGrupos = [
+  { titulo: 'Alcance y decisiones previas', faqs: [faqs[1], faqs[0], faqs[2], faqs[6]] },
+  { titulo: 'Durante la obra', faqs: [faqs[4], faqs[7], faqs[3], faqs[5], faqs[8]] },
+  { titulo: 'Mejoras que se deciden ahora', faqs: [faqs[9], faqs[10]] },
+  { titulo: 'El resultado', faqs: [faqs[11]] },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -733,7 +741,7 @@ const zones = [
           Todo lo que necesitas saber antes de una reforma integral
         </h2>
       </div>
-      <FaqAccordion faqs={faqs} />
+      <FaqAccordion grupos={faqGrupos} />
     </div>
   </section>
   <!-- CTA Final -->

@@ -83,11 +83,19 @@ const faqs = [
     a: 'Una rehabilitación de fachada con sistema de aislamiento por el exterior (SATE) puede reducir la demanda de calefacción y refrigeración del edificio entre un 30 y un 60%, según el estado previo del aislamiento. El ahorro en la factura energética se reparte entre todos los propietarios y puede compensar la inversión en 10–20 años. Además, mejora la calificación energética del edificio, lo que tiene impacto en el valor de mercado de los pisos. El beneficio en confort es inmediato: menos frío en invierno en las habitaciones con fachada exterior y menos calor en verano.',
   },
 ];
+// Agrupadas por tema: una lista larga de títulos que empiezan igual es un muro.
+// El orden sigue el de una decisión de compra. Ver DEC-D25.
+const faqGrupos = [
+  { titulo: 'Junta y aprobación', faqs: [faqs[0], faqs[4], faqs[8]] },
+  { titulo: 'Interlocución y gestión', faqs: [faqs[3], faqs[6], faqs[5]] },
+  { titulo: 'Durante la obra', faqs: [faqs[1], faqs[2], faqs[7]] },
+  { titulo: 'Antes de decidir', faqs: [faqs[10], faqs[9], faqs[11]] },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -591,7 +599,7 @@ const faqSchema = {
           Todo lo que necesitas saber sobre obras en comunidades
         </h2>
       </div>
-      <FaqAccordion {faqs} />
+      <FaqAccordion grupos={faqGrupos} />
     </div>
   </section>
   <!-- CTA Final -->

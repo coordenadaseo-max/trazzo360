@@ -59,11 +59,19 @@ const faqs = [
     a: 'Habitualmente no. La obra en vivienda habitual tributa al tipo reducido del 10 % de IVA. Los presupuestos suelen indicarlo como "IVA no incluido" o desglosarlo al final. Antes de comparar cifras, comprueba si el IVA está dentro o no: en una reforma de 5.000€ netos, el IVA añade 500€. En materiales comprados directamente a tienda, el IVA ya está incluido en el precio de catálogo.',
   },
 ];
+// Agrupadas por tema: una lista larga de títulos que empiezan igual es un muro.
+// El orden sigue el de una decisión de compra. Ver DEC-D25.
+const faqGrupos = [
+  { titulo: 'Cuánto cuesta', faqs: [faqs[0], faqs[1], faqs[5]] },
+  { titulo: 'Qué encarece el precio', faqs: [faqs[2], faqs[7], faqs[6]] },
+  { titulo: 'Comparar presupuestos', faqs: [faqs[3], faqs[8], faqs[9]] },
+  { titulo: 'Decisiones que afectan al coste', faqs: [faqs[4]] },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -414,7 +422,7 @@ const faqSchema = {
       <h2 id="h-faq-bano" class="h4-block mb-6 reveal" style="letter-spacing:-0.02em">
         Preguntas frecuentes sobre el coste de una reforma de baño
       </h2>
-      <FaqAccordion faqs={faqs} />
+      <FaqAccordion grupos={faqGrupos} />
     </section>
 
     <!-- Otras guías -->

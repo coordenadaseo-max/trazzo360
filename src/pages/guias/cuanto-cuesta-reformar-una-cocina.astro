@@ -59,11 +59,19 @@ const faqs = [
     a: 'En vivienda habitual, el tipo reducido es el 10 % de IVA sobre la mano de obra. Los materiales tributan al 21 % salvo que se incluyan en el precio de la obra de manera conjunta. La mayoría de presupuestos indican "IVA no incluido" y lo desglosan al final. Antes de comparar cifras, verifica si el IVA está dentro o no: en una reforma de 10.000€, la diferencia es de 1.000–2.000€ según la distribución obra/material.',
   },
 ];
+// Agrupadas por tema: una lista larga de títulos que empiezan igual es un muro.
+// El orden sigue el de una decisión de compra. Ver DEC-D25.
+const faqGrupos = [
+  { titulo: 'Cuánto cuesta', faqs: [faqs[0], faqs[3], faqs[7]] },
+  { titulo: 'Qué encarece el precio', faqs: [faqs[1], faqs[2], faqs[6]] },
+  { titulo: 'Comparar presupuestos', faqs: [faqs[8], faqs[9]] },
+  { titulo: 'Plazos y decisiones', faqs: [faqs[4], faqs[5]] },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -412,7 +420,7 @@ const faqSchema = {
       <h2 id="h-faq-cocina" class="h4-block mb-6 reveal" style="letter-spacing:-0.02em">
         Preguntas frecuentes sobre el coste de una reforma de cocina
       </h2>
-      <FaqAccordion faqs={faqs} />
+      <FaqAccordion grupos={faqGrupos} />
     </section>
 
     <!-- Otras guías -->

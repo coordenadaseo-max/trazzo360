@@ -36,6 +36,29 @@ const faqSchema = {
   ],
 };
 
+// Agrupadas por tema: diez títulos seguidos son un muro. La fuente sigue siendo
+// el schema, así que los grupos se derivan de él y no duplican contenido.
+// Ver DEC-D25.
+const faqPlanas = faqSchema.mainEntity.map(item => ({ q: item.name, a: item.acceptedAnswer.text }));
+const faqGrupos = [
+  { titulo: 'Cuánto cuesta',          faqs: [faqPlanas[3], faqPlanas[1], faqPlanas[2]] },
+  { titulo: 'Qué encarece el precio', faqs: [faqPlanas[4], faqPlanas[6]] },
+  { titulo: 'Plazos y convivencia',   faqs: [faqPlanas[5], faqPlanas[8]] },
+  { titulo: 'Presupuestos y trámites',faqs: [faqPlanas[7], faqPlanas[9], faqPlanas[0]] },
+];
+
+// El schema se reordena igual que lo visible. Aquí la fuente es el propio schema,
+// así que en vez de aplanar los grupos sobre él se reconstruye su mainEntity con
+// el orden de los grupos: mismas 10 preguntas, mismo orden que ve el visitante.
+const faqSchemaOrdenado = {
+  ...faqSchema,
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 // ── Función de formato ────────────────────────────────────────────────────────
 function fmt(n: number) { return Math.round(n).toLocaleString('es-ES'); }
 
@@ -55,7 +78,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   title={pageTitle}
   description={pageDesc}
   canonical={canonical}
-  schema={[breadcrumbSchema, faqSchema]}
+  schema={[breadcrumbSchema, faqSchemaOrdenado]}
 >
 
   <!-- Breadcrumb -->
@@ -460,7 +483,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
     <div class="max-w-5xl mx-auto px-4">
       <h2 class="h4-block mb-2 reveal">Preguntas frecuentes sobre precios de reforma</h2>
       <div class="w-10 h-1 bg-[#A85535] mb-8"></div>
-      <FaqAccordion faqs={faqSchema.mainEntity.map(item => ({ q: item.name, a: item.acceptedAnswer.text }))} />
+      <FaqAccordion grupos={faqGrupos} />
     </div>
   </section>
 

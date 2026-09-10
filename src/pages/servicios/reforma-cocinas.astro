@@ -88,11 +88,18 @@ const faqs = [
     a: 'Una cocina sin ventana directa al exterior necesita una campana extractora conectada a un conducto de extracción que salga al exterior del edificio, o bien un sistema de recirculación con filtros de carbono activo que limpia el aire sin expulsarlo. La extracción directa es más eficaz, pero requiere que el conducto esté disponible o que se pueda ejecutar. En la visita técnica evaluamos qué solución es viable según la posición de la cocina en la vivienda.',
   },
 ];
+// Agrupadas por tema: una lista larga de títulos que empiezan igual es un muro.
+// El orden sigue el de una decisión de compra. Ver DEC-D25.
+const faqGrupos = [
+  { titulo: 'Alcance y decisiones previas', faqs: [faqs[0], faqs[3], faqs[2]] },
+  { titulo: 'Durante la obra', faqs: [faqs[1], faqs[6], faqs[5]] },
+  { titulo: 'Instalaciones y materiales', faqs: [faqs[4], faqs[7], faqs[8]] },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -770,7 +777,7 @@ const tranches = [
         </h2>
       </div>
 
-      <FaqAccordion {faqs} />
+      <FaqAccordion grupos={faqGrupos} />
 
     </div>
   </section>

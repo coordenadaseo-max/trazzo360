@@ -83,11 +83,19 @@ const faqs = [
     a: 'La fecha de apertura es el dato más importante en la planificación de la reforma de un local. Todo lo demás (fases de obra, pedido de materiales, documentación técnica) se organiza en torno a esa fecha. Si hay una fecha comprometida (un contrato de franquicia, una temporada de mercado, un acuerdo con un proveedor), arrancamos con ella como referencia y ajustamos el alcance de la obra para que sea alcanzable. Si el plazo no da para todo lo que se quería hacer, mejor saberlo antes de empezar.',
   },
 ];
+// Agrupadas por tema: una lista larga de títulos que empiezan igual es un muro.
+// El orden sigue el de una decisión de compra. Ver DEC-D25.
+const faqGrupos = [
+  { titulo: 'Antes de presupuestar', faqs: [faqs[0], faqs[1], faqs[4], faqs[5]] },
+  { titulo: 'Licencia y trámites', faqs: [faqs[7], faqs[10], faqs[9]] },
+  { titulo: 'Plazos y apertura', faqs: [faqs[2], faqs[11], faqs[3]] },
+  { titulo: 'Comparar presupuestos', faqs: [faqs[6], faqs[8]] },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
+  mainEntity: faqGrupos.flatMap(g => g.faqs).map(f => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -644,7 +652,7 @@ const faqSchema = {
           Todo lo que necesitas saber sobre reforma de local comercial
         </h2>
       </div>
-      <FaqAccordion {faqs} />
+      <FaqAccordion grupos={faqGrupos} />
     </div>
   </section>
   <!-- 16. CTA Final -->

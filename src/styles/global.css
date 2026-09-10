@@ -323,21 +323,26 @@
   font-size: .9375rem;
   color: #374151;
 }
+/* Marcador de lista: una barra corta de 1px, no un cuadrado hueco.
+   El cuadrado era una forma cerrada que pedía atención propia. El sistema se
+   apoya en líneas de 1px —separadores, bordes, la línea del proceso— y el
+   marcador ahora habla ese idioma: marca sin competir. Ver DEC-D30, que
+   supersede DEC-D09.
+   Alineación: (15px × 1.55 − 1px) / 2 = 11.125px hasta el centro de la línea. */
 .list-marca li::before {
   content: '';
   display: block;
-  width: 6px;
-  height: 6px;
-  flex: 0 0 6px;
+  width: 10px;
+  height: 1px;
+  flex: 0 0 10px;
   border-radius: 0;
-  margin-top: 8.625px;
-  border: 1px solid #9CA3AF;
-  background: transparent;
+  margin-top: 11.125px;
+  background: #9CA3AF;
 }
 .list-marca.dark li { color: #9CA3AF; }
-.list-marca.dark li::before { border-color: rgba(255,255,255,.35); }
+.list-marca.dark li::before { background: rgba(255,255,255,.35); }
 .list-marca.compromisos li { color: #d1d5db; }
-.list-marca.compromisos li::before { border-color: #A85535; }
+.list-marca.compromisos li::before { background: #A85535; }
 
 /* Lista oscura — convivencia */
 .list-convivencia {
@@ -527,23 +532,32 @@
   margin: 0;
   padding: 0;
 }
+/* La línea recorre el centro de la columna del número: 0.5rem de padding del
+   paso + la mitad de sus 4rem. Antes pasaba por la izquierda del número y se
+   leía como un margen, no como una secuencia. */
 .proceso-steps::before {
   content: ''; position: absolute;
-  left: 0.875rem; top: 2rem; bottom: 0;
+  left: 2.5rem; top: 2rem; bottom: 0;
   width: 1px;
   background: linear-gradient(to bottom, #A85535 0%, #E5E7EB 60%, transparent 100%);
 }
 .proceso-step {
   display: grid; grid-template-columns: 4rem 1fr; gap: 0 1.5rem;
   padding: 1.375rem 0.5rem; border-bottom: 1px solid #F3F4F6;
-  align-items: start; transition: background 0.2s, padding-left 0.2s;
+  align-items: start;
   position: relative;
+  border-left: 2px solid transparent;
+  transition: background var(--dur-fast, 0.2s) var(--ease-expo, ease),
+              border-left-color var(--dur-fast, 0.2s) var(--ease-expo, ease);
 }
-.proceso-step:hover { background: #F9F7F4; padding-left: 0.875rem; }
+.proceso-step:hover { background: #F9F7F4; border-left-color: #A85535; }
 .proceso-step__n {
   padding-top: 0.3rem;
   z-index: 1;
   position: relative;
+  text-align: center;          /* centrado en su columna: la línea lo atraviesa */
+  background: #fff;            /* tapa la línea detrás del número */
+  padding-bottom: 0.3rem;
 }
 .proceso-step__title { font-size: 0.9375rem; font-weight: 700; color: #111827; margin: 0 0 0.375rem; }  /* <h3>: anula el margen del navegador */
 .proceso-step__desc { font-size: 0.875rem; color: #4B5563; line-height: 1.65; max-width: 48ch; }
@@ -571,7 +585,8 @@
   display: grid; grid-template-columns: 1fr auto auto;
   gap: 1rem 2rem; align-items: center;
   padding: 1rem 0.5rem; border-bottom: 1px solid #E5E7EB;
-  transition: background 0.2s, padding-left 0.2s;
+  border-left: 2px solid transparent;
+  transition: background var(--dur-fast, 0.2s) var(--ease-expo, ease), border-left-color var(--dur-fast, 0.2s) var(--ease-expo, ease);
 }
 @media(max-width:600px){
   .price-row { grid-template-columns: 1fr auto; }
@@ -584,7 +599,7 @@
 .price-row--ref .price-row__sub::before { content: ''; display: inline-block; width: 0.5rem; height: 1px; background: #D1D5DB; }
 
 .price-row--integral { cursor: default; }
-.price-row--integral:hover { background: #FAFAF8; padding-left: 0.75rem; }
+.price-row--integral:hover { background: #FAFAF8; border-left-color: #A85535; }
 
 .price-row--highlight { background: #FFF9F6; border-left: 2px solid #A85535; padding-left: 0.75rem; }
 .price-row--highlight:hover { background: #FFF3EE; }
@@ -629,12 +644,13 @@
 .presupuesto-dl { border-top: 2px solid #111827; }
 .presupuesto-row {
   display: grid; grid-template-columns: 4rem 1fr; grid-template-rows: auto auto;
-  gap: 0.125rem 1rem; padding: 1.125rem 0.5rem; border-bottom: 1px solid #E5E7EB;
-  transition: background 0.2s, padding-left 0.2s;
+  gap: 0.125rem 1.5rem; padding: 1.125rem 0.5rem; border-bottom: 1px solid #E5E7EB;
+  border-left: 2px solid transparent;
+  transition: background var(--dur-fast, 0.2s) var(--ease-expo, ease), border-left-color var(--dur-fast, 0.2s) var(--ease-expo, ease);
 }
-.presupuesto-row:hover { background: #F9F7F4; padding-left: 0.875rem; }
+.presupuesto-row:hover { background: #F9F7F4; border-left-color: #A85535; }
 @media(min-width:640px){
-  .presupuesto-row { grid-template-columns: 2rem 14rem 1fr; grid-template-rows: auto; align-items: baseline; }
+  .presupuesto-row { grid-template-columns: 4.5rem 14rem 1fr; grid-template-rows: auto; align-items: baseline; }
 }
 .presupuesto-n {
   padding-top: 0.25rem;
@@ -680,10 +696,11 @@
 .faq-summary {
   display: flex; justify-content: space-between; align-items: start; gap: 1.25rem;
   padding: 1.25rem 0.5rem; cursor: pointer; list-style: none;
-  transition: background 0.2s, padding-left 0.2s;
+  border-left: 2px solid transparent;
+  transition: background var(--dur-fast, 0.2s) var(--ease-expo, ease), border-left-color var(--dur-fast, 0.2s) var(--ease-expo, ease);
 }
 .faq-summary::-webkit-details-marker { display: none; }
-.faq-summary:hover { background: #fff; padding-left: 0.75rem; }
+.faq-summary:hover { background: #fff; border-left-color: #A85535; }
 .faq-q { font-size: 0.9375rem; font-weight: 700; color: #111827; line-height: 1.4; margin: 0; flex: 1; }
 .faq-chevron { flex-shrink: 0; color: #A85535; margin-top: 0.25rem; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
 .faq-item[open] .faq-chevron { transform: rotate(180deg); }
@@ -865,9 +882,12 @@
 
 /* ── 20. CRITERIOS / EMPRESA CALLOUT ──────────────────────── */
 
-.criterio-row { display: grid; grid-template-columns: 2rem 1fr; gap: 0 1.25rem; padding: 1.25rem 0.5rem; border-bottom: 1px solid #F3F4F6; align-items: start; transition: background 0.2s, padding-left 0.2s; }
+.criterio-row { display: grid; grid-template-columns: 4rem 1fr; gap: 0 1.25rem; padding: 1.25rem 0.5rem; border-bottom: 1px solid #F3F4F6; align-items: start;
+  border-left: 2px solid transparent;
+  transition: background var(--dur-fast, 0.2s) var(--ease-expo, ease), border-left-color var(--dur-fast, 0.2s) var(--ease-expo, ease);
+}
 .criterio-row:first-child { border-top: 1px solid #F3F4F6; }
-.criterio-row:hover { background: #FAFAF8; padding-left: 0.75rem; }
+.criterio-row:hover { background: #FAFAF8; border-left-color: #A85535; }
 .criterio-n {
   padding-top: 0.25rem;
 }

@@ -473,21 +473,21 @@ Esta regla prevalece sobre cualquier otra consideración de SEO o cobertura de U
 }
 .list-marca li::before {
   content: ''; display: block;
-  width: 6px; height: 6px; flex: 0 0 6px;
+  width: 10px; height: 1px; flex: 0 0 10px;
   border-radius: 0;
-  margin-top: 8.625px; /* (15px × 1.55 − 6px) / 2 — centrado matemático */
-  border: 1px solid #9CA3AF; background: transparent;
+  margin-top: 11.125px; /* (15px × 1.55 − 1px) / 2 — centrado matemático */
+  background: #9CA3AF;
 }
 /* Variante oscura */
 .list-marca.dark li { color: #9CA3AF; }
-.list-marca.dark li::before { border-color: rgba(255,255,255,.35); }
+.list-marca.dark li::before { background: rgba(255,255,255,.35); }
 /* Variante compromisos (terracota — solo en lista de peso máximo) */
 .list-marca.compromisos li { color: #d1d5db; }
-.list-marca.compromisos li::before { border-color: #A85535; }
+.list-marca.compromisos li::before { background: #A85535; }
 /* Convivencia: texto .8125rem/1.5lh sobre fondo oscuro */
 .list-convivencia li::before {
-  margin-top: 6.75px; /* (13px × 1.5 − 6px) / 2 */
-  border-color: rgba(255,255,255,.2);
+  margin-top: 9.25px; /* (13px × 1.5 − 1px) / 2 */
+  background: rgba(255,255,255,.2);
 }
 ```
 

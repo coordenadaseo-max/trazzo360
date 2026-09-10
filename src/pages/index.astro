@@ -367,39 +367,39 @@ const trustCompromisos = COMPROMISOS.filter(c =>
         {[
           {
             label: 'Baño · Torrejón de Ardoz',
-            antes: '/img/proyectos/bano-principal-antes-de-la-reforma-torrejon-madrid.webp',
-            despues: '/img/proyectos/bano-principal-despues-de-la-reforma-torrejon-madrid.webp',
+            antes: '/img/proyectos/bano-principal-antes-de-la-reforma-torrejon-madrid.webp', antesW: 800, antesH: 1067,
+            despues: '/img/proyectos/bano-principal-despues-de-la-reforma-torrejon-madrid.webp', despuesW: 800, despuesH: 1067,
           },
           {
             label: 'Cambio bañera por plato de ducha · Guadalajara',
-            antes: '/img/proyectos/cambio-banera-plato-ducha-antes-guadalajara.webp',
-            despues: '/img/proyectos/cambio-banera-plato-ducha-despues-guadalajara.webp',
+            antes: '/img/proyectos/cambio-banera-plato-ducha-antes-guadalajara.webp', antesW: 1024, antesH: 1024,
+            despues: '/img/proyectos/cambio-banera-plato-ducha-despues-guadalajara.webp', despuesW: 1024, despuesH: 1024,
           },
           {
             label: 'Cocina · Alcalá de Henares',
-            antes: '/img/proyectos/cocina-antes-alcala-madrid.webp',
-            despues: '/img/proyectos/cocina-despues-alcala-madrid.webp',
+            antes: '/img/proyectos/cocina-antes-alcala-madrid.webp', antesW: 800, antesH: 1067,
+            despues: '/img/proyectos/cocina-despues-alcala-madrid.webp', despuesW: 800, despuesH: 1067,
           },
           {
             label: 'Buhardilla · Ajalvir',
-            antes: '/img/proyectos/estado-original-de-buhardilla-antes-de-la-reforma-ajalvir-madrid.jpg.webp',
-            despues: '/img/proyectos/estado-original-de-buhardilla-despues-de-la-reforma-ajalvir-madrid.jpg.webp',
+            antes: '/img/proyectos/estado-original-de-buhardilla-antes-de-la-reforma-ajalvir-madrid.jpg.webp', antesW: 768, antesH: 1024,
+            despues: '/img/proyectos/estado-original-de-buhardilla-despues-de-la-reforma-ajalvir-madrid.jpg.webp', despuesW: 768, despuesH: 1024,
           },
           {
             label: 'Apartamento 50 m² · Madrid',
-            antes: '/img/proyectos/reforma-apartamento-50-m2-antes-madrid.jpg.webp',
-            despues: '/img/proyectos/reforma-apartamento-50-m2-despues-madrid.jpg.webp',
+            antes: '/img/proyectos/reforma-apartamento-50-m2-antes-madrid.jpg.webp', antesW: 724, antesH: 1024,
+            despues: '/img/proyectos/reforma-apartamento-50-m2-despues-madrid.jpg.webp', despuesW: 724, despuesH: 1024,
           },
         ].map(p => (
           <article class="proyecto-item">
             <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">{p.label}</p>
             <div class="proyecto-pair">
               <div class="proyecto-img-wrap">
-                <img src={p.antes} alt={`Antes de la reforma — ${p.label}`} class="proyecto-img" loading="lazy" />
+                <img src={p.antes} alt={`Antes de la reforma: ${p.label}`} class="proyecto-img" loading="lazy" width={p.antesW} height={p.antesH} />
                 <span class="proyecto-badge antes">Antes</span>
               </div>
               <div class="proyecto-img-wrap">
-                <img src={p.despues} alt={`Después de la reforma — ${p.label}`} class="proyecto-img" loading="lazy" />
+                <img src={p.despues} alt={`Después de la reforma: ${p.label}`} class="proyecto-img" loading="lazy" width={p.despuesW} height={p.despuesH} />
                 <span class="proyecto-badge despues">Después</span>
               </div>
             </div>

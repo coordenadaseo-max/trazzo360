@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import DataTable from '../../components/ui/DataTable.astro';
 import CtaInline from '../../components/ui/CtaInline.astro';
 import ProcesoSteps from '../../components/ui/ProcesoSteps.astro';
 import PasosIncluye from '../../components/PasosIncluye.astro';
@@ -181,31 +182,20 @@ const faqSchema = {
         El precio de la reforma de un local depende de la superficie, del tipo de actividad y del alcance de las instalaciones. El presupuesto exacto se emite tras la visita técnica gratuita. Obtén una estimación desglosada en la <a href="/calculadora-precio-reforma/?servicio=locales-comerciales" class="text-[#A85535] hover:underline font-medium">calculadora de precios para locales comerciales</a>.
       </p>
       <p class="text-xs text-gray-400 mb-3">Precios orientativos sin IVA (21 % en locales comerciales). Sujeto a visita técnica. El precio cerrado se fija en el contrato.</p>
-      <div class="overflow-x-auto mb-6">
-        <table class="w-full text-sm border-collapse bg-white">
-          <caption class="sr-only">Calidades de acabado de reforma de local, con su precio orientativo por metro cuadrado y las notas de cada una.</caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900">Calidad de acabado</th>
-              <th scope="col" class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo / m²</th>
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Notas</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Acondicionamiento esencial', price: '400–600 €/m²', notes: 'Cuadro, instalación básica, suelo, pintura, falso techo. Sin IVA.' },
-              { label: 'Reforma media', price: '600–800 €/m²', notes: 'Todo lo esencial + climatización, carpintería, iluminación diseñada y proyecto técnico básico. Sin IVA.' },
-              { label: 'Reforma alta', price: '800–1.100 €/m²', notes: 'Diseño, instalaciones completas, revestimientos premium y tramitación de licencia incluida. Sin IVA.' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.label}</td>
-                <td class="py-3 px-5 text-right font-semibold text-gray-900">{row.price}</td>
-                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.notes}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        class="mb-6"
+        caption="Calidades de acabado de reforma de local, con su precio orientativo por metro cuadrado y las notas de cada una."
+        columns={[
+          { head: "Calidad de acabado" },
+          { head: "Precio orientativo / m²", der: true, peso: "fuerte", color: "oscuro" },
+          { head: "Notas", soloDesktop: true, color: "apagado" },
+        ]}
+        rows={[
+          ["Acondicionamiento esencial", "400–600 €/m²", "Cuadro, instalación básica, suelo, pintura, falso techo. Sin IVA."],
+          ["Reforma media", "600–800 €/m²", "Todo lo esencial + climatización, carpintería, iluminación diseñada y proyecto técnico básico. Sin IVA."],
+          ["Reforma alta", "800–1.100 €/m²", "Diseño, instalaciones completas, revestimientos premium y tramitación de licencia incluida. Sin IVA."],
+        ]}
+      />
 
       <div class="bg-white p-6" style="border-top:2px solid #E5E7EB">
         <p class="text-sm font-semibold text-gray-900 mb-3">Tramitación de licencia (partida adicional, orientativa)</p>
@@ -469,35 +459,24 @@ const faqSchema = {
       <h2 id="h-plazos" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Plazos de obra orientativos
       </h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <caption class="sr-only">Plazos orientativos por fase de obra, según el local tenga menos de 50 metros cuadrados o entre 50 y 150.</caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900">Fase</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Local &lt;50 m²</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Local 50–150 m²</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { fase: 'Vaciado y demolición', c50: '1–2 días', c150: '2–4 días' },
-              { fase: 'Instalación eléctrica y fontanería', c50: '3–5 días', c150: '1–2 sem.' },
-              { fase: 'Particiones de pladur y techo técnico', c50: '3–5 días', c150: '1–2 sem.' },
-              { fase: 'Suelos, pintura y carpintería', c50: '3–5 días', c150: '1–2 sem.' },
-              { fase: 'Climatización y remates', c50: '2–3 días', c150: '3–5 días' },
-              { fase: 'Total obra orientativo', c50: '4–8 sem.', c150: '6–14 sem.' },
-              { fase: 'Tramitación licencia (si aplica)', c50: '2–8 sem.', c150: '4–12 sem.' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i === 5 || i === 6 ? 'bg-[#A85535]/5 font-semibold' : i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.fase}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.c50}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.c150}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Plazos orientativos por fase de obra, según el local tenga menos de 50 metros cuadrados o entre 50 y 150."
+        fondo="beige"
+              columns={[
+          { head: "Fase" },
+          { head: "Local <50 m²", der: true, pad: 4, color: "suave" },
+          { head: "Local 50–150 m²", der: true, pad: 4, color: "suave" },
+        ]}
+        rows={[
+          ["Vaciado y demolición", "1–2 días", "2–4 días"],
+          ["Instalación eléctrica y fontanería", "3–5 días", "1–2 sem."],
+          ["Particiones de pladur y techo técnico", "3–5 días", "1–2 sem."],
+          ["Suelos, pintura y carpintería", "3–5 días", "1–2 sem."],
+          ["Climatización y remates", "2–3 días", "3–5 días"],
+          { celdas: ["Total obra orientativo", "4–8 sem.", "6–14 sem."], destacada: true },
+          { celdas: ["Tramitación licencia (si aplica)", "2–8 sem.", "4–12 sem."], destacada: true },
+        ]}
+      />
       <p class="text-xs text-gray-400 mt-4">
         Plazos orientativos. El plazo definitivo se fija en el contrato tras la visita técnica. La tramitación de licencia de actividad varía por municipio y tipo de actividad.
       </p>

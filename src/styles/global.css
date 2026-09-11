@@ -908,6 +908,64 @@
 }
 /* Catálogo término/definición sin orden. A diferencia de .criterio-row no lleva
    numerador: numerar un catálogo sería estructura falsa. Ver DEC-D36. */
+/* ── Tabla de datos ────────────────────────────────────────────────────────────
+   Patrón A del censo de tablas: cabecera clara sobre filete terracota, filas
+   alternas y columnas que pueden ocultarse en móvil. Lo emite DataTable.astro,
+   que es el único sitio donde se escribe el markup. Ver DEC-D37.
+
+   Se escribe con @apply a propósito: la extracción tenía que producir valores
+   idénticos a los 18 juegos de utilidades que sustituye, y @apply lo garantiza
+   por construcción en vez de por transcripción a mano.
+
+   Los dos gutters y los tres fondos existen para conservar la deriva que ya había,
+   no porque haga falta. Cuando se decida colapsarlos, se hace aquí. */
+.tabla-dato                 { @apply w-full text-sm border-collapse; }
+.tabla-dato--blanco         { @apply bg-white; }
+.tabla-dato--blanco-borde   { @apply bg-white border border-gray-100; }
+.tabla-dato--beige          { background: #F9F7F4; }
+
+.tabla-dato thead tr        { @apply border-b-2; border-bottom-color: #A85535; }
+.tabla-dato th              { @apply py-3 font-bold text-gray-900 text-left; }
+.tabla-dato tbody tr        { @apply border-b border-gray-100; }
+.tabla-dato tbody tr:nth-child(even)        { @apply bg-gray-50; }
+/* Sobre beige cambian dos cosas, y las dos sólo se ven midiendo porque no mueven ni
+   una palabra: la fila alterna sube a blanco en vez de bajar a gris, y el separador
+   baja un escalón a gray-200 para seguir leyéndose sobre el fondo cálido. Las 8
+   tablas beige lo hacían así. */
+.tabla-dato--beige tbody tr                 { @apply border-gray-200; }
+.tabla-dato--beige tbody tr:nth-child(even) { @apply bg-white; }
+
+/* Fila de total o resumen. Va después de las reglas de zebra a propósito: empatan en
+   especificidad y tiene que ganar esta. */
+.tabla-dato tbody tr.fila-destacada { @apply bg-[#A85535]/5 font-semibold; }
+.tabla-dato td              { @apply py-3 text-gray-700; }
+
+.tabla-dato--pad4 :is(th, td) { @apply px-4; }
+.tabla-dato--pad5 :is(th, td) { @apply px-5; }
+/* Tres tablas de plazos abren la primera columna a px-5 y dejan el resto en px-4.
+   Es más específico que el padding de tabla, así que gana sin depender del orden. */
+.tabla-dato :is(th, td).col-pad4 { @apply px-4; }
+.tabla-dato :is(th, td).col-pad5 { @apply px-5; }
+
+/* Por columna */
+.tabla-dato .col-der        { @apply text-right; }
+.tabla-dato .col-movil      { @apply hidden; }
+@media (min-width: 768px) { .tabla-dato .col-movil { @apply table-cell; } }
+
+/* Énfasis de celda en dos ejes independientes: peso y color. Tienen que ser dos
+   porque hay celdas que combinan peso fuerte con color apagado, y con un solo eje
+   no se pueden expresar sin inventar un nombre por combinación. */
+.tabla-dato .td-medio       { @apply font-medium; }
+.tabla-dato .td-fuerte      { @apply font-semibold; }
+.tabla-dato .td-suave       { @apply text-gray-600; }
+.tabla-dato .td-apagado     { @apply text-gray-500; }
+.tabla-dato .td-oscuro      { @apply text-gray-900; }
+.tabla-dato .td-marca       { color: #A85535; }
+.tabla-dato .td-mini        { @apply text-xs; }
+
+/* Pie de tabla. Visible por defecto en las guías, oculto en el resto. */
+.tabla-dato__cap            { @apply text-left text-xs text-gray-400 mb-3 block; }
+
 .catalogo-row {
   padding: 1.25rem 0.5rem; border-bottom: 1px solid #F3F4F6;
   border-left: 2px solid transparent;

@@ -268,6 +268,7 @@ en `src/styles/global.css` y cambia en todas a la vez.
 | Decisión A o B | El lector tiene que elegir entre dos alcances y necesita criterios para decidir | `.decision-grid` · `.decision-card--light` / `--dark` · `.decision-list` | DEC-D34 |
 | Proceso por pasos | Una secuencia ordenada con tiempos | `.proceso-steps` · `.proceso-step` | DEC-D32 |
 | Catálogo término/definición | Una lista sin orden de pares concepto + explicación (`<dl>`) | `.catalogo-row` con `<dt>`/`<dd>` | DEC-D36 |
+| Tabla de datos | Filas y columnas comparables: precios, plazos, materiales | `DataTable.astro` · `.tabla-dato` | DEC-D37 |
 
 **Reglas comunes a los tres:**
 
@@ -279,5 +280,9 @@ en `src/styles/global.css` y cambia en todas a la vez.
   igual en todas las páginas donde aparezca.
 - Ninguno lleva estilos inline. Si te hace falta uno, es que el patrón necesita una variante
   en `global.css`, no una excepción en la página.
+- La tabla de datos se invoca **sólo** por `DataTable.astro`. El componente impone lo que §5
+  exige y no se puede usar mal: `caption` es prop obligatoria, el `<thead>` y el `scope="col"`
+  los pone él. Sus dos gutters y sus tres fondos existen para conservar la deriva que había
+  cuando se extrajo; cuando se decida colapsarlos se hace en `global.css` y cambia en las 18.
 
 **Marcadores de lista:** la regla vive en `CLAUDE.md` §8.2. Ver DEC-D35.

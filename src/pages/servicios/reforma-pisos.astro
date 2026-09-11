@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import DataTable from '../../components/ui/DataTable.astro';
 import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
@@ -180,32 +181,20 @@ const faqSchema = {
         Precios orientativos para el Corredor del Henares. El presupuesto exacto se cierra tras la visita técnica gratuita según el estado real de la vivienda. Estima el coste por m² y calidad con la <a href="/calculadora-precio-reforma/?servicio=reforma-pisos" class="text-[#A85535] hover:underline font-medium">calculadora de precios</a>. Para un desglose completo por partidas, consulta la <a href="/guias/cuanto-cuesta-reformar-un-piso/" class="text-[#A85535] hover:underline font-medium">guía de precios de reforma de piso</a>.
       </p>
       <p class="text-xs text-gray-400 mb-3">Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato tras la visita.</p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-white">
-          <caption class="sr-only">Alcances de reforma de vivienda, con su precio orientativo y la nota que condiciona cada uno.</caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900">Alcance</th>
-              <th scope="col" class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo</th>
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Nota</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Acabados esencial (350–450 €/m²)', price: '14.000–36.000€', note: '40–80 m² · sin renovar instalaciones · sin IVA' },
-              { label: 'Acabados media (450–600 €/m²)', price: '18.000–48.000€', note: '40–80 m² · sin renovar instalaciones · sin IVA' },
-              { label: 'Acabados alta (600–800 €/m²)', price: '24.000–64.000€', note: '40–80 m² · sin renovar instalaciones · sin IVA' },
-              { label: 'Si las instalaciones necesitan renovación', price: 'Ver Reformas Integrales', note: 'Cuadro, fontanería, gremios coordinados' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.label}</td>
-                <td class={`py-3 px-5 text-right font-semibold ${i === 3 ? 'text-gray-500' : 'text-gray-900'}`}>{row.price}</td>
-                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.note}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Alcances de reforma de vivienda, con su precio orientativo y la nota que condiciona cada uno."
+        columns={[
+          { head: 'Alcance' },
+          { head: 'Precio orientativo', der: true, peso: 'fuerte', color: 'oscuro' },
+          { head: 'Nota', soloDesktop: true, color: 'apagado' },
+        ]}
+        rows={[
+          ['Acabados esencial (350–450 €/m²)', '14.000–36.000€', '40–80 m² · sin renovar instalaciones · sin IVA'],
+          ['Acabados media (450–600 €/m²)', '18.000–48.000€', '40–80 m² · sin renovar instalaciones · sin IVA'],
+          ['Acabados alta (600–800 €/m²)', '24.000–64.000€', '40–80 m² · sin renovar instalaciones · sin IVA'],
+          ['Si las instalaciones necesitan renovación', { v: 'Ver Reformas Integrales', color: 'apagado' }, 'Cuadro, fontanería, gremios coordinados'],
+        ]}
+      />
     </div>
   </section>
   <!-- M4: Decisión clave -->
@@ -314,32 +303,21 @@ const faqSchema = {
       <h2 id="h-plazos" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Plazos reales de reforma de vivienda
       </h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <caption class="sr-only">Plazos orientativos por tipo de reforma, según el piso tenga entre 50 y 70 metros cuadrados o entre 80 y 100.</caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900">Tipo de reforma</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Piso 50–70 m²</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Piso 80–100 m²</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { tipo: 'Suelos + pintura + carpintería', p70: '2–3 sem.', p100: '3–4 sem.' },
-              { tipo: 'Baño + cocina + suelos + pintura', p70: '6–8 sem.', p100: '8–10 sem.' },
-              { tipo: 'Con redistribución de tabiques', p70: '+1–2 sem.', p100: '+2–3 sem.' },
-              { tipo: 'Si hay renovación de instalaciones', p70: 'Ver Reformas Integrales', p100: 'Ver Reformas Integrales' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.tipo}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.p70}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.p100}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Plazos orientativos por tipo de reforma, según el piso tenga entre 50 y 70 metros cuadrados o entre 80 y 100."
+        fondo="beige"
+              columns={[
+          { head: "Tipo de reforma" },
+          { head: "Piso 50–70 m²", der: true, pad: 4, color: "suave" },
+          { head: "Piso 80–100 m²", der: true, pad: 4, color: "suave" },
+        ]}
+        rows={[
+          ["Suelos + pintura + carpintería", "2–3 sem.", "3–4 sem."],
+          ["Baño + cocina + suelos + pintura", "6–8 sem.", "8–10 sem."],
+          ["Con redistribución de tabiques", "+1–2 sem.", "+2–3 sem."],
+          ["Si hay renovación de instalaciones", "Ver Reformas Integrales", "Ver Reformas Integrales"],
+        ]}
+      />
       <p class="text-xs text-gray-400 mt-4">Plazos orientativos. La fecha de entrega queda fijada en el contrato antes de empezar la obra.</p>
     </div>
   </section>

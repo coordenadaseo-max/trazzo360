@@ -24,7 +24,7 @@ se rompe, se sabe qué lo rompió.
 | 5 | `canonical` del 404 apunta a `/404/`, que no existe | 1 página | §4 | nulo |
 | 6 | `<meta description>` fuera de 140–155 | 36 de 75 (24 combinadas pasan de 155) | §4 | bajo |
 | 7 | `<title>` fuera de 50–60 | 8 de 75 | §4 | bajo |
-| 8 | Tablas de datos duplicadas a mano | 11 tablas, 3 grafías de clase | §5, §10 | bajo |
+| 8 | Tablas de datos duplicadas a mano | 28 tablas en 4 patrones; 18 son el patrón A | §5, §10 | bajo |
 | 9 | Botones: 18 grafías distintas para 44 usos | 5 paddings, 2 pesos, 2 tamaños | §10 | **medio: cambia el diseño** |
 | 10 | Eyebrow a mano en 20 grafías, 106 usos, mientras `.eyebrow` existe en el canon y diverge | 12 páginas | §10, canon | **medio: cambia el diseño** |
 | 11 | `SectionHeader.astro` existe y no se usa en ninguna página | 1 componente | — | nulo |
@@ -154,6 +154,11 @@ contadores de audit:content en verde.
 ---
 
 ## Lote 3 — Componente de tabla. Cero cambio visual
+
+> **HECHO el 2026-09-11.** Ver DEC-D37. **El censo de este lote estaba mal**: no eran 11
+> tablas en 5 páginas con 3 grafías, sino **28 en 10 ficheros y 4 patrones**. Las 11 eran
+> sólo las que el Lote 1 encontró sin `<caption>`. Se extrajo el patrón A, 18 tablas; los
+> otros tres quedan pendientes de decisión.
 
 Hallazgo 8. Se hace **después** del Lote 1, para que el componente nazca ya con la
 semántica correcta.

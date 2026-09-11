@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import DataTable from '../../components/ui/DataTable.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE } from '../../data/site';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
@@ -109,66 +110,45 @@ const faqSchema = {
       <p class="text-gray-600 leading-relaxed mb-6">
         Precios orientativos para el Corredor del Henares con materiales de calidad media. El presupuesto exacto cierra después de la visita técnica gratuita. Usa la <a href="/calculadora-precio-reforma/?servicio=reforma-banos" class="text-[#A85535] underline hover:opacity-80">calculadora de reforma de baño</a> para estimar por tramo y calidad.
       </p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato tras la visita técnica.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Alcance</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Precio orientativo</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Plazo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Cambio de bañera por ducha (sin tocar alicatado)', price: 'Desde 1.800€', days: '3–5 días' },
-              { label: 'Reforma completa baño pequeño hasta 4 m²', price: 'Desde 2.800€', days: '2–3 semanas' },
-              { label: 'Reforma completa baño 4–6 m²', price: 'Desde 3.500€', days: '2–3 semanas' },
-              { label: 'Reforma completa baño 6–9 m²', price: 'Desde 4.500€', days: '2–3 semanas' },
-              { label: 'Reforma con redistribución de fontanería', price: 'Desde 5.500€', days: '3–5 semanas' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-4 text-gray-700">{row.label}</td>
-                <td class="py-3 px-4 text-right font-semibold text-[#A85535]">{row.price}</td>
-                <td class="py-3 px-4 text-right text-gray-500 hidden md:table-cell">{row.days}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato tras la visita técnica."
+        captionVisible
+        fondo="blanco-borde"
+        pad={4}
+        columns={[
+          { head: "Alcance" },
+          { head: "Precio orientativo", der: true, peso: "fuerte", color: "marca" },
+          { head: "Plazo", der: true, soloDesktop: true, color: "apagado" },
+        ]}
+        rows={[
+          ["Cambio de bañera por ducha (sin tocar alicatado)", "Desde 1.800€", "3–5 días"],
+          ["Reforma completa baño pequeño hasta 4 m²", "Desde 2.800€", "2–3 semanas"],
+          ["Reforma completa baño 4–6 m²", "Desde 3.500€", "2–3 semanas"],
+          ["Reforma completa baño 6–9 m²", "Desde 4.500€", "2–3 semanas"],
+          ["Reforma con redistribución de fontanería", "Desde 5.500€", "3–5 semanas"],
+        ]}
+      />
 
       <div class="mt-8 overflow-x-auto">
         <p class="text-sm font-semibold text-gray-900 mb-3">Rangos por tamaño y calidad (calculadora)</p>
-        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Precios totales por baño, IVA no incluido.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Tamaño</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Esencial</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Media</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Alta</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { size: 'Hasta 4 m²', e: '2.800–3.800€', m: '3.800–5.500€', a: '5.500–8.500€' },
-              { size: '4–6 m²', e: '3.500–5.000€', m: '5.000–7.500€', a: '7.500–12.000€' },
-              { size: '6–9 m²', e: '4.500–6.500€', m: '6.500–10.000€', a: '10.000–16.000€' },
-              { size: 'Más de 9 m²', e: '5.500–8.000€', m: '8.000–13.000€', a: '13.000–20.000€' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-4 font-medium text-gray-900">{row.size}</td>
-                <td class="py-3 px-4 text-right text-gray-700">{row.e}</td>
-                <td class="py-3 px-4 text-right text-gray-700">{row.m}</td>
-                <td class="py-3 px-4 text-right text-gray-700">{row.a}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable
+          caption="Precios totales por baño, IVA no incluido."
+          captionVisible
+          fondo="blanco-borde"
+          pad={4}
+          columns={[
+            { head: "Tamaño", peso: "medio", color: "oscuro" },
+            { head: "Esencial", der: true },
+            { head: "Media", der: true },
+            { head: "Alta", der: true },
+          ]}
+          rows={[
+            ["Hasta 4 m²", "2.800–3.800€", "3.800–5.500€", "5.500–8.500€"],
+            ["4–6 m²", "3.500–5.000€", "5.000–7.500€", "7.500–12.000€"],
+            ["6–9 m²", "4.500–6.500€", "6.500–10.000€", "10.000–16.000€"],
+            ["Más de 9 m²", "5.500–8.000€", "8.000–13.000€", "13.000–20.000€"],
+          ]}
+        />
       </div>
     </section>
 
@@ -180,34 +160,24 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-6">
         En una reforma de baño completa, el coste no se distribuye de forma uniforme. Las instalaciones y el material dominan sobre la mano de obra de colocación. Conocer este desglose ayuda a entender por qué el precio varía tanto según las decisiones de material.
       </p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Distribución orientativa del coste total. Varía según calidad y alcance.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Partida</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">% del total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Alicatado y solado (material + colocación)', pct: '28 %' },
-              { label: 'Sanitarios, mueble y mampara', pct: '25 %' },
-              { label: 'Fontanería e instalación eléctrica', pct: '25 %' },
-              { label: 'Demolición y escombros', pct: '10 %' },
-              { label: 'Acabados y sellados', pct: '7 %' },
-              { label: 'Gestión y dirección de obra', pct: '5 %' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-4 text-gray-700">{row.label}</td>
-                <td class="py-3 px-4 text-right font-semibold text-gray-900">{row.pct}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Distribución orientativa del coste total. Varía según calidad y alcance."
+        captionVisible
+        fondo="beige"
+        pad={4}
+        columns={[
+          { head: "Partida" },
+          { head: "% del total", der: true, peso: "fuerte", color: "oscuro" },
+        ]}
+        rows={[
+          ["Alicatado y solado (material + colocación)", "28 %"],
+          ["Sanitarios, mueble y mampara", "25 %"],
+          ["Fontanería e instalación eléctrica", "25 %"],
+          ["Demolición y escombros", "10 %"],
+          ["Acabados y sellados", "7 %"],
+          ["Gestión y dirección de obra", "5 %"],
+        ]}
+      />
       <p class="text-sm text-gray-500 mt-3 italic">
         El peso de la partida de sanitarios y muebles sube notablemente en calidades alta y premium, llegando al 35–40 % del total.
       </p>
@@ -315,35 +285,24 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-6">
         El plazo depende del alcance y del tamaño, pero hay un factor que pocos presupuestos mencionan: los días que el baño está completamente fuera de servicio. En una reforma completa con cambio de alicatado, los primeros 4–6 días de demolición y preparación son los más críticos. A partir de ahí, la funcionalidad se recupera por fases.
       </p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Plazos orientativos. La fecha exacta de entrega se fija en el contrato.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Tipo de reforma</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Plazo total</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Días sin servicio</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { tipo: 'Cambio de bañera por ducha (sin alicatado)', plazo: '3–5 días', sinServicio: '2–3 días' },
-              { tipo: 'Reforma completa hasta 4 m² (calidad esencial)', plazo: '2–3 semanas', sinServicio: '4–6 días' },
-              { tipo: 'Reforma completa 4–9 m² (calidad esencial/media)', plazo: '2–3 semanas', sinServicio: '4–6 días' },
-              { tipo: 'Con redistribución de fontanería', plazo: '3–5 semanas', sinServicio: '5–8 días' },
-              { tipo: 'Baño alta gama con ducha de obra', plazo: '4–6 semanas', sinServicio: '4–6 días' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-4 text-gray-700">{row.tipo}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.plazo}</td>
-                <td class="py-3 px-4 text-right text-gray-500 hidden md:table-cell">{row.sinServicio}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Plazos orientativos. La fecha exacta de entrega se fija en el contrato."
+        captionVisible
+        fondo="beige"
+        pad={4}
+        columns={[
+          { head: "Tipo de reforma" },
+          { head: "Plazo total", der: true, color: "suave" },
+          { head: "Días sin servicio", der: true, soloDesktop: true, color: "apagado" },
+        ]}
+        rows={[
+          ["Cambio de bañera por ducha (sin alicatado)", "3–5 días", "2–3 días"],
+          ["Reforma completa hasta 4 m² (calidad esencial)", "2–3 semanas", "4–6 días"],
+          ["Reforma completa 4–9 m² (calidad esencial/media)", "2–3 semanas", "4–6 días"],
+          ["Con redistribución de fontanería", "3–5 semanas", "5–8 días"],
+          ["Baño alta gama con ducha de obra", "4–6 semanas", "4–6 días"],
+        ]}
+      />
       <p class="text-sm text-gray-500 mt-3">
         Si solo hay un baño en casa, planificamos la secuencia para reducir los días sin servicio al mínimo técnico posible, sin comprometer la impermeabilización.
       </p>

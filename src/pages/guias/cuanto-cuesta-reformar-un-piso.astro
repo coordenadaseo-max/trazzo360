@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import DataTable from '../../components/ui/DataTable.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE } from '../../data/site';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
@@ -109,62 +110,42 @@ const faqSchema = {
       <p class="text-gray-600 leading-relaxed mb-6">
         Precios orientativos para un piso de 60–80 m² en el Corredor del Henares. El presupuesto exacto cierra después de la visita técnica gratuita. Usa la <a href="/calculadora-precio-reforma/?servicio=reforma-pisos" class="text-[#A85535] underline hover:opacity-80">calculadora de reforma de piso</a> para estimar por superficie y calidad.
       </p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Precios orientativos para piso 60–80 m², IVA no incluido. Instalaciones en buen estado.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Alcance</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Precio orientativo</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Plazo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Suelos + pintura + carpintería (sin baño ni cocina)', price: 'Desde 8.000€', plazo: '2–4 semanas' },
-              { label: 'Acabados esencial · suelos, pintura y puertas (60 m²)', price: 'Desde 21.000€', plazo: '5–8 semanas' },
-              { label: 'Con redistribución de tabiques', price: 'Desde 28.000€', plazo: '8–12 semanas' },
-              { label: 'Si las instalaciones necesitan renovación', price: 'Ver Reformas Integrales', plazo: 'Desde 10 semanas' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-4 text-gray-700">{row.label}</td>
-                <td class={`py-3 px-4 text-right font-semibold ${i === 3 ? 'text-gray-500' : 'text-[#A85535]'}`}>{row.price}</td>
-                <td class="py-3 px-4 text-right text-gray-500 hidden md:table-cell">{row.plazo}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Precios orientativos para piso 60–80 m², IVA no incluido. Instalaciones en buen estado."
+        captionVisible
+        fondo="blanco-borde"
+        pad={4}
+        columns={[
+          { head: "Alcance" },
+          { head: "Precio orientativo", der: true, peso: "fuerte", color: "marca" },
+          { head: "Plazo", der: true, soloDesktop: true, color: "apagado" },
+        ]}
+        rows={[
+          ["Suelos + pintura + carpintería (sin baño ni cocina)", "Desde 8.000€", "2–4 semanas"],
+          ["Acabados esencial · suelos, pintura y puertas (60 m²)", "Desde 21.000€", "5–8 semanas"],
+          ["Con redistribución de tabiques", "Desde 28.000€", "8–12 semanas"],
+          ["Si las instalaciones necesitan renovación", { v: "Ver Reformas Integrales", color: "apagado" }, "Desde 10 semanas"],
+        ]}
+      />
 
       <div class="mt-8 overflow-x-auto">
         <p class="text-sm font-semibold text-gray-900 mb-3">Precio por m² según calidad (solo acabados, sin renovar instalaciones)</p>
-        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Precio por m² de superficie del piso, IVA no incluido.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Calidad</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">€/m²</th>
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Incluye</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { cal: 'Esencial', pm2: '350–450 €/m²', inc: 'Suelos, puertas y pintura' },
-              { cal: 'Media', pm2: '450–600 €/m²', inc: 'Baño + cocina + suelos + pintura' },
-              { cal: 'Alta', pm2: '600–800 €/m²', inc: 'Materiales premium, carpintería a medida' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-4 font-medium text-gray-900">{row.cal}</td>
-                <td class="py-3 px-4 text-right font-semibold text-[#A85535]">{row.pm2}</td>
-                <td class="py-3 px-4 text-gray-500 text-xs hidden md:table-cell">{row.inc}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable
+          caption="Precio por m² de superficie del piso, IVA no incluido."
+          captionVisible
+          fondo="blanco-borde"
+          pad={4}
+          columns={[
+            { head: "Calidad", peso: "medio", color: "oscuro" },
+            { head: "€/m²", der: true, peso: "fuerte", color: "marca" },
+            { head: "Incluye", soloDesktop: true, mini: true, color: "apagado" },
+          ]}
+          rows={[
+            ["Esencial", "350–450 €/m²", "Suelos, puertas y pintura"],
+            ["Media", "450–600 €/m²", "Baño + cocina + suelos + pintura"],
+            ["Alta", "600–800 €/m²", "Materiales premium, carpintería a medida"],
+          ]}
+        />
       </div>
 
       <div class="mt-4 bg-blue-50 border-l-4 border-blue-400 p-4">
@@ -311,34 +292,23 @@ const faqSchema = {
       <h2 id="h-plazos-piso" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Plazos reales de reforma de piso
       </h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Plazos orientativos. La fecha de entrega se fija en el contrato antes de empezar.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Tipo de reforma</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Piso 50–70 m²</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Piso 80–100 m²</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { tipo: 'Suelos + pintura + carpintería', p70: '2–3 sem.', p100: '3–4 sem.' },
-              { tipo: 'Baño + cocina + suelos + pintura', p70: '6–8 sem.', p100: '8–10 sem.' },
-              { tipo: 'Con redistribución de tabiques', p70: '+1–2 sem. adicionales', p100: '+2–3 sem. adicionales' },
-              { tipo: 'Si hay renovación de instalaciones', p70: 'Ver Reformas Integrales', p100: 'Ver Reformas Integrales' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-4 text-gray-700">{row.tipo}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.p70}</td>
-                <td class="py-3 px-4 text-right text-gray-500 hidden md:table-cell">{row.p100}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Plazos orientativos. La fecha de entrega se fija en el contrato antes de empezar."
+        captionVisible
+        fondo="beige"
+        pad={4}
+        columns={[
+          { head: "Tipo de reforma" },
+          { head: "Piso 50–70 m²", der: true, color: "suave" },
+          { head: "Piso 80–100 m²", der: true, soloDesktop: true, color: "apagado" },
+        ]}
+        rows={[
+          ["Suelos + pintura + carpintería", "2–3 sem.", "3–4 sem."],
+          ["Baño + cocina + suelos + pintura", "6–8 sem.", "8–10 sem."],
+          ["Con redistribución de tabiques", "+1–2 sem. adicionales", "+2–3 sem. adicionales"],
+          ["Si hay renovación de instalaciones", "Ver Reformas Integrales", "Ver Reformas Integrales"],
+        ]}
+      />
       <p class="text-sm text-gray-500 mt-3">
         La fase de levantamiento de suelos en toda la vivienda a la vez es la semana más crítica en polvo y ruido. A partir de ahí, la situación mejora progresivamente por zonas.
       </p>

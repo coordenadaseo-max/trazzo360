@@ -1,0 +1,105 @@
+---
+/**
+ * Tabla de datos — patrón A. Único sitio donde se escribe el markup de estas tablas.
+ *
+ * Impone por construcción lo que exige CLAUDE.md §5 y que faltaba en 11 de las 18 que
+ * sustituye: `<caption>` obligatorio, `<thead>` propio y `scope="col"` en cada `<th>`.
+ * No hay forma de invocarlo sin caption: es una prop requerida.
+ *
+ * Los estilos viven en global.css (`.tabla-dato`), no aquí ni en las páginas, según la
+ * regla de docs/PROTOCOLO-LAB.md que cita CLAUDE.md §9.
+ *
+ * Ver DEC-D37 y DESIGN-BLUEPRINT.md § «Bloques compuestos».
+ */
+
+export type Peso  = 'medio' | 'fuerte';
+export type Color = 'suave' | 'apagado' | 'oscuro' | 'marca';
+
+export interface Columna {
+  /** Texto de la cabecera. */
+  head: string;
+  /** Alineación de toda la columna. Por defecto a la izquierda. */
+  der?: boolean;
+  /** Oculta la columna por debajo de 768px. */
+  soloDesktop?: boolean;
+  /** Énfasis por defecto de las celdas de esta columna. */
+  peso?: Peso;
+  color?: Color;
+  /** Texto más pequeño en toda la columna. */
+  mini?: boolean;
+  /** Padding propio, cuando esta columna no sigue el de la tabla. */
+  pad?: 4 | 5;
+}
+
+/** Una celda: texto suelto, o texto con su propio énfasis cuando difiere del de la columna. */
+export type Celda = string | { v: string; peso?: Peso; color?: Color; mini?: boolean };
+
+/** Una fila: sus celdas, o el objeto con `destacada` para las filas de total. */
+export type Fila = Celda[] | { celdas: Celda[]; destacada?: boolean };
+
+interface Props {
+  /** Obligatorio: §5 exige `<caption>` en toda tabla de datos. */
+  caption: string;
+  /** `true` lo muestra; por defecto queda accesible pero no visible. */
+  captionVisible?: boolean;
+  columns: Columna[];
+  rows: Fila[];
+  /** Conserva la deriva existente. Cuando se unifique, desaparece. */
+  fondo?: 'blanco' | 'blanco-borde' | 'beige';
+  /** Ídem: 4 en las guías, 5 en los hubs de servicio. */
+  pad?: 4 | 5;
+  /** Clases extra del contenedor con scroll horizontal. */
+  class?: string;
+}
+
+const {
+  caption,
+  captionVisible = false,
+  columns,
+  rows,
+  fondo = 'blanco',
+  pad = 5,
+  class: extra = '',
+} = Astro.props;
+
+if (!caption?.trim()) throw new Error('DataTable: `caption` es obligatorio (CLAUDE.md §5).');
+
+const tablaClass = ['tabla-dato', `tabla-dato--${fondo}`, `tabla-dato--pad${pad}`].join(' ');
+/** `undefined` en vez de cadena vacía: Astro omite el atributo en vez de emitir `class`. */
+const nz = (s: string) => s || undefined;
+const colClass = (c: Columna) => nz(
+  [c.der && 'col-der', c.soloDesktop && 'col-movil', c.pad && `col-pad${c.pad}`].filter(Boolean).join(' ')
+);
+const celda = (c: Columna, v: Celda) => {
+  const o = typeof v === 'object' ? v : {};
+  const peso  = o.peso  ?? c.peso;
+  const color = o.color ?? c.color;
+  const mini  = o.mini  ?? c.mini;
+  return nz([colClass(c), peso && `td-${peso}`, color && `td-${color}`, mini && 'td-mini']
+    .filter(Boolean).join(' '));
+};
+const texto = (v: Celda) => (typeof v === 'object' ? v.v : v);
+const celdasDe = (f: Fila) => (Array.isArray(f) ? f : f.celdas);
+const destacada = (f: Fila) => (!Array.isArray(f) && f.destacada ? 'fila-destacada' : undefined);
+---
+
+<div class={`overflow-x-auto ${extra}`.trim()}>
+  <table class={tablaClass}>
+    <caption class={captionVisible ? 'tabla-dato__cap' : 'sr-only'}>{caption}</caption>
+    <thead>
+      <tr>
+        {columns.map(c => <th scope="col" class={colClass(c)}>{c.head}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map(fila => (
+        <tr class={destacada(fila)}>
+          {columns.map((c, i) => {
+            const cs = celdasDe(fila);
+            return <td class={celda(c, cs[i])}>{texto(cs[i])}</td>;
+          })}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

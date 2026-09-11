@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import DataTable from '../../components/ui/DataTable.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE } from '../../data/site';
 import FaqAccordion from '../../components/ui/FaqAccordion.astro';
@@ -109,65 +110,44 @@ const faqSchema = {
       <p class="text-gray-600 leading-relaxed mb-6">
         Precios orientativos para el Corredor del Henares con calidad media. No incluyen electrodomésticos de superficie libre. El presupuesto exacto cierra después de la visita técnica gratuita. Estima por tramo con la <a href="/calculadora-precio-reforma/?servicio=reforma-cocinas" class="text-[#A85535] underline hover:opacity-80">calculadora de precios de reforma de cocina</a>.
       </p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Precios orientativos IVA no incluido. Electrodomésticos no incluidos.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Superficie</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Precio orientativo</th>
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900 hidden md:table-cell">Incluye</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Hasta 8 m²', price: 'Desde 5.000€', includes: 'Muebles, encimera, alicatado, electricidad y fontanería' },
-              { label: '8–12 m² (referencia de mercado)', price: 'Desde 6.000€', includes: 'Con alicatado, circuitos eléctricos dedicados y fontanería' },
-              { label: '12–16 m²', price: 'Desde 7.500€', includes: 'Muebles a medida incluidos, encimera de silestone' },
-              { label: 'Cocina americana o con isla', price: 'Desde 14.000€', includes: 'Con apertura al salón y proyecto técnico' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-4 font-medium text-gray-900">{row.label}</td>
-                <td class="py-3 px-4 text-right font-semibold text-[#A85535]">{row.price}</td>
-                <td class="py-3 px-4 text-gray-500 text-xs hidden md:table-cell">{row.includes}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Precios orientativos IVA no incluido. Electrodomésticos no incluidos."
+        captionVisible
+        fondo="blanco-borde"
+        pad={4}
+        columns={[
+          { head: "Superficie", peso: "medio", color: "oscuro" },
+          { head: "Precio orientativo", der: true, peso: "fuerte", color: "marca" },
+          { head: "Incluye", soloDesktop: true, mini: true, color: "apagado" },
+        ]}
+        rows={[
+          ["Hasta 8 m²", "Desde 5.000€", "Muebles, encimera, alicatado, electricidad y fontanería"],
+          ["8–12 m² (referencia de mercado)", "Desde 6.000€", "Con alicatado, circuitos eléctricos dedicados y fontanería"],
+          ["12–16 m²", "Desde 7.500€", "Muebles a medida incluidos, encimera de silestone"],
+          ["Cocina americana o con isla", "Desde 14.000€", "Con apertura al salón y proyecto técnico"],
+        ]}
+      />
 
       <div class="mt-8 overflow-x-auto">
         <p class="text-sm font-semibold text-gray-900 mb-3">Rangos completos por tamaño y calidad</p>
-        <table class="w-full text-sm border-collapse bg-white border border-gray-100">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Precios totales por cocina, IVA no incluido. Sin electrodomésticos de superficie libre.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Superficie</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Esencial</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Media</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Alta</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { size: 'Hasta 8 m²', e: '5.000–7.500€', m: '7.500–11.000€', a: '11.000–18.000€' },
-              { size: '8–12 m²', e: '6.000–9.000€', m: '9.000–14.000€', a: '14.000–22.000€' },
-              { size: '12–16 m²', e: '7.500–11.500€', m: '11.500–18.000€', a: '18.000–28.000€' },
-              { size: 'Más de 16 m²', e: '9.000–14.000€', m: '14.000–22.000€', a: '22.000–35.000€' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-4 font-medium text-gray-900">{row.size}</td>
-                <td class="py-3 px-4 text-right text-gray-700">{row.e}</td>
-                <td class="py-3 px-4 text-right text-gray-700">{row.m}</td>
-                <td class="py-3 px-4 text-right text-gray-700">{row.a}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable
+          caption="Precios totales por cocina, IVA no incluido. Sin electrodomésticos de superficie libre."
+          captionVisible
+          fondo="blanco-borde"
+          pad={4}
+          columns={[
+            { head: "Superficie", peso: "medio", color: "oscuro" },
+            { head: "Esencial", der: true },
+            { head: "Media", der: true },
+            { head: "Alta", der: true },
+          ]}
+          rows={[
+            ["Hasta 8 m²", "5.000–7.500€", "7.500–11.000€", "11.000–18.000€"],
+            ["8–12 m²", "6.000–9.000€", "9.000–14.000€", "14.000–22.000€"],
+            ["12–16 m²", "7.500–11.500€", "11.500–18.000€", "18.000–28.000€"],
+            ["Más de 16 m²", "9.000–14.000€", "14.000–22.000€", "22.000–35.000€"],
+          ]}
+        />
       </div>
     </section>
 
@@ -179,35 +159,25 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-6">
         La cocina es la reforma donde el material pesa más en el precio total. El mobiliario y la encimera representan casi la mitad del coste, mientras que en el baño la proporción es más equilibrada entre material e instalación. Esta distribución explica por qué elegir muebles de alta gama puede doblar el precio total de la reforma.
       </p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Distribución orientativa del coste total. El peso del mobiliario sube en reformas de alta gama.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Partida</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">% del total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Mobiliario y encimera', pct: '42 %' },
-              { label: 'Fontanería e instalación eléctrica', pct: '15 %' },
-              { label: 'Acabados y pintura', pct: '10 %' },
-              { label: 'Gestión y dirección de obra', pct: '10 %' },
-              { label: 'Alicatado y solado', pct: '10 %' },
-              { label: 'Demolición y escombros', pct: '8 %' },
-              { label: 'Albañilería menor', pct: '5 %' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-4 text-gray-700">{row.label}</td>
-                <td class="py-3 px-4 text-right font-semibold text-gray-900">{row.pct}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Distribución orientativa del coste total. El peso del mobiliario sube en reformas de alta gama."
+        captionVisible
+        fondo="beige"
+        pad={4}
+        columns={[
+          { head: "Partida" },
+          { head: "% del total", der: true, peso: "fuerte", color: "oscuro" },
+        ]}
+        rows={[
+          ["Mobiliario y encimera", "42 %"],
+          ["Fontanería e instalación eléctrica", "15 %"],
+          ["Acabados y pintura", "10 %"],
+          ["Gestión y dirección de obra", "10 %"],
+          ["Alicatado y solado", "10 %"],
+          ["Demolición y escombros", "8 %"],
+          ["Albañilería menor", "5 %"],
+        ]}
+      />
       <p class="text-sm text-gray-500 mt-3 italic">
         En reformas con isla central o apertura al salón, la albañilería y las instalaciones suben su peso relativo por la complejidad del replanteo.
       </p>
@@ -316,32 +286,22 @@ const faqSchema = {
       <p class="text-gray-700 leading-relaxed mb-6">
         El plazo de una reforma de cocina depende principalmente de si los muebles son estándar de almacén o a medida con fabricación previa. Los muebles a medida requieren entre 3 y 5 semanas de fabricación antes de comenzar el montaje, lo que condiciona el inicio de la obra.
       </p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <caption class="text-left text-xs text-gray-400 mb-3 block">
-            Plazos orientativos. La fecha exacta de entrega se fija en el contrato antes de empezar.
-          </caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-4 font-bold text-gray-900">Tipo de reforma</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Plazo de obra</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { tipo: 'Cocina hasta 8 m² con muebles estándar', plazo: '3–5 semanas' },
-              { tipo: 'Cocina 8–12 m² con muebles a medida', plazo: '4–7 semanas' },
-              { tipo: 'Cocina 12–18 m² con muebles a medida', plazo: '6–10 semanas' },
-              { tipo: 'Cocina americana o con isla', plazo: '8–12 semanas' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-4 text-gray-700">{row.tipo}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.plazo}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Plazos orientativos. La fecha exacta de entrega se fija en el contrato antes de empezar."
+        captionVisible
+        fondo="beige"
+        pad={4}
+        columns={[
+          { head: "Tipo de reforma" },
+          { head: "Plazo de obra", der: true, color: "suave" },
+        ]}
+        rows={[
+          ["Cocina hasta 8 m² con muebles estándar", "3–5 semanas"],
+          ["Cocina 8–12 m² con muebles a medida", "4–7 semanas"],
+          ["Cocina 12–18 m² con muebles a medida", "6–10 semanas"],
+          ["Cocina americana o con isla", "8–12 semanas"],
+        ]}
+      />
       <p class="text-sm text-gray-500 mt-3">
         El plazo incluye fabricación de mueble a medida cuando aplica. Si los muebles son de almacén con disponibilidad inmediata, los plazos se reducen significativamente.
       </p>

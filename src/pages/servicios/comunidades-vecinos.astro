@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import DataTable from '../../components/ui/DataTable.astro';
 import CtaInline from '../../components/ui/CtaInline.astro';
 import ProcesoSteps from '../../components/ui/ProcesoSteps.astro';
 import PasosIncluye from '../../components/PasosIncluye.astro';
@@ -183,30 +184,20 @@ const faqSchema = {
       </p>
       <div class="overflow-x-auto">
         <p class="text-left text-xs text-gray-400 mb-3">Precios orientativos IVA no incluido. El precio cerrado se fija en el contrato.</p>
-        <table class="w-full text-sm border-collapse bg-white">
-          <caption class="sr-only">Tipos de obra habituales en comunidades de propietarios, con su precio orientativo y la nota que condiciona cada uno.</caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900">Tipo de obra</th>
-              <th scope="col" class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo</th>
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Nota</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Escalera y rellanos · esencial', price: 'Desde 6.000€', note: 'Revestimientos y pintura sin IVA' },
-              { label: 'Portal y vestíbulo · esencial', price: 'Desde 8.000€', note: 'Revestimientos, iluminación sin IVA' },
-              { label: 'Cubierta / tejado · esencial', price: 'Desde 15.000€', note: 'Impermeabilización sin IVA' },
-              { label: 'Fachada exterior · esencial', price: 'Desde 25.000€', note: 'Saneado y acabado sin IVA' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-100 ${i % 2 === 1 ? 'bg-gray-50' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.label}</td>
-                <td class="py-3 px-5 text-right font-semibold text-gray-900">{row.price}</td>
-                <td class="py-3 px-5 text-gray-500 hidden md:table-cell">{row.note}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable
+          caption="Tipos de obra habituales en comunidades de propietarios, con su precio orientativo y la nota que condiciona cada uno."
+          columns={[
+            { head: "Tipo de obra" },
+            { head: "Precio orientativo", der: true, peso: "fuerte", color: "oscuro" },
+            { head: "Nota", soloDesktop: true, color: "apagado" },
+          ]}
+          rows={[
+            ["Escalera y rellanos · esencial", "Desde 6.000€", "Revestimientos y pintura sin IVA"],
+            ["Portal y vestíbulo · esencial", "Desde 8.000€", "Revestimientos, iluminación sin IVA"],
+            ["Cubierta / tejado · esencial", "Desde 15.000€", "Impermeabilización sin IVA"],
+            ["Fachada exterior · esencial", "Desde 25.000€", "Saneado y acabado sin IVA"],
+          ]}
+        />
       </div>
     </div>
   </section>
@@ -315,38 +306,20 @@ const faqSchema = {
       </p>
       <div class="overflow-x-auto mb-8">
         <p class="text-left text-xs text-gray-400 mb-3">Coste orientativo por m² de fachada, IVA no incluido. El precio exacto depende de la altura, el acceso y el estado de la fachada.</p>
-        <table class="w-full text-sm border-collapse bg-white">
-          <caption class="sr-only">Sistemas de reforma de fachada comparados por coste orientativo por metro cuadrado y tipo de edificio al que se adecúan.</caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900">Sistema</th>
-              <th scope="col" class="text-right py-3 px-5 font-bold text-gray-900">Coste orientativo / m²</th>
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Adecuado para</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-gray-100">
-              <td class="py-3 px-5 text-gray-700">Reparación puntual y pintura exterior</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">15–35 €/m²</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Fisuras superficiales, deterioro estético sin problemas de humedad</td>
-            </tr>
-            <tr class="border-b border-gray-100 bg-gray-50">
-              <td class="py-3 px-5 text-gray-700">Enfoscado y pintura completa</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">40–70 €/m²</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Enfoscado original deteriorado, fachada sin aislamiento térmico</td>
-            </tr>
-            <tr class="border-b border-gray-100">
-              <td class="py-3 px-5 text-gray-700">SATE (aislamiento exterior + acabado)</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">80–130 €/m²</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Mejora energética prioritaria, edificios con calificación E o F</td>
-            </tr>
-            <tr class="border-b border-gray-100 bg-gray-50">
-              <td class="py-3 px-5 text-gray-700">Aplacado o fachada ventilada</td>
-              <td class="py-3 px-5 text-right font-semibold text-gray-900">100–180 €/m²</td>
-              <td class="py-3 px-5 text-gray-500 hidden md:table-cell">Rehabilitación completa con máxima durabilidad y renovación estética total</td>
-            </tr>
-          </tbody>
-        </table>
+        <DataTable
+          caption="Sistemas de reforma de fachada comparados por coste orientativo por metro cuadrado y tipo de edificio al que se adecúan."
+          columns={[
+            { head: "Sistema" },
+            { head: "Coste orientativo / m²", der: true, peso: "fuerte", color: "oscuro" },
+            { head: "Adecuado para", soloDesktop: true, color: "apagado" },
+          ]}
+          rows={[
+            ["Reparación puntual y pintura exterior", "15–35 €/m²", "Fisuras superficiales, deterioro estético sin problemas de humedad"],
+            ["Enfoscado y pintura completa", "40–70 €/m²", "Enfoscado original deteriorado, fachada sin aislamiento térmico"],
+            ["SATE (aislamiento exterior + acabado)", "80–130 €/m²", "Mejora energética prioritaria, edificios con calificación E o F"],
+            ["Aplacado o fachada ventilada", "100–180 €/m²", "Rehabilitación completa con máxima durabilidad y renovación estética total"],
+          ]}
+        />
       </div>
       <p class="text-gray-600 leading-relaxed text-sm">
         El diagnóstico previo es imprescindible antes de elegir el sistema. Una fachada con filtraciones activas necesita impermeabilización antes de cualquier acabado; una con condensaciones interiores necesita aislamiento exterior. El presupuesto que presentamos a la junta detalla el diagnóstico, la solución elegida y por qué es la más adecuada para ese edificio concreto.
@@ -416,33 +389,22 @@ const faqSchema = {
       <h2 id="h-plazos" class="h4-block mb-4 reveal" style="letter-spacing:-0.02em">
         Plazos de obras en comunidades de propietarios
       </h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
-          <caption class="sr-only">Plazos orientativos por tipo de obra, según el edificio tenga hasta 5 alturas o entre 6 y 10.</caption>
-          <thead>
-            <tr class="border-b-2 border-[#A85535]">
-              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900">Tipo de obra</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Bloque hasta 5 alt.</th>
-              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Bloque 6–10 alt.</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { tipo: 'Pintura de portal y escalera', c5: '3–5 días', c10: '1–2 sem.' },
-              { tipo: 'Reforma de portal completa', c5: '1–2 sem.', c10: '2–3 sem.' },
-              { tipo: 'Impermeabilización de cubierta', c5: '1–2 sem.', c10: '2–3 sem.' },
-              { tipo: 'Rehabilitación de fachada (sin SATE)', c5: '2–4 sem.', c10: '4–8 sem.' },
-              { tipo: 'Rehabilitación de fachada con SATE', c5: '4–6 sem.', c10: '8–14 sem.' },
-            ].map((row, i) => (
-              <tr class={`border-b border-gray-200 ${i % 2 === 1 ? 'bg-white' : ''}`}>
-                <td class="py-3 px-5 text-gray-700">{row.tipo}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.c5}</td>
-                <td class="py-3 px-4 text-right text-gray-600">{row.c10}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        caption="Plazos orientativos por tipo de obra, según el edificio tenga hasta 5 alturas o entre 6 y 10."
+        fondo="beige"
+              columns={[
+          { head: "Tipo de obra" },
+          { head: "Bloque hasta 5 alt.", der: true, pad: 4, color: "suave" },
+          { head: "Bloque 6–10 alt.", der: true, pad: 4, color: "suave" },
+        ]}
+        rows={[
+          ["Pintura de portal y escalera", "3–5 días", "1–2 sem."],
+          ["Reforma de portal completa", "1–2 sem.", "2–3 sem."],
+          ["Impermeabilización de cubierta", "1–2 sem.", "2–3 sem."],
+          ["Rehabilitación de fachada (sin SATE)", "2–4 sem.", "4–8 sem."],
+          ["Rehabilitación de fachada con SATE", "4–6 sem.", "8–14 sem."],
+        ]}
+      />
       <p class="text-xs text-gray-400 mt-4">Plazos orientativos. La fecha de entrega queda fijada en el contrato. Los plazos incluyen el tiempo de instalación y desmontaje del andamiaje.</p>
     </div>
   </section>

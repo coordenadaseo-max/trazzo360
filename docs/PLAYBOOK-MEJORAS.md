@@ -28,7 +28,7 @@ se rompe, se sabe qué lo rompió.
 | 9 | Botones: 23 grafías distintas para 49 usos | 5 paddings, 2 pesos, 2 tamaños, 19 con `style` inline | §10 | **medio: cambia el diseño** |
 | 10 | Eyebrow a mano en 22 firmas, 132 usos; `.eyebrow` existía sin usarse y describía otro rol | 20 ficheros | §10, canon | **medio: cambia el diseño** |
 | 11 | `SectionHeader.astro` existe y no se usa en ninguna página | 1 componente | — | nulo |
-| 12 | 13 clases declaradas en `global.css` sin ninguna referencia en `src/` | 13 clases | — | nulo |
+| 12 | Clases de `global.css` sin referencia en `src/` | 4 muertas (borradas) · 4 en uso por composición dinámica · 1 sin adoptar · 3 de escala | — | nulo |
 | 13 | `SERVICE_ZONE_LEVEL` se importa en la plantilla combinada y no se usa | 48 páginas afectadas | — | requiere decisión |
 | 14 | Sin enlace de salto al contenido | todas | WCAG 2.4.1 | bajo |
 
@@ -273,6 +273,11 @@ Hay una contradicción entre canon y código que NO debes resolver por tu cuenta
 ---
 
 ## Lote 6 — Limpieza. Cero cambio visual
+
+> **PARCIALMENTE HECHO el 2026-09-11.** Ver DEC-D40. **La lista de 13 clases incluía 4
+> que sí están en uso**: los `ajuste-*` se componen en tiempo de ejecución y sólo
+> existen ya renderizados. Punto 2 cerrado; los puntos 1 y 3 están pendientes de
+> decisión del responsable.
 
 Hallazgos 11, 12 y 13.
 

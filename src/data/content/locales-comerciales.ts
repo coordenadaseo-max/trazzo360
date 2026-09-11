@@ -170,11 +170,11 @@ export const FAQS: Record<string, { q: string; a: string }[]> = {
 };
 
 export const META: Record<string, string> = {
-  'alcala-de-henares':      'Reforma de local comercial en Alcalá de Henares: restricciones de fachada en casco histórico. Licencia de actividad en paralelo con la obra. Precio cerrado.',
-  'torrejon-de-ardoz':      'Reforma de local en Torrejón de Ardoz: polígono Madrid-Este con instalación desde cero. Tramitación ágil para usos sin licencia clasificada. Precio cerrado.',
-  'coslada':                'Reforma de local comercial en Coslada: polo logístico con alta potencia eléctrica disponible. Casco urbano o polígono industrial. Plazo garantizado en contrato.',
+  'alcala-de-henares':      'Reforma de local comercial en Alcalá de Henares: restricciones de fachada en casco histórico. Licencia de actividad en paralelo. Precio cerrado.',
+  'torrejon-de-ardoz':      'Reforma de local en Torrejón de Ardoz: polígono Madrid-Este con instalación desde cero. Tramitación ágil sin licencia clasificada. Precio cerrado.',
+  'coslada':                'Reforma de local comercial en Coslada: polo logístico con alta potencia eléctrica. Casco urbano o polígono industrial. Plazo garantizado en contrato.',
   'san-fernando-de-henares':'Reforma de local comercial en San Fernando de Henares: zona industrial o casco urbano. Régimen de licencia según el uso. Precio cerrado, plazo garantizado.',
-  'guadalajara':            'Reforma de local comercial en Guadalajara: régimen de licencia según el tipo de actividad. Proyecto técnico incluido en el precio cerrado cuando es necesario.',
+  'guadalajara':            'Reforma de local comercial en Guadalajara: régimen de licencia según la actividad. Proyecto técnico incluido en el precio cerrado cuando es necesario.',
   'azuqueca-de-henares':    'Reforma de local en Azuqueca de Henares: declaración responsable para usos sin licencia clasificada. Plazos confirmados en primera reunión. Precio cerrado.',
   'meco':                   'Reforma de local comercial en Meco: polígono industrial con naves de gran superficie. Tramitación ágil en municipio pequeño. Precio cerrado.',
   'camarma-de-esteruelas':  'Reforma de local comercial en Camarma de Esteruelas: comercio y servicios de proximidad. Tramitación predecible en municipio pequeño. Precio cerrado.',

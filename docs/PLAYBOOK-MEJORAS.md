@@ -122,6 +122,11 @@ salvo por los captions nuevos. Dime cuántos captions añades y en qué páginas
 
 ## Lote 2 — Titles y metas. Cero cambio visual
 
+> **HECHO el 2026-09-11.** Ver DEC-A23. **El punto 4 de este prompt partía de una
+> hipótesis falsa**: el fallback de la plantilla combinada no se usa nunca, porque las
+> 48 metas están escritas a mano en `src/data/content/*.ts`. No había un sitio único
+> que arreglar. Lo que sí tenía un fallo de lógica era el título.
+
 Hallazgos 6 y 7. Es reescritura de copy de SERP, no de la página.
 
 ```

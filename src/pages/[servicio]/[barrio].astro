@@ -40,10 +40,15 @@ const TITLE_OVERRIDES: Record<string, Record<string, string>> = {
 };
 
 const titlePart = (service as any).titleBarrio ?? service.title;
-const rawTitle = `${titlePart} en ${zone.name} | ${SITE.name}`;
-const withPrecioCerrado = `${titlePart} en ${zone.name} · Precio Cerrado | ${SITE.name}`;
+// Escalón de modificadores comerciales: se elige el más largo que quepa en 50-60
+// caracteres (CLAUDE.md §4). La versión anterior sólo probaba «· Precio Cerrado» y,
+// cuando no cabía, devolvía el título corto sin modificador: ahí se quedaban fuera
+// de rango Comunidades/Coslada, Cocinas/Guadalajara e Integrales/Guadalajara.
+const TITLE_MODS = [' · Precio Cerrado', ' · Presupuesto Gratis', ' · Presupuesto', ''];
+const tBase = `${titlePart} en ${zone.name}`;
+const tSuf  = ` | ${SITE.name}`;
 const pageTitle = TITLE_OVERRIDES[service.slug]?.[zone.slug]
-  ?? (rawTitle.length >= 50 ? rawTitle : withPrecioCerrado.length <= 60 ? withPrecioCerrado : rawTitle);
+  ?? (TITLE_MODS.map(m => tBase + m + tSuf).find(t => t.length >= 50 && t.length <= 60) ?? tBase + tSuf);
 
 const szc = SERVICE_ZONE_CONTENT[service.slug]?.[zone.slug];
 

@@ -16,6 +16,15 @@ const faqs = ZONE_FAQS[zone.slug] ?? [];
 const relatedZoneSlugs: string[] = RELATED_ZONES[zone.slug] ?? [];
 const relatedZones = ZONES.filter(z => relatedZoneSlugs.includes(z.slug));
 
+// El título se compone con el modificador comercial más largo que quepa en 50-60
+// caracteres (CLAUDE.md §4). Con un nombre de municipio corto la cadena base se
+// queda en 39 caracteres, y con uno largo se pasa: el modificador lo compensa.
+const TITLE_MODS = [' · Precio Cerrado', ' · Presupuesto Gratis', ' · Presupuesto', ''];
+const tBase = `Empresa de Reformas en ${zone.name}`;
+const tSuf  = ` | ${SITE.name}`;
+const pageTitle = TITLE_MODS.map(m => tBase + m + tSuf).find(t => t.length >= 50 && t.length <= 60)
+  ?? tBase + tSuf;
+
 const hasBarrioNotes = Array.isArray(zone.m2BarrioNotes) && zone.m2BarrioNotes.length > 0;
 const hasTopWorks = Array.isArray(zone.topWorks) && zone.topWorks.length > 0;
 const hasNeighborhoods = Array.isArray(zone.neighborhoods) && zone.neighborhoods.length > 0;
@@ -51,8 +60,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title={`Empresa de Reformas en ${zone.name} | ${SITE.name}`}
-  description={`Trazzo360, empresa de reformas en ${zone.name}. Reformas integrales, baños, cocinas, pisos y locales con precio cerrado y visita técnica gratuita.`}
+  title={pageTitle}
+  description={zone.metaDesc ?? `Trazzo360, empresa de reformas en ${zone.name}. Reformas integrales, baños, cocinas, pisos y locales con precio cerrado y visita técnica gratuita.`}
   schema={[zoneSchema, breadcrumbSchema, faqSchema]}
 >
 

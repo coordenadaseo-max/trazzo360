@@ -172,11 +172,11 @@ export const FAQS: Record<string, { q: string; a: string }[]> = {
 
 export const META: Record<string, string> = {
   'alcala-de-henares':      'Reforma de cocina en Alcalá de Henares: pisos 60-70 con ventilación cenital. Extracción y distribución antes de elegir materiales. Precio cerrado.',
-  'torrejon-de-ardoz':      'Reforma de cocina en Torrejón de Ardoz: tabique cocina-salón en bloques 80-90. Abrir o renovar distribución actual. Potencia para inducción. Precio cerrado.',
-  'coslada':                'Reforma de cocina en Coslada: cocinas tipo pasillo en bloques 70-80. Distribución optimizada en espacio mínimo. Precio cerrado. Plazo garantizado en contrato.',
+  'torrejon-de-ardoz':      'Reforma de cocina en Torrejón de Ardoz: tabique cocina-salón en bloques 80-90. Abrir o renovar la distribución. Potencia para inducción. Precio cerrado.',
+  'coslada':                'Reforma de cocina en Coslada: cocinas tipo pasillo en bloques 70-80. Distribución optimizada en espacio mínimo. Precio cerrado y plazo en contrato.',
   'san-fernando-de-henares':'Reforma de cocina en San Fernando de Henares: pisos 90 con muebles que pueden renovarse solo con frentes nuevos. Evaluamos en visita. Precio cerrado.',
   'guadalajara':            'Reforma de cocina en Guadalajara: ventana original con impacto térmico en clima continental. Carpintería y extracción incluidas en el precio cerrado.',
   'azuqueca-de-henares':    'Reforma de cocina en Azuqueca de Henares: actualización de encimera y extractor en pisos de los 90 con instalaciones aprovechables. Precio cerrado.',
-  'meco':                   'Reforma de cocina en Meco: adosados con apertura posible al comedor o terraza posterior. Distribución y trámites incluidos. Precio cerrado.',
+  'meco':                   'Reforma de cocina en Meco: adosados con apertura posible al comedor o a la terraza posterior. Distribución y trámites incluidos. Precio cerrado.',
   'camarma-de-esteruelas':  'Reforma de cocina en Camarma de Esteruelas: cocinas amplias en viviendas unifamiliares de 2000s. Optimizar distribución en L o en U. Precio cerrado.',
 };

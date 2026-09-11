@@ -163,6 +163,11 @@ Cualquier componente que renderice metadatos de obra (ubicación, m², plazo) de
 ## 4. SEO técnico y on-page
 
 - `<title>` único, **50–60 caracteres**. Cuéntalos antes de escribirlo. Estructura: keyword principal al inicio + modificador comercial + marca.
+- **Los dos rangos anteriores aplican a las páginas indexables.** Las que llevan
+  `robots="noindex, follow"` propio quedan fuera: su `<title>` y su `<meta description>`
+  no llegan nunca a un resultado de búsqueda, y estirarlos hasta el rango sería
+  conformidad formal sin efecto. Hoy son cinco: `/404`, `/aviso-legal`, `/privacidad`,
+  `/gracias` y `/cookies`. Ver DEC-A23.
 - `<meta description>` única, **140–155 caracteres**. Nunca la generes concatenando el `headline` del servicio: eso produce metas de 250 caracteres.
 - Un solo `<h1>` por página, jerarquía sin saltos.
 - **Una keyword principal, una URL.** Consulta `docs/keyword-map.md` antes de escribir cualquier encabezado. Si dos páginas pueden competir por la misma consulta, la de menor prioridad resume y enlaza a la principal con anchor exacto.

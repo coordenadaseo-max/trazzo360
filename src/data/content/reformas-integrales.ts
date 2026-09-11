@@ -286,12 +286,12 @@ export const FAQS: Record<string, { q: string; a: string }[]> = {
 };
 
 export const META: Record<string, string> = {
-  'alcala-de-henares':      'Reforma integral en Alcalá de Henares: revisamos cuadro eléctrico y fontanería antes de cerrar precio. Pisos de los 70 y 80. Presupuesto cerrado por escrito.',
+  'alcala-de-henares':      'Reforma integral en Alcalá de Henares: revisamos cuadro eléctrico y fontanería antes de cerrar precio. Pisos de los 70 y 80. Presupuesto por escrito.',
   'torrejon-de-ardoz':      'Reforma integral en Torrejón de Ardoz: diagnóstico de instalaciones en visita gratuita. Todo a la vez o por fases. Precio cerrado. Plazo garantizado.',
-  'coslada':                'Reforma integral en Coslada: evaluamos instalaciones y humedades en visita. Primera obra integral en vivienda social. Presupuesto cerrado que no cambia a mitad.',
+  'coslada':                'Reforma integral en Coslada: evaluamos instalaciones y humedades en visita. Primera obra integral en vivienda social. Presupuesto que no cambia a mitad.',
   'san-fernando-de-henares':'Reforma integral en San Fernando de Henares: casco antiguo o Parque Roma, el alcance cambia. Instalaciones evaluadas en visita gratuita. Precio cerrado.',
-  'guadalajara':            'Reforma integral en Guadalajara: permisos en capital de provincia. Aislamiento en clima continental. Instalaciones evaluadas en visita gratuita. Precio cerrado.',
+  'guadalajara':            'Reforma integral en Guadalajara: permisos en capital de provincia. Aislamiento en clima continental. Instalaciones evaluadas en visita. Precio cerrado.',
   'azuqueca-de-henares':    'Reforma integral en Azuqueca de Henares: bloques 80-90 con instalaciones aprovechables. Más margen para distribución y acabados. Precio cerrado.',
-  'meco':                   'Reforma integral en Meco: viviendas unifamiliares con particularidades de cubierta y zonas exteriores. Evaluamos el alcance completo en visita gratuita. Precio cerrado.',
+  'meco':                   'Reforma integral en Meco: unifamiliares con particularidades de cubierta y zonas exteriores. Evaluamos el alcance completo en visita. Precio cerrado.',
   'camarma-de-esteruelas':  'Reforma integral en Camarma de Esteruelas: viviendas unifamiliares 2000-2010, primera reforma integral. Instalaciones en buen estado. Precio cerrado.',
 };

@@ -219,7 +219,7 @@ export const ZONES = [
     name: 'Guadalajara',
     heroVariant: 'editorial' as const,
     thesis: 'El clima también cuenta al decidir qué merece la pena renovar en una vivienda de Guadalajara.',
-    metaDesc: 'Reformas en Guadalajara capital. El clima también cuenta al decidir qué renovar. Precio cerrado y tramitación gestionada desde Guadalajara.',
+    metaDesc: 'Reformas en Guadalajara capital. El clima también cuenta al decidir qué renovar. Precio cerrado y tramitación gestionada desde la propia ciudad.',
     heroContext: {
       label: 'Contexto territorial',
       text: 'Guadalajara es provincia propia con tramitación municipal independiente de los ayuntamientos madrileños del Corredor. El clima continental de la ciudad (con mayor amplitud térmica que en la zona madrileña del Corredor) puede hacer que la carpintería exterior forme parte del alcance cuando el confort térmico lo justifique.',
@@ -304,7 +304,7 @@ export const ZONES = [
     name: 'Meco',
     heroVariant: 'tipologica' as const,
     thesis: 'Adosados y unifamiliares. Variables de alcance distintas a las de un piso de bloque.',
-    metaDesc: 'Reformas en Meco: adosados y viviendas unifamiliares. Variables de alcance distintas al piso de bloque. Cerramiento, cubierta, distribución. Precio cerrado.',
+    metaDesc: 'Reformas en Meco: adosados y viviendas unifamiliares. Variables de alcance distintas al piso de bloque. Cerramiento, cubierta y distribución.',
     heroContext: {
       label: 'Tipología predominante',
       text: 'La mayor parte del parque residencial de Meco son urbanizaciones con adosados y viviendas unifamiliares. El alcance de una reforma en vivienda de dos plantas puede incluir cerramiento de terraza, cubierta o coordinación en más de una planta, además del interior habitual.',

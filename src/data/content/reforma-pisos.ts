@@ -169,11 +169,11 @@ export const FAQS: Record<string, { q: string; a: string }[]> = {
 };
 
 export const META: Record<string, string> = {
-  'alcala-de-henares':      'Reforma de piso en Alcalá de Henares: evaluamos pavimento e instalaciones en visita antes de cerrar el alcance. Casco histórico. Precio cerrado. Desde 14.000€.',
-  'torrejon-de-ardoz':      'Reforma de piso en Torrejón de Ardoz: parquet madera maciza de los 80. Restaurar o sustituir por porcelánico según estado real. Precio cerrado. Desde 14.000€.',
-  'coslada':                'Reforma de piso en Coslada: calefacción por radiadores sin instalación bajo suelo. Tarima flotante sin levante de solera si la base lo permite. Precio cerrado.',
-  'san-fernando-de-henares':'Reforma de piso en San Fernando de Henares: acabados de los 90 en Parque Roma que aguantan. Reforma selectiva según estado real. Precio cerrado. Desde 14.000€.',
-  'guadalajara':            'Reforma de piso en Guadalajara: solera sin aislamiento en clima continental. Aislamiento bajo tarima con retorno real en confort. Precio cerrado. Desde 14.000€.',
+  'alcala-de-henares':      'Reforma de piso en Alcalá de Henares: evaluamos pavimento e instalaciones antes de cerrar el alcance. Casco histórico. Precio cerrado. Desde 14.000€.',
+  'torrejon-de-ardoz':      'Reforma de piso en Torrejón de Ardoz: parquet de madera maciza de los 80. Restaurar o sustituir según estado real. Precio cerrado. Desde 14.000€.',
+  'coslada':                'Reforma de piso en Coslada: calefacción por radiadores sin instalación bajo suelo. Tarima flotante sin levantar solera. Precio cerrado. Desde 14.000€.',
+  'san-fernando-de-henares':'Reforma de piso en San Fernando de Henares: acabados de los 90 en Parque Roma. Reforma selectiva según estado real. Precio cerrado. Desde 14.000€.',
+  'guadalajara':            'Reforma de piso en Guadalajara: solera sin aislamiento en clima continental. Aislamiento bajo tarima con retorno en confort. Precio cerrado. Desde 14.000€.',
   'azuqueca-de-henares':    'Reforma de piso en Azuqueca de Henares: azulejo en recibidor y pasillos en pisos 90. Gestión del contraste entre zonas reformadas y no. Precio cerrado.',
   'meco':                   'Reforma de piso en Meco: adosados con materiales distintos por planta. Unificar criterio o diferenciar por uso. Precio cerrado. Desde 14.000€.',
   'camarma-de-esteruelas':  'Reforma de piso en Camarma: cerámica en planta baja y tarima en dormitorios en viviendas 2000s. Renovar o unificar. Precio cerrado. Desde 14.000€.',

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Btn from '../../components/ui/Btn.astro';
 import CtaInline from '../../components/ui/CtaInline.astro';
 import PasosIncluye from '../../components/PasosIncluye.astro';
 import Compromisos from '../../components/Compromisos.astro';
@@ -229,9 +230,9 @@ const zones = [
         <p class="text-sm text-gray-300 leading-relaxed mb-5">
           Cuando la vivienda tiene un único baño, el plazo tiene la misma importancia que el resultado. Planificamos la obra para minimizar los días sin servicio: los primeros 4–6 días de demolición son los más críticos; a partir de ahí el espacio se va recuperando conforme avanza el trabajo. No comprometemos la impermeabilización por ahorrar un día.
         </p>
-        <a href="/contacto/" class="inline-block px-6 py-3 font-bold text-sm uppercase tracking-widest text-white border border-[#A85535] hover:bg-[#A85535] transition-colors">
+        <Btn href="/contacto/" tam="md" variante="secundaria">
           Consultar plazo para mi caso
-        </a>
+        </Btn>
       </div>
     </div>
   </section>
@@ -359,9 +360,9 @@ const zones = [
             <p class="text-sm font-semibold text-gray-900">¿Tu baño encaja en alguno de estos rangos?</p>
             <p class="text-xs text-gray-500 mt-0.5">Confirma el precio exacto en la visita técnica gratuita, sin compromiso.</p>
           </div>
-          <a href="/contacto/" class="flex-shrink-0 inline-block px-6 py-3 font-bold text-sm uppercase tracking-widest text-white hover:bg-brand-dark transition-colors" style="background:#A85535">
+          <Btn href="/contacto/" tam="md" class="flex-shrink-0">
               Solicitar visita técnica gratuita
-          </a>
+          </Btn>
         </div>
 
         <!-- Licencias -->
@@ -689,8 +690,8 @@ const zones = [
         { value: '2 años', label: 'Garantía de ejecución' },
       ]} />
       <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-        <a href="/contacto/" class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar visita técnica gratuita</a>
-        <a href={`tel:${SITE.phone}`} class="inline-block px-12 py-5 font-bold text-sm uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">{SITE.phoneDisplay}</a>
+        <Btn href="/contacto/" tam="lg">Solicitar visita técnica gratuita</Btn>
+        <Btn href={`tel:${SITE.phone}`} tam="lg" variante="secundaria">{SITE.phoneDisplay}</Btn>
       </div>
     </div>
   </section>

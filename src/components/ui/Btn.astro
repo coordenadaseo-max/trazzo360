@@ -1,0 +1,43 @@
+---
+/**
+ * Botón de acción. Único sitio donde se escribe el markup de un botón.
+ *
+ * Antes había 23 grafías distintas para 49 botones, con cinco paddings, dos pesos y
+ * dos tamaños de texto, y 19 de ellos llevaban el fondo en un `style` inline. Ver
+ * DEC-D38.
+ *
+ * Los estilos viven en global.css (`.btn`), no aquí ni en las páginas, según la regla
+ * de docs/PROTOCOLO-LAB.md que cita CLAUDE.md §9.
+ */
+interface Props {
+  /** Con `href` sale un `<a>`; sin él, un `<button>`. */
+  href?: string;
+  type?: 'button' | 'submit';
+  /** Principal o de apoyo. La secundaria sólo se lee sobre fondo oscuro. */
+  variante?: 'primaria' | 'secundaria';
+  /** `sm` navegación · `md` cierre de bloque · `lg` hero y CTA final. */
+  tam?: 'sm' | 'md' | 'lg';
+  /** Ocupa toda la fila. */
+  ancho?: boolean;
+  /** Invierte la primaria para fondos de marca, donde terracota no contrasta. */
+  inversa?: boolean;
+  class?: string;
+  'aria-label'?: string;
+}
+
+const {
+  href, type = 'button', variante = 'primaria', tam = 'md',
+  ancho = false, inversa = false, class: extra = '', ...resto
+} = Astro.props;
+
+const clase = [
+  'btn', `btn--${tam}`,
+  inversa ? 'btn--inversa' : `btn--${variante}`,
+  ancho && 'btn--ancho',
+  extra,
+].filter(Boolean).join(' ');
+---
+
+{href
+  ? <a href={href} class={clase} {...resto}><slot /></a>
+  : <button type={type} class={clase} {...resto}><slot /></button>}

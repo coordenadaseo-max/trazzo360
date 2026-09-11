@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Btn from '../../components/ui/Btn.astro';
 import DataTable from '../../components/ui/DataTable.astro';
 import CtaInline from '../../components/ui/CtaInline.astro';
 import ProcesoSteps from '../../components/ui/ProcesoSteps.astro';
@@ -646,8 +647,8 @@ const faqSchema = {
       <p class="text-gray-400 mb-2">Visita técnica gratuita. Presupuesto orientativo por escrito.</p>
       <p class="text-gray-600 text-sm mb-10">Sin presupuesto sin ver el local. Sin alcance sin conocer la actividad.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-[#A85535] text-white hover:bg-[#8A4229] transition-colors">Solicitar visita técnica gratuita</a>
-        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">{SITE.phoneDisplay}</a>
+        <Btn href="/contacto/" tam="lg">Solicitar visita técnica gratuita</Btn>
+        <Btn href={`tel:${SITE.phone}`} tam="lg" variante="secundaria">{SITE.phoneDisplay}</Btn>
       </div>
     </div>
   </section>

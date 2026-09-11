@@ -520,6 +520,18 @@ Ningún otro documento la repite: `PRODUCT.md` y `docs/TRAZZO360-SYSTEM.md` apun
 - `compromisos` solo cuando la lista sea una garantía contractual de máximo peso; no para listas normales.
 - Lo verifica `npm run check` como advertencia, no como bloqueante. Decisión vigente: DEC-B02.
 
+### 8.4 Botones de acción
+
+**Ningún botón se escribe a mano.** Todos salen de `Btn.astro`, con dos variantes
+(`primaria`, `secundaria`) y tres tamaños (`sm` navegación, `md` cierre de bloque,
+`lg` hero y CTA final). Ni Tailwind suelto ni `style` inline en la página: si hace
+falta un valor nuevo, se añade a `.btn` en `global.css` y cambia en todos a la vez.
+
+La `secundaria` sólo se lee sobre fondo oscuro. Sobre fondo de marca la primaria se
+invierte con la prop `inversa`, porque terracota sobre terracota no contrasta.
+
+Los valores están en `DESIGN-BLUEPRINT.md` § «Bloques compuestos». Ver DEC-D38.
+
 ### 8.3 Estructura HTML obligatoria
 
 ```html

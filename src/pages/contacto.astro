@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Btn from '../components/ui/Btn.astro';
 import Breadcrumb from '../components/ui/Breadcrumb.astro';
 import { SITE, SERVICES, ZONES } from '../data/site';
 ---
@@ -95,11 +96,9 @@ import { SITE, SERVICES, ZONES } from '../data/site';
               He leído y acepto la <a href="/privacidad/" class="underline hover:text-[#A85535]">política de privacidad</a>. Mis datos serán usados exclusivamente para gestionar esta solicitud.
             </label>
           </div>
-          <button type="submit"
-            class="w-full sm:w-auto px-10 py-4 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity"
-            style="background:#A85535">
+          <Btn type="submit" tam="lg" class="w-full sm:w-auto">
             Enviar solicitud de presupuesto
-          </button>
+          </Btn>
         </form>
       </div>
 

@@ -1,4 +1,5 @@
 ---
+import Btn from './Btn.astro';
 /**
  * CTA de cierre de bloque. Aparece donde el visitante acaba de leer algo que le
  * deja en disposición de actuar: tras el proceso de obra, tras aprender a leer un
@@ -20,5 +21,5 @@ const { texto, href, nota } = Astro.props;
 
 <div class="cta-inline">
   {nota && <p class="cta-inline__nota">{nota}</p>}
-  <a href={href} class="cta-inline__link">{texto}</a>
+  <Btn href={href} tam="md" class="cta-inline__link">{texto}</Btn>
 </div>

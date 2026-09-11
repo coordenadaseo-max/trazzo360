@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Btn from '../../components/ui/Btn.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE } from '../../data/site';
 
@@ -84,9 +85,9 @@ const guides = [
       <p class="text-gray-700 leading-relaxed mb-6">
         Las guías dan el marco de referencia. La calculadora te permite introducir el tamaño, la calidad y los modificadores de tu obra para obtener una estimación personalizada antes de que vengan a visitarte.
       </p>
-      <a href="/calculadora-precio-reforma/" class="inline-block text-center px-6 py-3 font-bold text-sm tracking-widest uppercase text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+      <Btn href="/calculadora-precio-reforma/" tam="md">
         Calculadora de precios de reforma
-      </a>
+      </Btn>
     </section>
 
     <section aria-labelledby="h-servicios-guias" class="mb-8">

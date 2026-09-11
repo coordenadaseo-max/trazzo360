@@ -1,5 +1,6 @@
 ---
 import { SITE, SERVICES, ZONES } from '../data/site';
+import Btn from './ui/Btn.astro';
 ---
 
 <!-- Top bar -->
@@ -71,9 +72,9 @@ import { SITE, SERVICES, ZONES } from '../data/site';
         WhatsApp
       </a>
       )}
-      <a href="/contacto/" class="px-5 py-2.5 text-sm font-bold tracking-wider uppercase text-white transition-opacity hover:opacity-90" style="background:#A85535">
+      <Btn href="/contacto/" tam="sm">
         Visita gratuita
-      </a>
+      </Btn>
     </div>
 
     <!-- Mobile toggle -->
@@ -100,9 +101,9 @@ import { SITE, SERVICES, ZONES } from '../data/site';
         <a href="/contacto/" class="block px-3 py-2 text-gray-700 hover:text-[#A85535] text-sm font-medium">Contacto</a>
       </div>
       <div class="py-3">
-        <a href="/contacto/" class="block text-center py-3 font-bold text-sm tracking-wider uppercase text-white" style="background:#A85535">
+        <Btn href="/contacto/" tam="sm" ancho>
           Visita gratuita
-        </a>
+        </Btn>
       </div>
     </div>
   </div>

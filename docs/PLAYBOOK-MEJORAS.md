@@ -25,7 +25,7 @@ se rompe, se sabe qué lo rompió.
 | 6 | `<meta description>` fuera de 140–155 | 36 de 75 (24 combinadas pasan de 155) | §4 | bajo |
 | 7 | `<title>` fuera de 50–60 | 8 de 75 | §4 | bajo |
 | 8 | Tablas de datos duplicadas a mano | 28 tablas en 4 patrones; 18 son el patrón A | §5, §10 | bajo |
-| 9 | Botones: 18 grafías distintas para 44 usos | 5 paddings, 2 pesos, 2 tamaños | §10 | **medio: cambia el diseño** |
+| 9 | Botones: 23 grafías distintas para 49 usos | 5 paddings, 2 pesos, 2 tamaños, 19 con `style` inline | §10 | **medio: cambia el diseño** |
 | 10 | Eyebrow a mano en 20 grafías, 106 usos, mientras `.eyebrow` existe en el canon y diverge | 12 páginas | §10, canon | **medio: cambia el diseño** |
 | 11 | `SectionHeader.astro` existe y no se usa en ninguna página | 1 componente | — | nulo |
 | 12 | 13 clases declaradas en `global.css` sin ninguna referencia en `src/` | 13 clases | — | nulo |
@@ -189,6 +189,9 @@ o valores computados de una tabla antes y después para confirmar que no se muev
 ---
 
 ## Lote 4 — Sistema de botones. Cambia el diseño
+
+> **HECHO el 2026-09-11.** Ver DEC-D38. **El recuento estaba corto**: eran 23 grafías
+> para 49 botones, no 18 para 44, porque no veía los que tienen la clase en `global.css`.
 
 Hallazgo 9. **Empieza preguntando**, porque unificar 18 grafías significa que algunos
 botones van a cambiar de tamaño.

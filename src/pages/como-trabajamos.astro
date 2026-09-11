@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Btn from '../components/ui/Btn.astro';
 import Compromisos from '../components/Compromisos.astro';
 import Breadcrumb from '../components/ui/Breadcrumb.astro';
 import { SITE, AUTHOR } from '../data/site';
@@ -100,9 +101,9 @@ const breadcrumbSchema = {
           <p class="text-sm text-gray-500 mb-6">Coordinación de equipos y ejecución de obras de reforma en el Corredor del Henares.</p>
           <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">Cargo</p>
           <p class="text-sm text-gray-700 mb-8">{AUTHOR.role}</p>
-          <a href="/contacto/" class="block text-center py-3.5 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+          <Btn href="/contacto/" tam="md" ancho>
             Habla directamente con nosotros
-          </a>
+          </Btn>
         </div>
       </div>
     </div>
@@ -134,12 +135,12 @@ const breadcrumbSchema = {
       </h2>
       <p class="text-white/80 mb-7">Visita técnica gratuita. Presupuesto por escrito con precio cerrado. Sin letra pequeña.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest bg-white text-[#A85535] hover:bg-gray-100 transition-colors">
+        <Btn href="/contacto/" tam="lg" inversa>
           Solicitar visita técnica gratuita
-        </a>
-        <a href={`tel:${SITE.phone}`} class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white border-2 border-white/40 hover:border-white transition-colors">
+        </Btn>
+        <Btn href={`tel:${SITE.phone}`} tam="lg" variante="secundaria">
           ☎ {SITE.phoneDisplay}
-        </a>
+        </Btn>
       </div>
     </div>
   </section>

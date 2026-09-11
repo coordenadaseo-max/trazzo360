@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Btn from '../components/ui/Btn.astro';
 import { SITE, SERVICES } from '../data/site';
 ---
 
@@ -25,9 +26,9 @@ import { SITE, SERVICES } from '../data/site';
       </p>
       <p class="text-sm text-gray-500 mb-8">Si tienes urgencia, llámanos directamente.</p>
       {SITE.phone !== 'TU_TELEFONO' && (
-        <a href={`tel:${SITE.phone}`} class="inline-block px-8 py-3.5 text-sm font-bold uppercase tracking-widest text-white border border-white/30 hover:border-white transition-colors">
+        <Btn href={`tel:${SITE.phone}`} tam="md" variante="secundaria">
           ☎ {SITE.phoneDisplay}
-        </a>
+        </Btn>
       )}
     </div>
   </section>
@@ -133,9 +134,9 @@ import { SITE, SERVICES } from '../data/site';
           </a>
         ))}
       </div>
-      <a href="/" class="inline-block px-8 py-3.5 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+      <Btn href="/" tam="md">
         Volver al inicio
-      </a>
+      </Btn>
     </div>
   </section>
 

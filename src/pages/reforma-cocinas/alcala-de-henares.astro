@@ -6,6 +6,7 @@
 // Claims técnicos: criterios de visita, no atributos de barrio.
 
 import Layout from '../../layouts/Layout.astro';
+import Btn from '../../components/ui/Btn.astro';
 import CtaInline from '../../components/ui/CtaInline.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import { SITE, ZONES } from '../../data/site';
@@ -111,12 +112,12 @@ const faqSchema = {
       </dl>
 
       <div class="flex flex-col sm:flex-row gap-3 mt-8">
-        <a href="/contacto/" class="inline-block text-center px-7 py-3.5 font-black text-xs uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+        <Btn href="/contacto/" tam="lg">
           Solicitar visita técnica gratuita
-        </a>
-        <a href={`tel:${SITE.phone}`} class="inline-block text-center px-7 py-3.5 font-black text-xs uppercase tracking-widest text-white border border-white/20 hover:border-white/50 transition-colors">
+        </Btn>
+        <Btn href={`tel:${SITE.phone}`} tam="lg" variante="secundaria">
           {SITE.phoneDisplay}
-        </a>
+        </Btn>
       </div>
     </div>
   </section>
@@ -285,9 +286,9 @@ const faqSchema = {
       <p class="leading-relaxed mb-8" style="color:rgba(255,255,255,.6)">
         La visita técnica evalúa extracción, instalaciones y distribución antes de cerrar ningún número. Presupuesto cerrado por escrito. Sin letra pequeña.
       </p>
-      <a href="/contacto/" class="inline-block px-10 py-4 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity" style="background:#A85535">
+      <Btn href="/contacto/" tam="lg">
         Solicitar visita técnica gratuita
-      </a>
+      </Btn>
     </div>
   </section>
 

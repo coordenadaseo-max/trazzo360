@@ -452,31 +452,11 @@
 /* Encabezado de sección parque */
 .parque-header { max-width: 52rem; }
 
-/* CTAs del hero */
-.hero-cta-primary {
-  display: inline-block; text-align: center;
-  padding: 1rem 1.75rem;
-  font-weight: 700; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase;
-  color: #fff; background: #A85535;
-  transition: opacity .2s;
-  white-space: nowrap;
-}
-.hero-cta-primary:hover { opacity: 0.88; }
-
-.hero-cta-secondary {
-  display: inline-block; text-align: center;
-  padding: 1rem 1.75rem;
-  font-weight: 700; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase;
-  color: #fff; border: 1.5px solid rgba(255,255,255,.45);
-  transition: border-color .2s;
-  white-space: nowrap;
-}
-.hero-cta-secondary:hover { border-color: rgba(255,255,255,.85); }
-
-/* Métricas del hero */
+/* CTAs del hero. Los botones los pinta Btn.astro (.btn); aquí sólo el contenedor. */
 .hero-cta-group { display: flex; flex-direction: column; gap: 0.75rem; }
 @media(min-width:480px){ .hero-cta-group { flex-direction: row; flex-wrap: wrap; } }
 
+/* Métricas del hero */
 .hero-metrics { display: flex; flex-direction: row; gap: 2rem; flex-wrap: wrap; }
 @media(min-width:1024px){ .hero-metrics { flex-direction: column; gap: 1.5rem; text-align: right; flex-wrap: nowrap; } }
 
@@ -1154,17 +1134,41 @@ a[style*="background: #A85535"]:hover {
 
 /* CTA de cierre de bloque. Discreto a propósito: acompaña al contenido que
    acaba de leerse, no compite con el CTA final de la página. Ver DEC-D28. */
+/* ── Botones de acción ─────────────────────────────────────────────────────────
+   Dos variantes, tres tamaños. Lo emite Btn.astro, que es el único sitio donde se
+   escribe el markup de un botón. Ver DEC-D38 y CLAUDE.md §8.4.
+
+   Los valores de `md` y `lg` no se inventan: son los que ya vivían en
+   `.cta-inline__link` y `.hero-cta-primary`, que ya usaban 6 páginas cada uno. Lo que
+   cambió al unificar fue que las 23 grafías escritas a mano se alinearon con ellos.
+   El horizontal de `lg` (2rem) es el punto medio entre los dos que había, 1.75 y 2.5. */
+.btn {
+  display: inline-block; text-align: center;
+  font-weight: 700; font-size: 0.8125rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  transition: opacity var(--dur-fast, 0.2s), border-color var(--dur-fast, 0.2s), background var(--dur-fast, 0.2s);
+}
+.btn--sm { padding: 0.625rem 1.25rem; }
+.btn--md { padding: 0.75rem  1.5rem;  }
+.btn--lg { padding: 1rem     2rem;    }
+
+/* Ocupa la fila entera: el padding horizontal deja de mandar sobre el ancho. */
+.btn--ancho { display: block; width: 100%; }
+
+.btn--primaria           { color: #fff; background: var(--color-brand, #A85535); }
+.btn--primaria:hover     { opacity: 0.88; }
+.btn--secundaria         { color: #fff; background: transparent; border: 1px solid rgba(255,255,255,.3); }
+.btn--secundaria:hover   { border-color: rgba(255,255,255,.85); }
+
+/* Sobre fondo de marca la primaria se invierte, porque terracota sobre terracota no
+   se ve. Un solo uso hoy: el CTA final de /como-trabajamos/. */
+.btn--inversa            { color: var(--color-brand, #A85535); background: #fff; }
+.btn--inversa:hover      { opacity: 0.88; }
+
 .cta-inline {
   display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem;
   margin-top: 2rem; padding-top: 1.25rem;
   border-top: 1px solid var(--color-border, #E5E7EB);
 }
 .cta-inline__nota { font-size: 0.8125rem; color: #6B7280; margin: 0; flex: 1 1 16rem; }
-.cta-inline__link {
-  display: inline-block; flex-shrink: 0;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-  color: #fff; background: var(--color-brand, #A85535);
-  transition: opacity var(--dur-fast, 0.2s);
-}
-.cta-inline__link:hover { opacity: 0.88; }
+.cta-inline__link { flex-shrink: 0; }

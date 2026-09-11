@@ -269,6 +269,7 @@ en `src/styles/global.css` y cambia en todas a la vez.
 | Proceso por pasos | Una secuencia ordenada con tiempos | `.proceso-steps` · `.proceso-step` | DEC-D32 |
 | Catálogo término/definición | Una lista sin orden de pares concepto + explicación (`<dl>`) | `.catalogo-row` con `<dt>`/`<dd>` | DEC-D36 |
 | Tabla de datos | Filas y columnas comparables: precios, plazos, materiales | `DataTable.astro` · `.tabla-dato` | DEC-D37 |
+| Botón de acción | Cualquier CTA: hero, cierre de bloque, navegación, formulario | `Btn.astro` · `.btn` | DEC-D38 |
 
 **Reglas comunes a los tres:**
 
@@ -280,6 +281,8 @@ en `src/styles/global.css` y cambia en todas a la vez.
   igual en todas las páginas donde aparezca.
 - Ninguno lleva estilos inline. Si te hace falta uno, es que el patrón necesita una variante
   en `global.css`, no una excepción en la página.
+- Los botones son `sm` 10/20, `md` 12/24 y `lg` 16/32, todos en 13px · 700 · `.08em`
+  versalitas. La regla de uso vive en `CLAUDE.md` §8.4.
 - La tabla de datos se invoca **sólo** por `DataTable.astro`. El componente impone lo que §5
   exige y no se puede usar mal: `caption` es prop obligatoria, el `<thead>` y el `scope="col"`
   los pone él. Sus dos gutters y sus tres fondos existen para conservar la deriva que había

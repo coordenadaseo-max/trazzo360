@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Btn from '../components/ui/Btn.astro';
 import Breadcrumb from '../components/ui/Breadcrumb.astro';
 import { CALC_SERVICES, MODIFIERS } from '../data/calculator';
 import { SITE } from '../data/site';
@@ -170,9 +171,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
           <input id="lead-email" type="email" name="email" required autocomplete="email"
                  placeholder="tu@correo.com"
                  class="flex-1 px-4 py-3 border border-gray-200 bg-gray-50 text-gray-900 focus:outline-none focus:border-[#A85535] transition-colors text-sm" />
-          <button type="submit"
-                  class="px-6 py-3 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity whitespace-nowrap"
-                  style="background:#A85535">Enviármelo</button>
+          <Btn type="submit" tam="md" class="whitespace-nowrap">Enviármelo</Btn>
         </div>
 
         <div class="flex items-start gap-2 mt-3">
@@ -515,9 +514,9 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
     <div class="max-w-5xl mx-auto px-4 text-center">
       <h2 id="h-calc-cta" class="h4-block h4-block--dark mb-3 reveal">¿Quieres un presupuesto real con precio cerrado?</h2>
       <p class="text-gray-400 mb-6">La calculadora orienta. El precio cerrado se firma en el contrato tras la visita técnica gratuita, sin compromiso.</p>
-      <a href="/contacto/" class="inline-block bg-[#A85535] text-white font-bold px-8 py-4 hover:opacity-90 transition-opacity text-sm tracking-wide uppercase">
+      <Btn href="/contacto/" tam="lg">
         Solicitar visita técnica gratuita
-      </a>
+      </Btn>
     </div>
   </section>
 

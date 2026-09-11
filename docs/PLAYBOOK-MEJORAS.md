@@ -19,7 +19,7 @@ se rompe, se sabe qué lo rompió.
 |---|---|---|---|---|
 | 1 | `<main>` anidado dentro del `<main>` del layout | 1 página (`/guias`) | §5 «`<main>` único» | nulo |
 | 2 | `<table>` sin `<caption>` | 11 tablas en 5 páginas | §5 | nulo |
-| 3 | `<th>` sin `scope` | 17 celdas en 6 páginas | §5 | nulo |
+| 3 | `<th>` sin `scope` | 63 celdas renderizadas (46 en fuente) en 6 páginas | §5 | nulo |
 | 4 | `<section>` sin `aria-labelledby` ni `aria-label` | 13 en 5 páginas | §5 | nulo |
 | 5 | `canonical` del 404 apunta a `/404/`, que no existe | 1 página | §4 | nulo |
 | 6 | `<meta description>` fuera de 140–155 | 36 de 75 (24 combinadas pasan de 155) | §4 | bajo |
@@ -81,6 +81,10 @@ Al terminar: commit con mensaje que explique el porqué, y push.
 
 ## Lote 1 — Semántica HTML. Cero cambio visual
 
+> **HECHO el 2026-09-11.** Ver DEC-A22. La cifra de `<th>` de la tabla de arriba estaba
+> mal en la primera redacción de este documento: eran 63 renderizados, no 17. El recuento
+> original contaba tablas afectadas, no celdas.
+
 Resuelve los hallazgos 1 a 5. Es el lote con mejor relación valor/riesgo: son errores que
 contradicen §5 y §4, y ninguno toca el aspecto de la web.
 
@@ -94,11 +98,12 @@ Alcance: cinco correcciones de semántica HTML. Ninguna debe cambiar un píxel.
    que corresponda.
 
 2. Las 11 tablas sin <caption> de servicios/reforma-cocinas, comunidades-vecinos,
-   reforma-pisos, locales-comerciales y calculadora-precio-reforma. §5 lo exige.
+   reforma-pisos, locales-comerciales y reformas-integrales. §5 lo exige.
+   (La calculadora ya tenía captions en sus 4 tablas.)
    Escribe un caption que describa lo que contiene cada tabla. Si visualmente no debe
    verse, ocúltalo con una clase sr-only, no con display:none.
 
-3. Los 17 <th> sin scope de esas mismas páginas. Añade scope="col" o scope="row" según
+3. Los <th> sin scope de esas páginas y de la calculadora. Añade scope="col" o scope="row" según
    corresponda a cada uno. Míralos: no lo apliques en bloque.
 
 4. Los 13 <section> sin aria-labelledby ni aria-label. Si la sección tiene encabezado,

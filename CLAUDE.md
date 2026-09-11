@@ -169,7 +169,7 @@ Cualquier componente que renderice metadatos de obra (ubicación, m², plazo) de
 - Toda imagen: `alt` descriptivo, `width` y `height` explícitos, `astro:assets`, `loading="lazy"` salvo la del hero.
 - Todo enlace interno con anchor descriptivo. Nunca "aquí" ni el municipio pelado. Nunca el mismo anchor dos veces hacia la misma URL desde la misma página.
 - Ninguna página se publica sin estar enlazada desde su hub de servicio y su hub de zona.
-- Canonical autorreferenciado. `/gracias/` con `noindex` y fuera del sitemap.
+- Canonical autorreferenciado, **salvo en páginas que no son un destino**: la 404 no lo lleva, porque autorreferenciarse la apuntaría a una URL que no existe. `Layout.astro` admite `canonical={false}` para eso. `/gracias/` con `noindex` y fuera del sitemap.
 - **Una sola entidad de negocio en todo el sitio**, con `@id: https://trazzo360.es/#business`. Cualquier otro schema la referencia con `{"@id": "..."}`; nunca redeclara un `GeneralContractor`.
 
 ## 5. HTML semántico

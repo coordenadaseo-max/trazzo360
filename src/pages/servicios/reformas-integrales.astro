@@ -496,11 +496,12 @@ const zones = [
       <p class="plazos-caption">Peso orientativo de cada fase sobre el total de la obra. El plazo absoluto depende del alcance y la superficie; la fecha de entrega queda fijada en el contrato.</p>
       <div class="overflow-x-auto">
         <table class="plazos-table">
+          <caption class="sr-only">Fases de una reforma integral, con el peso de cada una sobre el plazo total y lo que condiciona de la siguiente.</caption>
           <thead>
             <tr>
-              <th class="plazos-th text-left">Fase</th>
-              <th class="plazos-th text-right">Peso</th>
-              <th class="plazos-th text-left hidden md:table-cell">Qué condiciona la siguiente fase</th>
+              <th scope="col" class="plazos-th text-left">Fase</th>
+              <th scope="col" class="plazos-th text-right">Peso</th>
+              <th scope="col" class="plazos-th text-left hidden md:table-cell">Qué condiciona la siguiente fase</th>
             </tr>
           </thead>
           <tbody>

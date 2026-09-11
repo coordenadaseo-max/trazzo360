@@ -85,8 +85,8 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   <Breadcrumb items={[{ label: 'Calculadora de presupuesto' }]} />
 
   <!-- Hero M1 — Respuesta directa -->
-  <section class="max-w-5xl mx-auto px-4 pt-10 pb-6">
-    <h1 class="h1-page mb-4">Calculadora de presupuesto de reforma</h1>
+  <section aria-labelledby="h-calc-hero" class="max-w-5xl mx-auto px-4 pt-10 pb-6">
+    <h1 id="h-calc-hero" class="h1-page mb-4">Calculadora de presupuesto de reforma</h1>
     <p class="text-lg text-gray-700 leading-relaxed mb-2">
       Una reforma en el Corredor del Henares parte de <strong>350–650 €/m²</strong> en calidad esencial y supera los <strong>1.400 €/m²</strong> en alta. Un baño completo oscila entre <strong>3.500 y 20.000 €</strong> según tamaño y materiales; una cocina, entre <strong>5.000 y 35.000 €</strong>. Todos los valores sin IVA.
     </p>
@@ -94,7 +94,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   </section>
 
   <!-- Calculadora interactiva -->
-  <section class="max-w-5xl mx-auto px-4 pb-12">
+  <section aria-labelledby="h-calc-estimacion" class="max-w-5xl mx-auto px-4 pb-12">
     <form id="calc-form" novalidate class="space-y-5">
 
       <!-- Fieldset 1: Servicio -->
@@ -130,7 +130,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
 
     <!-- Resultado: tabla comparativa y detalle -->
     <div id="calc-result" class="mt-6 hidden">
-      <h2 class="text-lg font-bold text-gray-800 mb-4">Estimación comparativa sin IVA</h2>
+      <h2 id="h-calc-estimacion" class="text-lg font-bold text-gray-800 mb-4">Estimación comparativa sin IVA</h2>
       <div id="comparison-table"></div>
       <div id="detail-panel" class="mt-4"></div>
     </div>
@@ -195,9 +195,9 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   </section>
 
   <!-- M2 — De qué depende el precio -->
-  <section class="bg-gray-50 py-14">
+  <section aria-labelledby="h-calc-depende" class="bg-gray-50 py-14">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="h4-block mb-2 reveal">De qué depende el precio de una reforma</h2>
+      <h2 id="h-calc-depende" class="h4-block mb-2 reveal">De qué depende el precio de una reforma</h2>
       <div class="w-10 h-1 bg-[#A85535] mb-8"></div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="bg-white border border-gray-200 p-6">
@@ -235,8 +235,8 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   </section>
 
   <!-- Tabla de referencia estática (noscript fallback + SEO) -->
-  <section class="py-14 max-w-5xl mx-auto px-4">
-    <h2 class="h4-block mb-2 reveal">Tabla de precios de referencia orientativos</h2>
+  <section aria-labelledby="h-calc-tabla" class="py-14 max-w-5xl mx-auto px-4">
+    <h2 id="h-calc-tabla" class="h4-block mb-2 reveal">Tabla de precios de referencia orientativos</h2>
     <div class="w-10 h-1 bg-[#A85535] mb-4"></div>
     <p class="text-sm text-gray-500 mb-8">Todos los precios son sin IVA y sin incluir licencias, honorarios técnicos ni tasas municipales, salvo que se indique. Son orientativos: el precio real se fija tras la visita técnica gratuita.</p>
 
@@ -252,9 +252,9 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
               <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">{svc.surfaceLabel} · precios sin IVA · orientativos</caption>
               <thead class="bg-gray-50">
                 <tr>
-                  <th class="text-left px-4 py-2.5 font-semibold text-gray-700">Calidad</th>
-                  {surfs.map(m2 => <th class="text-right px-4 py-2.5 font-semibold text-gray-700">{m2} m²</th>)}
-                  <th class="text-right px-4 py-2.5 font-semibold text-gray-700">€/m²</th>
+                  <th scope="col" class="text-left px-4 py-2.5 font-semibold text-gray-700">Calidad</th>
+                  {surfs.map(m2 => <th scope="col" class="text-right px-4 py-2.5 font-semibold text-gray-700">{m2} m²</th>)}
+                  <th scope="col" class="text-right px-4 py-2.5 font-semibold text-gray-700">€/m²</th>
                 </tr>
               </thead>
               <tbody>
@@ -289,8 +289,8 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
               <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">Precio total por {svc.slug.includes('bano') ? 'baño' : 'cocina'} · sin IVA · orientativo</caption>
               <thead class="bg-gray-50">
                 <tr>
-                  <th class="text-left px-4 py-2.5 font-semibold text-gray-700">Tramo</th>
-                  {qs.map(q => <th class="text-right px-4 py-2.5 font-semibold text-gray-700">{svc.qualities[q].label.replace(/\w+ /, '')}</th>)}
+                  <th scope="col" class="text-left px-4 py-2.5 font-semibold text-gray-700">Tramo</th>
+                  {qs.map(q => <th scope="col" class="text-right px-4 py-2.5 font-semibold text-gray-700">{svc.qualities[q].label.replace(/\w+ /, '')}</th>)}
                 </tr>
               </thead>
               <tbody>
@@ -326,9 +326,9 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
               <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">Solo coste de obra · sin proyecto ni licencia · sin IVA</caption>
               <thead class="bg-gray-50">
                 <tr>
-                  <th class="text-left px-4 py-2.5 font-semibold text-gray-700">Calidad</th>
-                  {surfs.map(m2 => <th class="text-right px-4 py-2.5 font-semibold text-gray-700">{m2} m²</th>)}
-                  <th class="text-right px-4 py-2.5 font-semibold text-gray-700">€/m²</th>
+                  <th scope="col" class="text-left px-4 py-2.5 font-semibold text-gray-700">Calidad</th>
+                  {surfs.map(m2 => <th scope="col" class="text-right px-4 py-2.5 font-semibold text-gray-700">{m2} m²</th>)}
+                  <th scope="col" class="text-right px-4 py-2.5 font-semibold text-gray-700">€/m²</th>
                 </tr>
               </thead>
               <tbody>
@@ -363,8 +363,8 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
               <caption class="text-left text-xs text-gray-400 px-4 py-2 bg-gray-50 border-b border-gray-200">Orientativo para edificio de 8–12 viviendas · sin IVA</caption>
               <thead class="bg-gray-50">
                 <tr>
-                  <th class="text-left px-4 py-2.5 font-semibold text-gray-700">Elemento</th>
-                  {qs.map(q => <th class="text-right px-4 py-2.5 font-semibold text-gray-700">{svc.qualities[q].label.replace(/\w+ /, '')}</th>)}
+                  <th scope="col" class="text-left px-4 py-2.5 font-semibold text-gray-700">Elemento</th>
+                  {qs.map(q => <th scope="col" class="text-right px-4 py-2.5 font-semibold text-gray-700">{svc.qualities[q].label.replace(/\w+ /, '')}</th>)}
                 </tr>
               </thead>
               <tbody>
@@ -390,9 +390,9 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   </section>
 
   <!-- M3 — Por qué dos presupuestos no son comparables -->
-  <section class="bg-[#F9F7F4] py-14">
+  <section aria-labelledby="h-calc-comparar" class="bg-[#F9F7F4] py-14">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="h4-block mb-2 reveal">Por qué dos presupuestos con el mismo total no son comparables</h2>
+      <h2 id="h-calc-comparar" class="h4-block mb-2 reveal">Por qué dos presupuestos con el mismo total no son comparables</h2>
       <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
       <p class="text-gray-700 leading-relaxed mb-4">Un presupuesto de 40.000 € puede significar cosas muy distintas. Uno puede incluir cuadro eléctrico nuevo, fontanería completa y redistribución de tabiques; el otro puede omitirlos y añadirlos como "extras de obra" cuando ya empezó la reforma. El número final es el mismo, el alcance real no.</p>
       <p class="text-gray-700 leading-relaxed mb-4">Los cuatro puntos que hay que revisar antes de comparar: <strong>qué instalaciones están incluidas</strong> (electricidad, fontanería, saneamiento), <strong>si hay proyecto técnico</strong> o solo albaranes, <strong>cómo se gestionan los imprevistos</strong> (precio cerrado o por administración) y <strong>si el plazo lleva penalización</strong> por retraso. Un presupuesto que no responde estas cuatro preguntas en el papel no es un presupuesto: es una estimación.</p>
@@ -409,8 +409,8 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   </section>
 
   <!-- M4 — Qué NO suele estar incluido -->
-  <section class="py-14 max-w-5xl mx-auto px-4">
-    <h2 class="h4-block mb-2 reveal">Qué NO suele estar incluido en un presupuesto de reforma</h2>
+  <section aria-labelledby="h-calc-excluido" class="py-14 max-w-5xl mx-auto px-4">
+    <h2 id="h-calc-excluido" class="h4-block mb-2 reveal">Qué NO suele estar incluido en un presupuesto de reforma</h2>
     <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
     <p class="text-gray-700 leading-relaxed mb-6">Esta sección es la más ignorada y la que más conflictos genera durante la obra. Léela antes de firmar cualquier contrato.</p>
     <div class="grid md:grid-cols-2 gap-6">
@@ -479,17 +479,17 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   </section>
 
   <!-- FAQ -->
-  <section class="bg-gray-50 py-14">
+  <section aria-labelledby="h-calc-faq" class="bg-gray-50 py-14">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="h4-block mb-2 reveal">Preguntas frecuentes sobre precios de reforma</h2>
+      <h2 id="h-calc-faq" class="h4-block mb-2 reveal">Preguntas frecuentes sobre precios de reforma</h2>
       <div class="w-10 h-1 bg-[#A85535] mb-8"></div>
       <FaqAccordion grupos={faqGrupos} />
     </div>
   </section>
 
   <!-- Enlazado a los 6 servicios (Paso 5 saliente) -->
-  <section class="py-14 max-w-5xl mx-auto px-4">
-    <h2 class="h4-block mb-2 reveal">Precios detallados por tipo de reforma</h2>
+  <section aria-labelledby="h-calc-detalle" class="py-14 max-w-5xl mx-auto px-4">
+    <h2 id="h-calc-detalle" class="h4-block mb-2 reveal">Precios detallados por tipo de reforma</h2>
     <div class="w-10 h-1 bg-[#A85535] mb-6"></div>
     <p class="text-sm text-gray-600 mb-6">Cada página incluye tabla de precios, qué está incluido en cada nivel, plazos y cómo funciona el proceso. Consulta la del servicio que necesitas para afinar la estimación de la calculadora.</p>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -511,9 +511,9 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
   </section>
 
   <!-- CTA strip -->
-  <section class="bg-[#111827] py-14">
+  <section aria-labelledby="h-calc-cta" class="bg-[#111827] py-14">
     <div class="max-w-5xl mx-auto px-4 text-center">
-      <h2 class="h4-block h4-block--dark mb-3 reveal">¿Quieres un presupuesto real con precio cerrado?</h2>
+      <h2 id="h-calc-cta" class="h4-block h4-block--dark mb-3 reveal">¿Quieres un presupuesto real con precio cerrado?</h2>
       <p class="text-gray-400 mb-6">La calculadora orienta. El precio cerrado se firma en el contrato tras la visita técnica gratuita, sin compromiso.</p>
       <a href="/contacto/" class="inline-block bg-[#A85535] text-white font-bold px-8 py-4 hover:opacity-90 transition-opacity text-sm tracking-wide uppercase">
         Solicitar visita técnica gratuita

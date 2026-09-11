@@ -8,14 +8,16 @@ import { SITE } from '../data/site';
 interface Props {
   title: string;
   description: string;
-  canonical?: string;
+  /** URL canónica. `false` la omite: sólo para páginas que no son un destino,
+   *  como la 404, donde autorreferenciarse apunta a una URL que no existe. */
+  canonical?: string | false;
   schema?: object | object[];
   ogImage?: string;
   robots?: string;
 }
 
 const { title, description, canonical, schema, ogImage, robots } = Astro.props;
-const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE.url).toString();
+const canonicalUrl = canonical === false ? null : (canonical ?? new URL(Astro.url.pathname, SITE.url).toString());
 const ogImageUrl = ogImage ?? `${SITE.url}/favicon.svg`;
 
 // Noindex global mientras PUBLIC_SITE_INDEXING no esté activo en el entorno de producción.
@@ -79,7 +81,7 @@ const schemas = [baseSchema, ...(schema ? (Array.isArray(schema) ? schema : [sch
     <script is:inline>document.documentElement.classList.add('js');</script>
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
 
@@ -98,7 +100,7 @@ const schemas = [baseSchema, ...(schema ? (Array.isArray(schema) ? schema : [sch
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalUrl} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:image" content={ogImageUrl} />

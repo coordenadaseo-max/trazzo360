@@ -183,11 +183,12 @@ const faqSchema = {
       <p class="text-xs text-gray-400 mb-3">Precios orientativos sin IVA (21 % en locales comerciales). Sujeto a visita técnica. El precio cerrado se fija en el contrato.</p>
       <div class="overflow-x-auto mb-6">
         <table class="w-full text-sm border-collapse bg-white">
+          <caption class="sr-only">Calidades de acabado de reforma de local, con su precio orientativo por metro cuadrado y las notas de cada una.</caption>
           <thead>
             <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Calidad de acabado</th>
-              <th class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo / m²</th>
-              <th class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Notas</th>
+              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900">Calidad de acabado</th>
+              <th scope="col" class="text-right py-3 px-5 font-bold text-gray-900">Precio orientativo / m²</th>
+              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900 hidden md:table-cell">Notas</th>
             </tr>
           </thead>
           <tbody>
@@ -210,12 +211,13 @@ const faqSchema = {
         <p class="text-sm font-semibold text-gray-900 mb-3">Tramitación de licencia (partida adicional, orientativa)</p>
         <div class="overflow-x-auto">
           <table class="w-full text-sm border-collapse">
+          <caption class="sr-only">Precio orientativo por metro cuadrado según el tipo de uso del local y la calidad de acabado elegida.</caption>
             <thead>
               <tr class="border-b border-gray-200">
-                <th class="text-left py-2 px-3 font-semibold text-gray-700">Tipo de uso</th>
-                <th class="text-right py-2 px-3 font-semibold text-gray-700">Calidad esencial</th>
-                <th class="text-right py-2 px-3 font-semibold text-gray-700">Calidad media</th>
-                <th class="text-right py-2 px-3 font-semibold text-gray-700">Calidad alta</th>
+                <th scope="col" class="text-left py-2 px-3 font-semibold text-gray-700">Tipo de uso</th>
+                <th scope="col" class="text-right py-2 px-3 font-semibold text-gray-700">Calidad esencial</th>
+                <th scope="col" class="text-right py-2 px-3 font-semibold text-gray-700">Calidad media</th>
+                <th scope="col" class="text-right py-2 px-3 font-semibold text-gray-700">Calidad alta</th>
               </tr>
             </thead>
             <tbody>
@@ -469,11 +471,12 @@ const faqSchema = {
       </h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm border-collapse bg-[#F9F7F4]">
+          <caption class="sr-only">Plazos orientativos por fase de obra, según el local tenga menos de 50 metros cuadrados o entre 50 y 150.</caption>
           <thead>
             <tr class="border-b-2 border-[#A85535]">
-              <th class="text-left py-3 px-5 font-bold text-gray-900">Fase</th>
-              <th class="text-right py-3 px-4 font-bold text-gray-900">Local &lt;50 m²</th>
-              <th class="text-right py-3 px-4 font-bold text-gray-900">Local 50–150 m²</th>
+              <th scope="col" class="text-left py-3 px-5 font-bold text-gray-900">Fase</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Local &lt;50 m²</th>
+              <th scope="col" class="text-right py-3 px-4 font-bold text-gray-900">Local 50–150 m²</th>
             </tr>
           </thead>
           <tbody>

@@ -6,11 +6,11 @@ const title = 'Página no encontrada | ' + SITE.name;
 const description = 'La página que buscas no existe o ha sido movida. Vuelve al inicio o consulta nuestros servicios de reforma.';
 ---
 
-<Layout title={title} description={description} robots="noindex, follow">
-  <section class="min-h-[60vh] flex items-center justify-center px-4 py-24">
+<Layout title={title} description={description} robots="noindex, follow" canonical={false}>
+  <section aria-labelledby="h-404" class="min-h-[60vh] flex items-center justify-center px-4 py-24">
     <div class="max-w-xl text-center">
       <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">Error 404</p>
-      <h1 class="h1-page mb-4">Página no encontrada</h1>
+      <h1 id="h-404" class="h1-page mb-4">Página no encontrada</h1>
       <p class="text-gray-600 mb-8 leading-relaxed">
         La URL que has introducido no existe o ha cambiado. Puedes volver al inicio o consultar nuestros servicios.
       </p>

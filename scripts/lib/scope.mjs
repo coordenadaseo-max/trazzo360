@@ -43,3 +43,28 @@ export function isLabSource(filePath) {
 export function isLab(pathOrUrl) {
   return isLabUrl(pathOrUrl) || isLabSource(pathOrUrl);
 }
+
+/**
+ * Páginas que nunca se indexan por diseño propio, no por `PUBLIC_SITE_INDEXING`.
+ * Cada una lleva `robots="noindex, follow"` en su propio `<Layout>` — eso ya las
+ * protege del rastreo—, pero el `sitemap.xml` es una lista aparte que no se
+ * deriva de esa prop, así que hay que mantenerla a mano. Es lo que dejó
+ * `/cookies/` fuera de esta lista aun llevando `noindex`: dos definiciones de
+ * lo mismo, una se actualizó y la otra no. Ver DEC-A29.
+ *
+ * Cambiar esto se hace AQUÍ. Si una página nueva lleva `robots="noindex"`, su
+ * ruta se añade aquí también.
+ */
+export const NEVER_INDEXED_ROUTES = [
+  '/404',           // no genera entrada de sitemap; listada por completitud
+  '/aviso-legal/',
+  '/privacidad/',
+  '/cookies/',
+  '/gracias/',
+];
+
+/** ¿Es una de las páginas que nunca se indexan? */
+export function isNeverIndexedUrl(pathOrUrl) {
+  const p = norm(pathOrUrl);
+  return NEVER_INDEXED_ROUTES.some(route => p.includes(route));
+}

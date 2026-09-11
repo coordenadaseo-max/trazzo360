@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import { isLabUrl } from './scripts/lib/scope.mjs';
+import { isLabUrl, isNeverIndexedUrl } from './scripts/lib/scope.mjs';
 
 const { PUBLIC_SITE_INDEXING } = loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), '');
 const isIndexingEnabled = PUBLIC_SITE_INDEXING === 'true';
@@ -18,12 +18,9 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         if (!isIndexingEnabled) return false;
-        if (isLabUrl(page)) return false;   // laboratorio: scripts/lib/scope.mjs
-        return (
-          !page.includes('/gracias/') &&
-          !page.includes('/aviso-legal/') &&
-          !page.includes('/privacidad/')
-        );
+        if (isLabUrl(page)) return false;            // laboratorio: scripts/lib/scope.mjs
+        if (isNeverIndexedUrl(page)) return false;    // páginas con noindex propio: scripts/lib/scope.mjs
+        return true;
       },
     }),
     {

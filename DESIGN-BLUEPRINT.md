@@ -281,8 +281,9 @@ en `src/styles/global.css` y cambia en todas a la vez.
   igual en todas las páginas donde aparezca.
 - Ninguno lleva estilos inline. Si te hace falta uno, es que el patrón necesita una variante
   en `global.css`, no una excepción en la página.
-- Los botones son `sm` 10/20, `md` 12/24 y `lg` 16/32, todos en 13px · 700 · `.08em`
-  versalitas. La regla de uso vive en `CLAUDE.md` §8.4.
+- Los botones son `sm` 10/20 · 12px · `.05em`, `md` 12/24 y `lg` 16/32 · 13px · `.08em`,
+  los tres en peso 700 y versalitas. `sm` va más apretado porque es el de navegación y
+  vive en columnas estrechas. La regla de uso está en `CLAUDE.md` §8.4.
 - La tabla de datos se invoca **sólo** por `DataTable.astro`. El componente impone lo que §5
   exige y no se puede usar mal: `caption` es prop obligatoria, el `<thead>` y el `scope="col"`
   los pone él. Sus dos gutters y sus tres fondos existen para conservar la deriva que había

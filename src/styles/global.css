@@ -1148,7 +1148,11 @@ a[style*="background: #A85535"]:hover {
   letter-spacing: 0.08em; text-transform: uppercase;
   transition: opacity var(--dur-fast, 0.2s), border-color var(--dur-fast, 0.2s), background var(--dur-fast, 0.2s);
 }
-.btn--sm { padding: 0.625rem 1.25rem; }
+/* `sm` es el tamaño de navegación, y ahí el espacio manda: el botón del pie vive en
+   una columna de 302px. Baja a 12px y a 0.05em, que es exactamente el `tracking-wider`
+   que header y pie usaban antes de unificar, frente al `tracking-widest` de los
+   botones de contenido. Con 0.08em el texto medía 263px y no cabía por 1px. */
+.btn--sm { padding: 0.625rem 1.25rem; font-size: 0.75rem; letter-spacing: 0.05em; }
 .btn--md { padding: 0.75rem  1.5rem;  }
 .btn--lg { padding: 1rem     2rem;    }
 

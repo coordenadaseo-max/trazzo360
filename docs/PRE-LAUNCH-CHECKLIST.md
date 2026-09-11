@@ -16,14 +16,17 @@
   (wa.me exige el prefijo de país **sin** `+`; por eso los dos campos difieren).
 - **Efecto**: desbloquea teléfono en header/footer/contacto, WhatsApp en header/flotante, horario visible, `openingHoursSpecification` en schema JSON-LD
 
-### 2. Formspree (formulario de contacto)
-- **Archivo**: `src/data/site.ts` → `formspreeId`. Está centralizado: lo consumen el
-  formulario de contacto y el de captura de la calculadora.
-- **Efecto al ponerlo:** el bloque «¿Te enviamos este desglose por correo?» de la
-  calculadora **aparece solo**. Hoy no se renderiza, a propósito: un formulario que
-  apunta a un ID inexistente pierde cada lead sin avisar.
-- `action="https://formspree.io/f/YOUR_FORM_ID"` → reemplaza `YOUR_FORM_ID` con tu ID real
-- Crear cuenta en https://formspree.io, crear formulario, copiar ID (ej: `xpzgkwqr`)
+### 2. ~~Formspree~~ ✅ COMPLETADO
+- **Archivo**: `src/data/site.ts` → `formspreeId`
+- ✅ **RESUELTO 2026-09-11.** `formspreeId: 'xjyvzpal'`. Lo consumen los dos
+  formularios: el de contacto y el de captura de la calculadora.
+- **Efecto**: el bloque «¿Te enviamos este desglose por correo?» de la calculadora
+  **ya se renderiza**; antes estaba oculto a propósito.
+- **Pendiente de comprobar en producción**, no se puede verificar en local:
+  1. El primer envío real requiere confirmar el correo desde el panel de Formspree.
+  2. `_next` redirige a `https://trazzo360.es/gracias/`, que sólo funciona con el
+     dominio ya publicado.
+  3. Ningún envío de prueba se ha hecho desde aquí: habría entrado como lead real.
 
 ### 3. CIF/NIF (páginas legales)
 - **Archivo**: `src/pages/aviso-legal.astro` — buscar `[Completar con tu CIF/NIF]`
@@ -110,10 +113,10 @@
 
 ## Secuencia de lanzamiento recomendada
 
-1. Titular entrega: teléfono, CIF/NIF, domicilio social
-2. Crear cuenta Formspree → copiar ID
-3. Editar `src/data/site.ts` con datos reales
-4. Editar `src/pages/contacto.astro` con ID Formspree
+1. Titular entrega: ~~teléfono~~ ✅, CIF/NIF, domicilio social
+2. ~~Crear cuenta Formspree → copiar ID~~ ✅ hecho
+3. Editar `src/data/site.ts` con los datos que falten (CIF, domicilio)
+4. ~~Editar `src/pages/contacto.astro` con ID Formspree~~ ✅ hecho: sale de `site.ts`
 5. Editar `src/pages/aviso-legal.astro` y `privacidad.astro` con CIF/NIF
 6. ~~Descomentar años de experiencia~~ — no aplica: «más de 15 años en obra» ya se publica como experiencia de la persona. Ver DEC-A09
 7. `npm run build` — verificar el recuento con `find dist -name 'index.html' | wc -l` (75 páginas: 74 + `404.html` en el build del 2026-09-07)

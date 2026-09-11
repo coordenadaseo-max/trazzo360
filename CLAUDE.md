@@ -190,6 +190,10 @@ Cualquier componente que renderice metadatos de obra (ubicación, m², plazo) de
 - FAQ con `<details>`/`<summary>`. El texto de la pregunta va en el `<summary>`.
 - Breadcrumbs en `<nav aria-label="Migas de pan">` con `<ol>`.
 - Estados de foco visibles en todos los CTA. Contraste AA en texto sobre `#A85535` y `#111827`.
+- **Enlace de salto al contenido en todas las páginas**, primer elemento enfocable del
+  documento, apuntando al `<main>`. Lo pone `Layout.astro`, así que una página nueva lo
+  hereda sin hacer nada. No se oculta con `display:none` ni `visibility:hidden`: eso lo
+  sacaría del orden de tabulación y lo volvería inalcanzable. Ver DEC-A25.
 
 ## 6. Copywriting y línea editorial
 

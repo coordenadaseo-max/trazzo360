@@ -293,6 +293,36 @@
   ::selection { background: #A85535; color: #fff; }
 
   /* Foco por teclado — WCAG AA */
+  /* Enlace de salto al contenido (WCAG 2.4.1). Primer elemento enfocable del
+     documento: sin él hay que atravesar los 39 enfocables de la cabecera en cada
+     página. Ver DEC-A25.
+
+     Fuera de pantalla hasta recibir foco, no `display:none` ni `visibility:hidden`,
+     que lo sacarían del orden de tabulación y lo volverían inalcanzable. */
+  .skip-link {
+    position: absolute;
+    left: 0.5rem;
+    top: -100%;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--color-dark);
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+  .skip-link:focus {
+    top: 0.5rem;
+  }
+
+  /* El destino del salto recibe el foco de verdad, no sólo el scroll. El contorno se
+     retira porque enmarcaría la página entera: el indicador es que el siguiente
+     tabulador ya está dentro del contenido. */
+  main:focus { outline: none; }
+
   :focus-visible {
     outline: 2px solid #A85535;
     outline-offset: 3px;

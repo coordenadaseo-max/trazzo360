@@ -30,7 +30,7 @@ se rompe, se sabe qué lo rompió.
 | 11 | `SectionHeader.astro` existe y no se usa en ninguna página | 1 componente | — | nulo |
 | 12 | Clases de `global.css` sin referencia en `src/` | 4 muertas (borradas) · 4 en uso por composición dinámica · 1 sin adoptar · 3 de escala | — | nulo |
 | 13 | ~~`SERVICE_ZONE_LEVEL` importado y sin usar~~ | Conectado: S1 muestra su tesis en 3 páginas | — | **cerrado** |
-| 14 | Sin enlace de salto al contenido | todas | WCAG 2.4.1 | bajo |
+| 14 | ~~Sin enlace de salto al contenido~~ | Resuelto: 39 tabulaciones ahorradas por página | WCAG 2.4.1 | **cerrado** |
 
 **Lo que está bien y conviene no tocar:** una sola entidad `#business` en las 75 páginas,
 canonical autorreferenciado en todas, `lang="es"`, `focus-visible` y
@@ -312,6 +312,8 @@ de las 74 páginas debe quedar idéntico.
 ---
 
 ## Lote 7 — Enlace de salto al contenido
+
+> **HECHO el 2026-09-11.** Ver DEC-A25. Con esto quedan cerrados los siete lotes.
 
 Hallazgo 14. Pequeño y aislado.
 

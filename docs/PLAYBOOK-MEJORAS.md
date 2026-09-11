@@ -26,7 +26,7 @@ se rompe, se sabe qué lo rompió.
 | 7 | `<title>` fuera de 50–60 | 8 de 75 | §4 | bajo |
 | 8 | Tablas de datos duplicadas a mano | 28 tablas en 4 patrones; 18 son el patrón A | §5, §10 | bajo |
 | 9 | Botones: 23 grafías distintas para 49 usos | 5 paddings, 2 pesos, 2 tamaños, 19 con `style` inline | §10 | **medio: cambia el diseño** |
-| 10 | Eyebrow a mano en 20 grafías, 106 usos, mientras `.eyebrow` existe en el canon y diverge | 12 páginas | §10, canon | **medio: cambia el diseño** |
+| 10 | Eyebrow a mano en 22 firmas, 132 usos; `.eyebrow` existía sin usarse y describía otro rol | 20 ficheros | §10, canon | **medio: cambia el diseño** |
 | 11 | `SectionHeader.astro` existe y no se usa en ninguna página | 1 componente | — | nulo |
 | 12 | 13 clases declaradas en `global.css` sin ninguna referencia en `src/` | 13 clases | — | nulo |
 | 13 | `SERVICE_ZONE_LEVEL` se importa en la plantilla combinada y no se usa | 48 páginas afectadas | — | requiere decisión |
@@ -226,6 +226,12 @@ confirma que el texto renderizado no cambia en ninguna de las 74 páginas.
 ---
 
 ## Lote 5 — Eyebrow. Cambia el diseño y hay contradicción que resolver
+
+> **HECHO el 2026-09-11.** Ver DEC-D39. **El diagnóstico de este lote estaba incompleto
+> en tres puntos**: eran 132 elementos en 22 firmas, no 106 en 20; `.eyebrow` no se usaba
+> en ninguna página, ni siquiera en `HeroTitle`, que usa otra clase; y sobre todo, el
+> canon no describía el rótulo de sección sino la etiqueta menor. Resuelto con la
+> opción B: dos roles declarados.
 
 Hallazgo 10, el más importante de los tres de componentes, porque aquí **el canon y el
 código dicen cosas distintas**.

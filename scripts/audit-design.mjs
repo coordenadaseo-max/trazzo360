@@ -99,6 +99,22 @@ const CANON_DIST = [
     find: /letter-spacing:\s*(-?[\d.]+em)/g,
     expect: '-0.055em',
   },
+
+  {
+    // El eyebrow vivió año y medio con el canon diciendo 10px/900/.15em y 106
+    // elementos escritos a mano en 12px/700/.1em, sin que ningún auditor pudiera
+    // verlo. Ver DEC-D39. Aquí se vigila que nadie sobreescriba el rol inline.
+    role: 'Eyebrow · cuerpo',
+    element: /<[^>]*class="[^"]*\beyebrow\b[^"]*"[^>]*>/g,
+    find: /font-size:\s*([^;"]+)/g,
+    expect: 'sin font-size inline',
+  },
+  {
+    role: 'Eyebrow · tracking',
+    element: /<[^>]*class="[^"]*\beyebrow\b[^"]*"[^>]*>/g,
+    find: /letter-spacing:\s*([^;"]+)/g,
+    expect: 'sin letter-spacing inline',
+  },
 ];
 
 /**
@@ -164,9 +180,32 @@ const srcFiles = [
   ...walk(join(ROOT, 'src/components'), f => f.endsWith('.astro')),
 ].filter(f => !isLabSource(f));
 
+/**
+ * Eyebrow escrito a mano en vez de con la clase del rol.
+ *
+ * Es la regla que habría cazado la divergencia de DEC-D39, y va sobre `src/`
+ * porque es una regla sobre lo que escribe una persona: en `dist/` las utilidades
+ * de Tailwind ya se han convertido en CSS y no se distinguen de la clase.
+ *
+ * Un rótulo en versalitas con tracking y cuerpo pequeño es un eyebrow. Se excluyen
+ * los botones, que tienen su propio rol (`.btn`, DEC-D38), y las micro-etiquetas
+ * monoespaciadas, que son otra familia con clases propias.
+ */
+const EYEBROW_MANO = /<(?:p|span|div)\b[^>]*class="(?![^"]*\beyebrow\b)(?=[^"]*\buppercase\b)(?=[^"]*\btracking-(?:wide|wider|widest)\b)(?=[^"]*\btext-(?:xs|\[10px\])\b)(?![^"]*\bp[xy]-\d)[^"]*"[^>]*>/g;
+
 for (const file of srcFiles) {
   const rel = relative(ROOT, file);
   const src = readFileSync(file, 'utf8');
+
+  coverage.set('Eyebrow a mano', (coverage.get('Eyebrow a mano') ?? 0) + 1);
+  for (const m of src.match(EYEBROW_MANO) ?? []) {
+    if (/Courier|font-mono/.test(m)) continue;   // familia monoespaciada, clases propias
+    findings.push({
+      source: 'src', file: rel, role: 'Eyebrow escrito a mano (DEC-D39)',
+      found: (m.match(/class="([^"]*)"/) ?? [, ''])[1].slice(0, 60),
+      expect: 'clase `eyebrow` o `eyebrow eyebrow--min`',
+    });
+  }
   for (const { bad, good } of NOTATION) {
     for (const m of src.match(bad) ?? []) {
       findings.push({ source: 'src', file: rel, role: 'Notación no canónica', found: m, expect: m.replace(bad, good) });
@@ -196,6 +235,7 @@ const notes = [
   `— regla de radios · fuente: src/ · ${srcFiles.length} ficheros`,
   `    «Radio (DEC-D01)»: presente en ${coverage.get('Radio (DEC-D01)') ?? 0}/${srcFiles.length} ficheros de src/`,
   `    «Notación»: comprobada en los ${srcFiles.length} ficheros de src/`,
+  `    «Eyebrow a mano»: comprobada en los ${coverage.get('Eyebrow a mano') ?? 0}/${srcFiles.length} ficheros de src/`,
 ];
 
 if (findings.length === 0) {

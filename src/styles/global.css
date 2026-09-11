@@ -250,15 +250,25 @@
 .stat-editorial--dark { color: #fff; }
 
 /* Eyebrow en versalitas sobre un encabezado */
+/* Rótulo en versalitas sobre un encabezado. Dos roles, ver DEC-D39 y CLAUDE.md §8.5.
+
+   Las clases llevan SÓLO la firma tipográfica. El color se queda en el punto de uso
+   porque no es del rol: hay 17 colores en juego y tres son semánticos (el rojo, el
+   ámbar y el verde de los estados de obra). El margen inferior, igual: varía de mb-1
+   a mb-6 según el bloque. */
 .eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+/* Etiqueta menor: dentro de tarjetas y como rótulo del hero. Más pequeña y más
+   abierta, que es lo que compensa el cuerpo. */
+.eyebrow--min {
   font-size: var(--text-10px);
   font-weight: 900;
   letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--color-brand);
-  margin-bottom: 0.75rem;
 }
-.eyebrow--dark { color: rgba(255, 255, 255, .65); }
 
 /* ── 1c. LAYOUT — MEDIDA DE LECTURA ───────────────────────── */
 

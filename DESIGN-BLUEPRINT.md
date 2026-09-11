@@ -44,6 +44,8 @@ renderizando en la fuente del sistema a peso 400.
 | H2 principal | `.h2-section` | `text-4xl lg:text-5xl` · `-0.03em` |
 | H2 / H3 secundario | `.h3-sub` | `text-3xl lg:text-4xl` · `-0.03em` |
 | Sobre fondo oscuro | `.h2-section--dark` · `.h3-sub--dark` | lo anterior en blanco |
+| Eyebrow de sección | `.eyebrow` | `0.75rem` · 700 · `0.1em` · versalitas |
+| Etiqueta menor | `.eyebrow--min` | `0.625rem` · 900 · `0.15em` · versalitas |
 | H2 de declaración | `.vida-title` | `clamp(2.5rem, 6vw, 5rem)` · Barlow Condensed · 900 · `-0.02em` · `lh 0.9` · sólo en el bloque de vida durante la obra |
 | Entradilla de hero | `.lead-hero` | `clamp(0.875rem,1.05vw,1rem)` · `46ch` · blanco 72% |
 | Número editorial | `.stat-editorial` | `clamp(5rem,14vw,10rem)` · `-0.055em` |

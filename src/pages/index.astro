@@ -104,7 +104,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
                style="padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.25);letter-spacing:0.1em">
               {SITE.phoneDisplay}
             </a>
-            <p class="text-[10px] text-white/50 uppercase tracking-wider">Sin compromiso · Visita técnica gratuita</p>
+            <p class="eyebrow eyebrow--min text-white/50">Sin compromiso · Visita técnica gratuita</p>
           </div>
 
             <HeroMetrics metrics={[
@@ -126,7 +126,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
   <section id="servicios" class="py-24 lg:py-32 bg-white" aria-labelledby="h-servicios">
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-12">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Nuestros servicios</p>
+        <p class="eyebrow text-[#A85535] mb-3">Nuestros servicios</p>
         <h2 id="h-servicios" class="h2-section mb-5 reveal" style="letter-spacing:-0.02em">
           ¿Qué quieres reformar?
         </h2>
@@ -155,7 +155,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
 
       <!-- Índice de reformas por zona: útil para el usuario, rastreable -->
       <nav aria-label="Reformas por tipo y zona" class="border-t border-gray-100 pt-8">
-        <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+        <p class="eyebrow text-gray-400 mb-4">
           También en tu zona
         </p>
         <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-2">
@@ -211,8 +211,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
 
         <!-- Compromisos -->
         <div>
-          <p class="font-black uppercase text-white/30 mb-5"
-             style="font-size:10px;letter-spacing:0.15em">Lo que queda fijado en el contrato</p>
+          <p class="eyebrow eyebrow--min text-white/30 mb-5">Lo que queda fijado en el contrato</p>
           <ul style="list-style:none;padding:0;margin:0">
             {trustCompromisos.map((c, i) => (
               <li style={`padding:1.25rem 0;${i < trustCompromisos.length - 1 ? 'border-bottom:1px solid rgba(255,255,255,.07)' : ''}`}>
@@ -237,8 +236,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
 
         <!-- Cómo coordinamos — preparado para mostrar nombre cuando AUTHOR.name exista -->
         <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2rem">
-          <p class="font-black uppercase text-white/30 mb-5"
-             style="font-size:10px;letter-spacing:0.15em">Cómo coordinamos tu reforma</p>
+          <p class="eyebrow eyebrow--min text-white/30 mb-5">Cómo coordinamos tu reforma</p>
 
           {AUTHOR.name ? (
             <p class="font-bold text-white text-sm mb-1">{AUTHOR.name}</p>
@@ -326,7 +324,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
            style="border-top:1px solid #D1C9BD">
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-14">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Cómo trabajamos</p>
+        <p class="eyebrow text-[#A85535] mb-3">Cómo trabajamos</p>
         <h2 id="h-proceso" class="h2-section  reveal" style="max-width:22ch">
           Tu reforma en el Corredor, paso a paso
         </h2>
@@ -357,7 +355,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
   <section id="proyectos" class="py-24 lg:py-32 bg-white" aria-labelledby="h-proyectos">
     <div class="max-w-7xl mx-auto px-4">
       <div class="mb-14">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Proyectos reales</p>
+        <p class="eyebrow text-[#A85535] mb-3">Proyectos reales</p>
         <h2 id="h-proyectos" class="h2-section  reveal" style="max-width:22ch">
           Antes y después de la reforma
         </h2>
@@ -392,7 +390,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
           },
         ].map(p => (
           <article class="proyecto-item">
-            <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">{p.label}</p>
+            <p class="eyebrow text-gray-400 mb-3">{p.label}</p>
             <div class="proyecto-pair">
               <div class="proyecto-img-wrap">
                 <img src={p.antes} alt={`Antes de la reforma: ${p.label}`} class="proyecto-img" loading="lazy" width={p.antesW} height={p.antesH} />
@@ -438,7 +436,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
               Empresa de reformas en {z.name}
             </h3>
             <p class="text-sm text-gray-400 leading-relaxed mb-4">{primaryZoneDescs[z.slug]}</p>
-            <span class="text-xs font-bold text-[#A85535] uppercase tracking-widest">
+            <span class="eyebrow text-[#A85535]">
               Ver servicios en {z.name} →
             </span>
           </a>
@@ -447,7 +445,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
 
       <!-- Zonas secundarias -->
       <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:1.75rem;margin-bottom:3rem">
-        <p style="font-size:10px;color:#9CA3AF;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:.875rem">
+        <p class="eyebrow eyebrow--min" style="color:#9CA3AF; margin-bottom:.875rem">
           También operamos en
         </p>
         <div class="flex flex-wrap gap-2">
@@ -479,7 +477,7 @@ const trustCompromisos = COMPROMISOS.filter(c =>
   <section id="faq" class="py-24 lg:py-32 bg-white" aria-labelledby="h-faq">
     <div class="max-w-4xl mx-auto px-4">
       <div class="mb-14">
-        <p class="text-xs font-bold uppercase tracking-widest text-[#A85535] mb-3">Preguntas frecuentes</p>
+        <p class="eyebrow text-[#A85535] mb-3">Preguntas frecuentes</p>
         <h2 id="h-faq" class="h2-section  reveal" style="max-width:24ch">
           Precios y dudas sobre reformas en el Corredor del Henares
         </h2>

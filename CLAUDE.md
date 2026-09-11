@@ -532,6 +532,21 @@ invierte con la prop `inversa`, porque terracota sobre terracota no contrasta.
 
 Los valores están en `DESIGN-BLUEPRINT.md` § «Bloques compuestos». Ver DEC-D38.
 
+### 8.5 Eyebrow
+
+**Ningún rótulo en versalitas se escribe a mano.** Hay dos roles y los dos viven en
+`global.css`:
+
+- `eyebrow` — el rótulo sobre un `<h2>` de sección.
+- `eyebrow eyebrow--min` — la etiqueta menor, dentro de tarjetas y como rótulo del hero.
+
+Las clases llevan sólo la firma tipográfica. **El color y el margen se escriben en el
+punto de uso**, porque no son del rol: hay tres colores semánticos en juego (el rojo,
+el ámbar y el verde de los estados de obra) y el margen varía según el bloque.
+
+Las micro-etiquetas monoespaciadas son otra familia y tienen sus propias clases. Los
+valores están en `DESIGN-BLUEPRINT.md`. Lo comprueba `npm run audit:design`. Ver DEC-D39.
+
 ### 8.3 Estructura HTML obligatoria
 
 ```html

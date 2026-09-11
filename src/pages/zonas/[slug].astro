@@ -105,13 +105,13 @@ const faqSchema = {
           </div>
 
           <div class="flex flex-wrap gap-7 mt-7 pt-7" style="border-top:1px solid rgba(255,255,255,.08)">
-            <span class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">
+            <span class="eyebrow" style="color:rgba(255,255,255,.3)">
               <strong style="color:rgba(255,255,255,.65)">Precio cerrado</strong> por contrato
             </span>
-            <span class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">
+            <span class="eyebrow" style="color:rgba(255,255,255,.3)">
               <strong style="color:rgba(255,255,255,.65)">Plazo</strong> garantizado
             </span>
-            <span class="font-black text-xs uppercase tracking-widest" style="color:rgba(255,255,255,.3)">
+            <span class="eyebrow" style="color:rgba(255,255,255,.3)">
               <strong style="color:rgba(255,255,255,.65)">2 años</strong> de garantía
             </span>
           </div>
@@ -136,7 +136,7 @@ const faqSchema = {
   <!-- ── Parque residencial ── -->
   <section class="py-20 bg-[#F9F7F4]" aria-labelledby="h-parque">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">El parque residencial</p>
+      <p class="eyebrow text-[#A85535] mb-4">El parque residencial</p>
       <h2 id="h-parque" class="h4-block mb-3 reveal" style="letter-spacing:-0.02em">
         {zone.name}: parque de vivienda y alcance
       </h2>
@@ -175,7 +175,7 @@ const faqSchema = {
       )}
 
       <div class="bg-[#111827] p-6 text-white">
-        <p class="font-bold text-xs uppercase tracking-widest text-[#A85535] mb-3">Permisos y tramitación</p>
+        <p class="eyebrow text-[#A85535] mb-3">Permisos y tramitación</p>
         <p class="text-sm text-gray-300 leading-relaxed">{zone.m3Permits}</p>
       </div>
     </div>
@@ -184,7 +184,7 @@ const faqSchema = {
   <!-- ── Servicios editorial ── -->
   <section class="py-20 bg-white" aria-labelledby="h-servicios">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Reformas en {zone.name}</p>
+      <p class="eyebrow text-[#A85535] mb-4">Reformas en {zone.name}</p>
       <h2 id="h-servicios" class="h4-block mb-3 reveal" style="letter-spacing:-0.02em">
         Cubrimos todas las obras con precio cerrado
       </h2>
@@ -224,7 +224,7 @@ const faqSchema = {
         </p>
       </div>
       <div class="bg-[#111827] p-8 text-white">
-        <p class="font-bold text-xs uppercase tracking-widest text-[#A85535] mb-4">Presupuesto gratuito</p>
+        <p class="eyebrow text-[#A85535] mb-4">Presupuesto gratuito</p>
         <p class="text-xl font-black text-white mb-2">Cuéntanos tu proyecto. Presupuesto cerrado tras la visita.</p>
         <p class="text-sm text-gray-400 mb-6 leading-relaxed">
           Sin compromiso. Cuéntanos qué quieres reformar en {zone.name}, concertamos visita técnica y entregamos presupuesto cerrado por escrito.
@@ -264,7 +264,7 @@ const faqSchema = {
   <!-- ── Otras zonas: navegación secundaria compacta ── -->
   <nav aria-label="Otras zonas del Corredor" class="py-8 bg-[#F9F7F4] border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center gap-x-6 gap-y-2">
-      <span class="text-xs font-bold uppercase tracking-widest text-gray-400 flex-shrink-0">Otras zonas</span>
+      <span class="eyebrow text-gray-400 flex-shrink-0">Otras zonas</span>
       {relatedZones.map(z => (
         <a href={`/zonas/${z.slug}/`} class="text-sm text-gray-500 hover:text-[#A85535] transition-colors">
           {z.name}
@@ -289,7 +289,7 @@ const faqSchema = {
   <!-- ── CTA final ── -->
   <section class="py-16 bg-[#111827]" aria-labelledby="h-cta-final">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="font-black text-xs uppercase tracking-widest text-[#A85535] mb-4">Visita gratuita sin compromiso</p>
+      <p class="eyebrow text-[#A85535] mb-4">Visita gratuita sin compromiso</p>
       <h2 id="h-cta-final" class="h3-sub h3-sub--dark mb-3 reveal" style="letter-spacing:-0.02em">
         ¿Necesitas presupuesto de obra en {zone.name}?
       </h2>

@@ -23,6 +23,6 @@ const { label, href = '/contacto/', note } = Astro.props;
   <Btn href={href} tam="lg" class="whitespace-nowrap">{label}</Btn>
   <Btn href={`tel:${SITE.phone}`} tam="lg" variante="secundaria" class="whitespace-nowrap">{SITE.phoneDisplay}</Btn>
   {note && (
-    <p class="text-white/65 uppercase" style="font-size:.625rem;letter-spacing:var(--tracking-mono)">{note}</p>
+    <p class="eyebrow eyebrow--min text-white/65">{note}</p>
   )}
 </div>

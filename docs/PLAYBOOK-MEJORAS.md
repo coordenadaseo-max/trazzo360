@@ -29,7 +29,7 @@ se rompe, se sabe qué lo rompió.
 | 10 | Eyebrow a mano en 22 firmas, 132 usos; `.eyebrow` existía sin usarse y describía otro rol | 20 ficheros | §10, canon | **medio: cambia el diseño** |
 | 11 | `SectionHeader.astro` existe y no se usa en ninguna página | 1 componente | — | nulo |
 | 12 | Clases de `global.css` sin referencia en `src/` | 4 muertas (borradas) · 4 en uso por composición dinámica · 1 sin adoptar · 3 de escala | — | nulo |
-| 13 | `SERVICE_ZONE_LEVEL` se importa en la plantilla combinada y no se usa | 48 páginas afectadas | — | requiere decisión |
+| 13 | ~~`SERVICE_ZONE_LEVEL` importado y sin usar~~ | Conectado: S1 muestra su tesis en 3 páginas | — | **cerrado** |
 | 14 | Sin enlace de salto al contenido | todas | WCAG 2.4.1 | bajo |
 
 **Lo que está bien y conviene no tocar:** una sola entidad `#business` en las 75 páginas,
@@ -274,10 +274,10 @@ Hay una contradicción entre canon y código que NO debes resolver por tu cuenta
 
 ## Lote 6 — Limpieza. Cero cambio visual
 
-> **PARCIALMENTE HECHO el 2026-09-11.** Ver DEC-D40. **La lista de 13 clases incluía 4
-> que sí están en uso**: los `ajuste-*` se componen en tiempo de ejecución y sólo
-> existen ya renderizados. Punto 2 cerrado; los puntos 1 y 3 están pendientes de
-> decisión del responsable.
+> **HECHO el 2026-09-11.** Ver DEC-D40 y DEC-D41. **La lista de 13 clases incluía 4 que
+> sí están en uso**: los `ajuste-*` se componen en tiempo de ejecución y sólo existen ya
+> renderizados. `SectionHeader` se borró; el nivel S1 se conectó y da efecto a 3 páginas,
+> porque la cuarta ya exponía su tesis de forma nativa.
 
 Hallazgos 11, 12 y 13.
 

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Btn from '../../components/ui/Btn.astro';
+import Callout from '../../components/ui/Callout.astro';
 import CtaInline from '../../components/ui/CtaInline.astro';
 import { SITE, SERVICES, ZONES, RELATED_ZONES, SERVICE_ZONE_CONTENT, SERVICE_ZONE_META, SERVICE_ZONE_FAQS, SERVICE_ZONE_LEVEL } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
@@ -52,6 +53,12 @@ const pageTitle = TITLE_OVERRIDES[service.slug]?.[zone.slug]
   ?? (TITLE_MODS.map(m => tBase + m + tSuf).find(t => t.length >= 50 && t.length <= 60) ?? tBase + tSuf);
 
 const szc = SERVICE_ZONE_CONTENT[service.slug]?.[zone.slug];
+
+// Nivel de especificidad de esta intersección (src/data/content/levels.ts).
+// Sólo S1 tiene tesis escrita: para S2 y S3 el propio fichero prohíbe inventarla,
+// así que el nivel se lee para mostrarla, no para fabricar contenido donde no lo hay.
+const nivel = SERVICE_ZONE_LEVEL[service.slug]?.[zone.slug];
+const tesis = nivel === 'S1' ? szc?.intersectionThesis : undefined;
 
 const priceLbl: Record<string, string> = {
   'reformas-integrales': 'una reforma integral',
@@ -202,6 +209,8 @@ const breadcrumbSchema = {
             {zone.name} {zone.localAngle}. Por eso la visita técnica empieza mirando el edificio, no el catálogo de materiales.
           </p>
         )}
+
+        {tesis && <Callout title={`Condicionante propio de ${zone.name}`} class="mb-8">{tesis}</Callout>}
 
         <ol class="cond-list">
             {bodyGroups.map((group, i) => (

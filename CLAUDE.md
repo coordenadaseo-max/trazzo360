@@ -565,7 +565,7 @@ Cobertura leída del código fuente de cada script. No es un resultado de ejecuc
 | Script | Comprueba | No comprueba |
 |---|---|---|
 | `check` | Que los placeholders bloqueantes no estén en `dist/` | Otros `TODO:` en prosa |
-| `audit:content` | Longitud de `<title>`, longitud de `<meta description>`, exactamente un `<h1>` por página | Los rangos de §3: imprime el recuento de palabras sin compararlo con nada. Boilerplate: sin implementar |
+| `audit:content` | Los rangos de §4 como error: `<title>` 50–60 y `<meta description>` 140–155 en las páginas indexables, con las de `robots` propio excluidas. Que title, meta y `<h1>` existan, y exactamente un `<h1>`, en todas | Los rangos de §3: imprime el recuento de palabras sin compararlo con nada. Boilerplate: sin implementar |
 | `audit:links` | Enlaces internos rotos, páginas huérfanas, mínimo de enlaces entrantes | Calidad del anchor text (§7) |
 | `audit:schema` | Que el JSON-LD sea parseable, que las entidades de negocio y los breadcrumbs lleven `name`, literales `"undefined"` | La entidad única `#business` de §4: sin implementar |
 | `audit:design` | Tres propiedades tipográficas del H1 de hero y del stat editorial, más los `rounded-` fuera de la excepción de DEC-D01 | Sombras, paleta, espaciado, composición |

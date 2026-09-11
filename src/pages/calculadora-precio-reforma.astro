@@ -145,7 +145,8 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
             action={`https://formspree.io/f/${SITE.formspreeId}`}
             class="max-w-xl">
         <input type="hidden" name="_subject" value="Desglose de calculadora solicitado - Trazzo360" />
-        <input type="hidden" name="_next" value="https://trazzo360.es/gracias/" />
+        <!-- Relativo: ver la misma nota en contacto.astro y DEC-A27. -->
+        <input type="hidden" name="_next" value="/gracias/" />
         <div class="honeypot" aria-hidden="true">
           <label for="calc-gotcha">No rellenes este campo</label>
           <input id="calc-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
@@ -173,6 +174,9 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
                  class="flex-1 px-4 py-3 border border-gray-200 bg-gray-50 text-gray-900 focus:outline-none focus:border-[#A85535] transition-colors text-sm" />
           <Btn type="submit" tam="md" class="whitespace-nowrap">Enviármelo</Btn>
         </div>
+        <p id="lead-aviso" role="alert" class="text-sm text-red-600 mt-2" hidden>
+          No hemos podido enviarlo. Puedes pedirlo por teléfono o escribirnos directamente.
+        </p>
 
         <div class="flex items-start gap-2 mt-3">
           <input type="checkbox" id="lead-privacidad" name="privacidad" required class="mt-1 accent-[#A85535]" />
@@ -992,6 +996,39 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       set('lead-enlace', window.location.href);
     }
 
+    // El plan gratuito de Formspree no redirige a una URL propia tras el envío
+    // (ver DEC-A27): sin esto, el usuario terminaba en la página de confirmación
+    // de Formspree, lejos de la calculadora. Con fetch, el salto a /gracias/ lo
+    // decide este script al ver una respuesta 2xx. Si JS falla, el <form> sigue
+    // enviándose de forma normal: el lead no se pierde, sólo cambia adónde
+    // aterriza el navegador. Se conecta una sola vez desde init(): el formulario
+    // existe en el DOM desde el principio, sólo lo oculta actualizarLead().
+    function wireLeadForm() {
+      var form = document.getElementById('calc-lead-form');
+      if (!form) return;
+      var btn = form.querySelector('button[type="submit"]');
+      var btnTexto = btn ? btn.textContent : '';
+      var aviso = document.getElementById('lead-aviso');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (aviso) aviso.hidden = true;
+        if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+
+        fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        }).then(function (res) {
+          if (res.ok) { window.location.href = '/gracias/'; return; }
+          throw new Error('Formspree respondió ' + res.status);
+        }).catch(function () {
+          if (aviso) aviso.hidden = false;
+          if (btn) { btn.disabled = false; btn.textContent = btnTexto; }
+        });
+      });
+    }
+
     // ── GA ────────────────────────────────────────────────────────────────────
     function scheduleGA(svc, q, res) {
       if (gaTimer) clearTimeout(gaTimer);
@@ -1099,6 +1136,7 @@ function refRange(priceMin: number, priceMax: number, m2: number) {
       renderInput();
       renderMods();
       recalc();
+      wireLeadForm();
     }
 
     if (document.readyState === 'loading') {

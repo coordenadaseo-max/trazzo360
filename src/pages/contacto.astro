@@ -28,9 +28,13 @@ import { SITE, SERVICES, ZONES } from '../data/site';
       <!-- Formulario -->
       <div class="lg:col-span-2">
         <h2 id="h-formulario" class="h4-block mb-8 reveal">Solicitar visita técnica gratuita</h2>
-        <form class="space-y-5" action={`https://formspree.io/f/${SITE.formspreeId}`} method="POST">
+        <form id="f-contacto" class="space-y-5" action={`https://formspree.io/f/${SITE.formspreeId}`} method="POST">
           <input type="hidden" name="_subject" value="Nueva solicitud de presupuesto - Trazzo360" />
-          <input type="hidden" name="_next" value="https://trazzo360.es/gracias/" />
+          <!-- Relativo, no https://trazzo360.es/gracias/: así funciona igual en
+               local, en una vista previa y en el dominio final. Formspree sólo
+               lo honra en planes de pago (ver DEC-A27); el script de abajo hace
+               el salto de verdad con el plan gratuito. -->
+          <input type="hidden" name="_next" value="/gracias/" />
 
           <!--
             Honeypot de Formspree. Un bot rellena todos los campos; una persona no
@@ -89,6 +93,9 @@ import { SITE, SERVICES, ZONES } from '../data/site';
               He leído y acepto la <a href="/privacidad/" class="underline hover:text-[#A85535]">política de privacidad</a>. Mis datos serán usados exclusivamente para gestionar esta solicitud.
             </label>
           </div>
+          <p id="f-contacto-aviso" role="alert" class="text-sm text-red-600" hidden>
+            No hemos podido enviar la solicitud. Puedes llamarnos directamente: los datos están en la columna de al lado.
+          </p>
           <Btn type="submit" tam="lg" class="w-full sm:w-auto">
             Enviar solicitud de presupuesto
           </Btn>
@@ -195,5 +202,40 @@ import { SITE, SERVICES, ZONES } from '../data/site';
       </div>
     </div>
   </section>
+
+  <!-- Envío por AJAX en vez de POST normal del navegador.
+       El plan gratuito de Formspree no redirige a una URL propia tras el envío
+       (ver DEC-A27): sin esto, el usuario terminaba en la página de confirmación
+       de Formspree en vez de en /gracias/. Con fetch, el salto a /gracias/ lo
+       decide este script al ver una respuesta 2xx, sin depender de esa función
+       de pago. Si JS falla, el <form> sigue enviándose de forma normal: el lead
+       no se pierde, sólo cambia adónde aterriza el navegador. -->
+  <script is:inline>
+    (function () {
+      var form = document.getElementById('f-contacto');
+      if (!form) return;
+      var btn = form.querySelector('button[type="submit"]');
+      var btnTexto = btn ? btn.textContent : '';
+      var aviso = document.getElementById('f-contacto-aviso');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (aviso) aviso.hidden = true;
+        if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+
+        fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        }).then(function (res) {
+          if (res.ok) { window.location.href = '/gracias/'; return; }
+          throw new Error('Formspree respondió ' + res.status);
+        }).catch(function () {
+          if (aviso) aviso.hidden = false;
+          if (btn) { btn.disabled = false; btn.textContent = btnTexto; }
+        });
+      });
+    })();
+  </script>
 
 </Layout>

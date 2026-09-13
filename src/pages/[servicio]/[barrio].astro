@@ -70,6 +70,17 @@ const priceLbl: Record<string, string> = {
 };
 const costar = priceLbl[service.slug] ?? service.title.toLowerCase();
 
+// Guía de precios detallada, sólo para los 3 servicios que tienen una. Regla
+// documentada en blueprint/internal-linking.yaml (price_cluster) y nunca
+// implementada en la combinada: las 48 páginas enlazaban a la calculadora
+// pero no a la guía. Ver R12: sin guía, sin enlace.
+const GUIDE_BY_SERVICE: Record<string, { href: string; label: string }> = {
+  'reforma-banos':   { href: '/guias/cuanto-cuesta-reformar-un-bano/',      label: 'Guía de precios de reforma de baño' },
+  'reforma-cocinas': { href: '/guias/cuanto-cuesta-reformar-una-cocina/',   label: 'Guía de precios de reforma de cocina' },
+  'reforma-pisos':   { href: '/guias/cuanto-cuesta-reformar-un-piso/',      label: 'Guía de precios de reforma de piso' },
+};
+const guide = GUIDE_BY_SERVICE[service.slug];
+
 const priceFaq = {
   q: `¿Cuánto cuesta ${costar} en ${zone.name}?`,
   a: `${costar.charAt(0).toUpperCase() + costar.slice(1)} en ${zone.name} parte desde ${service.priceFrom}€ (${service.priceDesc}). El precio exacto depende del alcance y los materiales; lo recibes cerrado y sin letra pequeña tras la visita técnica gratuita.`,
@@ -282,6 +293,11 @@ const breadcrumbSchema = {
           <a href={`/calculadora-precio-reforma/?servicio=${service.slug}`} class="text-sm font-bold text-[#A85535] hover:underline">
             Calculadora de precio orientativo →
           </a>
+          {guide && (
+            <a href={guide.href} class="text-sm font-bold text-[#A85535] hover:underline">
+              {guide.label} →
+            </a>
+          )}
         </div>
       </div>
     </section>

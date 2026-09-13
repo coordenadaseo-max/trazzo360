@@ -5,8 +5,8 @@ import Btn from './ui/Btn.astro';
 
 <!-- Top bar -->
 <div class="bg-[#111827] text-white text-sm py-2 text-center">
-  <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-x-6 gap-y-1">
-    <a href={`tel:${SITE.phone}`} class="hover:text-orange-300 transition-colors font-medium">
+  <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
+    <a href={`tel:${SITE.phone}`} class="inline-flex items-center min-h-[44px] hover:text-orange-300 transition-colors font-medium">
       ☎ {SITE.phoneDisplay}
     </a>
     {SITE.phone !== 'TU_TELEFONO' && (

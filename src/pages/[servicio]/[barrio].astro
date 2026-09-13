@@ -338,7 +338,7 @@ const breadcrumbSchema = {
           {s.anchorLabel} en {zone.name}
         </a>
       ))}
-      {otherZones.slice(0, 3).map(z => (
+      {otherZones.map(z => (
         <a href={`/${service.slug}/${z.slug}/`} class="text-sm text-gray-500 hover:text-[#A85535] transition-colors">
           {service.anchorLabel} en {z.name}
         </a>

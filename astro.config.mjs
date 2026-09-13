@@ -9,7 +9,7 @@ const { PUBLIC_SITE_INDEXING } = loadEnv(process.env.NODE_ENV ?? 'production', p
 const isIndexingEnabled = PUBLIC_SITE_INDEXING === 'true';
 
 export default defineConfig({
-  site: 'https://trazzo360.es',
+  site: 'https://www.trazzo360.es',
   output: 'static',
   vite: {
     plugins: [tailwindcss()],

@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { SITE } from '../data/site';
 
 const isIndexingEnabled = import.meta.env.PUBLIC_SITE_INDEXING === 'true';
 
@@ -9,7 +10,7 @@ export const GET: APIRoute = () => {
         'Allow: /',
         'Disallow: /gracias/',
         '',
-        'Sitemap: https://trazzo360.es/sitemap-index.xml',
+        `Sitemap: ${SITE.url}/sitemap-index.xml`,
         '',
       ].join('\n')
     : [

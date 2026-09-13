@@ -6,7 +6,7 @@
 export const SITE = {
   name: 'Trazzo360',
   tagline: 'Reformas Integrales en el Corredor del Henares',
-  url: 'https://trazzo360.es',
+  url: 'https://www.trazzo360.es',  // dominio confirmado en Vercel: el apex redirige 308 aquí. Ver DEC-A30.
   phone: '+34614530656',          // E.164: alimenta los enlaces tel: y el `telephone` del schema
   phoneDisplay: '614 53 06 56',   // formato visible
   whatsapp: '34614530656',        // wa.me exige prefijo de país SIN '+' 

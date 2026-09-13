@@ -320,7 +320,7 @@ Estas dos páginas NO usan sus templates genéricos. Son referencias canónicas 
 - Canonical autorreferenciado en todas las páginas
 - Sitemap: excluye las páginas noindex. Recuento pendiente de comprobar con un build actualizado
 - robots.txt: Disallow /gracias/
-- Schema JSON-LD: una sola entidad `@id: https://trazzo360.es/#business`
+- Schema JSON-LD: una sola entidad `@id: https://www.trazzo360.es/#business`
 
 ### 8.2 Schema JSON-LD — Reglas
 

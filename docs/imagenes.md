@@ -50,6 +50,17 @@ En cuanto añades el archivo al directorio y lanzas `npm run build`, se sustituy
 | `proyecto-bano-coslada-despues` | `img/proyectos/bano-coslada-despues.jpg` | obra-propia | **pendiente** | 800×600 | Baño tras la reforma en Coslada — plato de ducha a nivel de suelo, mampara fija y alicatado de gran formato |
 | `proyecto-local-san-fernando-antes` | `img/proyectos/local-san-fernando-antes.jpg` | obra-propia | **pendiente** | 800×600 | Local vacío antes de la reforma en San Fernando de Henares — espacio en bruto sin instalaciones |
 | `proyecto-local-san-fernando-despues` | `img/proyectos/local-san-fernando-despues.jpg` | obra-propia | **pendiente** | 800×600 | Local comercial tras la reforma en San Fernando de Henares — espacio habilitado con instalaciones completas |
+| `ilustrativa-bano-mampara-cristal-suspendido` | `img/ilustrativas/banos/reforma-bano-mampara-cristal-mueble-suspendido.webp` | ilustrativa | disponible | 768×1024 | Ducha con mampara de cristal templado y mueble de baño suspendido con lavabo integrado |
+| `ilustrativa-bano-buhardilla-plato-ducha` | `img/ilustrativas/banos/reforma-bano-buhardilla-plato-ducha-obra-vista.webp` | ilustrativa | disponible | 768×1024 | Baño abuhardillado con plato de ducha, alicatado en tono verde azulado e inodoro suspendido |
+| `ilustrativa-bano-ventana-natural` | `img/ilustrativas/banos/reforma-bano-ventana-natural-mueble-madera.webp` | ilustrativa | disponible | 768×1024 | Baño con ventana de luz natural y mueble de lavabo en acabado madera |
+| `ilustrativa-bano-doble-lavabo-atico` | `img/ilustrativas/banos/reforma-bano-doble-lavabo-atico.webp` | ilustrativa | disponible | 1400×900 | Baño abuhardillado con mueble de doble lavabo y techo inclinado |
+| `ilustrativa-proceso-bastidor-inodoro` | `img/ilustrativas/proceso/instalacion-bastidor-inodoro-suspendido.webp` | ilustrativa | disponible | 1400×900 | Instalación de bastidor para inodoro suspendido con conexiones de fontanería a la vista |
+| `ilustrativa-proceso-tuberia-pex` | `img/ilustrativas/proceso/instalacion-tuberia-pex-fontaneria-bano.webp` | ilustrativa | disponible | 1400×900 | Tubería de fontanería PEX instalada en pared de baño en fase de obra |
+| `ilustrativa-comunidad-escalera-antes-despues` | `img/ilustrativas/comunidades/escalera-comunidad-antes-despues.webp` | ilustrativa | disponible | 1400×900 | Escalera de comunidad de vecinos antes y después de una reforma de portal |
+
+Estas siete son fotos genéricas subidas directamente por el cliente (carpeta original
+`imagenes-nuevas/`, sept. 2026): sin localidad, sin autoría, sin metadata de obra. No van
+en la sección "Proyectos reales" ni en ningún bloque que las atribuya a Trazzo360.
 
 ---
 

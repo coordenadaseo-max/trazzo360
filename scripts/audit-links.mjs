@@ -22,11 +22,15 @@ function distToUrl(p) {
   return rel;
 }
 
+// Una carpeta de dist/ no es una página: /servicios/ existía como carpeta (por
+// /servicios/reforma-banos/ y demás) sin index.html, servía 404 y pasaba por buena.
+const isFile = p => existsSync(p) && statSync(p).isFile();
+
 function linkExists(href) {
   const base = href.endsWith('/') ? href.slice(0, -1) : href;
   return existsSync(join(DIST, base + '/index.html'))
     || existsSync(join(DIST, base + '.html'))
-    || existsSync(join(DIST, base));
+    || isFile(join(DIST, base));
 }
 
 // Extract hrefs only from within <main>…</main> to avoid nav/footer inflation

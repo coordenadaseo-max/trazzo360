@@ -86,6 +86,14 @@ Los cinco primeros casos son esperados y correctos: `noindex` propio (DEC-A23) y
 
 Lectura: `/servicios/reforma-banos/` pasó de rastreada sin indexar a indexada tras la solicitud manual, con un rastreo nuevo en 4 días. Las otras tres no se han rastreado desde el 13-09 a las 22:25, el día del lanzamiento y unas dos horas después del paso a `www` (20:32). La indexación figura como «N/D» porque Google no tiene veredicto de indexación para ellas. Queda por pedir su indexación y comprobar si repiten el patrón.
 
+**Sitemap** (paso 6 del plan, 01-11-2026):
+
+| Sitemap | Tipo | Enviado | Última lectura | Estado | Páginas descubiertas | Vídeos |
+|---|---|---|---|---|---|---|
+| `https://www.trazzo360.es/sitemap-index.xml` | Índice de sitemaps | 13-09-2026 | 28-10-2026 | Correcto | 70 | 0 |
+
+Coincide con lo esperado (Correcto, 70 páginas). Google lo lee de forma periódica (última lectura hace 4 días), así que el sitemap no es la causa de las 35 descubiertas sin indexar: las conoce todas y no las ha descargado. No se reenvía, como indica el plan.
+
 **Consultas de Coslada** (paso 5 del plan): principales búsquedas de `/reformas-integrales/coslada/` y de `/zonas/coslada/`.
 
 **Cambio de pregunta (01-11-2026).** `/zonas/coslada/` no está indexada, así que no puede dar consultas: el filtro por esa URL saldrá vacío y ese vacío es el resultado, que se anota como «0 impresiones, no indexada». Mientras tanto no se puede saber si las dos páginas compiten. Se hace así:

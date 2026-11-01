@@ -40,6 +40,7 @@ Todo lo que pueda afectar a Google: commits en la web, solicitudes de indexació
 | 2026-10-27 | Las migas de los 6 hubs de servicio dejan de enlazar a `/servicios/` (404); corregidos 16 anchors «en en» en los hubs de comunidades y locales | Commit `1fdf69e`, publicado en Vercel | Que `/servicios/` deje de aparecer como 404 en el informe de páginas. No se espera efecto en la indexación de las combinadas | Indexación → Páginas, motivo «No se ha encontrado (404)» | |
 | | Solicitud de indexación del grupo A (8 combinadas) | Search Console | Que las 8 tengan fecha de rastreo antes que las de control | Inspección de URL, días 3, 7, 14 y 21 | |
 | | Solicitud de indexación de las 4 rastreadas sin indexar | Search Console | Que se vuelvan a rastrear | Inspección de URL | |
+| 2026-11-01 | Solicitud de indexación de `/zonas/coslada/`, `/zonas/meco/` y `/contacto/` (las 3 rastreadas sin indexar que faltaban; `/servicios/reforma-banos/` se solicitó hacia el 27-10 y ya está indexada) | Search Console | Que se rastreen en pocos días y pasen a indexadas, como `/servicios/reforma-banos/`. Si no ocurre en 14 días, el problema no es el rastreo | Inspección de URL, días 3, 7, 14 y 21 | |
 
 ## Mediciones
 
@@ -48,26 +49,73 @@ Una fila por fecha. Mismos informes y filtros cada vez.
 | Fecha | Indexadas | Sin indexar | Descubiertas | Rastreadas sin indexar | 404 | Solicitudes de rastreo (90 días) | Tiempo medio de respuesta | Estado del host | Notas |
 |---|---|---|---|---|---|---|---|---|---|
 | 2026-10-23 | 31 | 45 | 35 | 4 | | | | | Foto de partida (exportación del 23-10) |
-| | | | | | | | | | Día 0 |
+| 2026-11-01 | 31 | 45 | 35 | 4 | <1 % de las respuestas | 204 | 101 ms | Sin fallos en robots.txt, DNS ni conectividad | Día 0. Sin cambios respecto al 23-10. Detalle del rastreo debajo de la tabla |
+
+**Estadísticas de rastreo a 01-11-2026** (paso 3 del plan):
+
+- **Solicitudes totales:** 204. 150 son del 13-09, caen a 0 el 14-09 y el resto se reparte hasta hoy.
+- **Por respuesta:** 99 % correcto, <1 % 404.
+- **Por finalidad:** 67 % actualización, 33 % detección.
+- **Por tipo de Googlebot:** smartphones 30 %, imagen 23 %, ordenador 20 %, otro tipo de agente 19 %, carga de recursos de la página 7 %.
 
 ## Diagnóstico del día 0
 
 **Las 6 URL sin indexar fuera del sitemap** (paso 2 del plan):
 
+Datos de Search Console a 01-11-2026. Las 6 son páginas fuera del sitemap y explican la diferencia entre las 45 sin indexar y las 39 descubiertas o rastreadas del sitemap.
+
 | URL | Motivo |
 |---|---|
-| | |
+| `https://www.trazzo360.es/aviso-legal/` | Excluida por etiqueta `noindex` (último rastreo 14-09-2026) |
+| `https://www.trazzo360.es/privacidad/` | Excluida por etiqueta `noindex` (último rastreo 14-09-2026) |
+| `https://www.trazzo360.es/cookies/` | Excluida por etiqueta `noindex` |
+| `https://trazzo360.es/` | Página con redirección (apex a `www`) |
+| `http://trazzo360.es/` | Página con redirección (HTTP a HTTPS y `www`) |
+| `https://www.trazzo360.es/gracias/` | Bloqueada por `robots.txt` |
+
+Los cinco primeros casos son esperados y correctos: `noindex` propio (DEC-A23) y redirecciones a la versión canónica. Ninguno es un problema de indexación.
 
 **Las 4 rastreadas sin indexar** (paso 4 del plan):
 
 | URL | Último rastreo | Obtención | ¿Indexación permitida? | Canónica declarada | Canónica de Google |
 |---|---|---|---|---|---|
-| `/servicios/reforma-banos/` | | | | | |
-| `/zonas/coslada/` | | | | | |
-| `/zonas/meco/` | | | | | |
-| `/contacto/` | | | | | |
+| `/servicios/reforma-banos/` | 26-10-2026 19:25 (Googlebot smartphones) | Correcto | Sí | | Ya indexada (solicitada hace 4 días) |
+| `/zonas/coslada/` | 13-09-2026 22:25 (Googlebot ordenador) | Correcto | N/D | | |
+| `/zonas/meco/` | 13-09-2026 22:25 (Googlebot ordenador) | Correcto | N/D | | |
+| `/contacto/` | 13-09-2026 22:25 (Googlebot ordenador) | Correcto | N/D | | |
+
+Lectura: `/servicios/reforma-banos/` pasó de rastreada sin indexar a indexada tras la solicitud manual, con un rastreo nuevo en 4 días. Las otras tres no se han rastreado desde el 13-09 a las 22:25, el día del lanzamiento y unas dos horas después del paso a `www` (20:32). La indexación figura como «N/D» porque Google no tiene veredicto de indexación para ellas. Queda por pedir su indexación y comprobar si repiten el patrón.
 
 **Consultas de Coslada** (paso 5 del plan): principales búsquedas de `/reformas-integrales/coslada/` y de `/zonas/coslada/`.
+
+**Cambio de pregunta (01-11-2026).** `/zonas/coslada/` no está indexada, así que no puede dar consultas: el filtro por esa URL saldrá vacío y ese vacío es el resultado, que se anota como «0 impresiones, no indexada». Mientras tanto no se puede saber si las dos páginas compiten. Se hace así:
+
+1. Se mide solo `/reformas-integrales/coslada/` (399 impresiones, posición 60,6 al 23-10) y se clasifican sus consultas en genéricas («reformas coslada», «empresa de reformas coslada») y de servicio («reforma integral coslada»). Las genéricas son las que `keyword-map.md` asigna al hub de zona.
+2. Se anota el resultado vacío de `/zonas/coslada/` con la fecha.
+3. Esa lista queda como línea base. Cuando `/zonas/coslada/` salga indexada (R2 de la prueba controlada), se repite el filtro a las 2–4 semanas y se compara si reparten las consultas o se solapan.
+
+Con posición media 60,6, las impresiones sirven para ver el tema de las consultas, no para sacar conclusiones de volumen.
+
+**Línea base: `/reformas-integrales/coslada/`** (Search Console, últimos 3 meses, anotada el 01-11-2026; 10 primeras consultas).
+
+| Consulta | Impresiones | Posición | Tipo |
+|---|---|---|---|
+| reformas integrales coslada | 54 | 67,7 | Servicio |
+| reformas de pisos coslada | 39 | 62,5 | Otro servicio (pisos) |
+| reformas pisos coslada | 33 | 61,8 | Otro servicio (pisos) |
+| reformas casas coslada | 33 | 63,5 | Genérica |
+| reformas baratas coslada | 31 | 86,2 | Genérica (precio) |
+| empresa reformas integrales coslada | 29 | 70,3 | Servicio |
+| reformas en coslada | 25 | 77,2 | Genérica |
+| reformas en general coslada | 9 | 64,6 | Genérica |
+| reformar escaleras sin obra coslada | 9 | 73,1 | Otra intención |
+| comparar presupuestos de reformas coslada | 8 | 50,9 | Informacional (precio) |
+
+Lectura (sin conclusión firme, la muestra es pequeña y todas las posiciones superan la 50):
+
+- Solo 2 de las 10 son de reforma integral (83 de 248 impresiones). Hay 4 genéricas que `keyword-map.md` asigna al hub de zona («reformas en coslada», «reformas casas coslada», «reformas en general coslada», «reformas baratas coslada»), con 98 impresiones.
+- Hay 2 consultas de pisos (72 impresiones) que `/reformas-integrales/coslada/` recibe porque `/reforma-pisos/coslada/` está en «Descubierta, sin indexar» (C1 de la prueba controlada). Si esa combinada se indexa, esas impresiones deberían moverse allí.
+- El solapamiento con la zona no se puede juzgar hasta que `/zonas/coslada/` esté indexada. Resultado del filtro por `/zonas/coslada/` (01-11-2026): sin consultas, 0 impresiones, no indexada. Queda pendiente repetirlo a las 2–4 semanas de su indexación.
 
 ## Prueba controlada
 

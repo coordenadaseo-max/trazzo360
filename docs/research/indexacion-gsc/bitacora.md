@@ -38,7 +38,7 @@ Todo lo que pueda afectar a Google: commits en la web, solicitudes de indexació
 | Fecha | Cambio | Dónde | Qué se espera | Cómo se mide | Resultado |
 |---|---|---|---|---|---|
 | 2026-10-27 | Las migas de los 6 hubs de servicio dejan de enlazar a `/servicios/` (404); corregidos 16 anchors «en en» en los hubs de comunidades y locales | Commit `1fdf69e`, publicado en Vercel | Que `/servicios/` deje de aparecer como 404 en el informe de páginas. No se espera efecto en la indexación de las combinadas | Indexación → Páginas, motivo «No se ha encontrado (404)» | |
-| | Solicitud de indexación del grupo A (8 combinadas) | Search Console | Que las 8 tengan fecha de rastreo antes que las de control | Inspección de URL, días 3, 7, 14 y 21 | |
+| 2026-11-01 | Solicitud de indexación del grupo A: 6 de las 8 combinadas enviadas entre las 14:32 y las 14:44 (A1 a A6). A7 (`/reforma-banos/coslada/`) y A8 (`/reforma-cocinas/coslada/`) no se pudieron enviar: cuota diaria superada. Solicitadas el 03-11 (A7 a las 17:55, A8 a las 17:58) | Search Console | Que las 8 tengan fecha de rastreo antes que las de control | Inspección de URL, días 3, 7, 14 y 21 desde la solicitud de cada una | |
 | | Solicitud de indexación de las 4 rastreadas sin indexar | Search Console | Que se vuelvan a rastrear | Inspección de URL | |
 | 2026-11-01 | Solicitud de indexación de `/zonas/coslada/`, `/zonas/meco/` y `/contacto/` (las 3 rastreadas sin indexar que faltaban; `/servicios/reforma-banos/` se solicitó hacia el 27-10 y ya está indexada) | Search Console | Que se rastreen en pocos días y pasen a indexadas, como `/servicios/reforma-banos/`. Si no ocurre en 14 días, el problema no es el rastreo | Inspección de URL, días 3, 7, 14 y 21 | |
 
@@ -131,14 +131,14 @@ Estado en cada revisión: D = descubierta, R = rastreada sin indexar, I = indexa
 
 | # | URL | Grupo | Solicitada | Día 3 | Día 7 | Día 14 | Día 21 |
 |---|---|---|---|---|---|---|---|
-| A1 | `/reformas-integrales/torrejon-de-ardoz/` | A | | | | | |
-| A2 | `/reforma-banos/torrejon-de-ardoz/` | A | | | | | |
-| A3 | `/reformas-integrales/guadalajara/` | A | | | | | |
-| A4 | `/reforma-pisos/guadalajara/` | A | | | | | |
-| A5 | `/reforma-cocinas/alcala-de-henares/` | A | | | | | |
-| A6 | `/locales-comerciales/alcala-de-henares/` | A | | | | | |
-| A7 | `/reforma-banos/coslada/` | A | | | | | |
-| A8 | `/reforma-cocinas/coslada/` | A | | | | | |
+| A1 | `/reformas-integrales/torrejon-de-ardoz/` | A | 1-11 14:32 | | | | |
+| A2 | `/reforma-banos/torrejon-de-ardoz/` | A | 1-11 14:34 | | | | |
+| A3 | `/reformas-integrales/guadalajara/` | A | 1-11 14:39 | | | | |
+| A4 | `/reforma-pisos/guadalajara/` | A | 1-11 14:41 | | | | |
+| A5 | `/reforma-cocinas/alcala-de-henares/` | A | 1-11 14:42 | | | | |
+| A6 | `/locales-comerciales/alcala-de-henares/` | A | 1-11 14:44 | | | | |
+| A7 | `/reforma-banos/coslada/` | A | 3-11 17:55 | | | | |
+| A8 | `/reforma-cocinas/coslada/` | A | 3-11 17:58 | | | | |
 | C1 | `/reforma-pisos/coslada/` | Control | n/a | | | | |
 | C2 | `/reforma-cocinas/torrejon-de-ardoz/` | Control | n/a | | | | |
 | C3 | `/reforma-pisos/torrejon-de-ardoz/` | Control | n/a | | | | |
@@ -148,10 +148,10 @@ Estado en cada revisión: D = descubierta, R = rastreada sin indexar, I = indexa
 | C7 | `/reforma-banos/guadalajara/` | Control | n/a | | | | |
 | C8 | `/reforma-cocinas/guadalajara/` | Control | n/a | | | | |
 | C9 | `/locales-comerciales/guadalajara/` | Control | n/a | | | | |
-| R1 | `/servicios/reforma-banos/` | Rastreadas | | | | | |
-| R2 | `/zonas/coslada/` | Rastreadas | | | | | |
-| R3 | `/zonas/meco/` | Rastreadas | | | | | |
-| R4 | `/contacto/` | Rastreadas | | | | | |
+| R1 | `/servicios/reforma-banos/` | Rastreadas | ~27-10 | | | | |
+| R2 | `/zonas/coslada/` | Rastreadas | 1-11 | | | | |
+| R3 | `/zonas/meco/` | Rastreadas | 1-11 | | | | |
+| R4 | `/contacto/` | Rastreadas | 1-11 | | | | |
 
 ## Conclusiones
 

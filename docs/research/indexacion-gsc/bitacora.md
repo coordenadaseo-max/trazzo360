@@ -126,6 +126,35 @@ Lectura (sin conclusión firme, la muestra es pequeña y todas las posiciones su
 - Hay 2 consultas de pisos (72 impresiones) que `/reformas-integrales/coslada/` recibe porque `/reforma-pisos/coslada/` está en «Descubierta, sin indexar» (C1 de la prueba controlada). Si esa combinada se indexa, esas impresiones deberían moverse allí.
 - El solapamiento con la zona no se puede juzgar hasta que `/zonas/coslada/` esté indexada. Resultado del filtro por `/zonas/coslada/` (01-11-2026): sin consultas, 0 impresiones, no indexada. Queda pendiente repetirlo a las 2–4 semanas de su indexación.
 
+## Hipótesis abiertas
+
+### San Fernando: ¿la zona interfiere con la combinada? (04-11-2026)
+
+**Observación.** Para la consulta «reformas integrales en san fernando de henares», Search Console muestra dos URL de forma alterna, sin que ninguna se quede fija en los resultados:
+
+| URL | Impresiones | Posición |
+|---|---|---|
+| `/reformas-integrales/san-fernando-de-henares/` (servicio × zona) | 5 | 24 |
+| `/zonas/san-fernando-de-henares/` (hub de zona) | 2 | 18 |
+
+**Hipótesis.** El H1 visible de los hubs de zona es «Reformas en {zona}» y no lleva «empresa». El canon (`ANATOMIAS-CANONICAS.md`) lo pide dentro del H1, y el `<title>` de la zona ya dice «Empresa de Reformas en San Fernando de Henares». Podría ser que la ausencia de «empresa» en el H1 acerque la zona a la consulta de servicio. Coincide con la acción 4 de la [auditoría](./2026-10-27-auditoria-indexacion.md).
+
+**Qué se sabe y qué no.**
+
+- Las dos están en la página 2 de resultados, con posiciones cercanas. La zona sale mejor (18) con un H1 que ni siquiera contiene «integrales».
+- 7 impresiones en total. Es una muestra demasiado pequeña para decidir nada. Con este volumen la alternancia puede ser ruido.
+- La posición de estas dos (18 y 24) es mucho mejor que la media del sitio (56–88 en las URL con más de 100 impresiones). Es una consulta donde el sitio tiene alguna tracción.
+- El 04-11 se dijo en el chat que las posiciones eran «por encima de 50». Para esta consulta no es así: las dos están por debajo de 25.
+
+**Decisión de momento: no se toca el H1.** `/zonas/coslada/` y `/zonas/meco/` son R2 y R3 de la prueba controlada. Cambiar el H1 de las zonas ahora mezclaría su efecto con el de las solicitudes de indexación.
+
+**Qué mirar.**
+
+1. En los días 14 (15-11) y 21 (22-11), repetir el filtro de esta consulta en Rendimiento → Páginas.
+2. Ver con qué otras consultas aparece `/zonas/san-fernando-de-henares/`. Si sale sobre todo por «empresa de reformas» o «reformas en san fernando de henares», cumple su papel.
+3. **Señal para actuar:** el hub de zona acumulando impresiones por consultas de servicio durante varias semanas (por ejemplo, 10 o más) y alternando con la combinada.
+4. Si se confirma, aplicar el canon moviendo «Empresa de reformas en {zona}» al interior del H1 (`src/pages/zonas/[slug].astro:92` y `alcala-de-henares.astro:152`), con DEC en `DECISION-REGISTER.md`.
+
 ## Prueba controlada
 
 Estado en cada revisión: D = descubierta, R = rastreada sin indexar, I = indexada. Junto al estado, la fecha del último rastreo. «No reconocida» = Inspección de URL dice «Google no reconoce esta URL».

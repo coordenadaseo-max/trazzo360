@@ -38,8 +38,8 @@ Todo lo que pueda afectar a Google: commits en la web, solicitudes de indexació
 | Fecha | Cambio | Dónde | Qué se espera | Cómo se mide | Resultado |
 |---|---|---|---|---|---|
 | 2026-10-27 | Las migas de los 6 hubs de servicio dejan de enlazar a `/servicios/` (404); corregidos 16 anchors «en en» en los hubs de comunidades y locales | Commit `1fdf69e`, publicado en Vercel | Que `/servicios/` deje de aparecer como 404 en el informe de páginas. No se espera efecto en la indexación de las combinadas | Indexación → Páginas, motivo «No se ha encontrado (404)» | 08-11: el informe de páginas no tiene motivo 404 (tampoco lo tenía el 01-11) y en estadísticas de rastreo los 404 siguen en <1 %. Sin cambio medible |
-| 2026-11-01 | Solicitud de indexación del grupo A: 6 de las 8 combinadas enviadas entre las 14:32 y las 14:44 (A1 a A6). A7 (`/reforma-banos/coslada/`) y A8 (`/reforma-cocinas/coslada/`) no se pudieron enviar: cuota diaria superada. Solicitadas el 03-11 (A7 a las 17:55, A8 a las 17:58) | Search Console | Que las 8 tengan fecha de rastreo antes que las de control | Inspección de URL, días 3, 7, 14 y 21 desde la solicitud de cada una | 04-11: las 8 indexadas. Ver «Lectura del día 3». 08-11: las 8 siguen indexadas, sin rastreo nuevo. Ver «Lectura del día 7» |
-| | Solicitud de indexación de las 4 rastreadas sin indexar | Search Console | Que se vuelvan a rastrear | Inspección de URL | 04-11: las 4 indexadas (R1 antes de la solicitud masiva, R2 a R4 el 01-11). 08-11: siguen indexadas |
+| 2026-11-01 | Solicitud de indexación del grupo A: 6 de las 8 combinadas enviadas entre las 14:32 y las 14:44 (A1 a A6). A7 (`/reforma-banos/coslada/`) y A8 (`/reforma-cocinas/coslada/`) no se pudieron enviar: cuota diaria superada. Solicitadas el 03-11 (A7 a las 17:55, A8 a las 17:58) | Search Console | Que las 8 tengan fecha de rastreo antes que las de control | Inspección de URL, días 3, 7, 14 y 21 desde la solicitud de cada una | 04-11: las 8 indexadas. Ver «Lectura del día 3». 08-11: las 8 siguen indexadas, sin rastreo nuevo. Ver «Lectura del día 7». 15-11: inspección sin anotar; las 8 tienen impresiones hasta el 12-11 y el informe de páginas del 09-11 cuenta 43 indexadas. Ver «Lectura del día 14» |
+| | Solicitud de indexación de las 4 rastreadas sin indexar | Search Console | Que se vuelvan a rastrear | Inspección de URL | 04-11: las 4 indexadas (R1 antes de la solicitud masiva, R2 a R4 el 01-11). 08-11: siguen indexadas. 15-11: siguen indexadas, mismas fechas de rastreo |
 | 2026-11-01 | Solicitud de indexación de `/zonas/coslada/`, `/zonas/meco/` y `/contacto/` (las 3 rastreadas sin indexar que faltaban; `/servicios/reforma-banos/` se solicitó hacia el 27-10 y ya está indexada) | Search Console | Que se rastreen en pocos días y pasen a indexadas, como `/servicios/reforma-banos/`. Si no ocurre en 14 días, el problema no es el rastreo | Inspección de URL, días 3, 7, 14 y 21 | 04-11: las 3 indexadas, con la propia URL como canónica de Google |
 
 ## Mediciones
@@ -52,6 +52,7 @@ Una fila por fecha. Mismos informes y filtros cada vez.
 | 2026-11-01 | 31 | 45 | 35 | 4 | <1 % de las respuestas | 204 | 101 ms | Sin fallos en robots.txt, DNS ni conectividad | Día 0. Sin cambios respecto al 23-10. Detalle del rastreo debajo de la tabla |
 | 2026-11-04 | 43 (estimado) | 33 (estimado) | 27 (estimado) | 0 (estimado) | | | | | Día 3. Cifras derivadas de la Inspección de URL (31 + 12 indexadas; las 6 fuera del sitemap no cambian), no del informe de páginas. Sustituir por las del informe cuando se actualice |
 | 2026-11-08 | 31 | 45 | 35 | 4 | <1 % de las respuestas | 210 | 103 ms | Todo en verde | Día 7. El informe de páginas da exactamente las mismas cifras que el 23-10 (noindex 3, redirección 2, robots.txt 1, descubiertas 35, rastreadas 4): todavía no recoge las 12 indexaciones que la Inspección de URL confirma desde el 04-11. Se mantienen las cifras estimadas del día 3. «Última actualización» del informe: 23-10-2026. Es la misma foto que el 23-10, sin refrescar desde entonces, y lo mismo vale para la fila del 01-11 |
+| 2026-11-15 | 43 | 33 | 27 | 0 | <1 % de las respuestas | 212 | 103 ms | Todo en verde | Día 14. Informe de páginas actualizado el 09-11-2026, el primero desde el 23-10. Ya recoge las 12 indexaciones: indexadas 31 → 43, descubiertas 35 → 27, rastreadas sin indexar 4 → 0. Motivos: noindex 3, redirección 2, robots.txt 1, descubiertas 27, rastreadas sin indexar 0. Coincide exactamente con la estimación del 04-11, que queda confirmada |
 
 **Estadísticas de rastreo a 01-11-2026** (paso 3 del plan):
 
@@ -67,6 +68,14 @@ Una fila por fecha. Mismos informes y filtros cada vez.
 - **Por respuesta:** 92 % correcto (200), 8 % movido permanentemente (301), <1 % 404. El 01-11 no había 301 en el desglose.
 - **Por finalidad:** 70 % actualización, 30 % detección.
 - **Por tipo de Googlebot:** smartphones 31 %, ordenador 23 %, imagen 21 %, otro tipo de agente 17 %, carga de recursos de la página 7 %.
+
+**Estadísticas de rastreo a 15-11-2026** (día 14):
+
+- **Solicitudes totales:** 212, dos más que el 08-11.
+- **Tiempo medio de respuesta:** 103 ms. Estado del host: todo en verde.
+- **Por respuesta:** 92 % correcto (200), 8 % movido permanentemente (301), <1 % 404. Igual que el 08-11. Los ejemplos de 301 siguen siendo los dos de `http://trazzo360.es/` del 13-09 y el 14-09.
+- **Por finalidad:** 70 % actualización, 30 % detección.
+- **Por tipo de Googlebot:** smartphones 31 %, ordenador 23 %, imagen 22 %, otro tipo de agente 17 %, carga de recursos de la página 7 %.
 
 Los desgloses no cuadran como acumulado: con solo 6 solicitudes nuevas, la parte de 200 no puede bajar de 99 % a 92 %, ni la de imagen de 23 % a 21 %. Los porcentajes no se leen como recuentos exactos y no se sacan conclusiones de sus variaciones pequeñas.
 
@@ -115,7 +124,7 @@ Lectura: `/servicios/reforma-banos/` pasó de rastreada sin indexar a indexada t
 |---|---|---|---|---|---|---|
 | `https://www.trazzo360.es/sitemap-index.xml` | Índice de sitemaps | 13-09-2026 | 28-10-2026 | Correcto | 70 | 0 |
 
-Coincide con lo esperado (Correcto, 70 páginas). **08-11:** última lectura el 06-11-2026, 9 días después de la anterior. Google lo lee de forma periódica (última lectura hace 4 días), así que el sitemap no es la causa de las 35 descubiertas sin indexar: las conoce todas y no las ha descargado. No se reenvía, como indica el plan.
+Coincide con lo esperado (Correcto, 70 páginas). **08-11:** última lectura el 06-11-2026, 9 días después de la anterior. Google lo lee de forma periódica (última lectura hace 4 días), así que el sitemap no es la causa de las 35 descubiertas sin indexar: las conoce todas y no las ha descargado. No se reenvía, como indica el plan. **15-11:** la última lectura sigue siendo el 06-11-2026, hace 9 días. Con el ritmo observado (28-10 → 06-11) la siguiente debería llegar estos días.
 
 **Consultas de Coslada** (paso 5 del plan): principales búsquedas de `/reformas-integrales/coslada/` y de `/zonas/coslada/`.
 
@@ -185,29 +194,31 @@ La columna «Día 3» recoge la revisión del 04-11-2026 para todas las URL, aun
 
 La columna «Día 7» recoge la revisión del 08-11-2026 para todas las URL. Es el día 7 exacto de A1 a A6 y de R2 a R4; para A7 y A8 es el día 5 y para R1 el día 12 aproximadamente.
 
+La columna «Día 14» recoge la revisión del 15-11-2026. Es el día 14 exacto de A1 a A6 y de R2 a R4; para A7 y A8 es el día 12 y para R1 el 19 aproximadamente. Para A1 a A8 no se anotó la inspección: «Sin anotar» no es un estado, es un dato que falta.
+
 | # | URL | Grupo | Solicitada | Día 3 | Día 7 | Día 14 | Día 21 |
 |---|---|---|---|---|---|---|---|
-| A1 | `/reformas-integrales/torrejon-de-ardoz/` | A | 1-11 14:32 | I (1-11 14:34) | I (1-11 14:34) | | |
-| A2 | `/reforma-banos/torrejon-de-ardoz/` | A | 1-11 14:34 | I (1-11 14:36) | I (1-11 14:36) | | |
-| A3 | `/reformas-integrales/guadalajara/` | A | 1-11 14:39 | I (1-11 14:36) | I (1-11 14:36) | | |
-| A4 | `/reforma-pisos/guadalajara/` | A | 1-11 14:41 | I (1-11 14:44) | I (1-11 14:44) | | |
-| A5 | `/reforma-cocinas/alcala-de-henares/` | A | 1-11 14:42 | I (1-11 14:44) | I (1-11 14:44) | | |
-| A6 | `/locales-comerciales/alcala-de-henares/` | A | 1-11 14:44 | I (1-11 14:46) | I (1-11 14:46) | | |
-| A7 | `/reforma-banos/coslada/` | A | 3-11 17:55 | I (3-11 17:58) | I (3-11 17:58) | | |
-| A8 | `/reforma-cocinas/coslada/` | A | 3-11 17:58 | I (3-11 17:58) | I (3-11 17:58) | | |
-| C1 | `/reforma-pisos/coslada/` | Control | n/a | D | No reconocida | | |
-| C2 | `/reforma-cocinas/torrejon-de-ardoz/` | Control | n/a | D | D | | |
-| C3 | `/reforma-pisos/torrejon-de-ardoz/` | Control | n/a | D | No reconocida | | |
-| C4 | `/locales-comerciales/torrejon-de-ardoz/` | Control | n/a | D | No reconocida | | |
-| C5 | `/reformas-integrales/alcala-de-henares/` | Control | n/a | D | No reconocida | | |
-| C6 | `/reforma-banos/alcala-de-henares/` | Control | n/a | No reconocida | D | | |
-| C7 | `/reforma-banos/guadalajara/` | Control | n/a | D | D | | |
-| C8 | `/reforma-cocinas/guadalajara/` | Control | n/a | No reconocida | No reconocida | | |
-| C9 | `/locales-comerciales/guadalajara/` | Control | n/a | D | D | | |
-| R1 | `/servicios/reforma-banos/` | Rastreadas | ~27-10 | I (26-10 19:25) | I (26-10 19:25) | | |
-| R2 | `/zonas/coslada/` | Rastreadas | 1-11 | I (1-11 14:24) | I (1-11 14:24) | | |
-| R3 | `/zonas/meco/` | Rastreadas | 1-11 | I (1-11 14:24) | I (1-11 14:24) | | |
-| R4 | `/contacto/` | Rastreadas | 1-11 | I (1-11 14:23) | I (1-11 14:23) | | |
+| A1 | `/reformas-integrales/torrejon-de-ardoz/` | A | 1-11 14:32 | I (1-11 14:34) | I (1-11 14:34) | Sin anotar | |
+| A2 | `/reforma-banos/torrejon-de-ardoz/` | A | 1-11 14:34 | I (1-11 14:36) | I (1-11 14:36) | Sin anotar | |
+| A3 | `/reformas-integrales/guadalajara/` | A | 1-11 14:39 | I (1-11 14:36) | I (1-11 14:36) | Sin anotar | |
+| A4 | `/reforma-pisos/guadalajara/` | A | 1-11 14:41 | I (1-11 14:44) | I (1-11 14:44) | Sin anotar | |
+| A5 | `/reforma-cocinas/alcala-de-henares/` | A | 1-11 14:42 | I (1-11 14:44) | I (1-11 14:44) | Sin anotar | |
+| A6 | `/locales-comerciales/alcala-de-henares/` | A | 1-11 14:44 | I (1-11 14:46) | I (1-11 14:46) | Sin anotar | |
+| A7 | `/reforma-banos/coslada/` | A | 3-11 17:55 | I (3-11 17:58) | I (3-11 17:58) | Sin anotar | |
+| A8 | `/reforma-cocinas/coslada/` | A | 3-11 17:58 | I (3-11 17:58) | I (3-11 17:58) | Sin anotar | |
+| C1 | `/reforma-pisos/coslada/` | Control | n/a | D | No reconocida | No reconocida | |
+| C2 | `/reforma-cocinas/torrejon-de-ardoz/` | Control | n/a | D | D | D | |
+| C3 | `/reforma-pisos/torrejon-de-ardoz/` | Control | n/a | D | No reconocida | D | |
+| C4 | `/locales-comerciales/torrejon-de-ardoz/` | Control | n/a | D | No reconocida | No reconocida | |
+| C5 | `/reformas-integrales/alcala-de-henares/` | Control | n/a | D | No reconocida | D | |
+| C6 | `/reforma-banos/alcala-de-henares/` | Control | n/a | No reconocida | D | D | |
+| C7 | `/reforma-banos/guadalajara/` | Control | n/a | D | D | D | |
+| C8 | `/reforma-cocinas/guadalajara/` | Control | n/a | No reconocida | No reconocida | D | |
+| C9 | `/locales-comerciales/guadalajara/` | Control | n/a | D | D | No reconocida | |
+| R1 | `/servicios/reforma-banos/` | Rastreadas | ~27-10 | I (26-10 19:25) | I (26-10 19:25) | I (26-10 19:25) | |
+| R2 | `/zonas/coslada/` | Rastreadas | 1-11 | I (1-11 14:24) | I (1-11 14:24) | I (1-11 14:24) | |
+| R3 | `/zonas/meco/` | Rastreadas | 1-11 | I (1-11 14:24) | I (1-11 14:24) | I (1-11 14:24) | |
+| R4 | `/contacto/` | Rastreadas | 1-11 | I (1-11 14:23) | I (1-11 14:23) | I (1-11 14:23) | |
 
 ## Lectura del día 3 (04-11-2026)
 
@@ -290,6 +301,60 @@ Lectura:
 - Una semana de impresiones con posiciones por encima de 50 no dice cómo evolucionará el posicionamiento. Sirve para ver que la página aparece, no cuánto tráfico traerá.
 
 **Próximas revisiones:** día 14 el 15-11 (inspección de las 21 URL, consulta de San Fernando, rendimiento de las 12 solicitadas con el rango de fechas anotado, y primera comparación de consultas entre `/zonas/coslada/` y `/reformas-integrales/coslada/`) y día 21 el 22-11 (inspección, informe de páginas, estadísticas de rastreo y lectura final).
+
+## Lectura del día 14 (15-11-2026)
+
+**Resultado:** la prueba sigue igual. Las 4 rastreadas siguen indexadas con las mismas fechas de rastreo. De las 9 de control no se ha rastreado ninguna: 6 en «Descubierta» y 3 en «Google no reconoce esta URL». La inspección de A1 a A8 no se anotó, pero hay dos pruebas indirectas de que siguen indexadas: tienen impresiones hasta el 12-11 y el informe de páginas del 09-11 da 43 indexadas, que son las 31 de partida más las 12 solicitadas.
+
+| Grupo | Día 7 | Día 14 | Detalle |
+|---|---|---|---|
+| A (solicitadas) | 8 de 8 indexadas | Sin inspeccionar | Indexadas según el informe de páginas del 09-11; con impresiones hasta el 12-11 |
+| Rastreadas (solicitadas) | 4 de 4 indexadas | 4 de 4 indexadas | Mismas fechas de rastreo que el día 3 |
+| Control (sin tocar) | 0 de 9 rastreadas | 0 de 9 rastreadas | 4 D + 5 no reconocidas el día 7; 6 D + 3 no reconocidas el día 14 |
+
+**Qué se observa**
+
+- **El informe de páginas se ha puesto al día.** Actualizado el 09-11, el primero desde el 23-10. Da 43 indexadas y 33 sin indexar, con 27 descubiertas y 0 rastreadas sin indexar. Son exactamente las cifras estimadas el 04-11 a partir de la Inspección de URL. Las dos fuentes coinciden.
+- **Las 27 descubiertas son las pendientes.** Coinciden con las 9 de control y las 18 que quedaban fuera de la prueba (P1 a P18), es decir, con la lista de «Orden de solicitud a partir del día 21».
+- **Ninguna solicitada ha caído a «Rastreada: actualmente sin indexar».** El informe cuenta 0 en ese motivo. Dos semanas después de indexarse, Google no ha descartado ninguna por contenido.
+- **«No reconocida» sigue yendo y viniendo.** C3, C5 y C8 vuelven a «Descubierta» y C9 pasa a «No reconocida». Se confirma lo del día 7: es un vaivén de la herramienta con URL nunca rastreadas, y las dos cosas cuentan igual: sin rastrear.
+- **Google sigue sin pasar por su cuenta.** 212 solicitudes de rastreo, dos más que el 08-11. El sitemap no se ha vuelto a leer desde el 06-11.
+
+**Rendimiento de las URL solicitadas** (Search Console → Rendimiento, filtro por página, del 01-11-2026 al 12-11-2026). Los clics no se anotaron. El rango acaba el 12-11 por el retraso habitual de los datos de Search Console. Para A7 y A8, indexadas el 03-11, son 10 días de datos.
+
+| # | URL | Impresiones día 7 | Impresiones día 14 | Posición día 7 | Posición día 14 |
+|---|---|---|---|---|---|
+| A1 | `/reformas-integrales/torrejon-de-ardoz/` | 96 | 188 | 68,1 | 62,2 |
+| A2 | `/reforma-banos/torrejon-de-ardoz/` | 51 | 113 | 69,6 | 72,4 |
+| A3 | `/reformas-integrales/guadalajara/` | 95 | 186 | 49,7 | 51,7 |
+| A4 | `/reforma-pisos/guadalajara/` | 53 | 102 | 66,0 | 67,5 |
+| A5 | `/reforma-cocinas/alcala-de-henares/` | 25 | 60 | 60,0 | 56,4 |
+| A6 | `/locales-comerciales/alcala-de-henares/` | Sin datos | 1 | | 1 |
+| A7 | `/reforma-banos/coslada/` | 36 | 167 | 71,4 | 67,3 |
+| A8 | `/reforma-cocinas/coslada/` | 30 | 110 | 68,9 | 65,7 |
+| R1 a R4 | | | Sin anotar | | |
+
+Lectura:
+
+- **Las impresiones se han más que duplicado.** El grupo A pasa de 386 a 927. Como el rango del día 7 no se anotó y el del día 14 lo incluye, no se puede separar la segunda semana de la primera. Lo que sí se ve es que las páginas siguen apareciendo y no se apagan después del primer empujón.
+- **El mayor salto es el de Coslada.** A7 pasa de 36 a 167 y A8 de 30 a 110. El día 7 llevaban solo 5 días indexadas, así que parte del salto se debe a que ahora se mide más tiempo.
+- **Las posiciones apenas se mueven.** Siguen entre 51,7 y 72,4, en las páginas 5 a 8 de resultados. Las variaciones de 2 a 6 puestos caben en el ruido de una media acumulada. Mejoran A1, A5, A7 y A8, empeoran algo A2, A3 y A4.
+- **A3 sigue siendo la mejor** (`/reformas-integrales/guadalajara/`, 51,7).
+- **A6: una impresión en posición 1 es ruido.** Con una sola impresión la posición no significa nada. Seguramente sea una búsqueda muy específica. La conclusión del día 7 se mantiene: apenas hay demanda que la muestre.
+
+**Qué no se ha anotado y se pide para el día 21**
+
+- La inspección de A1 a A8: estado y fecha del último rastreo.
+- El rendimiento de R1 a R4 y los clics de todas las URL.
+- La consulta «reformas integrales en san fernando de henares» (hipótesis de San Fernando, paso 1 de «Qué mirar»).
+- Las consultas de `/zonas/coslada/` y de `/reformas-integrales/coslada/`, para compararlas con la línea base. La ventana que pedía la línea base va del 15-11 al 29-11, así que esta revisión todavía cabe en el plazo.
+
+**Qué no se puede afirmar todavía**
+
+- Falta una semana de control. La diferencia sigue siendo clara: el grupo A indexado frente a 0 de 9 del control. Aun así, la lectura que cuenta es la del día 21.
+- Con posiciones por encima de 50 las impresiones no se traducen en visitas. El dato dice que las páginas aparecen, no cuánto tráfico van a traer.
+
+**Próxima revisión:** día 21 el 22-11. Incluye la inspección de las 21 URL, el informe de páginas, las estadísticas de rastreo, lo que falta del día 14 y la lectura final. Si da la primera fila de la tabla del plan, ese mismo día se envía la tanda 1.
 
 ## Orden de solicitud a partir del día 21 (preparado el 08-11-2026)
 

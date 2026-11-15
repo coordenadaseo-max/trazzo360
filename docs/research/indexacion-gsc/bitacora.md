@@ -349,13 +349,13 @@ Lectura:
 - **`/zonas/coslada/` es la URL más vista: 445 impresiones.** Abajo se comparan sus consultas con las de la combinada.
 - **A6 tiene una sola impresión, y con una impresión la posición 1 no significa nada.** Se mantiene lo del día 7: apenas hay demanda que la muestre.
 
-**Rango de fechas de las consultas: sin confirmar.** Las listas de consultas de Coslada y San Fernando no traen anotado su rango. Varios datos indican que no es del 01-11 al 12-11, sino probablemente de los últimos 3 meses:
+**Rango de fechas de las consultas: últimos 3 meses** (confirmado por el titular el 15-11). No es el mismo rango que la tabla de rendimiento (01-11 a 12-11). Los datos ya lo indicaban:
 
 - En `/reformas-integrales/coslada/`, «reformas integrales coslada» tiene 74 impresiones, frente a 54 en la línea base de 3 meses.
 - «reformas en coslada» sale idéntica en las dos fechas: 25 impresiones, posición 77,2.
 - En San Fernando, «reformas integrales en san fernando de henares» tiene en la combinada las mismas 5 impresiones en posición 24 que el 04-11.
 
-Para `/zonas/coslada/` el rango da igual, porque no tenía impresiones antes del 01-11. Para las otras tres páginas sí importa. Las lecturas siguientes dan por hecho que el rango es de 3 meses.
+Para `/zonas/coslada/` el rango da igual, porque no tenía impresiones antes del 01-11. Para las otras tres páginas sí importa: sus cifras incluyen las semanas anteriores a la prueba. En la combinada de Coslada, la diferencia con la línea base es lo que ha sumado desde el 01-11 aproximadamente.
 
 **Consultas de Coslada: zona frente a combinada** (primera repetición de la línea base del 01-11).
 
@@ -417,8 +417,8 @@ Lectura:
 
 **Qué falta todavía**
 
-- Los clics. No se han anotado ni el día 7 ni el 14.
-- Confirmar el rango de fechas de las listas de consultas. Para el día 21, conviene sacar las cuatro páginas (las dos de Coslada y las dos de San Fernando) con el mismo rango y anotarlo. Desde el 01-11 es la opción que permite comparar la zona de Coslada con la combinada en igualdad de condiciones.
+- Los clics por URL. No se han anotado ni el día 7 ni el 14; se anotan el día 21. Total del sitio a 15-11: **9 clics**, frente a 3 en la foto de partida (23-10). El rango de ese total no quedó anotado.
+- Para el día 21, sacar las consultas de las cuatro páginas (las dos de Coslada y las dos de San Fernando) con el mismo rango y anotarlo. Desde el 01-11 es la opción que permite comparar la zona de Coslada con la combinada en igualdad de condiciones.
 
 **Qué no se puede afirmar todavía**
 

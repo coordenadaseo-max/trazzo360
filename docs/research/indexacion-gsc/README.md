@@ -14,6 +14,7 @@ Carpeta de seguimiento de todo lo que se haga para que Google rastree e indexe e
 | [`bitacora.md`](./bitacora.md) | Documento vivo. Foto de partida, cada cambio con su fecha y cada medición |
 | [`2026-10-27-auditoria-indexacion.md`](./2026-10-27-auditoria-indexacion.md) | Auditoría de rastreo e indexación con los datos de Search Console hasta el 23-10 |
 | [`2026-10-27-plan-search-console.md`](./2026-10-27-plan-search-console.md) | Pasos que hace el titular en Search Console: diagnóstico y prueba controlada de 3 semanas |
+| [`2026-11-22-resumen-estado.md`](./2026-11-22-resumen-estado.md) | Resumen didáctico del estado de la estrategia al cerrar la prueba controlada: qué se ha hecho, por qué, qué se ha detectado y el criterio de oficio detrás de cada paso |
 
 ## Cómo se trabaja aquí
 

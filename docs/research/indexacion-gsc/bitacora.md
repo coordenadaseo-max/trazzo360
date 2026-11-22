@@ -200,7 +200,7 @@ Lectura (sin conclusión firme, la muestra es pequeña y todas las posiciones su
 
 **15-11 (día 14).** El umbral del punto 3 se alcanza en cifras: la zona suma 51 impresiones en consultas de reforma integral y la combinada 14. Pero el reparto no coincide con la hipótesis: en las consultas compartidas la combinada sale igual o mejor que la zona, y la consulta en la que mejor sale la zona empieza por «empresa de reformas…», que es justo lo que el cambio añadiría al H1. Decisión aplazada al día 21. Detalle en «Lectura del día 14».
 
-**22-11 (día 21).** La alternancia no se repite: en las dos consultas que comparten, ni la zona ni la combinada suman una sola impresión en la semana. La zona crece en reforma integral solo en consultas donde la combinada no aparece. Además, con el rango del 01-11 al 20-11 la combinada no tiene ningún dato en Rendimiento: sus 14 impresiones son todas anteriores al 01-11. Desde esa fecha, para las consultas de reforma integral en San Fernando solo sale la zona. **La hipótesis sigue abierta, reformulada:** no es alternancia, puede ser sustitución. Primero se inspecciona la combinada (indexación y canónica de Google) y después se decide sobre el H1. Detalle en «Lectura del día 21». **Inspección del mismo día:** la combinada está indexada con su propia canónica y su último rastreo es del 14-09. No hay fusión: Google tiene las dos páginas y elige mostrar la zona. El H1 no se toca; se vigila junto con Coslada. Hay una propuesta de miniprueba de rastreo pendiente del titular (solicitar la indexación de la combinada de San Fernando y dejar la de Coslada como control).
+**22-11 (día 21).** La alternancia no se repite: en las dos consultas que comparten, ni la zona ni la combinada suman una sola impresión en la semana. La zona crece en reforma integral solo en consultas donde la combinada no aparece. Además, con el rango del 01-11 al 20-11 la combinada no tiene ningún dato en Rendimiento: sus 14 impresiones son todas anteriores al 01-11. Desde esa fecha, para las consultas de reforma integral en San Fernando solo sale la zona. **La hipótesis sigue abierta, reformulada:** no es alternancia, puede ser sustitución. Primero se inspecciona la combinada (indexación y canónica de Google) y después se decide sobre el H1. Detalle en «Lectura del día 21». **Inspección del mismo día:** la combinada está indexada con su propia canónica y su último rastreo es del 14-09. No hay fusión: Google tiene las dos páginas y elige mostrar la zona. El H1 no se toca; se vigila junto con Coslada. Miniprueba de rastreo aprobada el 22-11, M1 en la tanda 3 (solicitar la indexación de la combinada de San Fernando y dejar la de Coslada como control).
 
 ### Coslada: la zona adelanta a la combinada de integrales (22-11-2026)
 
@@ -208,7 +208,7 @@ Lectura (sin conclusión firme, la muestra es pequeña y todas las posiciones su
 
 **Qué se sabe y qué no.** Es una semana de datos, con posiciones entre 50 y 76 y posiciones de las impresiones nuevas estimadas (método en «Lectura del día 21»). Puede ser rotación. Las consultas de pisos no tienen dueño mientras `/reforma-pisos/coslada/` (C1) siga sin rastrear.
 
-**Decisión de momento: no se toca nada.** Se repite la comparación el 29-11 (4 semanas desde la indexación de la zona) y cuando C1 se indexe con la tanda 1. Si se aprueba la miniprueba de San Fernando, `/reformas-integrales/coslada/` no se solicita: hace de control.
+**Decisión de momento: no se toca nada.** Se repite la comparación el 29-11 (4 semanas desde la indexación de la zona) y cuando C1 se indexe con la tanda 1. `/reformas-integrales/coslada/` no se solicita: hace de control de la miniprueba M1 de San Fernando.
 
 ## Prueba controlada
 
@@ -589,7 +589,7 @@ Lectura:
 
 **Siguiente paso, según lo previsto:** al no estar fusionada, se vigila junto con Coslada. El H1 no se toca.
 
-**Propuesta, pendiente del titular: miniprueba de rastreo.** Solicitar la indexación de `/reformas-integrales/san-fernando-de-henares/` en la tanda 3 (24-11), que tiene 7 URL y deja cupo libre. `/reformas-integrales/coslada/` no se toca y hace de control. Si en 2 o 3 semanas la combinada de San Fernando vuelve a salir en sus consultas de integral y la de Coslada no, el rastreo antiguo pesa. Si no cambia nada, se descarta y queda la vía del contenido y el H1. Es una sola URL contra otra: sirve para orientar, no para concluir.
+**Miniprueba de rastreo (propuesta el 22-11; aprobada por el titular ese mismo día, va como M1 en la tanda 3).** Solicitar la indexación de `/reformas-integrales/san-fernando-de-henares/` en la tanda 3 (24-11), que tiene 7 URL y deja cupo libre. `/reformas-integrales/coslada/` no se toca y hace de control. Si en 2 o 3 semanas la combinada de San Fernando vuelve a salir en sus consultas de integral y la de Coslada no, el rastreo antiguo pesa. Si no cambia nada, se descarta y queda la vía del contenido y el H1. Es una sola URL contra otra: sirve para orientar, no para concluir.
 
 **Clics:** 5 en el total del sitio del 01-11 al 20-11 (anotado por el titular el 22-11). No se puede comparar con los 9 del 15-11, porque el rango de aquel total no quedó anotado. Los clics por URL siguen sin anotarse.
 
@@ -644,6 +644,9 @@ Se aplica solo si la lectura del día 21 (22-11) da la primera fila de la tabla 
 | 3 (24-11) | P16 | `https://www.trazzo360.es/reforma-pisos/camarma-de-esteruelas/` | Camarma de Esteruelas (~0) | | |
 | 3 (24-11) | P17 | `https://www.trazzo360.es/locales-comerciales/camarma-de-esteruelas/` | Camarma de Esteruelas (~0) | | |
 | 3 (24-11) | P18 | `https://www.trazzo360.es/comunidades-vecinos/camarma-de-esteruelas/` | Camarma de Esteruelas (~0) | | |
+| 3 (24-11) | M1 | `https://www.trazzo360.es/reformas-integrales/san-fernando-de-henares/` | San Fernando de Henares (220) | | |
+
+**M1: miniprueba de rastreo (aprobada por el titular el 22-11).** No es una combinada pendiente: está indexada desde el 14-09 y no se ha vuelto a rastrear. Se solicita para ver si un rastreo nuevo le devuelve las consultas de reforma integral que desde el 01-11 se lleva `/zonas/san-fernando-de-henares/`. Control: `/reformas-integrales/coslada/`, que **no se solicita**. Va la última de la tanda: si se agota el cupo, pasa al día siguiente. Se mide en Rendimiento (consultas de la combinada y de la zona, con rango desde el 24-11) a las 2 y 3 semanas: 08-12 y 15-12. Se compara con la combinada de Coslada en las mismas fechas.
 
 ## Conclusiones
 

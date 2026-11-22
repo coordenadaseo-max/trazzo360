@@ -200,7 +200,7 @@ Lectura (sin conclusión firme, la muestra es pequeña y todas las posiciones su
 
 **15-11 (día 14).** El umbral del punto 3 se alcanza en cifras: la zona suma 51 impresiones en consultas de reforma integral y la combinada 14. Pero el reparto no coincide con la hipótesis: en las consultas compartidas la combinada sale igual o mejor que la zona, y la consulta en la que mejor sale la zona empieza por «empresa de reformas…», que es justo lo que el cambio añadiría al H1. Decisión aplazada al día 21. Detalle en «Lectura del día 14».
 
-**22-11 (día 21).** La alternancia no se repite: en las dos consultas que comparten, ni la zona ni la combinada suman una sola impresión en la semana. La zona crece en reforma integral solo en consultas donde la combinada no aparece. Además, con el rango del 01-11 al 20-11 la combinada no tiene ningún dato en Rendimiento: sus 14 impresiones son todas anteriores al 01-11. Desde esa fecha, para las consultas de reforma integral en San Fernando solo sale la zona. **La hipótesis sigue abierta, reformulada:** no es alternancia, puede ser sustitución. Primero se inspecciona la combinada (indexación y canónica de Google) y después se decide sobre el H1. Detalle en «Lectura del día 21».
+**22-11 (día 21).** La alternancia no se repite: en las dos consultas que comparten, ni la zona ni la combinada suman una sola impresión en la semana. La zona crece en reforma integral solo en consultas donde la combinada no aparece. Además, con el rango del 01-11 al 20-11 la combinada no tiene ningún dato en Rendimiento: sus 14 impresiones son todas anteriores al 01-11. Desde esa fecha, para las consultas de reforma integral en San Fernando solo sale la zona. **La hipótesis sigue abierta, reformulada:** no es alternancia, puede ser sustitución. Primero se inspecciona la combinada (indexación y canónica de Google) y después se decide sobre el H1. Detalle en «Lectura del día 21». **Inspección del mismo día:** la combinada está indexada con su propia canónica y su último rastreo es del 14-09. No hay fusión: Google tiene las dos páginas y elige mostrar la zona. El H1 no se toca; se vigila junto con Coslada. Hay una propuesta de miniprueba de rastreo pendiente del titular (solicitar la indexación de la combinada de San Fernando y dejar la de Coslada como control).
 
 ### Coslada: la zona adelanta a la combinada de integrales (22-11-2026)
 
@@ -208,7 +208,7 @@ Lectura (sin conclusión firme, la muestra es pequeña y todas las posiciones su
 
 **Qué se sabe y qué no.** Es una semana de datos, con posiciones entre 50 y 76 y posiciones de las impresiones nuevas estimadas (método en «Lectura del día 21»). Puede ser rotación. Las consultas de pisos no tienen dueño mientras `/reforma-pisos/coslada/` (C1) siga sin rastrear.
 
-**Decisión de momento: no se toca nada.** Se repite la comparación el 29-11 (4 semanas desde la indexación de la zona) y cuando C1 se indexe con la tanda 1.
+**Decisión de momento: no se toca nada.** Se repite la comparación el 29-11 (4 semanas desde la indexación de la zona) y cuando C1 se indexe con la tanda 1. Si se aprueba la miniprueba de San Fernando, `/reformas-integrales/coslada/` no se solicita: hace de control.
 
 ## Prueba controlada
 
@@ -568,11 +568,34 @@ Lectura:
 
 **Propuesta sobre la hipótesis de San Fernando:** no cerrarla. Antes de decidir nada sobre el H1, inspeccionar `/reformas-integrales/san-fernando-de-henares/` y anotar si sigue indexada y qué canónica ha elegido Google. Si Google ha elegido la zona como canónica, la canibalización queda confirmada. Si sigue indexada con su propia canónica, se vigila junto con lo de Coslada. La propuesta de esta misma mañana de cerrarla como no confirmada queda retirada.
 
+**Inspección de la combinada (22-11, por el titular):**
+
+| Campo | Valor |
+|---|---|
+| Estado | Indexada |
+| Último rastreo | 14-09-2026 07:42:29 (Googlebot smartphones) |
+| Obtención / ¿indexación permitida? | Correcto / Sí |
+| Canónica declarada | La propia URL |
+| Canónica de Google | La propia URL |
+| Página de referencia | `/comunidades-vecinos/san-fernando-de-henares/` |
+| Sitemaps | «Error temporal de procesamiento» (el mismo vaivén de siempre) |
+
+Lectura:
+
+- **No hay fusión.** Google no ha tratado la combinada como duplicado de la zona: la tiene indexada con su propia canónica. La canibalización no se confirma por esta vía.
+- **Lo que ocurre es una elección de Google al ordenar los resultados.** Las dos páginas están en el índice y, desde el 01-11, Google enseña la zona para las consultas de reforma integral. Es la misma tendencia que se ve en Coslada esta semana.
+- **La versión que tiene Google es la actual.** Desde el 14-09 el único commit en `src/` es `1fdf69e` (migas de los hubs y anchors «en en» de los hubs de comunidades y locales), que no cambia el contenido de la combinada.
+- **Coincidencia anotada, sin atribuirle causa:** las dos combinadas a las que adelanta su zona (integrales de San Fernando e integrales de Coslada) son del lote de 13 que Google rastreó por última vez el 14-09 (dato a 23-10). Las dos zonas que las adelantan se rastrearon el 1-11. Que una página no se haya rastreado en 69 días no debería, por sí solo, hacerla bajar en los resultados, pero hasta ahora nada lo descarta.
+
+**Siguiente paso, según lo previsto:** al no estar fusionada, se vigila junto con Coslada. El H1 no se toca.
+
+**Propuesta, pendiente del titular: miniprueba de rastreo.** Solicitar la indexación de `/reformas-integrales/san-fernando-de-henares/` en la tanda 3 (24-11), que tiene 7 URL y deja cupo libre. `/reformas-integrales/coslada/` no se toca y hace de control. Si en 2 o 3 semanas la combinada de San Fernando vuelve a salir en sus consultas de integral y la de Coslada no, el rastreo antiguo pesa. Si no cambia nada, se descarta y queda la vía del contenido y el H1. Es una sola URL contra otra: sirve para orientar, no para concluir.
+
 **Clics:** 5 en el total del sitio del 01-11 al 20-11 (anotado por el titular el 22-11). No se puede comparar con los 9 del 15-11, porque el rango de aquel total no quedó anotado. Los clics por URL siguen sin anotarse.
 
 **Qué falta**
 
-- Inspeccionar `/reformas-integrales/san-fernando-de-henares/`.
+- ~~Inspeccionar `/reformas-integrales/san-fernando-de-henares/`.~~ Hecho el 22-11: indexada, con su propia canónica.
 - Los clics por URL.
 
 **Siguiente paso** (primera fila del plan): tanda 1 enviada el 22-11 entre las 20:41 y las 20:51, sin aviso de cupo. A6 no se solicitó porque, al volver a inspeccionarla, salía indexada. El estado de P1 antes de solicitarla no quedó anotado.

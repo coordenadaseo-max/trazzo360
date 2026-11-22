@@ -38,8 +38,9 @@ Todo lo que pueda afectar a Google: commits en la web, solicitudes de indexació
 | Fecha | Cambio | Dónde | Qué se espera | Cómo se mide | Resultado |
 |---|---|---|---|---|---|
 | 2026-10-27 | Las migas de los 6 hubs de servicio dejan de enlazar a `/servicios/` (404); corregidos 16 anchors «en en» en los hubs de comunidades y locales | Commit `1fdf69e`, publicado en Vercel | Que `/servicios/` deje de aparecer como 404 en el informe de páginas. No se espera efecto en la indexación de las combinadas | Indexación → Páginas, motivo «No se ha encontrado (404)» | 08-11: el informe de páginas no tiene motivo 404 (tampoco lo tenía el 01-11) y en estadísticas de rastreo los 404 siguen en <1 %. Sin cambio medible |
-| 2026-11-01 | Solicitud de indexación del grupo A: 6 de las 8 combinadas enviadas entre las 14:32 y las 14:44 (A1 a A6). A7 (`/reforma-banos/coslada/`) y A8 (`/reforma-cocinas/coslada/`) no se pudieron enviar: cuota diaria superada. Solicitadas el 03-11 (A7 a las 17:55, A8 a las 17:58) | Search Console | Que las 8 tengan fecha de rastreo antes que las de control | Inspección de URL, días 3, 7, 14 y 21 desde la solicitud de cada una | 04-11: las 8 indexadas. Ver «Lectura del día 3». 08-11: las 8 siguen indexadas, sin rastreo nuevo. Ver «Lectura del día 7». 15-11: las 8 siguen indexadas, sin rastreo nuevo y con la propia URL como canónica de Google. Ver «Lectura del día 14». 22-11: 7 de 8 indexadas; A2 vuelve a rastrearse el 15-11 sin solicitud; A6 sale como «Google no reconoce esta URL». Ver «Lectura del día 21» |
+| 2026-11-01 | Solicitud de indexación del grupo A: 6 de las 8 combinadas enviadas entre las 14:32 y las 14:44 (A1 a A6). A7 (`/reforma-banos/coslada/`) y A8 (`/reforma-cocinas/coslada/`) no se pudieron enviar: cuota diaria superada. Solicitadas el 03-11 (A7 a las 17:55, A8 a las 17:58) | Search Console | Que las 8 tengan fecha de rastreo antes que las de control | Inspección de URL, días 3, 7, 14 y 21 desde la solicitud de cada una | 04-11: las 8 indexadas. Ver «Lectura del día 3». 08-11: las 8 siguen indexadas, sin rastreo nuevo. Ver «Lectura del día 7». 15-11: las 8 siguen indexadas, sin rastreo nuevo y con la propia URL como canónica de Google. Ver «Lectura del día 14». 22-11: 8 de 8 indexadas; A2 vuelve a rastrearse el 15-11 sin solicitud; A6 sale primero como «Google no reconoce esta URL» y, al volver a inspeccionarla, como indexada. Ver «Lectura del día 21» |
 | | Solicitud de indexación de las 4 rastreadas sin indexar | Search Console | Que se vuelvan a rastrear | Inspección de URL | 04-11: las 4 indexadas (R1 antes de la solicitud masiva, R2 a R4 el 01-11). 08-11: siguen indexadas. 15-11: siguen indexadas, mismas fechas de rastreo. 22-11: siguen indexadas; R1 vuelve a rastrearse el 16-11 sin solicitud |
+| 2026-11-22 | Tanda 1 de solicitudes de indexación: C7, C8, C9, C5, C6, C1, C2, C3, C4 y P1, entre las 20:41 y las 20:51. Sin aviso de cupo. A6 no se solicita: al volver a inspeccionarla sale indexada | Search Console | Que se rastreen e indexen en minutos u horas, como el grupo A | Inspección de URL, días 3 (25-11), 7 (29-11), 14 (06-12) y 21 (13-12) | |
 | 2026-11-01 | Solicitud de indexación de `/zonas/coslada/`, `/zonas/meco/` y `/contacto/` (las 3 rastreadas sin indexar que faltaban; `/servicios/reforma-banos/` se solicitó hacia el 27-10 y ya está indexada) | Search Console | Que se rastreen en pocos días y pasen a indexadas, como `/servicios/reforma-banos/`. Si no ocurre en 14 días, el problema no es el rastreo | Inspección de URL, días 3, 7, 14 y 21 | 04-11: las 3 indexadas, con la propia URL como canónica de Google. 22-11: siguen indexadas, mismas fechas de rastreo |
 
 ## Mediciones
@@ -199,7 +200,7 @@ Lectura (sin conclusión firme, la muestra es pequeña y todas las posiciones su
 
 **15-11 (día 14).** El umbral del punto 3 se alcanza en cifras: la zona suma 51 impresiones en consultas de reforma integral y la combinada 14. Pero el reparto no coincide con la hipótesis: en las consultas compartidas la combinada sale igual o mejor que la zona, y la consulta en la que mejor sale la zona empieza por «empresa de reformas…», que es justo lo que el cambio añadiría al H1. Decisión aplazada al día 21. Detalle en «Lectura del día 14».
 
-**22-11 (día 21).** La alternancia no se repite: en las dos consultas que comparten, ni la zona ni la combinada suman una sola impresión en la semana. La zona crece en reforma integral solo en consultas donde la combinada no aparece, así que no le quita nada: cubre un hueco. **Propuesta, pendiente del titular:** cerrar la hipótesis como no confirmada. Esta prueba no justifica el cambio de H1 como remedio. Si se quiere aplicar por cumplir `ANATOMIAS-CANONICAS.md`, es una decisión aparte, con su DEC. Detalle en «Lectura del día 21».
+**22-11 (día 21).** La alternancia no se repite: en las dos consultas que comparten, ni la zona ni la combinada suman una sola impresión en la semana. La zona crece en reforma integral solo en consultas donde la combinada no aparece. Además, con el rango del 01-11 al 20-11 la combinada no tiene ningún dato en Rendimiento: sus 14 impresiones son todas anteriores al 01-11. Desde esa fecha, para las consultas de reforma integral en San Fernando solo sale la zona. **La hipótesis sigue abierta, reformulada:** no es alternancia, puede ser sustitución. Primero se inspecciona la combinada (indexación y canónica de Google) y después se decide sobre el H1. Detalle en «Lectura del día 21».
 
 ### Coslada: la zona adelanta a la combinada de integrales (22-11-2026)
 
@@ -228,7 +229,7 @@ La columna «Día 21» recoge la revisión del 22-11-2026. Es el día 21 exacto 
 | A3 | `/reformas-integrales/guadalajara/` | A | 1-11 14:39 | I (1-11 14:36) | I (1-11 14:36) | I (1-11 14:36) | I (1-11 14:36) |
 | A4 | `/reforma-pisos/guadalajara/` | A | 1-11 14:41 | I (1-11 14:44) | I (1-11 14:44) | I (1-11 14:44) | I (1-11 14:44) |
 | A5 | `/reforma-cocinas/alcala-de-henares/` | A | 1-11 14:42 | I (1-11 14:44) | I (1-11 14:44) | I (1-11 14:44) | I (1-11 14:44) |
-| A6 | `/locales-comerciales/alcala-de-henares/` | A | 1-11 14:44 | I (1-11 14:46) | I (1-11 14:46) | I (1-11 14:46) | No reconocida |
+| A6 | `/locales-comerciales/alcala-de-henares/` | A | 1-11 14:44 | I (1-11 14:46) | I (1-11 14:46) | I (1-11 14:46) | I (1-11 14:46), al volver a inspeccionarla; la primera inspección dio «No reconocida» |
 | A7 | `/reforma-banos/coslada/` | A | 3-11 17:55 | I (3-11 17:58) | I (3-11 17:58) | I (3-11 17:58) | I (3-11 17:58) |
 | A8 | `/reforma-cocinas/coslada/` | A | 3-11 17:58 | I (3-11 17:58) | I (3-11 17:58) | I (3-11 17:58) | I (3-11 17:58) |
 | C1 | `/reforma-pisos/coslada/` | Control | n/a | D | No reconocida | No reconocida | D |
@@ -452,11 +453,11 @@ Lectura:
 
 ## Lectura del día 21 (22-11-2026)
 
-**Resultado: primera fila de la tabla del plan.** Del grupo A, 7 de 8 siguen indexadas, con la propia URL como canónica, y ninguna ha pasado a «Rastreada: actualmente sin indexar». De las 9 de control no se ha rastreado ninguna en 21 días: 6 están en «Descubierta» y 3 en «Google no reconoce esta URL». La excepción del grupo A es A6, que la inspección da como «No reconocida» (detalle debajo). La web no ha cambiado durante la prueba: no hay commits en `src/`, `public/` ni `astro.config.mjs` desde el 01-11.
+**Resultado: primera fila de la tabla del plan.** Las 8 del grupo A siguen indexadas, con la propia URL como canónica, y ninguna ha pasado a «Rastreada: actualmente sin indexar». De las 9 de control no se ha rastreado ninguna en 21 días: 6 están en «Descubierta» y 3 en «Google no reconoce esta URL». A6 salió primero como «No reconocida» y, al volver a inspeccionarla el mismo día, como indexada (detalle debajo). La web no ha cambiado durante la prueba: no hay commits en `src/`, `public/` ni `astro.config.mjs` desde el 01-11.
 
 | Grupo | Día 14 | Día 21 | Detalle |
 |---|---|---|---|
-| A (solicitadas) | 8 de 8 indexadas | 7 de 8 indexadas, A6 «No reconocida» | A2 se ha vuelto a rastrear el 15-11 a la 01:28, sin solicitud. Las otras 6 conservan la fecha de su solicitud |
+| A (solicitadas) | 8 de 8 indexadas | 8 de 8 indexadas (A6, tras volver a inspeccionarla) | A2 se ha vuelto a rastrear el 15-11 a la 01:28, sin solicitud. Las otras 6 conservan la fecha de su solicitud |
 | Rastreadas (solicitadas) | 4 de 4 indexadas | 4 de 4 indexadas | R1 se ha vuelto a rastrear el 16-11 a las 19:10, sin solicitud |
 | Control (sin tocar) | 0 de 9 rastreadas | 0 de 9 rastreadas | 6 D + 3 no reconocidas (C6, C7, C9) |
 
@@ -469,6 +470,7 @@ Lectura:
 - Rendimiento: 1 impresión del 01-11 al 20-11, la misma que el día 14.
 - **Lectura:** lo más probable es el mismo vaivén de la herramienta que se ha visto en el control, o que la URL inspeccionada no fuera exactamente esta. Pero hasta ahora el vaivén solo había afectado a URL que nunca se habían rastreado, así que no se da por hecho.
 - **Qué hacer:** volver a inspeccionarla, copiando la URL del sitemap. Si sigue «No reconocida», pulsar «Probar URL publicada» y solicitar la indexación. No es repetir una solicitud de tanda: es recuperar una URL que estaba indexada. Se anota como cambio.
+- **Resuelto el 22-11:** al volver a inspeccionarla sale indexada, con último rastreo el 1-11-2026 a las 14:46:21, el mismo de siempre. Era un fallo de la herramienta. No se solicita. Queda dicho que el vaivén también puede afectar a URL ya rastreadas e indexadas: una «No reconocida» suelta no se da por buena sin repetir la inspección.
 
 **Qué se observa**
 
@@ -560,17 +562,20 @@ Lectura:
 - **La zona crece en reforma integral solo donde la combinada no aparece.** Suma 7 impresiones nuevas en «reformas integrales san fernando de henares» (hacia la posición 87) y 7 en «empresa reformas integrales san fernando de henares» (hacia la 31). No le quita nada a la combinada: cubre un hueco.
 - **La mejor posición nueva de la zona en integral vuelve a ser una consulta que empieza por «empresa».** Es el mismo argumento del día 14 contra el cambio de H1 como remedio.
 - **Las genéricas crecen de 152 a 219.** «reformas san fernando de henares» pasa de 107 a 132 impresiones y de la posición 80,3 a la 75,3. La zona cumple su papel.
-- **La combinada está parada.** No suma ninguna impresión en sus 4 consultas. No se ha mirado su rendimiento por página, así que no se sabe si tiene impresiones en consultas que Search Console no muestra.
+- **La combinada no sale en resultados desde el 01-11.** Con el filtro de página y el rango del 01-11 al 20-11, Search Console no da ningún dato para `/reformas-integrales/san-fernando-de-henares/` (comprobado por el titular el 22-11). Sus 14 impresiones de los últimos 3 meses son todas anteriores al 01-11. En esas mismas fechas, la zona ha sumado impresiones en consultas de reforma integral.
 
-**Propuesta sobre la hipótesis de San Fernando, pendiente del titular:** cerrarla como no confirmada y no cambiar el H1 por este motivo. Si se quiere meter «Empresa de reformas en {zona}» en el H1 para cumplir `ANATOMIAS-CANONICAS.md`, es otra decisión, con su DEC. Ya no choca con la prueba controlada, que se cierra hoy.
+**Esto cambia la lectura de la hipótesis.** Ya no es una alternancia entre las dos páginas. Desde el 01-11, en San Fernando solo se muestra la zona para las consultas de reforma integral, y la combinada ha desaparecido de los resultados. Puede ser que Google prefiera la zona para esas consultas, o que a la combinada le pase algo propio. No se sabe cuál de las dos cosas es: la combinada no se ha inspeccionado desde la foto de partida, cuando estaba indexada con último rastreo el 14-09.
+
+**Propuesta sobre la hipótesis de San Fernando:** no cerrarla. Antes de decidir nada sobre el H1, inspeccionar `/reformas-integrales/san-fernando-de-henares/` y anotar si sigue indexada y qué canónica ha elegido Google. Si Google ha elegido la zona como canónica, la canibalización queda confirmada. Si sigue indexada con su propia canónica, se vigila junto con lo de Coslada. La propuesta de esta misma mañana de cerrarla como no confirmada queda retirada.
+
+**Clics:** 5 en el total del sitio del 01-11 al 20-11 (anotado por el titular el 22-11). No se puede comparar con los 9 del 15-11, porque el rango de aquel total no quedó anotado. Los clics por URL siguen sin anotarse.
 
 **Qué falta**
 
-- Los clics por URL y el total del sitio. Es la tercera revisión sin anotarlos.
-- Volver a inspeccionar A6.
-- El rendimiento por página de `/reformas-integrales/san-fernando-de-henares/`.
+- Inspeccionar `/reformas-integrales/san-fernando-de-henares/`.
+- Los clics por URL.
 
-**Siguiente paso** (primera fila del plan): enviar hoy la tanda 1. Las 9 de control se acaban de inspeccionar y ninguna está indexada, así que el paso 2 de «Cómo» ya está hecho para ellas. P1 hay que inspeccionarla antes de solicitarla. A6, si hay que solicitarla, va al final de la tanda; si se agota el cupo, pasa al día siguiente.
+**Siguiente paso** (primera fila del plan): tanda 1 enviada el 22-11 entre las 20:41 y las 20:51, sin aviso de cupo. A6 no se solicitó porque, al volver a inspeccionarla, salía indexada. El estado de P1 antes de solicitarla no quedó anotado.
 
 ## Orden de solicitud a partir del día 21 (preparado el 08-11-2026)
 
@@ -589,16 +594,16 @@ Se aplica solo si la lectura del día 21 (22-11) da la primera fila de la tabla 
 
 | Tanda | # | URL completa | Municipio (búsquedas/mes) | Solicitada | Resultado |
 |---|---|---|---|---|---|
-| 1 (22-11) | C7 | `https://www.trazzo360.es/reforma-banos/guadalajara/` | Guadalajara (460) | | |
-| 1 (22-11) | C8 | `https://www.trazzo360.es/reforma-cocinas/guadalajara/` | Guadalajara (460) | | |
-| 1 (22-11) | C9 | `https://www.trazzo360.es/locales-comerciales/guadalajara/` | Guadalajara (460) | | |
-| 1 (22-11) | C5 | `https://www.trazzo360.es/reformas-integrales/alcala-de-henares/` | Alcalá de Henares (280) | | |
-| 1 (22-11) | C6 | `https://www.trazzo360.es/reforma-banos/alcala-de-henares/` | Alcalá de Henares (280) | | |
-| 1 (22-11) | C1 | `https://www.trazzo360.es/reforma-pisos/coslada/` | Coslada (280) | | |
-| 1 (22-11) | C2 | `https://www.trazzo360.es/reforma-cocinas/torrejon-de-ardoz/` | Torrejón de Ardoz (260) | | |
-| 1 (22-11) | C3 | `https://www.trazzo360.es/reforma-pisos/torrejon-de-ardoz/` | Torrejón de Ardoz (260) | | |
-| 1 (22-11) | C4 | `https://www.trazzo360.es/locales-comerciales/torrejon-de-ardoz/` | Torrejón de Ardoz (260) | | |
-| 1 (22-11) | P1 | `https://www.trazzo360.es/reforma-cocinas/san-fernando-de-henares/` | San Fernando de Henares (220) | | |
+| 1 (22-11) | C7 | `https://www.trazzo360.es/reforma-banos/guadalajara/` | Guadalajara (460) | 22-11 20:41 | Pendiente: día 3 el 25-11 |
+| 1 (22-11) | C8 | `https://www.trazzo360.es/reforma-cocinas/guadalajara/` | Guadalajara (460) | 22-11 20:42 | Pendiente: día 3 el 25-11 |
+| 1 (22-11) | C9 | `https://www.trazzo360.es/locales-comerciales/guadalajara/` | Guadalajara (460) | 22-11 20:44 | Pendiente: día 3 el 25-11 |
+| 1 (22-11) | C5 | `https://www.trazzo360.es/reformas-integrales/alcala-de-henares/` | Alcalá de Henares (280) | 22-11 20:45 | Pendiente: día 3 el 25-11 |
+| 1 (22-11) | C6 | `https://www.trazzo360.es/reforma-banos/alcala-de-henares/` | Alcalá de Henares (280) | 22-11 20:46 | Pendiente: día 3 el 25-11 |
+| 1 (22-11) | C1 | `https://www.trazzo360.es/reforma-pisos/coslada/` | Coslada (280) | 22-11 20:47 | Pendiente: día 3 el 25-11 |
+| 1 (22-11) | C2 | `https://www.trazzo360.es/reforma-cocinas/torrejon-de-ardoz/` | Torrejón de Ardoz (260) | 22-11 20:48 | Pendiente: día 3 el 25-11 |
+| 1 (22-11) | C3 | `https://www.trazzo360.es/reforma-pisos/torrejon-de-ardoz/` | Torrejón de Ardoz (260) | 22-11 20:49 | Pendiente: día 3 el 25-11 |
+| 1 (22-11) | C4 | `https://www.trazzo360.es/locales-comerciales/torrejon-de-ardoz/` | Torrejón de Ardoz (260) | 22-11 20:50 | Pendiente: día 3 el 25-11 |
+| 1 (22-11) | P1 | `https://www.trazzo360.es/reforma-cocinas/san-fernando-de-henares/` | San Fernando de Henares (220) | 22-11 20:51 | Pendiente: día 3 el 25-11 |
 | 2 (23-11) | P2 | `https://www.trazzo360.es/reformas-integrales/azuqueca-de-henares/` | Azuqueca de Henares (40) | | |
 | 2 (23-11) | P3 | `https://www.trazzo360.es/reforma-banos/azuqueca-de-henares/` | Azuqueca de Henares (40) | | |
 | 2 (23-11) | P4 | `https://www.trazzo360.es/reforma-cocinas/azuqueca-de-henares/` | Azuqueca de Henares (40) | | |
@@ -627,7 +632,7 @@ Se rellena al cerrar cada prueba, con la fecha y con el dato que la sostiene.
 
 **Dato que la sostiene:**
 
-- Grupo A: 8 de 8 indexadas el día 3. El día 21 siguen 7 según la inspección; A6 está pendiente de verificar y el informe de páginas del 16-11 todavía la cuenta. Ninguna ha pasado a «Rastreada: actualmente sin indexar».
+- Grupo A: 8 de 8 indexadas el día 3, y las 8 siguen indexadas el día 21. Ninguna ha pasado a «Rastreada: actualmente sin indexar». En A6 hubo que repetir la inspección para obtenerlo.
 - Control: 0 de 9 rastreadas en 21 días.
 - Las 4 rastreadas sin indexar quedaron indexadas tras la solicitud.
 - La web no cambió durante la prueba.

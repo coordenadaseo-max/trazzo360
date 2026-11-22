@@ -166,7 +166,7 @@ Puede no tener nada que ver. Google no debería bajar una página solo porque ha
 - **San Fernando (M1):** se solicita el 24-11, al final de la tanda 3, para que Google la vuelva a visitar.
 - **Coslada:** no se toca. Es el control.
 
-**Cómo se lee el 08-12 y el 15-12:**
+**Cómo se lee el 13-12 y el 20-12:**
 
 - Si San Fernando recupera sus búsquedas de reforma integral y Coslada no, **la visita antigua influía**, y tendría sentido pedir que se revisiten las 13 combinadas del 14-09.
 - Si no cambia nada, se descarta, y lo siguiente sería mirar **el contenido y el H1**, esta vez con datos.
@@ -203,10 +203,13 @@ Es una URL contra otra: sirve para **orientar**, no para **concluir**.
 |---|---|
 | 23-11 | Tanda 2 |
 | 24-11 | Tanda 3 + M1 |
-| 25-11 | Día 3 de la tanda 1 (inspeccionar las 10) |
-| 29-11 | Día 7 de la tanda 1 + comparar las consultas de la zona de Coslada y de su combinada |
-| 06-12 / 13-12 | Días 14 y 21 de la tanda 1 |
-| 08-12 / 15-12 | Lectura de la miniprueba M1 |
+| 25-11, 26-11, 27-11 | Día 3 de las tandas 1, 2 y 3 (solo inspección) |
+| Domingo 29-11 | Revisión semanal + comparar las consultas de la zona de Coslada y de su combinada |
+| Domingo 06-12 | Revisión semanal |
+| Domingo 13-12 | Lectura de las tandas + primera lectura de M1 |
+| Domingo 20-12 | Lectura final de M1 y cierre de la fase 2 |
+
+El detalle de cada revisión está en el [plan de la fase 2](./2026-11-22-plan-fase-2.md).
 
 ---
 

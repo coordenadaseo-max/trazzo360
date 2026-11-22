@@ -648,6 +648,8 @@ Se aplica solo si la lectura del día 21 (22-11) da la primera fila de la tabla 
 
 **M1: miniprueba de rastreo (aprobada por el titular el 22-11).** No es una combinada pendiente: está indexada desde el 14-09 y no se ha vuelto a rastrear. Se solicita para ver si un rastreo nuevo le devuelve las consultas de reforma integral que desde el 01-11 se lleva `/zonas/san-fernando-de-henares/`. Control: `/reformas-integrales/coslada/`, que **no se solicita**. Va la última de la tanda: si se agota el cupo, pasa al día siguiente. Se mide en Rendimiento (consultas de la combinada y de la zona, con rango desde el 24-11) a las 2 y 3 semanas: 08-12 y 15-12. Se compara con la combinada de Coslada en las mismas fechas.
 
+**22-11, más tarde:** las fechas de lectura de M1 se reajustan en el [plan de la fase 2](./2026-11-22-plan-fase-2.md) a los domingos de revisión, 13-12 y 20-12, para tener más datos y hacerlo en la revisión semanal. Las consultas se miden con rango personalizado desde el 13-09-2026.
+
 ## Conclusiones
 
 Se rellena al cerrar cada prueba, con la fecha y con el dato que la sostiene.

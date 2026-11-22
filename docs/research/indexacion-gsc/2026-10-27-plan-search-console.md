@@ -5,6 +5,8 @@
 
 # Plan de Search Console para la indexación
 
+> **Fase 1 cerrada el 22-11-2026.** Resultado: primera fila de la tabla de «Día 21 · Leer el resultado» (grupo A 8 de 8 indexadas, control 0 de 9 rastreadas). Siguiente: [plan de la fase 2](./2026-11-22-plan-fase-2.md). Lectura completa en la [bitácora](./bitacora.md) y explicación en el [resumen de estado](./2026-11-22-resumen-estado.md).
+
 Lo que hace el titular en Search Console, en qué orden y qué anota. Desarrolla la acción 1 de la [auditoría](./2026-10-27-auditoria-indexacion.md). Todo lo que se anote va a la [bitácora](./bitacora.md).
 
 ## Qué se quiere averiguar
